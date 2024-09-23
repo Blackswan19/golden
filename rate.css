@@ -4,6 +4,7 @@ body {
             padding: 0;
             background-size: cover;
             color: white;
+            background-color: rgb(28, 28, 28);
 
             /* background-image: url("https://images.unsplash.com/photo-1639588435079-046d4b50e7bf?q=80&w=2206&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); */
         }
@@ -37,13 +38,13 @@ body {
         }
         #icon-display {
             position: fixed;
-            font-size: 13px;
-            padding: 9px;
-            background-color: rgb(255 255 255);
-        color: black;
-            border-radius: 8px;
-            top: 1em;
-            right: 1em;
+        font-size: 13px;
+        padding: 9px;
+        background-color: rgb(0 76 255);
+        color: #ffffff;
+        border-radius: 4px;
+        top: 1em;
+        right: 1em;
         }
         .location {
             font-size: 17px;
@@ -102,7 +103,7 @@ body {
         position: relative;
         background-color: rgb(0 76 255);
         color: #ffffff;
-        padding: 15px;
+        padding: 13px;
         border-radius: 5px;
         }
 
