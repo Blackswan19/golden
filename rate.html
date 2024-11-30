@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container">
-    <div class="location">For students  <div class="number-display" id="randomNumber"style="display: contents;">(--)</div><br>°</div>
+    <div class="location">For students<br>°</div>
     <div id="icon-display"><a onclick="alert('Thanks for returing the amount, We hope we helped at right time.');"><i class="fa-brands fa-openid"></i> Yes</div></a>
     <img src="https://i.postimg.cc/SxwrHyLz/logo.png" alt="">
     <div class="price">
@@ -28,37 +28,6 @@
         <a href="https://forms.gle/xpRJNzqi7aGrubur6">Apply now</a>
     </div>
     
-    <script>
-        const numbers = [2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5];
-        const localStorageKey = "fixedRandomNumber";
-        const timeKey = "lastGeneratedTime";
-        const oneDay = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
-
-        function getFixedRandomNumber() {
-            const now = new Date().getTime();
-            const lastGeneratedTime = localStorage.getItem(timeKey);
-
-            if (lastGeneratedTime && now - lastGeneratedTime < oneDay) {
-                // Use the stored number if it's within 24 hours
-                return localStorage.getItem(localStorageKey);
-            } else {
-                // Generate and store a new random number
-                const randomIndex = Math.floor(Math.random() * numbers.length);
-                const newRandomNumber = numbers[randomIndex];
-                localStorage.setItem(localStorageKey, newRandomNumber);
-                localStorage.setItem(timeKey, now);
-                return newRandomNumber;
-            }
-        }
-
-        function displayRandomNumber() {
-            const randomNumber = getFixedRandomNumber();
-            document.getElementById('randomNumber').textContent = `(${randomNumber})`;
-        }
-
-        // Display the number when the page loads
-        window.onload = displayRandomNumber;
-    </script>
     <script src="noright.js"></script>
 </div>
 </body>
