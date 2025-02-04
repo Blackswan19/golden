@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MFI[P] | Account</title>
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/gW8Py0B/BS.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Handjet:wght@100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DotGothic16&family=Gruppo&family=Handjet:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Michroma&family=Pixelify+Sans:wght@400..700&family=Poiret+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sarpanch:wght@400;500;600;700;800;900&family=Stalinist+One&family=VT323&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap');
+
+ 
+    
+        * { margin: 0; padding: 0; box-sizing: border-box;}
+        body { 
+    background: #f8f9fa; 
+    color: #333; 
+    text-align: center; 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    font-family: "Handjet", serif;
+}
+        .container {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 { font-size: 32px; margin-bottom: 20px; }
+        .info {
+            font-size: 18px;
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            width: 280px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+            text-align: justify;
+            
+        }
+        .btn {
+            padding: 12px 30px;
+            cursor: pointer;
+            border: none;
+            background: #000000;
+            color: white;
+            font-size: 18px;
+            border-radius: 8px;
+            transition: 0.3s ease-in-out;
+            margin-top: 15px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: "Handjet", serif;
+        }
+        .font-selector {
+            margin-top: 20px;
+        }
+        .font-selector select {
+            padding: 0px 10px;
+    font-size: 15px;
+    border-radius: 21px;
+    border: 1px solid #000000;
+    outline: none;
+        }
+        .logout:hover { background: #002aff; transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Your Account</h1>
+    <div class="container">
+        <p class="info"><strong>Name:</strong> <span id="name"></span></p>
+        <p class="info"><strong>Amount:</strong> <span id="amount"></span></p>
+        <p class="info"><strong>Taken Date:</strong> <span id="takenDate"></span></p>
+        <p class="info"><strong>Days Left:</strong> <span id="daysLeft"></span></p>
+        <button class="btn" onclick="logout()">Logout</button>
+    </div>
+    <div class="font-selector">
+        <label for="fontSelect">Select Font:</label>
+        <select id="fontSelect" onchange="changeFont()">
+            <option value="Handjet">Handjet</option>
+            <option value="Cardo">Cardo</option>
+        </select>
+        
+    </div>
+    <div class="from" style="font-size: 10px;
+    color: black;position: fixed;
+    right: 20px;
+    top: 30px;">
+        From BS/MFI
+    </div>
+    <script>
+        const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+
+        if (userDetails) {
+            document.getElementById("name").innerText = userDetails.name;
+            document.getElementById("amount").innerText = userDetails.amount;
+            document.getElementById("takenDate").innerText = userDetails.takenDate;
+            document.getElementById("daysLeft").innerText = userDetails.daysLeft;
+        } else {
+            alert("No user data found. Redirecting...");
+            window.location.href = "themain.html";
+        }
+
+        function logout() {
+            localStorage.removeItem("userDetails");
+            window.location.href = "themain.html";
+        }
+        function changeFont() {
+    const selectedFont = document.getElementById('fontSelect').value;
+    if (selectedFont === 'Handjet') {
+        // Apply 'DotGothic16' font to body and buttons
+        document.body.style.fontFamily = '"Handjet", serif';
+        document.querySelectorAll('.btn').forEach(button => {
+            button.style.fontFamily = '"Handjet", serif';
+        });
+    } else if (selectedFont === 'Cardo') {
+        // Apply 'Cardo' font to body and buttons
+        document.body.style.fontFamily = '"Cardo", serif';
+        document.querySelectorAll('.btn').forEach(button => {
+            button.style.fontFamily = '"Cardo", serif';
+        });
+    }
+}
+document.addEventListener("DOMContentLoaded", () => {
+    const customMenu = document.querySelector(".custom-menu");
+
+    // Show custom menu on right-click
+    document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        customMenu.style.display = "block";
+        customMenu.style.top = `${event.pageY}px`;
+        customMenu.style.left = `${event.pageX}px`;
+    });
+
+    // Hide the menu when clicking elsewhere
+    document.addEventListener("click", () => {
+        customMenu.style.display = "none";
+    });
+});
+    </script>
+
+</body>
+</html>
