@@ -6,24 +6,20 @@
     <title>MFI[P] | Account</title>
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/gW8Py0B/BS.png">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Handjet:wght@100..900&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DotGothic16&family=Gruppo&family=Handjet:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Michroma&family=Pixelify+Sans:wght@400..700&family=Poiret+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sarpanch:wght@400;500;600;700;800;900&family=Stalinist+One&family=VT323&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap');
-
- 
-    
-        * { margin: 0; padding: 0; box-sizing: border-box;}
-        body { 
-    background: #f8f9fa; 
-    color: #333; 
-    text-align: center; 
-    height: 100vh;
-    display: flex;
+         @import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Dongle&family=Dosis:wght@200..800&family=DotGothic16&family=Gruppo&family=Handjet:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Michroma&family=Pixelify+Sans:wght@400..700&family=Poiret+One&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sarpanch:wght@400;500;600;700;800;900&family=Stalinist+One&family=VT323&display=swap'); 
+       
+       * { margin: 0; padding: 0; box-sizing: border-box;font-family: "Comfortaa", serif;}
+       body { background: #111b21;
+    color: #ffffff;
+    text-align: center;
+    display: flex
+;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    font-family: "Handjet", serif;
+    gap: 10em;
+
 }
         .container {
             background: #f8f9fa;
@@ -31,17 +27,18 @@
             border-radius: 15px;
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
         }
-        h1 { font-size: 32px; margin-bottom: 20px; }
+        h1 { font-size: 20px;
+}
         .info {
-            font-size: 18px;
-            margin: 10px 0;
-            padding: 10px;
-            background: white;
-            border-radius: 8px;
-            width: 280px;
-            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-            text-align: justify;
-            
+            font-size: 15px;
+    margin: 10px 0;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    width: 280px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    text-align: justify;
+    color: black;
         }
         .btn {
             padding: 12px 30px;
@@ -49,12 +46,11 @@
             border: none;
             background: #000000;
             color: white;
-            font-size: 18px;
+            font-size: 15px;
             border-radius: 8px;
             transition: 0.3s ease-in-out;
             margin-top: 15px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            font-family: "Handjet", serif;
         }
         .font-selector {
             margin-top: 20px;
@@ -79,18 +75,10 @@
         <p class="info"><strong>Days Left:</strong> <span id="daysLeft"></span></p>
         <button class="btn" onclick="logout()">Logout</button>
     </div>
-    <div class="font-selector">
-        <label for="fontSelect">Select Font:</label>
-        <select id="fontSelect" onchange="changeFont()">
-            <option value="Handjet">Handjet</option>
-            <option value="Cardo">Cardo</option>
-        </select>
-        
-    </div>
+    
     <div class="from" style="font-size: 10px;
-    color: black;position: fixed;
-    right: 20px;
-    top: 30px;">
+    color: rgb(255, 255, 255);position: fixed;
+    bottom: 30px;">
         From BS/MFI
     </div>
     <script>
