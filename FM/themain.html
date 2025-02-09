@@ -53,7 +53,7 @@
             color: black;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 0px 10px black;
+            box-shadow: 0px 0px 10px 5000px #000000c7;
             width: 80%;
             max-width: 300px;
         }
@@ -65,10 +65,10 @@
         }
         .popup button {
             background-color: #9146ff;
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
         }
         .popup button:hover {
             background-color: black;
@@ -87,7 +87,7 @@
         <button class="button"><a href="https://forms.gle/PjssBodtdo9iW1xn7">Take Money</a></button>
         <div class="popup" id="accountPopup">
             <h3 style="margin: 0%;">Enter Password</h3>
-            <input type="password" id="password" placeholder="Enter Password">
+            <input type="text" id="password" placeholder="Enter Password">
             <button onclick="verifyUser()">Login</button>
             <button onclick="closePopup()">Close</button>
         </div>
@@ -141,6 +141,7 @@
                 customMenu.style.display = "none";
             });
         });
+
     </script>
 </body>
 </html>
