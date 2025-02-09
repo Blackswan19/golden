@@ -18,13 +18,15 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    gap: 10em;
+    gap: 8em;
 }
         .container {
             background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 300px;
         }
         h1 { font-size: 20px; }
         .info {
@@ -39,7 +41,7 @@
             color: black;
         }
         .btn {
-            padding: 6px 30px;
+            padding: 10px 30px;
             cursor: pointer;
             border: none;
             background: #000000;
@@ -83,9 +85,10 @@
             document.getElementById("takenDate").innerText = userDetails.takenDate;
             document.getElementById("daysLeft").innerText = userDetails.daysLeft;
             document.getElementById("interest").innerText = userDetails.interest;
-        } else {
+        } 
+        else {
             alert("No user data found. Redirecting...");
-            window.location.href = "themain.html";
+            // window.location.href = "themain.html";
         }
 
         function logout() {
