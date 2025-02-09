@@ -3,177 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MFI[For M]</title>
-    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/gW8Py0B/BS.png">
+    <title>Black Swan</title>
     <style>
-       @import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Dongle&family=Dosis:wght@200..800&family=DotGothic16&family=Gruppo&family=Handjet:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mandali&family=Michroma&family=Pixelify+Sans:wght@400..700&family=Poiret+One&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sarpanch:wght@400;500;600;700;800;900&family=Stalinist+One&family=VT323&display=swap');
-        * { margin: 0; padding: 0; box-sizing: border-box;font-family: "Mandali", serif;}
-        body { 
-            background: #eeeeee;
-            color: #000000;
-    text-align: center;
-    display: flex
-;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    gap: 18em;
-}
-
-        
-        /* LOGO */
-        .logo {
-            font-size: 25px;
-            font-weight: bold;
-            position: absolute;
-            top: 20px;
-            left: 30px;
-            color: #0040ff;
-            font-family: none;
+        @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap');
+        * {
+            font-family: "Oxanium", serif;
         }
-
-        /* WELCOME MESSAGE */
-        .welcome-text {
-            font-size: 16px;
-    font-weight: 500;
-    margin-top: 120px;
-    color: #000000;
-        }
-
-        /* BUTTON CONTAINER */
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .btn {
-            padding: 6px 30px;
-            cursor: pointer;
-            border: none;
-            background: #0040ff;
+        body {
+            background-color: #9146ff;
             color: white;
-            font-size: 15px;
-            border-radius: 8px;
-            transition: 0.3s ease-in-out;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            width: 180px;
+            text-align: center;
         }
-        .btn:hover { background: #303030;}
-        .modal {
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 11px;
+            line-height: 45px;
+        }
+        h1 {
+            font-size: 50px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+        .button {
+            display: inline-block;
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            padding: 10px 45px;
+            text-decoration: none;
+            font-size: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-weight: 900;
+            cursor: pointer;
+        }
+        a{
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+        }
+       
+        .popup {
             display: none;
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.8);
-    background: #23282c;
-    color: #ffffff;
-    padding: 25px;
-    width: 320px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    color: black;
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 5px 105px 1000px rgb(0 0 0 / 66%);
-    transition: 0.3s ease-in-out;
+    box-shadow: 0px 0px 10px black;
+    width: 80%;
+    max-width: 300px;
+}
+        .popup input {
+            display: block;
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
         }
-        .modal.active { transform: translate(-50%, -50%) scale(1); display: block; }
-        .modal h3 { margin-bottom: 15px; }
-        .modal input {
-            width: 100%;
-            padding: 6px;
-            margin-bottom: 15px;
-            border: 1px solid #000000;
-            border-radius: 5px;
-            text-align: center;
-            outline: none;
-        }
-        .modal button{
-            padding: 4px;
-    border: none;
-    background: #494949;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-    display: inline;
-    width: 45%;
-    font-size: 15px;
-        }
-        .modal button:hover { background: #383838; }
-
-        /* FONT SELECTION CONTAINER */
-        .font-selector {
-            margin-top: 20px;
-        }
-        .font-selector select {
-            padding: 0px 10px;
-    font-size: 15px;
-    border-radius: 21px;
-    border: 1px solid #ffffff;
-    outline: none;
-    color: white;
-    background: no-repeat;
-        }
-        .font-selector option{
-            background-color: transparent;
-        }
-        a{
-            text-decoration: none;
+        .popup button {
+            background-color: #9146ff;
             color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
         }
-       
+        .popup button:hover {
+            background-color: black;
+        }
+        .services a{
+            display: flex;
+            color: white;
+
+        }
     </style>
 </head>
 <body>
-
-    <div class="logo">MFI(For M)</div>
-
-    <div class="welcome-text">Hey hi, Wait few hours after filling the form, Amount was collecting.....</div>
-
-    <div class="button-container">
-        <button class="btn" onclick="openModal()">My account</button>
-        <button class="btn"><a href="https://forms.gle/PjssBodtdo9iW1xn7">Take money</a></button>
-    </div>
-    <div class="from" style="font-size: 10px;
-    color: #000000;
-    position: fixed;
-    bottom: 20px;">
-        From BS/MFI
-    </div>
-    <div id="loginModal" class="modal">
-        <h3>Enter Password</h3>
-        <input type="text" class="inp" id="passwordInput" placeholder="Password">
-        <button class="btn" onclick="verifyPassword()">Login</button>
-        <button class="btn" onclick="closeModal()">Close</button>
+    <div class="container">
+        <h1>MFI</h1>
+        <h2>"Welcome to MFI, From Black Swan"</h2>
+        <button class="button" onclick="openPopup()">My Account</button>
+        <button class="button"><a href="https://forms.gle/PjssBodtdo9iW1xn7">Take Money</a></button>
+        <div class="popup" id="accountPopup">
+            <h3 style="margin: 0%;">Enter Password</h3>
+            <input type="password" id="password" placeholder="Enter Password">
+            <button onclick="verifyUser()">Login</button>
+            <button onclick="closePopup()">Close</button>
+        </div>
+        <div class="services">
+            <h3>Services</h3>
+            <a>MFI(app)</a>
+            <a>Golden</a>
+            <a>Lendlink</a>
+            <a>Vintage Lender</a>
+        </div>
     </div>
     <script>
-        function openModal() {
-            document.getElementById("loginModal").classList.add("active");
+        function openPopup() {
+            document.getElementById('accountPopup').style.display = 'block';
         }
 
-        function closeModal() {
-            document.getElementById("loginModal").classList.remove("active");
+        function closePopup() {
+            document.getElementById('accountPopup').style.display = 'none';
         }
 
-        function verifyPassword() {
-            const password = document.getElementById("passwordInput").value;
-            const correctPassword = "1234"; // Replace with a secure method
+        function verifyUser() {
+            var password = document.getElementById('password').value;
 
-            if (password === correctPassword) {
-                const userData = {
-                    name: "John Doe",
-                    amount: "$5000",
-                    takenDate: "2024-01-15",
-                    daysLeft: 30
-                };
-                localStorage.setItem("userDetails", JSON.stringify(userData));
-                window.location.href = "user.html";
+            var userDatabase = {
+                "123": { name: "John Doe", amount: 5000, daysLeft: 15, interestRate: 5 },
+                "2024": { name: "Admin User", amount: 10000, daysLeft: 10, interestRate: 3 }
+            };
+
+            if (userDatabase[password]) {
+                var user = userDatabase[password];
+                var interest = ((user.amount * user.interestRate) / 100) * (30 - user.daysLeft) / 30;
+                window.location.href = `user.html?name=${user.name}&amount=${user.amount}&daysLeft=${user.daysLeft}&interest=${interest.toFixed(2)}`;
             } else {
-                alert("Incorrect Password!");
+                alert("Invalid password!");
             }
         }
-
-document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
     // Show custom menu on right-click
@@ -190,6 +141,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
     </script>
-
 </body>
 </html>
