@@ -44,18 +44,18 @@
        
         .popup {
             display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    color: black;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px black;
-    width: 80%;
-    max-width: 300px;
-}
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px black;
+            width: 80%;
+            max-width: 300px;
+        }
         .popup input {
             display: block;
             width: 90%;
@@ -75,7 +75,6 @@
         .services a{
             display: flex;
             color: white;
-
         }
     </style>
 </head>
@@ -110,36 +109,37 @@
 
         function verifyUser() {
             var password = document.getElementById('password').value;
+            var today = new Date().toISOString().split('T')[0];
 
             var userDatabase = {
-                "123": { name: "John Doe", amount: 5000, daysLeft: 15, interestRate: 5 },
-                "2024": { name: "Admin User", amount: 10000, daysLeft: 10, interestRate: 3 }
+                "123": { name: "John Doe", amount: 5000, daysLeft: 15, interestRate: 5, takenDate: "2024-02-01" },
+                "2024": { name: "Admin User", amount: 10000, daysLeft: 10, interestRate: 3, takenDate: "2024-01-28" }
             };
 
             if (userDatabase[password]) {
                 var user = userDatabase[password];
                 var interest = ((user.amount * user.interestRate) / 100) * (30 - user.daysLeft) / 30;
-                window.location.href = `user.html?name=${user.name}&amount=${user.amount}&daysLeft=${user.daysLeft}&interest=${interest.toFixed(2)}`;
+                window.location.href = `user.html?name=${user.name}&amount=${user.amount}&daysLeft=${user.daysLeft}&interest=${interest.toFixed(2)}&takenDate=${user.takenDate}`;
             } else {
                 alert("Invalid password!");
             }
         }
         document.addEventListener("DOMContentLoaded", () => {
-    const customMenu = document.querySelector(".custom-menu");
+            const customMenu = document.querySelector(".custom-menu");
 
-    // Show custom menu on right-click
-    document.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-        customMenu.style.display = "block";
-        customMenu.style.top = `${event.pageY}px`;
-        customMenu.style.left = `${event.pageX}px`;
-    });
+            // Show custom menu on right-click
+            document.addEventListener("contextmenu", (event) => {
+                event.preventDefault();
+                customMenu.style.display = "block";
+                customMenu.style.top = `${event.pageY}px`;
+                customMenu.style.left = `${event.pageX}px`;
+            });
 
-    // Hide the menu when clicking elsewhere
-    document.addEventListener("click", () => {
-        customMenu.style.display = "none";
-    });
-});
+            // Hide the menu when clicking elsewhere
+            document.addEventListener("click", () => {
+                customMenu.style.display = "none";
+            });
+        });
     </script>
 </body>
 </html>
