@@ -38,6 +38,9 @@
             font-weight: 900;
             cursor: pointer;
         }
+        .button:hover{
+            background-color: #00f5ff;
+        }
         a{
             text-decoration: none;
             color: rgb(0, 0, 0);
@@ -73,9 +76,9 @@
         .popup button:hover {
             background-color: black;
         }
-        .services a{
-            display: flex;
-            color: white;
+        .services a {
+            color: #00f5ff;
+    font-weight: 700;
         }
     </style>
 </head>
@@ -91,12 +94,11 @@
             <button onclick="verifyUser()">Login</button>
             <button onclick="closePopup()">Close</button>
         </div>
-        <div class="services">
-            <h3>Services</h3>
-            <a>MFI(app)</a>
-            <a>Golden</a>
-            <a>Lendlink</a>
-            <a>Vintage Lender</a>
+        <div class="services" style="line-height: 25px;">
+            <h3><a style="text-decoration: underline;color: rgb(255, 255, 255);">Note</a></h3>
+            <a>To provide the fund, we need to collect the amount first. It takes few hours to arrange the fund, so be patience during this time to get the fund.<br><br>
+            <span style="color: rgb(0, 0, 0);
+    font-size: 13px;">Barrower should take money for atleast 15 days.</span></a>
         </div>
     </div>
     <script>
