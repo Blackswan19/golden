@@ -13,7 +13,6 @@
         body {
             background-color: #9146ff;
             color: white;
-            text-align: center;
         }
         .container {
             max-width: 800px;
@@ -26,15 +25,15 @@
         }
         .button {
             display: inline-block;
-            background-color: rgb(255, 255, 255);
-            color: rgb(0, 0, 0);
-            padding: 10px 45px;
-            text-decoration: none;
-            font-size: 20px;
-            border-radius: 5px;
-            margin-top: 20px;
-            font-weight: 900;
-            cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 20px;
+    font-weight: 900;
+    cursor: pointer;
+    border: none;
         }
         .button:hover{
             background-color: #00f5ff;
@@ -57,6 +56,7 @@
             box-shadow: 0px 0px 10px 5000px #000000c7;
             width: 80%;
             max-width: 300px;
+            text-align: center;
         }
         .popup input {
             display: block;
@@ -83,15 +83,15 @@
 <body>
     <div class="container">
         <h1>FmLend</h1>
-        <h2>' Welcome to FmLend '</h2>
+        <h2 style="font-size: 15px;">' Welcome to FmLend '</h2>
         <button class="button"><a href="https://forms.gle/PjssBodtdo9iW1xn7">Take Money</a></button>
         <div class="popup" id="accountPopup">
             <h3 style="margin: 0%;">Enter Password</h3>
-            <input type="text" id="password" placeholder="Enter Password">
+            <input type="text" id="password" placeholder="Password">
             <button onclick="verifyUser()">Login</button>
             <button onclick="closePopup()">Close</button>
         </div>
-        <div class="services" style="line-height: 25px;">
+        <div class="services" style="line-height: 30px;">
             <h3><a style="text-decoration: underline;color: #00f5ff;">Note</a></h3>
             <a>To provide the fund, we need to collect the amount first. It takes few hours to arrange the fund, so be patient during this time to get the fund.<br><br>
             <span style="color: rgb(0, 0, 0); font-size: 16px;">Borrowers should take money for at least 15 days.</span></a>
