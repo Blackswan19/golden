@@ -3,168 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BS</title>
+    <title>BsLends</title>
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/gW8Py0B/BS.png">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Oswald:wght@500&display=swap" rel="stylesheet">
     <style>
-        
+        @import url('https://fonts.googleapis.com/css2?family=Anta&family=Audiowide&family=Braah+One&family=Cardo:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Dongle&family=Dosis:wght@200..800&family=DotGothic16&family=Goldman:wght@400;700&family=Gruppo&family=Handjet:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mandali&family=Michroma&family=Oxanium:wght@200..800&family=Pixelify+Sans:wght@400..700&family=Poiret+One&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&family=Sarpanch:wght@400;500;600;700;800;900&family=Share+Tech&family=Space+Grotesk:wght@300..700&family=Stalinist+One&family=VT323&family=Zen+Dots&display=swap');
+        * {
+            font-family: "Goldman", serif;
+        }
         body {
-            background-color: #0d0d0d;
-            color: #bfbfbf;
-            font-family: 'Cinzel', serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
+            background-color: black;
+            color: white;
+            letter-spacing: 0.5px;
         }
         .container {
+            max-width: 800px;
             margin: auto;
-            padding-top: 25px;
+            padding: 11px;
+            line-height: 45px;
         }
-        h1 {font-size: 45px;
-            color: gold;
-            letter-spacing: 3px;
-            text-shadow: 3px 3px 5px rgb(255 0 0 / 65%);
-        }
-        .subtext {
-            font-size: 22px;
-            color: crimson;
-            margin-bottom: 30px;
-            font-family: 'Oswald', sans-serif;
-            font-style: italic;
+        h1 {
+            font-size: 50px;
         }
         .button {
             display: inline-block;
-            background: #a00000;
-            color: #ffffff;
-            padding: 10px 25px;
-    font-size: 15px;
-            font-weight: bold;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    border: none;
+    font-weight: 100;
+
+        }
+        .button:hover{
+            background-color: #9146ff;
+        }
+        a{
             text-decoration: none;
-            border-radius: 7px;
-            transition: 0.3s;
-            box-shadow: 3px 3px 12px rgba(255, 215, 0, 0.5);
-            margin: 15px;
+            color: rgb(0, 0, 0);
         }
-        .button:hover {
-            background: black;
-            color: gold;
-            box-shadow: 3px 3px 15px rgba(255, 255, 255, 0.7);
-        }
-        .box {
-            background: rgba(255, 215, 0, 0.1);
-            border: 1px solid #ffc400;
-            border-radius: 15px;
-            margin: 40px auto;
-            box-shadow: 0px 0px 25px rgba(255, 215, 0, 0.3);
-            max-width: 450px;
-            width: 80%;
-            padding: 20px;
-        }
+       
         .popup {
             display: none;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: black;
-            color: gold;
-            padding: 25px;
+            background-color: white;
+            color: black;
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 0px 20px 5000px #000000e0;
+            box-shadow: 0px 0px 10px 5000px #000000c7;
             width: 80%;
-            max-width: 320px;
+            max-width: 300px;
             text-align: center;
-            border: solid 2px crimson;
         }
         .popup input {
             display: block;
             width: 90%;
-            padding: 12px;
-            margin: 15px 0;
-            border: solid 2px gold;
-            background: black;
-            color: white;
-            font-family: 'Oswald', sans-serif;
-            text-align: center;
-            outline: none;
+            padding: 10px;
+            margin: 10px 0;
+            border: solid 1px;
         }
         .popup button {
-            background-color: crimson;
+            background-color: #9146ff;
             color: white;
-            padding: 10px 20px;
-            font-family: 'Oswald', sans-serif;
+            padding: 10px 15px;
             border: none;
             cursor: pointer;
-            font-weight: bold;
         }
         .popup button:hover {
-            background-color: gold;
-            color: black;
+            background-color: black;
+        }
+        .services a {
+            color: #ffffff;
+            font-weight: 100;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>The Blackswan Lends</h1>
-        <p class="subtext">"Trust  is everything. Loyalty is power."</p>
-
-        <div class="box">
-            <p><span style="font-family: 'Oswald', sans-serif;">We don’t just lend money. We make investments... in people.</span></p>
-            <a href="https://mfi0212.github.io/MFI/imlate" class="button">I'm late</a>
-        </div>
-
-        <div class="box">
-            <p><span style="font-family: 'Oswald', sans-serif;">If you don’t know us, you don’t belong here.</span> Members Only!</p>
-            <a onclick="openPopup()" class="button">My Account</a>
-            <p><span style="font-family: 'Oswald', sans-serif;">You want the money? Fine. But first, we gotta collect it. That takes time—sit tight and don’t ask twice.</span></p>
-            <a href="https://forms.gle/PjssBodtdo9iW1xn7" class="button">Take money</a>
-        </div>
+        <h1 style="color: #9146ff;">BsLends</h1>
+        <h2 style="font-size: 15px;    font-weight: 100;
+">' Welcome to BsLends '</h2>
+        <button class="button"><a href="https://forms.gle/PjssBodtdo9iW1xn7">Take Money</a></button>
         <div class="popup" id="accountPopup">
-            <h3>Enter Password</h3>
+            <h3 style="margin: 0%;">Enter Password</h3>
             <input type="text" id="password" placeholder="Password">
             <button onclick="verifyUser()">Login</button>
             <button onclick="closePopup()">Close</button>
         </div>
-        <span style="font-family: 'Cinzel', serif;
-            color: #a00000;font-size: 20px;">think once before you take..!</span>
-        <div class="ser" style="background: #2d2d2d6b;
-        padding: 10px 30px;
-        text-align: justify;">
-            <h3 style="font-family: 'Cinzel', serif;
-            color: #0066ff;">Our services</h3>
-            <p>MFI(App)</p>
-            <p>Golden</p>
-            <p>Vintage lender</p>
-            <p>Lendlink</p>
+        <div class="services" style="line-height: 30px;">
+            <h3><a style="text-decoration: underline;color: #00f5ff;">Note</a></h3>
+            <a>To provide the fund, we need to collect the amount first. It takes few hours to arrange the fund, so be patient during this time to get the fund.<br><br>
+            <span style="color: rgb(0 245 255); font-size: 16px;">Borrowers should take money for at least 15 days.</span></a>
+        </div>
+        <div class="bottom">
+            <button class="button" onclick="openPopup()">My Account</button>
+        </div>
+        <div class="from" style="font-size: 10px; color: rgb(255, 255, 255); position: fixed; bottom: 0px; left: 18px;">
+            From BS/MFI
         </div>
     </div>
     <script>
         function openPopup() {
             document.getElementById('accountPopup').style.display = 'block';
         }
+    
         function closePopup() {
             document.getElementById('accountPopup').style.display = 'none';
         }
+    
         function verifyUser() {
             var password = document.getElementById('password').value;
             var userDatabase = {
                 "1": { name: "p", amount: 5000, takenDate: "2025-02-5", dailyInterest: 25 },
             };
+    
             if (userDatabase[password]) {
                 var user = userDatabase[password];
                 var takenDate = new Date(user.takenDate);
                 var today = new Date();
                 var daysPassed = Math.ceil((today - takenDate) / (1000 * 60 * 60 * 24));
+    
+                // Interest keeps adding daily until repaid
                 var totalInterest = daysPassed * user.dailyInterest;
                 var totalAmount = user.amount + totalInterest;
                 var endDate = new Date(takenDate);
                 endDate.setDate(takenDate.getDate() + 15);
+    
                 window.location.href = `user.html?name=${user.name}&amount=${user.amount}&daysPassed=${daysPassed}&interest=${totalInterest}&totalAmount=${totalAmount}&takenDate=${user.takenDate}&endDate=${endDate.toISOString().split('T')[0]}`;
             } else {
                 alert("Invalid password!");
             }
         }
-                document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
     // Show custom menu on right-click
@@ -181,5 +156,6 @@
     });
 });
     </script>
+    
 </body>
 </html>
