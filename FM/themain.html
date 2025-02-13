@@ -101,7 +101,7 @@ strong {
 </head>
 <body>
     <div class="container">
-        <h1>Verify</h1>
+        <h1>Check-in</h1>
         <input type="text" id="password" placeholder="Enter Password">
         <button class="button" onclick="verifyUser()">Search</button>
         <div id="userDetails" class="user-details"></div>
@@ -126,7 +126,7 @@ strong {
                 document.getElementById('userDetails').innerHTML = `
                     <h4 style="text-align: center;
     border-bottom: solid 1px #ffffff;
-    margin: 15px;">Account Details</h4>
+    margin: 15px;">Your Details</h4>
                     <p><strong>Name:</strong> ${user.name}</p>
                     <p><strong>Amount Borrowed:</strong> ${user.amount}rs</p>
                     <p><strong>Days Passed:</strong> ${daysPassed}</p>
