@@ -16,7 +16,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, #000000, #0800ff);
+    background: linear-gradient(135deg, rgb(0, 0, 0) 30%, rgb(68 68 68) 100%);
     color: white;
     display: flex;
     justify-content: center;
@@ -63,7 +63,7 @@ input:focus {
     border-color: #ffffff;
 }
 strong {
-    color: #00a6ff;
+    color: #000000;
 }
 .button {
     width: 100%;
@@ -79,7 +79,7 @@ strong {
 }
 
 .button:hover {
-    background-color: #0048ff;
+    background-color: #0000007c;
     color: white;
 }
 
@@ -121,6 +121,35 @@ strong {
         <button class="button" onclick="verifyUser()">Search</button>
         <div id="userDetails" class="user-details"></div>
     </div>
+    <input type="color" id="colorPicker" value="#0800ff" style="margin-bottom: 15px;
+display: block;
+position: fixed;
+top: 10px;
+width: 30px;
+background: rgb(255 255 255);
+border-radius: 1px;
+left: 10px;
+border: none;">
+
+<script>
+    // Function to apply saved color or default
+    function applySavedColor() {
+        let savedColor = localStorage.getItem("userColor") || "#0800ff"; // Default to blue if no color is saved
+        document.body.style.background = `linear-gradient(135deg, #000000 30%, ${savedColor} 100%)`;
+        document.getElementById('colorPicker').value = savedColor;
+    }
+
+    // Apply saved color on page load
+    applySavedColor();
+
+    // Event listener for color change
+    document.getElementById('colorPicker').addEventListener('input', function() {
+        let selectedColor = this.value;
+        document.body.style.background = `linear-gradient(135deg, #000000 30%, ${selectedColor} 100%)`;
+        localStorage.setItem("userColor", selectedColor); // Save color in local storage
+    });
+</script>
+
     <script>
         function verifyUser() {
             var password = document.getElementById('password').value;
@@ -172,5 +201,6 @@ strong {
     });
 });
     </script>
+
 </body>
 </html>
