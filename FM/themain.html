@@ -100,7 +100,8 @@ strong {
     </style>
 </head>
 <body>
-    <a style="position: fixed;
+    <div class="options" style="display: flex;">
+        <a style="position: fixed;
     top: 10px;
     right: 5px;
     font-size: 11px;
@@ -109,6 +110,16 @@ strong {
     border-radius: 6px;
     color: #d9d9d9;
     text-decoration: none;" href="https://mfi0212.github.io/MFI/imlate">I'm late</a>
+    <a style="position: fixed;
+    top: 10px;
+    right: 68px;
+    font-size: 11px;
+    background: #c8c8c830;
+    padding: 5px 8px;
+    border-radius: 6px;
+    color: #d9d9d9;
+    text-decoration: none;" href="https://forms.gle/PjssBodtdo9iW1xn7">Take money</a>
+    </div>
     <div class="fro" style="position: fixed;
     bottom: 10px;
     font-size: 9px;
@@ -200,6 +211,23 @@ border: none;">
         document.body.style.background = `linear-gradient(135deg, #000000 30%, ${selectedColor} 100%)`;
         localStorage.setItem("userColor", selectedColor); // Save color in local storage
     });
+
+    document.addEventListener("DOMContentLoaded", () => {
+    const customMenu = document.querySelector(".custom-menu");
+
+    // Show custom menu on right-click
+    document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        customMenu.style.display = "block";
+        customMenu.style.top = `${event.pageY}px`;
+        customMenu.style.left = `${event.pageX}px`;
+    });
+
+    // Hide the menu when clicking elsewhere
+    document.addEventListener("click", () => {
+        customMenu.style.display = "none";
+    });
+});
 </script>
 
 </body>
