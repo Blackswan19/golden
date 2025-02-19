@@ -3,232 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> BsVerify | user</title>
-    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/gW8Py0B/BS.png">
+    <title>BS/MFI</title>
     <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: #edf0f6;
+        }
 
-* {
-    font-family: 'Poppins', sans-serif;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+        h1, h2, h3 {
+            font-weight: normal;
+            color: #2c3e50;
+        }
+        .about{
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 25px;
+            margin-top: 25px;
+        }
+        h1 {
+            font-size: 2em;
+        }
 
-body {
-    background: linear-gradient(135deg, rgb(0, 0, 0) 30%, rgb(68 68 68) 100%);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding: 20px;
-}
+        h2 {
+            font-size: 1.5em;
+        }
 
-.container {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 100%;
-    max-width: 360px;
-}
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
 
-h1 {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    background: transparent;
-    color: white;
-    font-size: 16px;
-    outline: none;
-    text-align: center;
-    margin-bottom: 15px;
-    transition: 0.3s;
-}
+        ul li {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-}
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
 
-input:focus {
-    border-color: #ffffff;
-}
-strong {
-    color: #000000;
-}
-.button {
-    width: 100%;
-    background-color: #ffffff;
-    border: none;
-    color: black;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 16px;
-    transition: 0.3s;
-}
-
-.button:hover {
-    background-color: #0000007c;
-    color: white;
-}
-
-.user-details {
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    text-align: left;
-}
-
-.user-details p {
-    margin: 6px 0;
-    font-size: 15px;
-}
-
-
-    </style>
-</head>
-<body>
-    <div class="options" style="display: flex;">
-        <a style="position: fixed;
-    top: 10px;
-    right: 5px;
-    font-size: 11px;
-    background: #c8c8c830;
-    padding: 5px 8px;
-    border-radius: 6px;
-    color: #d9d9d9;
-    text-decoration: none;" href="https://mfi0212.github.io/MFI/imlate">I'm late</a>
-    <a style="position: fixed;
-    top: 10px;
-    right: 68px;
-    font-size: 11px;
-    background: #c8c8c830;
-    padding: 5px 8px;
-    border-radius: 6px;
-    color: #d9d9d9;
-    text-decoration: none;" href="https://forms.gle/PjssBodtdo9iW1xn7">Take money</a>
-    </div>
-    <div class="fro" style="position: fixed;
-    bottom: 10px;
-    font-size: 9px;
-    color: #ffffff91;">
-        From BS/MFI
-    </div>
-    <div class="container">
-        <h1>BsVerify</h1>
-        <input type="text" id="password" placeholder="Enter Password">
-        <button class="button" onclick="verifyUser()">Search</button>
-        <div id="userDetails" class="user-details"></div>
-    </div>
-    
-    <script>
-        function verifyUser() {
-            var password = document.getElementById('password').value;
-            var userDatabase = {
-                "7792": { name: "Laxman", amount: 15000, takenDate: "2025-02-13", dailyInterest: 85 },
-            };
-            
-            if (userDatabase[password]) {
-                var user = userDatabase[password];
-                var takenDate = new Date(user.takenDate);
-                var today = new Date();
-                var daysPassed = Math.ceil((today - takenDate) / (1000 * 60 * 60 * 24));
-                var totalInterest = daysPassed * user.dailyInterest;
-                var totalAmount = user.amount + totalInterest;
-                var endDate = new Date(takenDate);
-                endDate.setDate(takenDate.getDate() + 15);
-                
-                document.getElementById('userDetails').innerHTML = `
-                    <h4 style="text-align: center;
-    border-bottom: solid 1px #ffffff;
-    margin: 15px;">Your Details</h4>
-                    <p><strong>Name:</strong> ${user.name}</p>
-                    <p><strong>Amount Borrowed:</strong> ${user.amount}rs</p>
-                    <p><strong>Days Passed:</strong> ${daysPassed}</p>
-                    <p><strong>Interest Till Today:</strong> ${totalInterest}rs</p>
-                    <p><strong>Total Amount to return:</strong> ${totalAmount}rs</p>
-
-                `;
-                document.getElementById('userDetails').style.display = 'block';
-            } else {
-                alert("Invalid password!");
+        /* Simple responsive design */
+        @media (max-width: 600px) {
+            body {
+                padding: 20px;
             }
         }
 
-//                 document.addEventListener("DOMContentLoaded", () => {
-//     const customMenu = document.querySelector(".custom-menu");
+        /* Copy icon style */
+        .copy-icon {
+            cursor: pointer;
+            background-color: #dfdad9;
+            color: white;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-size: 1.2em;
+        }
 
-//     // Show custom menu on right-click
-//     document.addEventListener("contextmenu", (event) => {
-//         event.preventDefault();
-//         customMenu.style.display = "block";
-//         customMenu.style.top = `${event.pageY}px`;
-//         customMenu.style.left = `${event.pageX}px`;
-//     });
+        .copy-icon:hover {
+            background-color: #e7e7e7;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Welcome to BS/MFI</h1>
+    
+    <div class="about">
+        <h2>About Us</h2>
+        <p>BS/MFI is lending solutions, offering fast, secure, and tailored financial services to meet your needs.</p>
+    </div>
 
-//     // Hide the menu when clicking elsewhere
-//     document.addEventListener("click", () => {
-//         customMenu.style.display = "none";
-//     });
-// });
+    <div class="about">
+        <h2>Our Services</h2>
+        <ul>
+            <li>
+                <a href="https://mfi0212.github.io/MFI/rate" target="_blank">Golden (Above 10k)</a>
+                <span class="copy-icon" onclick="copyLink('https://mfi0212.github.io/MFI/rate')">📋</span>
+            </li>
+            <li>
+                <a href="https://mfi0212.github.io/swan/home.html" target="_blank">LendLink (Below 10k)</a>
+                <span class="copy-icon" onclick="copyLink('https://mfi0212.github.io/swan/home.html')">📋</span>
+            </li>
+            <li>
+                <a href="https://blackswan19.github.io/golden/FM/themain.html" target="_blank">BsVerify (Emergency funds)</a>
+                <span class="copy-icon" onclick="copyLink('https://blackswan19.github.io/golden/FM/themain.html')">📋</span>
+            </li>
+        </ul>
+    </div>
+    <div class="about">
+        <h2>I'm late</h2>
+        <p>
+            If you are <span class="highlight">late in returning the amount</span>,
+            the interest will <span class="highlight">double for every 2 days</span>.
+        </p>
+    </div>
+    <p>Do you like to take money?</p>
+    <a href="https://forms.gle/PjssBodtdo9iW1xn7" class="button">Take money</a>
+
+    <footer>
+        <p>© From Blackswan Crop.</p>
+    </footer>
+
+    <script>
+        function copyLink(link) {
+            // Create a temporary input element
+            var tempInput = document.createElement("input");
+            tempInput.value = link;
+            document.body.appendChild(tempInput);
+            
+            // Select and copy the text
+            tempInput.select();
+            tempInput.setSelectionRange(0, 99999); // For mobile devices
+            document.execCommand("copy");
+            
+            // Remove the temporary input element
+            document.body.removeChild(tempInput);
+            
+            // Show an alert or feedback message
+            alert("Link copied to clipboard!");
+        }
     </script>
-<input type="color" id="colorPicker" value="#0800ff" style="margin-bottom: 15px;
-display: block;
-position: fixed;
-top: 10px;
-width: 30px;
-background: rgb(255 255 255);
-border-radius: 1px;
-left: 10px;
-border: none;">
-
-<script>
-    // Function to apply saved color or default
-    function applySavedColor() {
-        let savedColor = localStorage.getItem("userColor") || "rgb(0, 42, 255)"; // Default to blue if no color is saved
-        document.body.style.background = `linear-gradient(135deg, #000000 30%, ${savedColor} 100%)`;
-        document.getElementById('colorPicker').value = savedColor;
-    }
-
-    // Apply saved color on page load
-    applySavedColor();
-
-    // Event listener for color change
-    document.getElementById('colorPicker').addEventListener('input', function() {
-        let selectedColor = this.value;
-        document.body.style.background = `linear-gradient(135deg, #000000 30%, ${selectedColor} 100%)`;
-        localStorage.setItem("userColor", selectedColor); // Save color in local storage
-    });
-
-    document.addEventListener("DOMContentLoaded", () => {
-    const customMenu = document.querySelector(".custom-menu");
-
-    // Show custom menu on right-click
-    document.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-        customMenu.style.display = "block";
-        customMenu.style.top = `${event.pageY}px`;
-        customMenu.style.left = `${event.pageX}px`;
-    });
-
-    // Hide the menu when clicking elsewhere
-    document.addEventListener("click", () => {
-        customMenu.style.display = "none";
-    });
-});
-</script>
 
 </body>
 </html>
