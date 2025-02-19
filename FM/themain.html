@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> BsVerify | user</title>
+    <title> BS/MFI</title>
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/gW8Py0B/BS.png">
     <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
@@ -127,7 +127,7 @@ strong {
         From BS/MFI
     </div>
     <div class="container">
-        <h1>BsVerify</h1>
+        <h1>BS/MFI</h1>
         <input type="text" id="password" placeholder="Enter Password">
         <button class="button" onclick="verifyUser()">Search</button>
         <div id="userDetails" class="user-details"></div>
@@ -197,7 +197,7 @@ border: none;">
 <script>
     // Function to apply saved color or default
     function applySavedColor() {
-        let savedColor = localStorage.getItem("userColor") || "#0800ff"; // Default to blue if no color is saved
+        let savedColor = localStorage.getItem("userColor") || "rgb(0, 42, 255)"; // Default to blue if no color is saved
         document.body.style.background = `linear-gradient(135deg, #000000 30%, ${savedColor} 100%)`;
         document.getElementById('colorPicker').value = savedColor;
     }
