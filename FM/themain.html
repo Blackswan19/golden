@@ -136,16 +136,13 @@ li {
         <h2>Our Services</h2>
         <ul>
             <li>
-                <a href="https://mfi0212.github.io/MFI/rate" target="_blank">Golden (Above 10k)</a>
-                <span class="copy-icon" onclick="copyLink('https://mfi0212.github.io/MFI/rate')">📋</span>
+                Golden (Above 10k)
             </li>
             <li>
-                <a href="https://mfi0212.github.io/swan/home.html" target="_blank">LendLink (Below 10k)</a>
-                <span class="copy-icon" onclick="copyLink('https://mfi0212.github.io/swan/home.html')">📋</span>
+                LendLink (Below 10k)
             </li>
             <li>
-                <a href="https://blackswan19.github.io/golden/FM/user" target="_blank">BsVerify (Emergency fund)</a>
-                <span class="copy-icon" onclick="copyLink('https://mfi0212.github.io/swan/home.html')">📋</span>
+                BsVerify (Emergency fund)   
             </li>
         </ul>
     </div>
@@ -155,23 +152,6 @@ li {
     </footer>
 
     <script>
-        function copyLink(link) {
-            // Create a temporary input element
-            var tempInput = document.createElement("input");
-            tempInput.value = link;
-            document.body.appendChild(tempInput);
-            
-            // Select and copy the text
-            tempInput.select();
-            tempInput.setSelectionRange(0, 99999); // For mobile devices
-            document.execCommand("copy");
-            
-            // Remove the temporary input element
-            document.body.removeChild(tempInput);
-            
-            // Show an alert or feedback message
-            alert("Link copied to clipboard!");
-        }
 
             document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
