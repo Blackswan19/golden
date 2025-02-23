@@ -14,10 +14,11 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-weight: 300;
 }
 
 body {
-    background: linear-gradient(135deg, rgb(0, 0, 0) 30%, rgb(68 68 68) 100%);
+    background: linear-gradient(135deg, rgb(0, 0, 0) 30%, rgb(255, 255, 255) 100%);
     color: white;
     display: flex;
     justify-content: center;
@@ -38,7 +39,6 @@ body {
 
 h1 {
     font-size: 28px;
-    font-weight: 600;
     margin-bottom: 20px;
 }
 
@@ -65,17 +65,21 @@ input:focus {
 }
 strong {
     color: #000000;
+    font-weight: 600;
+    font-size: 16px;
+}
+strong:hover{
+    color: #ffffff;
 }
 .button {
-    width: 100%;
     background-color: #ffffff;
     border: none;
     color: black;
-    padding: 10px;
+    padding: 8px 20px;
     border-radius: 8px;
     cursor: pointer;
-    font-weight: 600;
-    font-size: 16px;
+    font-weight: 400;
+    font-size: 15px;
     transition: 0.3s;
 }
 
@@ -87,7 +91,7 @@ strong {
 .user-details {
     margin-top: 20px;
     padding: 15px;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgb(255 255 255 / 37%);
     border-radius: 8px;
     text-align: left;
 }
@@ -150,13 +154,17 @@ strong {
                 var totalAmount = user.amount + totalInterest;
         
                 document.getElementById('userDetails').innerHTML = `
-                    <h4 style="text-align: center; border-bottom: solid 1px #ffffff; margin: 15px;">Your Details</h4>
-                    <p><strong>Name:</strong> ${user.name}</p>
-                    <p><strong>Amount Borrowed:</strong> ${user.amount}rs</p>
-                    <p><strong>Days Passed:</strong> ${daysPassed}</p>
-                    <p><strong>Taken For:</strong> ${user.takenFor} days</p>
-                    <p><strong>Interest Till Today:</strong> ${totalInterest}rs</p>
-                    <p><strong>Total Amount to Return:</strong> ${totalAmount}rs</p>
+                    <h4 style="text-align: center;
+    border-bottom: solid 1px #ffffff;
+    margin: 15px;
+    font-weight: 500;
+    font-size: 18px;">Your Details</h4>
+                    <p><strong>Name :</strong> ${user.name}</p>
+                    <p><strong>Amount Borrowed :</strong> ${user.amount}rs</p>
+                    <p><strong>Days Passed :</strong> ${daysPassed}</p>
+                    <p><strong>Taken For :</strong> ${user.takenFor} days</p>
+                    <p><strong>Interest Till Today :</strong> ${totalInterest}rs</p>
+                    <p><strong>Total Amount to Return :</strong> ${totalAmount}rs</p>
                 `;
                 document.getElementById('userDetails').style.display = 'block';
             } else {
