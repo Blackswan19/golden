@@ -58,11 +58,6 @@ input::placeholder {
 input:focus {
     border-color: #d2d2d2;
 }
-strong {
-    color: #0040ff;
-    font-weight: 600;
-    font-size: 16px;
-}
 
 .button {
     background-color: #ffffff;
@@ -80,6 +75,12 @@ strong {
     background-color: #4242427c;
     color: white;
 }
+strong {
+    color: #0040ff;
+    font-weight: 600;
+    font-size: 16px;
+}
+
 
 .user-details {
     margin-top: 20px;
@@ -94,6 +95,16 @@ strong {
     font-size: 15px;
     font-weight: 400;
 
+}
+.input-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.input-container input {
+    flex: 1;
 }
 
 
@@ -128,8 +139,11 @@ strong {
     </div>
     <div class="container">
         <h1>BsVerify</h1>
-        <input type="text" id="password" placeholder="Enter Password">
-        <button class="button" onclick="verifyUser()">Search</button>
+        <div class="input-container">
+            <input type="text" id="password" placeholder="Enter Password">
+            <button class="button" onclick="verifyUser()">Search</button>
+        </div>
+        
         <div id="userDetails" class="user-details"></div>
     </div>
     
