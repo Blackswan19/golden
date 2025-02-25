@@ -18,7 +18,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, rgb(0, 0, 0) 30%, rgb(255, 255, 255) 100%);
+    background: linear-gradient(135deg, rgb(0, 0, 0) 30%, rgb(0, 0, 0) 100%);
     color: white;
     display: flex;
     justify-content: center;
@@ -28,10 +28,6 @@ body {
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     text-align: center;
     width: 100%;
     max-width: 360px;
@@ -43,7 +39,6 @@ h1 {
 }
 
 input {
-    width: 100%;
     padding: 10px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 8px;
@@ -61,21 +56,19 @@ input::placeholder {
 }
 
 input:focus {
-    border-color: #ffffff;
+    border-color: #d2d2d2;
 }
 strong {
-    color: #000000;
+    color: #0040ff;
     font-weight: 600;
     font-size: 16px;
 }
-strong:hover{
-    color: #ffffff;
-}
+
 .button {
     background-color: #ffffff;
     border: none;
     color: black;
-    padding: 8px 20px;
+    padding: 10px 15px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 400;
@@ -84,14 +77,14 @@ strong:hover{
 }
 
 .button:hover {
-    background-color: #0000007c;
+    background-color: #4242427c;
     color: white;
 }
 
 .user-details {
     margin-top: 20px;
     padding: 15px;
-    background: rgb(255 255 255 / 37%);
+    background: rgb(255 255 255 / 7%);
     border-radius: 8px;
     text-align: left;
 }
@@ -99,6 +92,8 @@ strong:hover{
 .user-details p {
     margin: 6px 0;
     font-size: 15px;
+    font-weight: 400;
+
 }
 
 
@@ -158,7 +153,7 @@ strong:hover{
     border-bottom: solid 1px #ffffff;
     margin: 15px;
     font-weight: 500;
-    font-size: 18px;">Your Details</h4>
+    font-size: 18px;">Borrower details</h4>
                     <p><strong>Name :</strong> ${user.name}</p>
                     <p><strong>Amount Borrowed :</strong> ${user.amount}rs</p>
                     <p><strong>Days Passed :</strong> ${daysPassed}</p>
@@ -173,52 +168,7 @@ strong:hover{
         }        
 
 
-//                 document.addEventListener("DOMContentLoaded", () => {
-//     const customMenu = document.querySelector(".custom-menu");
-
-//     // Show custom menu on right-click
-//     document.addEventListener("contextmenu", (event) => {
-//         event.preventDefault();
-//         customMenu.style.display = "block";
-//         customMenu.style.top = `${event.pageY}px`;
-//         customMenu.style.left = `${event.pageX}px`;
-//     });
-
-//     // Hide the menu when clicking elsewhere
-//     document.addEventListener("click", () => {
-//         customMenu.style.display = "none";
-//     });
-// });
-    </script>
-<input type="color" id="colorPicker" value="#0800ff" style="margin-bottom: 15px;
-display: block;
-position: fixed;
-top: 10px;
-width: 30px;
-background: rgb(255 255 255);
-border-radius: 1px;
-left: 10px;
-border: none;">
-
-<script>
-    // Function to apply saved color or default
-    function applySavedColor() {
-        let savedColor = localStorage.getItem("userColor") || "rgb(0, 42, 255)"; // Default to blue if no color is saved
-        document.body.style.background = `linear-gradient(135deg, #000000 30%, ${savedColor} 100%)`;
-        document.getElementById('colorPicker').value = savedColor;
-    }
-
-    // Apply saved color on page load
-    applySavedColor();
-
-    // Event listener for color change
-    document.getElementById('colorPicker').addEventListener('input', function() {
-        let selectedColor = this.value;
-        document.body.style.background = `linear-gradient(135deg, #000000 30%, ${selectedColor} 100%)`;
-        localStorage.setItem("userColor", selectedColor); // Save color in local storage
-    });
-
-    document.addEventListener("DOMContentLoaded", () => {
+                document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
     // Show custom menu on right-click
@@ -234,6 +184,7 @@ border: none;">
         customMenu.style.display = "none";
     });
 });
+
 </script>
 
 </body>
