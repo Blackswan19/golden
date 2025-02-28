@@ -35,23 +35,22 @@
 
         h1 {
             font-size: 24px;
-    font-weight: 500;
-    position: fixed;
-    color: #ffffff;
-    top: 5px;
-    left: 15px;
+            font-weight: 500;
+            position: fixed;
+            color: #ffffff;
+            top: 5px;
+            left: 15px;
         }
 
         .input-container {
-            display: flex
-;
-    flex-direction: row;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    background: rgb(0 0 0 / 42%);
-    padding: 20px;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background: rgb(0 0 0 / 42%);
+            padding: 20px;
         }
 
         .input-container input {
@@ -59,7 +58,7 @@
             min-width: 150px;
             padding: 8px 15px;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 8px;
+            
             background: transparent;
             color: white;
             font-size: 15px;
@@ -80,7 +79,7 @@
             background-color: #ffffff;
             border: none;
             color: black;
-            border-radius: 8px;
+            
             cursor: pointer;
             font-weight: 400;
             font-size: 15px;
@@ -92,25 +91,51 @@
             color: white;
         }
 
-        .user-details {
-            margin-top: 20px;
-    padding: 15px;
-    background: rgb(0 0 0 / 42%);
+        /* Popup Modal */
+        .modal {
+            display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 350px;
+    background: rgb(37 37 37);
+    padding: 20px;
     text-align: left;
-    width: 100%;
-    display: none;
+    box-shadow: 0 4px 8px 100em rgb(0 0 0 / 78%);
+    line-height: 35px;
         }
 
-        .user-details p {
-            margin: 6px 0;
+        .modal h4 {
+            text-align: center;
+            border-bottom: solid 1px #ffffff;
+            padding-bottom: 10px;
+            font-weight: 500;
+            font-size: 18px;
+        }
+
+        .modal p {
+            margin: 10px 0;
             font-size: 14px;
-            font-weight: 400;
         }
 
-        strong {
+        .modal strong {
             color: #00ceff;
-    font-weight: 400;
-    font-size: 15px;
+            font-weight: 400;
+            font-size: 15px;
+        }
+
+        .close-btn {
+            position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 25px;
+    cursor: pointer;
+    color: white;
+    background: transparent;
+    border: none;
         }
 
         .options a {
@@ -120,7 +145,7 @@
             font-size: 11px;
             background: rgb(0 0 0 / 42%);
             padding: 5px 8px;
-            border-radius: 6px;
+           
             color: #d9d9d9;
             text-decoration: none;
         }
@@ -131,33 +156,30 @@
             font-size: 9px;
             color: rgba(255, 255, 255, 0.57);
         }
-
-        @media (max-width: 480px) {
-            .input-container {
-                flex-direction: row;
-
-            }
-            
-        }
     </style>
 </head>
 <body>
     <div class="options">
         <a href="https://mfi0212.github.io/MFI/imlate">I'm late</a>
-        <a style="position: fixed;
-    right: 65px;" href="https://forms.gle/PjssBodtdo9iW1xn7">Take money</a>
+        <a style="position: fixed; right: 65px;" href="https://forms.gle/PjssBodtdo9iW1xn7">Take money</a>
     </div>
     <div class="fro">From BS/MFI</div>
     <div class="logo">
-        <h1>BsVerify</h1>
+        <h1>MLending</h1>
     </div>
     <div class="container">
         <div class="input-container">
             <input type="text" id="password" placeholder="Enter Password">
             <button class="button" onclick="verifyUser()">Search</button>
         </div>
-        <div id="userDetails" class="user-details"></div>
     </div>
+
+    <!-- Popup Modal -->
+    <div id="userModal" class="modal">
+        <button class="close-btn" onclick="closeModal()">×</button>
+        <div id="userDetails"></div>
+    </div>
+
     <script>
         function verifyUser() {
             var password = document.getElementById('password').value;
@@ -174,37 +196,23 @@
                 var totalAmount = user.amount + totalInterest;
 
                 document.getElementById('userDetails').innerHTML = `
-                    <h4 style="text-align: center; border-bottom: solid 1px #ffffff; margin: 15px; font-weight: 500; font-size: 18px;">Borrower details</h4>
-                    <p><strong>Name :</strong> ${user.name}</p>
-                    <p><strong>Amount Borrowed :</strong> ${user.amount}rs</p>
-                    <p><strong>Days Passed :</strong> ${daysPassed}</p>
-                    <p><strong>Taken For :</strong> ${user.takenFor} days</p>
-                    <p><strong>Interest Till Today :</strong> ${totalInterest}rs</p>
-                    <p><strong>Total Amount to Return :</strong> ${totalAmount}rs</p>
+                    <h4>Borrower Details</h4>
+                    <p><strong>Name:</strong> ${user.name}</p>
+                    <p><strong>Amount Borrowed:</strong> ${user.amount}rs</p>
+                    <p><strong>Days Passed:</strong> ${daysPassed}</p>
+                    <p><strong>Taken For:</strong> ${user.takenFor} days</p>
+                    <p><strong>Interest Till Today:</strong> ${totalInterest}rs</p>
+                    <p><strong>Total Amount to Return:</strong> ${totalAmount}rs</p>
                 `;
-                document.getElementById('userDetails').style.display = 'block';
+                document.getElementById('userModal').style.display = 'block';
             } else {
                 alert("Invalid password!");
             }
         }
+
+        function closeModal() {
+            document.getElementById('userModal').style.display = 'none';
+        }
     </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-    const customMenu = document.querySelector(".custom-menu");
-
-    // Show custom menu on right-click
-    document.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-        customMenu.style.display = "block";
-        customMenu.style.top = `${event.pageY}px`;
-        customMenu.style.left = `${event.pageX}px`;
-    });
-
-    // Hide the menu when clicking elsewhere
-    document.addEventListener("click", () => {
-        customMenu.style.display = "none";
-    });
-});
-</script>
 </body>
 </html>
