@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BsVerify | User</title>
+    <title>MLending | User</title>
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/gW8Py0B/BS.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -159,10 +159,10 @@
     </style>
 </head>
 <body>
-    <div class="options">
+    <!-- <div class="options">
         <a href="https://mfi0212.github.io/MFI/imlate">I'm late</a>
         <a style="position: fixed; right: 65px;" href="https://forms.gle/PjssBodtdo9iW1xn7">Take money</a>
-    </div>
+    </div> -->
     <div class="fro">From BS/MFI</div>
     <div class="logo">
         <h1>MLending</h1>
@@ -213,6 +213,23 @@
         function closeModal() {
             document.getElementById('userModal').style.display = 'none';
         }
+
+          document.addEventListener("DOMContentLoaded", () => {
+    const customMenu = document.querySelector(".custom-menu");
+
+    // Show custom menu on right-click
+    document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        customMenu.style.display = "block";
+        customMenu.style.top = `${event.pageY}px`;
+        customMenu.style.left = `${event.pageX}px`;
+    });
+
+    // Hide the menu when clicking elsewhere
+    document.addEventListener("click", () => {
+        customMenu.style.display = "none";
+    });
+});
     </script>
 </body>
 </html>
