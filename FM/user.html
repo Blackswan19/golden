@@ -182,7 +182,7 @@
         function verifyUser() {
             var password = document.getElementById('password').value;
             var userDatabase = {
-                "7792": { name: "Laxman", amount: 15000, takenDate: "2025-02-8", takenFor: 25, dailyInterest: 30 },
+                "7792": { name: "Laxman", amount: 15000, takenDate: "2025-02-13", takenFor: 25, dailyInterest: 30 },
             };
 
             if (userDatabase[password]) {
@@ -197,7 +197,7 @@
                     <h4>Borrower Details</h4>
                     <p><strong>Name:</strong> ${user.name}</p>
                     <p><strong>Amount Borrowed:</strong> ${user.amount}rs</p>
-                    <p><strong>Days Passed:</strong> ${daysPassed}</p>
+                    <p><strong>Days Passed:</strong> ${daysPassed} days</p>
                     <p><strong>Taken For:</strong> ${user.takenFor} days</p>
                     <p><strong>Interest Till Today:</strong> ${totalInterest}rs</p>
                     <p><strong>Total Amount to Return:</strong> ${totalAmount}rs</p>
