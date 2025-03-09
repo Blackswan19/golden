@@ -271,7 +271,7 @@
         </div>
 
         <div class="how-it-works">
-            <h3>How It Works</h3>
+            <h3>What should i do?</h3>
             <ol>
                 <li>Pick a plan.</li>
                 <li>Hit "Apply."</li>
@@ -344,6 +344,24 @@
         document.getElementById("passwordInput").addEventListener("keypress", function(event) {
             if (event.key === "Enter") verifyPassword();
         });
+    </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+    const customMenu = document.querySelector(".custom-menu");
+
+    // Show custom menu on right-click
+    document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        customMenu.style.display = "block";
+        customMenu.style.top = `${event.pageY}px`;
+        customMenu.style.left = `${event.pageX}px`;
+    });
+
+    // Hide the menu when clicking elsewhere
+    document.addEventListener("click", () => {
+        customMenu.style.display = "none";
+    });
+});
     </script>
 </body>
 </html>
