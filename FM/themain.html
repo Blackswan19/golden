@@ -3,135 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> MLending </title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
-    
+    <title>MLD</title>
     <link rel="icon" type="image/x-icon" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Anta&family=Audiowide&family=Braah+One&family=Cardo:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dongle&family=Dosis:wght@200..800&family=DotGothic16&family=Goldman:wght@400;700&family=Gruppo&family=Handjet:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mandali&family=Michroma&family=Oxanium:wght@200..800&family=Pixelify+Sans:wght@400..700&family=Poiret+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&family=Sarpanch:wght@400;500;600;700;800;900&family=Share+Tech&family=Space+Grotesk:wght@300..700&family=Stalinist+One&family=VT323&family=Zen+Dots&display=swap');
-*{
-    font-family: "Poppins", serif;
-}
-        body {
-            background-color: rgb(63, 63, 63);
-            color: #ffffff;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 25px;
-            line-height: 30px;
-        }
-
-        h1, h2, h3 {
-            font-weight: 500;
-    color: #00aaff;
-        }
-
-        .about {
-            background: rgb(0 0 0 / 42%);
-            padding: 20px;
-            margin-top: 25px;
-        }
-
-        a {
-            color: #00aaff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-            color: #ffffff;
-        }
-
-        .button {
-            display: inline-block;
-    background-color: rgb(255 255 255);
-    color: #000000;
-    padding: 4px 20px;
-    text-decoration: none;
-    margin: 5px;
-    font-size: 14px;
-
-        }
-        .button:hover {
-            text-decoration: none;
-            background-color: #000000;
-        }
-
-        ul {
-            list-style-type: none;
+        * {
+            margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
         }
 
-        ul li {
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        body {
+            background: rgb(63, 63, 63);
+            color: #d0d0d0;
+            line-height: 1.5;
         }
 
-        p {
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: #212121;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #00aaff;
+        }
+
+        .header p {
             font-size: 14px;
-        }
-        li {
-            font-size: 13px;
+            color: #a0a0a0;
+            margin-top: 5px;
         }
 
-        .copy-icon {
+        .account-access {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .account-btn {
+            background: #00aaff;
+            color: #fff;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
             cursor: pointer;
-            background-color: #333;
-            color: white;
-            border-radius: 4px;
-            padding: 5px 10px;
-            font-size: 1.2em;
-        }
-        .copy-icon:hover {
-            background-color: #444;
+            transition: background 0.3s;
         }
 
-        /* Simple responsive design */
-        @media (max-width: 600px) {
-            body {
-                padding: 20px;
-            }
+        .account-btn:hover {
+            background: #0088cc;
+        }
+
+        .loan-option {
+            background: #282828;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            transition: transform 0.2s;
+        }
+
+        .loan-option:hover {
+            transform: translateY(-3px);
+        }
+
+        .loan-option h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #00aaff;
+            margin-bottom: 10px;
+        }
+
+        .loan-option p {
+            font-size: 14px;
+            color: #b0b0b0;
+            margin: 5px 0;
+        }
+
+        .apply-btn {
+            background: #00aaff;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .apply-btn:hover {
+            background: #0088cc;
+        }
+
+        .terms {
+            font-size: 12px;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        .how-it-works {
+            margin: 20px 0;
+            padding: 20px;
+            background: #282828;
+            border-radius: 10px;
+        }
+
+        .how-it-works h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #00aaff;
+            margin-bottom: 15px;
+        }
+
+        .how-it-works ol {
+            padding-left: 20px;
+            font-size: 14px;
+            color: #b0b0b0;
+        }
+
+        .how-it-works li {
+            margin: 8px 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #212121;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            width: 320px;
+            text-align: center;
+        }
+
+        .popup h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #00aaff;
+            margin-bottom: 15px;
+        }
+
+        .popup input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            background: #333;
+            color: #d0d0d0;
+            border-radius: 8px;
+            font-size: 14px;
+            text-align: center;
+            outline: none;
+        }
+
+        .popup input::placeholder {
+            color: #888;
+        }
+
+        .popup-btn {
+            background: #00aaff;
+            color: #fff;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .popup-btn:hover {
+            background: #0088cc;
+        }
+
+        .popup-content p {
+            font-size: 14px;
+            color: #b0b0b0;
+            margin: 8px 0;
+        }
+
+        .popup-content span {
+            color: #00aaff;
+            font-weight: 600;
+        }
+
+        .error-message {
+            color: #ff6666;
+            font-size: 12px;
+            display: none;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    
-    <div class="logo" style="padding: 4px; line-height: 10px;">
-        <h6>Welcome to <h1> MLending</h1></h6>
+    <div class="container">
+        <div class="header">
+            <h1>MLD</h1>
+            <p>Make. Less. Days.</p>
+        </div>
+
+        <div class="account-access">
+            <button onclick="showPasswordPopup()" class="account-btn">My Account</button>
+        </div>
+
+        <div class="loan-option">
+            <h2>Five</h2>
+            <p>Amount: 5,000 rs</p>
+            <p>Interest: 250 rs</p>
+            <p>Repayment: 5 Days</p>
+            <a href="https://forms.gle/nn9uuJeVRfybyUrD6" class="apply-btn">Apply</a>
+            <div class="terms">* Repay within 5 days or late fees apply.</div>
+        </div>
+
+        <div class="loan-option">
+            <h2>Ten</h2>
+            <p>Amount: 5,000 rs</p>
+            <p>Interest: 500 rs</p>
+            <p>Repayment: 10 Days</p>
+            <a href="https://forms.gle/nn9uuJeVRfybyUrD6" class="apply-btn">Apply</a>
+            <div class="terms">* Repay within 10 days or late fees apply.</div>
+        </div>
+
+        <div class="loan-option">
+            <h2>OneFive</h2>
+            <p>Amount: 5,000 rs</p>
+            <p>Interest: 750 rs</p>
+            <p>Repayment: 15 Days</p>
+            <a href="https://forms.gle/nn9uuJeVRfybyUrD6" class="apply-btn">Apply</a>
+            <div class="terms">* Repay within 15 days or late fees apply.</div>
+        </div>
+
+        <div class="how-it-works">
+            <h3>What should i do?</h3>
+            <ol>
+                <li>Pick a plan.</li>
+                <li>Hit "Apply."</li>
+                <li>Fill out the form.</li>
+                <li>Wait a few hours.</li>
+                <li>Get funds from your coordinator.</li>
+                <li>Check details in "My Account."</li>
+                <li>Repay on time.</li>
+                <li>Late? Extra fees apply.</li>
+                <li>Pay on time for future loans.</li>
+            </ol>
+        </div>
+
+        <div class="footer">
+            By Myootive
+        </div>
     </div>
-    <div class="about">
-        <h2>Introducing MLD!</h2>
-        <p>With MLD, you can borrow money for up to 15 days—get quick funds for your short-term needs!.</p>
-        <a href="mld.html" target="_blank" style="color: #00aaff;background: none;padding: 0px;
-" class="button">Explore MLD ></a>
+
+    <div class="popup-overlay" id="popupOverlay"></div>
+    <div class="popup" id="accountPopup">
+        <h3>Login</h3>
+        <div id="passwordSection">
+            <input type="password" id="passwordInput" placeholder="Password">
+            <button class="popup-btn" onclick="verifyPassword()">Verify</button>
+            <p class="error-message" id="errorMessage">Wrong Password</p>
+        </div>
+        <div class="popup-content" id="userDetails" style="display: none;">
+            <p>Name: <span id="popupName"></span></p>
+            <p>Amount: <span id="popupAmount"></span></p>
+            <p>Interest Paid: <span id="popupInterest"></span></p>
+            <button class="popup-btn" onclick="hidePopup()">Close</button>
+        </div>
     </div>
-    <div class="options" style="padding: 13px;">
-        <p>Like to take money (or) verify details?</p>
-        <a href="https://forms.gle/1jPmg6tQWBRz9ikz6" class="button">Take money</a>
-        <a href="https://blackswan19.github.io/golden/FM/user" class="button">My account</a>
-    </div>
-    <div class="about">
-        <h2>Wait few hours!</h2>
-        <p>To provide the amount, we need to collect the amount first. It takes few hours to arrange the amount, so be patience during this time to get the amount.<br><br></p>
-    </div>
-    <div class="about">
-        <h2>I'm late</h2>
-        <p>
-            If you are <span class="highlight">late in returning the amount</span>,
-            the interest will <span class="highlight">double for every 2 days</span>.
-        </p>
-        <p>
-            Contact us if you think you'll be late so we can help you.
-        </p>
-    </div>
-    <footer>
-        <p style="font-size: 10px; padding: 10px; text-align: center;">
-            
-            <a style="text-decoration: none;color: white;" target="_blank" href="https://blackswan19.github.io/bscrop/frommyootive">By Myootive</a>
-        </p>
-    </footer>
+
     <script>
+        const users = [
+            { password: "0212", name: "Phani", amount: "1,000 rs", interestPaid: "Yes" },
+        ];
+
+        function showPasswordPopup() {
+            document.getElementById("passwordInput").value = "";
+            document.getElementById("errorMessage").style.display = "none";
+            document.getElementById("passwordSection").style.display = "block";
+            document.getElementById("userDetails").style.display = "none";
+            document.getElementById("accountPopup").style.display = "block";
+            document.getElementById("popupOverlay").style.display = "block";
+        }
+
+        function verifyPassword() {
+            const enteredPassword = document.getElementById("passwordInput").value;
+            const user = users.find(u => u.password === enteredPassword);
+
+            if (user) {
+                document.getElementById("popupName").textContent = user.name;
+                document.getElementById("popupAmount").textContent = user.amount;
+                document.getElementById("popupInterest").textContent = user.interestPaid;
+                document.getElementById("passwordSection").style.display = "none";
+                document.getElementById("userDetails").style.display = "block";
+            } else {
+                document.getElementById("errorMessage").style.display = "block";
+            }
+        }
+
+        function hidePopup() {
+            document.getElementById("accountPopup").style.display = "none";
+            document.getElementById("popupOverlay").style.display = "none";
+        }
+
+        document.getElementById("popupOverlay").addEventListener("click", hidePopup);
+        document.getElementById("passwordInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") verifyPassword();
+        });
+    </script>
+        <script>
             document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
