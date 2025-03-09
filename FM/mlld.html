@@ -237,6 +237,7 @@
             font-weight: 400;
             color: #c0c0c0;
             margin: 10px 0;
+            text-align: left;
         }
 
         .popup-content span {
@@ -245,7 +246,7 @@
         }
 
         .error-message {
-            color: #ff6b6b;
+            color: #ff1818;
             font-size: 12px;
             font-weight: 400;
             display: none;
@@ -303,7 +304,7 @@
 
     <div class="popup-overlay" id="popupOverlay"></div>
     <div class="popup" id="accountPopup">
-        <h3>Login</h3>
+        <h3>User</h3>
         <div id="passwordSection">
             <input type="password" id="passwordInput" placeholder="Password">
             <button class="popup-btn" onclick="verifyPassword()">Verify</button>
@@ -312,14 +313,14 @@
         <div class="popup-content" id="userDetails" style="display: none;">
             <p>Name: <span id="popupName"></span></p>
             <p>Amount: <span id="popupAmount"></span></p>
-            <p>Interest Paid: <span id="popupInterest"></span></p>
-            <button class="popup-btn" onclick="hidePopup()">Close</button>
+            <p>Interest : <span id="popupInterest"></span></p>
+            <p>Interest paid: <span id="popupInterestpaided"></span></p>
         </div>
     </div>
 
     <script>
         const users = [
-            { password: "0212", name: "Phani", amount: "1,000 rs", interestPaid: "Yes" },
+            { password: "7792", name: "B.V.S.Laxman", amount: "3,000rs", interestPaid: "500rs",interestPaided: "NO" },
         ];
 
         function showPasswordPopup() {
@@ -339,6 +340,7 @@
                 document.getElementById("popupName").textContent = user.name;
                 document.getElementById("popupAmount").textContent = user.amount;
                 document.getElementById("popupInterest").textContent = user.interestPaid;
+                document.getElementById("popupInterestpaided").textContent = user.interestPaided;
                 document.getElementById("passwordSection").style.display = "none";
                 document.getElementById("userDetails").style.display = "block";
             } else {
