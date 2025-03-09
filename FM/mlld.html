@@ -315,12 +315,13 @@
             <p>Amount: <span id="popupAmount"></span></p>
             <p>Plan: <span id="popupInterestpaided"></span></p>
             <p>Interest : <span id="popupInterest"></span></p>
+            <p>Return date : <span id="popupReturn"></span></p>
         </div>
     </div>
 
     <script>
         const users = [
-            { password: "7792", name: "B.V.S.Laxman", amount: "3,000rs", interestPaid: "500rs",interestPaided: "10 days" },
+            { password: "7792", name: "B.V.S.Laxman", amount: "3,000rs", interestPaid: "500rs",interestPaided: "10 days",Return: "19-03-2025" },
         ];
 
         function showPasswordPopup() {
@@ -341,6 +342,7 @@
                 document.getElementById("popupAmount").textContent = user.amount;
                 document.getElementById("popupInterest").textContent = user.interestPaid;
                 document.getElementById("popupInterestpaided").textContent = user.interestPaided;
+                document.getElementById("popupReturn").textContent = user.Return;
                 document.getElementById("passwordSection").style.display = "none";
                 document.getElementById("userDetails").style.display = "block";
             } else {
