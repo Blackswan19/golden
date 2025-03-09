@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GMBLNDLNG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Casino&family=Luckiest+Guy&family=Poker+Kings&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anta&family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Audiowide&family=Braah+One&family=Cardo:ital,wght@0,400;0,700;1,400&family=Carter+One&family=Cherry+Cream+Soda&family=Comfortaa:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dongle&family=Dosis:wght@200..800&family=DotGothic16&family=Fugaz+One&family=Galindo&family=Goldman:wght@400;700&family=Gruppo&family=Handjet:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mandali&family=Michroma&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Oxanium:wght@200..800&family=Pixelify+Sans:wght@400..700&family=Poiret+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&family=Sarpanch:wght@400;500;600;700;800;900&family=Share+Tech&family=Space+Grotesk:wght@300..700&family=Stalinist+One&family=VT323&family=Zen+Dots&display=swap');
+        </style>
+    <style>
+        *{
+            font-family: "Carter One", system-ui;
+            font-style: normal;
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            background: url('https://www.transparenttextures.com/patterns/casino.png');
+            background-color: #000000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 10px;
+            border-radius: 20px;
+            border: 3px solid #ffd600;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5), inset 0 0 10px rgba(255, 215, 0, 0.2);
+            position: relative;
+        }
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #b22222, #ff4500);
+            padding: 40px;
+            border-radius: 15px 15px 0 0;
+            font-family: 'Poker Kings', cursive;
+            text-shadow: 3px 3px 6px #000, 0 0 25px #ff0000;
+            animation: neon-flicker 1.5s infinite alternate;
+        }
+        @keyframes neon-flicker {
+            0%, 100% { opacity: 1; text-shadow: 3px 3px 6px #000, 0 0 25px #ff0000; }
+            50% { opacity: 0.8; text-shadow: 3px 3px 6px #000, 0 0 15px #ff0000; }
+            70% { opacity: 0.95; }
+        }
+        .header h1 {
+            margin: 0;
+            color: #ffd600;
+        }
+        .loan-option {
+            border: 3px dashed #ff4500;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 15px;
+            background: linear-gradient(45deg, #1a2b3c, #2d4159);
+            position: relative;
+            overflow: hidden;
+        }
+        .loan-option::before {
+            content: '♠️♥️♣️♦️';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+        }
+        .loan-option h2 {
+            color: #ff69b4;
+            font-family: 'Luckiest Guy', cursive;
+            margin: 0 0 15px 0;
+            font-size: 32px;
+            text-shadow: 2px 2px 4px #000;
+        }
+        .chip {
+            background: radial-gradient(circle, #ffffff, #00edff);
+    color: #000000;
+    padding: 8px 20px;
+    border-radius: 50px;
+    display: inline-block;
+    margin: 8px 20px;
+        }
+        @keyframes chip-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+        .apply-btn {
+            background: linear-gradient(45deg, #ff0000, #ff4500);
+            color: #ffd600;
+            padding: 15px 45px;
+            border: 3px solid #ffd600;
+            border-radius: 130px;
+            cursor: pointer;
+            font-size: 24px;
+            text-shadow: 2px 2px 4px #000;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .apply-btn:hover {
+            transform: scale(1.15);
+    box-shadow: 0 0 20px rgb(0 73 255 / 80%);
+    animation: chip-bounce .0s infinite;
+    background: blue;
+        }
+        .apply-btn::after {
+            content: '💰';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        .apply-btn:hover::after {
+            right: 10px;
+            opacity: 1;
+        }
+        .terms {
+            font-size: 0.9em;
+            color: #ffffff;
+    margin-top: 15px;
+    font-style: italic;
+    background: rgb(255 255 255 / 14%);
+            padding: 10px;
+            border-radius: 5px;
+            
+            font-family: 'Poker Kings', cursive;
+        }
+        .dice {
+            font-size: 30px;
+    animation: spin 0.5s infinite linear;
+    display: inline-block;
+    font-style: normal;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .card-deck {
+            position: absolute;
+    top: 350px;
+    left: 10px;
+    font-size: 40px;
+    z-index: 10;
+        }
+        .money-bag {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 40px;
+            animation: money-dance 1s infinite;
+        }
+        @keyframes money-dance {
+            0%, 100% { transform: rotate(-10deg); }
+            25% { transform: rotate(10deg); }
+            50% { transform: rotate(-10deg) translateY(-10px); }
+            75% { transform: rotate(10deg) translateY(5px); }
+        }
+        .neon-border {
+            animation: border-flicker 01s infinite alternate;
+        }
+        @keyframes border-flicker {
+            0%, 100% { border-color: #005eff; box-shadow: 0 0 30px rgba(0, 85, 255, 0.5); }
+            50% { border-color: #ff4500; box-shadow: 0 0 20px rgba(255, 69, 0, 0.7); }
+        }
+        .loan-option:hover{
+            animation: chip-bounce 0s infinite;
+        }
+        li {
+    letter-spacing: 1px;
+}
+a{
+    text-decoration: none;
+    color: #ffd600;
+}
+.popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(45deg, #1a2b3c, #2d4159);
+            padding: 30px;
+            border-radius: 15px;
+            border: 3px solid #ffd600;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            z-index: 1000;
+            width: 300px;
+            animation: popup-appear 0.3s ease-in-out;
+            text-align: center;
+        }
+
+        @keyframes popup-appear {
+            0% { transform: translate(-50%, -50%) scale(0.7); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+
+        .popup h3 {
+            color: #ff69b4;
+            font-family: 'Luckiest Guy', cursive;
+            text-shadow: 2px 2px 4px #000;
+            margin: 0 0 20px 0;
+            text-align: center;
+        }
+
+        .popup-content p {
+            margin: 10px 0;
+    color: #fff;
+    font-size: 25px;
+        }
+
+        .popup-content span {
+            color: #ffd600;
+            margin-left: 10px;
+        }
+
+        .close-btn {
+            background: linear-gradient(45deg, #ff0000, #ff4500);
+            color: #ffd600;
+            padding: 10px 20px;
+            border: 2px solid #ffd600;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            display: block;
+            margin: 20px auto 0;
+            text-shadow: 1px 1px 2px #000;
+            transition: all 0.3s;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.1);
+            background: blue;
+            box-shadow: 0 0 15px rgba(0, 73, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container neon-border">
+        <div class="card-deck">🃏</div>
+        <div class="header">
+            <h1>♠️ GMBLNDLNG ♥️</h1>
+            <div class="terms" style="    font-size: 100px;
+            animation: spin 1s infinite linear;
+            padding: 0px;
+            text-align: center;
+            background-color: transparent;
+            font-style: normal;
+        ">
+                🎲
+            </div>
+            <p>Power by Earth quake & Myootive</p>
+        </div>
+    
+        <div class="terms" style="text-align: center;">
+            <p><span class="dice">🎲</span>Check you account details here<span class="dice">🎲</span></p>
+            <ol style="text-align: left; display: inline-block;line-height: 35px;">
+                <button onclick="showPasswordPopup()" class="apply-btn">My account</button>
+            </ol>
+        </div>
+        <div class="loan-option">
+            <h2><span class="dice">🎲</span> Knight <span class="dice">🎲</span></h2>
+            <p><span class="chip">Stake:</span> 1,000 rs</p>
+            <p><span class="chip">Pay:</span> 100 rs</p>
+            <p><span class="chip">Return Time:</span> 2 Days</p>
+            <button class="apply-btn"><a href="https://forms.gle/nn9uuJeVRfybyUrD6">Deal Me In!</a></button>
+            <div class="terms">
+                *Taken money have to be Return in 1,2 days, If you fail to return in time! Late fees apply.
+            </div>
+            <div class="money-bag" style="animation: money-dance 2s infinite;">💰</div>
+        </div>
+        <div class="loan-option">
+            <h2><span class="dice">🎲</span>  Royal <span class="dice">🎲</span></h2>
+            <p><span class="chip">Stake:</span> 1,000 rs - 2,000 rs</p>
+            <p><span class="chip">Pay:</span> 200 rs</p>
+            <p><span class="chip">Return Time:</span> 3 Days</p>
+            <button class="apply-btn"><a href="https://forms.gle/nn9uuJeVRfybyUrD6">Deal Me In!</a></button>
+            <div class="terms">
+                *Taken money have to be Return in 2,3 days, If you fail to return in time! Late fees apply.
+            </div>
+            <div class="money-bag" style="animation: money-dance 3s infinite;">💰</div>
+        </div>
+        <div class="loan-option">
+            <h2><span class="dice">🎲</span>Throne<span class="dice">🎲</span></h2>
+            <p><span class="chip">Stake:</span> 1,000 rs - 4,000 rs</p>
+            <p><span class="chip">Pay:</span> 300 rs</p>
+            <p><span class="chip">Return Time:</span> 4 Days</p>
+            <button class="apply-btn"><a href="https://forms.gle/nn9uuJeVRfybyUrD6">Deal Me In!</a></button>
+            <div class="terms">
+                *Taken money have to be Return in 4,5 days, If you fail to return in time! Late fees apply.
+            </div>
+            <div class="money-bag" style="animation: money-dance 3.5s infinite;">💰</div>
+        </div>
+        <div class="terms" style="text-align: center;">
+            <p><span class="dice">🎲</span> How it Works? <span class="dice">🎲</span></p>
+            <ol style="text-align: left; display: inline-block;line-height: 35px;">
+                <li>Choose a plan.</li>
+                <li>Click on "Deal Me In!"</li>
+                <li>Fill out the form.</li>
+                <li>Wait a few hours!</li>
+                <li>Get money from your coordinator.</li>
+                <li>Return the amount in the given time.</li>
+            </ol>
+        </div>
+        <div class="by" style="text-align: center;
+    padding: 20px;">
+            By Myootive
+        </div>
+
+
+
+        <div class="popup-overlay" id="popupOverlay"></div>
+    <div class="popup" id="accountPopup">
+        <h3>Account Login 🎰</h3>
+        <div id="passwordSection">
+            <input style="padding: 15px;
+            width: 86%;
+            border: none;
+            outline: none;
+            font-size: 20px;
+            text-align: center;" type="text" id="passwordInput" placeholder="Enter Password">
+            <button class="apply-btn" onclick="verifyPassword()" style="display: block; margin: 10px auto;">Verify</button>
+            <p class="error-message" id="errorMessage">Incorrect Password!</p>
+        </div>
+        <div class="popup-content" id="userDetails">
+            <p>Name:<span id="popupName"></span></p>
+            <p>Amount:<span id="popupAmount"></span></p>
+            <p>Interest Paid:<span id="popupInterest"></span></p>
+            <button class="close-btn" onclick="hidePopup()">Close</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Sample user data (in a real app, this would come from a secure backend)
+        const users = [
+            {password: "0212", name: "Phani", amount: "1,000 rs", interestPaid: "Yes" },
+            
+        ];
+
+        function showPasswordPopup() {
+            // Reset popup state
+            document.getElementById("passwordInput").value = "";
+            document.getElementById("errorMessage").style.display = "none";
+            document.getElementById("passwordSection").style.display = "block";
+            document.getElementById("userDetails").style.display = "none";
+
+            // Show popup and overlay
+            document.getElementById("accountPopup").style.display = "block";
+            document.getElementById("popupOverlay").style.display = "block";
+        }
+
+        function verifyPassword() {
+            const enteredPassword = document.getElementById("passwordInput").value;
+            const user = users.find(u => u.password === enteredPassword);
+
+            if (user) {
+                // Password correct, show user details
+                document.getElementById("popupName").textContent = user.name;
+                document.getElementById("popupAmount").textContent = user.amount;
+                document.getElementById("popupInterest").textContent = user.interestPaid;
+                
+                document.getElementById("passwordSection").style.display = "none";
+                document.getElementById("userDetails").style.display = "block";
+            } else {
+                // Password incorrect, show error
+                document.getElementById("errorMessage").style.display = "block";
+            }
+        }
+
+        function hidePopup() {
+            document.getElementById("accountPopup").style.display = "none";
+            document.getElementById("popupOverlay").style.display = "none";
+        }
+
+        // Close popup when clicking overlay
+        document.getElementById("popupOverlay").addEventListener("click", hidePopup);
+
+        // Allow Enter key to trigger verification
+        document.getElementById("passwordInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                verifyPassword();
+            }
+        });
+    </script>
+</body>
+</html>
