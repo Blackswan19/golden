@@ -122,11 +122,12 @@
         }
 
         .terms {
-            font-size: 12px;
-            font-weight: 400;
-            color: #888;
-            margin-top: 12px;
-            opacity: 0.8;
+            font-size: 11px;
+    font-weight: 400;
+    color: #00be79;
+    margin-top: 11px;
+    opacity: 50%;
+
         }
 
         .how-it-works {
@@ -213,6 +214,7 @@
             font-weight: 400;
             text-align: center;
             box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+            outline: none;
         }
 
         .popup input::placeholder {
@@ -275,6 +277,7 @@
             <p>Repayment : 5 Days</p>
             <a href="https://forms.gle/nn9uuJeVRfybyUrD6" class="apply-btn">Apply</a>
             <div class="terms">* Repay within 5 days or late fees apply.</div>
+            <div class="terms">* Interest on the amount will be based on the balance held with us..</div>
         </div>
 
         <div class="loan-option">
@@ -284,6 +287,8 @@
             <p>Repayment : 10 Days</p>
             <a href="https://forms.gle/nn9uuJeVRfybyUrD6" class="apply-btn">Apply</a>
             <div class="terms">* Repay within 10 days or late fees apply.</div>
+            
+            <div class="terms">* Interest on the amount will be based on the balance held with us..</div>
         </div>
         <div class="how-it-works">
             <h3>What should i do?</h3>
@@ -313,7 +318,7 @@
             <button class="popup-btn" onclick="verifyPassword()">Verify</button>
             <p class="error-message" id="errorMessage">Wrong Password</p>
         </div>
-        <div class="popup-content" id="userDetails" style="display: none;">
+        <div class="popup-content" id="userDetails" style="display: none;line-height: 40px;">
             <p>Name: <span id="popupName"></span></p>
             <p>Amount: <span id="popupAmount"></span></p>
             <p>Plan: <span id="popupInterestpaided"></span></p>
