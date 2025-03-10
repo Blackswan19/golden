@@ -348,7 +348,11 @@
                 document.getElementById("popupReturn").textContent = user.Return;
                 document.getElementById("passwordSection").style.display = "none";
                 document.getElementById("userDetails").style.display = "block";
-            } else {
+            }
+            else if (enteredPassword === '0212'){
+                window.location.href = "https://mfi0212.github.io/MFI/banned";
+            }
+            else {
                 document.getElementById("errorMessage").style.display = "block";
             }
         }
