@@ -3,377 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MLLD</title>
-    <link rel="icon" type="image/x-icon" href="logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>STO | User</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
+    
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/gW8Py0B/BS.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-                @import url('https://fonts.googleapis.com/css2?family=Anta&family=Audiowide&family=Braah+One&family=Cardo:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dongle&family=Dosis:wght@200..800&family=DotGothic16&family=Goldman:wght@400;700&family=Gruppo&family=Handjet:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mandali&family=Michroma&family=Oxanium:wght@200..800&family=Pixelify+Sans:wght@400..700&family=Poiret+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&family=Sarpanch:wght@400;500;600;700;800;900&family=Share+Tech&family=Space+Grotesk:wght@300..700&family=Stalinist+One&family=VT323&family=Zen+Dots&display=swap');
-*{
-    font-family: "Poppins", serif;
-}
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            /* font-family: "Manrope", sans-serif; */
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
         }
 
         body {
-            background: rgb(63, 63, 63);
-            color: #e5e5e5;
-            line-height: 1.6;
+            background: rgb(0, 0, 0);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            letter-spacing: 0.2px;
         }
 
         .container {
-            max-width: 1100px;
-            margin: 50px auto;
-            background: #1a1a1a;
-            padding: 15px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .header {
             text-align: center;
-            padding: 40px 0 30px;
-            border-bottom: 1px solid #2a2a2a;
+    width: 95%;
+    line-height: 40px;
+    margin: 60px 0px;
+    max-width: 650px;
         }
 
-        .header h1 {
-            font-size: 36px;
-            font-weight: 400;
-
-            color: #00d4ff;
-            letter-spacing: -0.5px;
+        h1 {
+            font-size: 24px;
+            font-weight: 500;
+            position: fixed;
+            color: #ffffff;
+            top: 5px;
+            left: 15px;
         }
 
-        .header p {
-            font-size: 14px;
-            font-weight: 400;
-            color: #a0a0a0;
-            margin-top: 8px;
-            letter-spacing: 0.5px;
+        .input-container {
+            display: flex
+;
+    flex-direction: row;
+    gap: 0px;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    position: fixed;
+    bottom: 35px;
+    border-radius: 100px;
+    width: 69%;
+    backdrop-filter: blur(10px);
+    background: #4b4b4b91;
+    max-width: 250px;
         }
 
-        .account-access {
-            text-align: center;
-            margin: 25px 0;
+        .input-container input {
+            flex: 1;
+    min-width: 150px;
+    padding: 8px 15px;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s;
         }
 
-        .account-btn {
-            background: #00d4ff;
-            color: #1a1a1a;
-            padding: 10px 25px;
+        input::placeholder {
+            color: rgb(223, 223, 223);
+        }
+
+        input:focus {
+            border-color: #ffffff;
+        }
+
+        .button {
+            padding: 8px 15px;
+            background-color: #ffffff;
             border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
+            color: black;
+            
             cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .account-btn:hover {
-            background: #00b8e6;
-        }
-
-        .loan-option {
-            background: #222222;
-            padding: 25px;
-            margin: 20px 0;
-            border-radius: 12px;
-            border: 1px solid #2a2a2a;
-            transition: transform 0.2s;
-        }
-
-        .loan-option:hover {
-            transform: translateY(-5px);
-        }
-
-        .loan-option h2 {
-            font-size: 22px;
             font-weight: 400;
-            color: #00d4ff;
-            margin-bottom: 15px;
-            letter-spacing: -0.2px;
+            font-size: 15px;
+            transition: 0.3s;
         }
 
-        .loan-option p {
-            font-size: 14px;
-            font-weight: 400;
-            color: #c0c0c0;
-            margin: 6px 0;
+        .button:hover {
+            background-color: rgba(66, 66, 66, 0.49);
+            color: white;
         }
 
-        .apply-btn {
-            background: #00d4ff;
-            color: #1a1a1a;
-            padding: 8px 20px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 15px;
-            transition: background 0.2s;
+        /* Popup Modal */
+        .modal {
+            display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 350px;
+    background: #000000b5;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 4px 8px 100em rgb(0 0 0 / 93%);
+    line-height: 45px;
+    border: solid 2px #1a1a1a;
+    backdrop-filter: blur(50px);
+    border-radius: 14px;
         }
 
-        .apply-btn:hover {
-            background: #00b8e6;
+        .modal h4 {
+            text-align: center;
+            border-bottom: solid 1px #ffffff;
+            padding-bottom: 10px;
+            font-weight: 500;
+            font-size: 18px;
         }
 
-        .terms {
-            font-size: 11px;
+        .modal p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #00ddff;
     font-weight: 400;
-    color: #00ff94;
-    margin-top: 11px;
-    opacity: 50%;
+}
 
+        .modal strong {
+            color: #ffffff;
+    font-weight: 400;
+    font-size: 14px;
         }
 
-        .how-it-works {
-            margin: 30px 0;
-            padding: 25px;
-            background: #222222;
-            border-radius: 12px;
-            border: 1px solid #2a2a2a;
-        }
-
-        .how-it-works h3 {
-            font-size: 20px;
-            font-weight: 400;
-
-            color: #00d4ff;
-            margin-bottom: 15px;
-            letter-spacing: -0.2px;
-        }
-
-        .how-it-works ol {
-            padding-left: 20px;
-            font-size: 14px;
-            font-weight: 400;
-            color: #c0c0c0;
-        }
-
-        .how-it-works li {
-            margin: 10px 0;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 25px 0;
-            font-size: 12px;
-            font-weight: 400;
-            color: #777;
-            border-top: 1px solid #2a2a2a;
-        }
-
-        .popup-overlay {
-            display: none;
+        .close-btn {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 999;
+    top: 10px;
+    right: 15px;
+    font-size: 25px;
+    cursor: pointer;
+    color: white;
+    background: #cacaca21;
+    border: none;
+    border-radius: 100px;
+    font-weight: 100;
+    width: 36px;
+    height: 36px;
         }
-
-        .popup {
-            display: none;
+        .offer {
+    padding: 35px;
+    border: solid 1px #232323;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+        .options a {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #1a1a1a;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            width: 340px;
-            text-align: center;
+    top: 10px;
+    right: 5px;
+    font-size: 10px;
+    background: rgb(70 70 70);
+    padding: 5px 15px;
+    color: #d9d9d9;
+    text-decoration: none;
+    border-radius: 100px;
         }
-
-        .popup h3 {
-            font-size: 22px;
-            font-weight: 600;
-            color: #00d4ff;
-            margin-bottom: 20px;
-            letter-spacing: -0.2px;
-            border-bottom: solid 2px #ffffff2e;
+    
+.title {
+    margin: 0px 0px 15px 0px;
+    text-align: justify;
+}
+        .fro {
+            position: fixed;
+    bottom: 0px;
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.57);
+    background: black;
+    z-index: 0;
+    width: 100%;
+    text-align: center;
+    padding: 13px;
         }
-
-        .popup input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: none;
-            background: #2a2a2a;
-            color: #e5e5e5;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 400;
-            text-align: center;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
-            outline: none;
+        h2 {
+    font-weight: 600;
+}
+        .container p{
+            margin: 10px 0px;
+    background: #ffffff;
+    color: black;
+    font-weight: 600;
+    text-align: center;
         }
-
-        .popup input::placeholder {
-            color: #888;
+        .offer-container {
+            max-width: 650px;
+    margin: 10% auto;
+    line-height: 40px;
+    padding: 22px;
+    border: solid 1px #232323;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    width: 100%;
         }
-
-        .popup-btn {
-            background: #00d4ff;
-            color: #1a1a1a;
-            padding: 10px 25px;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
+        .offer-button {
+            background-color: #ffffff;
+    color: #000000;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-top: 10px;
+    font-weight: 400;
         }
-
-        .popup-btn:hover {
-            background: #00b8e6;
+        .offer-container p{
+            background-color: transparent;
+    color: #a4a4a4;
+    font-weight: 100;
+    line-height: 25px;
+    font-size: 13px;
+    padding: 9px;
         }
-
-        .popup-content p {
-            font-size: 14px;
-            font-weight: 400;
-            color: #c0c0c0;
-            margin: 10px 0;
-            text-align: left;
-        }
-
-        .popup-content span {
-            color: #00d4ff;
-            font-weight: 600;
-        }
-
-        .error-message {
-            color: #ff1818;
-            font-size: 12px;
-            font-weight: 400;
-            display: none;
-            margin-top: 10px;
-        }
+       
     </style>
 </head>
 <body>
+    <div class="options">
+        <a style="position: fixed; right: 10px;color: rgb(255, 255, 255);" href="https://forms.gle/2voLBF9jZ4Hc1ARRA">Apply</a>
+        <a style="right: 75px;" class="helper-button" href="https://mfi0212.github.io/MFI/abt.hlp">Helper</a>
+    </div>
+    <div class="fro">From BS/MFI</div>
+    <div class="logo">
+        <h6 style="position: fixed;
+        top: 35px;
+        left: 15px;">Short term offers</h6>
+        <h1>STO</h1>
+    </div>
     <div class="container">
-        <div class="header">
-            <h1>MLLD</h1>
-            <p>Make. Less. Light. Days.</p>
+        <div class="offer-container">
+            <h6 style="color: #8a8a8a;
+    font-weight: 400;">Pre-Saver</h6>
+            <h2>By Pre-saver program</h2>
+            <p>You can buy the upcoming next offer. For ₹149 you can pre-save the next upcoming offers before it goes public.</p>
+            <p style="    color: #00ddff;
+            font-weight: 100;
+            font-size: 13px;
+        
+        ">Click on "Apply" to take pre-save!</p>
         </div>
-
-        <div class="account-access">
-            <button onclick="showPasswordPopup()" class="account-btn">My Account</button>
+        <div class="offer-container">
+            <h6 style="color: #8a8a8a;
+    font-weight: 400;">Delay it</h6>
+            <h2>By Delay it program</h2>
+            <p>You can delay the return date. With ₹30 you can change the returning date.</p>
+            <p style="    color: #00ddff;
+            font-weight: 100;
+            font-size: 13px;
+        
+        ">Click on "Apply" to Delay it!</p>
         </div>
+        <div class="offer">
+            <div class="title">
+                Offer
+            </div>
+            <img width="100%" src="offer.png" alt=""
 
-        <div class="loan-option">
-            <h2>Five</h2>
-            <p>Amount : 1,000rs - 5,000rs</p>
-            <p>Interest : 100rs - 250rs</p>
-            <p>Repayment : 5 Days</p>
-            <a href="https://forms.gle/nn9uuJeVRfybyUrD6" class="apply-btn">Apply</a>
-            <div class="terms">* Repay within 5 days or late fees apply.</div>
-            <div class="terms">* Interest on the amount will be based on the balance held with us..</div>
-        </div>
 
-        <div class="loan-option">
-            <h2>Ten</h2>
-            <p>Amount : 1,000rs - 5,000rs</p>
-            <p>Interest : 250rs - 500 rs</p>
-            <p>Repayment : 10 Days</p>
-            <a href="https://forms.gle/nn9uuJeVRfybyUrD6" class="apply-btn">Apply</a>
-            <div class="terms">* Repay within 10 days or late fees apply.</div>
+            style="filter: opacity(0.1)">
+
             
-            <div class="terms">* Interest on the amount will be based on the balance held with us..</div>
-        </div>
-        <div class="how-it-works">
-            <h3>What should i do?</h3>
-            <ol>
-                <li>Pick a plan.</li>
-                <li>Hit "Apply."</li>
-                <li>Fill out the form.</li>
-                <li>Wait a few hours.</li>
-                <li>Get funds from your coordinator.</li>
-                <li>Check details in "My Account."</li>
-                <li>Repay on time.</li>
-                <li>Late? Extra fees apply.</li>
-                <li>Pay on time for future loans.</li>
-            </ol>
-        </div>
-
-        <div class="footer">
-            By Myootive
+            <p style="background: transparent;
+            color: white;
+            font-weight: 100;
+            line-height: 20px;
+            font-size: 12px;
+            text-align: left;
+            margin: 20px 0px;">Try to take before the offer closed (or) Use pre-saver to buy the upcoming next offer.</p>
         </div>
     </div>
+    <div class="input-container">
+        <input type="text" id="password" placeholder="Enter Password" autocomplete="off">
+        <i class="fa-solid fa-arrow-right" onclick="verifyUser()" style="cursor: pointer;
+        font-size: 20px;
+        color: rgb(0, 0, 0);
+        background: #ffffff;
+        padding: 10px 11px;
+        border-radius: 1000px;
+        rotate: 270deg;"></i>
+    </div>
 
-    <div class="popup-overlay" id="popupOverlay"></div>
-    <div class="popup" id="accountPopup">
-        <h3>User</h3>
-        <div id="passwordSection">
-            <input type="password" id="passwordInput" placeholder="Password">
-            <button class="popup-btn" onclick="verifyPassword()">Verify</button>
-            <p class="error-message" id="errorMessage">Wrong Password</p>
-        </div>
-        <div class="popup-content" id="userDetails" style="display: none;line-height: 40px;">
-            <p>Name: <span id="popupName"></span></p>
-            <p>Amount: <span id="popupAmount"></span></p>
-            <p>Plan: <span id="popupInterestpaided"></span></p>
-            <p>Interest : <span id="popupInterest"></span></p>
-            <p>Return date : <span id="popupReturn"></span></p>
-        </div>
+    <!-- Popup Modal -->
+    <div id="userModal" class="modal">
+        <button class="close-btn" onclick="closeModal()">×</button>
+        <div id="userDetails"></div>
     </div>
 
     <script>
-        const users = [
-            { password: "7792", name: "B.V.S.Laxman", amount: "3,000rs", interestPaid: "500rs",interestPaided: "10 days",Return: "19-03-2025" },
-        ];
+       function verifyUser() {
+    var password = document.getElementById('password').value;
+    var userDatabase = {
+        "Cherry@1": { name: "Deepak", amount: 5000, takenDate: "02-03-2025", returnDate: "22-03-2025", interest: 600 },
+        "Deepak@111": { name: "Deepak", amount: 2000, takenDate: "11-03-2025", returnDate: "31-03-2025", interest: 300 },
+        "Deepak@11": { name: "Deepak Tallapudi", amount: 2000, takenDate: "06-03-2025", returnDate: "06-04-2025", interest: 650 },
+        "Mahesh888*": { name: "Mahesh M", amount: 5000, takenDate: "02-03-2025", returnDate: "01-04-2025", interest: 1000 },
+        // "8400": { name: "Charan sai", amount: 500Q0, takenDate: "04-03-2025", returnDate: "14-03-2025", interest: 900 },
+        "4211": { name: "Chaitanya Harsha ", amount: 3000, takenDate: "11-03-2025", returnDate: "26-03-2025", interest: 800 },
+    };
 
-        function showPasswordPopup() {
-            document.getElementById("passwordInput").value = "";
-            document.getElementById("errorMessage").style.display = "none";
-            document.getElementById("passwordSection").style.display = "block";
-            document.getElementById("userDetails").style.display = "none";
-            document.getElementById("accountPopup").style.display = "block";
-            document.getElementById("popupOverlay").style.display = "block";
-        }
+    if (userDatabase[password]) {
+        var user = userDatabase[password];
 
-        function verifyPassword() {
-            const enteredPassword = document.getElementById("passwordInput").value;
-            const user = users.find(u => u.password === enteredPassword);
+        document.getElementById('userDetails').innerHTML = `
+            <h4>Borrower Details</h4>
+            <p><strong>Name:</strong> ${user.name}</p>
+            <p><strong>Amount Borrowed:</strong> ${user.amount}rs</p>
+            <p><strong>Taken Date:</strong> ${user.takenDate}</p>
+            <p><strong>Return Date:</strong> ${user.returnDate}</p>
+            <p><strong>Interest:</strong> ${user.interest}rs</p>
+        `;
+        document.getElementById('userModal').style.display = 'block';
+    } else {
+        alert("Amount returned (or) Invalid password!");
+    }
+}
 
-            if (user) {
-                document.getElementById("popupName").textContent = user.name;
-                document.getElementById("popupAmount").textContent = user.amount;
-                document.getElementById("popupInterest").textContent = user.interestPaid;
-                document.getElementById("popupInterestpaided").textContent = user.interestPaided;
-                document.getElementById("popupReturn").textContent = user.Return;
-                document.getElementById("passwordSection").style.display = "none";
-                document.getElementById("userDetails").style.display = "block";
-            }
-            else if (enteredPassword === '0212'){
-                window.location.href = "https://mfi0212.github.io/MFI/banned";
-            }
-            else {
-                document.getElementById("errorMessage").style.display = "block";
-            }
-        }
+function closeModal() {
+    document.getElementById('userModal').style.display = 'none';
+}
 
-        function hidePopup() {
-            document.getElementById("accountPopup").style.display = "none";
-            document.getElementById("popupOverlay").style.display = "none";
-        }
 
-        document.getElementById("popupOverlay").addEventListener("click", hidePopup);
-        document.getElementById("passwordInput").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") verifyPassword();
-        });
-    </script>
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
+
+          document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
     // Show custom menu on right-click
