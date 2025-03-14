@@ -27,30 +27,34 @@
         }
 
         .container {
-            margin: 20px auto;
             max-width: 1100px;
-    padding: 15px;
+            margin: 50px auto;
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
 
         .header {
             text-align: center;
-    padding: 0px 0 30px;
-    border-bottom: 1px solid #ffffff80;
+            padding: 40px 0 30px;
+            border-bottom: 1px solid #2a2a2a;
         }
 
         .header h1 {
-            font-size: 25px;
-    font-weight: 500;
+            font-size: 36px;
+            font-weight: 400;
+
             color: #00d4ff;
-            letter-spacing: 0.5px;
+            letter-spacing: -0.5px;
         }
 
         .header p {
-            font-size: 13px;
-    font-weight:500;
-    color: #ffffff;
-    margin-top: 0px;
-    letter-spacing: 0.5px;
+            font-size: 14px;
+            font-weight: 400;
+            color: #a0a0a0;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
         }
 
         .account-access {
@@ -63,7 +67,7 @@
             color: #1a1a1a;
             padding: 10px 25px;
             border: none;
-            /* border-radius: 8px; */
+            border-radius: 8px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
@@ -76,15 +80,20 @@
 
         .loan-option {
             background: #222222;
-    padding: 25px;
-    margin: 20px 0;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+            transition: transform 0.2s;
         }
 
-       
+        .loan-option:hover {
+            transform: translateY(-5px);
+        }
 
         .loan-option h2 {
             font-size: 22px;
-            font-weight: 500;
+            font-weight: 400;
             color: #00d4ff;
             margin-bottom: 15px;
             letter-spacing: -0.2px;
@@ -101,7 +110,7 @@
             background: #00d4ff;
             color: #1a1a1a;
             padding: 8px 20px;
-            /* border-radius: 8px; */
+            border-radius: 8px;
             font-size: 14px;
             font-weight: 600;
             text-decoration: none;
@@ -127,6 +136,7 @@
             margin: 30px 0;
             padding: 25px;
             background: #222222;
+            border-radius: 12px;
             border: 1px solid #2a2a2a;
         }
 
@@ -148,16 +158,15 @@
 
         .how-it-works li {
             margin: 10px 0;
-            list-style: auto;
         }
 
         .footer {
             text-align: center;
-            padding: 10px 0;
+            padding: 25px 0;
             font-size: 12px;
             font-weight: 400;
-            color: #b1b1b1;
-            border-top:  1px solid #ffffff80;
+            color: #777;
+            border-top: 1px solid #2a2a2a;
         }
 
         .popup-overlay {
@@ -179,7 +188,7 @@
             transform: translate(-50%, -50%);
             background: #1a1a1a;
             padding: 30px;
-            /* border-radius: 16px; */
+            border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             z-index: 1000;
             width: 340px;
@@ -202,7 +211,7 @@
             border: none;
             background: #2a2a2a;
             color: #e5e5e5;
-            /* border-radius: 10px; */
+            border-radius: 10px;
             font-size: 14px;
             font-weight: 400;
             text-align: center;
@@ -219,7 +228,7 @@
             color: #1a1a1a;
             padding: 10px 25px;
             border: none;
-            /* border-radius: 8px; */
+            border-radius: 8px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
