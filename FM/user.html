@@ -16,7 +16,7 @@
         }
 
         body {
-            background-color: rgb(21 30 39);
+            background: rgb(63 63 63);
             color: white;
             display: flex;
             justify-content: center;
@@ -87,7 +87,7 @@
         }
 
         .button:hover {
-            background-color: rgba(255, 255, 255, 0.447);
+            background-color: rgba(66, 66, 66, 0.49);
             color: white;
         }
 
@@ -101,7 +101,7 @@
     transform: translate(-50%, -50%);
     width: 90%;
     max-width: 350px;
-    background: rgb(29 39 51);
+    background: rgb(37 37 37);
     padding: 20px;
     text-align: left;
     box-shadow: 0 4px 8px 100em rgb(0 0 0 / 78%);
@@ -184,6 +184,7 @@
         function verifyUser() {
             var password = document.getElementById('password').value;
             var userDatabase = {
+                // "7792": { name: "Laxman", amount: 10000, takenDate: "2025-03-9", takenFor: 30, dailyInterest: 70 },
                 "8400": { name: "Charan", amount: 15000, takenDate: "2025-03-8", takenFor: 30, dailyInterest: 134 },
             };
 
@@ -206,7 +207,7 @@
                 `;
                 document.getElementById('userModal').style.display = 'block';
             } else {
-                alert("Amount returned (or) Invalid password!");
+                alert("Invalid password!");
             }
         }
 
