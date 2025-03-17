@@ -5,26 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLending | User</title>
     <link rel="icon" type="image/x-icon" href="logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@400&display=swap');
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 300;
         }
 
         body {
-            background: rgb(63 63 63);
-            /* background: rgb(21 30 39); */
-            color: white;
+            background-color: #000000; /* Jet black background */
+            color: #ffffff; /* White text */
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             padding: 20px;
             overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9em; /* Reduced from 1.1em */
+            font-weight: 400;
         }
 
         .container {
@@ -35,12 +36,16 @@
         }
 
         h1 {
-            font-size: 20px;
-    font-weight: 500;
-    position: fixed;
-    color: #00d6ff;
-    top: 5px;
-    right: 10px;
+            font-family: 'Oswald', sans-serif; /* Rolling Loud vibe font */
+            font-size: 2em; /* Reduced from 4.2em */
+            font-weight: 700;
+            position: fixed;
+            color: #ffffff; /* White */
+            top: 5px;
+            right: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1;
         }
 
         .input-container {
@@ -50,8 +55,9 @@
             justify-content: center;
             align-items: center;
             width: 100%;
-            background: rgb(0 0 0 / 42%);
+            background: #1a1a1a; /* Dark gray panel */
             padding: 20px;
+            border-left: 4px solid #3C2F2F; /* Dark brown border */
         }
 
         .input-container input {
@@ -59,111 +65,129 @@
             min-width: 150px;
             padding: 8px 15px;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            
             background: transparent;
-            color: white;
-            font-size: 15px;
+            color: #ffffff; /* White text */
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2em;
+            font-weight: 400;
             outline: none;
             transition: border-color 0.3s;
         }
 
         input::placeholder {
-            color: rgb(223, 223, 223);
+            color: #b3b3b3; /* Light gray placeholder */
         }
 
         input:focus {
-            border-color: #ffffff;
+            border-color: #8B5A2B;
         }
 
         .button {
-            padding: 8px 15px;
-            background-color: #ffffff;
+            padding: 12px 30px;
+            background-color: #3C2F2F; /* Dark brown button */
             border: none;
-            color: black;
-            
+            color: #ffffff; /* White text */
             cursor: pointer;
-            font-weight: 400;
-            font-size: 15px;
-            transition: 0.3s;
+            font-family: 'Oswald', sans-serif; /* Rolling Loud vibe font */
+            font-weight: 700;
+            font-size: 1em; /* Reduced from 1.2em */
+            text-transform: uppercase;
+            transition: all 0.3s;
         }
 
         .button:hover {
-            background-color: rgba(66, 66, 66, 0.49);
-            color: white;
+            background-color: #ffffff; /* White on hover */
+            color: #000000; /* Black text on hover */
         }
 
         /* Popup Modal */
         .modal {
             display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 350px;
-    background: rgb(37 37 37);
-    /* background: rgb(29 39 51); */
-    padding: 20px;
-    text-align: left;
-    box-shadow: 0 4px 8px 100em rgb(0 0 0 / 78%);
-    line-height: 35px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 350px;
+            background: #1a1a1a; /* Dark gray modal */
+            padding: 20px;
+            text-align: left;
+            box-shadow: 0 4px 8px 100em rgba(0, 0, 0, 0.78);
+            line-height: 35px;
+            border-left: 4px solid #3C2F2F; 
+            padding-top: 50px;
+
         }
 
         .modal h4 {
-            text-align: center;
-            border-bottom: solid 1px #ffffff;
-            padding-bottom: 10px;
-            font-weight: 500;
-            font-size: 18px;
+            font-family: 'Oswald', sans-serif;
+    text-align: center;
+    border-bottom: 1px solid;
+    padding-bottom: 10px;
+    font-weight: 600;
+    font-size: 2em;
+            color: #9e9e9e; /* Warm brown */
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .modal p {
-    margin: 10px 0;
-    font-size: 14px;
-    color: #00ddff;
-    font-weight: 500;
-}
+            margin: 10px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3em;
+    color: #8B5A2B;
+    font-weight: 400;
+        }
 
         .modal strong {
-            color: #d1d1d1;
-            font-weight: 500;
-            font-size: 15px;
+            color: #b3b3b3; /* Light gray for labels */
+            font-weight: 400;
+            font-size: 0.9em; /* Reduced from 1.1em */
         }
 
         .close-btn {
             position: absolute;
     top: 10px;
     right: 15px;
-    font-size: 25px;
+    font-size: 30px;
     cursor: pointer;
-    color: white;
+    color: #ffffff;
     background: transparent;
     border: none;
+    font-weight: 100;
         }
 
         .options a {
             position: fixed;
-    top: 5px;
+    top: 0px;
     left: 5px;
-    font-size: 15px;
-    padding: 5px 8px;
-    color: #d9d9d9;
+    font-size: 2em;
+    padding: unset;
+    color: #8B5A2B;
     text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s;
+        }
+
+        .options a:hover {
+            color: #ffffff; /* White on hover */
         }
 
         .fro {
             position: fixed;
             bottom: 10px;
-            font-size: 9px;
-            color: rgba(255, 255, 255, 0.57);
+            font-size: 0.7em; /* Reduced from 0.9em */
+            color: #666666; /* Medium gray */
+            font-family: 'Poppins', sans-serif;
         }
     </style>
 </head>
 <body>
     <div class="options">
         <a href="themain.html">< Back</a>
-        <!-- <a style="position: fixed; right: 65px;" href="https://forms.gle/PjssBodtdo9iW1xn7">Take money</a> -->
     </div>
     <div class="fro">By Myootive</div>
     <div class="logo">
@@ -186,7 +210,6 @@
         function verifyUser() {
             var password = document.getElementById('password').value;
             var userDatabase = {
-                // "7792": { name: "Laxman", amount: 10000, takenDate: "2025-03-9", takenFor: 30, dailyInterest: 70 },
                 "8400": { name: "Charan", amount: 15000, takenDate: "2025-03-8", takenFor: 30, dailyInterest: 134 },
             };
 
@@ -216,23 +239,6 @@
         function closeModal() {
             document.getElementById('userModal').style.display = 'none';
         }
-
-          document.addEventListener("DOMContentLoaded", () => {
-    const customMenu = document.querySelector(".custom-menu");
-
-    // Show custom menu on right-click
-    document.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-        customMenu.style.display = "block";
-        customMenu.style.top = `${event.pageY}px`;
-        customMenu.style.left = `${event.pageX}px`;
-    });
-
-    // Hide the menu when clicking elsewhere
-    document.addEventListener("click", () => {
-        customMenu.style.display = "none";
-    });
-});
     </script>
 </body>
 </html>
