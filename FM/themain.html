@@ -3,153 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> MLending </title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
-    
+    <title>MLending</title>
     <link rel="icon" type="image/x-icon" href="logo.png">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Anta&family=Audiowide&family=Braah+One&family=Cardo:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dongle&family=Dosis:wght@200..800&family=DotGothic16&family=Goldman:wght@400;700&family=Gruppo&family=Handjet:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mandali&family=Michroma&family=Oxanium:wght@200..800&family=Pixelify+Sans:wght@400..700&family=Poiret+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&family=Sarpanch:wght@400;500;600;700;800;900&family=Share+Tech&family=Space+Grotesk:wght@300..700&family=Stalinist+One&family=VT323&family=Zen+Dots&display=swap');
-*{
-    font-family: "Poppins", serif;
-}
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@400&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: rgb(63, 63, 63);
-            /* background: rgb(21 30 39); */
-            color: #ffffff;
-            max-width: 800px;
+            background-color: #000000; /* Jet black background */
+            color: #ffffff; /* White for primary text */
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 25px;
-            line-height: 30px;
-            filter: grayscale(0.1);
+            padding: 20px;
+            line-height: 1.6;
+            font-family: 'Poppins', sans-serif; /* Body text font */
         }
 
         h1, h2, h3 {
-            font-weight: 500;
-    color: #00aaff;
+            font-family: 'Oswald', sans-serif; /* Rolling Loud vibe font for headings */
+            font-weight: 700;
+            color: #ffffff; /* White headings */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: 4.2em; /* Large, bold headings */
+            line-height: 1;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: #8B5A2B; /* Warm brown for secondary headings */
         }
 
         .about {
-            background: rgb(0 0 0 / 42%);
-            padding: 20px;
-            margin-top: 25px;
+            background: #1a1a1a; /* Dark gray for panels */
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 4px solid #3C2F2F; /* Dark brown border */
         }
 
         a {
-            color: #00aaff;
+            color: #8B5A2B; /* Warm brown links */
             text-decoration: none;
+            font-family: 'Oswald', sans-serif; /* Rolling Loud vibe for links */
+            font-weight: 700;
+            transition: color 0.3s ease;
         }
+
         a:hover {
-            text-decoration: underline;
-            color: #ffffff;
+            color: #ffffff; /* White on hover */
         }
 
         .button {
             display: inline-block;
-    background-color: rgb(255 255 255);
-    color: #000000;
-    padding: 4px 20px;
-    text-decoration: none;
-    margin: 5px;
-    font-size: 14px;
-
+            background-color: #3C2F2F; /* Dark brown buttons */
+            color: #ffffff; /* White text on buttons */
+            padding: 12px 30px;
+            text-transform: uppercase;
+            margin: 10px 5px;
+            font-size: 1.2em;
+            font-family: 'Oswald', sans-serif; /* Rolling Loud vibe for buttons */
+            font-weight: 700;
+            border: none;
+            transition: all 0.3s ease;
         }
+
         .button:hover {
-            text-decoration: none;
-            background-color: #000000;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        ul li {
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background-color: #ffffff; /* White background on hover */
+            color: #000000; /* Black text on hover */
         }
 
         p {
-            font-size: 14px;
-        }
-        li {
-            font-size: 13px;
-        }
-
-        .copy-icon {
-            cursor: pointer;
-            background-color: #333;
-            color: white;
-            border-radius: 4px;
-            padding: 5px 10px;
-            font-size: 1.2em;
-        }
-        .copy-icon:hover {
-            background-color: #444;
+            font-family: 'Poppins', sans-serif; /* Clean body text font */
+            font-weight: 400;
+            font-size: 1.1em;
+            color: #b3b3b3; /* Light gray for body text */
         }
 
-        /* Simple responsive design */
-        @media (max-width: 600px) {
+        .logo {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid #3C2F2F; /* Dark brown divider */
+        }
+
+        .options {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .highlight {
+            color: #8B5A2B; /* Warm brown for emphasis */
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            color: #666666; /* Medium gray for footer */
+            font-family: 'Poppins', sans-serif;
+        }
+
+        footer a {
+            color: #8B5A2B; /* Warm brown footer link */
+            font-family: 'Oswald', sans-serif;
+        }
+
+        footer a:hover {
+            color: #ffffff; /* White on hover */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
             body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 3em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            .button {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+
+            .about {
                 padding: 20px;
             }
         }
     </style>
 </head>
 <body>
-    
-    <div class="logo" style="padding: 4px; line-height: 10px;">
-        <h6>Welcome to <h1> MLending</h1></h6>
+    <div class="logo">
+        <h6 style="font-size: 1em; color: #b3b3b3; font-weight: 400; font-family: 'Poppins', sans-serif;">Welcome to</h6>
+        <h1>MLending</h1>
     </div>
     <div class="about">
         <h2>Introducing MLLD!</h2>
-        <p>With MLD, you can borrow money for up to 10 days—get quick funds for your short-term needs!.</p>
-        <a href="mlld.html" target="_blank" style="color: #00aaff;background: none;padding: 0px;
-" class="button">Explore MLLD ></a>
+        <p>With MLLD, you can borrow money for up to 10 days—get quick funds for your short-term needs!</p>
+        <a href="mlld.html" target="_blank" class="button">Explore MLLD</a>
     </div>
-    <div class="options" style="padding: 13px;">
-        <p>Like to take money (or) verify details?</p>
-        <a href="https://forms.gle/1jPmg6tQWBRz9ikz6" class="button">Take money</a>
-        <a href="https://blackswan19.github.io/golden/FM/user" class="button">My account</a>
-    </div>
-    <div class="about">
-        <h2>Wait few hours!</h2>
-        <p>To provide the amount, we need to collect the amount first. It takes few hours to arrange the amount, so be patience during this time to get the amount.<br><br></p>
+    <div class="options">
+        <p>Like to take money or verify details?</p>
+        <a href="https://forms.gle/1jPmg6tQWBRz9ikz6" class="button">Take Money</a>
+        <a href="https://blackswan19.github.io/golden/FM/user" class="button">My Account</a>
     </div>
     <div class="about">
-        <h2>I'm late</h2>
-        <p>
-            If you are <span class="highlight">late in returning the amount</span>,
-            the interest will <span class="highlight">double for every 2 days</span>.
-        </p>
-        <p>
-            Contact us if you think you'll be late so we can help you.
-        </p>
+        <h2>Wait Few Hours!</h2>
+        <p>To provide the amount, we need to collect it first. It takes a few hours to arrange, so hold tight.<br><br></p>
+    </div>
+    <div class="about">
+        <h2>I'm Late</h2>
+        <p>If you’re <span class="highlight">late in returning the amount</span>, the interest will <span class="highlight">double every 2 days</span>.</p>
+        <p>Contact us if you’re running late—we can sort it out.</p>
     </div>
     <footer>
-        <p style="font-size: 10px; padding: 10px; text-align: center;">
-            
-            <a style="text-decoration: none;color: white;" target="_blank" href="https://mfi0212.github.io/MFI/mfimain">By Myootive</a>
+        <p>
+            <a target="_blank" href="https://mfi0212.github.io/MFI/mfimain">By Myootive</a>
         </p>
     </footer>
-    <script>
-            document.addEventListener("DOMContentLoaded", () => {
-    const customMenu = document.querySelector(".custom-menu");
-
-    // Show custom menu on right-click
-    document.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-        customMenu.style.display = "block";
-        customMenu.style.top = `${event.pageY}px`;
-        customMenu.style.left = `${event.pageX}px`;
-    });
-
-    // Hide the menu when clicking elsewhere
-    document.addEventListener("click", () => {
-        customMenu.style.display = "none";
-    });
-});
-    </script>
 </body>
 </html>
