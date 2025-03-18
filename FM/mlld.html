@@ -25,7 +25,7 @@
             background-color: rgb(31 31 31);
             color: #e5e5e5;
             line-height: 1.6;
-            letter-spacing: 0.2px;
+            letter-spacing: 0.5px;
         }
 
         .container {
@@ -73,7 +73,7 @@
         }
 
         .account-btn:hover {
-            background: rgba(0, 204, 255, 0.539)
+            background: #00aaffcb;
         }
 
         .loan-option {
@@ -86,16 +86,16 @@
         .loan-option h2 {
             font-size: 22px;
             font-weight:500;
-            color: #61aae1;
+            color: #00aaff;
             margin-bottom: 15px;
             letter-spacing: -0.2px;
         }
 
         .loan-option p {
             font-size: 14px;
-            font-weight: 400;
-            color: #c0c0c0;
-            margin: 6px 0;
+    font-weight: 400;
+    color: #d4d4d4;
+    margin: 15px 0;
         }
 
         .apply-btn {
@@ -112,15 +112,15 @@
         }
 
         .apply-btn:hover {
-            background: #00aaff;
+            background: #00aaffc8;
         }
 
         .terms {
-            font-size: 10px;
-    font-weight: 300;
-    color: #00ffc6;
-    margin-top: 10px;
-    opacity: 80%;
+            font-size: 11px;
+    font-weight: 200;
+    color: #00ffc2;
+    margin-top: 15px;
+    opacity: 50%;
         }
 
         .how-it-works {
@@ -147,8 +147,10 @@
         }
 
         .how-it-works li {
-            margin: 10px 0;
-            list-style: auto;
+            margin: 5px 0;
+    font-size: 12px;
+    line-height: 25px;
+    font-weight: 200;
             color: #ffffffb3;
         }
 
@@ -178,7 +180,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgb(40 40 40);
+            background-color: rgb(24 24 24);
             padding: 30px;
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
@@ -198,17 +200,16 @@
 
         .popup input {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: none;
-            background: #3b3b3b;
-            color: #e5e5e5;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 400;
-            text-align: center;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
-            outline: none;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    background: rgb(52 52 52);
+    color: #e5e5e5;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    outline: none;
         }
 
         .popup input::placeholder {
@@ -257,26 +258,16 @@
     <div class="container">
         <div class="header">
             <h1>MLLD</h1>
-            <p>Make. Less. Light. Days.</p>
+            <p style="text-transform: uppercase;">A short days service</p>
         </div>
 
         <div class="account-access">
             <button onclick="showPasswordPopup()" class="account-btn">My Account</button>
         </div>
-
-        <div class="loan-option">
-            <h2>Plan - ML</h2>
-            <p>Amount : 1,000rs - 5,000rs</p>
-            <p>Repayment : 1-10 Days</p>
-            <a href="https://forms.gle/nn9uuJeVRfybyUrD6" class="apply-btn">Apply</a>
-            <div class="terms">* Repay within 1-10 days based on your taken days or late fees apply.</div>
-            <div class="terms">* Interest on the amount will be based on the balance held with us..</div>
-        </div>
-
         <div class="loan-option">
             <h2>Plan - LD</h2>
             <p>Amount : 1,000rs - 5,000rs</p>
-            <p>Repayment : 10-20 Days</p>
+            <p>Repayment : 1 -20 Days</p>
             <a href="https://forms.gle/nn9uuJeVRfybyUrD6" class="apply-btn">Apply</a>
             <div class="terms">* Repay within 10-20 days based on your taken days or late fees apply.</div>
             
@@ -286,14 +277,14 @@
         <div class="how-it-works">
             <h3>What should i do?</h3>
             <ol>
-                <li>Pick a plan.</li>
-                <li>Hit "Apply."</li>
+                <li>Think how many days you want the money.</li>
+                <li>click on "Apply."</li>
                 <li>Fill out the form.</li>
                 <li>Wait a few hours.</li>
                 <li>Get funds from your coordinator.</li>
-                <li>Check details in "My Account."</li>
+                <li>Check details like interest and etc... in "My Account."</li>
                 <li>Repay on time.</li>
-                <li>Late? Extra fees apply.</li>
+                <li>Are you Late to return? Say 2 days before we will extand the date (or) Extra fees apply.</li>
                 <li>Pay on time for future loans.</li>
             </ol>
         </div>
