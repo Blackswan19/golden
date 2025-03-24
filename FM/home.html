@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MLLD</title>
+    <title>Streamline Your Credit Life</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
     
@@ -131,7 +131,7 @@
             <i class="fas fa-arrow-right" style="color: black;"></i>
         </button>
         <div class="apply" style="margin-top: 30px;">
-            <a href="https://forms.gle/Y3MhJdp31iRSsTbm7">Apply for Offer</a><br><br>
+            <a href="https://forms.gle/Y3MhJdp31iRSsTbm7">Apply for Offer</a>
             <a onclick="alert('Not allowed at this time....')" href="https://forms.gle/Y3MhJdp31iRSsTbm7">Subcription plans</a>
         </div>
     </div>
@@ -139,17 +139,33 @@
     <script>
         function checkCode() {
             const input = document.getElementById('codeInput').value;
-            if (input === "1789") {
+            if (input === "1123") {
                 alert('Welcome chinna. You didn`t have account in WO, Please apply for the offer first.')
-                // window.location.href = "https://mfi0212.github.io/MFI/MFI/wallet/user/chinna";
-            } else if (input === "1389") {
+                
+            } else if (input === "0121") {
                 alert('Welcome Phani. You didn`t have account in WO, Please apply for the offer first.')
-                // window.location.href = "https://mfi0212.github.io/MFI/MFI/wallet/user/phani";
+                
             }  
             else {
                 alert("Incorrect code. Please try again.");
             }
         }
+                document.addEventListener("DOMContentLoaded", () => {
+    const customMenu = document.querySelector(".custom-menu");
+
+    // Show custom menu on right-click
+    document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        customMenu.style.display = "block";
+        customMenu.style.top = `${event.pageY}px`;
+        customMenu.style.left = `${event.pageX}px`;
+    });
+
+    // Hide the menu when clicking elsewhere
+    document.addEventListener("click", () => {
+        customMenu.style.display = "none";
+    });
+});
     </script>
 </body>
 </html>
