@@ -3,14 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verify my account</title>
-    <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/736x/68/3d/8f/683d8f58c98a715130b1251a9d59d1b9.jpg">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>MLLD</title>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
@@ -20,372 +15,349 @@
     margin: 0;
     padding: 0;
 }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            background-color: rgb(31 31 31);
+            color: #e5e5e5;
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+        }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: rgb(31 31 31);
-    color: #e0e0e0;
+        .container {
+            margin: 20px auto;
+            max-width: 1100px;
+    padding: 15px;
+        }
+
+        .header {
+            text-align: center;
+    padding: 0px 0 30px;
+    border-bottom: 1px solid #ffffff80;
+        }
+
+        .header h1 {
+            font-size: 35px;
+    font-weight: 800;
+            color: #00aaff;
+            letter-spacing: 0px;
+        }
+
+        .header p {
+            font-size: 13px;
+    font-weight:500;
+    color: #ffffff;
+    margin-top: 0px;
     letter-spacing: 0.5px;
-}
-
-/* Header */
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #1a1a1a;
-    padding: 10px 15px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    z-index: 10;
-}
-
-.header h2 {
-    font-size: 18px;
-    font-weight: 500;
-    margin-left: 10px;
-}
-
-/* Password Container */
-#passwordContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    width: 100%;
-    text-align: center;
-    line-height: 15px;
-    position: fixed;
-    /* padding-top: 50px; */
-}
-
-#userPassword {
-    font-size: 16px;
-    border: 1px solid #ffffff1c;
-    background: #ffffff21;
-    color: #fff;
-    padding: 8px 25px;
-    text-align: center;
-    width: 90%;
-    outline: none;
-    max-width: 250px;
-    margin: 21px;
-        }
-        #userPassword:focus{
-            border: 1px solid #ffffffda;
         }
 
-#submitBtn{
-    background-color: #ffffff;
-    color: #000000;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    padding: 6.5px 15px;
-}
+        .account-access {
+            text-align: center;
+            margin: 25px 0;
+        }
 
-a{
-    color: #848484;
-}
+        .account-btn {
+            background: #00aaff;
+            color: #000000;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
 
-#error-message {
-    color: #ff0000;
-    font-size: 12px;
-    margin-top: 10px;
-}
+        .account-btn:hover {
+            background: #00aaffcb;
+        }
 
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(31 31 31);
-    padding: 65px 0px 0px 24px;
-    line-height: 30px;
-    overflow-y: auto;
-    z-index: 10;
+        .loan-option {
+            background: rgb(0 0 0 / 42%);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 12px;
+        }
 
-}
-
-.modal h2 {
-    color: #e0e0e0;
-    font-weight: 500;
-}
-
-.modal h3 {
-    color: #00aeff;
-    font-size: 16px;
+        .loan-option h2 {
+            font-size: 20px;
     font-weight: 400;
-    text-decoration: underline;
-    margin: 25px 0;
-}
+    color: #00aaff;
+    margin-bottom: 15px;
+    letter-spacing: -0.2px;
+        }
 
-.modal p {
-    color: #a0a0a0;
+        .loan-option p {
+            font-size: 14px;
+    font-weight: 400;
+    color: #d4d4d4;
+    margin: 15px 0;
+        }
+
+        .apply-btn {
+            background: #00aaff;
+            color: #000000;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            transition: background 0.2s;
+        }
+
+        .apply-btn:hover {
+            background: #00aaffc8;
+        }
+
+        .terms {
+            font-size: 11px;
+    font-weight: 200;
+    color: #00ffc2;
+    margin-top: 15px;
+    opacity: 50%;
+        }
+
+        .how-it-works {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgb(0 0 0 / 42%);
+            border-radius: 12px;
+        }
+
+        .how-it-works h3 {
+            font-size: 20px;
+            font-weight: 400;
+
+            color: #00aaff;
+            margin-bottom: 15px;
+            letter-spacing: -0.2px;
+        }
+
+        .how-it-works ol {
+            padding-left: 20px;
+            font-size: 14px;
+            font-weight: 400;
+            color: #c0c0c0;
+        }
+
+        .how-it-works li {
+            margin: 5px 0;
+    font-size: 12px;
+    line-height: 25px;
+    font-weight: 200;
+            color: #ffffffb3;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px 0;
+            font-size: 12px;
+            font-weight: 400;
+            color: #b1b1b1;
+            border-top:  1px solid #ffffff80;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(24 24 24);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            width: 340px;
+            text-align: center;
+        }
+
+        .popup h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #00aaff;
+            margin-bottom: 20px;
+            letter-spacing: -0.2px;
+            border-bottom: solid 2px #ffffff2e;
+        }
+
+        .popup input {
+            width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    background: rgb(52 52 52);
+    color: #e5e5e5;
+    border-radius: 10px;
     font-size: 14px;
     font-weight: 400;
-    margin: 10px 0;
-    transition: color 0.3s ease;
-}
-.close-btn {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    color: #e0e0e0;
-    font-size: 18px;
-    cursor: pointer;
-    z-index: 11;
-    background: #282828;
-    padding: 10px 11px;
-}
+    text-align: center;
+    outline: none;
+        }
 
-i {
-    margin-right: 8px;
-}
+        .popup input::placeholder {
+            color: #888;
+        }
 
-.logo {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 11;
-}
+        .popup-btn {
+            background: #00aaff;
+            color: #1a1a1a;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
 
-.logo img {
-    width: 40px;
-    border-radius: 50%;
-}
+        .popup-btn:hover {
+            background: #00b8e6;
+        }
 
-.logout-btn {
-    position: fixed;
-    top: 55px;
-    right: 5px;
-    background-color: #2a2a2a;
-    color: #e0e0e0;
-    border: none;
-    padding: 5px 12px;
-    font-size: 12px;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    z-index: 11;
-}
+        .popup-content p {
+            font-size: 14px;
+            font-weight: 400;
+            color: #ffffff;
+            margin: 10px 0;
+            text-align: left;
+        }
 
-.logout-btn a {
-    color: #e0e0e0;
-    text-decoration: none;
-}
+        .popup-content span {
+            color: #00aaff;
+            font-weight: 600;
+        }
 
-.logout-btn:hover {
-    background-color: #3a3a3a;
-}
-
-/* Loan Entry and Amount Buttons */
-.loan-entry {
-    padding: 10px 0;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #2a2a2a;
-    width: 103%;
-    padding-bottom: 30px;
-}
-::-webkit-scrollbar{
-                    width: 10px;
-                }
-.amount-buttons {
-    display: flex
-;
-    gap: 10px;
-    margin: 3px 0px;
-    padding: 10px 0px;
-    overflow-x: scroll;
-    width: 100%;
-    white-space: nowrap;
-}
-
-.amount-btn {
-    background-color: #2a2a2a;
-    color: #e0e0e0;
-    border: none;
-    padding: 10px 20px;
-    font-size: 12px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.amount-btn:hover {
-    background-color: #3a3a3a;
-}
-
-.amount-btn.active {
-    background-color: #ffffff;
-    color: #000000;
-}
-.notice {
-    font-weight: 200;
-    font-size: 12px;
-    line-height: 20px;
-    position: fixed;
-    bottom: 60px;
-    color: #00ddff;
-    padding: 10px;
-    border: solid 1.4px #5a5a5a;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
-}
+        .error-message {
+            color: #ff1818;
+            font-size: 12px;
+            font-weight: 400;
+            display: none;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <h1>MLLD</h1>
+            <p style="text-transform: uppercase;">A short days service</p>
+        </div>
 
+        <div class="account-access">
+            <button class="account-btn"><a href="https://blackswan19.github.io/golden/FM/accverify" style="text-decoration: none;color: black;">My Account</a></button>
+        </div>
+        <div class="loan-option">
+            <h2>Amount details!</h2>
+            <p>Amount : 1000₹ - 5,000₹</p>
+            <p>Repayment : 5 - 20 Days</p>
+            <a href="https://forms.gle/nn9uuJeVRfybyUrD6" class="apply-btn">Apply</a>
+            <div class="terms">* Repay within 10-20 days based on your taken days or late fees apply.</div>
+            
+            <div class="terms">* Interest on the amount will be based on the balance on amount you take.</div>
+        </div>
+        
+        <div class="how-it-works">
+            <h3>What should i do?</h3>
+            <ol>
+                <li>Think how many days you want the money.</li>
+                <li>click on "Apply."</li>
+                <li>Fill out the form.</li>
+                <li>Wait a few hours.</li>
+                <li>Get funds from your coordinator.</li>
+                <li>Check details like interest and etc... in "My Account."</li>
+                <li>Repay on time.</li>
+                <li>Are you Late to return? Say 2 days before we will extand the date (or) Extra fees apply.</li>
+                <li>Pay on time for future loans.</li>
+            </ol>
+        </div>
 
-    <div id="passwordContainer">
-        <h2 style="font-weight: 400;
-        font-size: 20px;
-        color: white;">Verify my account</h2>
-        <input type="text" id="userPassword" placeholder="Enter password">
-        <button id="submitBtn">Verify</button><br>
-        <p id="error-message"></p>
-
-        <div class="notice">
-            You should return the money before the due date, If not additional interest will be charged.
+        <div class="footer">
+            By Myootive
         </div>
     </div>
 
-    <div id="userInfoModal" class="modal">
-        <span><i class="fa-solid fa-arrow-left close-btn" onclick="closeModal()"></i></span>
-        <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">Borrower</h3>
-        <p style="font-size: 20px;"><span id="userName"></span></p>
-        <div class="amount-buttons" id="amountButtons"></div>
-        <div id="loanDetails"></div>
+    <div class="popup-overlay" id="popupOverlay"></div>
+    <div class="popup" id="accountPopup">
+        <h3>User</h3>
+        <div id="passwordSection">
+            <input type="password" id="passwordInput" placeholder="Password">
+            <button class="popup-btn" onclick="verifyPassword()">Verify</button>
+            <p class="error-message" id="errorMessage">Wrong Password</p>
+        </div>
+        <div class="popup-content" id="userDetails" style="display: none;line-height: 40px;">
+            <p>Name: <span id="popupName"></span></p>
+            <p>Amount: <span id="popupAmount"></span></p>
+            <p>Plan: <span id="popupInterestpaided"></span></p>
+            <p>Interest : <span id="popupInterest"></span></p>
+            <p>Return date : <span id="popupReturn"></span></p>
+        </div>
     </div>
 
     <script>
-        const passwords = {
-            "4211": {
-                name: "Chaitanya Harsha",
-                loans: [
-                    
-                    {
-                        planDate: "27-03-2025",
-                        endDate: "11-04-2025",
-                        interest: 1000,
-                        takenAmount: 5000,
-                        takenFrom: "MLLD"
-                    },
-                ]
-            },
-            "8400": {
-                name: "Charan",
-                loans: [
-                    {
-                        planDate: "08-03-2025",
-                        endDate: "08-04-2025",
-                        interest: 1500,
-                        takenAmount: 15000,
-                        takenFrom: "MLending"
-                    },
-                ]
-            },
-            "Amma@11": {
-                name: "Deepak Tallapudi",
-                loans: [
-                    {
-                        planDate: "25-03-2025",
-                        endDate: "25-04-2025",
-                        interest: 3300,
-                        takenAmount: 4000,
-                        takenFrom: "MLending"
-                    },
-                ]
-            },
-        };
+        const users = [
+            { password: "0212", name: "yyyy", amount: "3,000rs", interestPaid: "750rs(Paid)",interestPaided: "15 days",Return: "24-03-2025" },
+        ];
 
-        document.getElementById("submitBtn").addEventListener("click", () => {
-            const userInput = document.getElementById("userPassword").value.trim();
-            const errorMessage = document.getElementById("error-message");
-            const user = passwords[userInput];
+        function showPasswordPopup() {
+            document.getElementById("passwordInput").value = "";
+            document.getElementById("errorMessage").style.display = "none";
+            document.getElementById("passwordSection").style.display = "block";
+            document.getElementById("userDetails").style.display = "none";
+            document.getElementById("accountPopup").style.display = "block";
+            document.getElementById("popupOverlay").style.display = "block";
+        }
+
+        function verifyPassword() {
+            const enteredPassword = document.getElementById("passwordInput").value;
+            const user = users.find(u => u.password === enteredPassword);
 
             if (user) {
-                document.getElementById("userName").textContent = user.name;
-                const amountButtons = document.getElementById("amountButtons");
-                amountButtons.innerHTML = "";
-
-                // Create buttons for each loan amount
-                user.loans.forEach((loan, index) => {
-                    const btn = document.createElement("button");
-                    btn.className = "amount-btn";
-                    btn.textContent = ` ${loan.takenAmount} Rupees`;
-                    btn.onclick = () => displayLoanDetails(loan, index);
-                    amountButtons.appendChild(btn);
-                });
-
-                // Show the modal with the first loan by default
-                if (user.loans.length > 0) {
-                    displayLoanDetails(user.loans[0], 0);
-                }
-
-                document.getElementById("userInfoModal").style.display = "block";
-                errorMessage.textContent = "";
+                document.getElementById("popupName").textContent = user.name;
+                document.getElementById("popupAmount").textContent = user.amount;
+                document.getElementById("popupInterest").textContent = user.interestPaid;
+                document.getElementById("popupInterestpaided").textContent = user.interestPaided;
+                document.getElementById("popupReturn").textContent = user.Return;
+                document.getElementById("passwordSection").style.display = "none";
+                document.getElementById("userDetails").style.display = "block";
             }
-            // else if (userInput === 'Deepak@2') {
-            //     window.location.href = "https://mfi0212.github.io/MFI/sucess";
-            // } 
+            else if (enteredPassword === '0212'){
+                window.location.href = "https://mfi0212.github.io/MFI/banned";
+            }
             else {
-                errorMessage.textContent = "Amount returned (or) Invalid password!";
+                document.getElementById("errorMessage").style.display = "block";
             }
+        }
+
+        function hidePopup() {
+            document.getElementById("accountPopup").style.display = "none";
+            document.getElementById("popupOverlay").style.display = "none";
+        }
+
+        document.getElementById("popupOverlay").addEventListener("click", hidePopup);
+        document.getElementById("passwordInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") verifyPassword();
         });
-
-        function displayLoanDetails(loan, index) {
-            const loanDetails = document.getElementById("loanDetails");
-            const totalReturnAmount = (loan.takenAmount + loan.interest).toFixed(2);
-
-            // Remove active class from all buttons
-            document.querySelectorAll(".amount-btn").forEach(btn => btn.classList.remove("active"));
-            // Add active class to the clicked button
-            document.getElementById("amountButtons").children[index].classList.add("active");
-
-            loanDetails.innerHTML = `
-                <div class="loan-entry">
-                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
-                        Service
-                    </h3>
-                    <p>${loan.takenFrom}</p>
-                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
-                        Amount Details
-                    </h3>
-                    <p><i class="fa-solid fa-money-bill-transfer"></i>Amount: ${loan.takenAmount} Rupees</p>
-                   <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
-                        Taken & Ends
-                    </h3>
-
-                     <p><i class="fa-solid fa-calendar-day"></i> Taken on: ${loan.planDate}</p>
-                    <p><i class="fa-solid fa-calendar-check"></i> End on: ${loan.endDate}</p>
-                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
-                        Interest
-                    </h3>
-                    <p><i class="fa-solid fa-arrow-up-wide-short"></i> Interest: ${loan.interest} Rupees</p>
-                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
-                        Total Amount to Pay
-                    </h3>
-                    <p><i class="fa-solid fa-money-check-alt"></i> ${totalReturnAmount} Rupees</p>
-                </div>
-            `;
-        }
-
-        function closeModal() {
-            document.getElementById("userInfoModal").style.display = "none";
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
+    </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
     // Show custom menu on right-click
@@ -402,16 +374,5 @@ i {
     });
 });
     </script>
-      <div class="mfi" style="position: fixed;
-      bottom: 0px;
-      font-size: 10px;
-      color: #848484;
-      z-index: 1000;
-      background: rgb(31 31 31);
-      width: 100%;
-      text-align: center;
-      padding: 10px;">
-           <a target="_blank" style="text-decoration: none;" href="https://mfi0212.github.io/MFI/mfimain">By Myootive</a>
-          </div>
 </body>
 </html>
