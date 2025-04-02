@@ -68,14 +68,14 @@ body {
 
 #userPassword {
     font-size: 16px;
-    border: 1px solid #ffffff1c;
+    border: 1px solid #ffffff47;
     background: #ffffff21;
     color: #fff;
     padding: 8px 25px;
     text-align: center;
     width: 90%;
     outline: none;
-    max-width: 250px;
+    max-width: 280px;
     margin: 21px;
         }
         #userPassword:focus{
@@ -86,17 +86,19 @@ body {
     background-color: #ffffff;
     color: #000000;
     border: none;
-    font-size: 16px;
+    font-size: 15px;
     cursor: pointer;
-    padding: 6.5px 15px;
+    padding: 6.5px 25px;
 }
-
+#submitBtn:hover{
+    background-color: #939393;
+}
 a{
     color: #848484;
 }
 
 #error-message {
-    color: #ff0000;
+    color: #ff1c1c;
     font-size: 12px;
     margin-top: 10px;
 }
@@ -251,7 +253,7 @@ i {
         <h2 style="font-weight: 400;
         font-size: 20px;
         color: white;">Verify my account</h2>
-        <input type="text" id="userPassword" placeholder="Enter password">
+        <input type="text" id="userPassword" placeholder="Enter password" autocomplete="off">
         <button id="submitBtn">Verify</button><br>
         <p id="error-message"></p>
 
