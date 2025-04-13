@@ -13,15 +13,18 @@
     font-family: "Poppins", serif;
 }
         body {
-            background-color: rgb(31 31 31);
-            /* background: rgb(21 30 39); */
+            background-color: rgb(15 20 23);
             color: #ffffff;
             max-width: 800px;
             margin: 0 auto;
             padding: 25px;
             line-height: 30px;
-            filter: grayscale(0.1);
             letter-spacing: 0.4px;
+            display: flex
+;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
         }
 
         h1, h2, h3 {
@@ -30,9 +33,9 @@
         }
 
         .about {
-            background: rgb(0 0 0 / 42%);
-            padding: 20px;
-            margin-top: 25px;
+    padding: 9px;
+    margin-top: 25px;
+    text-align: center;
         }
 
         a {
@@ -46,17 +49,19 @@
 
         .button {
             display: inline-block;
-    background-color: rgb(255 255 255);
-    color: #000000;
-    padding: 4px 20px;
+    background-color: rgb(255 255 255 / 0%);
+    color: #0ea7f3;
+    padding: 1px 20px;
     text-decoration: none;
     margin: 5px;
     font-size: 14px;
-
+    border: solid 1.5px;
+    border-radius: 100px;
         }
         .button:hover {
             text-decoration: none;
-            background-color: #000000;
+            background-color: #0ea7f3;
+            color: black;
         }
 
         ul {
@@ -73,7 +78,7 @@
 
         p {
             color: #b4b4b4;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
         }
         li {
@@ -103,18 +108,15 @@
 <body>
     
     <div class="logo" style="padding: 4px; line-height: 10px;">
-        <h6>Welcome to <h1> MLending</h1></h6>
+        <h6>By Myootive <h1> MLending</h1></h6>
     </div>
-<div class="about">
+    <div class="about">
         <h2>Wait few hours!</h2>
         <p>To provide the amount, we need to collect the amount first. It takes few hours to arrange the amount, so be patience during this time to get the amount.<br><br></p>
     </div>
-    <div class="options" style="padding: 13px;">
-        <p>Like to take money (or) verify details?</p>
-        <a href="https://forms.gle/1jPmg6tQWBRz9ikz6" class="button">Take money</a>
-        <a href="https://blackswan19.github.io/golden/FM/accverify" class="button">My account</a>
+    <div class="options" style="padding: 13px;text-align: center;">
+        <a href="https://blackswan19.github.io/golden/FM/accverify" class="button">Check my account</a>
     </div>
-    
     <div class="about">
         <h2>I'm late</h2>
         <p>
@@ -125,12 +127,28 @@
             Contact us if you think you'll be late so we can help you.
         </p>
     </div>
+    
     <footer>
         <p style="font-size: 10px; padding: 10px; text-align: center;">
             
             <a style="text-decoration: none;color: white;">By Myootive</a>
         </p>
     </footer>
+   
+    
+    <div class="option" style="    text-align: center;
+    position: fixed;
+    bottom: 20px;
+    width: 90%;
+">
+        <a style="background: #252a2d;
+        color: white;
+        border: none;
+        border-radius: 16px;
+        padding: 14px 25px;
+        filter: drop-shadow(0px 0px 16px gray);" href="https://forms.gle/1jPmg6tQWBRz9ikz6" class="button">Take money</a>
+    </div>
+
     <script>
             document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
