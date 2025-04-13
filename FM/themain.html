@@ -33,11 +33,15 @@
         }
 
         .about {
-    padding: 9px;
-    margin-top: 25px;
+            padding: 9px;
+    top: 80px;
     text-align: center;
-    border-bottom: solid gray;max-width: 600px;
-    width: 100%;
+    max-width: 600px;
+    width: 95%;
+    border-radius: 15px;
+    background: #21262a;
+    position: relative;
+    margin: 15px;
         }
 
         a {
@@ -84,7 +88,8 @@
     font-weight: 400;
         }
         li {
-            font-size: 13px;
+            font-size: 12px;
+            color: #a9a9a9;
         }
 
         .copy-icon {
@@ -109,37 +114,28 @@
 </head>
 <body>
     
-    <div class="logo" style="padding: 4px;
-    line-height: 10px;
+    <div class="logo" style="padding: 15px;
+    /* line-height: 10px; */
     text-align: center;
     display: flex
-;
+;z-index: 100;
     justify-content: center;
     background: #1b2023;
     width: 100%;
     position: fixed;
     top: 0px;
-    font-size: 11px;">
-        <h6><h1> MLending</h1></h6>
+    font-size: 11px;
+    height: 50px;">
+        <h6><h1> MLending</h1> By Myootive</h6>
     </div>
     <div class="about">
         <h2>Wait few hours!</h2>
-        <p>To provide the amount, we need to collect the amount first. It takes few hours to arrange the amount, so be patience during this time to get the amount.<br><br></p>
+        <p>To provide the amount, we need to collect the amount first. It takes few hours to arrange the amount, so be patience during this time to get the amount.</p>
     </div>
     <div class="about" style="padding: 13px;text-align: center;">
         <h2>Check details</h2>
         <p>Click here to check details like interest and etc...</p>
         <a href="https://blackswan19.github.io/golden/FM/accverify" class="button">Check my account</a>
-    </div>
-    <div class="about">
-        <h2>I'm late</h2>
-        <p>
-            If you are <span class="highlight">late in returning the amount</span>,
-            the interest will <span class="highlight">double for every 2 days</span>.
-        </p>
-        <p>
-            Contact us if you think you'll be late so we can help you.
-        </p>
     </div>
     <div class="about" style="text-align: left;">
         <h3>What should i do?</h3>
@@ -154,6 +150,16 @@
             <li>Pay on time for future loans.</li>
         </ol>
     </div>
+    <div class="about" style="    padding-bottom: 100px;">
+        <h2>I'm late</h2>
+        <p>
+            If you are <span class="highlight">late in returning the amount</span>,
+            the interest will <span class="highlight">double for every 2 days</span>.
+        </p>
+        <p>
+            Contact us if you think you'll be late so we can help you.
+        </p>
+    </div>
     <footer>
         <p style="font-size: 10px; padding: 10px; text-align: center;">
             
@@ -164,7 +170,7 @@
     
     <div class="option" style="    text-align: center;
     position: fixed;
-    bottom: 10px;
+    bottom: 40px;
     width: 90%;
 ">
         <a style="background: #1b2023;
