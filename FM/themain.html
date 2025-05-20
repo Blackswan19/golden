@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> MLending </title>
+    <title>Verify my account</title>
+    <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/736x/68/3d/8f/683d8f58c98a715130b1251a9d59d1b9.jpg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
-    
-    <link rel="icon" type="image/x-icon" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Anta&family=Audiowide&family=Braah+One&family=Cardo:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dongle&family=Dosis:wght@200..800&family=DotGothic16&family=Goldman:wght@400;700&family=Gruppo&family=Handjet:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mandali&family=Michroma&family=Oxanium:wght@200..800&family=Pixelify+Sans:wght@400..700&family=Poiret+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&family=Sarpanch:wght@400;500;600;700;800;900&family=Share+Tech&family=Space+Grotesk:wght@300..700&family=Stalinist+One&family=VT323&family=Zen+Dots&display=swap');
-*{
-    font-family: "Poppins", serif;
-}
- * {
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+     * {
   -webkit-tap-highlight-color: transparent;
 }
 body {
@@ -21,203 +18,454 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
-        body {
-            background-color: rgb(10 10 10);
-            color: #ffffff;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 25px;
-            line-height: 30px;
-            letter-spacing: 0.4px;
-            display: flex
-;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-        }
-
-        h1, h2, h3 {
-            font-weight: 500;
-    color: #00aaff;
-        }
-
-        .about {
-            padding: 9px;
-    top: 80px;
-    text-align: center;
-    max-width: 600px;
-    width: 99%;
-    border-radius: 15px;
-    background: #1d1d1d;
-    position: relative;
-    margin: 10px;
-        }
-
-        a {
-            color: #00aaff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-            color: #ffffff;
-        }
-
-        .button {
-            display: inline-block;
-    background-color: rgb(255 255 255 / 0%);
-    color: #0ea7f3;
-    padding: 1px 20px;
-    text-decoration: none;
-    margin: 5px;
-    font-size: 14px;
-    border: solid 1.5px #0ea7f3;
-    border-radius: 100px;
-        }
-        .button:hover {
-            text-decoration: none;
-            background-color: #0ea7f3;
-            color: black;
-            border: solid 1.5px #0ea7f3;
-        }
-
-        ul {
-            list-style-type: none;
+        * {
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+            margin: 0;
             padding: 0;
         }
 
-        ul li {
-            margin-bottom: 10px;
+        body {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            min-height: 100vh;
+            background-color: rgb(10 10 10);
+            color: #e0e0e0;
+            letter-spacing: 0.5px;
         }
 
-        p {
-            color: #b4b4b4;
-    font-size: 12px;
-    font-weight: 400;
-        }
-        li {
-            font-size: 12px;
-            color: #a9a9a9;
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1a1a1a;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            z-index: 10;
         }
 
-        .copy-icon {
+        .header h2 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+
+        /* Password Container */
+        #passwordContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            width: 100%;
+            text-align: center;
+            line-height: 15px;
+            position: fixed;
+        }
+
+        #userPassword {
+            font-size: 16px;
+            border: solid 1.5px transparent;
+            background: #1d1d1d;
+            color: #fff;
+            padding: 8px 25px;
+            text-align: center;
+            width: 90%;
+            outline: none;
+            max-width: 280px;
+            margin: 26px;
+            border-radius: 10px;
+            font-weight: 100;
+            letter-spacing: 0.6px;
+        }
+
+        #userPassword:focus {
+            background: #3a3a3a;
+        }
+
+        #submitBtn {
+            background-color: #00aaff;
+            color: #000000;
+            border: none;
+            font-size: 15px;
             cursor: pointer;
-            background-color: #333;
-            color: white;
-            border-radius: 4px;
-            padding: 5px 10px;
-            font-size: 1.2em;
+            padding: 7.5px 30px;
+            font-weight: 500;
+            border-radius: 10px;
         }
-        .copy-icon:hover {
-            background-color: #444;
+
+        a {
+            color: #848484;
         }
-        .logo{
-            padding: 15px;
-    text-align: center;
-    display: flex
-;
-    z-index: 100;
-    justify-content: center;
-    background: #262626;
-    width: 45%;
+
+        #error-message {
+            color: #ff1c1c;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(10 10 10);
+            padding: 65px 0px 0px 24px;
+            line-height: 30px;
+            overflow-y: auto;
+            z-index: 10000000;
+        }
+
+        .modal h2 {
+            color: #e0e0e0;
+            font-weight: 500;
+        }
+
+        .modal h3 {
+            color: #00aeff;
+            font-size: 16px;
+            font-weight: 400;
+            text-decoration: underline;
+            margin: 25px 0;
+        }
+
+        .modal p {
+            color: #a0a0a0;
+            font-size: 14px;
+            font-weight: 400;
+            margin: 10px 0;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            color: #e0e0e0;
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 11;
+            background: #1d1d1d;
+            padding: 10px 11px;
+            border-radius: 10px;
+        }
+
+        i {
+            margin-right: 8px;
+        }
+
+        .logo {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 11;
+        }
+
+        .logo img {
+            width: 40px;
+            border-radius: 50%;
+        }
+
+        .logout-btn {
+            position: fixed;
+            top: 55px;
+            right: 5px;
+            background-color: #1d1d1d;
+            color: #e0e0e0;
+            border: none;
+            padding: 5px 12px;
+            font-size: 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            z-index: 11;
+        }
+
+        .logout-btn a {
+            color: #e0e0e0;
+            text-decoration: none;
+        }
+
+        .logout-btn:hover {
+            background-color: #3a3a3a;
+        }
+
+        /* Loan Entry and Amount Buttons */
+        .loan-entry {
+            padding: 10px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #2a2a2a;
+            width: 103%;
+            padding-bottom: 30px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .amount-buttons {
+            display: flex;
+            gap: 10px;
+            margin: 3px 0px;
+            padding: 10px 0px;
+            overflow-x: scroll;
+            width: 100%;
+            white-space: nowrap;
+        }
+
+        .amount-btn {
+            background-color: #1d1d1d;
+            color: #e0e0e0;
+            border: none;
+            padding: 10px 20px;
+            font-size: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .amount-btn:hover {
+            background-color: #434343;
+            color: rgb(255, 255, 255);
+        }
+
+        .amount-btn.active {
+            background-color: #00aef8;
+            color: #000000;
+        }
+
+        .notice {
+                font-weight: 200;
+    font-size: 12px;
+    line-height: 20px;
     position: fixed;
-    top: 0px;
-    font-size: 11px;
-    height: 50px;
-    backdrop-filter: blur(5px);
-    border-radius: 0px 0px 30px 30px;
-    
-        border-bottom: solid 1px #ffffff6b;
+    bottom: 60px;
+    color: #ffffffd4;
+    padding: 10px;
+    border: solid 1.4px #9595954d;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
         }
-        /* Simple responsive design */
-        @media (max-width: 600px) {
-            body {
-                padding: 20px;
-            }
-            .logo{
-                 width: 91%;
-        border-bottom: solid 1px #ffffff6b;
-            }
+
+        .powered-by {
+               position: fixed;
+    top: 11px;
+    font-size: 10px;
+    color: #e2e2e2;
+    z-index: 1000;
+    background: #3a3a3a;
+    text-align: center;
+    padding: 6px 11px;
+    display: none;
+    font-weight: 100;
+    border-radius: 8px;
         }
     </style>
 </head>
 <body>
-    
-    <div class="logo">
-        <h6><h1> MLending</h1> By Myootive</h6>
+    <div id="passwordContainer">
+        <h2 style="font-weight: 400; font-size: 20px; color: white;">Verify my account</h2>
+        <input type="text" id="userPassword" placeholder="Enter password" autocomplete="off">
+        <button id="submitBtn">Verify</button><br>
+        <p id="error-message"></p>
+        <div class="notice">
+            You should return the money before the due date, If not additional interest will be charged.
+        </div>
     </div>
-    <div class="about">
-        <h2>Wait few hours!</h2>
-        <p>To provide the amount, we need to collect the amount first. It takes few hours to arrange the amount, so be patience during this time to get the amount.</p>
+
+    <div id="userInfoModal" class="modal">
+        <span><i class="fa-solid fa-arrow-left close-btn" onclick="closeModal()"></i></span>
+        <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">Borrower</h3>
+        <p style="font-size: 20px;"><span id="userName"></span></p>
+        <div class="amount-buttons" id="amountButtons"></div>
+        <div id="loanDetails"></div>
     </div>
-    <div class="about" style="padding: 13px;text-align: center;">
-        <h2>Check details</h2>
-        <p>Click here to check details like interest and etc...</p>
-        <a href="https://blackswan19.github.io/golden/FM/accverify" class="button">Check my account</a>
+
+    <div class="mfi" style="position: fixed; bottom: 10px; font-size: 10px; color: #848484; z-index: 1000; background: transparent; width: 100%; text-align: center; padding: 10px;">
+        <a target="_blank" style="text-decoration: none;" href="https://mfi0212.github.io/MFI/mfimain">By Myootive</a>
     </div>
-    <div class="about" style="text-align: left;">
-        <h3>What should i do?</h3>
-        <ol>
-            <li>click on "Take money"</li>
-            <li>Fill out the form.</li>
-            <li>Wait a few hours.</li>
-            <li>Get funds from your coordinator.</li>
-            <li>Check details like interest and etc... in "My Account."</li>
-            <li>Repay on time.</li>
-            <li>Are you Late to return? Say 2 days before we will extand the date (or) Extra fees apply.</li>
-            <li>Pay on time for future loans.</li>
-        </ol>
-    </div>
-    <div class="about" style="    padding-bottom: 100px;">
-        <h2>I'm late</h2>
-        <p>
-            If you are <span class="highlight">late in returning the amount</span>,
-            the interest will <span class="highlight">double for every 2 days</span>.
-        </p>
-        <p>
-            Contact us if you think you'll be late so we can help you.
-        </p>
-    </div>
-    <footer>
-        <p style="font-size: 10px; padding: 10px; text-align: center;">
-            
-            <a style="text-decoration: none;color: white;">By Myootive</a>
-        </p>
-    </footer>
-   
-    
-    <div class="option" style="    text-align: center;
-    position: fixed;
-    bottom: 55px;
-    width: 90%;
-">
-        <a style="background: #232323;
-    color: #ffffff;
-    border: none;
-    border-radius: 15px;
-    padding: 10px 25px;
-    filter: drop-shadow(0px 0px 8px);" onclick="alert('We are redirecting you to taking form.')" href="https://mfi0212.github.io/MFI/takemoney" class="button">Take money</a>
+    <div class="powered-by" id="poweredBy">
+        Powered by BsPsgenerater
     </div>
 
     <script>
-            document.addEventListener("DOMContentLoaded", () => {
-    const customMenu = document.querySelector(".custom-menu");
+        const passwords = {
+            "4211": {
+                name: "Chaitanya Harsha",
+                loans: [
+                    {
+                        planDate: "24-05-2025",
+                        endDate: "23-05-2025(Extanded to 3 days)",
+                        interest: 7300,
+                        takenAmount: 18000,
+                        takenFrom: "MLending"
+                    },
+                    {
+                        planDate: "07-04-2025",
+                        endDate: "23-05-2025(Extanded to 3 days)",
+                        interest: 9300,
+                        takenAmount: 10000,
+                        takenFrom: "MLLD"
+                    },
+                ]
+            },
+            "Mahesh888*": {
+                name: "Mahesh",
+                loans: [
+                    {
+                        planDate: "06-04-2025",
+                        endDate: "03-06-2025(Extanded to 15 days)",
+                        interest: 3000,
+                        takenAmount: 10000,
+                        takenFrom: "MLending"
+                    },
+                ]
+            },
+            "Cherish@123": {
+                name: "Cherish",
+                loans: [
+                    {
+                        planDate: "12-04-2025",
+                        endDate: "29-05-2025",
+                        interest: 1400,
+                        takenAmount: 2000,
+                        //10 days
+                        takenFrom: "MLLD"
+                    },
+                     {
+                        planDate: "15-04-2025",
+                        endDate: "30-05-2025",
+                        interest: 360,
+                        takenAmount: 2000,
+                        takenFrom: "MLLD"
+                    },
+                    {
+                        planDate: "18-04-2025",
+                        endDate: "25-05-2025",
+                        interest: 150,
+                        takenAmount: 1500,
+                        takenFrom: "MLLD"
+                    },
+                    {
+                        planDate: "19-04-2025",
+                        endDate: "26-05-2025",
+                        interest: 250,
+                        takenAmount: 2500,
+                        takenFrom: "MLLD"
+                    },
+                     {
+                        planDate: "20-04-2025",
+                        endDate: "27-05-2025",
+                        interest: 250,
+                        takenAmount: 2500,
+                        takenFrom: "MLLD"
+                    },
+                ]
+            },
+        };
 
-    // Show custom menu on right-click
-    document.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-        customMenu.style.display = "block";
-        customMenu.style.top = `${event.pageY}px`;
-        customMenu.style.left = `${event.pageX}px`;
-    });
+        // Auto-fill password from localStorage on page load within 0.1s
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedPassword = localStorage.getItem("userPassword");
+            if (savedPassword) {
+                setTimeout(() => {
+                    document.getElementById("userPassword").value = savedPassword;
+                    // Show "Powered by BsPsgenerater" after pasting
+                    setTimeout(() => {
+                        document.getElementById("poweredBy").style.display = "block";
+                    }, 1000); // Display after 0.1s
+                }, 1000); // Paste within 0.1s
+            }
+        });
 
-    // Hide the menu when clicking elsewhere
-    document.addEventListener("click", () => {
-        customMenu.style.display = "none";
-    });
-});
+        document.getElementById("submitBtn").addEventListener("click", () => {
+            const userInput = document.getElementById("userPassword").value.trim();
+            const errorMessage = document.getElementById("error-message");
+            const user = passwords[userInput];
+
+            // Store the entered password in localStorage
+            if (userInput) {
+                localStorage.setItem("userPassword", userInput);
+                // Show "Powered by BsPsgenerater" after storing
+                setTimeout(() => {
+                    document.getElementById("poweredBy").style.display = "block";
+                }, 50000); // Display after 0.1s
+            }
+
+            if (user) {
+                document.getElementById("userName").textContent = user.name;
+                const amountButtons = document.getElementById("amountButtons");
+                amountButtons.innerHTML = "";
+
+                // Create buttons for each loan amount
+                user.loans.forEach((loan, index) => {
+                    const btn = document.createElement("button");
+                    btn.className = "amount-btn";
+                    btn.textContent = ` ${loan.takenAmount} Rupees`;
+                    btn.onclick = () => displayLoanDetails(loan, index);
+                    amountButtons.appendChild(btn);
+                });
+
+                // Show the modal with the first loan by default
+                if (user.loans.length > 0) {
+                    displayLoanDetails(user.loans[0], 0);
+                }
+
+                document.getElementById("userInfoModal").style.display = "block";
+                errorMessage.textContent = "";
+            } else {
+                errorMessage.textContent = "Amount returned (or) Invalid password!";
+            }
+        });
+
+        function displayLoanDetails(loan, index) {
+            const loanDetails = document.getElementById("loanDetails");
+            const totalReturnAmount = (loan.takenAmount + loan.interest).toFixed(2);
+
+            // Remove active class from all buttons
+            document.querySelectorAll(".amount-btn").forEach(btn => btn.classList.remove("active"));
+            // Add active class to the clicked button
+            document.getElementById("amountButtons").children[index].classList.add("active");
+
+            loanDetails.innerHTML = `
+                <div class="loan-entry">
+                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                        Service
+                    </h3>
+                    <p>${loan.takenFrom}</p>
+                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                        Amount Details
+                    </h3>
+                    <p><i class="fa-solid fa-money-bill-transfer"></i>Amount: ${loan.takenAmount} Rupees</p>
+                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                        Taken & Ends
+                    </h3>
+                    <p><i class="fa-solid fa-calendar-day"></i> Taken on: ${loan.planDate}</p>
+                    <p><i class="fa-solid fa-calendar-check"></i> End on: ${loan.endDate}</p>
+                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                        Interest
+                    </h3>
+                    <p><i class="fa-solid fa-arrow-up-wide-short"></i> Interest: ${loan.interest} Rupees</p>
+                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                        Total Amount to Pay
+                    </h3>
+                    <p><i class="fa-solid fa-money-check-alt"></i> ${totalReturnAmount} Rupees</p>
+                </div>
+            `;
+        }
+
+        function closeModal() {
+            document.getElementById("userInfoModal").style.display = "none";
+        }
     </script>
 </body>
 </html>
