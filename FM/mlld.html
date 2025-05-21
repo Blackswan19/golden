@@ -315,9 +315,9 @@
             <div class="terms">-> Repay within days based on your taken days or late fees apply.</div>
             <div class="terms">-> Interest on the amount will be based on the balance on amount you take.</div>
         </div>
-        <div class="account-access">
-            <button class="account-btn" onclick="showPasswordPopup()">My Account</button>
-            <a onclick="alert('We are redirecting you to taking form.')" href="https://mfi0212.github.io/MFI/takemoney" class="account-btn">Take money</a>
+       <div class="account-access">
+            <button class="account-btn"><a href="https://blackswan19.github.io/golden/FM/accverify" style="text-decoration: none;color: black;">My Account</a></button>
+            <a  onclick="alert('We are redirecting you to taking form.')" href="https://mfi0212.github.io/MFI/takemoney"  class="account-btn">Take money</a>
         </div>
         <div class="loan-option">
             <h2>I'm late</h2>
@@ -343,23 +343,7 @@
         </div>
     </div>
 
-    <div class="popup-overlay" id="popupOverlay"></div>
-    <div class="popup" id="accountPopup">
-        <h3>User</h3>
-        <div id="passwordSection">
-            <input type="password" id="passwordInput" placeholder="Password">
-            <button class="popup-btn" onclick="verifyPassword()">Verify</button>
-            <p class="error-message" id="errorMessage">Wrong Password</p>
-        </div>
-        <div class="popup-content" id="userDetails" style="display: none; line-height: 40px;">
-            <p>Name: <span id="popupName"></span></p>
-            <p>Amount: <span id="popupAmount"></span></p>
-            <p>Plan: <span id="popupInterestpaided"></span></p>
-            <p>Interest: <span id="popupInterest"></span></p>
-            <p>Return date: <span id="popupReturn"></span></p>
-        </div>
-    </div>
-
+    
     <script>
         // Theme Toggle Functionality
         const themeToggle = document.getElementById('themeToggle');
