@@ -217,7 +217,7 @@
     color: #00aeff;
     background: #0a0a0a;
     padding: 3px 10px;
-    border-radius: 0px 10px;
+    border-radius: 0px 8px;
         }
         .notice {
             font-weight: 200;
@@ -261,7 +261,11 @@
     <div id="userInfoModal" class="modal">
         <span><i class="fa-solid fa-arrow-left close-btn" onclick="closeModal()"></i></span>
         <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">Borrower</h3>
-        <p style="font-size: 20px;"><span id="userName"></span></p>
+        <p style="display: flex
+;
+    align-items: center;
+    font-size: 20px;
+    gap: 6px;"><span id="userName"></span> <img src="https://cdn-icons-png.freepik.com/256/11105/11105495.png?semt=ais_hybrid" alt="" width="18px"></p> 
         <div class="amount-buttons" id="amountButtons"></div>
         <div id="loanDetails"></div>
     </div>
