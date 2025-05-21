@@ -234,16 +234,16 @@
         }
         .powered-by {
             position: fixed;
-            top: 11px;
-            font-size: 10px;
-            color: #e2e2e2;
-            z-index: 1000;
-            background: #3a3a3a;
-            text-align: center;
-            padding: 6px 11px;
-            display: none;
-            font-weight: 100;
-            border-radius: 8px;
+           top: 11px;
+    font-size: 10px;
+    color: #000000;
+    z-index: 1000;
+    background: #ffffff;
+    text-align: center;
+    padding: 6px 15px;
+    display: none;
+    font-weight: 600;
+            border-radius:6px;
         }
     </style>
 </head>
@@ -367,7 +367,7 @@
                     document.getElementById("userPassword").value = savedPassword;
                     setTimeout(() => {
                         document.getElementById("poweredBy").style.display = "block";
-                    }, 1000);
+                    }, 10);
                 }, 1000);
             }
         });
