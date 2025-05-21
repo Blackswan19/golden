@@ -6,62 +6,99 @@
     <title>MLLD</title>
     <link rel="icon" type="image/x-icon" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        :root {
+            /* Dark Theme */
+            --background-color: rgb(10, 10, 10);
+            --text-color: #ffffff;
+            --header-bg: #1a1a1a;
+            --highlight-color: #00aaff;
+            --secondary-text: #c8c8c8;
+            --button-bg: #223134;
+            --button-text: #acacac;
+            --terms-color: #00bea9;
+            --footer-text: #b1b1b1;
+            --popup-bg: rgb(24, 24, 24);
+            --input-bg: rgb(52, 52, 52);
+            --input-text: #e5e5e5;
+            --error-color: #ff1818;
+        }
 
-* {
-    font-family: 'Poppins', sans-serif;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
- * {
-  -webkit-tap-highlight-color: transparent;
-}
-body {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
+        [data-theme="light"] {
+            /* Light Theme */
+            --background-color: #f4f4f4;
+            --text-color: #333333;
+            --header-bg: #ffffff;
+            --highlight-color: #0077cc;
+            --secondary-text: #555555;
+            --button-bg: #e0e0e0;
+            --button-text: #333333;
+            --terms-color: #008080;
+            --footer-text: #666666;
+            --popup-bg: #ffffff;
+            --input-bg: #e8e8e8;
+            --input-text: #333333;
+            --error-color: #cc0000;
+        }
+
         * {
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: rgb(10 10 10);
-            color: #ffffff;
+            background-color: var(--background-color);
+            color: var(--text-color);
             line-height: 1.6;
             letter-spacing: 0.5px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         .container {
             margin: 20px auto;
-    max-width: 660px;
-    padding: 15px;
+            max-width: 660px;
+            padding: 15px;
         }
 
         .header {
             text-align: center;
-    padding: 20px 0 30px;
-    background: #1a1a1a;
-    border-radius: 15px;
+            padding: 20px 0 30px;
+            background: var(--header-bg);
+            border-radius: 15px;
+            position: relative;
         }
 
         .header h1 {
             font-size: 30px;
-    font-weight: 500;
-    color: #00aaff;
+            font-weight: 500;
+            color: var(--highlight-color);
         }
 
         .header p {
-           font-size: 10px;
-    font-weight: 500;
-    color: #ffffff;
-    margin-top: -5px;
-    letter-spacing: 0.5px;
+            font-size: 10px;
+            font-weight: 500;
+            color: var(--text-color);
+            margin-top: -5px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: var(--highlight-color);
         }
 
         .account-access {
@@ -70,46 +107,48 @@ body {
         }
 
         .account-btn {
-            background: #00aaff;
+            background: var(--highlight-color);
             color: #000000;
-    padding: 10px 18px;
-    border: none;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-    border-radius: 10px;
+            padding: 10px 18px;
+            border: none;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            border-radius: 10px;
+            margin: 0 5px;
         }
 
         .account-btn:hover {
-            background: #00aaff89;
+            background: var(--highlight-color);
+            opacity: 0.7;
         }
 
         .loan-option {
-            background:#1a1a1a;
-    padding: 25px;
-    margin: 20px 0;
-    border-radius: 19px;
+            background: var(--header-bg);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 19px;
         }
 
         .loan-option h2 {
             font-size: 20px;
-    font-weight: 400;
-    color: #00aaff;
-    margin-bottom: 15px;
-    letter-spacing: -0.2px;
+            font-weight: 400;
+            color: var(--highlight-color);
+            margin-bottom: 15px;
+            letter-spacing: -0.2px;
         }
 
         .loan-option p {
             font-size: 13px;
-    font-weight: 400;
-    color: #c8c8c8;
-    margin: 15px 0;
+            font-weight: 400;
+            color: var(--secondary-text);
+            margin: 15px 0;
         }
 
         .apply-btn {
-           background: #223134;
-    color: #acacac;
+            background: var(--button-bg);
+            color: var(--button-text);
             padding: 8px 20px;
             font-size: 14px;
             font-weight: 600;
@@ -120,29 +159,28 @@ body {
         }
 
         .apply-btn:hover {
-            background: #2231348f;
+            background: var(--button-bg);
+            opacity: 0.8;
         }
 
         .terms {
             font-size: 11px;
-    font-weight: 200;
-    color: #00bea9;
-    margin-top: 10px;
-
+            font-weight: 200;
+            color: var(--terms-color);
+            margin-top: 10px;
         }
 
         .how-it-works {
             margin: 30px 0;
             padding: 25px;
-            background: #1a1a1a;
-    border-radius: 15px;
+            background: var(--header-bg);
+            border-radius: 15px;
         }
 
         .how-it-works h3 {
             font-size: 20px;
             font-weight: 400;
-
-            color: #00aaff;
+            color: var(--highlight-color);
             margin-bottom: 15px;
             letter-spacing: -0.2px;
         }
@@ -151,15 +189,15 @@ body {
             padding-left: 20px;
             font-size: 14px;
             font-weight: 400;
-            color: #c0c0c0;
+            color: var(--secondary-text);
         }
 
         .how-it-works li {
             margin: 1px 0;
-    font-size: 12px;
-    line-height: 25px;
-    font-weight: 400;
-    color: #ffffff;
+            font-size: 12px;
+            line-height: 25px;
+            font-weight: 400;
+            color: var(--text-color);
         }
 
         .footer {
@@ -167,7 +205,7 @@ body {
             padding: 10px 0;
             font-size: 12px;
             font-weight: 400;
-            color: #b1b1b1;
+            color: var(--footer-text);
         }
 
         .popup-overlay {
@@ -187,7 +225,7 @@ body {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgb(24 24 24);
+            background-color: var(--popup-bg);
             padding: 30px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             z-index: 1000;
@@ -198,23 +236,23 @@ body {
         .popup h3 {
             font-size: 22px;
             font-weight: 600;
-            color: #00aaff;
+            color: var(--highlight-color);
             margin-bottom: 20px;
             letter-spacing: -0.2px;
-            border-bottom: solid 2px #ffffff2e;
+            border-bottom: solid 2px rgba(255, 255, 255, 0.18);
         }
 
         .popup input {
             width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: none;
-    background: rgb(52 52 52);
-    color: #e5e5e5;
-    font-size: 14px;
-    font-weight: 400;
-    text-align: center;
-    outline: none;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            background: var(--input-bg);
+            color: var(--input-text);
+            font-size: 14px;
+            font-weight: 400;
+            text-align: center;
+            outline: none;
         }
 
         .popup input::placeholder {
@@ -222,8 +260,8 @@ body {
         }
 
         .popup-btn {
-           background: #223134;
-    color: #acacac;
+            background: var(--button-bg);
+            color: var(--button-text);
             padding: 10px 25px;
             border: none;
             font-size: 14px;
@@ -233,30 +271,32 @@ body {
         }
 
         .popup-btn:hover {
-            background: #223134a4;
+            background: var(--button-bg);
+            opacity: 0.8;
         }
 
         .popup-content p {
             font-size: 14px;
             font-weight: 400;
-            color: #ffffff;
+            color: var(--text-color);
             margin: 10px 0;
             text-align: left;
         }
 
         .popup-content span {
-            color: #00aaff;
+            color: var(--highlight-color);
             font-weight: 600;
         }
 
         .error-message {
-            color: #ff1818;
+            color: var(--error-color);
             font-size: 12px;
             font-weight: 400;
             display: none;
             margin-top: 10px;
         }
-        a{
+
+        a {
             text-decoration: none;
         }
     </style>
@@ -265,40 +305,36 @@ body {
     <div class="container">
         <div class="header">
             <h1>MLLD</h1>
-            <p style="text-transform: uppercase;">A short days service</p>
+            <p>A short days service</p>
+            <button class="theme-toggle" id="themeToggle" title="Toggle Theme">🌙</button>
         </div>
         <div class="loan-option">
             <h2>Amount details!</h2>
-            <p>Amount : 100 - 5000₹</p>
-            <p>Repayment : 1 - 15 Days</p>
+            <p>Amount: 100 - 5000₹</p>
+            <p>Repayment: 1 - 15 Days</p>
             <div class="terms">-> Repay within days based on your taken days or late fees apply.</div>
-            <div class="terms">->  Interest on the amount will be based on the balance on amount you take.</div>
+            <div class="terms">-> Interest on the amount will be based on the balance on amount you take.</div>
         </div>
         <div class="account-access">
-            <button class="account-btn"><a href="https://blackswan19.github.io/golden/FM/accverify" style="text-decoration: none;color: black;">My Account</a></button>
-            <a  onclick="alert('We are redirecting you to taking form.')" href="https://mfi0212.github.io/MFI/takemoney"  class="account-btn">Take money</a>
+            <button class="account-btn" onclick="showPasswordPopup()">My Account</button>
+            <a onclick="alert('We are redirecting you to taking form.')" href="https://mfi0212.github.io/MFI/takemoney" class="account-btn">Take money</a>
         </div>
         <div class="loan-option">
             <h2>I'm late</h2>
-            <p>
-                If you are <span class="highlight">late in returning the amount</span>,
-                the interest will <span class="highlight">double for every 2 hours</span>.
-            </p>
-            <p>
-                Contact us if you think you'll be late so we can help you.
-            </p>
+            <p>If you are <span class="highlight">late in returning the amount</span>, the interest will <span class="highlight">double for every 2 hours</span>.</p>
+            <p>Contact us if you think you'll be late so we can help you.</p>
         </div>
         <div class="how-it-works">
-            <h3>What should i do?</h3>
+            <h3>What should I do?</h3>
             <ol>
                 <li>Think how many days you want the money.</li>
-                <li>click on "Apply."</li>
+                <li>Click on "Apply."</li>
                 <li>Fill out the form.</li>
                 <li>Wait a few hours.</li>
                 <li>Get funds from your coordinator.</li>
                 <li>Check details like interest and etc... in "My Account."</li>
                 <li>Repay on time.</li>
-                <li>Are you Late to return? Say 2 days before we will extand the date (or) Extra fees apply.</li>
+                <li>Are you Late to return? Say 2 days before we will extend the date (or) Extra fees apply.</li>
                 <li>Pay on time for future loans.</li>
             </ol>
         </div>
@@ -315,18 +351,40 @@ body {
             <button class="popup-btn" onclick="verifyPassword()">Verify</button>
             <p class="error-message" id="errorMessage">Wrong Password</p>
         </div>
-        <div class="popup-content" id="userDetails" style="display: none;line-height: 40px;">
+        <div class="popup-content" id="userDetails" style="display: none; line-height: 40px;">
             <p>Name: <span id="popupName"></span></p>
             <p>Amount: <span id="popupAmount"></span></p>
             <p>Plan: <span id="popupInterestpaided"></span></p>
-            <p>Interest : <span id="popupInterest"></span></p>
-            <p>Return date : <span id="popupReturn"></span></p>
+            <p>Interest: <span id="popupInterest"></span></p>
+            <p>Return date: <span id="popupReturn"></span></p>
         </div>
     </div>
 
     <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Load saved theme from localStorage
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        body.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+
+        // Existing Popup and User Verification Script
         const users = [
-            { password: "0212", name: "yyyy", amount: "3,000rs", interestPaid: "750rs(Paid)",interestPaided: "15 days",Return: "24-03-2025" },
+            { password: "0212", name: "yyyy", amount: "3,000rs", interestPaid: "750rs(Paid)", interestPaided: "15 days", Return: "24-03-2025" },
         ];
 
         function showPasswordPopup() {
@@ -350,11 +408,9 @@ body {
                 document.getElementById("popupReturn").textContent = user.Return;
                 document.getElementById("passwordSection").style.display = "none";
                 document.getElementById("userDetails").style.display = "block";
-            }
-            else if (enteredPassword === '0212'){
+            } else if (enteredPassword === '0212') {
                 window.location.href = "https://mfi0212.github.io/MFI/banned";
-            }
-            else {
+            } else {
                 document.getElementById("errorMessage").style.display = "block";
             }
         }
@@ -368,24 +424,6 @@ body {
         document.getElementById("passwordInput").addEventListener("keypress", function(event) {
             if (event.key === "Enter") verifyPassword();
         });
-    </script>
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-    const customMenu = document.querySelector(".custom-menu");
-
-    // Show custom menu on right-click
-    document.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-        customMenu.style.display = "block";
-        customMenu.style.top = `${event.pageY}px`;
-        customMenu.style.left = `${event.pageX}px`;
-    });
-
-    // Hide the menu when clicking elsewhere
-    document.addEventListener("click", () => {
-        customMenu.style.display = "none";
-    });
-});
     </script>
 </body>
 </html>
