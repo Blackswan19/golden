@@ -94,20 +94,18 @@
             margin-top: 10px;
         }
         .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgb(10 10 10);
-            padding: 65px 0px 0px 24px;
-            line-height: 30px;
-            overflow-y: scroll;
-            z-index: 10000000;
-            
+           display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:linear-gradient(186deg, #0b0063, #6f0068);
+    padding: 65px 0px 0px 24px;
+    line-height: 30px;
+    overflow-y: auto;
         scrollbar-width: none;
-
+    z-index: 10000000;
         }
         .modal h2 {
             color: #e0e0e0;
@@ -121,23 +119,24 @@
             margin: 25px 0;
         }
         .modal p {
-            color: #a0a0a0;
+            color: white;
             font-size: 14px;
             font-weight: 400;
             margin: 10px 0;
             transition: color 0.3s ease;
         }
         .close-btn {
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            color: #e0e0e0;
-            font-size: 18px;
-            cursor: pointer;
-            z-index: 11;
-            background: #1d1d1d;
-            padding: 10px 11px;
-            border-radius: 10px;
+                position: fixed;
+    top: 15px;
+    left: 15px;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 11;
+    background: #000000;
+    padding: 10px 11px;
+    border-radius: 13px;
+    filter: drop-shadow(0px 0px 16px white);
         }
         i {
             margin-right: 8px;
@@ -176,7 +175,7 @@
         .loan-entry {
             padding: 10px 0;
             margin-bottom: 20px;
-            border-bottom: none;
+            border: none;
             width: 103%;
             padding-bottom: 30px;
         }
@@ -193,19 +192,19 @@
             white-space: nowrap;
         }
         .amount-btn {
-            background-color: #1d1d1d;
+            background-color: #ffffff2e;
             color: #e0e0e0;
             border: none;
             padding: 10px 20px;
             font-size: 12px;
-            border-radius: 10px 0px;
+            border-radius: 12px;
             cursor: pointer;
             transition: background-color 0.3s ease;
             position: relative;
         }
         .amount-btn:hover {
-            background-color: #434343;
-            color: rgb(255, 255, 255);
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
         }
         .amount-btn.active {
             background-color: #00aef8;
@@ -337,11 +336,11 @@
                         takenFrom: "MLLD"
                     },
                     {
-                        planDate: "28-05-2025",
-                        endDate: "07-06-2025",
-                        interest: 380,
-                        takenAmount: 2000,
-                        takenFrom: "MLLD"
+                        planDate: "24-05-2025",
+                        endDate: "13-06-2025",
+                        interest: 760,
+                        takenAmount: 3500,
+                        takenFrom: "MLLD(Offer)"
                     },
                     {
                         planDate: "25-05-2025",
@@ -351,19 +350,18 @@
                         takenFrom: "MLLD(Offer)"
                     },
                     {
-                        planDate: "24-05-2025",
-                        endDate: "13-06-2025",
-                        interest: 760,
-                        takenAmount: 3500,
-                        takenFrom: "MLLD(Offer)"
-                    },
-                     
-                    {
                         planDate: "26-05-2025",
                         endDate: "15-06-2025",
                         interest: 1840,
                         takenAmount: 10000,
                         takenFrom: "MLending"
+                    },
+                    {
+                        planDate: "28-05-2025",
+                        endDate: "07-06-2025",
+                        interest: 380,
+                        takenAmount: 2000,
+                        takenFrom: "MLLD"
                     },
                     {
                         planDate: "29-05-2025",
@@ -405,9 +403,14 @@
                 userNameContainer.innerHTML = `<span id="userName">${user.name}</span>`;
                 if (user.showImage) {
                     userNameContainer.innerHTML += `
-                        <img src="https://cdn-icons-png.freepik.com/256/11105/11105495.png?semt=ais_hybrid" 
+                        <img src="https://i.ibb.co/N6HBcxrV/iconmini.png" style="border-radius: 100px;
+    filter: drop-shadow(0px 0px 10px white);
+    width: 8%;
+    max-width: 28px;
+    opacity: 100%;"
                              alt="User Icon" 
-                             width="18px">
+                             width="38px"
+                             >
                     `;
                 }
 
@@ -467,6 +470,15 @@
 
             loanDetails.innerHTML = `
                 <div class="loan-entry">
+                    <h4 style="position: fixed;
+    bottom: 9px;
+    right: 9px;
+    font-weight: 500;
+    font-size: 11px;
+    background: #ffffff38;
+    padding: 0px 15px;
+    border-radius: 80px;">Mini-STAR</h4>
+    
                     <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
                         Service
                     </h3>
