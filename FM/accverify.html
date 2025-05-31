@@ -345,8 +345,9 @@
             "Cherish@123": {
                 name: "Cherish",
                 
-                membershipType: "Premium",
-                membershipIcon: "https://i.ibb.co/TXfBWNK/icontele.png",
+                membershipType: "Your premium subscription is about to expire.",
+                membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
+                // membershipIcon: "https://i.ibb.co/TXfBWNK/icontele.png",
 
 
                 loans: [
@@ -495,6 +496,7 @@
 
             loanDetails.innerHTML = `
                 <div class="loan-entry">
+                    
                     <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
                         Service
                     </h3>
@@ -544,7 +546,7 @@
         document.getElementById("userName").textContent = user.name;
         const membershipTypeContainer = document.getElementById("membershipType");
         membershipTypeContainer.innerHTML = `
-            <a href="https://mfi0212.github.io/MFI/starpre" style="text-decoration: none;color: #ff66f9;"> ${user.membershipType}</a>
+            <a href="https://mfi0212.github.io/MFI/starpre" style="text-decoration: none;color: red;"> ${user.membershipType}</a>
         `;
 
         // Display user name with membership icon
@@ -579,7 +581,6 @@
 });
     </script>
     <script>
-        
         document.addEventListener("DOMContentLoaded", () => {
             const customMenu = document.querySelector(".custom-menu");
 
