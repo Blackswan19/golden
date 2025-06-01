@@ -303,6 +303,8 @@
                 name: "Chaitanya Harsha",
                 membershipType: "Normal",
                 membershipIcon: "https://i.ibb.co/LzFMLP3Z/iconnrml.png",
+
+                 // membershipIcon: "https://i.ibb.co/TXfBWNK/icontele.png",
                 loans: [
                     {
                         planDate: "24-05-2025",
@@ -343,11 +345,8 @@
             },
             "Cherish@123": {
                 name: "Cherish",
-                
-                membershipType: "Your premium subscription is expired.",
+                membershipType: "<p style='color: #00ff00;'>Welcome Cherish your new account created on 01-06-2025</p>",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-                // membershipIcon: "https://i.ibb.co/TXfBWNK/icontele.png",
-
 
                 loans: [
                     {
@@ -545,7 +544,7 @@
         document.getElementById("userName").textContent = user.name;
         const membershipTypeContainer = document.getElementById("membershipType");
         membershipTypeContainer.innerHTML = `
-            <a href="https://mfi0212.github.io/MFI/starpre" style="text-decoration: none;color: red;"> ${user.membershipType}</a>
+            <a href="https://mfi0212.github.io/MFI/starpre" style="text-decoration: none;color: red;font-weight: 600;"> ${user.membershipType}</a>
         `;
 
         // Display user name with membership icon
