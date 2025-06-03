@@ -259,14 +259,14 @@
         }
         .user-icon {
             width: 25px;
-    border-radius: 1000px;
+            border-radius: 1000px;
         }
         p#membershipType {
-    font-size: 11px;
-    color: #ff66f9;
-    padding: 0px;
-    font-weight: 300;
-}
+            font-size: 11px;
+            color: #ff66f9;
+            padding: 0px;
+            font-weight: 300;
+        }
     </style>
 </head>
 <body>
@@ -303,8 +303,6 @@
                 name: "Chaitanya Harsha",
                 membershipType: "Normal",
                 membershipIcon: "https://i.ibb.co/LzFMLP3Z/iconnrml.png",
-
-                 // membershipIcon: "https://i.ibb.co/TXfBWNK/icontele.png",
                 loans: [
                     {
                         planDate: "24-05-2025",
@@ -324,7 +322,7 @@
             },
             "Mahesh888*": {
                 name: "Mahesh",
-                 membershipType: "Normal",
+                membershipType: "Normal",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
                 loans: [
                     {
@@ -341,7 +339,7 @@
                         takenAmount: 3000,
                         takenFrom: "MLLD"
                     },
-                     {
+                    {
                         planDate: "01-06-2025",
                         endDate: "16-06-2025<br><p style='color:#00ff00;'></p>",
                         interest: 0,
@@ -352,14 +350,13 @@
             },
             "Cherish@123": {
                 name: "Cherish",
-                membershipType: "<p style='color: #00ff00;font-size:12px'>Your new account, set up on June 1, 2025, has been switched from premium to regular by your coordinator.</p>",
+                membershipType: "Normal",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-
                 loans: [
                     {
                         planDate: "21-05-2025",
-                        endDate: "31-05-2025<br><p style='color: red;'>Fine has been added for late return.</p>",
-                        interest: 980,
+                        endDate: "01-06-2025<br><p style='color: red;'>Fine has been added for late return.</p>",
+                        interest: 800,
                         takenAmount: 5000,
                         takenFrom: "MLLD"
                     },
@@ -434,8 +431,7 @@
                 document.getElementById("userName").textContent = user.name;
                 const membershipTypeContainer = document.getElementById("membershipType");
                 membershipTypeContainer.innerHTML = `
-                   
-                    Icon : ${user.membershipType}
+                    <a href="https://mfi0212.github.io/MFI/starpre" style="text-decoration: none;color: gray;"> ${user.membershipType}</a>
                 `;
 
                 // Display user name with membership icon
@@ -490,10 +486,47 @@
             }
         }
 
+        function calculateOverdueFine(endDate) {
+            try {
+                const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
+                const endMatch = endDate.split('(')[0].split('<')[0].match(dateFormat);
+                if (!endMatch) return { overdue: false, fine: 0 };
+
+                const end = new Date(`${endMatch[3]}-${endMatch[2]}-${endMatch[1]}`);
+                end.setHours(23, 59, 59, 999); // Set to end of the day
+                const now = new Date(); // Current date: June 3, 2025, 08:05 AM IST
+
+                if (now > end) {
+                    const diffTime = now - end;
+                    const hoursOverdue = Math.ceil(diffTime / (1000 * 60 * 60)); // Convert ms to hours
+                    const fine = hoursOverdue * 10; // 30 rupees per hour
+                    return { overdue: true, fine: fine, hoursOverdue: hoursOverdue };
+                }
+                return { overdue: false, fine: 0 };
+            } catch (error) {
+                console.error("Error calculating overdue fine:", error);
+                return { overdue: false, fine: 0 };
+            }
+        }
+
         function displayLoanDetails(loan, index) {
             const loanDetails = document.getElementById("loanDetails");
+            const userInput = document.getElementById("userPassword").value.trim();
+            const user = passwords[userInput];
+
+            // Calculate overdue fine and update interest if overdue
+            const overdueInfo = calculateOverdueFine(loan.endDate);
+            if (overdueInfo.overdue) {
+                // Update the interest in the passwords object
+                user.loans[index].interest = (loan.interest + overdueInfo.fine);
+                // Update endDate to include overdue notice if not already present
+                if (!loan.endDate.includes('Overdue')) {
+                    user.loans[index].endDate = `${loan.endDate.split('<')[0]}<br><p style="color: red;">Overdue by ${overdueInfo.hoursOverdue} hours, additional interest added.</p>`;
+                }
+            }
+
             const totalReturnAmount = (loan.takenAmount + loan.interest).toFixed(2);
-            const cleanEndDate = loan.endDate.split('(')[0];
+            const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
             const daysBetween = calculateDaysBetween(loan.planDate, cleanEndDate);
 
             document.querySelectorAll(".amount-btn").forEach(btn => btn.classList.remove("active"));
@@ -501,7 +534,6 @@
 
             loanDetails.innerHTML = `
                 <div class="loan-entry">
-                    
                     <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
                         Service
                     </h3>
@@ -509,7 +541,7 @@
                     <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
                         Amount Details
                     </h3>
-                    <p><i class="fa-solid fa-money-bill-transfer"></i>Amount: ${loan.takenAmount} Rupees</p>
+                    <p><i class="fa-solid fa-money-bill-transfer"></i> Amount: ${loan.takenAmount} Rupees</p>
                     <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
                         Taken & Ends
                     </h3>
@@ -535,55 +567,6 @@
             document.getElementById("userInfoModal").style.display = "none";
             document.getElementById("userPassword").value = ""; // Clear input field but keep localStorage
         }
-        document.getElementById("submitBtn").addEventListener("click", () => {
-    const userInput = document.getElementById("userPassword").value.trim();
-    const errorMessage = document.getElementById("error-message");
-    const user = passwords[userInput];
-
-    if (!userInput) {
-        errorMessage.textContent = "Please enter a password.";
-        return;
-    }
-
-    if (user) {
-        // Store password in localStorage to persist across page loads
-        localStorage.setItem("userPassword", userInput);
-        document.getElementById("userName").textContent = user.name;
-        const membershipTypeContainer = document.getElementById("membershipType");
-        membershipTypeContainer.innerHTML = `
-            <a href="https://mfi0212.github.io/MFI/starpre" style="text-decoration: none;color: gray;"> ${user.membershipType}</a>
-        `;
-
-        // Display user name with membership icon
-        const userNameContainer = document.getElementById("userNameContainer");
-        userNameContainer.innerHTML = `
-            <span id="userName">${user.name}</span>
-            <img src="${user.membershipIcon}" alt="${user.membershipType} Icon" class="user-icon">
-        `;
-
-        const amountButtons = document.getElementById("amountButtons");
-        amountButtons.innerHTML = "";
-
-        user.loans.forEach((loan, index) => {
-            const btn = document.createElement("button");
-            btn.className = "amount-btn";
-            btn.innerHTML = `${loan.takenAmount} Rupees <span class="amount-id">Amount ${index + 1}</span>`;
-            btn.onclick = () => displayLoanDetails(loan, index);
-            amountButtons.appendChild(btn);
-        });
-
-        if (user.loans.length > 0) {
-            displayLoanDetails(user.loans[0], 0);
-        } else {
-            errorMessage.textContent = "No active loans found.";
-        }
-
-        document.getElementById("userInfoModal").style.display = "block";
-        errorMessage.textContent = "";
-    } else {
-        errorMessage.textContent = "Invalid password.";
-    }
-});
     </script>
     <script>
         
@@ -604,7 +587,7 @@
                     customMenu.style.display = "none";
                 }
             });
-        // });
+        });
     </script>
 </body>
 </html>
