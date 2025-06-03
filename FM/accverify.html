@@ -306,15 +306,15 @@
                 loans: [
                     {
                         planDate: "24-05-2025",
-                        endDate: "05-06-2025(Extended to 10 days)",
-                        interest: 8500,
-                        takenAmount: 18000,
+                        endDate: "25-06-2025(Extended to 10 days)",
+                        interest: 4500,
+                        takenAmount: 15000,
                         takenFrom: "MLending"
                     },
                     {
                         planDate: "07-04-2025",
-                        endDate: "05-06-2025(Extended to 10 days)",
-                        interest: 10000,
+                        endDate: "25-06-2025(Extended to 10 days)",
+                        interest: 6000,
                         takenAmount: 10000,
                         takenFrom: "MLLD"
                     },
@@ -499,7 +499,7 @@
                 if (now > end) {
                     const diffTime = now - end;
                     const hoursOverdue = Math.ceil(diffTime / (1000 * 60 * 60)); // Convert ms to hours
-                    const fine = hoursOverdue * 10; // 30 rupees per hour
+                    const fine = hoursOverdue * 10; // 10 rupees per hour
                     return { overdue: true, fine: fine, hoursOverdue: hoursOverdue };
                 }
                 return { overdue: false, fine: 0 };
