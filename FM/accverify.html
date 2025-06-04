@@ -290,7 +290,6 @@
         <div class="amount-buttons" id="amountButtons"></div>
         <div id="loanDetails"></div>
     </div>
-
     <div class="mfi" style="position: fixed; bottom: 10px; font-size: 10px; color: #848484; z-index: 1000; background: transparent; width: 100%; text-align: center; padding: 10px;">
         <a target="_blank" style="text-decoration: none;" href="https://mfi0212.github.io/MFI/mfimain">By Myootive</a>
     </div>
@@ -301,7 +300,7 @@
         const passwords = {
             "4211": {
                 name: "Chaitanya Harsha",
-                membershipType: "Normal",
+                membershipType: "Premium - Mini",
                 membershipIcon: "https://i.ibb.co/LzFMLP3Z/iconnrml.png",
                 fineRate: 10,
                 loans: [
@@ -323,9 +322,9 @@
             },
             "Mahesh888*": {
                 name: "Mahesh",
-                membershipType: "Normal",
+                membershipType: "Premium - Mini",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-                fineRate: 5, 
+                fineRate: 10, 
                 loans: [
                     {
                         planDate: "06-05-2025",
@@ -352,9 +351,9 @@
             },
             "Cherish@123": {
                 name: "Cherish",
-                membershipType: "Normal",
+                membershipType: "Premium - Mini",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-                fineRate: 6, // 10 rupees per hour
+                fineRate: 10, // 10 rupees per hour
                 loans: [
                     {
                         planDate: "21-05-2025",
@@ -434,7 +433,9 @@
                 document.getElementById("userName").textContent = user.name;
                 const membershipTypeContainer = document.getElementById("membershipType");
                 membershipTypeContainer.innerHTML = `
-                    <a href="https://mfi0212.github.io/MFI/starpre" style="text-decoration: none;color: gray;"> ${user.membershipType}</a>
+                    <a href="https://mfi0212.github.io/MFI/starpre" style="text-decoration: underline;
+    color: #00ff55;
+    text-underline-position: under;"> ${user.membershipType}</a>
                 `;
 
                 // Display user name with membership icon
