@@ -301,7 +301,7 @@
             "4211": {
                 name: "Chaitanya Harsha",
                 membershipType: "Premium - Mini",
-                membershipIcon: "https://i.ibb.co/LzFMLP3Z/iconnrml.png",
+                membershipIcon: "https://i.ibb.co/LzFMLP3/iconnrml.png",
                 fineRate: 10,
                 loans: [
                     {
@@ -324,7 +324,7 @@
                 name: "Mahesh Muthinti",
                 membershipType: "Premium - Mini",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-                fineRate: 0, 
+                fineRate: 10, 
                 loans: [
                     {
                         planDate: "25-05-2025",
@@ -372,7 +372,7 @@
                     {
                         planDate: "25-05-2025",
                         endDate: "09-06-2025",
-                        interest: 660,
+                        interest: 660, 
                         takenAmount: 2500,
                         takenFrom: "MLLD(Offer)"
                     },
@@ -491,13 +491,12 @@
 
                 const end = new Date(`${endMatch[3]}-${endMatch[2]}-${endMatch[1]}`);
                 end.setHours(23, 59, 59, 999); // Set to end of the day
-                const now = new Date(); // Current date: June 4, 2025, 07:52 AM IST
+                const now = new Date(); // Current date: June 5, 2025, 01:21 PM IST
 
                 if (now > end) {
                     const diffTime = now - end;
                     const hoursOverdue = Math.ceil(diffTime / (1000 * 60 * 60)); // Convert ms to hours
-                    const fineRate = user.fineRate || 0; // Use user-specific fine rate or default to 10
-                    const fine = hoursOverdue * fineRate; // Calculate fine based on user's fine rate
+                    const fine = hoursOverdue * user.fineRate; // Use user-specific fine rate directly
                     return { overdue: true, fine: fine, hoursOverdue: hoursOverdue };
                 }
                 return { overdue: false, fine: 0 };
