@@ -1,797 +1,588 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>BsLinksaver</title>
-      <link rel="icon" type="image/x-icon" href="https://i.ibb.co/0DBHQHG/linksave.png">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-      <style>
-        @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Orbitron:wght@400..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Strait&display=swap');
-        
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify my account</title>
+    <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/736x/68/3d/8f/683d8f58c98a715130b1251a9d59d1b9.jpg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
         * {
-            font-family: "Red Hat Display", sans-serif;
-            list-style: none;
+            -webkit-tap-highlight-color: transparent;
+            font-family: 'Poppins', sans-serif;
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        
         body {
-            background-color: #121212;
-            color: #E0E0E0;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow-x: hidden;
-            line-height: 1.6;
-            padding: 15px;
-            letter-spacing: 0.3px;
+            min-height: 100vh;
+            background-color: #0f0f0f;
+            color: #e0e0e0;
+            letter-spacing: 0.5px;
         }
-        
-        .container {
-            background-color: #181818;
-            padding: 15px;
-            border-radius: 12px;
-            max-width: 800px;
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            text-align: left;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-        }
-        
-        h1 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: #0049ff;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-        
-        .search-section {
-            margin-bottom: 20px;
+            background-color: #1a1a1a;
+            padding: 10px 15px;
             display: flex;
-            gap: 8px;
             align-items: center;
-            flex-wrap: wrap;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            z-index: 10;
         }
-        
-        input[type="text"],
-        input[type="url"],
-        input[type="search"],
-        select {
-            padding: 8px;
-            margin: 0;
-            flex: 1;
-            background-color: #282828;
-            color: #E0E0E0;
-            border: 1px solid #3a3a3a;
-            border-radius: 8px;
-            font-size: 0.95rem;
+        .header h2 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+        #passwordContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            width: 100%;
+            text-align: center;
+            line-height: 15px;
+            position: fixed;
+        }
+        #userPassword {
+            font-size: 16px;
+            border: solid 1.5px transparent;
+            background: rgb(33 33 33);
+            color: #fff;
+            padding: 8px 25px;
+            text-align: center;
+            width: 90%;
             outline: none;
-            transition: border-color 0.3s ease;
-            width: 100%;
+            max-width: 280px;
+            margin: 26px;
+            border-radius: 10px;
+            font-weight: 100;
+            letter-spacing: 0.6px;
         }
-        
-        input:focus, select:focus {
-            border-color: #0049ff;
+        #userPassword:focus {
+            background: #3a3a3a;
         }
-        
-        button {
-            padding: 10px 18px;
-            background-color: #2e2e2e;
+        #submitBtn {
+            background-color: #00aaff;
+            color: #000000;
             border: none;
-            color: #ffffffde;
-            cursor: pointer;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        button:hover {
-            background-color: #0049ff;
-            color: #fff;
-        }
-        
-        .create-btn {
-            background-color: #0049ff;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .create-btn:hover {
-            background-color: #003bb3;
-        }
-        
-        .filter-section {
-            margin-bottom: 20px;
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        
-        .filter-section button {
-            padding: 8px 12px;
-            background-color: #282828;
-            border: none;
-            color: #b3b3b3;
-            cursor: pointer;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-        }
-        
-        .filter-section button.active {
-            background-color: #0049ff;
-            color: #fff;
-        }
-        
-        .filter-section button:hover {
-            background-color: #3a3a3a;
-            color: #fff;
-        }
-        
-        .add-category-btn {
-            padding: 8px;
-            font-size: 0.9rem;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .link-list {
-            margin-bottom: 20px;
-            max-height: 400px;
-            overflow-y: auto;
-            padding: 8px;
-            background-color: #181818;
-            border-radius: 8px;
-        }
-        
-        .table-header, .link-item {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) 100px;
-            gap: 8px;
-            padding: 8px;
-            align-items: center;
-            border-bottom: 1px solid #282828;
-        }
-        
-        .table-header div:nth-child(1), .link-item .title-container {
-            text-align: left;
-            justify-self: start;
-        }
-        
-        .table-header div:nth-child(2), .link-item div:nth-child(2) {
-            text-align: right;
-            justify-self: end;
-        }
-        
-        div {
-            font-size: 11px;
-            font-weight: 800;
-            color: gray;
-        }
-        
-        div a {
-            font-weight: 800;
-            color: gray;
             font-size: 15px;
+            cursor: pointer;
+            padding: 7.5px 30px;
+            font-weight: 500;
+            border-radius: 10px;
         }
-        
-        .table-header div {
-            font-weight: 600;
-            color: #ffffff;
-            text-transform: uppercase;
-            font-size: 9px;
-            white-space: nowrap;
-        }
-        
-        .link-item:hover {
-            background-color: #282828;
-        }
-        
         a {
-            color: #fff;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: color 0.3s ease;
+            color: #848484;
         }
-        
-        a:hover {
-            color: white;
-            text-decoration: underline;
+        #error-message {
+            color: #ff1c1c;
+            font-size: 12px;
+            margin-top: 10px;
         }
-        
-        .link-list::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        .link-list::-webkit-scrollbar-thumb {
-            background-color: #898989;
-            border-radius: 4px;
-        }
-        
-        .modal, .create-modal, .edit-modal, .category-modal, .title-modal {
+        .modal {
             display: none;
             position: fixed;
-            z-index: 1000;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            justify-content: center;
-            align-items: center;
+            background-color: #0f0f0f;
+            padding: 65px 0px 0px 24px;
+            line-height: 30px;
+            overflow-y: scroll;
+            z-index: 10000000;
+            scrollbar-width: none;
         }
-        
-        .modal-content, .create-modal-content, .edit-modal-content, .category-modal-content, .title-modal-content {
-            background-color: #1a1a1a;
-            padding: 15px;
+        .modal h2 {
+            color: #e0e0e0;
+            font-weight: 500;
+        }
+        .modal h3 {
+            color: #00aeff;
+            font-size: 16px;
+            font-weight: 400;
+            text-decoration: underline;
+            margin: 25px 0;
+        }
+        .modal p {
+            color: #a0a0a0;
+            font-size: 14px;
+            font-weight: 400;
+            margin: 10px 0;
+            transition: color 0.3s ease;
+        }
+        .close-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            color: #e0e0e0;
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 11;
+            background: #1d1d1d;
+            padding: 10px 11px;
+            border-radius: 10px;
+        }
+        i {
+            margin-right: 8px;
+        }
+        .logo {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 11;
+        }
+        .logo img {
+            width: 40px;
+            border-radius: 50%;
+        }
+        .logout-btn {
+            position: fixed;
+            top: 55px;
+            right: 5px;
+            background-color: #1d1d1d;
+            color: #e0e0e0;
+            border: none;
+            padding: 5px 12px;
+            font-size: 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            z-index : 11;
+        }
+        .logout-btn a {
+            color: #e0e0e0;
+            text-decoration: none;
+        }
+        .logout-btn:hover {
+            background-color: #3a3a3a;
+        }
+        .loan-entry {
+            padding: 10px 0;
+            margin-bottom: 20px;
+            border-bottom: none;
+            width: 103%;
+            padding-bottom: 30px;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        .amount-buttons {
+            display: flex;
+            gap: 20px;
+            margin: 40px 0px 0px;
+            padding: 10px 15px 5px 0px;
+            overflow-x: scroll;
+            width: 100%;
+            white-space: nowrap;
+        }
+        .amount-btn {
+            background-color: rgb(33 33 33);
+            color: #e0e0e0;
+            border: none;
+            padding: 10px 20px;
+            font-size: 12px;
+            border-radius: 10px 0px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: relative;
+        }
+        .amount-btn:hover {
+            background-color: #434343;
+            color: rgb(255, 255, 255);
+        }
+        .amount-btn.active {
+            background-color: #00aef8;
+            color: #000000;
+        }
+        .amount-btn .amount-id {
+            position: absolute;
+            top: -10px;
+            right: 0px;
+            font-size: 10px;
+            color: #00aeff;
+            background: #0f0f0f;
+            padding: 3px 10px;
+            border-radius: 0px 8px;
+        }
+        .notice {
+            font-weight: 200;
+            font-size: 12px;
+            line-height: 20px;
+            position: fixed;
+            bottom: 60px;
+            color: #ffffffd4;
+            padding: 10px;
+            border: solid 1.4px #9595954d;
             border-radius: 10px;
             width: 90%;
-            max-width: 320px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+            max-width: 400px;
         }
-
-        .modal-content p, .title-modal-content p {
-            margin-bottom: 15px;
-            font-size: 1rem;
-        }
-        
-        .close-btn, .save-btn {
-            background-color: #0049ff;
-            padding: 8px 20px;
+        .powered-by {
+            position: fixed;
+            top: 11px;
+            font-size: 10px;
+            color: #000000;
+            z-index: 1000;
+            background: #ffffff;
+            text-align: center;
+            padding: 6px 15px;
+            display: none;
             border-radius: 8px;
-            font-weight: 600;
         }
-        
-        .close-btn:hover, .save-btn:hover {
-            background-color: #003bb3;
-        }
-        
-        .create-modal-content h2, .edit-modal-content h2, .category-modal-content h2, .title-modal-content h2 {
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-            color: #fff;
-        }
-        
-        .create-modal-content .form-group, .edit-modal-content .form-group, .category-modal-content .form-group {
-            margin-bottom: 12px;
-        }
-        
-        .create-modal-content .form-group label, .edit-modal-content .form-group label, .category-modal-content .form-group label {
-            display: block;
-            margin-bottom: 4px;
-            font-size: 0.95rem;
-            color: #b3b3b3;
-        }
-        
-        .title-container {
+        .membership-type {
+            color: #00aeff;
+            font-size: 14px;
+            font-weight: 400;
+            margin: 10px 0;
             display: flex;
             align-items: center;
             gap: 6px;
         }
-
-        .view-title-btn {
-            background-color: transparent;
-            padding: 4px;
-            font-size: 14px;
-            color: gray;
-            cursor: pointer;
-            border: none;
+        .membership-icon {
+            width: 18px;
+            height: 18px;
         }
-
-        .view-title-btn:hover i {
-            color: #ffffff;
+        .user-icon {
+            width: 25px;
+            border-radius: 1000px;
         }
-
-        .context-menu {
-            display: none;
-            position: absolute;
-            background-color: #1a1a1a;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-            z-index: 1001;
-            min-width: 110px;
+        p#membershipType {
+            font-size: 11px;
+            color: #ff66f9;
+            padding: 0px;
+            font-weight: 300;
         }
+    </style>
+</head>
+<body>
+    <div id="passwordContainer">
+        <h2 style="font-weight: 400; font-size: 20px; color: white;">Verify my account</h2>
+        <input type="text" id="userPassword" placeholder="Enter password" autocomplete="current-password">
+        <button id="submitBtn">Verify</button><br>
+        <p id="error-message"></p>
+        <div class="notice">
+            You should return the money before the due date, If not additional interest will be charged.
+        </div>
+    </div>
 
-        .context-menu-item {
-            padding: 8px 12px;
-            color: #E0E0E0;
-            cursor: pointer;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .context-menu-item:hover {
-            background-color: #282828;
-        }
-
-        .context-menu-item.delete:hover {
-            color: #ff0d00;
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-        
-            .container {
-                padding: 12px;
-            }
-        
-            .table-header, .link-item {
-                grid-template-columns: minmax(0, 1fr) 80px;
-                gap: 6px;
-                padding: 6px;
-                font-size: 0.85rem;
-            }
-        
-            h1 {
-                font-size: 1.2rem;
-                margin-bottom: 12px;
-            }
-        
-            .search-section {
-                flex-direction: column;
-                gap: 6px;
-            }
-        
-            input[type="text"],
-            input[type="url"],
-            input[type="search"],
-            select {
-                font-size: 0.85rem;
-                padding: 6px;
-            }
-        
-            button {
-                padding: 8px 12px;
-                font-size: 0.85rem;
-            }
-        
-            .create-btn {
-                width: 100%;
-                justify-content: center;
-            }
-        
-            .filter-section {
-                gap: 6px;
-            }
-        
-            .filter-section button {
-                padding: 6px 10px;
-                font-size: 0.75rem;
-            }
-        
-            .add-category-btn {
-                width: 30px;
-                height: 30px;
-                font-size: 0.8rem;
-            }
-        
-            .link-list {
-                padding: 6px;
-                max-height: 300px;
-            }
-        
-            div a {
-                font-size: 14px;
-            }
-        
-            .view-title-btn {
-                font-size: 13px;
-                padding: 3px;
-            }
-        
-            .modal-content, .create-modal-content, .edit-modal-content, .category-modal-content, .title-modal-content {
-                padding: 12px;
-                max-width: 280px;
-            }
-        
-            .create-modal-content h2, .edit-modal-content h2, .category-modal-content h2, .title-modal-content h2 {
-                font-size: 1.1rem;
-            }
-        
-            .modal-content p, .title-modal-content p {
-                font-size: 0.9rem;
-            }
-        
-            .context-menu {
-                min-width: 100px;
-            }
-        
-            .context-menu-item {
-                padding: 6px 10px;
-                font-size: 0.8rem;
-            }
-        }
-      </style>  
-   </head>
-   <body>
-      <div class="container">
-         <h1>BsLinksaver</h1>
-         <div class="search-section">
-            <input type="search" id="searchInput" placeholder="Search in your links..." oninput="searchLinks()">
-            <button class="create-btn" onclick="openCreateModal()"><i class="fa-solid fa-plus"></i> add new</button>
-         </div>
-         <div class="filter-section" id="filterSection">
-            <button class="filter-btn add-category-btn" onclick="openCategoryModal()"><i class="fa-solid fa-plus"></i></button>
-            <button type="button" class="filter-btn active" data-filter="all">All</button>
-         </div>
-         <div class="link-list" id="linkList">
-            <div class="table-header">
-               <div>Title</div>
-               <div>Date Added</div>
-            </div>
-            <div id="allLinks"></div>
-         </div>
-      </div>
-      
-      <div id="modal" class="modal">
-         <div class="modal-content">
-            <p id="modalMessage"></p>
-            <button class="close-btn" onclick="closeModal()">OK</button>
-         </div>
-      </div>
-
-      <div id="createModal" class="create-modal">
-         <div class="create-modal-content">
-            <h2>Create Link</h2>
-            <div class="form-group">
-               <label for="createTitleInput">Title</label>
-               <input type="text" id="createTitleInput" placeholder="Enter the title here..." required>
-            </div>
-            <div class="form-group">
-               <label for="createUrlInput">Link</label>
-               <input type="url" id="createUrlInput" placeholder="Paste the link here..." required>
-            </div>
-            <div class="form-group">
-               <label for="createCategoryInput">Category</label>
-               <select id="createCategoryInput">
-                  <option value="all">All</option>
-               </select>
-            </div>
-            <button class="save-btn" onclick="saveLink()">Save</button>
-            <button class="close-btn" onclick="closeCreateModal()">Cancel</button>
-         </div>
-      </div>
-
-      <div id="editModal" class="edit-modal">
-         <div class="edit-modal-content">
-            <h2>Edit Link</h2>
-            <div class="form-group">
-               <label for="editTitleInput">Title</label>
-               <input type="text" id="editTitleInput" placeholder="Enter the title here..." required>
-            </div>
-            <div class="form-group">
-               <label for="editUrlInput">Link</label>
-               <input type="url" id="editUrlInput" placeholder="Paste the link here..." required>
-            </div>
-            <div class="form-group">
-               <label for="editCategoryInput">Category</label>
-               <select id="editCategoryInput">
-                  <option value="all">All</option>
-               </select>
-            </div>
-            <button class="save-btn" onclick="saveEditedLink()">Save</button>
-            <button class="close-btn" onclick="closeEditModal()">Cancel</button>
-         </div>
-      </div>
-
-      <div id="categoryModal" class="category-modal">
-         <div class="category-modal-content">
-            <h2>Add Category</h2>
-            <div class="form-group">
-               <label for="categoryInput">Category Name</label>
-               <input type="text" id="categoryInput" placeholder="Enter category name...">
-            </div>
-            <button class="save-btn" onclick="saveCategory()">Save</button>
-            <button class="close-btn" onclick="closeCategoryModal()">Cancel</button>
-         </div>
-      </div>
-
-      <div id="titleModal" class="title-modal">
-         <div class="title-modal-content">
-            <h2>Link Title</h2>
-            <p id="titleModalMessage"></p>
-            <button class="close-btn" onclick="closeTitleModal()">OK</button>
-         </div>
-      </div>
-
-      <div id="contextMenu" class="context-menu">
-         <div class="context-menu-item" onclick="copyLinkFromContext()"><i class="fa-solid fa-copy"></i> Copy Link</div>
-         <div class="context-menu-item" onclick="openEditModalFromContext()"><i class="fa-solid fa-edit"></i> Edit Link</div>
-         <div class="context-menu-item delete" onclick="deleteLinkFromContext()"><i class="fa-solid fa-trash"></i> Delete Link</div>
-      </div>
-
-      <script>
-        let activeFilter = 'all';
-        let categories = ['all'];
-        let editIndex = -1;
-        let contextIndex = -1;
-        const TITLE_MAX_LENGTH = 20;
-
-        window.onload = function() {
-            loadCategories();
-            loadLinks();
-            setupFilterButtons();
-            document.addEventListener('click', hideContextMenu);
-            document.addEventListener('contextmenu', (e) => {
-                if (!e.target.closest('.link-item')) {
-                    hideContextMenu();
-                }
-            });
+    <div id="userInfoModal" class="modal">
+        <span><i class="fa-solid fa-arrow-left close-btn" onclick="closeModal()"></i></span>
+        <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">Borrower</h3>
+        <p id="userNameContainer" style="display: flex; align-items: center; font-size: 20px; gap: 6px;">
+            <span id="userName"></span>
+        </p>
+        <p id="membershipType" class="membership-type"></p>
+        <div class="amount-buttons" id="amountButtons"></div>
+        <div id="loanDetails"></div>
+    </div>
+    <div class="mfi" style="position: fixed; bottom: 10px; font-size: 10px; color: #848484; z-index: 1000; background: transparent; width: 100%; text-align: center; padding: 10px;">
+        <a target="_blank" style="text-decoration: none;" href="https://mfi0212.github.io/MFI/mfimain">By Myootive</a>
+    </div>
+    <div class="powered-by" id="poweredBy">
+        Powered by <a style="color: rgb(0, 0, 0); font-weight: 500;" href="https://blackswan19.github.io/Educate/password">BsPsgenerater</a>
+    </div>
+    <script>
+        const passwords = {
+            "4211": {
+                name: "Chaitanya Harsha",
+                membershipType: "Premium - Mini",
+                membershipIcon: "https://i.ibb.co/LzFMLP3/iconnrml.png",
+                fineRate: 10,
+                loans: [
+                    {
+                        planDate: "24-05-2025",
+                        endDate: "25-06-2025(Extended to 10 days)",
+                        interest: 4500,
+                        takenAmount: 15000,
+                        takenFrom: "MLending"
+                    },
+                    {
+                        planDate: "07-04-2025",
+                        endDate: "25-06-2025(Extended to 10 days)",
+                        interest: 6000,
+                        takenAmount: 10000,
+                        takenFrom: "MLLD"
+                    },
+                ]
+            },
+            "Mahesh888*": {
+                name: "Mahesh Muthinti",
+                membershipType: "Premium - Mini",
+                membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
+                fineRate: 10, 
+                loans: [
+                    {
+                        planDate: "25-05-2025",
+                        endDate: "22-06-2025(Extanded to 15 days)",
+                        interest: 850,
+                        takenAmount: 3000,
+                        takenFrom: "MLLD"
+                    },
+                    {
+                        planDate: "01-06-2025",
+                        endDate: "16-07-2025(<span style='color:yellow'>Cleared</span> and extanded to <span style='color:yellow'>30 + 6[extra]</span> days)<br>",
+                        interest: 1020,
+                        takenAmount: 5000,
+                        takenFrom: "MLLD Offer"
+                    },
+                ]
+            },
+            "Cherish@123": {
+                name: "Cherish",
+                membershipType: "Premium - Mini",
+                membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
+                fineRate: 8, // 8 rupees per hour
+                loans: [
+                    {
+                        planDate: "21-05-2025",
+                        endDate: "01-06-2025",
+                        interest: 800,
+                        takenAmount: 5000,
+                        takenFrom: "MLLD"
+                    },
+                    {
+                        planDate: "23-05-2025",
+                        endDate: "02-06-2025",
+                        interest: 620,
+                        takenAmount: 3500,
+                        takenFrom: "MLLD"
+                    },
+                    {
+                        planDate: "28-05-2025",
+                        endDate: "07-06-2025",
+                        interest: 400,
+                        takenAmount: 2000,
+                        takenFrom: "MLLD"
+                    },
+                    {
+                        planDate: "25-05-2025",
+                        endDate: "09-06-2025",
+                        interest: 660, 
+                        takenAmount: 2500,
+                        takenFrom: "MLLD(Offer)"
+                    },
+                    {
+                        planDate: "24-05-2025",
+                        endDate: "13-06-2025",
+                        interest: 780,
+                        takenAmount: 3500,
+                        takenFrom: "MLLD(Offer)"
+                    },
+                    {
+                        planDate: "26-05-2025",
+                        endDate: "15-06-2025",
+                        interest: 1860,
+                        takenAmount: 10000,
+                        takenFrom: "MLending"
+                    },
+                    {
+                        planDate: "29-05-2025",
+                        endDate: "18-06-2025",
+                        interest: 3800,
+                        takenAmount: 15000,
+                        takenFrom: "MLending"
+                    },
+                ]
+            },
         };
 
-        function setupFilterButtons() {
-            const buttons = document.querySelectorAll('.filter-btn:not(.add-category-btn)');
-            buttons.forEach(button => {
-                button.addEventListener('click', () => {
-                    buttons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    activeFilter = button.getAttribute('data-filter');
-                    loadLinks();
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedPassword = localStorage.getItem("userPassword");
+            if (savedPassword) {
+                const passwordInput = document.getElementById("userPassword");
+                passwordInput.value = savedPassword; // Autofill immediately
+                document.getElementById("poweredBy").style.display = "block";
+            }
+        });
+
+        document.getElementById("submitBtn").addEventListener("click", () => {
+            const userInput = document.getElementById("userPassword").value.trim();
+            const errorMessage = document.getElementById("error-message");
+            const user = passwords[userInput];
+
+            if (!userInput) {
+                errorMessage.textContent = "Please enter a password.";
+                return;
+            }
+
+            if (user) {
+                // Store password in localStorage to persist across page loads
+                localStorage.setItem("userPassword", userInput);
+                document.getElementById("userName").textContent = user.name;
+                const membershipTypeContainer = document.getElementById("membershipType");
+                membershipTypeContainer.innerHTML = `
+                    <a href="https://mfi0212.github.io/MFI/starpre" style="text-decoration: underline;
+    color: #00ff55;
+    text-underline-position: under;"> ${user.membershipType}</a>
+                `;
+
+                // Display user name with membership icon
+                const userNameContainer = document.getElementById("userNameContainer");
+                userNameContainer.innerHTML = `
+                    <span id="userName">${user.name}</span>
+                    <img src="${user.membershipIcon}" alt="${user.membershipType} Icon" class="user-icon">
+                `;
+
+                const amountButtons = document.getElementById("amountButtons");
+                amountButtons.innerHTML = "";
+
+                user.loans.forEach((loan, index) => {
+                    const btn = document.createElement("button");
+                    btn.className = "amount-btn";
+                    btn.innerHTML = `${loan.takenAmount} Rupees <span class="amount-id">Amount ${index + 1}</span>`;
+                    btn.onclick = () => displayLoanDetails(loan, index);
+                    amountButtons.appendChild(btn);
                 });
-            });
-        }
 
-        function openCreateModal() {
-            const categorySelect = document.getElementById('createCategoryInput');
-            categorySelect.innerHTML = categories.map(cat => 
-                `<option value="${cat}">${cat.charAt(0).toUpperCase() + cat.slice(1)}</option>`
-            ).join('');
-            document.getElementById('createModal').style.display = 'flex';
-            document.getElementById('createTitleInput').value = '';
-            document.getElementById('createUrlInput').value = '';
-            document.getElementById('createCategoryInput').value = 'all';
-        }
+                if (user.loans.length > 0) {
+                    displayLoanDetails(user.loans[0], 0);
+                } else {
+                    errorMessage.textContent = "No active loans found.";
+                }
 
-        function closeCreateModal() {
-            document.getElementById('createModal').style.display = 'none';
-        }
+                document.getElementById("userInfoModal").style.display = "block";
+                errorMessage.textContent = "";
+            } else {
+                errorMessage.textContent = "Invalid password.";
+            }
+        });
 
-        function openEditModal(index) {
-            const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
-            const link = links[index];
-            const categorySelect = document.getElementById('editCategoryInput');
-            categorySelect.innerHTML = categories.map(cat => 
-                `<option value="${cat}">${cat.charAt(0).toUpperCase() + cat.slice(1)}</option>`
-            ).join('');
-            document.getElementById('editTitleInput').value = link.title;
-            document.getElementById('editUrlInput').value = link.url;
-            document.getElementById('editCategoryInput').value = link.category;
-            editIndex = index;
-            document.getElementById('editModal').style.display = 'flex';
-        }
-
-        function openEditModalFromContext() {
-            if (contextIndex !== -1) {
-                openEditModal(contextIndex);
-                hideContextMenu();
+        function calculateDaysBetween(startDate, endDate) {
+            try {
+                const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
+                const startMatch = startDate.match(dateFormat);
+                const endMatch = endDate.split('(')[0].match(dateFormat);
+                if (startMatch && endMatch) {
+                    const start = new Date(`${startMatch[3]}-${startMatch[2]}-${startMatch[1]}`);
+                    const end = new Date(`${endMatch[3]}-${endMatch[2]}-${endMatch[1]}`);
+                    if (isNaN(start) || isNaN(end)) {
+                        return "Invalid date";
+                    }
+                    const diffTime = Math.abs(end - start);
+                    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                }
+                return "Invalid date format";
+            } catch (error) {
+                console.error("Error calculating days:", error);
+                return "Error";
             }
         }
 
-        function closeEditModal() {
-            document.getElementById('editModal').style.display = 'none';
-            editIndex = -1;
+        function calculateOverdueFine(endDate, user) {
+            try {
+                const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
+                const endMatch = endDate.split('(')[0].split('<')[0].match(dateFormat);
+                if (!endMatch) return { overdue: false, fine: 0 };
+
+                const end = new Date(`${endMatch[3]}-${endMatch[2]}-${endMatch[1]}`);
+                end.setHours(23, 59, 59, 999); // Set to end of the day
+                const now = new Date(); // Current date: June 5, 2025, 01:21 PM IST
+
+                if (now > end) {
+                    const diffTime = now - end;
+                    const hoursOverdue = Math.ceil(diffTime / (1000 * 60 * 60)); // Convert ms to hours
+                    const fine = hoursOverdue * user.fineRate; // Use user-specific fine rate directly
+                    return { overdue: true, fine: fine, hoursOverdue: hoursOverdue };
+                }
+                return { overdue: false, fine: 0 };
+            } catch (error) {
+                console.error("Error calculating overdue fine:", error);
+                return { overdue: false, fine: 0 };
+            }
         }
 
-        function openCategoryModal() {
-            document.getElementById('categoryModal').style.display = 'flex';
-            document.getElementById('categoryInput').value = '';
-        }
+        function displayLoanDetails(loan, index) {
+            const loanDetails = document.getElementById("loanDetails");
+            const userInput = document.getElementById("userPassword").value.trim();
+            const user = passwords[userInput];
 
-        function closeCategoryModal() {
-            document.getElementById('categoryModal').style.display = 'none';
-        }
+            // Calculate overdue fine and update interest if overdue
+            const overdueInfo = calculateOverdueFine(loan.endDate, user);
+            if (overdueInfo.overdue) {
+                // Update the interest in the passwords object
+                user.loans[index].interest = (loan.interest + overdueInfo.fine);
+                // Update endDate to include overdue notice if not already present
+                if (!loan.endDate.includes('Overdue')) {
+                    user.loans[index].endDate = `${loan.endDate.split('<')[0]}<br><p style="color: red;">Overdue by ${overdueInfo.hoursOverdue} hours, additional interest added.</p>`;
+                }
+            }
 
-        function openTitleModal(title) {
-            document.getElementById('titleModalMessage').innerText = title;
-            document.getElementById('titleModal').style.display = 'flex';
-        }
+            const totalReturnAmount = (loan.takenAmount + loan.interest).toFixed(2);
+            const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+            const daysBetween = calculateDaysBetween(loan.planDate, cleanEndDate);
 
-        function closeTitleModal() {
-            document.getElementById('titleModal').style.display = 'none';
-        }
+            document.querySelectorAll(".amount-btn").forEach(btn => btn.classList.remove("active"));
+            document.getElementById("amountButtons").children[index].classList.add("active");
 
-        function showModal(message) {
-            document.getElementById('modalMessage').innerText = message;
-            document.getElementById('modal').style.display = 'flex';
+            loanDetails.innerHTML = `
+                <div class="loan-entry">
+                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                        Service
+                    </h3>
+                    <p>${loan.takenFrom}</p>
+                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                        Amount Details
+                    </h3>
+                    <p><i class="fa-solid fa-money-bill-transfer"></i> Amount: ${loan.takenAmount} Rupees</p>
+                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                        Taken & Ends
+                    </h3>
+                    <p><i class="fa-solid fa-calendar-day"></i> Taken on: ${loan.planDate}</p>
+                    <p><i class="fa-solid fa-calendar-check"></i> End on: ${loan.endDate}</p>
+                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                        Loan Duration
+                    </h3>
+                    <p><i class="fa-solid fa-clock"></i> Duration: ${daysBetween} days</p>
+                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                        Interest
+                    </h3>
+                    <p><i class="fa-solid fa-arrow-up-wide-short"></i> Interest: ${loan.interest} Rupees</p>
+                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                        Total Amount to Pay
+                    </h3>
+                    <p><i class="fa-solid fa-money-check-alt"></i> ${totalReturnAmount} Rupees</p>
+                </div>
+            `;
         }
 
         function closeModal() {
-            document.getElementById('modal').style.display = 'none';
+            document.getElementById("userInfoModal").style.display = "none";
+            document.getElementById("userPassword").value = ""; // Clear input field but keep localStorage
         }
 
-        function saveCategory() {
-            const category = document.getElementById('categoryInput').value.toLowerCase().trim();
-            if (category && !categories.includes(category) && category !== 'all') {
-                categories.push(category);
-                localStorage.setItem('linkCategories', JSON.stringify(categories));
-                updateFilterButtons();
-                closeCategoryModal();
-                showModal('Category added!');
-            } else {
-                showModal('Enter a unique category name.');
-            }
-        }
+        document.addEventListener("DOMContentLoaded", () => {
+            const customMenu = document.querySelector(".custom-menu");
 
-        function updateFilterButtons() {
-            const filterSection = document.getElementById('filterSection');
-            filterSection.innerHTML = `
-                <button class="filter-btn add-category-btn" onclick="openCategoryModal()"><i class="fa-solid fa-plus"></i></button>
-                ${categories.map(cat => 
-                    `<button type="button" class="filter-btn${cat === activeFilter ? ' active' : ''}" data-filter="${cat}">
-                        ${cat.charAt(0).toUpperCase() + cat.slice(1)}
-                    </button>`
-                ).join('')}
-            `;
-            setupFilterButtons();
-        }
-
-        function saveLink() {
-            const title = document.getElementById('createTitleInput').value;
-            const url = document.getElementById('createUrlInput').value;
-            const category = document.getElementById('createCategoryInput').value;
-
-            if (title && url) {
-                const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
-                const dateAdded = new Date().toISOString();
-                links.unshift({ title, url, category, dateAdded });
-                localStorage.setItem('youtubeLinks', JSON.stringify(links));
-                document.getElementById('allLinks').innerHTML = '';
-                loadLinks();
-                closeCreateModal();
-                showModal('Link added!');
-            } else {
-                showModal('Enter both a title and a link.');
-            }
-        }
-
-        function saveEditedLink() {
-            const title = document.getElementById('editTitleInput').value;
-            const url = document.getElementById('editUrlInput').value;
-            const category = document.getElementById('editCategoryInput').value;
-
-            if (title && url) {
-                const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
-                links[editIndex] = { title, url, category, dateAdded: links[editIndex].dateAdded };
-                localStorage.setItem('youtubeLinks', JSON.stringify(links));
-                document.getElementById('allLinks').innerHTML = '';
-                loadLinks();
-                closeEditModal();
-                showModal('Link updated!');
-            } else {
-                showModal('Enter both a title and a link.');
-            }
-        }
-
-        function formatDate(dateString) {
-            if (!dateString) return '';
-            const date = new Date(dateString);
-            const now = new Date();
-            const diffTime = Math.abs(now - date);
-            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-            if (diffDays === 0) return 'Today';
-            if (diffDays === 1) return '1 day ago';
-            if (diffDays <= 7) return `${diffDays} days ago`;
-            if (diffDays <= 30) return `${Math.floor(diffDays / 7)} weeks ago`;
-            return date.toLocaleDateString();
-        }
-
-        function truncateTitle(title) {
-            if (title.length > TITLE_MAX_LENGTH) {
-                return title.substring(0, TITLE_MAX_LENGTH - 3) + '...';
-            }
-            return title;
-        }
-
-        function displayLink(link, index) {
-            const container = document.getElementById('allLinks');
-            const linkItem = document.createElement('div');
-            linkItem.className = 'link-item';
-            linkItem.setAttribute('data-index', index);
-            linkItem.addEventListener('contextmenu', (e) => {
-                e.preventDefault();
-                showContextMenu(e, index);
+            document.addEventListener("contextmenu", (event) => {
+                event.preventDefault();
+                if (customMenu) {
+                    customMenu.style.display = "block";
+                    customMenu.style.top = `${event.pageY}px`;
+                    customMenu.style.left = `${event.pageX}px`;
+                }
             });
-            const truncatedTitle = truncateTitle(link.title);
-            linkItem.innerHTML = `
-                <div class="title-container">
-                    <button class="view-title-btn" onclick="openTitleModal('${link.title.replace(/'/g, "\\'")}')"><i class="fa-solid fa-eye"></i></button>
-                    <a href="${link.url}" target="_parent">${truncatedTitle} (${link.category})</a>
-                </div>
-                <div>${formatDate(link.dateAdded)}</div>`;
-            container.appendChild(linkItem);
-        }
 
-        function showContextMenu(event, index) {
-            const contextMenu = document.getElementById('contextMenu');
-            contextIndex = index;
-            contextMenu.style.display = 'block';
-            contextMenu.style.left = `${event.pageX}px`;
-            contextMenu.style.top = `${event.pageY}px`;
-        }
-
-        function hideContextMenu() {
-            const contextMenu = document.getElementById('contextMenu');
-            contextMenu.style.display = 'none';
-            contextIndex = -1;
-        }
-
-        function copyLinkFromContext() {
-            if (contextIndex !== -1) {
-                const links = JSON.parse(localStorage.getItem('youtubeLinks'));
-                navigator.clipboard.writeText(links[contextIndex].url).then(() => {
-                    showModal('Link copied to clipboard!');
-                    hideContextMenu();
-                });
-            }
-        }
-
-        function deleteLinkFromContext() {
-            if (contextIndex !== -1) {
-                const links = JSON.parse(localStorage.getItem('youtubeLinks'));
-                links.splice(contextIndex, 1);
-                localStorage.setItem('youtubeLinks', JSON.stringify(links));
-                document.getElementById('allLinks').innerHTML = '';
-                loadLinks();
-                showModal('Link deleted.');
-                hideContextMenu();
-            }
-        }
-
-        function loadCategories() {
-            const storedCategories = JSON.parse(localStorage.getItem('linkCategories'));
-            if (storedCategories) {
-                categories = storedCategories;
-            }
-            updateFilterButtons();
-        }
-
-        function loadLinks() {
-            const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
-            document.getElementById('allLinks').innerHTML = '';
-            const filteredLinks = activeFilter === 'all' 
-                ? links 
-                : links.filter(link => link.category === activeFilter);
-            filteredLinks.forEach((link, index) => displayLink(link, links.indexOf(link)));
-        }
-
-        function copyLink(index) {
-            const links = JSON.parse(localStorage.getItem('youtubeLinks'));
-            navigator.clipboard.writeText(links[index].url).then(() => {
-                showModal('Link copied to clipboard!');
+            document.addEventListener("click", () => {
+                if (customMenu) {
+                    customMenu.style.display = "none";
+                }
             });
-        }
-
-        function deleteLink(index) {
-            const links = JSON.parse(localStorage.getItem('youtubeLinks'));
-            links.splice(index, 1);
-            localStorage.setItem('youtubeLinks', JSON.stringify(links));
-            document.getElementById('allLinks').innerHTML = '';
-            loadLinks();
-            showModal('Link deleted.');
-        }
-
-        function searchLinks() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
-            document.getElementById('allLinks').innerHTML = '';
-            const filteredLinks = links.filter(link => 
-                link.title.toLowerCase().includes(query) && 
-                (activeFilter === 'all' || link.category === activeFilter)
-            );
-            filteredLinks.forEach((link, index) => displayLink(link, links.indexOf(link)));
-        }
-      </script>
-   </body>
+        });
+    </script>
+</body>
 </html>
