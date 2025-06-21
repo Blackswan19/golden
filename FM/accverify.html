@@ -162,7 +162,7 @@
             border-radius: 15px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            z-index : 11;
+            z-index: 11;
         }
         .logout-btn a {
             color: #e0e0e0;
@@ -346,54 +346,54 @@
                 name: "Cherish",
                 membershipType: "Premium - Mini",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-                fineRate: 5, // 8 rupees per hour
+                fineRate: 3,
                 loans: [
                     {
                         planDate: "21-05-2025",
-                        endDate: "01-06-2025",
-                        interest: 800,
+                        endDate: "30-06-2025",
+                        interest: 1300,
                         takenAmount: 5000,
                         takenFrom: "MLLD"
                     },
                     {
                         planDate: "23-05-2025",
-                        endDate: "02-06-2025",
-                        interest: 620,
+                        endDate: "16-07-2025",
+                        interest: 1620,
                         takenAmount: 3500,
                         takenFrom: "MLLD"
                     },
                     {
                         planDate: "28-05-2025",
-                        endDate: "07-06-2025",
-                        interest: 400,
+                        endDate: "16-07-2025",
+                        interest: 1250,
                         takenAmount: 2000,
                         takenFrom: "MLLD"
                     },
                     {
                         planDate: "25-05-2025",
-                        endDate: "09-06-2025",
-                        interest: 660, 
+                        endDate: "16-07-2025",
+                        interest: 1660, 
                         takenAmount: 2500,
                         takenFrom: "MLLD(Offer)"
                     },
                     {
                         planDate: "24-05-2025",
-                        endDate: "13-06-2025",
-                        interest: 780,
+                        endDate: "16-07-2025",
+                        interest: 1480,
                         takenAmount: 3500,
                         takenFrom: "MLLD(Offer)"
                     },
                     {
                         planDate: "26-05-2025",
-                        endDate: "15-06-2025",
-                        interest: 1860,
+                        endDate: "16-07-2025",
+                        interest: 2860,
                         takenAmount: 10000,
                         takenFrom: "MLending"
                     },
                     {
                         planDate: "29-05-2025",
-                        endDate: "25-06-2025",
-                        interest: 4000,
+                        endDate: "30-06-2025",
+                        interest: 4500,
                         takenAmount: 15000,
                         takenFrom: "MLending"
                     },
@@ -401,11 +401,14 @@
             },
         };
 
+        // Store the session's reference time to stabilize fine calculations
+        let sessionReferenceTime = null;
+
         document.addEventListener("DOMContentLoaded", () => {
             const savedPassword = localStorage.getItem("userPassword");
             if (savedPassword) {
                 const passwordInput = document.getElementById("userPassword");
-                passwordInput.value = savedPassword; // Autofill immediately
+                passwordInput.value = savedPassword;
                 document.getElementById("poweredBy").style.display = "block";
             }
         });
@@ -421,17 +424,14 @@
             }
 
             if (user) {
-                // Store password in localStorage to persist across page loads
                 localStorage.setItem("userPassword", userInput);
                 document.getElementById("userName").textContent = user.name;
                 const membershipTypeContainer = document.getElementById("membershipType");
                 membershipTypeContainer.innerHTML = `
                     <a href="https://mfi0212.github.io/MFI/starpre" style="text-decoration: underline;
-    color: #00ff55;
-    text-underline-position: under;"> ${user.membershipType}</a>
+                    color: #00ff55; text-underline-position: under;">${user.membershipType}</a>
                 `;
 
-                // Display user name with membership icon
                 const userNameContainer = document.getElementById("userNameContainer");
                 userNameContainer.innerHTML = `
                     <span id="userName">${user.name}</span>
@@ -487,22 +487,26 @@
             try {
                 const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
                 const endMatch = endDate.split('(')[0].split('<')[0].match(dateFormat);
-                if (!endMatch) return { overdue: false, fine: 0 };
+                if (!endMatch) return { overdue: false, fine: 0, hoursOverdue: 0 };
 
                 const end = new Date(`${endMatch[3]}-${endMatch[2]}-${endMatch[1]}`);
-                end.setHours(23, 59, 59, 999); // Set to end of the day
-                const now = new Date(); // Current date: June 5, 2025, 01:21 PM IST
+                end.setHours(23, 59, 59, 999);
+
+                if (!sessionReferenceTime) {
+                    sessionReferenceTime = new Date();
+                }
+                const now = sessionReferenceTime;
 
                 if (now > end) {
                     const diffTime = now - end;
-                    const hoursOverdue = Math.ceil(diffTime / (1000 * 60 * 60)); // Convert ms to hours
-                    const fine = hoursOverdue * user.fineRate; // Use user-specific fine rate directly
+                    const hoursOverdue = Math.floor(diffTime / (1000 * 60 * 60));
+                    const fine = hoursOverdue * user.fineRate;
                     return { overdue: true, fine: fine, hoursOverdue: hoursOverdue };
                 }
-                return { overdue: false, fine: 0 };
+                return { overdue: false, fine: 0, hoursOverdue: 0 };
             } catch (error) {
                 console.error("Error calculating overdue fine:", error);
-                return { overdue: false, fine: 0 };
+                return { overdue: false, fine: 0, hoursOverdue: 0 };
             }
         }
 
@@ -511,17 +515,27 @@
             const userInput = document.getElementById("userPassword").value.trim();
             const user = passwords[userInput];
 
-            // Calculate overdue fine and update interest if overdue
-            const overdueInfo = calculateOverdueFine(loan.endDate, user);
-            if (overdueInfo.overdue) {
-                // Update the interest in the passwords object
-                user.loans[index].interest = (loan.interest + overdueInfo.fine);
-                // Update endDate to include overdue notice if not already present
-                if (!loan.endDate.includes('Overdue')) {
-                    user.loans[index].endDate = `${loan.endDate.split('<')[0]}<br><p style="color: red;">Overdue by ${overdueInfo.hoursOverdue} hours, additional interest added.</p>`;
+            // Calculate and cache fine if not already done
+            if (!loan.hasOwnProperty('cachedFine')) {
+                const overdueInfo = calculateOverdueFine(loan.endDate, user);
+                if (overdueInfo.overdue) {
+                    user.loans[index].cachedFine = overdueInfo.fine;
+                    user.loans[index].cachedHoursOverdue = overdueInfo.hoursOverdue;
+                    user.loans[index].originalInterest = loan.interest; // Store original interest
+                    user.loans[index].interest = loan.interest + overdueInfo.fine;
+                    if (!loan.endDate.includes('Overdue')) {
+                        user.loans[index].endDate = `${loan.endDate.split('<')[0]}<br><p style="color: red;">Overdue by ${overdueInfo.hoursOverdue} hours, additional fine added.</p>`;
+                    }
+                } else {
+                    user.loans[index].cachedFine = 0;
+                    user.loans[index].cachedHoursOverdue = 0;
+                    user.loans[index].originalInterest = loan.interest; // Store original interest
                 }
             }
 
+            // Use cached values
+            const fine = loan.cachedFine || 0;
+            const originalInterest = loan.originalInterest || loan.interest; // Fallback to interest if no fine
             const totalReturnAmount = (loan.takenAmount + loan.interest).toFixed(2);
             const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
             const daysBetween = calculateDaysBetween(loan.planDate, cleanEndDate);
@@ -551,7 +565,11 @@
                     <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
                         Interest
                     </h3>
-                    <p><i class="fa-solid fa-arrow-up-wide-short"></i> Interest: ${loan.interest} Rupees</p>
+                    <p><i class="fa-solid fa-arrow-up-wide-short"></i> Normal Interest: ${originalInterest} Rupees</p>
+                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                        Fine
+                    </h3>
+                    <p><i class="fa-solid fa-exclamation-triangle"></i> Overdue Fine: ${fine} Rupees</p>
                     <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
                         Total Amount to Pay
                     </h3>
@@ -562,7 +580,8 @@
 
         function closeModal() {
             document.getElementById("userInfoModal").style.display = "none";
-            document.getElementById("userPassword").value = ""; // Clear input field but keep localStorage
+            document.getElementById("userPassword").value = "";
+            sessionReferenceTime = null;
         }
 
         document.addEventListener("DOMContentLoaded", () => {
