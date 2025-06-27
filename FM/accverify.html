@@ -274,31 +274,30 @@
             margin-bottom: 20px;
         }
         .profile-picture {
-           width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: #00aaff;
-    display: flex
-;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    font-weight: 900;
-    color: #000;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 33px;
+            font-weight: 900;
+            color: #000;
+            background-size: cover;
+            background-position: center;
         }
         .amounts-btn {
             background-color: #ffffff;
             color: black;
-    border: none;
-    padding: 1px 5px;
-    font-size: 10px;
-    border-radius: 30px;
-    cursor: pointer;
-    display: flex
-;
-    align-items: center;
-    gap: 2px;
-    margin-top: 10px;
+            border: none;
+            padding: 1px 5px;
+            font-size: 10px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            margin-top: 10px;
         }
         .amounts-btn:hover {
             background-color: #ffffffd4;
@@ -317,29 +316,29 @@
             align-items: center;
         }
         .amounts-modal-content {
-                background-color: #1a1a1a;
-    padding: 20px;
-    border-radius: 30px;
-    width: 90%;
-    max-width: 400px;
-    color: #e0e0e0;
-    position: relative;
-    line-height: 42px;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 400px;
+            color: #e0e0e0;
+            position: relative;
+            line-height: 42px;
         }
         .amounts-close-btn {
-           position: absolute;
-    top: 10px;
-    right: 20px;
-    color: #e0e0e0;
-    font-size: 25px;
-    cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #e0e0e0;
+            font-size: 25px;
+            cursor: pointer;
         }
         span#userName {
-    color: white;
-}
+            color: white;
+        }
         span {
-    color: #00c6ff;
-}
+            color: #00c6ff;
+        }
     </style>
 </head>
 <body>
@@ -359,16 +358,12 @@
         <div class="profile-container">
             <div class="profile-picture" id="profilePicture"></div>
             <div>
-                <p id="userNameContainer" style="    font-size: 20px;
-    display: flex
-;
-    gap: 5px;">
+                <p id="userNameContainer" style="font-size: 20px; display: flex; gap: 5px;">
                     <span style="color: white;" id="userName"></span>
                 </p>
                 <button class="amounts-btn" onclick="showAmountsModal()">
-                    <i class="fa-solid fa-eye" style="    margin-right: 2px;"></i> Amounts
+                    <i class="fa-solid fa-eye" style="margin-right: 2px;"></i> Amounts
                 </button>
-
                 <p id="membershipType" class="membership-type"></p>
             </div>
         </div>
@@ -377,13 +372,8 @@
     </div>
     <div id="amountsModal" class="amounts-modal" style="display: none;">
         <div class="amounts-modal-content">
-            <span class="amounts-close-btn" onclick="closeAmountsModal()">&times;</span>
-            <h3 style="text-decoration: underline;
-    margin-bottom: 5px;
-    font-weight: 600;
-    font-size: 22px;
-    text-align: center;
-    color: #8080808c;">Total Amounts</h3>
+            <span class="amounts-close-btn" onclick="closeAmountsModal()">×</span>
+            <h3 style="text-decoration: underline; margin-bottom: 5px; font-weight: 600; font-size: 22px; text-align: center; color: #8080808c;">Total Amounts</h3>
             <p><i class="fa-solid fa-money-bill"></i> Total Taken Amount: <span id="totalTaken"></span> ₹</p>
             <p><i class="fa-solid fa-arrow-up-wide-short"></i> Total Interest: <span id="totalInterest"></span> ₹</p>
             <hr>
@@ -401,8 +391,9 @@
             "4211": {
                 name: "Chaitanya Harsha",
                 membershipType: "Premium - Mini",
-                membershipIcon: "https://i.ibb.co/LzFMLP3/iconnrml.png",
+                membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
                 fineRate: 10,
+                profileBackground: "#ff4d4d",
                 loans: [
                     {
                         planDate: "24-05-2025",
@@ -424,7 +415,8 @@
                 name: "Mahesh Muthinti",
                 membershipType: "Premium - Mini",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-                fineRate: 10, 
+                fineRate: 10,
+                profileBackground: "#4da8ff",
                 loans: [
                     {
                         planDate: "25-05-2025",
@@ -447,6 +439,7 @@
                 membershipType: "Premium - Mini",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
                 fineRate: 3,
+                profileBackground: "#ffcc00",
                 loans: [
                     {
                         planDate: "21-05-2025",
@@ -472,7 +465,7 @@
                     {
                         planDate: "25-05-2025",
                         endDate: "01-08-2025<br>(<span style='color:yellow'>Interest cleared</span>)",
-                        interest:  0, 
+                        interest: 0,
                         takenAmount: 2500,
                         takenFrom: "MLLD(Offer)"
                     },
@@ -501,11 +494,7 @@
             },
         };
 
-        // Store the session's reference time to stabilize fine calculations
         let sessionReferenceTime = null;
-
-        // Dynamic color array for each day
-        const colors = ['#00aaff', '#ff66f9', '#00ff55', '#ffcc00', '#ff4444', '#44ffcc', '#cc44ff'];
 
         document.addEventListener("DOMContentLoaded", () => {
             const savedPassword = localStorage.getItem("userPassword");
@@ -514,10 +503,6 @@
                 passwordInput.value = savedPassword;
                 document.getElementById("poweredBy").style.display = "block";
             }
-
-            // Set dynamic color based on day
-            const today = new Date().getDay();
-            document.querySelector('.profile-picture').style.backgroundColor = colors[today];
         });
 
         document.getElementById("submitBtn").addEventListener("click", () => {
@@ -535,8 +520,7 @@
                 document.getElementById("userName").textContent = user.name;
                 const membershipTypeContainer = document.getElementById("membershipType");
                 membershipTypeContainer.innerHTML = `
-                    <a href="https://mfi0212.github.io/MFI/starpre" style="text-decoration: underline;
-                     text-underline-position: under;">${user.membershipType}</a>
+                    <a href="https://mfi0212.github.io/MFI/starpre" style="text-decoration: underline; text-underline-position: under;">${user.membershipType}</a>
                 `;
 
                 const userNameContainer = document.getElementById("userNameContainer");
@@ -545,9 +529,13 @@
                     <img src="${user.membershipIcon}" alt="${user.membershipType} Icon" class="user-icon">
                 `;
 
-                // Set profile picture with first letter
                 const profilePicture = document.getElementById("profilePicture");
-                profilePicture.textContent = user.name.charAt(0).toUpperCase();
+                profilePicture.style.backgroundColor = user.profileBackground;
+                // Generate icon from first two words (max 2 letters, uppercase)
+                const nameParts = user.name.trim().split(/\s+/).slice(0, 2);
+                const iconText = nameParts.map(part => part.charAt(0)).join("").toUpperCase();
+                profilePicture.style.backgroundImage = "none";
+                profilePicture.textContent = iconText;
 
                 const amountButtons = document.getElementById("amountButtons");
                 amountButtons.innerHTML = "";
@@ -626,7 +614,6 @@
             const userInput = document.getElementById("userPassword").value.trim();
             const user = passwords[userInput];
 
-            // Calculate and cache fine if not already done
             if (!loan.hasOwnProperty('cachedFine')) {
                 const overdueInfo = calculateOverdueFine(loan.endDate, user);
                 if (overdueInfo.overdue) {
