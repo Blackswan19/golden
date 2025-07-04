@@ -48,7 +48,7 @@ body {
     max-width: 600px;
     width: 99%;
     border-radius: 25px;
-    background: #181818;
+    background: #161616;
     position: relative;
     margin: 10px;
     border: none;
@@ -116,21 +116,21 @@ body {
             background-color: #444;
         }
         .logo{
-            padding: 15px;
+                padding: 15px;
     text-align: center;
     display: flex
 ;
     z-index: 100;
     justify-content: center;
-    background: #26262663;
+    background: #40404060;
     width: 45%;
     position: fixed;
     top: 0px;
     font-size: 11px;
     height: 50px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     border-radius: 0px 0px 30px 30px;
-    border-bottom: solid 2.5px #ffffff58;
+    border-bottom: solid 2.5px #3c3c3c;
         }
         /* Simple responsive design */
         @media (max-width: 600px) {
@@ -140,7 +140,7 @@ body {
             .logo{
                  width: 91%;
         
-    border-bottom: solid 2.5px #ffffff58;
+    border-bottom: solid 2.5px #3c3c3c;
             }
         }
     </style>
@@ -292,9 +292,7 @@ body {
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const customMenu = document.querySelector(".custom-menu");
-
-            
+            const customMenu = document.querySelector(".custom-menu");   
             document.addEventListener("contextmenu", (event) => {
                 event.preventDefault();
                 customMenu.style.display = "block";
