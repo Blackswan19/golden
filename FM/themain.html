@@ -130,7 +130,7 @@ body {
     height: 50px;
     backdrop-filter: blur(5px);
     border-radius: 0px 0px 30px 30px;
-    border-bottom: solid 2.5px #3c3c3c;
+    border-bottom: solid 2.5px #b0b0b091;
         }
         /* Simple responsive design */
         @media (max-width: 600px) {
@@ -140,7 +140,7 @@ body {
             .logo{
                  width: 91%;
         
-    border-bottom: solid 2.5px #3c3c3c;
+    border-bottom: solid 2.5px #b0b0b091;
             }
         }
     </style>
@@ -292,14 +292,13 @@ body {
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const customMenu = document.querySelector(".custom-menu");   
+            const customMenu = document.querySelector(".custom-menu");
             document.addEventListener("contextmenu", (event) => {
                 event.preventDefault();
                 customMenu.style.display = "block";
                 customMenu.style.top = `${event.pageY}px`;
                 customMenu.style.left = `${event.pageX}px`;
             });
-
             // Hide the menu when clicking elsewhere
             document.addEventListener("click", () => {
                 customMenu.style.display = "none";
