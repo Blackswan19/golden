@@ -327,11 +327,12 @@
         }
         .amounts-close-btn {
             position: absolute;
-            top: 10px;
-            right: 20px;
-            color: #e0e0e0;
-            font-size: 25px;
-            cursor: pointer;
+    top: 10px;
+    right: 20px;
+    color: #e0e0e0d4;
+    font-size: 25px;
+    cursor: pointer;
+    font-weight: 100;
         }
         span#userName {
             color: white;
@@ -374,7 +375,13 @@
     <div id="amountsModal" class="amounts-modal" style="display: none;">
         <div class="amounts-modal-content">
             <span class="amounts-close-btn" onclick="closeAmountsModal()">×</span>
-            <h3 style="text-decoration: underline; margin-bottom: 5px; font-weight: 600; font-size: 22px; text-align: center; color: #8080808c;">Total Amounts</h3>
+            <h3 style="    text-decoration: underline;
+    margin-bottom: 5px;
+    font-weight: 900;
+    font-size: 16px;
+    text-align: center;
+    color: #0095da;
+">Total Amount</h3>
             <p><i class="fa-solid fa-money-bill"></i> Total Taken Amount: <span id="totalTaken"></span> ₹</p>
             <p><i class="fa-solid fa-arrow-up-wide-short"></i> Total Interest: <span id="totalInterest"></span> ₹</p>
             <hr>
