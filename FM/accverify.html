@@ -259,7 +259,7 @@
         }
         .user-icon {
             width: 25px;
-    height: 25px;
+            height: 25px;
         }
         p#membershipType {
             font-size: 11px;
@@ -314,6 +314,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            user-select: none;
         }
         .amounts-modal-content {
             background-color: #1a1a1a;
@@ -327,18 +328,63 @@
         }
         .amounts-close-btn {
             position: absolute;
-    top: 10px;
-    right: 20px;
-    color: #e0e0e0d4;
-    font-size: 25px;
-    cursor: pointer;
-    font-weight: 100;
+            top: 10px;
+            right: 20px;
+            color: #e0e0e0d4;
+            font-size: 25px;
+            cursor: pointer;
+            font-weight: 100;
         }
         span#userName {
             color: white;
         }
         span {
             color: #00c6ff;
+        }
+        .reminder-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 10000002;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+        }
+        .reminder-modal-content {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 400px;
+            color: #e0e0e0;
+            position: relative;
+            line-height: 24px;
+            text-align: center;
+        }
+        .reminder-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #e0e0e0d4;
+            font-size: 25px;
+            cursor: pointer;
+            font-weight: 100;
+        }
+        .reminder-modal-content p {
+            font-size: 14px;
+            color: #ffffff;
+            margin: 15px 0;
+        }
+        .reminder-modal-content h3 {
+            color: #00aeff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -359,8 +405,7 @@
         <div class="profile-container">
             <div class="profile-picture" id="profilePicture"></div>
             <div>
-                <p id="userNameContainer" style="font-size: 20px; display: flex; gap: 5px;    justify-content: center;
-    align-items: center;">
+                <p id="userNameContainer" style="font-size: 20px; display: flex; gap: 5px; justify-content: center; align-items: center;">
                     <span style="color: white;" id="userName"></span>
                 </p>
                 <button class="amounts-btn" onclick="showAmountsModal()">
@@ -375,17 +420,18 @@
     <div id="amountsModal" class="amounts-modal" style="display: none;">
         <div class="amounts-modal-content">
             <span class="amounts-close-btn" onclick="closeAmountsModal()">×</span>
-            <h3 style="    text-decoration: underline;
-    margin-bottom: 5px;
-    font-weight: 900;
-    font-size: 16px;
-    text-align: center;
-    color: #0095da;
-">Total Amount</h3>
+            <h3 style="text-decoration: underline; margin-bottom: 5px; font-weight: 900; font-size: 16px; text-align: center; color: #0095da;">Total Amount</h3>
             <p><i class="fa-solid fa-money-bill"></i> Total Taken Amount: <span id="totalTaken"></span> ₹</p>
             <p><i class="fa-solid fa-arrow-up-wide-short"></i> Total Interest: <span id="totalInterest"></span> ₹</p>
             <hr>
             <p><i class="fa-solid fa-money-check-alt"></i> Total Amount to Return: <span id="totalReturn"></span> ₹</p>
+        </div>
+    </div>
+    <div id="reminderModal" class="reminder-modal" style="display: none;">
+        <div class="reminder-modal-content">
+            <span class="reminder-close-btn" onclick="closeReminderModal()">×</span>
+            <h3>Reminder: Loan Due Today</h3>
+            <p id="reminderMessage"></p>
         </div>
     </div>
     <div class="mfi" style="position: fixed; bottom: 10px; font-size: 10px; color: #848484; z-index: 1000; background: transparent; width: 100%; text-align: center; padding: 10px;">
@@ -550,7 +596,7 @@
             const user = passwords[userInput];
 
             if (!userInput) {
-                errorMessage.textContent = "Please enter a password.";
+                errorMessage.textContent = "Enter a password.";
                 return;
             }
 
@@ -570,7 +616,6 @@
 
                 const profilePicture = document.getElementById("profilePicture");
                 profilePicture.style.backgroundColor = user.profileBackground;
-                // Generate icon from first two words (max 2 letters, uppercase)
                 const nameParts = user.name.trim().split(/\s+/).slice(0, 2);
                 const iconText = nameParts.map(part => part.charAt(0)).join("").toUpperCase();
                 profilePicture.style.backgroundImage = "none";
@@ -589,6 +634,7 @@
 
                 if (user.loans.length > 0) {
                     displayLoanDetails(user.loans[0], 0);
+                    checkDueToday(user);
                 } else {
                     errorMessage.textContent = "No active loans found.";
                 }
@@ -599,6 +645,29 @@
                 errorMessage.textContent = "Invalid password.";
             }
         });
+
+        function checkDueToday(user) {
+            const today = new Date();
+            const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
+            const todayStr = `${String(today.getDate()).padStart(2, '0')}-${String(today.getMonth() + 1).padStart(2, '0')}-${today.getFullYear()}`;
+
+            user.loans.forEach(loan => {
+                const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+                const endMatch = cleanEndDate.match(dateFormat);
+                if (endMatch) {
+                    const endDateStr = `${endMatch[1]}-${endMatch[2]}-${endMatch[3]}`;
+                    if (endDateStr === todayStr && !loan.endDate.includes('Overdue')) {
+                        document.getElementById("reminderMessage").textContent = 
+                            `Dear ${user.name}, Today is your ${loan.takenFrom} return date (${cleanEndDate}). Try to clear on time if not overdue amount will be added. Thank you!`;
+                        document.getElementById("reminderModal").style.display = "flex";
+                    }
+                }
+            });
+        }
+
+        function closeReminderModal() {
+            document.getElementById("reminderModal").style.display = "none";
+        }
 
         function calculateDaysBetween(startDate, endDate) {
             try {
@@ -744,7 +813,6 @@
             document.getElementById("userPassword").value = "";
             sessionReferenceTime = null;
         }
-
         document.addEventListener("DOMContentLoaded", () => {
             const customMenu = document.querySelector(".custom-menu");
 
