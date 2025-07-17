@@ -473,10 +473,10 @@
                 profileBackground: "red",
                 loans: [
                     {
-                        planDate: "10-07-2025",
-                        endDate: "15-07-2025",
-                        interest: 1200,
-                        takenAmount: 5000,
+                        planDate: "15-07-2025",
+                        endDate: "30-07-2025",
+                        interest: 3800,
+                        takenAmount: 15000,
                         takenFrom: "MLending"
                     },
                 ]
@@ -813,6 +813,24 @@
             document.getElementById("userPassword").value = "";
             sessionReferenceTime = null;
         }
+        document.addEventListener("DOMContentLoaded", () => {
+            const customMenu = document.querySelector(".custom-menu");
+
+            document.addEventListener("contextmenu", (event) => {
+                event.preventDefault();
+                if (customMenu) {
+                    customMenu.style.display = "block";
+                    customMenu.style.top = `${event.pageY}px`;
+                    customMenu.style.left = `${event.pageX}px`;
+                }
+            });
+
+            document.addEventListener("click", () => {
+                if (customMenu) {
+                    customMenu.style.display = "none";
+                }
+            });
+        });
     </script>
 </body>
 </html>
