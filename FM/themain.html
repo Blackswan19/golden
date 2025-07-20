@@ -34,10 +34,6 @@
             background-color: #ffffff;
             color: #000000;
         }
-        body.telegram {
-            background-color: #f0f7fb;
-            color: #000000;
-        }
         body.telegram-dark {
             background-color: #18222d;
             color: #ffffff;
@@ -52,9 +48,6 @@
         }
         body.light h1, body.light h2, body.light h3 {
             color: #0066cc;
-        }
-        body.telegram h1, body.telegram h2, body.telegram h3 {
-            color: var(--telegram-accent);
         }
         body.telegram-dark h1, body.telegram-dark h2, body.telegram-dark h3 {
             color: var(--telegram-accent);
@@ -77,9 +70,6 @@
         body.light .about {
             background: #f0f0f0;
         }
-        body.telegram .about {
-            background: #ffffff;
-        }
         body.telegram-dark .about {
             background: #242f3e;
         }
@@ -99,12 +89,6 @@
         }
         body.light a:hover {
             color: #003087;
-        }
-        body.telegram a {
-            color: var(--telegram-accent);
-        }
-        body.telegram a:hover {
-            color: #005f99;
         }
         body.telegram-dark a {
             color: var(--telegram-accent);
@@ -145,15 +129,6 @@
             color: #fff;
             border-color: #0066cc;
         }
-        body.telegram .button {
-            color: var(--telegram-accent);
-            border-color: var(--telegram-accent);
-        }
-        body.telegram .button:hover {
-            background-color: var(--telegram-accent);
-            color: #fff;
-            border-color: var(--telegram-accent);
-        }
         body.telegram-dark .button {
             color: var(--telegram-accent);
             border-color: var(--telegram-accent);
@@ -193,9 +168,6 @@
         body.light p {
             color: #666666;
         }
-        body.telegram p {
-            color: #666666;
-        }
         body.telegram-dark p {
             color: #a0a9b2;
         }
@@ -207,9 +179,6 @@
             color: #a9a9a9;
         }
         body.light li {
-            color: #666666;
-        }
-        body.telegram li {
             color: #666666;
         }
         body.telegram-dark li {
@@ -252,10 +221,6 @@
             border-bottom-color: #b0b0b091;
             background: #ffffffcc;
         }
-        body.telegram .logo {
-            border-bottom-color: var(--telegram-accent);
-            background: #ffffffcc;
-        }
         body.telegram-dark .logo {
             border-bottom-color: var(--telegram-accent);
             background: #18222d99;
@@ -274,9 +239,6 @@
             }
             body.light .logo {
                 border-bottom-color: #b0b0b091;
-            }
-            body.telegram .logo {
-                border-bottom-color: var(--telegram-accent);
             }
             body.telegram-dark .logo {
                 border-bottom-color: var(--telegram-accent);
@@ -351,10 +313,6 @@
         }
         body.light .applybtn {
             background: #e0e0e0;
-            color: #000000;
-        }
-        body.telegram .applybtn {
-            background: #e6f0fa;
             color: #000000;
         }
         body.telegram-dark .applybtn {
@@ -528,7 +486,6 @@
         <span style="color: #00aaff;">Select</span>
         <button class="theme-option" onclick="setTheme('dark')">Dark theme</button>
         <button class="theme-option" onclick="setTheme('light')">Light theme</button>
-        <button class="theme-option" onclick="setTheme('telegram')">Telegram theme</button>
         <button class="theme-option" onclick="setTheme('telegram-dark')">Telegram Dark theme</button>
         <!-- <div class="theme-option color-picker">
             <span style="color: #00aaff;">Themes</span>
@@ -566,7 +523,7 @@
             });
 
             window.setTheme = function(theme) {
-                document.body.classList.remove("dark", "light", "telegram", "telegram-dark", "my-own");
+                document.body.classList.remove("dark", "light", "telegram-dark", "my-own");
                 document.body.classList.add(theme);
                 localStorage.setItem("theme", theme);
                 themePopup.classList.remove("open");
@@ -577,7 +534,7 @@
 
             window.setCustomTheme = function() {
                 const accentColor = document.getElementById("userAccentColor").value;
-                document.body.classList.remove("dark", "light", "telegram", "telegram-dark", "my-own");
+                document.body.classList.remove("dark", "light", "telegram-dark", "my-own");
                 document.body.classList.add("my-own");
                 document.documentElement.style.setProperty("--user-accent", accentColor);
                 localStorage.setItem("theme", "my-own");
