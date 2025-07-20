@@ -11,6 +11,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Anta&family=Audiowide&family=Braah+One&family=Cardo:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dongle&family=Dosis:wght@200..800&family=DotGothic16&family=Goldman:wght@400;700&family=Gruppo&family=Handjet:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mandali&family=Michroma&family=Oxanium:wght@200..800&family=Pixelify+Sans:wght@400..700&family=Poiret+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&family=Sarpanch:wght@400;500;600;700;800;900&family=Share+Tech&family=Space+Grotesk:wght@300..700&family=Stalinist+One&family=VT323&family=Zen+Dots&display=swap');
         :root {
             --user-accent: #00aaff;
+            --telegram-accent: #0088cc;
         }
         * {
             font-family: "Poppins", serif;
@@ -33,7 +34,14 @@
             background-color: #ffffff;
             color: #000000;
         }
-       
+        body.telegram {
+            background-color: #f0f7fb;
+            color: #000000;
+        }
+        body.telegram-dark {
+            background-color: #18222d;
+            color: #ffffff;
+        }
         body.my-own {
             background-color: rgb(10 10 10);
             color: #ffffff;
@@ -45,7 +53,12 @@
         body.light h1, body.light h2, body.light h3 {
             color: #0066cc;
         }
-       
+        body.telegram h1, body.telegram h2, body.telegram h3 {
+            color: var(--telegram-accent);
+        }
+        body.telegram-dark h1, body.telegram-dark h2, body.telegram-dark h3 {
+            color: var(--telegram-accent);
+        }
         body.my-own h1, body.my-own h2, body.my-own h3 {
             color: var(--user-accent);
         }
@@ -64,7 +77,12 @@
         body.light .about {
             background: #f0f0f0;
         }
-       
+        body.telegram .about {
+            background: #ffffff;
+        }
+        body.telegram-dark .about {
+            background: #242f3e;
+        }
         body.my-own .about {
             background: #161616;
         }
@@ -82,7 +100,18 @@
         body.light a:hover {
             color: #003087;
         }
-       
+        body.telegram a {
+            color: var(--telegram-accent);
+        }
+        body.telegram a:hover {
+            color: #005f99;
+        }
+        body.telegram-dark a {
+            color: var(--telegram-accent);
+        }
+        body.telegram-dark a:hover {
+            color: #4db3ff;
+        }
         body.my-own a {
             color: var(--user-accent);
         }
@@ -116,7 +145,24 @@
             color: #fff;
             border-color: #0066cc;
         }
-        
+        body.telegram .button {
+            color: var(--telegram-accent);
+            border-color: var(--telegram-accent);
+        }
+        body.telegram .button:hover {
+            background-color: var(--telegram-accent);
+            color: #fff;
+            border-color: var(--telegram-accent);
+        }
+        body.telegram-dark .button {
+            color: var(--telegram-accent);
+            border-color: var(--telegram-accent);
+        }
+        body.telegram-dark .button:hover {
+            background-color: var(--telegram-accent);
+            color: #fff;
+            border-color: var(--telegram-accent);
+        }
         body.my-own .button {
             color: var(--user-accent);
             border-color: var(--user-accent);
@@ -147,7 +193,12 @@
         body.light p {
             color: #666666;
         }
-       
+        body.telegram p {
+            color: #666666;
+        }
+        body.telegram-dark p {
+            color: #a0a9b2;
+        }
         body.my-own p {
             color: #959595;
         }
@@ -158,7 +209,12 @@
         body.light li {
             color: #666666;
         }
-        
+        body.telegram li {
+            color: #666666;
+        }
+        body.telegram-dark li {
+            color: #a0a9b2;
+        }
         body.my-own li {
             color: #a9a9a9;
         }
@@ -196,7 +252,14 @@
             border-bottom-color: #b0b0b091;
             background: #ffffffcc;
         }
-        
+        body.telegram .logo {
+            border-bottom-color: var(--telegram-accent);
+            background: #ffffffcc;
+        }
+        body.telegram-dark .logo {
+            border-bottom-color: var(--telegram-accent);
+            background: #18222d99;
+        }
         body.my-own .logo {
             border-bottom-color: var(--user-accent);
             background: #1515159c;
@@ -212,7 +275,12 @@
             body.light .logo {
                 border-bottom-color: #b0b0b091;
             }
-            
+            body.telegram .logo {
+                border-bottom-color: var(--telegram-accent);
+            }
+            body.telegram-dark .logo {
+                border-bottom-color: var(--telegram-accent);
+            }
             body.my-own .logo {
                 border-bottom-color: var(--user-accent);
             }
@@ -253,9 +321,7 @@
             background-color: #006aff;
             border-radius: 50%;
             margin: 0 5px;
-            animation: bounceDot 1s ease-in-out infinite
-
-;
+            animation: bounceDot 1s ease-in-out infinite;
         }
         .dot:nth-child(2) {
             animation-delay: 0.2s;
@@ -287,15 +353,21 @@
             background: #e0e0e0;
             color: #000000;
         }
-        
+        body.telegram .applybtn {
+            background: #e6f0fa;
+            color: #000000;
+        }
+        body.telegram-dark .applybtn {
+            background: #2a3545;
+            color: #ffffff;
+        }
         body.my-own .applybtn {
             background: rgb(19, 19, 19);
             color: #ffffff;
         }
-        .applybtn:hover{
+        .applybtn:hover {
             text-decoration: none;
         }
-        
         body.sharp .applybtn {
             border-radius: 0;
         }
@@ -355,7 +427,7 @@
             background-color: transparent;
             color: #fff;
             border: none;
-            padding: 5px 15px; 
+            padding: 5px 15px;
             cursor: pointer;
             font-size: 14px;
             transition: background-color 0.3s ease;
@@ -456,6 +528,8 @@
         <span style="color: #00aaff;">Select</span>
         <button class="theme-option" onclick="setTheme('dark')">Dark theme</button>
         <button class="theme-option" onclick="setTheme('light')">Light theme</button>
+        <button class="theme-option" onclick="setTheme('telegram')">Telegram theme</button>
+        <button class="theme-option" onclick="setTheme('telegram-dark')">Telegram Dark theme</button>
         <!-- <div class="theme-option color-picker">
             <span style="color: #00aaff;">Themes</span>
             <input type="color" id="userAccentColor" value="#00aaff" onchange="setCustomTheme()">
@@ -492,7 +566,7 @@
             });
 
             window.setTheme = function(theme) {
-                document.body.classList.remove("dark", "light", "my-own");
+                document.body.classList.remove("dark", "light", "telegram", "telegram-dark", "my-own");
                 document.body.classList.add(theme);
                 localStorage.setItem("theme", theme);
                 themePopup.classList.remove("open");
@@ -503,7 +577,7 @@
 
             window.setCustomTheme = function() {
                 const accentColor = document.getElementById("userAccentColor").value;
-                document.body.classList.remove("dark", "light", "my-own");
+                document.body.classList.remove("dark", "light", "telegram", "telegram-dark", "my-own");
                 document.body.classList.add("my-own");
                 document.documentElement.style.setProperty("--user-accent", accentColor);
                 localStorage.setItem("theme", "my-own");
@@ -533,7 +607,6 @@
         });
     </script>
     <script>
-        
         document.addEventListener("DOMContentLoaded", () => {
             const customMenu = document.querySelector(".custom-menu");
 
