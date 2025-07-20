@@ -336,7 +336,7 @@
             right: 20px;
             background-color: #3939394d;
             border-radius: 20px;
-            padding: 15px;
+            padding: 25px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             display: none;
             flex-direction: column;
@@ -355,10 +355,9 @@
             background-color: transparent;
             color: #fff;
             border: none;
-            padding: 5px;
+            padding: 5px 15px; 
             cursor: pointer;
             font-size: 14px;
-            text-align: left;
             transition: background-color 0.3s ease;
         }
         .color-picker {
@@ -454,12 +453,13 @@
     </button>
     <button class="style-button" id="styleButton">V</button>
     <div class="theme-popup" id="themePopup">
-        <button class="theme-option" onclick="setTheme('dark')">Dark</button>
-        <button class="theme-option" onclick="setTheme('light')">Light</button>
-        <div class="theme-option color-picker">
-            <span>My Own</span>
+        <span style="color: #00aaff;">Select</span>
+        <button class="theme-option" onclick="setTheme('dark')">Dark theme</button>
+        <button class="theme-option" onclick="setTheme('light')">Light theme</button>
+        <!-- <div class="theme-option color-picker">
+            <span style="color: #00aaff;">Themes</span>
             <input type="color" id="userAccentColor" value="#00aaff" onchange="setCustomTheme()">
-        </div>
+        </div> -->
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -530,6 +530,27 @@
             } else {
                 styleButton.textContent = "V";
             }
+        });
+    </script>
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            const customMenu = document.querySelector(".custom-menu");
+
+            document.addEventListener("contextmenu", (event) => {
+                event.preventDefault();
+                if (customMenu) {
+                    customMenu.style.display = "block";
+                    customMenu.style.top = `${event.pageY}px`;
+                    customMenu.style.left = `${event.pageX}px`;
+                }
+            });
+
+            document.addEventListener("click", () => {
+                if (customMenu) {
+                    customMenu.style.display = "none";
+                }
+            });
         });
     </script>
 </body>
