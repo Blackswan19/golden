@@ -5,6 +5,7 @@ const passwords = {
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
                 fineRate: 5,
                 profileBackground: "#ff4d4d",
+                stars: 0,
                 loans: [
                     {
                         planDate: "24-05-2025",
@@ -28,6 +29,7 @@ const passwords = {
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
                 fineRate: 5,
                 profileBackground: "red",
+                stars: 18,
                 loans: [
                     {
                         planDate: "15-07-2025",
@@ -42,15 +44,16 @@ const passwords = {
                 name: "Mahesh Muthinti",
                 membershipType: "Premium - Mini",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-                fineRate: 10,
+                fineRate: 0,
                 profileBackground: "#00ff00",
+                stars: 0,
                 loans: [
                     {
                         planDate: "25-05-2025",
-                        endDate: "24-08-2025(Extanded to 30 days)",
-                        interest: 1040,
+                        endDate: "24-07-2025(Extanded to 5 days)",
+                        interest: 240,
                         takenAmount: 5000,
-                        takenFrom: "MLLD Offer"
+                        takenFrom: "MLLD"
                     },
                     {
                         planDate: "28-06-2025",
@@ -81,6 +84,7 @@ const passwords = {
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
                 fineRate: 3,
                 profileBackground: "rgb(255 138 0)",
+                stars: 0,
                 loans: [
                     {
                         planDate: "21-05-2025",
@@ -131,7 +135,6 @@ const passwords = {
                         takenAmount: 10000,
                         takenFrom: "MLending"
                     },
-                    
                 ]
             },
         };
@@ -160,6 +163,7 @@ const passwords = {
             if (user) {
                 localStorage.setItem("userPassword", userInput);
                 document.getElementById("userName").textContent = user.name;
+                document.getElementById("starCount").textContent = user.stars;
                 const membershipTypeContainer = document.getElementById("membershipType");
                 membershipTypeContainer.innerHTML = `
                     <a href="https://mfi0212.github.io/MFI/starpre" style="text-decoration: underline; text-underline-position: under;">${user.membershipType}</a>
@@ -197,6 +201,7 @@ const passwords = {
                 }
 
                 document.getElementById("userInfoModal").style.display = "block";
+                document.getElementById("passwordContainer").style.display = "none";
                 errorMessage.textContent = "";
             } else {
                 errorMessage.textContent = "Invalid password.";
@@ -367,25 +372,7 @@ const passwords = {
 
         function closeModal() {
             document.getElementById("userInfoModal").style.display = "none";
+            document.getElementById("passwordContainer").style.display = "flex";
             document.getElementById("userPassword").value = "";
             sessionReferenceTime = null;
         }
-        document.addEventListener("DOMContentLoaded", () => {
-            const customMenu = document.querySelector(".custom-menu");
-
-            document.addEventListener("contextmenu", (event) => {
-                event.preventDefault();
-                if (customMenu) {
-                    customMenu.style.display = "block";
-                    customMenu.style.top = `${event.pageY}px`;
-                    customMenu.style.left = `${event.pageX}px`;
-                }
-            });
-
-            document.addEventListener("click", () => {
-                if (customMenu) {
-                    customMenu.style.display = "none";
-                }
-            });
-        });
-
