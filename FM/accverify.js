@@ -50,10 +50,10 @@ const passwords = {
                 loans: [
                     {
                         planDate: "25-05-2025",
-                        endDate: "24-07-2025(Extanded to 5 days)",
-                        interest: 240,
+                        endDate: "24-08-2025(Extanded to 30 days)",
+                        interest: 1040,
                         takenAmount: 5000,
-                        takenFrom: "MLLD"
+                        takenFrom: "MLLD offer"
                     },
                     {
                         planDate: "28-06-2025",
