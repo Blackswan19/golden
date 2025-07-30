@@ -95,14 +95,14 @@ const passwords = {
                 loans: [
                     {
                         planDate: "21-05-2025",
-                        endDate: "15-06-2025(Extanded to 15days)",
+                        endDate: "15-08-2025(Extanded to 15days)",
                         interest: 1900,
                         takenAmount: 5000,
                         takenFrom: "MLLD"
                     },
                     {
                         planDate: "29-05-2025",
-                        endDate: "15-06-2025(Extanded to 15days)",
+                        endDate: "15-08-2025(Extanded to 15days)",
                         interest: 5200,
                         takenAmount: 15000,
                         takenFrom: "MLending"
