@@ -32,8 +32,8 @@ const passwords = {
                 stars: 100,
                 loans: [
                     {
-                        planDate: "30-07-2025",
-                        endDate: "14-08-2025",
+                        planDate: "31-07-2025",
+                        endDate: "15-08-2025",
                         interest: 4500,
                         takenAmount: 20000,
                         takenFrom: "MLending"
