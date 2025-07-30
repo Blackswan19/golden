@@ -23,23 +23,30 @@ const passwords = {
                     },
                 ]
             },
-            // "6275": {
-            //     name: "Srikanth Jampana",
-            //     membershipType: "Premium - Mini",
-            //     membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-            //     fineRate: 5,
-            //     profileBackground: "red",
-            //     stars: 100,
-            //     loans: [
-            //         {
-            //             planDate: "15-07-2025",
-            //             endDate: "30-07-2025",
-            //             interest: 3800,
-            //             takenAmount: 15000,
-            //             takenFrom: "MLending"
-            //         },
-            //     ]
-            // },
+            "6275": {
+                name: "Srikanth Jampana",
+                membershipType: "Premium - Mini",
+                membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
+                fineRate: 5,
+                profileBackground: "red",
+                stars: 100,
+                loans: [
+                    {
+                        planDate: "30-07-2025",
+                        endDate: "14-08-2025",
+                        interest: 4500,
+                        takenAmount: 20000,
+                        takenFrom: "MLending"
+                    },
+                    // {
+                    //     planDate: "31-07-2025",
+                    //     endDate: "14-08-2025",
+                    //     interest: 2000,
+                    //     takenAmount: 10000,
+                    //     takenFrom: "MLending"
+                    // },
+                ]
+            },
             "Mahesh888*": {
                 name: "Mahesh Muthinti",
                 membershipType: "Premium - Mini",
@@ -48,7 +55,7 @@ const passwords = {
                 profileBackground: "#00ff00",
                 stars: 0,
                 loans: [
-                    {
+                     {
                         planDate: "25-05-2025",
                         endDate: "24-08-2025(Extanded to 30 days)",
                         interest: 1040,
