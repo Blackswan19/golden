@@ -55,13 +55,6 @@ const passwords = {
                 profileBackground: "#00ff00",
                 stars: 0,
                 loans: [
-                     {
-                        planDate: "25-05-2025",
-                        endDate: "24-08-2025(Extanded to 30 days)",
-                        interest: 1040,
-                        takenAmount: 5000,
-                        takenFrom: "MLLD offer"
-                    },
                     {
                         planDate: "28-06-2025",
                         endDate: "02-08-2025(Extanded to 5 days)",
@@ -83,6 +76,13 @@ const passwords = {
                         takenAmount: 5000,
                         takenFrom: "MLLD Offer"
                     },
+                     {
+                        planDate: "25-05-2025",
+                        endDate: "24-08-2025(Extanded to 30 days)",
+                        interest: 1040,
+                        takenAmount: 5000,
+                        takenFrom: "MLLD offer"
+                    },
                 ]
             },
             "Cherish@123": {
@@ -95,49 +95,49 @@ const passwords = {
                 loans: [
                     {
                         planDate: "21-05-2025",
-                        endDate: "30-06-2025",
-                        interest: 1950,
+                        endDate: "15-06-2025(Extanded to 15days)",
+                        interest: 1900,
                         takenAmount: 5000,
                         takenFrom: "MLLD"
                     },
                     {
                         planDate: "29-05-2025",
-                        endDate: "30-06-2025",
-                        interest: 4800,
+                        endDate: "15-06-2025(Extanded to 15days)",
+                        interest: 5200,
                         takenAmount: 15000,
                         takenFrom: "MLending"
                     },
                     {
                         planDate: "23-05-2025",
-                        endDate: "01-08-2025",
+                        endDate: "15-08-2025(Extanded to 15days)",
                         interest: 1220,
                         takenAmount: 3500,
                         takenFrom: "MLLD"
                     },
                     {
                         planDate: "28-05-2025",
-                        endDate: "01-08-2025<br>(<span style='color:yellow'>Interest cleared</span>)",
+                        endDate: "15-08-2025(Extanded to 15days)",
                         interest: 0,
                         takenAmount: 2000,
                         takenFrom: "MLLD"
                     },
                     {
                         planDate: "25-05-2025",
-                        endDate: "01-08-2025<br>(<span style='color:yellow'>Interest cleared</span>)",
+                        endDate: "15-08-2025(Extanded to 15days)",
                         interest: 0,
                         takenAmount: 2500,
                         takenFrom: "MLLD(Offer)"
                     },
                     {
                         planDate: "24-05-2025",
-                        endDate: "01-08-2025<br>(<span style='color:yellow'>Interest cleared</span>)",
+                        endDate: "15-08-2025(Extanded to 15days)",
                         interest: 0,
                         takenAmount: 3500,
                         takenFrom: "MLLD(Offer)"
                     },
                     {
                         planDate: "26-05-2025",
-                        endDate: "01-08-2025<br>(<span style='color:yellow'>Interest cleared</span>)",
+                        endDate: "15-08-2025(Extanded to 15days)",
                         interest: 0,
                         takenAmount: 10000,
                         takenFrom: "MLending"
