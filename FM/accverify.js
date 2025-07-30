@@ -23,23 +23,23 @@ const passwords = {
                     },
                 ]
             },
-            "6275": {
-                name: "Srikanth Jampana",
-                membershipType: "Premium - Mini",
-                membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-                fineRate: 5,
-                profileBackground: "red",
-                stars: 100,
-                loans: [
-                    {
-                        planDate: "15-07-2025",
-                        endDate: "30-07-2025",
-                        interest: 3800,
-                        takenAmount: 15000,
-                        takenFrom: "MLending"
-                    },
-                ]
-            },
+            // "6275": {
+            //     name: "Srikanth Jampana",
+            //     membershipType: "Premium - Mini",
+            //     membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
+            //     fineRate: 5,
+            //     profileBackground: "red",
+            //     stars: 100,
+            //     loans: [
+            //         {
+            //             planDate: "15-07-2025",
+            //             endDate: "30-07-2025",
+            //             interest: 3800,
+            //             takenAmount: 15000,
+            //             takenFrom: "MLending"
+            //         },
+            //     ]
+            // },
             "Mahesh888*": {
                 name: "Mahesh Muthinti",
                 membershipType: "Premium - Mini",
@@ -50,10 +50,10 @@ const passwords = {
                 loans: [
                     {
                         planDate: "25-05-2025",
-                        endDate: "24-08-2025(Extanded to 30 days)",
-                        interest: 1040,
+                        endDate: "24-07-2025(Extanded to 5 days)",
+                        interest: 240,
                         takenAmount: 5000,
-                        takenFrom: "MLLD offer"
+                        takenFrom: "MLLD"
                     },
                     {
                         planDate: "28-06-2025",
