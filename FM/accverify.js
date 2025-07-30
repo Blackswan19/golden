@@ -28,7 +28,7 @@ const passwords = {
                 membershipType: "Premium - Mini",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
                 fineRate: 5,
-                profileBackground: "#ffd900",
+                profileBackground: "#ff8300",
                 stars: 100,
                 loans: [
                     {
