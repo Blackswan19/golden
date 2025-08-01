@@ -39,7 +39,7 @@ const passwords = {
                         takenFrom: "MLending"
                     },
                     {
-                        planDate: "1-08-2025",
+                        planDate: "01-08-2025",
                         endDate: "15-08-2025",
                         interest: 4500,
                         takenAmount: 20000,
