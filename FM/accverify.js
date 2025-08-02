@@ -62,8 +62,8 @@ const passwords = {
                         takenAmount: 11500,
                         takenFrom: "MLending"
                     },
-                    {
-                    
+          
+             
                     {
                         planDate: "01-06-2025",
                         endDate: "20-08-2025(Extanded to 30 days)",
