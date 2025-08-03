@@ -18,7 +18,7 @@
             -webkit-tap-highlight-color: transparent;
         }
         body {
-            background-color: black;
+            background-color: rgb(10 10 10);
             color: #ffffff;
             max-width: 800px;
             margin: 0 auto;
@@ -109,13 +109,13 @@ body {
         }
         .button {
             display: inline-block;
-    background-color: #ffffff24;
-    color: #ffffffbd;
+    background-color: #ffffff17;
+    color: white;
     padding: 1px 20px;
     text-decoration: none;
     margin: 5px;
     font-size: 14px;
-    border: solid 1.5px #ffffff61;
+    border: solid 1.5px #ffffff42;
     border-radius: 100px;
     font-weight: 500;
         }
@@ -126,9 +126,9 @@ body {
             border: solid 1.5px white;
         }
         body.light .button {
-               color: white;
-    border-color: black;
-    background: black;
+                   color: #696969;
+    border-color: rgb(105 105 105);
+    background: transparent;
         }
         body.light .button:hover {
             background-color: #007aff;
@@ -320,14 +320,17 @@ body {
     padding: 14px 21px;
     font-weight: 400;
     border: none;
+    filter: drop-shadow(0px 0px 20px black);
         }
         body.light .applybtn {
            background: #007aff;
             color: white;
+            filter: none;
         }
         body.telegram-dark .applybtn {
             background: #696969;
             color: #ffffff;
+                filter: none;
         }
         body.my-own .applybtn {
             background: rgb(19, 19, 19);
@@ -372,20 +375,20 @@ body {
             transform: rotate(45deg);
         }
         .theme-popup {
-            position: fixed;
-            bottom: 145px;
-            right: 20px;
-            background-color: #3939394d;
-            border-radius: 20px;
-            padding: 15px 35px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            display: none;
-            flex-direction: column;
-            z-index: 999;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            backdrop-filter: blur(8px);
+               position: fixed;
+    bottom: 145px;
+    right: 20px;
+    background-color: #3f3f3fcf;
+    border-radius: 20px;
+    padding: 15px 30px;
+    display: none;
+    flex-direction: column;
+    z-index: 999;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    border: solid 1.5px #80808045;
+    backdrop-filter: blur(6px);
         }
         .theme-popup.open {
             display: flex;
