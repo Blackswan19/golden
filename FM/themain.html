@@ -109,21 +109,22 @@ body {
         }
         .button {
             display: inline-block;
-    background-color: #ffffff17;
-    color: white;
+    background-color: #28282863;
+    color: #e3e3e3;
     padding: 1px 20px;
     text-decoration: none;
     margin: 5px;
     font-size: 14px;
-    border: solid 1.5px #ffffff42;
+    border: solid 1.5px #3c3c3c;
     border-radius: 100px;
     font-weight: 500;
         }
         .button:hover {
-            text-decoration: none;
-            background-color: white;
-            color: black;
-            border: solid 1.5px white;
+                text-decoration: none;
+    background-color: #00aaff;
+    color: black;
+    border: solid 1.5px #00aaff;
+
         }
         body.light .button {
                    color: #696969;
@@ -225,9 +226,10 @@ body {
             border-radius: 0;
         }
         body.light .logo {
-                border-bottom-color: #b0b0b091;
-                background: #ffffffde;
-                backdrop-filter: blur(10px);
+           border-bottom-color: #b0b0b091;
+    background: #ffffff91;
+    backdrop-filter: blur(5px);
+
         }
         body.telegram-dark .logo {
             border-bottom-color: var(--telegram-accent);
@@ -317,7 +319,7 @@ body {
     color: #ffffff;
     border: none;
     border-radius: 13px;
-    padding: 14px 21px;
+    padding: 12px 21px;
     font-weight: 400;
     border: none;
     filter: drop-shadow(0px 0px 20px black);
@@ -375,10 +377,10 @@ body {
             transform: rotate(45deg);
         }
         .theme-popup {
-               position: fixed;
+              position: fixed;
     bottom: 145px;
     right: 20px;
-    background-color: #3f3f3fcf;
+    background-color: #3f3f3fa1;
     border-radius: 20px;
     padding: 15px 30px;
     display: none;
@@ -387,8 +389,7 @@ body {
     transform: translateY(20px);
     opacity: 0;
     transition: transform 0.3s ease, opacity 0.3s ease;
-    border: solid 1.5px #80808045;
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(5px);
         }
         .theme-popup.open {
             display: flex;
