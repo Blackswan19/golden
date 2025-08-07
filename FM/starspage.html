@@ -24,19 +24,16 @@
         function calculateCost() {
             const stars = parseInt(document.getElementById('starInput').value);
             const resultDiv = document.getElementById('result');
-
             if (isNaN(stars) || stars <= 0) {
                 resultDiv.innerHTML = "Enter a valid number of stars.";
                 return;
-            }
-
-            // Cost calculation: 1000 stars = 500 units, so 1 star = 0.5 units
-            const costPerStar = 0.5;
+            }//1 star = 0.5 units
+            const costPerStar = 0.8;
             const totalCost = stars * costPerStar;
-
             resultDiv.innerHTML = `You can buy ${stars} stars with ₹${totalCost}`;
         }
     </script>
 </body>
 </html>
+
 
