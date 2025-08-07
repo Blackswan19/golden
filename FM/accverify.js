@@ -23,12 +23,12 @@ const passwords = {
                     },
                 ]
             },
-            "6275": {
+           "6275": {
                 name: "Srikanth Jampana",
-                membershipType: "Premium - Mini",
-                membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
+                membershipType: "Premium - Tele",
+                membershipIcon: "https://i.ibb.co/Q7T6T6LM/veriflgo.png",
                 fineRate: 5,
-                profileBackground: "red",
+                profileBackground: "#9200ff",
                 stars: 175,
                 loans: [
                     {
@@ -392,3 +392,4 @@ const passwords = {
             document.getElementById("userPassword").value = "";
             sessionReferenceTime = null;
         }
+
