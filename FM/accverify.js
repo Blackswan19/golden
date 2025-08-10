@@ -23,7 +23,7 @@ const passwords = {
                     },
                 ]
             },
-"0212": {
+            "0212": {
                 name: "Chinna Yerra",
                 membershipType: "Premium - Mini",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
@@ -32,9 +32,9 @@ const passwords = {
                 stars: 0,
                 loans: [
                     {
-                        planDate: "10-05-2025",
-                        endDate: "18-07-2025(Extended to 15 days)",
-                        interest: 160,
+                        planDate: "10-08-2025",
+                        endDate: "18-08-2025",
+                        interest: 145,
                         takenAmount: 2500,
                         takenFrom: "MLending"
                     },
@@ -417,5 +417,4 @@ const passwords = {
             document.getElementById("userPassword").value = "";
             sessionReferenceTime = null;
         }
-
 
