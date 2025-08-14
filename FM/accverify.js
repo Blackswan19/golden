@@ -33,8 +33,8 @@ const passwords = {
                 loans: [
                     {
                         planDate: "10-08-2025",
-                        endDate: "18-08-2025",
-                        interest: 148,
+                        endDate: "20-08-2025",
+                        interest: 213,
                         takenAmount: 2500,
                         takenFrom: "MLending"
                     },
@@ -417,5 +417,4 @@ const passwords = {
             document.getElementById("userPassword").value = "";
             sessionReferenceTime = null;
         }
-
 
