@@ -34,7 +34,7 @@ const passwords = {
                     {
                         planDate: "10-08-2025",
                         endDate: "20-08-2025",
-                        interest: 198,
+                        interest: 213,
                         takenAmount: 2500,
                         takenFrom: "MLending"
                     },
@@ -105,15 +105,15 @@ const passwords = {
              
                     {
                         planDate: "01-06-2025",
-                        endDate: "20-08-2025(Extanded to 30 days)",
-                        interest: 2020,
+                        endDate: "19-09-2025(Extanded to 30 days)",
+                        interest: 3740,
                         takenAmount: 5000,
                         takenFrom: "MLLD Offer"
                     },
                      {
                         planDate: "25-05-2025",
-                        endDate: "24-08-2025(Extanded to 30 days)",
-                        interest: 1040,
+                        endDate: "23-09-2025(Extanded to 30 days)",
+                        interest: 2080,
                         takenAmount: 5000,
                         takenFrom: "MLLD offer"
                     },
@@ -417,5 +417,4 @@ const passwords = {
             document.getElementById("userPassword").value = "";
             sessionReferenceTime = null;
         }
-
 
