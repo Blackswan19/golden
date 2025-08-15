@@ -46,7 +46,7 @@ const passwords = {
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
                 fineRate: 5,
                 profileBackground: "red",
-                stars: 250,
+                stars: 200,
                 loans: [
                     {
                         planDate: "01-08-2025",
@@ -417,4 +417,5 @@ const passwords = {
             document.getElementById("userPassword").value = "";
             sessionReferenceTime = null;
         }
+
 
