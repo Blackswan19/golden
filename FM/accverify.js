@@ -9,15 +9,15 @@ const passwords = {
                 loans: [
                     {
                         planDate: "24-05-2025",
-                        endDate: "15-07-2025(Extended to 15 days)",
-                        interest: 4800,
+                        endDate: "01-09-2025",
+                        interest: 5500,
                         takenAmount: 15000,
                         takenFrom: "MLending"
                     },
                     {
                         planDate: "07-04-2025",
-                        endDate: "15-07-2025(Extended to 15 days)",
-                        interest: 6200,
+                        endDate: "01-09-2025",
+                        interest: 4800,
                         takenAmount: 10000,
                         takenFrom: "MLLD"
                     },
@@ -34,7 +34,7 @@ const passwords = {
                     {
                         planDate: "10-08-2025",
                         endDate: "20-08-2025",
-                        interest: 213,
+                        interest: 216,
                         takenAmount: 2500,
                         takenFrom: "MLending"
                     },
@@ -101,18 +101,16 @@ const passwords = {
                         takenAmount: 11500,
                         takenFrom: "MLending"
                     },
-          
-             
                     {
                         planDate: "01-06-2025",
-                        endDate: "20-08-2025(Extanded to 30 days)",
+                        endDate: "19-09-2025(Extanded to 30 days)",
                         interest: 3260,
                         takenAmount: 5000,
                         takenFrom: "MLLD Offer"
                     },
                      {
                         planDate: "25-05-2025",
-                        endDate: "24-08-2025(Extanded to 30 days)",
+                        endDate: "24-09-2025(Extanded to 30 days)",
                         interest: 2080,
                         takenAmount: 5000,
                         takenFrom: "MLLD offer"
@@ -129,51 +127,51 @@ const passwords = {
                 loans: [
                     {
                         planDate: "21-05-2025",
-                        endDate: "15-08-2025(Extanded to 15days)",
-                        interest: 1900,
+                        endDate: "15-08-2025",
+                        interest: 2100,
                         takenAmount: 5000,
                         takenFrom: "MLLD"
                     },
                     {
                         planDate: "29-05-2025",
-                        endDate: "15-08-2025(Extanded to 15days)",
-                        interest: 5200,
+                        endDate: "01-09-2025",
+                        interest: 5500,
                         takenAmount: 15000,
                         takenFrom: "MLending"
                     },
                     {
                         planDate: "23-05-2025",
-                        endDate: "15-08-2025(Extanded to 15days)",
-                        interest: 1220,
-                        takenAmount: 3500,
+                        endDate: "01-09-2025",
+                        interest: 1820,
+                        takenAmount: 3800,
                         takenFrom: "MLLD"
                     },
                     {
                         planDate: "28-05-2025",
-                        endDate: "15-08-2025(Extanded to 15days)",
+                        endDate: "01-09-2025",
                         interest: 0,
-                        takenAmount: 2000,
+                        takenAmount: 2600,
                         takenFrom: "MLLD"
                     },
                     {
                         planDate: "25-05-2025",
-                        endDate: "15-08-2025(Extanded to 15days)",
+                        endDate: "01-09-2025",
                         interest: 0,
-                        takenAmount: 2500,
+                        takenAmount: 3000,
                         takenFrom: "MLLD(Offer)"
                     },
                     {
                         planDate: "24-05-2025",
-                        endDate: "15-08-2025(Extanded to 15days)",
+                        endDate: "01-09-2025",
                         interest: 0,
-                        takenAmount: 3500,
+                        takenAmount: 4200,
                         takenFrom: "MLLD(Offer)"
                     },
                     {
                         planDate: "26-05-2025",
-                        endDate: "15-08-2025(Extanded to 15days)",
+                        endDate: "01-09-2025",
                         interest: 0,
-                        takenAmount: 10000,
+                        takenAmount: 12400,
                         takenFrom: "MLending"
                     },
                 ]
@@ -417,5 +415,4 @@ const passwords = {
             document.getElementById("userPassword").value = "";
             sessionReferenceTime = null;
         }
-
 
