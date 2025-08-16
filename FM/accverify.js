@@ -46,7 +46,7 @@ const passwords = {
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
                 fineRate: 5,
                 profileBackground: "red",
-                stars: 200,
+                stars: 225,
                 loans: [
                     
                     {
