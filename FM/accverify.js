@@ -48,13 +48,7 @@ const passwords = {
                 profileBackground: "red",
                 stars: 200,
                 loans: [
-                    {
-                        planDate: "01-08-2025",
-                        endDate: "16-08-2025",
-                        interest: 5000,
-                        takenAmount: 20000,
-                        takenFrom: "MLending"
-                    },
+                    
                     {
                         planDate: "02-08-2025",
                         endDate: "17-08-2025",
