@@ -83,6 +83,13 @@ const passwords = {
                         takenAmount: 20000,
                         takenFrom: "MLending"
                     },
+                     {
+                        planDate: "16-08-2025",
+                        endDate: "31-08-2025",
+                        interest: 1250,
+                        takenAmount: 5000,
+                        takenFrom: "MLending"
+                    },
                     
                 ]
             },
