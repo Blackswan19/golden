@@ -261,7 +261,7 @@ const passwords = {
                     const endDateStr = `${endMatch[1]}-${endMatch[2]}-${endMatch[3]}`;
                     if (endDateStr === todayStr && !loan.endDate.includes('Overdue')) {
                         document.getElementById("reminderMessage").textContent = 
-                            `Dear ${user.name}, Today(${cleanEndDate}) you have a amount to return which you have taken from the servive ${loan.takenFrom}.Try to clear on time if not overdue fine amount will be added. Thank you!`;
+                            `Dear ${user.name}, Today(${cleanEndDate}) you have a amount to return which you have taken from the servive (${loan.takenFrom}).Try to clear on time if not overdue fine amount will be added. Thank you!`;
                         document.getElementById("reminderModal").style.display = "flex";
                     }
                 }
