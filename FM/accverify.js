@@ -45,7 +45,7 @@ const passwords = {
                 name: "Srikanth Jampana",
                 membershipType: "Premium - Mini",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-                fineRate: 30,
+                fineRate: 25,
                 profileBackground: "red",
                 stars: 225,
                 loans: [
@@ -419,6 +419,7 @@ const passwords = {
             document.getElementById("userPassword").value = "";
             sessionReferenceTime = null;
         }
+
 
 
 
