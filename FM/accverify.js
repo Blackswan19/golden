@@ -374,15 +374,16 @@ const passwords = {
                         Interest
                     </h3>
                     <p><i class="fa-solid fa-arrow-up-wide-short"></i> Normal Interest: ${originalInterest} Rupees</p>
+                    <div class="fine">
+                        <hr>
+                            <h3 style="text-decoration: underline;color: #ff0b0b;margin: 15px 0px; font-weight: 600; font-size: 15px;">Fine</h3>
+                            <p style="color: #ff0b0b;font-weight: 900;"><i class="fa-solid fa-exclamation-triangle"></i> Overdue Fine: ${fine} Rupees</p> 
+                        <hr>
+                    </div>
                     <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
                         Total Amount to Pay
                     </h3>
                     <p><i class="fa-solid fa-money-check-alt"></i> ${totalReturnAmount} Rupees</p>
-                    <hr>
-                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
-                        Fine
-                    </h3>
-                    <p><i class="fa-solid fa-exclamation-triangle"></i> Overdue Fine: ${fine} Rupees</p>
                 </div>
             `;
         }
