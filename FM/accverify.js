@@ -1,3 +1,4 @@
+
 const passwords = {
             "4211": {
                 name: "Chaitanya Harsha",
@@ -260,7 +261,7 @@ const passwords = {
                     const endDateStr = `${endMatch[1]}-${endMatch[2]}-${endMatch[3]}`;
                     if (endDateStr === todayStr && !loan.endDate.includes('Overdue')) {
                         document.getElementById("reminderMessage").textContent = 
-                            `Dear ${user.name}, Today is your ${loan.takenFrom} return date (${cleanEndDate}). Try to clear on time if not overdue amount will be added. Thank you!`;
+                            `Dear ${user.name}, Today(${cleanEndDate}) is your ${loan.takenFrom} return date. Try to clear on time if not overdue fine amount will be added. Thank you!`;
                         document.getElementById("reminderModal").style.display = "flex";
                     }
                 }
