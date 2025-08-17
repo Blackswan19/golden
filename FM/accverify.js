@@ -45,14 +45,14 @@ const passwords = {
                 name: "Srikanth Jampana",
                 membershipType: "Premium - Mini",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-                fineRate: 30,
+                fineRate: 5,
                 profileBackground: "red",
                 stars: 225,
                 loans: [
                     
                     {
                         planDate: "02-08-2025",
-                        endDate: "17-08-2025",
+                        endDate: "16-08-2025",
                         interest: 2000,
                         takenAmount: 10000,
                         takenFrom: "MLending"
@@ -374,12 +374,13 @@ const passwords = {
                         Interest
                     </h3>
                     <p><i class="fa-solid fa-arrow-up-wide-short"></i> Normal Interest: ${originalInterest} Rupees</p>
-                    <div class="fine">
-                        <hr>
-                            <h3 style="text-decoration: underline;color: #ff0b0b;margin: 15px 0px; font-weight: 600; font-size: 15px;">Fine</h3>
-                            <p style="color: #ff0b0b;font-weight: 900;"><i class="fa-solid fa-exclamation-triangle"></i> Overdue Fine: ${fine} Rupees</p> 
-                        <hr>
-                    </div>
+                    <br>
+                    <hr>
+                        <h3 style="text-decoration: underline; margin: 5px 0px; font-weight: 600; font-size: 15px;">
+                            Fine
+                        </h3>
+                        <p><i class="fa-solid fa-exclamation-triangle"></i> Overdue Fine: ${fine} Rupees</p>
+                    <hr><br>
                     <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
                         Total Amount to Pay
                     </h3>
