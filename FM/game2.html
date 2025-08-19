@@ -22,12 +22,12 @@
             background: #b7c7a6; /* Nokia greenish-grey screen */
             image-rendering: pixelated; /* Crisp, retro pixels */
             max-width: 100%;
-            max-height: 70vh; /* Adjusted to fit buttons */
+            max-height: 65vh; /* More room for larger buttons */
             touch-action: none; /* Prevent default touch behaviors */
         }
         h1 {
             font-size: 1.5em;
-            margin: 10px 0;
+            margin: 8px 0;
             text-align: center;
         }
         p {
@@ -37,26 +37,44 @@
         }
         #controls, #game-controls {
             display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 10px;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        #directional-controls {
+            display: grid;
+            grid-template-areas: 
+                ". up ."
+                "left . right"
+                ". down .";
+            gap: 12px;
         }
         .control-btn, .game-btn {
             background: #333;
             color: #fff;
             border: 2px solid #000;
-            padding: 10px;
-            font-size: 1em;
+            padding: 15px;
+            font-size: 1.2em;
+            min-width: 60px;
+            min-height: 60px;
             cursor: pointer;
             touch-action: manipulation;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .game-btn {
-            width: 80px; /* Consistent button size */
+            width: 100px; /* Larger play/pause buttons */
         }
+        .up-btn { grid-area: up; }
+        .left-btn { grid-area: left; }
+        .right-btn { grid-area: right; }
+        .down-btn { grid-area: down; }
         @media (max-width: 600px) {
             canvas {
-                width: 90vw;
-                height: 90vw;
+                width: 85vw;
+                height: 85vw;
             }
             h1 {
                 font-size: 1.2em;
@@ -65,31 +83,33 @@
                 font-size: 0.9em;
             }
             .control-btn, .game-btn {
-                padding: 8px;
-                font-size: 0.9em;
+                padding: 12px;
+                font-size: 1.1em;
+                min-width: 50px;
+                min-height: 50px;
             }
             .game-btn {
-                width: 70px;
+                width: 90px;
             }
         }
     </style>
 </head>
 <body>
     <h1>Classic Nokia Snake</h1>
-    <canvas id="gameCanvas" width="320" height="320"></canvas>
+    <canvas id="gameCanvas" width="300" height="300"></canvas>
     <p>Score: <span id="score">0</span></p>
-    <p>Use arrow keys or touch buttons to move. Click Play to start/resume, Pause to stop.</p>
+    <p>Use arrow keys or tap buttons to move. Tap Play to start/resume, Pause to stop.</p>
     <div id="controls">
-        <button class="control-btn" ontouchstart="moveSnake('up')" onmousedown="moveSnake('up')">↑</button>
-        <div>
-            <button class="control-btn" ontouchstart="moveSnake('left')" onmousedown="moveSnake('left')">←</button>
-            <button class="control-btn" ontouchstart="moveSnake('right')" onmousedown="moveSnake('right')">→</button>
+        <div id="directional-controls">
+            <button class="control-btn up-btn" ontouchstart="event.preventDefault(); moveSnake('up')" onmousedown="moveSnake('up')">↑</button>
+            <button class="control-btn left-btn" ontouchstart="event.preventDefault(); moveSnake('left')" onmousedown="moveSnake('left')">←</button>
+            <button class="control-btn right-btn" ontouchstart="event.preventDefault(); moveSnake('right')" onmousedown="moveSnake('right')">→</button>
+            <button class="control-btn down-btn" ontouchstart="event.preventDefault(); moveSnake('down')" onmousedown="moveSnake('down')">↓</button>
         </div>
-        <button class="control-btn" ontouchstart="moveSnake('down')" onmousedown="moveSnake('down')">↓</button>
     </div>
     <div id="game-controls">
-        <button class="game-btn" onclick="playGame()">Play</button>
-        <button class="game-btn" onclick="pauseGame()">Pause</button>
+        <button class="game-btn" ontouchstart="event.preventDefault(); playGame()" onmousedown="playGame()">Play</button>
+        <button class="game-btn" ontouchstart="event.preventDefault(); pauseGame()" onmousedown="pauseGame()">Pause</button>
     </div>
 
     <script>
@@ -97,7 +117,7 @@
         const ctx = canvas.getContext('2d');
         const scoreDisplay = document.getElementById('score');
 
-        const gridSize = 16;
+        const gridSize = 15; // Adjusted for 300x300 canvas
         const tileCount = canvas.width / gridSize;
         let snake = [{ x: 10, y: 10 }];
         let food = { x: 15, y: 15 };
