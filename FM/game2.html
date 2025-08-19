@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classic Nokia Snake</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #d3d3d3; /* Nokia-like grey background */
+            font-family: 'Courier New', Courier, monospace;
+            color: #333;
+            overflow: hidden;
+        }
+        canvas {
+            border: 2px solid #333;
+            background: #b7c7a6; /* Nokia greenish-grey screen */
+            image-rendering: pixelated; /* Crisp, retro pixels */
+            max-width: 100%;
+            max-height: 70vh; /* Adjusted to fit buttons */
+            touch-action: none; /* Prevent default touch behaviors */
+        }
+        h1 {
+            font-size: 1.5em;
+            margin: 10px 0;
+            text-align: center;
+        }
+        p {
+            font-size: 1em;
+            margin: 5px 0;
+            text-align: center;
+        }
+        #controls, #game-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .control-btn, .game-btn {
+            background: #333;
+            color: #fff;
+            border: 2px solid #000;
+            padding: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+        .game-btn {
+            width: 80px; /* Consistent button size */
+        }
+        @media (max-width: 600px) {
+            canvas {
+                width: 90vw;
+                height: 90vw;
+            }
+            h1 {
+                font-size: 1.2em;
+            }
+            p {
+                font-size: 0.9em;
+            }
+            .control-btn, .game-btn {
+                padding: 8px;
+                font-size: 0.9em;
+            }
+            .game-btn {
+                width: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Classic Nokia Snake</h1>
+    <canvas id="gameCanvas" width="320" height="320"></canvas>
+    <p>Score: <span id="score">0</span></p>
+    <p>Use arrow keys or touch buttons to move. Click Play to start/resume, Pause to stop.</p>
+    <div id="controls">
+        <button class="control-btn" ontouchstart="moveSnake('up')" onmousedown="moveSnake('up')">↑</button>
+        <div>
+            <button class="control-btn" ontouchstart="moveSnake('left')" onmousedown="moveSnake('left')">←</button>
+            <button class="control-btn" ontouchstart="moveSnake('right')" onmousedown="moveSnake('right')">→</button>
+        </div>
+        <button class="control-btn" ontouchstart="moveSnake('down')" onmousedown="moveSnake('down')">↓</button>
+    </div>
+    <div id="game-controls">
+        <button class="game-btn" onclick="playGame()">Play</button>
+        <button class="game-btn" onclick="pauseGame()">Pause</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreDisplay = document.getElementById('score');
+
+        const gridSize = 16;
+        const tileCount = canvas.width / gridSize;
+        let snake = [{ x: 10, y: 10 }];
+        let food = { x: 15, y: 15 };
+        let dx = 0;
+        let dy = 0;
+        let score = 0;
+        let gameLoop;
+        let gameStarted = false;
+        let gamePaused = true; // Start paused
+
+        function drawGrid() {
+            ctx.strokeStyle = '#666'; // Subtle grid lines
+            ctx.lineWidth = 0.5;
+            for (let x = 0; x <= canvas.width; x += gridSize) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+                ctx.stroke();
+            }
+            for (let y = 0; y <= canvas.height; y += gridSize) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.stroke();
+            }
+        }
+
+        function drawGame() {
+            if (gamePaused) return; // Skip drawing if paused
+
+            // Clear canvas with Nokia-like screen color
+            ctx.fillStyle = '#b7c7a6';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw grid
+            drawGrid();
+
+            // Move snake
+            const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+            snake.unshift(head);
+
+            // Check if snake ate food
+            if (head.x === food.x && head.y === food.y) {
+                score += 10;
+                scoreDisplay.textContent = score;
+                generateFood();
+            } else {
+                snake.pop();
+            }
+
+            // Draw snake (blocky, Nokia-style)
+            ctx.fillStyle = '#333';
+            snake.forEach(segment => {
+                ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize - 1, gridSize - 1);
+            });
+
+            // Draw food
+            ctx.fillStyle = '#000';
+            ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 1, gridSize - 1);
+
+            // Check for collision
+            if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount || 
+                snake.some((segment, index) => index !== 0 && segment.x === head.x && segment.y === head.y)) {
+                clearInterval(gameLoop);
+                gamePaused = true;
+                alert(`Game Over! Score: ${score}`);
+                document.addEventListener('keydown', restartGame, { once: true });
+                document.addEventListener('touchstart', restartGame, { once: true });
+            }
+        }
+
+        function generateFood() {
+            food.x = Math.floor(Math.random() * tileCount);
+            food.y = Math.floor(Math.random() * tileCount);
+            if (snake.some(segment => segment.x === food.x && segment.y === food.y)) {
+                generateFood();
+            }
+        }
+
+        function restartGame() {
+            snake = [{ x: 10, y: 10 }];
+            food = { x: 15, y: 15 };
+            dx = 0;
+            dy = 0;
+            score = 0;
+            scoreDisplay.textContent = score;
+            gameStarted = false;
+            gamePaused = true; // Reset to paused
+            ctx.fillStyle = '#b7c7a6';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            drawGrid(); // Draw grid on reset
+        }
+
+        function playGame() {
+            if (!gameStarted) {
+                gameStarted = true;
+                gamePaused = false;
+                gameLoop = setInterval(drawGame, 225); // Slow, Nokia-like speed
+            } else if (gamePaused) {
+                gamePaused = false;
+                gameLoop = setInterval(drawGame, 250); // Resume
+            }
+        }
+
+        function pauseGame() {
+            if (gameStarted && !gamePaused) {
+                gamePaused = true;
+                clearInterval(gameLoop);
+            }
+        }
+
+        function moveSnake(direction) {
+            if (gamePaused) return; // Ignore movement when paused
+            switch (direction) {
+                case 'up':
+                    if (dy !== 1) { dx = 0; dy = -1; }
+                    break;
+                case 'down':
+                    if (dy !== -1) { dx = 0; dy = 1; }
+                    break;
+                case 'left':
+                    if (dx !== 1) { dx = -1; dy = 0; }
+                    break;
+                case 'right':
+                    if (dx !== -1) { dx = 1; dy = 0; }
+                    break;
+            }
+        }
+
+        // Keyboard controls
+        document.addEventListener('keydown', (e) => {
+            switch (e.key) {
+                case 'ArrowUp':
+                    moveSnake('up');
+                    break;
+                case 'ArrowDown':
+                    moveSnake('down');
+                    break;
+                case 'ArrowLeft':
+                    moveSnake('left');
+                    break;
+                case 'ArrowRight':
+                    moveSnake('right');
+                    break;
+            }
+        });
+
+        // Draw initial grid
+        ctx.fillStyle = '#b7c7a6';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        drawGrid();
+    </script>
+</body>
+</html>
