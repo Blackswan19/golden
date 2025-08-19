@@ -24,7 +24,23 @@ const passwords = {
                     },
                 ]
             },
-           
+            "0212": {
+                name: "Chinna Yerra",
+                membershipType: "Premium - Mini",
+                membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
+                fineRate: 5,
+                profileBackground: "skyblue",
+                stars: 0,
+                loans: [
+                    {
+                        planDate: "10-08-2025",
+                        endDate: "20-08-2025",
+                        interest: 216,
+                        takenAmount: 2500,
+                        takenFrom: "MLending"
+                    },
+                ]
+            },
            "6275": {
                 name: "Srikanth Jampana",
                 membershipType: "Premium - Mini",
@@ -365,13 +381,11 @@ const passwords = {
                         Interest
                     </h3>
                     <p><i class="fa-solid fa-arrow-up-wide-short"></i> Normal Interest: ${originalInterest} Rupees</p>
-                    <br>
+                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                        Fine
+                    </h3>
+                    <p><i class="fa-solid fa-exclamation-triangle"></i> Overdue Fine: ${fine} Rupees</p>
                     <hr>
-                        <h3 style="text-decoration: underline; margin: 5px 0px; font-weight: 600; font-size: 15px;">
-                            Fine
-                        </h3>
-                        <p><i class="fa-solid fa-exclamation-triangle"></i> Overdue Fine: ${fine} Rupees</p>
-                    <hr><br>
                     <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
                         Total Amount to Pay
                     </h3>
@@ -410,8 +424,3 @@ const passwords = {
             document.getElementById("userPassword").value = "";
             sessionReferenceTime = null;
         }
-
-
-
-
-
