@@ -25,7 +25,23 @@ const passwords = {
                     },
                 ]
             },
-            
+            "Ganesh@5577": {
+                name: "J Ganesh",
+                membershipType: "",
+                membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
+                fineRate: 5,
+                profileBackground: "#ff7300",
+                stars: 0,
+                loans: [
+                    {
+                        planDate: "20-08-2025",
+                        endDate: "30-08-2025",
+                        interest: 475,
+                        takenAmount: 3000,
+                        takenFrom: "MLLD"
+                    },
+                ]
+            },
            "6275": {
                 name: "Srikanth Jampana",
                 membershipType: "Premium - Mini",
@@ -409,4 +425,3 @@ const passwords = {
             document.getElementById("userPassword").value = "";
             sessionReferenceTime = null;
         }
-
