@@ -57,7 +57,7 @@ const passwords = {
                         takenAmount: 5000,
                         takenFrom: "MLLD"
                     },
-                    {
+                     {
                         planDate: "15-08-2025",
                         endDate: "30-08-2025",
                         interest: 4800,
@@ -85,6 +85,8 @@ const passwords = {
                         takenAmount: 2000,
                         takenFrom: "MLLD"
                     },
+                    
+                    
                 ]
             },
             "Mahesh888*": {
@@ -95,13 +97,6 @@ const passwords = {
                 profileBackground: "#00ff00",
                 stars: 0,
                 loans: [
-                    {
-                        planDate: "25-05-2025",
-                        endDate: "24-09-2025(Extanded to 30 days)",
-                        interest: 2080,
-                        takenAmount: 5000,
-                        takenFrom: "MLLD offer"
-                    },
                     {
                         planDate: "28-06-2025",
                         endDate: "02-09-2025(Extanded to 30 days)",
@@ -115,6 +110,13 @@ const passwords = {
                         interest: 3260,
                         takenAmount: 5000,
                         takenFrom: "MLLD Offer"
+                    },
+                    {
+                        planDate: "25-05-2025",
+                        endDate: "24-09-2025(Extanded to 30 days)",
+                        interest: 2080,
+                        takenAmount: 5000,
+                        takenFrom: "MLLD offer"
                     },
                 ]
             },
