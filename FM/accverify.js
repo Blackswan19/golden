@@ -85,8 +85,6 @@ const passwords = {
                         takenAmount: 2000,
                         takenFrom: "MLLD"
                     },
-                    
-                    
                 ]
             },
             "Mahesh888*": {
