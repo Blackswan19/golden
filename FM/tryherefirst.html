@@ -216,10 +216,9 @@
         }
         .modal h3 {
             color: #00aeff;
-            font-size: 16px;
-            font-weight: 400;
-            text-decoration: underline;
-            margin: 25px 0;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 25px 0;
         }
         body.light .modal h3 {
             color: #0066cc;
@@ -232,12 +231,12 @@
         }
        
         .modal p {
-            color: #a0a0a0;
+            color: lightgrey;
             font-size: 14px;
             font-weight: 400;
-            margin: 10px 0;
-            transition: color 0.3s ease;
+            margin: 5px 0;
         }
+        
         body.light .modal p {
             color: #666666;
         }
@@ -864,7 +863,6 @@
         }
         hr{
                 background: #80808061;
-    width: 96%;
     height: 1.5px;
     border: none;
     max-width: 400px;
@@ -897,7 +895,7 @@
         <div class="stars-display" id="starsDisplay">
             <i style="margin: 5px;" class="fa-solid fa-star"></i><span style="font-size: 18px;    margin-top: 2px;" id="starCount"></span>
         </div>
-        <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">Borrower</h3>
+        <h3 style="text-decoration: underline; margin: 5px 0px; font-weight: 600; font-size: 15px;color: gray;">Borrower</h3>
         <div class="profile-container">
             <div class="profile-picture" id="profilePicture"></div>
             <div>
@@ -944,7 +942,16 @@
 ">Explore Premium</button></a>
     </div>
 </center>
-    
+    <div class="loan-entry" style="    text-align: center;
+    padding: 1px;
+    background: #363636;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 20px;
+
+">
+        <h3 style="color: white;">Amount details</h3>
+    </div>
         <div id="loanDetails"></div>
     </div>
     <div id="amountsModal" class="amounts-modal" style="display: none;">
