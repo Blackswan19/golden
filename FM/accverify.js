@@ -53,7 +53,7 @@ const passwords = {
 {
                         planDate: "21-08-2025",
                         endDate: "24-08-2025",
-                        interest: 530,
+                        interest: 560,
                         takenAmount: 12300,
                         takenFrom: "Golden"
                     },
@@ -175,13 +175,7 @@ const passwords = {
                         takenAmount: 4200,
                         takenFrom: "MLLD(Offer)"
                     },
-                    {
-                        planDate: "26-05-2025",
-                        endDate: "01-09-2025",
-                        interest: 0,
-                        takenAmount: 12400,
-                        takenFrom: "MLending"
-                    },
+                   
                 ]
             },
         };
@@ -359,33 +353,34 @@ const passwords = {
 
             loanDetails.innerHTML = `
                 <div class="loan-entry">
-                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                
+                    <h3 >
                         Service
                     </h3>
                     <p>${loan.takenFrom}</p>
-                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                    <h3 >
                         Amount Details
                     </h3>
                     <p><i class="fa-solid fa-money-bill-transfer"></i> Amount: ${loan.takenAmount} Rupees</p>
-                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                    <h3 >
                         Taken & Ends
                     </h3>
                     <p><i class="fa-solid fa-calendar-day"></i> Taken on: ${loan.planDate}</p>
                     <p><i class="fa-solid fa-calendar-check"></i> End on: ${loan.endDate}</p>
-                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                    <h3 >
                         Loan Duration
                     </h3>
                     <p><i class="fa-solid fa-clock"></i> Duration: ${daysBetween} days</p>
-                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                    <h3 >
                         Interest
                     </h3>
                     <p><i class="fa-solid fa-arrow-up-wide-short"></i> Normal Interest: ${originalInterest} Rupees</p>
-                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                    <h3 >
                         Fine
                     </h3>
                     <p><i class="fa-solid fa-exclamation-triangle"></i> Overdue Fine: ${fine} Rupees</p>
                     <hr>
-                    <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">
+                    <h3 >
                         Total Amount to Pay
                     </h3>
                     <p><i class="fa-solid fa-money-check-alt"></i> ${totalReturnAmount} Rupees</p>
