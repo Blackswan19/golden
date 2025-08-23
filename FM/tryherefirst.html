@@ -34,11 +34,11 @@
             letter-spacing: 0.5px;
         }
         body.light {
-            background-color: #ffffff;
+            background-color: #f0f0f0;
             color: #000000;
         }
         body.telegram-dark {
-            background-color: #18222d;
+            background-color: #111920;
             color: #ffffff;
         }
         body.my-own {
@@ -111,7 +111,7 @@
             letter-spacing: 0.6px;
         }
         body.light #userPassword {
-            background: #f0f0f0;
+            background: #ffffff;
             color: #000000;
         }
         body.telegram-dark #userPassword {
@@ -145,7 +145,6 @@
             border-radius: 10px;
         }
         body.light #submitBtn {
-            background-color: #0066cc;
             color: #ffffff;
         }
         body.telegram-dark #submitBtn {
@@ -193,10 +192,10 @@
             scrollbar-width: none;
         }
         body.light .modal {
-            background-color: #ffffff;
+            background-color: #f0f0f0;
         }
         body.telegram-dark .modal {
-            background-color: #18222d;
+            background-color: #111920;
         }
         body.my-own .modal {
             background-color: rgb(10 10 10);
@@ -361,29 +360,19 @@
     background-image: linear-gradient(180deg, #181819, transparent);
 
       }body.light .about {
-            background: #ffffff;
-    border: none;
+           border: none;
+    background-image: linear-gradient(180deg, #ffffff, transparent);
       }
- .loan-entry {
-                padding: 10px 30px;
-    border-bottom: none;
-    width: 100%;
-    padding-bottom: 30px;
-    
-    border-radius: 25px;
-    background: #181819;
-    margin: 10px -10px;
-        }
-        body.sharp .loan-entry {
-        border-radius: 0;
+      body.telegram-dark .about {
+                   border: none;
+    background-image: linear-gradient(180deg, #364459, transparent);
       }
+
+
       body.sharp .about {
         border-radius: 0;
       }
-      body.telegram-dark .about {
-        background: #1d2733;
-      }
-
+      
       body.my-own .about {
         background: #161616;
       }
@@ -443,8 +432,10 @@
     border-bottom: transparent;
         }
         body.light .amount-buttons {
-           background-color: #f7f7f7d9;
-    border-bottom: solid 1px #0000004d;
+           background-color: white;
+}
+ body.telegram-dark .amount-buttons {
+           background-color: #212d3b;
 }
         .amount-btn {
             background-color: rgb(54 54 54);
@@ -463,7 +454,7 @@
             color: #000000;
         }
         body.telegram-dark .amount-btn {
-            background-color: #2a3545;
+            background-color: #364459;
             color: #ffffff;
         }
         body.my-own .amount-btn {
@@ -869,13 +860,57 @@
     max-width: 400px;
     outline: none;
         }
+        .optionss{
+                text-align: center;
+    padding: 1px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    border-radius: 0px 0px 20px 20px;
+    position: sticky;
+    top: 10px;
+    background-image: linear-gradient(0deg, #1a1a1a, transparent);
+    backdrop-filter: blur(5px);
+    margin-left: -10px;
+
+        }
         
+        body.light .optionss{
+               background-image: linear-gradient(0deg, white, transparent);
+    box-shadow: 0px 0px 15px #f0f0f0;
+
+        }
+        body.telegram-dark .optionss{
+            background-image: linear-gradient(0deg, #364459, transparent);
+        }
+        .loan-entry {
+                padding: 10px 30px;
+    border-bottom: none;
+    width: 100%;
+    padding-bottom: 30px;
+    border-radius: 25px;
+    margin: 10px -10px;
+        }
+        
+        body.sharp .loan-entry {
+        border-radius: 0;
+      }
+      body.dark .loan-entry{
+    background-image: linear-gradient(45deg, #1f1f20, #181819);
+
+      }
+      body.light .loan-entry{
+            background-color: white;
+      }
+      body.telegram-dark .loan-entry{
+        background-color: #1d2733;
+      }
     </style>
 </head>
 <body>
+    
     <div id="passwordContainer">
         <center><img style="width: 60px;" src="https://raw.githubusercontent.com/goforbg/telegram-emoji-gifs/refs/heads/master/lock-key.gif" alt=""></center>
-        <h2 style="font-weight: 400; font-size: 20px; color: white;">Verify my account </h2>
+        <h2 style="font-weight: 400; font-size: 20px; color: #a6a6a6;">Verify my account </h2>
         <input type="text" id="userPassword" placeholder="Enter password" autocomplete="current-password">
         <button id="submitBtn">Verify</button><br>
         <p id="error-message"></p>
@@ -943,18 +978,8 @@
 ">Explore Premium</button></a>
     </div>
 </center>
-    <div class="loan-entry" style="    text-align: center;
-    padding: 1px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border-radius: 0px 0px 20px 20px;
-    position: sticky;
-    top: 10px;
-    background-image: linear-gradient(180deg, #000000, transparent);
-    box-shadow: 0px 0px 20px black;
-
-">
-        <h3 style="color: white;">Amount details</h3>
+    <div class="about optionss">
+        <h3 style="color: gray;">Amount details</h3>
     </div>
         <div id="loanDetails"></div>
     </div>
