@@ -1362,23 +1362,23 @@ const passwords = {
         function generateImage(text, filename) {
             const canvas = document.createElement('canvas');
             const lines = text.split('\n');
-            const lineHeight = 20;
-            canvas.width = 400;
+            const lineHeight = 30;
+            canvas.width = 600;
             canvas.height = 50 + lines.length * lineHeight;
             const ctx = canvas.getContext('2d');
             ctx.fillStyle = 'white';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = 'black';
-            ctx.font = '16px Arial';
+            ctx.font = '20px Poppins';
             lines.forEach((line, i) => {
-                ctx.fillText(line, 20, 30 + i * lineHeight);
+                ctx.fillText(line, 30, 40 + i * lineHeight);
             });
             // Watermark
-            ctx.fillStyle = 'gray';
-            ctx.font = '12px Arial';
-            ctx.fillText('Powered by BsBookpad', canvas.width - 150, 20);
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+            ctx.font = '16px Poppins';
+            ctx.fillText('Powered by BsBookpad', canvas.width - 180, 30);
             const a = document.createElement('a');
-            a.href = canvas.toDataURL('image/png');
+            a.href = canvas.toDataURL('image/png', 1.0);
             a.download = filename;
             a.click();
         }
@@ -1389,8 +1389,9 @@ const passwords = {
             if (!user) return;
             const loan = user.loans[index];
             const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
-            const text = `Amount ${index + 1} : ${loan.takenAmount} \nReturn date : ${formatDate(cleanEndDate)}`;
-            generateImage(text, `loan_amount_${index + 1}.png`);
+            const totalReturnAmount = (loan.takenAmount + (loan.cachedFine || 0) + (loan.originalInterest || loan.interest)).toFixed(2);
+            const text = `Total Amount ${index + 1} : ${totalReturnAmount} \nReturn date : ${formatDate(cleanEndDate)}`;
+            generateImage(text, `total_amount_${index + 1}.png`);
         }
 
         function downloadAllLoans() {
@@ -1400,9 +1401,10 @@ const passwords = {
             let text = '';
             user.loans.forEach((loan, i) => {
                 const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
-                text += `Amount ${i + 1} : ${loan.takenAmount} \nReturn date : ${formatDate(cleanEndDate)}\n\n`;
+                const totalReturnAmount = (loan.takenAmount + (loan.cachedFine || 0) + (loan.originalInterest || loan.interest)).toFixed(2);
+                text += `Total Amount ${i + 1} : ${totalReturnAmount} \nReturn date : ${formatDate(cleanEndDate)}\n`;
             });
-            generateImage(text, 'all_loans.png');
+            generateImage(text, 'all_total_amounts.png');
         }
 
     </script>
