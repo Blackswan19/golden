@@ -29,16 +29,16 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: black;
+            background-color: rgb(24 24 25);
             color: #e0e0e0;
             letter-spacing: 0.5px;
         }
         body.light {
-            background-color: #f0f0f0;
+            background-color: #ffffff;
             color: #000000;
         }
         body.telegram-dark {
-            background-color: #111920;
+            background-color: #18222d;
             color: #ffffff;
         }
         body.my-own {
@@ -98,7 +98,7 @@
         #userPassword {
             font-size: 16px;
             border: solid 1.5px transparent;
-            background: rgb(31 31 32);
+            background: rgb(44 44 44);
             color: #fff;
             padding: 8px 25px;
             text-align: center;
@@ -111,7 +111,7 @@
             letter-spacing: 0.6px;
         }
         body.light #userPassword {
-            background: #ffffff;
+            background: #f0f0f0;
             color: #000000;
         }
         body.telegram-dark #userPassword {
@@ -145,6 +145,7 @@
             border-radius: 10px;
         }
         body.light #submitBtn {
+            background-color: #0066cc;
             color: #ffffff;
         }
         body.telegram-dark #submitBtn {
@@ -184,7 +185,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: black;
+            background-color: rgb(24 24 25);
             padding: 65px 0px 0px 20px;
             line-height: 30px;
             overflow-y: scroll;
@@ -192,10 +193,10 @@
             scrollbar-width: none;
         }
         body.light .modal {
-            background-color: #f0f0f0;
+            background-color: #ffffff;
         }
         body.telegram-dark .modal {
-            background-color: #111920;
+            background-color: #18222d;
         }
         body.my-own .modal {
             background-color: rgb(10 10 10);
@@ -215,9 +216,10 @@
         }
         .modal h3 {
             color: #00aeff;
-    font-size: 16px;
-    font-weight: 600;
-    margin: 25px 0;
+            font-size: 16px;
+            font-weight: 400;
+            text-decoration: underline;
+            margin: 25px 0;
         }
         body.light .modal h3 {
             color: #0066cc;
@@ -230,12 +232,12 @@
         }
        
         .modal p {
-            color: lightgrey;
+            color: #a0a0a0;
             font-size: 14px;
             font-weight: 400;
-            margin: 5px 0;
+            margin: 10px 0;
+            transition: color 0.3s ease;
         }
-        
         body.light .modal p {
             color: #666666;
         }
@@ -344,77 +346,16 @@
         body.my-own .logout-btn:hover {
             background-color: #3a3a3a;
         }
-       
+        .loan-entry {
+            padding: 10px 0px;
+            margin-bottom: 20px;
+            border-bottom: none;
+            width: 98%;
+            padding-bottom: 30px;
+        }
         ::-webkit-scrollbar {
             width: 10px;
         }
-        .about {
-           padding: 15px;
-    text-align: center;
-    border-radius: 25px;
-    position: relative;
-    margin: 10px 0px 0px 0px;
-    border: none;
-    margin-left: -20px;
-    width: 100%;
-    background-image: linear-gradient(180deg, #363636, transparent);
-
-      }body.light .about {
-           border: none;
-    background-image: linear-gradient(180deg, #cfcfcf, transparent);
-      }
-      body.telegram-dark .about {
-                   border: none;
-    background-image: linear-gradient(180deg, #364459, transparent);
-      }
-
-
-      body.sharp .about {
-        border-radius: 0;
-      }
-      
-      body.my-own .about {
-        background: #161616;
-      }
-.applybtn {
-        background: rgb(105 105 105);
-        color: #ffffff;
-        border: none;
-        border-radius: 13px;
-        padding: 12px 21px;
-        font-weight: 400;
-        border: none;
-      }
-
-      .about .applybtn{
-        border-radius: 25px;
-      }
-      body.sharp .applybtn{
-    border-radius: 0;
-}
-      body.light .applybtn {
-        color: white;
-        filter: none;
-      }
-
-      body.telegram-dark .applybtn {
-        background: #696969;
-        color: #ffffff;
-        filter: none;
-      }
-
-      body.my-own .applybtn {
-        background: rgb(19, 19, 19);
-        color: #ffffff;
-      }
-
-      .applybtn:hover {
-        text-decoration: none;
-      }
-
-      body.sharp .applybtn {
-        border-radius: 0;
-      }
         .amount-buttons {
                   display: flex
 ;
@@ -424,21 +365,19 @@
     white-space: nowrap;
     position: sticky;
     top: -67px;
-    background-color: #1f1f20;
+    background-color: #00000033;
     z-index: 1000;
     backdrop-filter: blur(5px);
     padding: 25px 15px 10px 15px;
     width: 105%;
-    border-bottom: transparent;
+    border-bottom: solid 1px #ffffff1a;
         }
         body.light .amount-buttons {
-           background-color: white;
-}
- body.telegram-dark .amount-buttons {
-           background-color: #212d3b;
+           background-color: #f7f7f7d9;
+    border-bottom: solid 1px #0000004d;
 }
         .amount-btn {
-            background-color: rgb(54 54 54);
+            background-color: rgb(33 33 33);
             color: #e0e0e0;
             
             border: none;
@@ -454,7 +393,7 @@
             color: #000000;
         }
         body.telegram-dark .amount-btn {
-            background-color: #364459;
+            background-color: #2a3545;
             color: #ffffff;
         }
         body.my-own .amount-btn {
@@ -855,63 +794,19 @@
         }
         hr{
                 background: #80808061;
+    width: 96%;
     height: 1.5px;
     border: none;
     max-width: 400px;
     outline: none;
         }
-        .optionss{
-                text-align: center;
-    padding: 1px;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    border-radius: 0px 0px 20px 20px;
-    position: sticky;
-    top: 10px;
-    background-image: linear-gradient(0deg, #363636, transparent);
-    backdrop-filter: blur(5px);
-    margin-left: -10px;
-    margin-top: -10px;
-
-        }
         
-        body.light .optionss{
-               background-image: linear-gradient(0deg, #cfcfcf, transparent);
-    box-shadow: 0px 0px 15px #f0f0f0;
-
-        }
-        body.telegram-dark .optionss{
-            background-image: linear-gradient(0deg, #364459, transparent);
-        }
-        .loan-entry {
-                padding: 10px 30px;
-    border-bottom: none;
-    width: 100%;
-    padding-bottom: 30px;
-    border-radius: 25px;
-    margin: 10px -10px;
-        }
-        
-        body.sharp .loan-entry {
-        border-radius: 0;
-      }
-      body.dark .loan-entry{
-    background-color: #181819;
-
-      }
-      body.light .loan-entry{
-            background-color: white;
-      }
-      body.telegram-dark .loan-entry{
-        background-color: #1d2733;
-      }
     </style>
 </head>
 <body>
-    
     <div id="passwordContainer">
         <center><img style="width: 60px;" src="https://raw.githubusercontent.com/goforbg/telegram-emoji-gifs/refs/heads/master/lock-key.gif" alt=""></center>
-        <h2 style="font-weight: 400; font-size: 20px; color: #a6a6a6;">Verify my account </h2>
+        <h2 style="font-weight: 400; font-size: 20px; color: white;">Verify my account </h2>
         <input type="text" id="userPassword" placeholder="Enter password" autocomplete="current-password">
         <button id="submitBtn">Verify</button><br>
         <p id="error-message"></p>
@@ -922,17 +817,15 @@
 
     <div id="userInfoModal" class="modal">
         <img style="    position: fixed;
-    bottom: 19px;
-    right: 15px;
-    width: 11%;
-    max-width: 60px;
-    z-index: 1000;
+    bottom: 5px;
+    right: 5px;
+    width: 15%;max-width: 60px;
 " src="https://raw.githubusercontent.com/goforbg/telegram-emoji-gifs/refs/heads/master/thunder.gif" alt="">
         <span><i class="fa-solid fa-arrow-left close-btn" onclick="closeModal()"></i></span>
         <div class="stars-display" id="starsDisplay">
             <i style="margin: 5px;" class="fa-solid fa-star"></i><span style="font-size: 18px;    margin-top: 2px;" id="starCount"></span>
         </div>
-        <h3 style="text-decoration: underline; margin: 5px 0px; font-weight: 600; font-size: 15px;color: gray;">Borrower</h3>
+        <h3 style="text-decoration: underline; margin: 25px 0px; font-weight: 600; font-size: 15px;">Borrower</h3>
         <div class="profile-container">
             <div class="profile-picture" id="profilePicture"></div>
             <div>
@@ -942,45 +835,38 @@
                 <button class="amounts-btn" onclick="showAmountsModal()">
                     <i class="fa-solid fa-eye" style="margin-right: 2px;"></i> Amounts
                 </button>
+                <button class="amounts-btn" onclick="downloadAllLoans()">
+                    <i class="fa-solid fa-download" style="margin-right: 2px;"></i> Download All
+                </button>
                 <p id="membershipType" class="membership-type"></p>
             </div>
         </div>
         <div class="amount-buttons" id="amountButtons"></div>
 
 
-        <center> <div class="about" style="
+         <div class="about" style="width: 98%;
+    display: flex
+;
+    background: #6c6c6c1f;
+    justify-content: center;
     align-items: center;
+    gap: 20px;
     padding: 13px;
-    max-width: 515px;
-    ">
+    border-radius: 28px;
+    margin-top: 18px;
+    max-width: 615px;
+    border: none;">
        <h2 style="    text-align: center;
     font-size: 11px;
     margin: 0px;
     font-weight: 400;
     opacity: 80%;    color: revert;">Sponsored</h2>
-      <a href="https://mfi0212.github.io/MFI/paymine" target="_blank" ><img class="applybtn" 
-      style="width: 100%;
+      <a href="https://mfi0212.github.io/MFI/paymine" target="_blank" ><img style="    width: 100%;
+    border-radius: 25px;
     padding: 0px;
     max-width: 400px;
-    margin-bottom: -20px;
-    opacity: 80%;
-    margin-top: 10px;" src="addvertisement.png" alt=""></a>
-    <br><br>
-     <a href="https://mfi0212.github.io/MFI/starpre" style="color: white;text-decoration: none;cursor: pointer;"><button class="applybtn" 
-     style="border: none;
-    outline: none;
-    color: white;
-    background-image: linear-gradient(45deg, rgb(255 169 0), rgb(255 0 198), #5b5bff, #56ffcc);
-    width: 98%;
-    font-size: 15px;
-    cursor: pointer;
-    padding: 5px;
-    margin-top: -15px;
-">Explore Premium</button></a>
-    </div>
-</center>
-    <div class="about optionss">
-        <h3 style="color: gray;">Amount details</h3>
+    margin-bottom: -10px;
+    opacity: 80%;" src="addvertisement.png" alt=""></a>
     </div>
         <div id="loanDetails"></div>
     </div>
@@ -1000,7 +886,7 @@
             <p id="reminderMessage"></p>
             <span class="reminder-close-btn" onclick="closeReminderModal()">Okay</span>
         </div>
-    </div><script src="accverify.js"></script>
+    <!-- </div><script src="accverify.js"></script> -->
     <div class="mfi" style="position: fixed; bottom: 10px; font-size: 10px; color: #848484; z-index: 1000; background: transparent; width: 100%; text-align: center; padding: 10px;">
         <a target="_blank" style="text-decoration: none;" href="https://mfi0212.github.io/MFI/mfimain">By Myootive</a>
     </div>
@@ -1044,6 +930,481 @@
                 }
             });
         });
+        
+
+const passwords = {
+            "4211": {
+                name: "Chaitanya Harsha",
+                membershipType: "Premium - Mini",
+                membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
+                fineRate: 5,
+                profileBackground: "#ff4d4d",
+                stars: 0,
+                loans: [
+                    {
+                        planDate: "24-05-2025",
+                        endDate: "01-09-2025",
+                        interest: 5500,
+                        takenAmount: 15000,
+                        takenFrom: "MLending"
+                    },
+                    {
+                        planDate: "07-04-2025",
+                        endDate: "01-09-2025",
+                        interest: 4800,
+                        takenAmount: 10000,
+                        takenFrom: "MLLD"
+                    },
+                ]
+            },
+            "Ganesh@5577": {
+                name: "J Ganesh",
+                membershipType: "",
+                membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
+                fineRate: 5,
+                profileBackground: "#ff7300",
+                stars: 0,
+                loans: [
+                    {
+                        planDate: "20-08-2025",
+                        endDate: "01-09-2025",
+                        interest: 550,
+                        takenAmount: 3200,
+                        takenFrom: "MLLD"
+                    },
+                ]
+            },
+           "6275": {
+                name: "Srikanth Jampana",
+                membershipType: "Premium - Mini",
+                membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
+                fineRate: 30,
+                profileBackground: "red",
+                stars: 205,
+                loans: [
+{
+                        planDate: "21-08-2025",
+                        endDate: "24-08-2025",
+                        interest: 560,
+                        takenAmount: 12300,
+                        takenFrom: "Golden"
+                    },
+                    {
+                        planDate: "10-08-2025",
+                        endDate: "25-08-2025",
+                        interest: 1360,
+                        takenAmount: 5000,
+                        takenFrom: "MLLD"
+                    },
+                     {
+                        planDate: "15-08-2025",
+                        endDate: "30-08-2025",
+                        interest: 4800,
+                        takenAmount: 20000,
+                        takenFrom: "MLending"
+                    },
+                     {
+                        planDate: "16-08-2025",
+                        endDate: "31-08-2025",
+                        interest: 1250,
+                        takenAmount: 5000,
+                        takenFrom: "MLLD"
+                    },
+                    {
+                      planDate: "18-08-2025",
+                        endDate: "02-09-2025",
+                        interest: 480,
+                        takenAmount: 5500,
+                        takenFrom: "MLLD"
+                    },
+                    {
+                      planDate: "18-08-2025",
+                        endDate: "02-09-2025",
+                        interest: 620,
+                        takenAmount: 2000,
+                        takenFrom: "MLLD"
+                    },
+                ]
+            },
+            "Mahesh888*": {
+                name: "Mahesh Muthinti",
+                membershipType: "Premium - Mini",
+                membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
+                fineRate: 0,
+                profileBackground: "#00ff00",
+                stars: 0,
+                loans: [
+                    {
+                        planDate: "28-06-2025",
+                        endDate: "02-09-2025(Extanded to 30 days)",
+                        interest: 3100,
+                        takenAmount: 11500,
+                        takenFrom: "MLending"
+                    },
+                    {
+                        planDate: "01-06-2025",
+                        endDate: "19-09-2025(Extanded to 30 days)",
+                        interest: 3260,
+                        takenAmount: 5000,
+                        takenFrom: "MLLD Offer"
+                    },
+                    {
+                        planDate: "25-05-2025",
+                        endDate: "24-09-2025(Extanded to 30 days)",
+                        interest: 2080,
+                        takenAmount: 5000,
+                        takenFrom: "MLLD offer"
+                    },
+                ]
+            },
+            "Cherish@123": {
+                name: "Cherish",
+                membershipType: "Premium - Mini",
+                membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
+                fineRate: 3,
+                profileBackground: "rgb(255 138 0)",
+                stars: 0,
+                loans: [
+                    {
+                        planDate: "21-05-2025",
+                        endDate: "15-08-2025",
+                        interest: 2100,
+                        takenAmount: 5000,
+                        takenFrom: "MLLD"
+                    },
+                    {
+                        planDate: "29-05-2025",
+                        endDate: "01-09-2025",
+                        interest: 5500,
+                        takenAmount: 15000,
+                        takenFrom: "MLending"
+                    },
+                    {
+                        planDate: "23-05-2025",
+                        endDate: "01-09-2025",
+                        interest: 1820,
+                        takenAmount: 3800,
+                        takenFrom: "MLLD"
+                    },
+                    {
+                        planDate: "28-05-2025",
+                        endDate: "01-09-2025",
+                        interest: 0,
+                        takenAmount: 2600,
+                        takenFrom: "MLLD"
+                    },
+                    {
+                        planDate: "25-05-2025",
+                        endDate: "01-09-2025",
+                        interest: 0,
+                        takenAmount: 3000,
+                        takenFrom: "MLLD(Offer)"
+                    },
+                    {
+                        planDate: "24-05-2025",
+                        endDate: "01-09-2025",
+                        interest: 0,
+                        takenAmount: 4200,
+                        takenFrom: "MLLD(Offer)"
+                    },
+                   
+                ]
+            },
+        };
+
+        let sessionReferenceTime = null;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedPassword = localStorage.getItem("userPassword");
+            if (savedPassword) {
+                const passwordInput = document.getElementById("userPassword");
+                passwordInput.value = savedPassword;
+                document.getElementById("poweredBy").style.display = "block";
+            }
+        });
+
+        document.getElementById("submitBtn").addEventListener("click", () => {
+            const userInput = document.getElementById("userPassword").value.trim();
+            const errorMessage = document.getElementById("error-message");
+            const user = passwords[userInput];
+
+            if (!userInput) {
+                errorMessage.textContent = "Enter a password.";
+                return;
+            }
+
+            if (user) {
+                localStorage.setItem("userPassword", userInput);
+                document.getElementById("userName").textContent = user.name;
+                document.getElementById("starCount").textContent = user.stars;
+                const membershipTypeContainer = document.getElementById("membershipType");
+                membershipTypeContainer.innerHTML = `
+                    <a href="https://mfi0212.github.io/MFI/starpre" style="text-decoration: underline; text-underline-position: under;">${user.membershipType}</a>
+                `;
+
+                const userNameContainer = document.getElementById("userNameContainer");
+                userNameContainer.innerHTML = `
+                    <span id="userName">${user.name}</span>
+                    <img src="${user.membershipIcon}" alt="${user.membershipType} Icon" class="user-icon">
+                `;
+
+                const profilePicture = document.getElementById("profilePicture");
+                profilePicture.style.backgroundColor = user.profileBackground;
+                const nameParts = user.name.trim().split(/\s+/).slice(0, 2);
+                const iconText = nameParts.map(part => part.charAt(0)).join("").toUpperCase();
+                profilePicture.style.backgroundImage = "none";
+                profilePicture.textContent = iconText;
+
+                const amountButtons = document.getElementById("amountButtons");
+                amountButtons.innerHTML = "";
+
+                user.loans.forEach((loan, index) => {
+                    const btn = document.createElement("button");
+                    btn.className = "amount-btn";
+                    btn.innerHTML = `${loan.takenAmount} Rupees <span class="amount-id">Amount ${index + 1}</span>`;
+                    btn.onclick = () => displayLoanDetails(loan, index);
+                    amountButtons.appendChild(btn);
+                });
+
+                if (user.loans.length > 0) {
+                    displayLoanDetails(user.loans[0], 0);
+                    checkDueToday(user);
+                } else {
+                    errorMessage.textContent = "No active loans found.";
+                }
+
+                document.getElementById("userInfoModal").style.display = "block";
+                document.getElementById("passwordContainer").style.display = "none";
+                errorMessage.textContent = "";
+            } else {
+                errorMessage.textContent = "Invalid password.";
+            }
+        });
+
+        function checkDueToday(user) {
+            const today = new Date();
+            const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
+            const todayStr = `${String(today.getDate()).padStart(2, '0')}-${String(today.getMonth() + 1).padStart(2, '0')}-${today.getFullYear()}`;
+
+            user.loans.forEach(loan => {
+                const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+                const endMatch = cleanEndDate.match(dateFormat);
+                if (endMatch) {
+                    const endDateStr = `${endMatch[1]}-${endMatch[2]}-${endMatch[3]}`;
+                    if (endDateStr === todayStr && !loan.endDate.includes('Overdue')) {
+                        document.getElementById("reminderMessage").textContent = 
+                            `Mr. ${user.name}, Today(${cleanEndDate}) you have a amount to return which you have taken from the servive (${loan.takenFrom}).Try to clear on time if not overdue fine amount will be added. Thank you!`;
+                        document.getElementById("reminderModal").style.display = "flex";
+                    }
+                }
+            });
+        }
+
+        function closeReminderModal() {
+            document.getElementById("reminderModal").style.display = "none";
+        }
+
+        function calculateDaysBetween(startDate, endDate) {
+            try {
+                const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
+                const startMatch = startDate.match(dateFormat);
+                const endMatch = endDate.split('(')[0].match(dateFormat);
+                if (startMatch && endMatch) {
+                    const start = new Date(`${startMatch[3]}-${startMatch[2]}-${startMatch[1]}`);
+                    const end = new Date(`${endMatch[3]}-${endMatch[2]}-${endMatch[1]}`);
+                    if (isNaN(start) || isNaN(end)) {
+                        return "Invalid date";
+                    }
+                    const diffTime = Math.abs(end - start);
+                    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                }
+                return "Invalid date format";
+            } catch (error) {
+                console.error("Error calculating days:", error);
+                return "Error";
+            }
+        }
+
+        function calculateOverdueFine(endDate, user) {
+            try {
+                const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
+                const endMatch = endDate.split('(')[0].split('<')[0].match(dateFormat);
+                if (!endMatch) return { overdue: false, fine: 0, hoursOverdue: 0 };
+
+                const end = new Date(`${endMatch[3]}-${endMatch[2]}-${endMatch[1]}`);
+                end.setHours(23, 59, 59, 999);
+
+                if (!sessionReferenceTime) {
+                    sessionReferenceTime = new Date();
+                }
+                const now = sessionReferenceTime;
+
+                if (now > end) {
+                    const diffTime = now - end;
+                    const hoursOverdue = Math.floor(diffTime / (1000 * 60 * 60));
+                    const fine = hoursOverdue * user.fineRate;
+                    return { overdue: true, fine: fine, hoursOverdue: hoursOverdue };
+                }
+                return { overdue: false, fine: 0, hoursOverdue: 0 };
+            } catch (error) {
+                console.error("Error calculating overdue fine:", error);
+                return { overdue: false, fine: 0, hoursOverdue: 0 };
+            }
+        }
+
+        function displayLoanDetails(loan, index) {
+            const loanDetails = document.getElementById("loanDetails");
+            const userInput = document.getElementById("userPassword").value.trim();
+            const user = passwords[userInput];
+
+            if (!loan.hasOwnProperty('cachedFine')) {
+                const overdueInfo = calculateOverdueFine(loan.endDate, user);
+                if (overdueInfo.overdue) {
+                    user.loans[index].cachedFine = overdueInfo.fine;
+                    user.loans[index].cachedHoursOverdue = overdueInfo.hoursOverdue;
+                    user.loans[index].originalInterest = loan.interest;
+                    user.loans[index].interest = loan.interest + overdueInfo.fine;
+                    if (!loan.endDate.includes('Overdue')) {
+                        user.loans[index].endDate = `${loan.endDate.split('<')[0]}<br><p style="color: red;">Overdue by ${overdueInfo.hoursOverdue} hours, additional fine added.</p>`;
+                    }
+                } else {
+                    user.loans[index].cachedFine = 0;
+                    user.loans[index].cachedHoursOverdue = 0;
+                    user.loans[index].originalInterest = loan.interest;
+                }
+            }
+
+            const fine = loan.cachedFine || 0;
+            const originalInterest = loan.originalInterest || loan.interest;
+            const totalReturnAmount = (loan.takenAmount + loan.interest).toFixed(2);
+            const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+            const daysBetween = calculateDaysBetween(loan.planDate, cleanEndDate);
+
+            document.querySelectorAll(".amount-btn").forEach(btn => btn.classList.remove("active"));
+            document.getElementById("amountButtons").children[index].classList.add("active");
+
+            loanDetails.innerHTML = `
+                <div class="loan-entry">
+                
+                    <h3 >
+                        Service
+                    </h3>
+                    <p>${loan.takenFrom}</p>
+                    <h3 >
+                        Amount Details
+                    </h3>
+                    <p><i class="fa-solid fa-money-bill-transfer"></i> Amount: ${loan.takenAmount} Rupees</p>
+                    <h3 >
+                        Taken & Ends
+                    </h3>
+                    <p><i class="fa-solid fa-calendar-day"></i> Taken on: ${loan.planDate}</p>
+                    <p><i class="fa-solid fa-calendar-check"></i> End on: ${loan.endDate}</p>
+                    <h3 >
+                        Loan Duration
+                    </h3>
+                    <p><i class="fa-solid fa-clock"></i> Duration: ${daysBetween} days</p>
+                    <h3 >
+                        Interest
+                    </h3>
+                    <p><i class="fa-solid fa-arrow-up-wide-short"></i> Normal Interest: ${originalInterest} Rupees</p>
+                    <h3 >
+                        Fine
+                    </h3>
+                    <p><i class="fa-solid fa-exclamation-triangle"></i> Overdue Fine: ${fine} Rupees</p>
+                    <hr>
+                    <h3 >
+                        Total Amount to Pay
+                    </h3>
+                    <p><i class="fa-solid fa-money-check-alt"></i> ${totalReturnAmount} Rupees</p>
+                    <p style="text-align: center;"><button class="amounts-btn" onclick="downloadSingleLoan(${index})">
+                        <i class="fa-solid fa-download" style="margin-right: 2px;"></i> Download This
+                    </button></p>
+                </div>
+            `;
+        }
+
+        function showAmountsModal() {
+            const userInput = document.getElementById("userPassword").value.trim();
+            const user = passwords[userInput];
+            if (!user) return;
+
+            let totalTaken = 0;
+            let totalInterest = 0;
+            user.loans.forEach(loan => {
+                totalTaken += loan.takenAmount;
+                totalInterest += (loan.cachedFine || 0) + (loan.originalInterest || loan.interest);
+            });
+            const totalReturn = (totalTaken + totalInterest).toFixed(2);
+
+            document.getElementById("totalTaken").textContent = totalTaken;
+            document.getElementById("totalInterest").textContent = totalInterest;
+            document.getElementById("totalReturn").textContent = totalReturn;
+
+            document.getElementById("amountsModal").style.display = "flex";
+        }
+
+        function closeAmountsModal() {
+            document.getElementById("amountsModal").style.display = "none";
+        }
+
+        function closeModal() {
+            document.getElementById("userInfoModal").style.display = "none";
+            document.getElementById("passwordContainer").style.display = "flex";
+            document.getElementById("userPassword").value = "";
+            sessionReferenceTime = null;
+        }
+
+        function formatDate(dateStr) {
+            const [d, m, y] = dateStr.split('-');
+            return `${d}/${m}/${y.slice(2)}`;
+        }
+
+        function generateImage(text, filename) {
+            const canvas = document.createElement('canvas');
+            const lines = text.split('\n');
+            const lineHeight = 20;
+            canvas.width = 400;
+            canvas.height = 50 + lines.length * lineHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'black';
+            ctx.font = '16px Arial';
+            lines.forEach((line, i) => {
+                ctx.fillText(line, 20, 30 + i * lineHeight);
+            });
+            // Watermark
+            ctx.fillStyle = 'gray';
+            ctx.font = '12px Arial';
+            ctx.fillText('Powered by BsBookpad', canvas.width - 150, 20);
+            const a = document.createElement('a');
+            a.href = canvas.toDataURL('image/png');
+            a.download = filename;
+            a.click();
+        }
+
+        function downloadSingleLoan(index) {
+            const userInput = document.getElementById("userPassword").value.trim();
+            const user = passwords[userInput];
+            if (!user) return;
+            const loan = user.loans[index];
+            const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+            const text = `Amount ${index + 1} : ${loan.takenAmount} \nReturn date : ${formatDate(cleanEndDate)}`;
+            generateImage(text, `loan_amount_${index + 1}.png`);
+        }
+
+        function downloadAllLoans() {
+            const userInput = document.getElementById("userPassword").value.trim();
+            const user = passwords[userInput];
+            if (!user) return;
+            let text = '';
+            user.loans.forEach((loan, i) => {
+                const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+                text += `Amount ${i + 1} : ${loan.takenAmount} \nReturn date : ${formatDate(cleanEndDate)}\n\n`;
+            });
+            generateImage(text, 'all_loans.png');
+        }
+
     </script>
 </body>
 </html>
