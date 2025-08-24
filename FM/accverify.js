@@ -1,9 +1,9 @@
-
+    
 
 const passwords = {
             "4211": {
                 name: "Chaitanya Harsha",
-                membershipType: "Premium - Mini",
+                membershipType: "",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
                 fineRate: 5,
                 profileBackground: "#ff4d4d",
@@ -27,7 +27,7 @@ const passwords = {
             },
             "Ganesh@5577": {
                 name: "J Ganesh",
-                membershipType: "",
+                // membershipType: "",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
                 fineRate: 5,
                 profileBackground: "#ff7300",
@@ -44,7 +44,7 @@ const passwords = {
             },
            "6275": {
                 name: "Srikanth Jampana",
-                membershipType: "Premium - Mini",
+                membershipType: "",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
                 fineRate: 30,
                 profileBackground: "red",
@@ -96,7 +96,7 @@ const passwords = {
             },
             "Mahesh888*": {
                 name: "Mahesh Muthinti",
-                membershipType: "Premium - Mini",
+                membershipType: "",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
                 fineRate: 0,
                 profileBackground: "#00ff00",
@@ -127,7 +127,7 @@ const passwords = {
             },
             "Cherish@123": {
                 name: "Cherish",
-                membershipType: "Premium - Mini",
+                membershipType: "",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
                 fineRate: 3,
                 profileBackground: "rgb(255 138 0)",
@@ -353,7 +353,14 @@ const passwords = {
 
             loanDetails.innerHTML = `
                 <div class="loan-entry">
-                
+                <p style="    text-align: center;
+    float: right;
+    position: sticky;
+    top: 20px;
+    margin-top: 20px;
+"><button class="amounts-btn" onclick="downloadSingleLoan(${index})">
+                        <i class="fa-solid fa-download" style="margin-right: 2px;"></i> This amount receipt
+                    </button></p>
                     <h3 >
                         Service
                     </h3>
@@ -417,4 +424,59 @@ const passwords = {
             document.getElementById("passwordContainer").style.display = "flex";
             document.getElementById("userPassword").value = "";
             sessionReferenceTime = null;
+        }
+
+        function formatDate(dateStr) {
+            const [d, m, y] = dateStr.split('-');
+            return `${d}/${m}/${y.slice(2)}`;
+        }
+
+        function generateImage(text, filename) {
+            const canvas = document.createElement('canvas');
+            const lines = text.split('\n');
+            const lineHeight = 30;
+            canvas.width = 600;
+            canvas.height = 60 + lines.length * lineHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'black';
+            ctx.font = '20px Poppins';
+            ctx.textAlign = 'left';
+            lines.forEach((line, i) => {
+                ctx.fillText(line, 30, 40 + i * lineHeight);
+            });
+            // Watermark
+            ctx.fillStyle = 'gray';
+            ctx.font = '16px Poppins';
+            ctx.textAlign = 'right';
+            ctx.fillText('Powered by BsBookpad', canvas.width - 20, 20);
+            const a = document.createElement('a');
+            a.href = canvas.toDataURL('image/png', 1.0);
+            a.download = filename;
+            a.click();
+        }
+
+        function downloadSingleLoan(index) {
+            const userInput = document.getElementById("userPassword").value.trim();
+            const user = passwords[userInput];
+            if (!user) return;
+            const loan = user.loans[index];
+            const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+            const totalReturnAmount = (loan.takenAmount + (loan.cachedFine || 0) + (loan.originalInterest || loan.interest)).toFixed(2);
+            const text = `Total Amount ${index + 1} : ${totalReturnAmount} ₹\nReturn date : ${formatDate(cleanEndDate)}`;
+            generateImage(text, `total_amount_${index + 1}.png`);
+        }
+
+        function downloadAllLoans() {
+            const userInput = document.getElementById("userPassword").value.trim();
+            const user = passwords[userInput];
+            if (!user) return;
+            let text = '';
+            user.loans.forEach((loan, i) => {
+                const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+                const totalReturnAmount = (loan.takenAmount + (loan.cachedFine || 0) + (loan.originalInterest || loan.interest)).toFixed(2);
+                text += `Total Amount ${i + 1} : ${totalReturnAmount} ₹\nReturn date : ${formatDate(cleanEndDate)}\n\n`;
+            });
+            generateImage(text.trim(), 'all_total_amounts.png');
         }
