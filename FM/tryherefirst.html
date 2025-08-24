@@ -346,11 +346,12 @@
             background-color: #3a3a3a;
         }
         .loan-entry {
-            padding: 10px 0px;
-            margin-bottom: 20px;
-            border-bottom: none;
-            width: 98%;
-            padding-bottom: 30px;
+          padding: 10px 0px;
+    margin-bottom: 20px;
+    border-bottom: none;
+    width: 98%;
+    padding-bottom: 30px;
+    max-width: 600px;
         }
         ::-webkit-scrollbar {
             width: 10px;
@@ -368,13 +369,15 @@
     z-index: 1000;
     backdrop-filter: blur(5px);
     padding: 25px 15px 10px 15px;
-    width: 108%;
+    width: 105.6%;
+        max-width: -webkit-fill-available;
+
         }
         body.light .amount-buttons {
            background-color: #f0f0f0;
 }
 body.telegram-dark .amount-buttons {
-           background-color: #303f53;
+           background-color: #212d3b;
 }
         .amount-btn {
             background-color: rgb(67 67 67);
@@ -393,7 +396,7 @@ body.telegram-dark .amount-buttons {
             color: #000000;
         }
         body.telegram-dark .amount-btn {
-            background-color: #2a3545;
+            background-color: #4a607c;
             color: #ffffff;
         }
         body.my-own .amount-btn {
@@ -409,7 +412,7 @@ body.telegram-dark .amount-buttons {
             background-color: #b3b3b3;
         }
         body.telegram-dark .amount-btn:hover {
-            background-color: #3a4b5e;
+            background-color: #1d2733;
         }
         body.my-own .amount-btn:hover {
             background-color: #434343;
@@ -563,7 +566,7 @@ body.telegram-dark .amount-buttons {
             background-color: #ffffff;
             color: black;
             border: none;
-            padding: 1px 5px;
+            padding: 1.5px 10px;
             font-size: 10px;
             border-radius: 30px;
             cursor: pointer;
@@ -577,6 +580,7 @@ body.telegram-dark .amount-buttons {
         }
         body.telegram-dark .amounts-btn {
             background-color: #2a3545;
+                color: lightgray;
         }
         body.my-own .amounts-btn {
             background-color: #ffffff;
@@ -890,9 +894,11 @@ body.telegram-dark .amount-buttons {
     z-index: 10000;
 " src="https://raw.githubusercontent.com/goforbg/telegram-emoji-gifs/refs/heads/master/thunder.gif" alt="">
         <span><i class="fa-solid fa-arrow-left close-btn" onclick="closeModal()"></i></span>
-        <div class="stars-display" id="starsDisplay">
-            <i style="margin: 5px;" class="fa-solid fa-star"></i><span style="font-size: 18px;    margin-top: 2px;" id="starCount"></span>
-        </div>
+        <a href="https://blackswan19.github.io/golden/FM/starspage">
+            <div class="stars-display" id="starsDisplay">
+                <i style="margin: 5px;" class="fa-solid fa-star"></i><span style="font-size: 18px;    margin-top: 2px;" id="starCount"></span>
+            </div>
+        </a>
         <h3 style="text-decoration: underline; margin: 10px 0px; font-weight: 600; font-size: 15px;    color: gray;">Borrower</h3>
         <div class="profile-container">
             <div class="profile-picture" id="profilePicture"></div>
@@ -904,7 +910,7 @@ body.telegram-dark .amount-buttons {
                     <i class="fa-solid fa-eye" style="margin-right: 2px;"></i> Amounts
                 </button>
                 <button class="amounts-btn" onclick="downloadAllLoans()">
-                    <i class="fa-solid fa-download" style="margin-right: 2px;"></i> Download All
+                    <i class="fa-solid fa-download" style="margin-right: 2px;"></i> All amount receipt
                 </button>
                 <p id="membershipType" class="membership-type"></p>
             </div>
@@ -1360,7 +1366,14 @@ const passwords = {
 
             loanDetails.innerHTML = `
                 <div class="loan-entry">
-                
+                <p style="    text-align: center;
+    float: right;
+    position: sticky;
+    top: 20px;
+    margin-top: 20px;
+"><button class="amounts-btn" onclick="downloadSingleLoan(${index})">
+                        <i class="fa-solid fa-download" style="margin-right: 2px;"></i> This amount receipt
+                    </button></p>
                     <h3 >
                         Service
                     </h3>
@@ -1391,9 +1404,6 @@ const passwords = {
                         Total Amount to Pay
                     </h3>
                     <p><i class="fa-solid fa-money-check-alt"></i> ${totalReturnAmount} Rupees</p>
-                    <p style="text-align: center;"><button class="amounts-btn" onclick="downloadSingleLoan(${index})">
-                        <i class="fa-solid fa-download" style="margin-right: 2px;"></i> Download This
-                    </button></p>
                 </div>
             `;
         }
