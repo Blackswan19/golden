@@ -8,555 +8,623 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-        :root {
-            --telegram-accent: #0088cc;
-            --font-family: 'Poppins', sans-serif;
-            --bg-color: #17212b;
-            --text-color: #ffffffb8;
-            --header-bg: #2a3545;
-            --border-color: #ffffff26;
-            --secondary-bg: #2a3545;
-            --secondary-text: #a0a9b2;
-            --button-bg: #2a3545;
-            --button-text: #ffffff;
-        }
+    :root {
+        --telegram-accent: #0088cc; /* Telegram's signature blue */
+        --telegram-accent-light: #33a8db; /* Lighter accent for hover */
+        --font-family: 'Roboto', sans-serif; /* Telegram uses a clean sans-serif */
+        --border-radius: 12px; /* Rounded corners like Telegram */
+        --shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
+        --transition: all 0.3s ease; /* Smooth transitions */
+    }
 
-        * {
-            font-family: var(--font-family);
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
+    /* Light Theme (Telegram-inspired light mode) */
+    body.light-theme {
+        --bg-color: #f5f7fa; /* Telegram's light chat background */
+        --text-color: #000000;
+        --header-bg: linear-gradient(180deg, #ffffff, #e6ecef); /* Subtle gradient */
+        --border-color: #d3d8dc;
+        --secondary-bg: #ffffff;
+        --secondary-text: #5e6c79;
+        --button-bg: #0088cc;
+        --button-text: #ffffff;
+        --button-hover: #33a8db;
+    }
 
-        body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            letter-spacing: 0.3px;
-        }
+    /* Night Theme (Telegram’s default dark mode) */
+    body.night-theme {
+        --bg-color: #18222d; /* Telegram’s dark chat background */
+        --text-color: #d1d5db;
+        --header-bg: linear-gradient(180deg, #242f3d, #1c252f); /* Dark gradient */
+        --border-color: #394452;
+        --secondary-bg: #242f3d;
+        --secondary-text: #a0aec0;
+        --button-bg: #0088cc;
+        --button-text: #ffffff;
+        --button-hover: #33a8db;
+    }
 
-        body.light-theme {
-            --bg-color: #ffffff;
-            --text-color: #000000;
-            --header-bg: #f0f0f0;
-            --border-color: #0000002c;
-            --secondary-bg: #e0e0e0;
-            --secondary-text: #666666;
-            --button-bg: #e0e0e0;
-            --button-text: #000000;
-        }
+    /* Dark Theme (Telegram’s AMOLED-like mode) */
+    body.dark-theme {
+        --bg-color: #121212; /* AMOLED black */
+        --text-color: #b0b0b0;
+        --header-bg: linear-gradient(180deg, #1a1a1a, #121212); /* Subtle dark gradient */
+        --border-color: #333333;
+        --secondary-bg: #1a1a1a;
+        --secondary-text: #828282;
+        --button-bg: #0088cc;
+        --button-text: #ffffff;
+        --button-hover: #33a8db;
+    }
 
-        body.night-theme {
-            --bg-color: #17212b;
-            --text-color: #ffffff;
-            --header-bg: #2a3545;
-            --border-color: #ffffff26;
-            --secondary-bg: #2a3545;
-            --secondary-text: #a0a9b2;
-            --button-bg: #2a3545;
-            --button-text: #ffffff;
-        }
+    * {
+        font-family: var(--font-family);
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-tap-highlight-color: transparent;
+    }
 
-        body.dark-theme {
-            --bg-color: #000000;
-            --text-color: #b0b0b0;
-            --header-bg: #1c1c1c;
-            --border-color: #4a4a4a;
-            --secondary-bg: #1c1c1c;
-            --secondary-text: #808080;
-            --button-bg: #1c1c1c;
-            --button-text: #b0b0b0;
-        }
+    body {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        letter-spacing: 0.3px;
+        overflow-x: hidden;
+    }
 
-        .container {
-            margin: 20px auto;
-            max-width: 660px;
-            padding: 10px;
-        }
+    .container {
+        margin: 20px auto;
+        max-width: 660px;
+        padding: 10px;
+    }
 
-        .header {
-            text-align: center;
-            padding: 20px 0 30px;
-            background: var(--header-bg);
-            ;
-        }
+    .header {
+        text-align: center;
+        padding: 20px 0 30px;
+        background: var(--header-bg);
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: var(--shadow);
+        position: relative;
+        border-radius: var(--border-radius);
+    }
 
-        .header h1 {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--telegram-accent);
-        }
+    .header h1 {
+        font-size: 28px;
+        font-weight: 500;
+        color: var(--telegram-accent);
+        letter-spacing: -0.5px;
+    }
 
-        .header p {
-            font-size: 10px;
-            font-weight: 400;
-            color: var(--secondary-text);
-            margin-top: -2px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
+    .header p {
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--secondary-text);
+        margin-top: 4px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
 
-        .account-access {
-            text-align: center;
-            margin: 25px 0;
-            position: sticky;
-            top: 0;
-            backdrop-filter: blur(5px);
-            padding: 20px;
-            border-bottom: 1px solid var(--border-color);
-        }
+    .account-access {
+        text-align: center;
+        margin: 25px 0;
+        position: sticky;
+        top: 0;
+        background: var(--header-bg);
+        padding: 15px;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: var(--shadow);
+        z-index: 10;
+        border-radius: var(--border-radius);
+    }
 
-        .account-btn {
-                background: var(--telegram-accent);
-        color: black;
-    padding: 9px 18px;
-    border: none;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-        border-radius: 8px;
-    transition: background 0.2s;
-    margin: 0px 10px;
+    .account-btn {
+        background: var(--button-bg);
+        color: var(--button-text);
+        padding: 10px 20px;
+        border: none;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+        margin: 0 8px;
+        box-shadow: var(--shadow);
+    }
 
-        }
+    .account-btn:hover {
+        background: var(--button-hover);
+        transform: translateY(-1px);
+    }
 
-        .account-btn:hover {
-            background: #0088cccc;
-        }
+    .account-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    }
 
-        .loan-option {
-            padding: 20px;
-            margin: 20px 0;
-            ;
-            border: 1px solid var(--border-color);
-        }
+    .loan-option {
+        padding: 20px;
+        margin: 20px 0;
+        background: var(--secondary-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+    }
 
-        .loan-option h2 {
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--telegram-accent);
-            margin-bottom: 12px;
-            letter-spacing: -0.2px;
-        }
+    .loan-option:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
 
-        .loan-option p {
-            font-size: 13px;
-            font-weight: 400;
-            color: var(--secondary-text);
-            margin: 10px 0;
-        }
+    .loan-option h2 {
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--telegram-accent);
+        margin-bottom: 12px;
+        letter-spacing: -0.2px;
+    }
 
-        .apply-btn {
-            background: var(--button-bg);
-            color: var(--button-text);
-            padding: 8px 20px;
-            font-size: 14px;
-            font-weight: 500;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 12px;
-            transition: background 0.2s;
-        }
+    .loan-option p {
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--secondary-text);
+        margin: 8px 0;
+    }
 
-        .apply-btn:hover {
-            background: var(--button-bg + 'cc');
-        }
+    .apply-btn {
+        background: var(--button-bg);
+        color: var(--button-text);
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 12px;
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+        box-shadow: var(--shadow);
+    }
 
-        .terms {
-                font-size: 12px;
-    font-weight: 300;
-    color: #009c7f;
-    margin-top: 10px;
-        }
+    .apply-btn:hover {
+        background: var(--button-hover);
+        transform: translateY(-1px);
+    }
 
-        .how-it-works {
-            margin: 30px 0;
-            padding: 20px;
-            ;
-            border: 1px solid var(--border-color);
-        }
+    .apply-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    }
 
-        a {
-            text-decoration: none;
-        }
+    .terms {
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--telegram-accent);
+        margin-top: 10px;
+        opacity: 0.9;
+    }
 
-        .how-it-works h3 {
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--telegram-accent);
-            margin-bottom: 12px;
-            letter-spacing: -0.2px;
-        }
+    .how-it-works {
+        margin: 30px 0;
+        padding: 20px;
+        background: var(--secondary-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+    }
 
-        .how-it-works ol {
-            padding-left: 20px;
-            font-size: 13px;
-            font-weight: 400;
-            color: var(--secondary-text);
-        }
+    .how-it-works:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
 
-        .how-it-works li {
-            margin: 5px 0;
-            font-size: 13px;
-            line-height: 22px;
-            font-weight: 400;
-            color: var(--secondary-text);
-        }
+    .how-it-works h3 {
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--telegram-accent);
+        margin-bottom: 12px;
+        letter-spacing: -0.2px;
+    }
 
-        .footer {
-            text-align: center;
-            padding: 30px 0 0;
-            font-size: 12px;
-            font-weight: 400;
-            color: var(--secondary-text);
-        }
+    .how-it-works ol {
+        padding-left: 20px;
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--secondary-text);
+    }
 
-        .sponsers {
-            background: var(--secondary-bg + '1a');
-            padding: 15px;
-            text-align: center;
-            border: 1px solid #80808045;
-        }
+    .how-it-works li {
+        margin: 8px 0;
+        line-height: 22px;
+    }
 
-        .sponsers p {
-            font-size: 13px;
-            padding: 10px;
-            color: var(--secondary-text);
-        }
+    .footer {
+        text-align: center;
+        padding: 30px 0;
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--secondary-text);
+        border-top: 1px solid var(--border-color);
+    }
 
-        .sponsers h2 {
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--telegram-accent);
-        }
+    .sponsers {
+        background: var(--secondary-bg);
+        padding: 15px;
+        text-align: center;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        margin: 20px 0;
+    }
 
-        .sponsers a {
-            color: var(--telegram-accent);
-            text-decoration: none;
-        }
+    .sponsers h2 {
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--telegram-accent);
+        margin-bottom: 10px;
+    }
 
-        .sponsers a:hover {
-            text-decoration: underline;
-        }
+    .sponsers p {
+        font-size: 14px;
+        color: var(--secondary-text);
+        margin: 8px 0;
+    }
 
-        .popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+    .sponsers a {
+        color: var(--telegram-accent);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+    }
 
-        .popup-overlay.show {
-            display: block;
-            opacity: 1;
-        }
+    .sponsers a:hover {
+        color: var(--telegram-accent-light);
+        text-decoration: underline;
+    }
 
+    .popup-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 999;
+        opacity: 0;
+        transition: var(--transition);
+    }
+
+    .popup-overlay.show {
+        display: block;
+        opacity: 1;
+    }
+
+    .account-popup {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        max-height: 80vh;
+        background: var(--secondary-bg);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(100%);
+        transition: var(--transition);
+        box-shadow: var(--shadow);
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+
+    .account-popup.show {
+        display: flex;
+        transform: translateY(0);
+    }
+
+    @media (min-width: 600px) {
         .account-popup {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            max-height: 80vh;
-            background-color: var(--bg-color);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
-                border-radius: 10px 10px 0px 0px;
+            width: 90%;
+            max-width: 600px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100%);
+            border-radius: var(--border-radius);
         }
 
         .account-popup.show {
-            display: flex;
+            transform: translateX(-50%) translateY(0);
+        }
+    }
+
+    .account-popup-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        background: var(--header-bg);
+        border-bottom: 1px solid var(--border-color);
+        position: sticky;
+        top: 0;
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+        box-shadow: var(--shadow);
+        z-index: 1;
+    }
+
+    .account-popup-header h3 {
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--telegram-accent);
+    }
+
+    .account-popup-header .close-btn,
+    .account-popup-header .settings-btn,
+    .account-popup-header .back-btn {
+        background: transparent;
+        border: none;
+        color: var(--text-color);
+        font-size: 20px;
+        cursor: pointer;
+        padding: 8px;
+        transition: var(--transition);
+    }
+
+    .account-popup-header .close-btn:hover,
+    .account-popup-header .settings-btn:hover,
+    .account-popup-header .back-btn:hover {
+        color: var(--telegram-accent-light);
+        transform: scale(1.1);
+    }
+
+    .account-popup-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 16px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--telegram-accent) var(--secondary-bg);
+    }
+
+    .account-popup input {
+        padding: 12px;
+        border: none;
+        background: var(--secondary-bg);
+        color: var(--text-color);
+        font-size: 14px;
+        font-weight: 400;
+        text-align: center;
+        outline: none;
+        display: flex;
+        border-radius: var(--border-radius);
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+    }
+
+    .account-popup input:focus {
+        box-shadow: 0 0 0 2px var(--telegram-accent);
+    }
+
+    .account-popup input::placeholder {
+        color: var(--secondary-text);
+        opacity: 0.7;
+    }
+
+    .settings-option .inputs {
+        width: auto;
+    }
+
+    .popup-btn {
+        background: var(--button-bg);
+        color: var(--button-text);
+        padding: 10px 25px;
+        border: none;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+        margin: 20px auto 10px;
+        display: block;
+        box-shadow: var(--shadow);
+    }
+
+    .popup-btn:hover {
+        background: var(--button-hover);
+        transform: translateY(-1px);
+    }
+
+    .popup-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .error-message {
+        color: #ff5555;
+        font-size: 12px;
+        font-weight: 400;
+        display: none;
+        margin: 10px auto;
+        text-align: center;
+        background: var(--secondary-bg);
+        padding: 8px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+    }
+
+    .account-details {
+        margin: 0;
+        padding: 16px;
+        background: var(--secondary-bg);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+    }
+
+    .account-details h4 {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--telegram-accent);
+        margin-bottom: 12px;
+    }
+
+    .account-details p {
+        font-size: 14px;
+        color: var(--secondary-text);
+        margin: 8px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .account-details .loan-item {
+        margin: 20px 0;
+        padding: 12px;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        background: var(--secondary-bg);
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+    }
+
+    .account-details .loan-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .settings-section,
+    .font-settings-section,
+    .theme-settings-section {
+        display: none;
+        padding: 16px;
+        background: var(--secondary-bg);
+        margin: 15px auto;
+        max-width: 600px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+    }
+
+    .settings-section h4,
+    .font-settings-section h4,
+    .theme-settings-section h4 {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--telegram-accent);
+        margin-bottom: 12px;
+    }
+
+    .settings-option {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .settings-option label {
+        font-size: 14px;
+        color: var(--text-color);
+        margin-left: 8px;
+        cursor: pointer;
+    }
+
+    .settings-sub-option {
+        margin: 8px 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .settings-sub-option label {
+        font-size: 14px;
+        color: var(--secondary-text);
+        margin-left: 8px;
+        cursor: pointer;
+    }
+
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 1000;
+        opacity: 1;
+        transition: var(--transition);
+    }
+
+    .loading-overlay.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .loading-logo {
+        width: 150px;
+        height: auto;
+        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+    }
+
+    .loading-dots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+        background: var(--telegram-accent);
+        margin: 0 6px;
+        border-radius: 50%;
+        animation: bounceDot 1.2s ease-in-out infinite;
+    }
+
+    .dot:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .dot:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+
+    @keyframes bounceDot {
+        0%, 100% {
             transform: translateY(0);
+            opacity: 0.7;
         }
-
-        @media (min-width: 600px) {
-            .account-popup {
-                width: 90%;
-                max-width: 600px;
-                left: 50%;
-                transform: translateX(-50%) translateY(100%);
-            }
-
-            .account-popup.show {
-                transform: translateX(-50%) translateY(0);
-            }
-        }
-
-        .account-popup-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 16px;
-            background-color: var(--header-bg);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-                border-radius: inherit;
-            z-index: 1;
-        }
-
-        .account-popup-header h3 {
-            font-size: 18px;
-            font-weight: 500;
-            color: white;
-        }
-
-        .account-popup-header .close-btn,
-        .account-popup-header .settings-btn,
-        .account-popup-header .back-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-color);
-            font-size: 20px;
-            cursor: pointer;
-            padding: 8px;
-            transition: color 0.2s;
-        }
-
-        .account-popup-header .close-btn:hover,
-        .account-popup-header .settings-btn:hover,
-        .account-popup-header .back-btn:hover {
-            color: var(--telegram-accent);
-        }
-
-        .account-popup-content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 16px;
-            scrollbar-width: thin;
-        }
-
-        .account-popup input {
-            padding: 12px;
-            border: none;
-            background: var(--secondary-bg);
-            color: var(--text-color);
-            font-size: 14px;
-            font-weight: 400;
-            text-align: center;
-            outline: none;
-            display: flex;
-                border-radius: 10px;
-
-        }
-
-        .account-popup input::placeholder {
-            color: #888888;
-        }
-
-        .settings-option .inputs {
-            width: auto;
-        }
-
-        .popup-btn {
-               background: var(--telegram-accent);
-    color: black;
-    padding: 9px 25px;
-    border: none;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s;
-    margin: 20px auto 10px;
-    display: block;
-        border-radius: 10px;
-
-        }
-
-        .popup-btn:hover {
-            background: #0088cccc;
-        }
-
-        .error-message {
-            color: #ff5555;
-            font-size: 12px;
-            font-weight: 400;
-            display: none;
-            margin: 10px auto;
-            text-align: center;
-        }
-
-        .account-details {
-            margin: 0px;
-            max-width: 600px;
-            padding: 16px;
-            background: var(--secondary-bg);
-                border-radius: 10px;
-
-        }
-
-        .account-details h4 {
-            font-size: 15px;
-            font-weight: 900;
-            color: #0388cc;
-            margin-bottom: 12px;
-        }
-
-        .account-details p {
-            font-size: 14px;
-    color: #ffffff8c;
-    margin: 8px 0;
-    display: flex
-;
-    justify-content: space-between;
-        }
-
-        .account-details .loan-item {
-                margin: 30px 0;
-    border: solid 1px gray;
-    padding: 12px;
-    ;
-        }
-
-        .settings-section,
-        .font-settings-section,
-        .theme-settings-section {
-            display: none;
-            padding: 16px;
-            background: var(--secondary-bg);
-            margin: 15px auto;
-            max-width: 600px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-                border-radius: 10px;
-
-        }
-
-        .settings-section h4,
-        .font-settings-section h4,
-        .theme-settings-section h4 {
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--telegram-accent);
-            margin-bottom: 12px;
-        }
-
-        .settings-option {
-            margin: 10px 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .settings-option label {
-            font-size: 14px;
-            color: var(--text-color);
-            margin-left: 8px;
-            cursor: pointer;
-        }
-
-        .settings-sub-option {
-            margin: 8px 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .settings-sub-option label {
-            font-size: 15px;
-            color: var(--secondary-text);
-            margin-left: 8px;
-            cursor: pointer;
-        }
-
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            z-index: 1000;
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        }
-
-        .loading-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loading-logo {
-            width: 200px;
-            height: auto;
-        }
-
-        .loading-dots {
-            display: flex;
-            position: fixed;
-            bottom: 100px;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            background-color: #006aff;
-            margin: 0 5px;
-            border-radius: 50%;
-            animation: bounceDot 1s ease-in-out infinite;
-        }
-
-        .dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes bounceDot {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        .autofill-message {
-            position: fixed;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--secondary-bg);
-            color: var(--text-color);
-            padding: 10px 20px;
-            font-size: 14px;
-            font-weight: 500;
-            z-index: 1001;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            display: none;
-        }
-
-        .autofill-message.show {
-            display: block;
+        50% {
+            transform: translateY(-12px);
             opacity: 1;
         }
-    </style>
+    }
+
+    .autofill-message {
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--secondary-bg);
+        color: var(--telegram-accent);
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 500;
+        z-index: 1001;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        opacity: 0;
+        transition: var(--transition);
+        display: none;
+    }
+
+    .autofill-message.show {
+        display: block;
+        opacity: 1;
+    }
+</style>
 </head>
 <body>
     <div class="loading-overlay" id="loadingOverlay">
@@ -925,24 +993,24 @@
             if (event.key === "Enter") verifyPassword();
         });
         
-        // document.addEventListener("DOMContentLoaded", () => {
-        //     const customMenu = document.querySelector(".custom-menu");
+        document.addEventListener("DOMContentLoaded", () => {
+            const customMenu = document.querySelector(".custom-menu");
 
-        //     document.addEventListener("contextmenu", (event) => {
-        //         event.preventDefault();
-        //         if (customMenu) {
-        //             customMenu.style.display = "block";
-        //             customMenu.style.top = `${event.pageY}px`;
-        //             customMenu.style.left = `${event.pageX}px`;
-        //         }
-        //     });
+            document.addEventListener("contextmenu", (event) => {
+                event.preventDefault();
+                if (customMenu) {
+                    customMenu.style.display = "block";
+                    customMenu.style.top = `${event.pageY}px`;
+                    customMenu.style.left = `${event.pageX}px`;
+                }
+            });
 
-        //     document.addEventListener("click", () => {
-        //         if (customMenu) {
-        //             customMenu.style.display = "none";
-        //         }
-        //     });
-        // });
+            document.addEventListener("click", () => {
+                if (customMenu) {
+                    customMenu.style.display = "none";
+                }
+            });
+        });
     </script>
 </body>
 </html>
