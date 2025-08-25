@@ -85,7 +85,7 @@
             text-align: center;
             padding: 20px 0 30px;
             background: var(--header-bg);
-            border-radius: 10px;
+            ;
         }
 
         .header h1 {
@@ -115,14 +115,13 @@
 
         .account-btn {
                 background: var(--telegram-accent);
-    color: #ffffff;
-    padding: 10px 18px;
+        color: black;
+    padding: 9px 18px;
     border: none;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     transition: background 0.2s;
-    border-radius: 6px;
     margin: 0px 10px;
 
         }
@@ -134,7 +133,7 @@
         .loan-option {
             padding: 20px;
             margin: 20px 0;
-            border-radius: 10px;
+            ;
             border: 1px solid var(--border-color);
         }
 
@@ -163,7 +162,6 @@
             display: inline-block;
             margin-top: 12px;
             transition: background 0.2s;
-            border-radius: 4px;
         }
 
         .apply-btn:hover {
@@ -180,7 +178,7 @@
         .how-it-works {
             margin: 30px 0;
             padding: 20px;
-            border-radius: 10px;
+            ;
             border: 1px solid var(--border-color);
         }
 
@@ -223,7 +221,6 @@
             background: var(--secondary-bg + '1a');
             padding: 15px;
             text-align: center;
-            border-radius: 12px;
             border: 1px solid #80808045;
         }
 
@@ -277,8 +274,6 @@
             z-index: 1000;
             display: flex;
             flex-direction: column;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
             transform: translateY(100%);
             transition: transform 0.3s ease;
             box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
@@ -312,8 +307,6 @@
             position: sticky;
             top: 0;
             z-index: 1;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
         }
 
         .account-popup-header h3 {
@@ -350,7 +343,6 @@
         .account-popup input {
             padding: 12px;
             border: none;
-            border-radius: 8px;
             background: var(--secondary-bg);
             color: var(--text-color);
             font-size: 14px;
@@ -369,17 +361,16 @@
         }
 
         .popup-btn {
-            background: var(--telegram-accent);
-            color: #ffffff;
-            padding: 10px 25px;
-            border: none;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.2s;
-            border-radius: 8px;
-            margin: 10px auto;
-            display: block;
+               background: var(--telegram-accent);
+    color: black;
+    padding: 9px 25px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin: 20px auto 10px;
+    display: block;
         }
 
         .popup-btn:hover {
@@ -399,7 +390,6 @@
             margin: 0px;
             max-width: 600px;
             padding: 16px;
-            border-radius: 8px;
             background: var(--secondary-bg);
         }
 
@@ -423,7 +413,7 @@
                 margin: 30px 0;
     border: solid 1px gray;
     padding: 12px;
-    border-radius: 10px;
+    ;
         }
 
         .settings-section,
@@ -432,7 +422,6 @@
             display: none;
             padding: 16px;
             background: var(--secondary-bg);
-            border-radius: 8px;
             margin: 15px auto;
             max-width: 600px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -511,7 +500,6 @@
             width: 10px;
             height: 10px;
             background-color: #006aff;
-            border-radius: 50%;
             margin: 0 5px;
             animation: bounceDot 1s ease-in-out infinite;
         }
@@ -544,7 +532,6 @@
             background-color: var(--secondary-bg);
             color: var(--text-color);
             padding: 10px 20px;
-            border-radius: 8px;
             font-size: 14px;
             font-weight: 500;
             z-index: 1001;
@@ -556,44 +543,6 @@
         .autofill-message.show {
             display: block;
             opacity: 1;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 10px;
-            }
-            .loan-option {
-                padding: 15px;
-            }
-
-
-            .how-it-works {
-                padding: 15px;
-            }
-
-            
-
-            .how-it-works li {
-                font-size: 12px;
-                line-height: 20px;
-            }
-
-            .account-popup-header {
-                padding: 10px 12px;
-            }
-
-            .account-popup-content {
-                padding: 12px;
-            }
-
-            
-            
-
-            .autofill-message {
-                padding: 8px 15px;
-            }
-
-            
         }
     </style>
 </head>
@@ -649,7 +598,7 @@
          <div class="loan-option">
             <h2 style="margin: 0px;">Borrow limit</h2>
             <p>Click here to take the amounts above ₹5,000....</p>
-            <a href="https://blackswan19.github.io/golden/FM/themain" class="account-btn">MLending site</a>
+            <a href="https://blackswan19.github.io/golden/FM/themain" style="    margin: 10px 0px 0px 0px;" class="account-btn">MLending site</a>
         </div>
         <div class="footer">
             By Myootive
