@@ -85,7 +85,7 @@
             text-align: center;
             padding: 20px 0 30px;
             background: var(--header-bg);
-            border-radius: 12px;
+            border-radius: 10px;
         }
 
         .header h1 {
@@ -122,7 +122,7 @@
             font-weight: 500;
             cursor: pointer;
             transition: background 0.2s;
-            border-radius: 8px;
+            border-radius: 5px;
             margin: 0 5px;
         }
 
@@ -133,7 +133,7 @@
         .loan-option {
             padding: 20px;
             margin: 20px 0;
-            border-radius: 12px;
+            border-radius: 10px;
             border: 1px solid var(--border-color);
         }
 
@@ -162,7 +162,7 @@
             display: inline-block;
             margin-top: 12px;
             transition: background 0.2s;
-            border-radius: 8px;
+            border-radius: 4px;
         }
 
         .apply-btn:hover {
@@ -179,7 +179,7 @@
         .how-it-works {
             margin: 30px 0;
             padding: 20px;
-            border-radius: 12px;
+            border-radius: 10px;
             border: 1px solid var(--border-color);
         }
 
@@ -343,8 +343,7 @@
             flex: 1;
             overflow-y: auto;
             padding: 16px;
-            scrollbar-width: thin;
-            scrollbar-color: var(--telegram-accent) var(--header-bg);
+            scrollbar-width: thin;    background: black;
         }
 
         .account-popup input {
@@ -404,23 +403,23 @@
         }
 
         .account-details h4 {
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--telegram-accent);
+            font-size: 15px;
+            font-weight: 900;
+            color: #00a18e;
             margin-bottom: 12px;
         }
 
         .account-details p {
             font-size: 14px;
-            color: white;
+            color: #ffffff8c;
             margin: 8px 0;
         }
 
         .account-details .loan-item {
-            background: gray;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 8px;
+                margin: 30px 0;
+    border: solid 1px gray;
+    padding: 12px;
+    border-radius: 10px;
         }
 
         .settings-section,
@@ -663,10 +662,6 @@
             <button class="account-btn" onclick="showPasswordPopup()">My Account</button>
             <a href="https://mfi0212.github.io/MFI/takemoney" onclick="alert('Redirecting to the loan application form.')"><button class="account-btn">Take Money</button></a>
         </div>
-        <div class="about" style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 20px; padding: 13px; border-radius: 28px; margin-top: 18px; max-width: 700px; border: solid 1.5px #69696980;">
-            <h2 style="text-align: center; font-size: 11px; margin: 0px; font-weight: 400; opacity: 80%;">Sponsored</h2>
-            <a href="https://mfi0212.github.io/MFI/paymine" target="_blank"><img style="width: 100%; border-radius: 24px; padding: 0px; max-width: 500px; margin-bottom: -10px;" src="addvertisement.png" alt=""></a>
-        </div>
         <div class="loan-option">
             <h2 style="margin: 0px;">Borrow limit</h2>
             <p>Click here to take the amounts above ₹5,000....</p>
@@ -695,11 +690,7 @@
             <h3>Can't take for 15+ days?</h3>
             <div class="terms">-> Yes, you can take as many days as you need, but if you take more than 15 days, you will have to pay a higher interest rate than the standard one.</div>
         </div>
-        <div class="sponsers">
-            <p>Partners</p>
-            <h2><a href="https://mfi0212.github.io/swan/countday">Countdays</a></h2>
-            <h2><a href="https://blackswan19.github.io/bscrop/finance">BsFinancial</a></h2>
-        </div>
+        
         <div class="footer">
             By Myootive
         </div>
@@ -850,48 +841,49 @@
                         setTimeout(() => {
                             autofillMessage.style.display = "none";
                         }, 300);
-                    }, 3000);
-                }, 2000);
+                    }, 500);
+                }, 500);
             }
         }
 
         function verifyPassword() {
-            const enteredPassword = document.getElementById("passwordInput").value;
-            const user = users[enteredPassword];
+    const enteredPassword = document.getElementById("passwordInput").value;
+    const user = users[enteredPassword];
 
-            if (user) {
-                localStorage.setItem("savedPassword", enteredPassword);
-                document.getElementById("passwordSection").style.display = "none";
-                document.getElementById("userDetails").style.display = "block";
-                document.getElementById("settingsSection").style.display = "none";
-                document.getElementById("fontSettingsSection").style.display = "none";
-                document.getElementById("themeSettingsSection").style.display = "none";
-                document.getElementById("popupTitle").textContent = "My Account";
-                document.getElementById("backBtn").style.display = "none";
-                document.getElementById("settingsBtn").style.display = "inline-block";
-                const accountDetails = document.getElementById("accountDetails");
-                accountDetails.style.background = user.profileBackground;
-                let loansHTML = user.loans.map(loan => `
-                    <div class="loan-item">
-                        <p><strong>Taken on:</strong> ${loan.planDate}</p>
-                        <p><strong>Return on:</strong> ${loan.endDate}</p>
-                        <p><strong>Interest:</strong> ₹${loan.interest}</p>
-                        <p><strong>Taken Amount:</strong> ₹${loan.takenAmount}</p>
-                        <p><strong>Taken From:</strong> ${loan.takenFrom}</p>
-                    </div>
-                `).join('');
-                accountDetails.innerHTML = `
-                    <h4>Borrower</h4>
-                    <p><strong>Name:</strong> ${user.name}</p>
-                    <h4>Amounts</h4>
-                    ${loansHTML}
-                `;
-            } else if (enteredPassword === '0212') {
-                window.location.href = "https://mfi0212.github.io/MFI/banned";
-            } else {
-                document.getElementById("errorMessage").style.display = "block";
-            }
-        }
+    if (user) {
+        localStorage.setItem("savedPassword", enteredPassword);
+        document.getElementById("passwordSection").style.display = "none";
+        document.getElementById("userDetails").style.display = "block";
+        document.getElementById("settingsSection").style.display = "none";
+        document.getElementById("fontSettingsSection").style.display = "none";
+        document.getElementById("themeSettingsSection").style.display = "none";
+        document.getElementById("popupTitle").textContent = "My Account";
+        document.getElementById("backBtn").style.display = "none";
+        document.getElementById("settingsBtn").style.display = "inline-block";
+        const accountDetails = document.getElementById("accountDetails");
+        accountDetails.style.background = user.profileBackground;
+        let loansHTML = user.loans.map((loan, index) => `
+            <div class="loan-item">
+                <h4>Amount ${index + 1}</h4>
+                <p><strong>Taken on:</strong> ${loan.planDate}</p>
+                <p><strong>Return on:</strong> ${loan.endDate}</p>
+                <p><strong>Interest:</strong> ₹${loan.interest}</p>
+                <p><strong>Taken Amount:</strong> ₹${loan.takenAmount}</p>
+                <p><strong>Taken From:</strong> ${loan.takenFrom}</p>
+            </div>
+        `).join('');
+        accountDetails.innerHTML = `
+            <h4>Borrower</h4>
+            <p><strong>Name:</strong> ${user.name}</p>
+            <h4>Amount details</h4>
+            ${loansHTML}
+        `;
+    } else if (enteredPassword === '0212') {
+        window.location.href = "https://mfi0212.github.io/MFI/banned";
+    } else {
+        document.getElementById("errorMessage").style.display = "block";
+    }
+}
 
         function toggleSettings() {
             const settingsSection = document.getElementById("settingsSection");
