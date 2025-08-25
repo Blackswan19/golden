@@ -100,7 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         <p><strong>Return on:</strong> ${loan.endDate}</p>
                         <p><strong>Interest:</strong> ₹${loan.interest}</p>
                         <hr>
-                        <p><strong>Total Amount to Return:</strong> ₹${loan.totalAmountToReturn}</p>
+                        <p style="color: #00b99e;
+    font-weight: 900;"><strong>Total Amount to Return:</strong> ₹${loan.totalAmountToReturn}</p>
                     </div>
                 `).join('');
                 accountDetails.innerHTML = `
