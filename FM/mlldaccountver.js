@@ -22,44 +22,41 @@ document.addEventListener("DOMContentLoaded", () => {
                 loadingOverlay.classList.add("hidden");
             }, 3000);
 
-            // Initialize font and theme from localStorage or prefers-color-scheme
             try {
                 const savedFont = localStorage.getItem("font") || "default";
                 console.log("Retrieved font from localStorage:", savedFont);
-                appApplyFont(savedFont);
+                applyFont(savedFont);
 
                 const savedTheme = localStorage.getItem("theme");
                 console.log("Retrieved theme from localStorage:", savedTheme);
                 if (savedTheme) {
-                    appApplyTheme(savedTheme);
+                    applyTheme(savedTheme);
                 } else {
                     const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
                     console.log("System prefers light theme:", prefersLight);
-                    appApplyTheme(prefersLight ? "light" : "dark");
+                    applyTheme(prefersLight ? "light" : "dark");
                 }
             } catch (e) {
                 console.error("Error accessing localStorage:", e);
                 const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-                appApplyTheme(prefersLight ? "light" : "dark");
-                appApplyFont("default");
+                applyTheme(prefersLight ? "light" : "dark");
+                applyFont("default");
             }
 
-            // Listen for system theme changes if no theme is saved
             window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
                 try {
                     if (!localStorage.getItem("theme")) {
                         console.log("System theme changed, no saved theme, applying:", e.matches ? "light" : "dark");
-                        appApplyTheme(e.matches ? "light" : "dark");
+                        applyTheme(e.matches ? "light" : "dark");
                     }
                 } catch (e) {
                     console.error("Error checking localStorage on theme change:", e);
                 }
             });
 
-            // Add event listeners for theme radio buttons
-            document.getElementById("themeLight")?.addEventListener("change", () => appApplyTheme("light"));
-            document.getElementById("themeNight")?.addEventListener("change", () => appApplyTheme("night"));
-            document.getElementById("themeDark")?.addEventListener("change", () => appApplyTheme("dark"));
+            document.getElementById("themeLight")?.addEventListener("change", () => applyTheme("light"));
+            document.getElementById("themeNight")?.addEventListener("change", () => applyTheme("night"));
+            document.getElementById("themeDark")?.addEventListener("change", () => applyTheme("dark"));
         });
 
         const users = {
@@ -81,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let previousSection = null;
 
-        function appShowLoginPrompt() {
+        function showLoginPrompt() {
             const passwordInput = document.getElementById("passwordInput");
             const autofillMessage = document.getElementById("autofillMessage");
             passwordInput.value = "";
@@ -101,7 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById("popupOverlay").classList.add("show");
             }, 10);
 
-            // Autofill stored password after a 2-second delay
             try {
                 const storedPassword = localStorage.getItem("savedPassword");
                 if (storedPassword && users[storedPassword]) {
@@ -120,10 +116,10 @@ document.addEventListener("DOMContentLoaded", () => {
             } catch (e) {
                 console.error("Error accessing localStorage for password:", e);
             }
-            previousSection = null; // Reset previous section when opening popup
+            previousSection = null;
         }
 
-        function appAuthenticateUser() {
+        function authenticateUser() {
             const enteredPassword = document.getElementById("passwordInput").value;
             const user = users[enteredPassword];
 
@@ -170,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        function appToggleSettingsPanel() {
+        function toggleSettingsPanel() {
             const settingsSection = document.getElementById("settingsSection");
             const fontSettingsSection = document.getElementById("fontSettingsSection");
             const themeSettingsSection = document.getElementById("themeSettingsSection");
@@ -207,7 +203,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 settingsBtn.style.display = "none";
             }
 
-            // Update radio button states
             try {
                 const savedFont = localStorage.getItem("font") || "default";
                 const savedTheme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
@@ -222,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        function appDisplayFontOptions() {
+        function displayFontOptions() {
             const settingsSection = document.getElementById("settingsSection");
             const fontSettingsSection = document.getElementById("fontSettingsSection");
             const themeSettingsSection = document.getElementById("themeSettingsSection");
@@ -243,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
             settingsBtn.style.display = "none";
         }
 
-        function appDisplayThemeOptions() {
+        function displayThemeOptions() {
             const settingsSection = document.getElementById("settingsSection");
             const fontSettingsSection = document.getElementById("fontSettingsSection");
             const themeSettingsSection = document.getElementById("themeSettingsSection");
@@ -264,7 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
             settingsBtn.style.display = "none";
         }
 
-        function appNavigateBack() {
+        function navigateBack() {
             const settingsSection = document.getElementById("settingsSection");
             const fontSettingsSection = document.getElementById("fontSettingsSection");
             const themeSettingsSection = document.getElementById("themeSettingsSection");
@@ -296,11 +291,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 backBtn.style.display = "none";
                 settingsBtn.style.display = "inline-block";
             } else {
-                appClosePopup();
+                closePopup();
             }
         }
 
-        function appApplyFont(font) {
+        function applyFont(font) {
             try {
                 document.documentElement.style.setProperty("--font-family", font === "default" ? "'Poppins', sans-serif" : "'Times New Roman', serif");
                 localStorage.setItem("font", font);
@@ -310,10 +305,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        function appApplyTheme(theme) {
+        function applyTheme(theme) {
             try {
                 const validThemes = ["light", "night", "dark"];
-                theme = validThemes.includes(theme) ? theme : "dark"; // Fallback to "dark" if invalid
+                theme = validThemes.includes(theme) ? theme : "dark";
                 document.body.classList.remove("light-theme", "night-theme", "dark-theme");
                 document.body.classList.add(`${theme}-theme`);
                 localStorage.setItem("theme", theme);
@@ -325,13 +320,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        function appResetTheme() {
+        function resetTheme() {
             try {
                 localStorage.removeItem("theme");
                 console.log("Cleared theme from localStorage");
                 const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-                appApplyTheme(prefersLight ? "light" : "dark");
-                // Update radio buttons to reflect reset
+                applyTheme(prefersLight ? "light" : "dark");
                 document.getElementById("themeLight").checked = prefersLight;
                 document.getElementById("themeNight").checked = !prefersLight;
                 document.getElementById("themeDark").checked = false;
@@ -340,17 +334,17 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        function appClosePopup() {
+        function closePopup() {
             document.getElementById("accountPopup").classList.remove("show");
             document.getElementById("popupOverlay").classList.remove("show");
             setTimeout(() => {
                 document.getElementById("accountPopup").style.display = "none";
                 document.getElementById("popupOverlay").style.display = "none";
             }, 300);
-            previousSection = null; // Reset previous section when closing popup
+            previousSection = null;
         }
 
-        document.getElementById("popupOverlay")?.addEventListener("click", appClosePopup);
+        document.getElementById("popupOverlay")?.addEventListener("click", closePopup);
         document.getElementById("passwordInput")?.addEventListener("keypress", function(event) {
-            if (event.key === "Enter") appAuthenticateUser();
+            if (event.key === "Enter") authenticateUser();
         });
