@@ -46,14 +46,14 @@ const passwords = {
                 name: "Srikanth Jampana",
                 membershipType: "",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-                fineRate: 30,
+                fineRate: 20,
                 profileBackground: "red",
-                stars: 165,
+                stars: 205,
                 loans: [
 {
                         planDate: "21-08-2025",
                         endDate: "24-08-2025",
-                        interest: 530,
+                        interest: 560,
                         takenAmount: 12300,
                         takenFrom: "Golden"
                     },
