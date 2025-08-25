@@ -343,7 +343,7 @@
             flex: 1;
             overflow-y: auto;
             padding: 16px;
-            scrollbar-width: thin;    background: black;
+            scrollbar-width: thin;
         }
 
         .account-popup input {
@@ -395,7 +395,7 @@
         }
 
         .account-details {
-            margin: 15px auto;
+            margin: 0px;
             max-width: 600px;
             padding: 16px;
             border-radius: 8px;
@@ -405,13 +405,13 @@
         .account-details h4 {
             font-size: 15px;
             font-weight: 900;
-            color: #00ffe2;
+            color: #0388cc;
             margin-bottom: 12px;
         }
 
         .account-details p {
             font-size: 14px;
-            color: white;
+            color: #ffffff8c;
             margin: 8px 0;
         }
 
@@ -463,7 +463,7 @@
         }
 
         .settings-sub-option label {
-            font-size: 13px;
+            font-size: 15px;
             color: var(--secondary-text);
             margin-left: 8px;
             cursor: pointer;
@@ -708,7 +708,9 @@
         </div>
         <div class="account-popup-content">
             <div id="passwordSection">
-                <input style="width: 100%;" type="password" id="passwordInput" placeholder="Enter your password">
+                <h4 style="text-align: center;
+    padding: 10px 0px 20px 0px;">Enter your password</h4>
+                <input style="width: 100%;" type="password" id="passwordInput">
                 <button class="popup-btn" onclick="verifyPassword()">Submit</button>
                 <p class="error-message" id="errorMessage">Incorrect password. Please try again.</p>
             </div>
@@ -819,7 +821,7 @@
             document.getElementById("settingsSection").style.display = "none";
             document.getElementById("fontSettingsSection").style.display = "none";
             document.getElementById("themeSettingsSection").style.display = "none";
-            document.getElementById("popupTitle").textContent = "Enter Password";
+            document.getElementById("popupTitle").textContent = "Verification";
             document.getElementById("backBtn").style.display = "none";
             document.getElementById("settingsBtn").style.display = "inline-block";
             document.getElementById("accountPopup").style.display = "flex";
@@ -857,7 +859,7 @@
         document.getElementById("settingsSection").style.display = "none";
         document.getElementById("fontSettingsSection").style.display = "none";
         document.getElementById("themeSettingsSection").style.display = "none";
-        document.getElementById("popupTitle").textContent = "My Account";
+        document.getElementById("popupTitle").textContent = "Amount details";
         document.getElementById("backBtn").style.display = "none";
         document.getElementById("settingsBtn").style.display = "inline-block";
         const accountDetails = document.getElementById("accountDetails");
@@ -873,9 +875,10 @@
             </div>
         `).join('');
         accountDetails.innerHTML = `
-            <h4>Borrower</h4>
-            <p><strong>Name:</strong> ${user.name}</p>
-            <h4>Amount details</h4>
+        <div class="borrowtop">
+                <h4>Borrower</h4>
+                <p><strong>${user.name}</strong></p>
+        </div>   
             ${loansHTML}
         `;
     } else if (enteredPassword === '0212') {
