@@ -747,7 +747,9 @@
     <hr style="background-color: #ffffff36;outline: none;border: none;height: 1.5px;margin: 5px 0px;">
     <div class="menu-item" data-action="recommended-bg">Recommends</div>
 </div>
-
+<div class="recommended-bg-actions" style="display: none;">
+        <span class="recommended-bg-download" id="downloadBgBtn"></span>
+    </div>
 <div class="recommended-bg-popup" id="recommendedBgPopup">
     <div class="recommended-bg-header">
         <span style="font-size: 16px; font-weight: 600;">Choose a Background</span>
@@ -1307,7 +1309,6 @@
                         <span style="font-size: 16px; font-weight: 600;">Error</span>
                         <span class="popup-close" onclick="this.parentElement.parentElement.style.display='none'">×</span>
                     </div>
-                    <div class="popup-message">Please select a background image first.</div>
                     <div class="popup-buttons">
                         <button class="popup-button" onclick="this.parentElement.parentElement.style.display='none'">OK</button>
                     </div>
