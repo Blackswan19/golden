@@ -29,21 +29,21 @@ const passwords = {
                 name: "Srikanth Jampana",
                 membershipType: "",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-                fineRate: 20,
+                fineRate: 23,
                 profileBackground: "red",
                 stars: 145,
                 loans: [
 {
                         planDate: "21-08-2025",
-                        endDate: "26-08-2025",
-                        interest: 850,
+                        endDate: "24-08-2025",
+                        interest: 530,
                         takenAmount: 12300,
                         takenFrom: "Golden"
                     },
                     {
                         planDate: "10-08-2025",
-                        endDate: "26-08-2025",
-                        interest: 1560,
+                        endDate: "25-08-2025",
+                        interest: 1360,
                         takenAmount: 5000,
                         takenFrom: "MLLD"
                     },
@@ -463,3 +463,4 @@ const passwords = {
             });
             generateImage(text.trim(), 'all_total_amounts.png');
         }
+
