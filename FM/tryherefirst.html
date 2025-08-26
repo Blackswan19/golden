@@ -30,7 +30,7 @@
             overflow: hidden;
         }
         #logo {
-            font-size: 40px;
+            font-size: 45px;
         }
         #logo img {
             width: 100px;
@@ -43,15 +43,16 @@
             padding: 20px;
         }
         #url-bar {
-            width: 100%;
-            padding: 10px 40px;
-            font-size: 18px;
-            color: #ffffff;
-            background-color: #00000017;
-            border: solid 1.5px rgb(255 255 255 / 59%);
-            border-radius: 139px;
-            outline: none;
-            position: relative;
+               width: 100%;
+    padding: 10px 40px;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #00000003;
+    border: solid 1.5px rgb(255 255 255 / 59%);
+    border-radius: 139px;
+    outline: none;
+    position: relative;
+    backdrop-filter: blur(2px);
         }
         ::-webkit-scrollbar {
             height: 5px;
@@ -110,7 +111,7 @@
             right: 26px;
         }
         .option:hover {
-            background: linear-gradient(135deg, #666, #333);
+            background: #f0f0f02e;
             padding: 5px 10px;
         }
         .url-input {
@@ -226,26 +227,27 @@
             position: absolute;
             background: rgb(255 255 255);
             padding: 0px 5px;
-            border-radius: 3px;
+            border-radius: 10px;
             bottom: 0px;
-            margin-left: -20px;
-        }
-        .visitsave {
-            font-size: 23px;
-            padding: 0px 10px;
-            border-radius: 8px;
-            margin-left: -15px;
-        }
-        .visitsave:hover {
-            background: #ffffff30;
+            margin-left: -21px;
         }
         .delete-btn:hover {
             font-size: 22px;
-            padding: 4px 11px;
+            padding: 3px 12px;
             color: black;
             background: rgb(255, 255, 255);
             font-weight: 300;
         }
+        .visitsave {
+           font-size: 16px;
+    padding: 8px 13px;
+    border-radius: 10px;
+    margin-left: -15px;
+        }
+        .visitsave:hover {
+            background: #ffffff30;
+        }
+        
         a {
             text-decoration: none;
             color: rgba(255, 255, 255, 0.801);
@@ -301,7 +303,7 @@
             background: #00000040;
             backdrop-filter: blur(40px);
             z-index: 1000;
-            border-radius: 10px;
+            border-radius: 20px;
             color: #ffffff;
             font-weight: 500;
             overflow-y: scroll;
@@ -354,7 +356,7 @@
             font-size: 15px;
         }
         .suggestion-item:hover {
-            background: #cacaca2e;
+            background: #f0f0f02e;
         }
         .background-container {
             position: fixed;
@@ -393,7 +395,7 @@
             padding: 9px;
         }
         .menu-item {
-            padding: 6px 20px;
+            padding: 8px 20px;
             cursor: pointer;
             font-size: 14px;
         }
@@ -429,6 +431,7 @@
     border: solid 1.5px #ffffff3b;
     display: none;
     max-width: 600px;
+    
         }
         
         .recommended-bg-item {
@@ -466,7 +469,7 @@
     width: 100%;
     height: 110px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 18px;
     border: solid 3px #ffffff00;
 }
         .recommended-bg-item:hover {
@@ -601,13 +604,13 @@
             }
             .suggestions {
                 position: absolute;
-                width: 95%;
-                left: -7px;
-                text-align: left;
-                max-height: 280px;
-                padding: 15px;
-                top: 191%;
-                margin-top: 10px;
+        width: 95%;
+        left: -7px;
+        text-align: left;
+        max-height: 280px;
+        padding: 15px;
+        top: 185%;
+        margin-top: 10px;
             }
             #clear-input {
                 position: absolute;
@@ -624,7 +627,7 @@
             width: 100%;
             height: 85px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 18px;
                 border: solid 3px #ffffff00;
 
         }
@@ -636,7 +639,7 @@
             .option.settings-option {
     position: fixed;
     top: 80px;
-    right: 5px;
+    right: 10px;
 }
             .frombs {
                 display: none;
@@ -644,7 +647,7 @@
             .settings-menu{
                 position: fixed;
                     top: 125px;
-    right: 5px;
+    right: 10px;
             }
             #go-button {
                 position: relative;
@@ -696,6 +699,10 @@
                 text-align: center;
                 font-size: 15px;
             }
+            .delete-btn:hover {
+            font-size: 22px;
+            padding: 0px 10px;
+            }
         }
     </style>
 </head>
@@ -703,7 +710,7 @@
 <!-- Saved Websites Section -->
 <div id="saved-websites">
     <div class="visitsave">
-        <a href="savedsite.html"><i class="fa-solid fa-grip"></i></a>
+        <a href="savedsite.html"><i class="fa-solid fa-bookmark"></i></a>
     </div>
     <div id="websites-list"></div>
 </div>
@@ -878,8 +885,8 @@
     <p style="color: rgb(0 96 255); text-decoration: underline; font-size: 12px; font-weight: 600; background: #00000000; padding: 5px 20px; border-radius: 100px;">More</p><br><br><br>
     <a href="https://blackswan19.github.io/Educate/songsearcher">BSongsearch</a>
     <a href="https://blackswan19.github.io/bscrop/bsweb">BsWebs</a>
-    <a href="https://blackswan19.github.io/bscrop/M.clofind">Searchin</a>
-    <a href="https://blackswan19.github.io/bscrop/formbs">Go to Bs-Rora</a>
+    <a href="https://blackswan19.github.io/bscrop/M.clofind">Clofind</a>
+    <a href="https://blackswan19.github.io/bscrop/formbs">Bs-Rora</a>
     <div class="footer">
       <a href="https://blackswan19.github.io/bscrop/reminder.html" style="font-size: 16px;"><i class="fa-solid fa-calendar-day"></i></a>
     </div>
