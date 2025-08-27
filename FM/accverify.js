@@ -29,7 +29,7 @@ const passwords = {
                 name: "Srikanth Jampana",
                 membershipType: "",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-                fineRate: 23,
+                fineRate: 15,
                 profileBackground: "red",
                 stars: 125,
                 loans: [
