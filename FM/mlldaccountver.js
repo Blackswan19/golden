@@ -108,7 +108,7 @@ function showLoginPrompt() {
                     setTimeout(() => {
                         autofillMessage.style.display = "none";
                     }, 300);
-                }, 1000);
+                }, 2200);
             }, 500);
         }
     } catch (e) {
@@ -373,3 +373,4 @@ document.getElementById("popupOverlay")?.addEventListener("click", closePopup);
 document.getElementById("passwordInput")?.addEventListener("keypress", function(event) {
     if (event.key === "Enter") authenticateUser();
 });
+
