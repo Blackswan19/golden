@@ -1,21 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const customMenu = document.querySelector(".custom-menu");
-
-    document.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-        if (customMenu) {
-            customMenu.style.display = "block";
-            customMenu.style.top = `${event.pageY}px`;
-            customMenu.style.left = `${event.pageX}px`;
-        }
-    });
-
-    document.addEventListener("click", () => {
-        if (customMenu) {
-            customMenu.style.display = "none";
-        }
-    });
-
     const loadingOverlay = document.getElementById("loadingOverlay");
 
     setTimeout(() => {
@@ -334,6 +316,30 @@ function resetTheme() {
         console.error("Error resetting theme:", e);
     }
 }
+// Sticky border for .account-access
+        const accountAccess = document.querySelector('.account-access');
+        const sentinel = document.createElement('div');
+        sentinel.style.height = '1px';
+        document.querySelector('.container').insertBefore(sentinel, accountAccess);
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        accountAccess.classList.remove('sticky');
+                    } else {
+                        accountAccess.classList.add('sticky');
+                    }
+                });
+            },
+            {
+                root: null,
+                rootMargin: '-1px 0px 0px 0px',
+                threshold: 0
+            }
+        );
+
+        observer.observe(sentinel);
 
 function closePopup() {
     document.getElementById("accountPopup").classList.remove("show");
@@ -349,3 +355,21 @@ document.getElementById("popupOverlay")?.addEventListener("click", closePopup);
 document.getElementById("passwordInput")?.addEventListener("keypress", function(event) {
     if (event.key === "Enter") authenticateUser();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const customMenu = document.querySelector(".custom-menu");
+
+    document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        if (customMenu) {
+            customMenu.style.display = "block";
+            customMenu.style.top = `${event.pageY}px`;
+            customMenu.style.left = `${event.pageX}px`;
+        }
+    });
+
+    document.addEventListener("click", () => {
+        if (customMenu) {
+            customMenu.style.display = "none";
+        }
+    });
