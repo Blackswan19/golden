@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
-    // document.addEventListener("contextmenu", (event) => {
-    //     event.preventDefault();
-    //     if (customMenu) {
-    //         customMenu.style.display = "block";
-    //         customMenu.style.top = `${event.pageY}px`;
-    //         customMenu.style.left = `${event.pageX}px`;
-    //     }
-    // });
+    document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        if (customMenu) {
+            customMenu.style.display = "block";
+            customMenu.style.top = `${event.pageY}px`;
+            customMenu.style.left = `${event.pageX}px`;
+        }
+    });
 
     document.addEventListener("click", () => {
         if (customMenu) {
