@@ -29,21 +29,21 @@ const passwords = {
                 name: "Srikanth Jampana",
                 membershipType: "",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-                fineRate: 38,
+                fineRate: 20,
                 profileBackground: "red",
                 stars: 125,
                 loans: [
 {
                         planDate: "21-08-2025",
                         endDate: "31-08-2025",
-                        interest: 1860,
+                        interest: 2460,
                         takenAmount: 12300,
                         takenFrom: "Golden"
                     },
                     {
                         planDate: "10-08-2025",
                         endDate: "31-08-2025",
-                        interest: 2280,
+                        interest: 1780,
                         takenAmount: 5000,
                         takenFrom: "MLLD"
                     },
@@ -337,10 +337,12 @@ const passwords = {
             loanDetails.innerHTML = `
                 <div class="loan-entry">
                 <p style="    text-align: center;
-    float: right;
     position: sticky;
     top: 20px;
     margin-top: 20px;
+    right: 16px;
+    float: right;
+    margin-right: -9px;
 "><button class="amounts-btn" onclick="downloadSingleLoan(${index})">
                         <i class="fa-solid fa-download" style="margin-right: 2px;"></i> This amount receipt
                     </button></p>
@@ -463,4 +465,3 @@ const passwords = {
             });
             generateImage(text.trim(), 'all_total_amounts.png');
         }
-
