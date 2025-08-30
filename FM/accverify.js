@@ -32,18 +32,11 @@ const passwords = {
                 fineRate: 20,
                 profileBackground: "red",
                 stars: 125,
-                loans: [
-{
-                        planDate: "21-08-2025",
-                        endDate: "31-08-2025",
-                        interest: 1980,
-                        takenAmount: 12300,
-                        takenFrom: "Golden"
-                    },
+                loans: [
                     {
                         planDate: "10-08-2025",
                         endDate: "31-08-2025",
-                        interest: 1860,
+                        interest: 1460,
                         takenAmount: 5000,
                         takenFrom: "MLLD"
                     },
