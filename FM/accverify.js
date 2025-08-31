@@ -35,35 +35,35 @@ const passwords = {
                 loans: [
                     {
                         planDate: "10-08-2025",
-                        endDate: "05-10-2025",
+                        endDate: "05-10-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
                         interest: 1860,
                         takenAmount: 5000,
                         takenFrom: "MLLD"
                     },
                      {
                         planDate: "15-08-2025",
-                        endDate: "05-10-2025",
+                        endDate: "05-10-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
                         interest: 5600,
                         takenAmount: 20000,
                         takenFrom: "MLending"
                     },
                      {
                         planDate: "16-08-2025",
-                        endDate: "31-08-2025",
+                        endDate: "05-10-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
                         interest: 1640,
                         takenAmount: 5000,
                         takenFrom: "MLLD"
                     },
                     {
                       planDate: "18-08-2025",
-                        endDate: "02-09-2025",
+                        endDate: "02-09-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
                         interest: 1660,
                         takenAmount: 5500,
                         takenFrom: "MLLD"
                     },
                     {
                       planDate: "18-08-2025",
-                        endDate: "02-09-2025",
+                        endDate: "02-09-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
                         interest: 740,
                         takenAmount: 2000,
                         takenFrom: "MLLD"
@@ -118,7 +118,7 @@ const passwords = {
                 loans: [
                     {
                         planDate: "21-05-2025",
-                        endDate: "15-08-2025",
+                        endDate: "15-08-2025(Extanded to 30 days)",
                         interest: 2100,
                         takenAmount: 5000,
                         takenFrom: "MLLD"
