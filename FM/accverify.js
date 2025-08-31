@@ -9,16 +9,16 @@ const passwords = {
                 loans: [
                     {
                         planDate: "24-05-2025",
-                        endDate: "01-09-2025",
-                        interest: 5500,
-                        takenAmount: 15000,
+                        endDate: "-- <p style='color: #00ffd2;'>(Interest adding stoped by #PY@0212)</p>",
+                        interest: 0,
+                        takenAmount: 25000,
                         takenFrom: "MLending"
                     },
                     {
                         planDate: "07-04-2025",
-                        endDate: "01-09-2025",
-                        interest: 4800,
-                        takenAmount: 10000,
+                        endDate: "--<p style='color: #00ffd2;'>(Interest adding stoped by #PY@0212)</p>",
+                        interest: 0,
+                        takenAmount: 15000,
                         takenFrom: "MLLD"
                     },
                 ]
@@ -116,44 +116,44 @@ const passwords = {
                 loans: [
                     {
                         planDate: "21-05-2025",
-                        endDate: "15-08-2025(Extanded to 30 days)",
-                        interest: 2100,
-                        takenAmount: 5000,
+                        endDate: "-- <p style='color: #00ffd2;'>(Interest adding stoped by #PY@0212)</p>",
+                        interest: 0,
+                        takenAmount: 8200,
                         takenFrom: "MLLD"
                     },
                     {
                         planDate: "29-05-2025",
-                        endDate: "01-09-2025",
-                        interest: 5500,
-                        takenAmount: 15000,
+                        endDate: "-- <p style='color: #00ffd2;'>(Interest adding stoped by #PY@0212)</p>",
+                        interest: 0,
+                        takenAmount: 20500,
                         takenFrom: "MLending"
                     },
                     {
                         planDate: "23-05-2025",
-                        endDate: "01-09-2025",
-                        interest: 1820,
-                        takenAmount: 3800,
+                        endDate: "-- <p style='color: #00ffd2;'>(Interest adding stoped by #PY@0212)</p>",
+                        interest: 0,
+                        takenAmount: 7500,
                         takenFrom: "MLLD"
                     },
                     {
                         planDate: "28-05-2025",
-                        endDate: "01-09-2025",
+                        endDate: "-- <p style='color: #00ffd2;'>(Interest adding stoped by #PY@0212)</p>",
                         interest: 0,
-                        takenAmount: 2600,
+                        takenAmount: 3500,
                         takenFrom: "MLLD"
                     },
                     {
                         planDate: "25-05-2025",
-                        endDate: "01-09-2025",
+                        endDate: "-- <p style='color: #00ffd2;'>(Interest adding stoped by #PY@0212)</p>",
                         interest: 0,
-                        takenAmount: 3000,
+                        takenAmount: 3500,
                         takenFrom: "MLLD(Offer)"
                     },
                     {
                         planDate: "24-05-2025",
-                        endDate: "01-09-2025",
+                        endDate: "-- <p style='color: #00ffd2;'>(Interest adding stoped by #PY@0212)</p>",
                         interest: 0,
-                        takenAmount: 4200,
+                        takenAmount: 4800,
                         takenFrom: "MLLD(Offer)"
                     },
                    
@@ -463,4 +463,3 @@ const passwords = {
             });
             generateImage(text.trim(), 'all_total_amounts.png');
         }
-
