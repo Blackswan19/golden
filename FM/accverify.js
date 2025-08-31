@@ -1,7 +1,5 @@
-    
-
 const passwords = {
-            "4211": {
+        "4211": {
                 name: "Chaitanya Harsha",
                 membershipType: "",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
@@ -465,3 +463,4 @@ const passwords = {
             });
             generateImage(text.trim(), 'all_total_amounts.png');
         }
+
