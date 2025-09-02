@@ -56,9 +56,9 @@ const users = {
             {
                 planDate: "20-08-2025",
                 endDate: "05-09-2025",
-                interest: 680,
+                interest: 640,
                 takenAmount: 3200,
-                totalAmountToReturn: 3880
+                totalAmountToReturn: 3840
             },
         ]
     }
