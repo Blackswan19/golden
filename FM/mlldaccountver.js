@@ -1,15 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
-    document.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-        if (customMenu) {
-            customMenu.style.display = "block";
-            customMenu.style.top = `${event.pageY}px`;
-            customMenu.style.left = `${event.pageX}px`;
-        }
-    });
-
     document.addEventListener("click", () => {
         if (customMenu) {
             customMenu.style.display = "none";
@@ -32,20 +23,19 @@ document.addEventListener("DOMContentLoaded", () => {
         if (savedTheme) {
             applyTheme(savedTheme);
         } else {
-            // Set "night" as the default theme
             applyTheme("night");
         }
     } catch (e) {
         console.error("Error accessing localStorage:", e);
         applyFont("default");
-        applyTheme("night"); // Fallback to night theme on error
+        applyTheme("night");
     }
 
     window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
         try {
             if (!localStorage.getItem("theme")) {
                 console.log("System theme changed, no saved theme, applying: night");
-                applyTheme("night"); // Always apply night theme if no saved theme
+                applyTheme("night");
             }
         } catch (e) {
             console.error("Error checking localStorage on theme change:", e);
@@ -65,7 +55,7 @@ const users = {
         loans: [
             {
                 planDate: "20-08-2025",
-                endDate: "01-09-2025",
+                endDate: "02-09-2025",
                 interest: 580,
                 takenAmount: 3200,
                 totalAmountToReturn: 3780
@@ -120,6 +110,7 @@ function showLoginPrompt() {
 function authenticateUser() {
     const enteredPassword = document.getElementById("passwordInput").value;
     const user = users[enteredPassword];
+    const today = "02-09-2025"; // Current date for comparison
 
     if (user) {
         previousSection = "passwordSection";
@@ -139,29 +130,28 @@ function authenticateUser() {
         document.getElementById("settingsBtn").style.display = "inline-block";
         const accountDetails = document.getElementById("accountDetails");
         accountDetails.style.background = user.profileBackground;
-        let loansHTML = user.loans.map((loan, index) => `
-            <div class="loan-item">
-                <h4>Amount ${index + 1}</h4>
-                <p>Taken Amount: <strong>₹${loan.takenAmount}</strong></p>
-                <p>Taken on: <strong>${loan.planDate}</strong></p>
-                <p>Return on:<strong>${loan.endDate}</strong></p>
-                <p>Interest: <strong>₹${loan.interest}</strong></p>
-                <hr>
-                <p style="color: #00b99e;">Total Amount to Return: <strong>₹${loan.totalAmountToReturn}</strong></p>
-            </div>
-        `).join('');
+        let loansHTML = user.loans.map((loan, index) => {
+            const totalAmountToReturn = loan.takenAmount + loan.interest;
+            const repaymentMessage = loan.endDate === today ? '<center><p style="color: #ff0000; font-weight: bold; width: fit-content; background: white; padding: 5px 12px; border-radius: 6px; font-size: 13px; margin: 25px auto;">YOU HAVE THIS AMOUNT RETURN TODAY</p></center>' : '';
+            return `
+                <div class="loan-item">
+                    <h4>Amount ${index + 1}</h4>
+                    <p>Taken Amount: <strong>₹${loan.takenAmount}</strong></p>
+                    <p>Taken on: <strong>${loan.planDate}</strong></p>
+                    <p>Return on: <strong>${loan.endDate}</strong></p>
+                    <p>Interest: <strong>₹${loan.interest}</strong></p>
+                    <hr>
+                    <p style="color: #00b99e;">Total Amount to Return: <strong>₹${totalAmountToReturn}</strong></p>
+                    ${repaymentMessage}
+                </div>
+            `;
+        }).join('');
         accountDetails.innerHTML = `
-        <div style="    margin: 15px;" class="borrowtop">
-            <h2 style="    text-align: center;
-    margin: -15px;
-    padding: 0px;font-size:15px;color: #00a9ff;">Borrower</h2>
-            <p style="text-align: center;
-    display: block;
-    font-size: 30px;
-    margin: 0px;
-    padding: 0px;"><strong>${user.name}</strong></p>
-        </div>   
-        ${loansHTML}
+            <div style="margin: 15px;" class="borrowtop">
+                <h2 style="text-align: center; margin: -15px; padding: 0px; font-size: 15px; color: #00a9ff;">Borrower</h2>
+                <p style="text-align: center; display: block; font-size: 30px; margin: 0px; padding: 0px;"><strong>${user.name}</strong></p>
+            </div>   
+            ${loansHTML}
         `;
     } else if (enteredPassword === '1907') {
         window.location.href = "https://mfi0212.github.io/MFI/banned";
@@ -209,7 +199,7 @@ function toggleSettingsPanel() {
 
     try {
         const savedFont = localStorage.getItem("font") || "default";
-        const savedTheme = localStorage.getItem("theme") || "night"; // Default to night
+        const savedTheme = localStorage.getItem("theme") || "night";
         console.log("Updating radio buttons - font:", savedFont, "theme:", savedTheme);
         document.getElementById("fontDefault").checked = savedFont === "default";
         document.getElementById("fontSerif").checked = savedFont === "serif";
@@ -312,19 +302,18 @@ function applyFont(font) {
 function applyTheme(theme) {
     try {
         const validThemes = ["light", "night", "dark"];
-        theme = validThemes.includes(theme) ? theme : "night"; // Default to night if invalid
+        theme = validThemes.includes(theme) ? theme : "night";
         document.body.classList.remove("light-theme", "night-theme", "dark-theme");
         document.body.classList.add(`${theme}-theme`);
         localStorage.setItem("theme", theme);
         console.log("Applied and stored theme:", theme);
-        // Update radio button states
         document.getElementById("themeLight").checked = theme === "light";
         document.getElementById("themeNight").checked = theme === "night";
         document.getElementById("themeDark").checked = theme === "dark";
     } catch (e) {
         console.error("Error applying or storing theme:", e);
         document.body.classList.remove("light-theme", "night-theme", "dark-theme");
-        document.body.classList.add("night-theme"); // Fallback to night theme
+        document.body.classList.add("night-theme");
     }
 }
 
@@ -332,7 +321,7 @@ function resetTheme() {
     try {
         localStorage.removeItem("theme");
         console.log("Cleared theme from localStorage");
-        applyTheme("night"); // Default to night theme after reset
+        applyTheme("night");
         document.getElementById("themeLight").checked = false;
         document.getElementById("themeNight").checked = true;
         document.getElementById("themeDark").checked = false;
@@ -340,30 +329,30 @@ function resetTheme() {
         console.error("Error resetting theme:", e);
     }
 }
-// Sticky border for .account-access
-        const accountAccess = document.querySelector('.account-access');
-        const sentinel = document.createElement('div');
-        sentinel.style.height = '1px';
-        document.querySelector('.container').insertBefore(sentinel, accountAccess);
 
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        accountAccess.classList.remove('sticky');
-                    } else {
-                        accountAccess.classList.add('sticky');
-                    }
-                });
-            },
-            {
-                root: null,
-                rootMargin: '-1px 0px 0px 0px',
-                threshold: 0
+const accountAccess = document.querySelector('.account-access');
+const sentinel = document.createElement('div');
+sentinel.style.height = '1px';
+document.querySelector('.container').insertBefore(sentinel, accountAccess);
+
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                accountAccess.classList.remove('sticky');
+            } else {
+                accountAccess.classList.add('sticky');
             }
-        );
+        });
+    },
+    {
+        root: null,
+        rootMargin: '-1px 0px 0px 0px',
+        threshold: 0
+    }
+);
 
-        observer.observe(sentinel);
+observer.observe(sentinel);
 
 function closePopup() {
     document.getElementById("accountPopup").classList.remove("show");
@@ -379,3 +368,21 @@ document.getElementById("popupOverlay")?.addEventListener("click", closePopup);
 document.getElementById("passwordInput")?.addEventListener("keypress", function(event) {
     if (event.key === "Enter") authenticateUser();
 });
+        document.addEventListener("DOMContentLoaded", () => {
+            const customMenu = document.querySelector(".custom-menu");
+
+            document.addEventListener("contextmenu", (event) => {
+                event.preventDefault();
+                if (customMenu) {
+                    customMenu.style.display = "block";
+                    customMenu.style.top = `${event.pageY}px`;
+                    customMenu.style.left = `${event.pageX}px`;
+                }
+            });
+
+            document.addEventListener("click", () => {
+                if (customMenu) {
+                    customMenu.style.display = "none";
+                }
+            });
+        });
