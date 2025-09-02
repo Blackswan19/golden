@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
-    document.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-        if (customMenu) {
-            customMenu.style.display = "block";
-            customMenu.style.top = `${event.pageY}px`;
-            customMenu.style.left = `${event.pageX}px`;
-        }
-    });
+    // document.addEventListener("contextmenu", (event) => {
+    //     event.preventDefault();
+    //     if (customMenu) {
+    //         customMenu.style.display = "block";
+    //         customMenu.style.top = `${event.pageY}px`;
+    //         customMenu.style.left = `${event.pageX}px`;
+    //     }
+    // });
 
     document.addEventListener("click", () => {
         if (customMenu) {
@@ -69,7 +69,7 @@ const users = {
                 interest: 550,
                 takenAmount: 3200,
                 totalAmountToReturn: 3750
-            }
+            },
         ]
     }
 };
@@ -108,7 +108,7 @@ function showLoginPrompt() {
                     setTimeout(() => {
                         autofillMessage.style.display = "none";
                     }, 300);
-                }, 2200);
+                }, 1000);
             }, 500);
         }
     } catch (e) {
@@ -142,18 +142,24 @@ function authenticateUser() {
         let loansHTML = user.loans.map((loan, index) => `
             <div class="loan-item">
                 <h4>Amount ${index + 1}</h4>
-                <p><strong>Taken Amount:</strong> ₹${loan.takenAmount}</p>
-                <p><strong>Taken on:</strong> ${loan.planDate}</p>
-                <p><strong>Return on:</strong> ${loan.endDate}</p>
-                <p><strong>Interest:</strong> ₹${loan.interest}</p>
+                <p>Taken Amount: <strong>₹${loan.takenAmount}</strong></p>
+                <p>Taken on: <strong>${loan.planDate}</strong></p>
+                <p>Return on:<strong>${loan.endDate}</strong></p>
+                <p>Interest: <strong>₹${loan.interest}</strong></p>
                 <hr>
-                <p style="color: #00b99e;font-weight: 900;"><strong>Total Amount to Return:</strong> ₹${loan.totalAmountToReturn}</p>
+                <p style="color: #00b99e;">Total Amount to Return: <strong>₹${loan.totalAmountToReturn}</strong></p>
             </div>
         `).join('');
         accountDetails.innerHTML = `
-        <div class="borrowtop">
-            <h4>Borrower</h4>
-            <p><strong>${user.name}</strong></p>
+        <div style="    margin: 15px;" class="borrowtop">
+            <h4 style="    text-align: center;
+    margin: -15px;
+    padding: 0px;">Borrower</h4>
+            <p style="text-align: center;
+    display: block;
+    font-size: 30px;
+    margin: 0px;
+    padding: 0px;"><strong>${user.name}</strong></p>
         </div>   
         ${loansHTML}
         `;
@@ -373,4 +379,3 @@ document.getElementById("popupOverlay")?.addEventListener("click", closePopup);
 document.getElementById("passwordInput")?.addEventListener("keypress", function(event) {
     if (event.key === "Enter") authenticateUser();
 });
-
