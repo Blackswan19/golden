@@ -68,7 +68,7 @@ const users = {
                 endDate: "01-09-2025",
                 interest: 580,
                 takenAmount: 3200,
-                totalAmountToReturn: 3750
+                totalAmountToReturn: 3780
             },
         ]
     }
@@ -379,4 +379,3 @@ document.getElementById("popupOverlay")?.addEventListener("click", closePopup);
 document.getElementById("passwordInput")?.addEventListener("keypress", function(event) {
     if (event.key === "Enter") authenticateUser();
 });
-
