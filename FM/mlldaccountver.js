@@ -51,7 +51,7 @@ const users = {
     "Ganesh@5577": {
         name: "J Ganesh",
         fineRate: 5,
-        profileBackground: "#1b1b1bff",
+        profileBackground: "#ffffff00",
         loans: [
             {
                 planDate: "20-08-2025",
