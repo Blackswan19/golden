@@ -54,15 +54,15 @@ const passwords = {
                     },
                     {
                       planDate: "18-08-2025",
-                        endDate: "02-09-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
-                        interest: 1660,
+                        endDate: "05-10-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
+                        interest: 1780,
                         takenAmount: 5500,
                         takenFrom: "MLLD"
                     },
                     {
                       planDate: "18-08-2025",
-                        endDate: "02-09-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
-                        interest: 740,
+                        endDate: "05-10-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
+                        interest: 820,
                         takenAmount: 2000,
                         takenFrom: "MLLD"
                     },
@@ -341,7 +341,16 @@ const passwords = {
     right: 16px;
     float: right;
     margin-right: -9px;
-"><button class="amounts-btn" onclick="downloadSingleLoan(${index})">
+    
+"><button class="amounts-btn downsingle" style=' width: 100%;
+    font-size: 10px;
+    padding: 3px 15px;
+    display: flex
+;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+' onclick="downloadSingleLoan(${index})">
                         <i class="fa-solid fa-download" style="margin-right: 2px;"></i> This amount receipt
                     </button></p>
                     <h3 >
