@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
-    // document.addEventListener("contextmenu", (event) => {
-    //     event.preventDefault();
-    //     if (customMenu) {
-    //         customMenu.style.display = "block";
-    //         customMenu.style.top = `${event.pageY}px`;
-    //         customMenu.style.left = `${event.pageX}px`;
-    //     }
-    // });
+    document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        if (customMenu) {
+            customMenu.style.display = "block";
+            customMenu.style.top = `${event.pageY}px`;
+            customMenu.style.left = `${event.pageX}px`;
+        }
+    });
 
     document.addEventListener("click", () => {
         if (customMenu) {
@@ -152,9 +152,9 @@ function authenticateUser() {
         `).join('');
         accountDetails.innerHTML = `
         <div style="    margin: 15px;" class="borrowtop">
-            <h4 style="    text-align: center;
+            <h2 style="    text-align: center;
     margin: -15px;
-    padding: 0px;">Borrower</h4>
+    padding: 0px;font-size:15px;color: #00a9ff;">Borrower</h2>
             <p style="text-align: center;
     display: block;
     font-size: 30px;
