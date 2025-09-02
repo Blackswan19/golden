@@ -244,8 +244,8 @@
         }
         .close-btn {
             position: fixed;
-            top: 15px;
-            left: 15px;
+                top: 13px;
+    left: 11px;
             color: white;
             font-size: 18px;
             cursor: pointer;
@@ -532,33 +532,36 @@
     padding: 10px;
         }
         .profile-picture {
-            width: 80px;
-            height: 80px;
-            border-radius: 0px; /* Default sharp */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 33px;
-            font-weight: 900;
-            color: #000;
-            background-size: cover;
-            background-position: center;
-            margin: 0px auto;
-                position: relative;
-    left: -10px;
+            width: 105%;
+    height: 178px;
+    border-radius: 0px;
+    display: flex
+;
+    align-items: baseline;
+    justify-content: center;
+    font-size: 53px;
+    font-weight: 900;
+    color: #000;
+    background-size: cover;
+    background-position: center;
+    margin: 0px auto;
+    padding: 25px;
+    position: relative;
+    left: -18px;
         }
         body.curvy .profile-picture {
-            border-radius: 50%; /* Curvy style */
+            border-radius: 30px; /* Curvy style */
         }
         .twoOptions {
-         display: flex
+    display: flex
 ;
-    gap: 17px;
-    width: 103%;
+    gap: 10px;
+    width: 100%;
     margin-left: -15px;
+    padding-left: 55px;
 }
         .amounts-btn {
-           background-color: #434343;
+           background-color: #000000b3;
     color: lightgray;
     border: none;
     padding: 10px;
@@ -588,7 +591,7 @@
             border: solid 1.4px var(--user-accent);
         }
         .amounts-btn:hover {
-            background-color: #565656;
+            background-color: #ffffff94;
             color: white;
         }
         body.light .amounts-btn:hover {
@@ -884,7 +887,7 @@
             justify-content: center;
         }
         .nameHead{
-                text-decoration: underline;
+                  text-decoration: underline;
     margin: 0px;
     font-weight: 900;
     font-size: 15px;
@@ -892,6 +895,8 @@
     text-transform: uppercase;
     width: 100%;
     max-width: 0%;
+    margin: -8px;
+    padding: 15px 0px;
         }
         .dot {
             width: 10px;
@@ -1016,12 +1021,22 @@
             opacity: 1;
             pointer-events: auto;
         }
+        @media (max-width: 600px) {
+        .twoOptions {
+            display: flex
+;
+        gap: 14px;
+        width: 105%;
+        margin-left: -15px;
+        padding-left: 0px;
+}
+      }
     </style>
 </head>
 <body>
     <div id="passwordContainer">
         <center><img style="width: 50px;" src="https://raw.githubusercontent.com/goforbg/telegram-emoji-gifs/refs/heads/master/lock-key.gif" alt=""></center>
-        <h2 style="font-weight: 400; font-size: 20px;">Verify my accountants</h2>
+        <h2 style="font-weight: 400; font-size: 20px;">Verify my account</h2>
         <input type="text" id="userPassword" placeholder="Enter password" autocomplete="current-password">
         <button id="submitBtn">Verify</button><br>
         <p id="error-message"></p>
@@ -1038,7 +1053,8 @@
         <h4 class="nameHead" style="color: gray;">Borrower</h4>
         <div class="profile-container">
             <div class="profile-picture" id="profilePicture"></div>
-            <div>
+            <div style="margin-top: -117px;
+    position: relative;">
                 <p id="userNameContainer" style="font-size: 20px; display: flex; gap: 5px; justify-content: center; align-items: center;">
                     <span style="color: white;" id="userName"></span>
                 </p>
