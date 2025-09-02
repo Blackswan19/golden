@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
-    document.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-        if (customMenu) {
-            customMenu.style.display = "block";
-            customMenu.style.top = `${event.pageY}px`;
-            customMenu.style.left = `${event.pageX}px`;
-        }
-    });
+    // document.addEventListener("contextmenu", (event) => {
+    //     event.preventDefault();
+    //     if (customMenu) {
+    //         customMenu.style.display = "block";
+    //         customMenu.style.top = `${event.pageY}px`;
+    //         customMenu.style.left = `${event.pageX}px`;
+    //     }
+    // });
 
     document.addEventListener("click", () => {
         if (customMenu) {
@@ -66,7 +66,7 @@ const users = {
             {
                 planDate: "20-08-2025",
                 endDate: "01-09-2025",
-                interest: 550,
+                interest: 580,
                 takenAmount: 3200,
                 totalAmountToReturn: 3750
             },
