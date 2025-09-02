@@ -51,7 +51,7 @@ const users = {
     "Ganesh@5577": {
         name: "J Ganesh",
         fineRate: 5,
-        profileBackground: "black",
+        profileBackground: "#212121",
         loans: [
             {
                 planDate: "20-08-2025",
@@ -135,7 +135,7 @@ function authenticateUser() {
             const repaymentMessage = loan.endDate === today ? '<center><p style="color: #ff0000; font-weight: bold; padding: 9px; border-radius: 0px; font-size: 13px; margin: 0px; border-left: solid 4px; background: #ff00001c;">YOU HAVE THIS AMOUNT RETURN TODAY</p></center>' : '';
             return `
                 <div class="loan-item">
-                    <h4>Amount ${index + 1}</h4>
+                    <h4 style="text-align:center;">Amount ${index + 1}</h4>
                     <p>Taken Amount: <strong>₹${loan.takenAmount}</strong></p>
                     <p>Taken on: <strong>${loan.planDate}</strong></p>
                     <p>Return on: <strong>${loan.endDate}</strong></p>
@@ -147,9 +147,9 @@ function authenticateUser() {
             `;
         }).join('');
         accountDetails.innerHTML = `
-            <div style="margin: 15px;" class="borrowtop">
-                <h2 style="text-align: center; margin: -15px; padding: 0px; font-size: 15px; color: #00a9ff;">Borrower</h2>
-                <p style="text-align: center; display: block; font-size: 30px; margin: 0px; padding: 0px;"><strong>${user.name}</strong></p>
+            <div style="margin: 15px;" class="borrowtop" style="background-color: #212121;">
+                <h2 style="text-align: center; margin: -5px; padding: 0px; font-size: 10px; color: #00a9ff;">Borrower</h2>
+                <p style="text-align: center; display: block; font-size: 16px; margin: 0px; padding: 0px;"><strong>${user.name}</strong></p>
             </div>   
             ${loansHTML}
         `;
