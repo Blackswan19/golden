@@ -527,8 +527,8 @@
             font-weight: 300;
         }
         .profile-container {
-                max-width: 660px;
-    width: 95%;
+                max-width: 640px;
+    width: 100%;
     padding: 10px;
         }
         .profile-picture {
@@ -549,11 +549,11 @@
             border-radius: 50%; /* Curvy style */
         }
         .twoOptions {
-   display: flex
+         display: flex
 ;
-    gap: 10px;
-    margin: 10px;
-    width: 100%;
+    gap: 17px;
+    width: 103%;
+    margin-left: -15px;
 }
         .amounts-btn {
            background-color: #434343;
@@ -568,7 +568,7 @@
 ;
     flex-direction: column;
     gap: 10px;
-    width: 29%;
+    width: 30%;
         }
         body.curvy .amounts-btn {
             border-radius: 30px; /* Curvy style */
@@ -1045,12 +1045,16 @@
                     <i class="fa-solid fa-eye" style="margin-right: 2px;"></i> Amounts
                     </button>
                     <button class="amounts-btn" onclick="downloadAllLoans()">
-                        <i class="fa-solid fa-download" style="margin-right: 2px;"></i> All receipt
+                        <i class="fa-solid fa-download" style="margin-right: 2px;"></i> Receipt
                     </button>
-                    <button class="amounts-btn" style="margin: 0px;
-    padding: 0px;">
-                        <div class="icons" style="display: flex;justify-content: center;align-items: center;">
-                            <i class="fa-solid fa-star"></i><span style="font-size: 18px;" id="starCount"></span>
+                    <button class="amounts-btn" style="padding: 5px;
+    display: flex
+;
+    gap: 6px;
+    margin-top: 0px;">
+                        <div style="display: flex;justify-content: center;align-items: center;margin-top: 1px;">
+                            <i class="fa-solid fa-star" style="    margin-right: 5px;"></i><span style="    font-size: 15px;
+    font-weight: 900;" id="starCount"></span>
                         </div> 
                         Star
                     </button>
