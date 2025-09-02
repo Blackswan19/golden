@@ -132,7 +132,7 @@ function authenticateUser() {
         accountDetails.style.background = user.profileBackground;
         let loansHTML = user.loans.map((loan, index) => {
             const totalAmountToReturn = loan.takenAmount + loan.interest;
-            const repaymentMessage = loan.endDate === today ? '<center><p style="color: #ff0000; font-weight: bold; width: fit-content; background: white; padding: 5px 23px; border-radius: 0px; font-size: 13px; margin: 10px auto;">YOU HAVE THIS AMOUNT RETURN TODAY</p></center>' : '';
+            const repaymentMessage = loan.endDate === today ? '<center><p style="color: #ff0000; font-weight: bold; padding: 9px; border-radius: 0px; font-size: 13px; margin: 0px; border-left: solid 4px; background: #ff00001c;">YOU HAVE THIS AMOUNT RETURN TODAY</p></center>' : '';
             return `
                 <div class="loan-item">
                     <h4>Amount ${index + 1}</h4>
