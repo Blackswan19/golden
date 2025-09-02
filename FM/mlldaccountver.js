@@ -55,10 +55,10 @@ const users = {
         loans: [
             {
                 planDate: "20-08-2025",
-                endDate: "02-09-2025",
-                interest: 580,
+                endDate: "05-09-2025",
+                interest: 680,
                 takenAmount: 3200,
-                totalAmountToReturn: 3780
+                totalAmountToReturn: 3880
             },
         ]
     }
