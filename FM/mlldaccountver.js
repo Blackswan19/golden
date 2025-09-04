@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const users = {
     "Ganesh@5577": {
         name: "J Ganesh",
-        fineRate: 5,
+        fineRate: 5, // Default fine rate (₹ per day) if loan-specific fineRate is not provided
         profileBackground: "#ffffff00",
         loans: [
             {
@@ -58,7 +58,7 @@ const users = {
                 endDate: "05-09-2025",
                 interest: 640,
                 takenAmount: 3200,
-                totalAmountToReturn: 3840
+                fineRate: 80 // Loan-specific fine rate (₹ per day)
             },
         ]
     }
@@ -107,10 +107,26 @@ function showLoginPrompt() {
     previousSection = null;
 }
 
+function calculateDaysOverdue(endDate, currentDate) {
+    const end = new Date(endDate.split("-").reverse().join("-"));
+    const current = new Date(currentDate.split("-").reverse().join("-"));
+    const diffTime = current - end;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays > 0 ? diffDays : 0;
+}
+
+function calculateDuration(startDate, endDate) {
+    const start = new Date(startDate.split("-").reverse().join("-"));
+    const end = new Date(endDate.split("-").reverse().join("-"));
+    const diffTime = end - start;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays >= 0 ? diffDays : 0; // Ensure non-negative duration
+}
+
 function authenticateUser() {
     const enteredPassword = document.getElementById("passwordInput").value;
     const user = users[enteredPassword];
-    const today = "02-09-2025"; // Current date for comparison
+    const today = "04-09-2025"; // Updated to current date (04-09-2025)
 
     if (user) {
         previousSection = "passwordSection";
@@ -132,16 +148,25 @@ function authenticateUser() {
         accountDetails.style.background = user.profileBackground;
         let loansHTML = user.loans.map((loan, index) => {
             const totalAmountToReturn = loan.takenAmount + loan.interest;
-            const repaymentMessage = loan.endDate === today ? '<center><p style="color: #ff0000; font-weight: bold; padding: 9px; border-radius: 0px; font-size: 13px; margin: 0px; border-left: solid 4px; background: #ff00001c;">YOU HAVE THIS AMOUNT RETURN TODAY</p></center>' : '';
+            const daysOverdue = calculateDaysOverdue(loan.endDate, today);
+            const fineRate = loan.fineRate !== undefined ? loan.fineRate : user.fineRate; // Use loan-specific fineRate or fall back to user.fineRate
+            const fine = daysOverdue * fineRate; // Calculate fine based on loan-specific or user default fine rate
+            const duration = calculateDuration(loan.planDate, loan.endDate); // Calculate duration between planDate and endDate
+            const repaymentMessage = daysOverdue > 0 ? 
+                `<center><p style="color: #ff0000; font-weight: bold; padding: 9px; border-radius: 0px; font-size: 13px; margin: 0px; border-left: solid 4px; background: #ff00001c;">YOU HAVE THIS AMOUNT RETURN TODAY</p></center>` : 
+                loan.endDate === today ? 
+                `<center><p style="color: #ff0000; font-weight: bold; padding: 9px; border-radius: 0px; font-size: 13px; margin: 0px; border-left: solid 4px; background: #ff00001c;">YOU HAVE THIS AMOUNT RETURN TODAY</p></center>` : '';
             return `
                 <div class="loan-item">
                     <h4 style="text-align:center;">Amount ${index + 1}</h4>
                     <p>Taken Amount: <strong>₹${loan.takenAmount}</strong></p>
                     <p>Taken on: <strong>${loan.planDate}</strong></p>
                     <p>Return on: <strong>${loan.endDate}</strong></p>
-                    <p>Interest: <strong>₹${loan.interest}</strong></p>
+                    <p>Duration: <strong>${duration} days</strong></p>
+                    <p>Interest for ${duration} day: <strong>₹${loan.interest}</strong></p>
+                    <p>Overdue: <strong>₹${fine}</strong></p>
                     <hr>
-                    <p style="color: #00b99e;">Total Amount to Return: <strong>₹${totalAmountToReturn}</strong></p>
+                    <p style="color: #00b99e;">Total Amount to Return: <strong>₹${totalAmountToReturn + fine}</strong></p>
                     ${repaymentMessage}
                 </div>
             `;
@@ -367,6 +392,15 @@ function closePopup() {
 document.getElementById("popupOverlay")?.addEventListener("click", closePopup);
 document.getElementById("passwordInput")?.addEventListener("keypress", function(event) {
     if (event.key === "Enter") authenticateUser();
+});
+document.addEventListener("DOMContentLoaded", () => {
+    const customMenu = document.querySelector(".custom-menu");
+
+    document.addEventListener("click", () => {
+        if (customMenu) {
+            customMenu.style.display = "none";
+        }
+    });
 });
         document.addEventListener("DOMContentLoaded", () => {
             const customMenu = document.querySelector(".custom-menu");
