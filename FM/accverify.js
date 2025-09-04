@@ -3,7 +3,7 @@ const passwords = {
                 name: "Chaitanya Harsha",
                 membershipType: "",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-                fineRate: 5,
+                fineRate: 6,
                 profileBackground: "#ff4d4d",
                 stars: 0,
                 loans: [
@@ -27,42 +27,42 @@ const passwords = {
                 name: "Srikanth Jampana",
                 membershipType: "",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-                fineRate: 20,
+                fineRate: 7,
                 profileBackground: "red",
                 stars: 0,
                 loans: [
                     {
                         planDate: "10-08-2025",
-                        endDate: "05-10-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
-                        interest: 1860,
+                        endDate: "05-09-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
+                        interest: 1880,
                         takenAmount: 5000,
                         takenFrom: "MLLD"
                     },
                      {
                         planDate: "15-08-2025",
-                        endDate: "05-10-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
-                        interest: 5600,
+                        endDate: "05-09-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
+                        interest: 5640,
                         takenAmount: 20000,
                         takenFrom: "MLending"
                     },
                      {
                         planDate: "16-08-2025",
-                        endDate: "05-10-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
+                        endDate: "05-09-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
                         interest: 1640,
                         takenAmount: 5000,
                         takenFrom: "MLLD"
                     },
                     {
                       planDate: "18-08-2025",
-                        endDate: "05-10-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
-                        interest: 1780,
+                        endDate: "05-09-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
+                        interest: 1790,
                         takenAmount: 5500,
                         takenFrom: "MLLD"
                     },
                     {
                       planDate: "18-08-2025",
-                        endDate: "05-10-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
-                        interest: 820,
+                        endDate: "05-09-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
+                        interest: 860,
                         takenAmount: 2000,
                         takenFrom: "MLLD"
                     },
@@ -72,7 +72,7 @@ const passwords = {
                 name: "Mahesh Muthinti",
                 membershipType: "",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-                fineRate: 0,
+                fineRate: 6,
                 profileBackground: "#00ff00",
                 stars: 0,
                 loans: [
@@ -110,7 +110,7 @@ const passwords = {
                 name: "Cherish",
                 membershipType: "",
                 membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
-                fineRate: 3,
+                fineRate: 6,
                 profileBackground: "rgb(255 138 0)",
                 stars: 0,
                 loans: [
@@ -314,7 +314,7 @@ const passwords = {
                     user.loans[index].originalInterest = loan.interest;
                     user.loans[index].interest = loan.interest + overdueInfo.fine;
                     if (!loan.endDate.includes('Overdue')) {
-                        user.loans[index].endDate = `${loan.endDate.split('<')[0]}<br><p style="color: red;">Overdue by ${overdueInfo.hoursOverdue} hours, additional fine added.</p>`;
+                        user.loans[index].endDate = `${loan.endDate.split('<')[0]}<br><p style="color: #ff6c00;">Overdue by ${overdueInfo.hoursOverdue} hours</p>`;
                     }
                 } else {
                     user.loans[index].cachedFine = 0;
@@ -356,33 +356,37 @@ const passwords = {
                     <h3 >
                         Service
                     </h3>
-                    <p>${loan.takenFrom}</p>
+                    <p>Taken in : ${loan.takenFrom} Service</p>
                     <h3 >
-                        Amount Details
+                        Amount
                     </h3>
-                    <p><i class="fa-solid fa-money-bill-transfer"></i> Amount: ${loan.takenAmount} Rupees</p>
+                    <p><i class="fa-solid fa-money-bill-transfer"></i> Taken Amount : ${loan.takenAmount} Rupees</p>
                     <h3 >
-                        Taken & Ends
+                        Taken & Return
                     </h3>
-                    <p><i class="fa-solid fa-calendar-day"></i> Taken on: ${loan.planDate}</p>
-                    <p><i class="fa-solid fa-calendar-check"></i> End on: ${loan.endDate}</p>
+                    <p><i class="fa-solid fa-calendar-day"></i> Taken date : ${loan.planDate}</p>
+                    <p><i class="fa-solid fa-calendar-check"></i> Return date : ${loan.endDate}</p>
                     <h3 >
-                        Loan Duration
+                        Duration
                     </h3>
-                    <p><i class="fa-solid fa-clock"></i> Duration: ${daysBetween} days</p>
+                    <p><i class="fa-solid fa-clock"></i> Taken for : ${daysBetween} days</p>
                     <h3 >
                         Interest
                     </h3>
-                    <p><i class="fa-solid fa-arrow-up-wide-short"></i> Normal Interest: ${originalInterest} Rupees</p>
+                    <p><i class="fa-solid fa-arrow-up-wide-short"></i> Normal Interest : ${originalInterest} Rupees</p>
                     <h3 >
-                        Fine
+                        Overdue
                     </h3>
-                    <p><i class="fa-solid fa-exclamation-triangle"></i> Overdue Fine: ${fine} Rupees</p>
+                    <p><i class="fa-solid fa-exclamation-triangle"></i> Overdue interest : ${fine} Rupees</p>
                     <hr>
                     <h3 >
-                        Total Amount to Pay
+                        Total to Return
                     </h3>
-                    <p><i class="fa-solid fa-money-check-alt"></i> ${totalReturnAmount} Rupees</p>
+                    <p><i class="fa-solid fa-money-check-alt"></i> Amount : ${totalReturnAmount} Rupees</p>
+                    <hr>
+                    <div class="issuebtn" style="padding-top: 20px;">  
+                        <a target="_blank" href="https://forms.gle/RzTJ8W9bwmm8DVj2A"><button>I have an issue here.!</button></a>
+                    </div>
                 </div>
             `;
         }
@@ -472,4 +476,3 @@ const passwords = {
             });
             generateImage(text.trim(), 'all_total_amounts.png');
         }
-
