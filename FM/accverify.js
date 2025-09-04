@@ -82,7 +82,7 @@ const passwords = {
         loans: [
             {
                 planDate: "28-06-2025",
-                endDate: "30-10-2025(Extanded to 30 days)",
+                endDate: "30-09-2025(Extanded to 30 days)",
                 interest: 2000,
                 takenAmount: 10000,
                 takenFrom: "MLending",
@@ -90,7 +90,7 @@ const passwords = {
             },
             {
                 planDate: "31-09-2025",
-                endDate: "30-10-2025",
+                endDate: "30-09-2025",
                 interest: 600,
                 takenAmount: 4600,
                 takenFrom: "MLLD",
