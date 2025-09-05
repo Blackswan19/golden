@@ -58,7 +58,7 @@ const users = {
                 endDate: "05-09-2025",
                 interest: 640,
                 takenAmount: 3200,
-                fineRate: 80 // Loan-specific fine rate (₹ per day)
+                fineRate: 60 // Loan-specific fine rate (₹ per day)
             },
         ]
     }
