@@ -37,7 +37,7 @@ const passwords = {
                 interest: 1880,
                 takenAmount: 5000,
                 takenFrom: "MLLD",
-                fineRate: 5 // Custom fine rate for this loan
+                fineRate: 6 // Custom fine rate for this loan
             },
             {
                 planDate: "15-08-2025",
@@ -45,7 +45,7 @@ const passwords = {
                 interest: 5640,
                 takenAmount: 20000,
                 takenFrom: "MLending",
-                fineRate: 15 // Custom fine rate for this loan
+                fineRate: 16 // Custom fine rate for this loan
             },
             {
                 planDate: "16-08-2025",
@@ -53,7 +53,7 @@ const passwords = {
                 interest: 1640,
                 takenAmount: 5000,
                 takenFrom: "MLLD",
-                fineRate: 5 // Custom fine rate for this loan
+                fineRate: 6 // Custom fine rate for this loan
             },
             {
                 planDate: "18-08-2025",
@@ -61,7 +61,7 @@ const passwords = {
                 interest: 1790,
                 takenAmount: 5500,
                 takenFrom: "MLLD",
-                fineRate: 5 // Custom fine rate for this loan
+                fineRate: 6 // Custom fine rate for this loan
             },
             {
                 planDate: "18-08-2025",
@@ -69,7 +69,7 @@ const passwords = {
                 interest: 860,
                 takenAmount: 2000,
                 takenFrom: "MLLD",
-                fineRate: 3 // Custom fine rate for this loan
+                fineRate: 4 // Custom fine rate for this loan
             },
         ]
     },
