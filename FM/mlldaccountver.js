@@ -159,14 +159,14 @@ function authenticateUser() {
             return `
                 <div class="loan-item">
                     <h4 style="text-align:center;">Amount ${index + 1}</h4>
-                    <p>Taken Amount: <strong>₹${loan.takenAmount}</strong></p>
-                    <p>Taken on: <strong>${loan.planDate}</strong></p>
-                    <p>Return on: <strong>${loan.endDate}</strong></p>
-                    <p>Duration: <strong>${duration} days</strong></p>
-                    <p>Interest for ${duration} day: <strong>₹${loan.interest}</strong></p>
-                    <p>Overdue: <strong>₹${fine}</strong></p>
+                    <p>Taken Amount : <strong>₹${loan.takenAmount}</strong></p>
+                    <p>Taken on : <strong>${loan.planDate}</strong></p>
+                    <p>Return on : <strong>${loan.endDate}</strong></p>
+                    <p>Duration : <strong>${duration} days</strong></p>
+                    <p>Interest for ${duration} day : <strong>₹${loan.interest}</strong></p>
+                    <p>Overdue : <strong>₹${fine}</strong></p>
                     <hr>
-                    <p style="color: #00b99e;">Total Amount to Return: <strong>₹${totalAmountToReturn + fine}</strong></p>
+                    <p style="color: #00b99e;">Total Amount to Return : <strong>₹${totalAmountToReturn + fine}</strong></p>
                     ${repaymentMessage}
                 </div>
             `;
