@@ -344,9 +344,9 @@ function displayLoanDetails(loan, index) {
     let overdueSection = "";
     if (overdueInfo.overdue) {
         overdueSection = `
-            <h3>Overdue Details</h3>
+            <h3 style="color: #ff9300;">Overdue Details</h3>
             <p>You are overdue by : ${overdueInfo.daysOverdue} days(${overdueInfo.hoursOverdue} hours)</p>
-            <p>Overdue interest : ${fine} Rupees</p>
+            <p >Overdue interest : ${fine} Rupees</p>
         `;
     }
 
