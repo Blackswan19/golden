@@ -82,22 +82,6 @@ const passwords = {
         stars: 0,
         loans: [
             {
-                planDate: "28-06-2025",
-                endDate: "30-09-2025(Extanded to 30 days)",
-                interest: 2000,
-                takenAmount: 10000,
-                takenFrom: "MLending",
-                fineRate: 7
-            },
-            {
-                planDate: "31-09-2025",
-                endDate: "30-09-2025",
-                interest: 600,
-                takenAmount: 4600,
-                takenFrom: "MLLD",
-                fineRate: 5
-            },
-            {
                 planDate: "01-06-2025",
                 endDate: "19-09-2025(Extanded to 30 days)",
                 interest: 3260,
@@ -113,6 +97,22 @@ const passwords = {
                 takenFrom: "MLLD offer",
                 fineRate: 6
             },
+            {
+                planDate: "28-06-2025",
+                endDate: "30-09-2025(Extanded to 30 days)",
+                interest: 2000,
+                takenAmount: 10000,
+                takenFrom: "MLending",
+                fineRate: 7
+            },
+            {
+                planDate: "31-09-2025",
+                endDate: "30-09-2025",
+                interest: 600,
+                takenAmount: 4600,
+                takenFrom: "MLLD",
+                fineRate: 5
+            }
         ]
     },
     "Cherish@123": {
