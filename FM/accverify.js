@@ -369,8 +369,8 @@ function displayLoanDetails(loan, index) {
             <p><i class="fa-solid fa-clock"></i> Taken for : ${daysBetween} days</p>
             <h3>Interest</h3>
             <p><i class="fa-solid fa-arrow-up-wide-short"></i> Normal Interest : ${originalInterest} Rupees</p>
-            ${overdueSection}
             <hr>
+            ${overdueSection}
             <h3>Total to Return</h3>
             <p><i class="fa-solid fa-money-check-alt"></i> Amount : ${totalReturnAmount} Rupees</p>
             <hr>
