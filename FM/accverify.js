@@ -12,7 +12,7 @@ const passwords = {
                 interest: 0,
                 takenAmount: 25000,
                 takenFrom: "MLending",
-                fineRate: 5 // Custom fine rate for this loan
+                fineRate: 5
             },
             {
                 planDate: "07-04-2025",
@@ -20,7 +20,7 @@ const passwords = {
                 interest: 0,
                 takenAmount: 15000,
                 takenFrom: "MLLD",
-                fineRate: 4 // Custom fine rate for this loan
+                fineRate: 4
             },
         ]
     },
@@ -33,43 +33,43 @@ const passwords = {
         loans: [
             {
                 planDate: "10-08-2025",
-                endDate: "05-09-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
-                interest: 1880,
+                endDate: "25-08-2025",
+                interest: 1360,
                 takenAmount: 5000,
                 takenFrom: "MLLD",
-                fineRate: 6 // Custom fine rate for this loan
+                fineRate: 86
             },
             {
                 planDate: "15-08-2025",
-                endDate: "05-09-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
-                interest: 5640,
+                endDate: "30-08-2025",
+                interest: 4800,
                 takenAmount: 20000,
                 takenFrom: "MLending",
-                fineRate: 16 // Custom fine rate for this loan
+                fineRate: 335
             },
             {
                 planDate: "16-08-2025",
-                endDate: "05-09-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
-                interest: 1640,
+                endDate: "31-08-2025",
+                interest: 1275,
                 takenAmount: 5000,
                 takenFrom: "MLLD",
-                fineRate: 6 // Custom fine rate for this loan
+                fineRate: 86
             },
             {
                 planDate: "18-08-2025",
-                endDate: "05-09-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
-                interest: 1790,
-                takenAmount: 5500,
+                endDate: "02-09-2025",
+                interest: 1380,
+                takenAmount: 5000,
                 takenFrom: "MLLD",
-                fineRate: 6 // Custom fine rate for this loan
+                fineRate: 86
             },
             {
                 planDate: "18-08-2025",
-                endDate: "05-09-2025<p style='color: rgb(255, 225, 0);'>(Extanded to 6 days)</p>",
-                interest: 860,
-                takenAmount: 2000,
+                endDate: "02-09-2025",
+                interest: 690,
+                takenAmount: 2500,
                 takenFrom: "MLLD",
-                fineRate: 4 // Custom fine rate for this loan
+                fineRate: 46
             },
         ]
     },
@@ -86,7 +86,7 @@ const passwords = {
                 interest: 2000,
                 takenAmount: 10000,
                 takenFrom: "MLending",
-                fineRate: 7 // Custom fine rate for this loan
+                fineRate: 7
             },
             {
                 planDate: "31-09-2025",
@@ -94,7 +94,7 @@ const passwords = {
                 interest: 600,
                 takenAmount: 4600,
                 takenFrom: "MLLD",
-                fineRate: 5 // Custom fine rate for this loan
+                fineRate: 5
             },
             {
                 planDate: "01-06-2025",
@@ -102,7 +102,7 @@ const passwords = {
                 interest: 3260,
                 takenAmount: 5000,
                 takenFrom: "MLLD Offer",
-                fineRate: 6 // Custom fine rate for this loan
+                fineRate: 6
             },
             {
                 planDate: "25-05-2025",
@@ -110,7 +110,7 @@ const passwords = {
                 interest: 2080,
                 takenAmount: 5000,
                 takenFrom: "MLLD offer",
-                fineRate: 6 // Custom fine rate for this loan
+                fineRate: 6
             },
         ]
     },
@@ -127,7 +127,7 @@ const passwords = {
                 interest: 0,
                 takenAmount: 8200,
                 takenFrom: "MLLD",
-                fineRate: 5 // Custom fine rate for this loan
+                fineRate: 5
             },
             {
                 planDate: "29-05-2025",
@@ -135,7 +135,7 @@ const passwords = {
                 interest: 0,
                 takenAmount: 20500,
                 takenFrom: "MLending",
-                fineRate: 7 // Custom fine rate for this loan
+                fineRate: 7
             },
             {
                 planDate: "23-05-2025",
@@ -143,7 +143,7 @@ const passwords = {
                 interest: 0,
                 takenAmount: 7500,
                 takenFrom: "MLLD",
-                fineRate: 5 // Custom fine rate for this loan
+                fineRate: 5
             },
             {
                 planDate: "28-05-2025",
@@ -151,7 +151,7 @@ const passwords = {
                 interest: 0,
                 takenAmount: 3500,
                 takenFrom: "MLLD",
-                fineRate: 4 // Custom fine rate for this loan
+                fineRate: 4
             },
             {
                 planDate: "25-05-2025",
@@ -159,7 +159,7 @@ const passwords = {
                 interest: 0,
                 takenAmount: 3500,
                 takenFrom: "MLLD(Offer)",
-                fineRate: 4 // Custom fine rate for this loan
+                fineRate: 4
             },
             {
                 planDate: "24-05-2025",
@@ -167,7 +167,7 @@ const passwords = {
                 interest: 0,
                 takenAmount: 4800,
                 takenFrom: "MLLD(Offer)",
-                fineRate: 5 // Custom fine rate for this loan
+                fineRate: 5
             },
         ]
     },
@@ -290,7 +290,7 @@ function calculateOverdueFine(endDate, loan, user) {
     try {
         const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
         const endMatch = endDate.split('(')[0].split('<')[0].match(dateFormat);
-        if (!endMatch) return { overdue: false, fine: 0, hoursOverdue: 0 };
+        if (!endMatch) return { overdue: false, fine: 0, daysOverdue: 0 };
 
         const end = new Date(`${endMatch[3]}-${endMatch[2]}-${endMatch[1]}`);
         end.setHours(23, 59, 59, 999);
@@ -302,16 +302,15 @@ function calculateOverdueFine(endDate, loan, user) {
 
         if (now > end) {
             const diffTime = now - end;
-            const hoursOverdue = Math.floor(diffTime / (1000 * 60 * 60));
-            // Use loan-specific fineRate if available, otherwise fall back to user.fineRate
+            const daysOverdue = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // ✅ now per day
             const fineRate = loan.fineRate !== undefined ? loan.fineRate : user.fineRate;
-            const fine = hoursOverdue * fineRate;
-            return { overdue: true, fine: fine, hoursOverdue: hoursOverdue };
+            const fine = daysOverdue * fineRate;
+            return { overdue: true, fine: fine, daysOverdue: daysOverdue };
         }
-        return { overdue: false, fine: 0, hoursOverdue: 0 };
+        return { overdue: false, fine: 0, daysOverdue: 0 };
     } catch (error) {
         console.error("Error calculating overdue fine:", error);
-        return { overdue: false, fine: 0, hoursOverdue: 0 };
+        return { overdue: false, fine: 0, daysOverdue: 0 };
     }
 }
 
@@ -324,21 +323,21 @@ function displayLoanDetails(loan, index) {
         const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
         if (overdueInfo.overdue) {
             user.loans[index].cachedFine = overdueInfo.fine;
-            user.loans[index].cachedHoursOverdue = overdueInfo.hoursOverdue;
+            user.loans[index].cachedDaysOverdue = overdueInfo.daysOverdue;
             user.loans[index].originalInterest = loan.interest;
             user.loans[index].interest = loan.interest + overdueInfo.fine;
             if (!loan.endDate.includes('Overdue')) {
-                user.loans[index].endDate = `${loan.endDate.split('<')[0]}<br><p style="color: #ff6c00;">Overdue by ${overdueInfo.hoursOverdue} hours</p>`;
+                user.loans[index].endDate = `${loan.endDate.split('<')[0]}<br><p style="color: #ff6c00;">You have overdued by ${overdueInfo.daysOverdue} days</p>`;
             }
         } else {
             user.loans[index].cachedFine = 0;
-            user.loans[index].cachedHoursOverdue = 0;
+            user.loans[index].cachedDaysOverdue = 0;
             user.loans[index].originalInterest = loan.interest;
         }
     }
 
     const fine = loan.cachedFine || 0;
-    const fineRate = loan.fineRate !== undefined ? loan.fineRate : user.fineRate; // Display loan-specific fine rate
+    const fineRate = loan.fineRate !== undefined ? loan.fineRate : user.fineRate;
     const originalInterest = loan.originalInterest || loan.interest;
     const totalReturnAmount = (loan.takenAmount + loan.interest).toFixed(2);
     const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
@@ -404,62 +403,6 @@ function closeAmountsModal() {
 
 function closeModal() {
     document.getElementById("userInfoModal").style.display = "none";
-    document.getElementById("passwordContainer").style.display = "flex";
-    document.getElementById("userPassword").value = "";
-    sessionReferenceTime = null;
-}
-
-function formatDate(dateStr) {
-    const [d, m, y] = dateStr.split('-');
-    return `${d}/${m}/${y.slice(2)}`;
-}
-
-function generateImage(text, filename) {
-    const canvas = document.createElement('canvas');
-    const lines = text.split('\n');
-    const lineHeight = 30;
-    canvas.width = 600;
-    canvas.height = 60 + lines.length * lineHeight;
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = 'white';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'black';
-    ctx.font = '20px Poppins';
-    ctx.textAlign = 'left';
-    lines.forEach((line, i) => {
-        ctx.fillText(line, 30, 40 + i * lineHeight);
-    });
-    // Watermark
-    ctx.fillStyle = 'gray';
-    ctx.font = '16px Poppins';
-    ctx.textAlign = 'right';
-    ctx.fillText('Powered by BsBookpad', canvas.width - 20, 20);
-    const a = document.createElement('a');
-    a.href = canvas.toDataURL('image/png', 1.0);
-    a.download = filename;
-    a.click();
-}
-
-function downloadSingleLoan(index) {
-    const userInput = document.getElementById("userPassword").value.trim();
-    const user = passwords[userInput];
-    if (!user) return;
-    const loan = user.loans[index];
-    const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
-    const totalReturnAmount = (loan.takenAmount + (loan.cachedFine || 0) + (loan.originalInterest || loan.interest)).toFixed(2);
-    const text = `Total Amount ${index + 1} : ${totalReturnAmount} ₹\nReturn date : ${formatDate(cleanEndDate)}`;
-    generateImage(text, `total_amount_${index + 1}.png`);
-}
-
-function downloadAllLoans() {
-    const userInput = document.getElementById("userPassword").value.trim();
-    const user = passwords[userInput];
-    if (!user) return;
-    let text = '';
-    user.loans.forEach((loan, i) => {
-        const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
-        const totalReturnAmount = (loan.takenAmount + (loan.cachedFine || 0) + (loan.originalInterest || loan.interest)).toFixed(2);
-        text += `Total Amount ${i + 1} : ${totalReturnAmount} ₹\nReturn date : ${formatDate(cleanEndDate)}\n\n`;
-    });
-    generateImage(text.trim(), 'all_total_amounts.png');
+    document.getElementById("passwordContainer").style.display = "block";
+    localStorage.removeItem("userPassword");
 }
