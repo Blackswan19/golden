@@ -24,7 +24,7 @@ const passwords = {
             },
         ]
     },
-    "6275": {
+        "6275": {
         name: "Srikanth Jampana",
         membershipType: "",
         membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
@@ -73,6 +73,7 @@ const passwords = {
             },
         ]
     },
+
     "Mahesh888*": {
         name: "Mahesh Muthinti",
         membershipType: "",
@@ -290,7 +291,7 @@ function calculateOverdueFine(endDate, loan, user) {
     try {
         const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
         const endMatch = endDate.split('(')[0].split('<')[0].match(dateFormat);
-        if (!endMatch) return { overdue: false, fine: 0, daysOverdue: 0 };
+        if (!endMatch) return { overdue: false, fine: 0, hoursOverdue: 0, daysOverdue: 0 };
 
         const end = new Date(`${endMatch[3]}-${endMatch[2]}-${endMatch[1]}`);
         end.setHours(23, 59, 59, 999);
@@ -302,15 +303,16 @@ function calculateOverdueFine(endDate, loan, user) {
 
         if (now > end) {
             const diffTime = now - end;
-            const daysOverdue = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // ✅ now per day
+            const hoursOverdue = Math.floor(diffTime / (1000 * 60 * 60));
+            const daysOverdue = Math.floor(hoursOverdue / 24);
             const fineRate = loan.fineRate !== undefined ? loan.fineRate : user.fineRate;
             const fine = daysOverdue * fineRate;
-            return { overdue: true, fine: fine, daysOverdue: daysOverdue };
+            return { overdue: true, fine: fine, hoursOverdue: hoursOverdue, daysOverdue: daysOverdue };
         }
-        return { overdue: false, fine: 0, daysOverdue: 0 };
+        return { overdue: false, fine: 0, hoursOverdue: 0, daysOverdue: 0 };
     } catch (error) {
         console.error("Error calculating overdue fine:", error);
-        return { overdue: false, fine: 0, daysOverdue: 0 };
+        return { overdue: false, fine: 0, hoursOverdue: 0, daysOverdue: 0 };
     }
 }
 
@@ -319,21 +321,14 @@ function displayLoanDetails(loan, index) {
     const userInput = document.getElementById("userPassword").value.trim();
     const user = passwords[userInput];
 
+    const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+
     if (!loan.hasOwnProperty('cachedFine')) {
-        const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
-        if (overdueInfo.overdue) {
-            user.loans[index].cachedFine = overdueInfo.fine;
-            user.loans[index].cachedDaysOverdue = overdueInfo.daysOverdue;
-            user.loans[index].originalInterest = loan.interest;
-            user.loans[index].interest = loan.interest + overdueInfo.fine;
-            if (!loan.endDate.includes('Overdue')) {
-                user.loans[index].endDate = `${loan.endDate.split('<')[0]}<br><p style="color: #ff6c00;">You have overdued by ${overdueInfo.daysOverdue} days</p>`;
-            }
-        } else {
-            user.loans[index].cachedFine = 0;
-            user.loans[index].cachedDaysOverdue = 0;
-            user.loans[index].originalInterest = loan.interest;
-        }
+        user.loans[index].cachedFine = overdueInfo.fine;
+        user.loans[index].cachedHoursOverdue = overdueInfo.hoursOverdue;
+        user.loans[index].cachedDaysOverdue = overdueInfo.daysOverdue;
+        user.loans[index].originalInterest = loan.interest;
+        user.loans[index].interest = loan.interest + overdueInfo.fine;
     }
 
     const fine = loan.cachedFine || 0;
@@ -345,6 +340,16 @@ function displayLoanDetails(loan, index) {
 
     document.querySelectorAll(".amount-btn").forEach(btn => btn.classList.remove("active"));
     document.getElementById("amountButtons").children[index].classList.add("active");
+
+    let overdueSection = "";
+    if (overdueInfo.overdue) {
+        overdueSection = `
+            <h3>Overdue Details</h3>
+            <p>You are overdue by : ${overdueInfo.hoursOverdue} hours</p>
+            <p>You are overdue by : ${overdueInfo.daysOverdue} days</p>
+            <p style="    color: #ff9300;">Overdue interest : ${fine} Rupees</p>
+        `;
+    }
 
     loanDetails.innerHTML = `
         <div class="loan-entry">
@@ -364,8 +369,7 @@ function displayLoanDetails(loan, index) {
             <p><i class="fa-solid fa-clock"></i> Taken for : ${daysBetween} days</p>
             <h3>Interest</h3>
             <p><i class="fa-solid fa-arrow-up-wide-short"></i> Normal Interest : ${originalInterest} Rupees</p>
-            <h3>Overdue</h3>
-            <p><i class="fa-solid fa-exclamation-triangle"></i> Overdue interest : ${fine} Rupees</p>
+            ${overdueSection}
             <hr>
             <h3>Total to Return</h3>
             <p><i class="fa-solid fa-money-check-alt"></i> Amount : ${totalReturnAmount} Rupees</p>
@@ -394,15 +398,9 @@ function showAmountsModal() {
     document.getElementById("totalInterest").textContent = totalInterest;
     document.getElementById("totalReturn").textContent = totalReturn;
 
-    document.getElementById("amountsModal").style.display = "flex";
+    document.getElementById("amountsModal").style.display = "block";
 }
 
 function closeAmountsModal() {
     document.getElementById("amountsModal").style.display = "none";
-}
-
-function closeModal() {
-    document.getElementById("userInfoModal").style.display = "none";
-    document.getElementById("passwordContainer").style.display = "block";
-    localStorage.removeItem("userPassword");
 }
