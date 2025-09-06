@@ -345,8 +345,7 @@ function displayLoanDetails(loan, index) {
     if (overdueInfo.overdue) {
         overdueSection = `
             <h3>Overdue Details</h3>
-            <p>You are overdue by : ${overdueInfo.hoursOverdue} hours</p>
-            <p>You are overdue by : ${overdueInfo.daysOverdue} days</p>
+            <p>You are overdue by : ${overdueInfo.daysOverdue} days (${overdueInfo.hoursOverdue} hours)</p>
             <p style="    color: #ff9300;">Overdue interest : ${fine} Rupees</p>
         `;
     }
@@ -369,8 +368,8 @@ function displayLoanDetails(loan, index) {
             <p><i class="fa-solid fa-clock"></i> Taken for : ${daysBetween} days</p>
             <h3>Interest</h3>
             <p><i class="fa-solid fa-arrow-up-wide-short"></i> Normal Interest : ${originalInterest} Rupees</p>
-            <hr>
             ${overdueSection}
+            <hr>
             <h3>Total to Return</h3>
             <p><i class="fa-solid fa-money-check-alt"></i> Amount : ${totalReturnAmount} Rupees</p>
             <hr>
