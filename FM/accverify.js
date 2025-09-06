@@ -345,8 +345,8 @@ function displayLoanDetails(loan, index) {
     if (overdueInfo.overdue) {
         overdueSection = `
             <h3>Overdue Details</h3>
-            <p style="color: #ff9300;">You are overdue by : ${overdueInfo.daysOverdue} days(${overdueInfo.hoursOverdue} hours)</p>
-            <p style="color: #ff9300;">Overdue interest : ${fine} Rupees</p>
+            <p>You are overdue by : ${overdueInfo.daysOverdue} days(${overdueInfo.hoursOverdue} hours)</p>
+            <p>Overdue interest : ${fine} Rupees</p>
         `;
     }
 
@@ -398,7 +398,7 @@ function showAmountsModal() {
     document.getElementById("totalInterest").textContent = totalInterest;
     document.getElementById("totalReturn").textContent = totalReturn;
 
-    document.getElementById("amountsModal").style.display = "block";
+    document.getElementById("amountsModal").style.display = "";
 }
 
 function closeAmountsModal() {
