@@ -82,7 +82,7 @@ const passwords = {
         stars: 0,
         loans: [
             {
-                planDate: "01-06-2025",
+                planDate: "01-08-2025",
                 endDate: "19-09-2025(Extanded to 30 days)",
                 interest: 3260,
                 takenAmount: 5000,
@@ -90,7 +90,7 @@ const passwords = {
                 fineRate: 6
             },
             {
-                planDate: "25-05-2025",
+                planDate: "25-08-2025",
                 endDate: "24-09-2025(Extanded to 30 days)",
                 interest: 2080,
                 takenAmount: 5000,
@@ -98,7 +98,7 @@ const passwords = {
                 fineRate: 6
             },
             {
-                planDate: "28-06-2025",
+                planDate: "28-08-2025",
                 endDate: "30-09-2025(Extanded to 30 days)",
                 interest: 2000,
                 takenAmount: 10000,
@@ -106,7 +106,7 @@ const passwords = {
                 fineRate: 7
             },
             {
-                planDate: "31-09-2025",
+                planDate: "31-08-2025",
                 endDate: "30-09-2025",
                 interest: 600,
                 takenAmount: 4600,
