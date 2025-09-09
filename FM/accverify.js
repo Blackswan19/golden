@@ -82,7 +82,7 @@ const passwords = {
         stars: 0,
         loans: [
             {
-                planDate: "01-08-2025",
+                planDate: "01-06-2025",
                 endDate: "19-09-2025(Extanded to 30 days)",
                 interest: 3260,
                 takenAmount: 5000,
@@ -90,7 +90,7 @@ const passwords = {
                 fineRate: 6
             },
             {
-                planDate: "25-08-2025",
+                planDate: "25-05-2025",
                 endDate: "24-09-2025(Extanded to 30 days)",
                 interest: 2080,
                 takenAmount: 5000,
@@ -98,7 +98,7 @@ const passwords = {
                 fineRate: 6
             },
             {
-                planDate: "28-08-2025",
+                planDate: "28-06-2025",
                 endDate: "30-09-2025(Extanded to 30 days)",
                 interest: 2000,
                 takenAmount: 10000,
@@ -106,7 +106,7 @@ const passwords = {
                 fineRate: 7
             },
             {
-                planDate: "31-08-2025",
+                planDate: "31-09-2025",
                 endDate: "30-09-2025",
                 interest: 600,
                 takenAmount: 4600,
@@ -403,4 +403,65 @@ function showAmountsModal() {
 
 function closeAmountsModal() {
     document.getElementById("amountsModal").style.display = "none";
+}
+
+function closeModal() {
+    document.getElementById("userInfoModal").style.display = "none";
+    document.getElementById("passwordContainer").style.display = "flex";
+    document.getElementById("userPassword").value = "";
+    sessionReferenceTime = null;
+}
+
+function formatDate(dateStr) {
+    const [d, m, y] = dateStr.split('-');
+    return `${d}/${m}/${y.slice(2)}`;
+}
+
+function generateImage(text, filename) {
+    const canvas = document.createElement('canvas');
+    const lines = text.split('\n');
+    const lineHeight = 30;
+    canvas.width = 600;
+    canvas.height = 60 + lines.length * lineHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'black';
+    ctx.font = '20px Poppins';
+    ctx.textAlign = 'left';
+    lines.forEach((line, i) => {
+        ctx.fillText(line, 30, 40 + i * lineHeight);
+    });
+    // Watermark
+    ctx.fillStyle = 'gray';
+    ctx.font = '16px Poppins';
+    ctx.textAlign = 'right';
+    ctx.fillText('Powered by BsBookpad', canvas.width - 20, 20);
+    const a = document.createElement('a');
+    a.href = canvas.toDataURL('image/png', 1.0);
+    a.download = filename;
+    a.click();
+}
+function downloadSingleLoan(index) {
+    const userInput = document.getElementById("userPassword").value.trim();
+    const user = passwords[userInput];
+    if (!user) return;
+    const loan = user.loans[index];
+    const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+    const totalReturnAmount = (loan.takenAmount + (loan.cachedFine || 0) + (loan.originalInterest || loan.interest)).toFixed(2);
+    const text = `Total Amount ${index + 1} : ${totalReturnAmount} ₹\nReturn date : ${formatDate(cleanEndDate)}`;
+    generateImage(text, `total_amount_${index + 1}.png`);
+}
+
+function downloadAllLoans() {
+    const userInput = document.getElementById("userPassword").value.trim();
+    const user = passwords[userInput];
+    if (!user) return;
+    let text = '';
+    user.loans.forEach((loan, i) => {
+        const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+        const totalReturnAmount = (loan.takenAmount + (loan.cachedFine || 0) + (loan.originalInterest || loan.interest)).toFixed(2);
+        text += `Total Amount ${i + 1} : ${totalReturnAmount} ₹\nReturn date : ${formatDate(cleanEndDate)}\n\n`;
+    });
+    generateImage(text.trim(), 'all_total_amounts.png');
 }
