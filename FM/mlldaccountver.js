@@ -1,18 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
+    // Handle context menu (right-click)
+    document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        if (customMenu) {
+            customMenu.style.display = "block";
+            customMenu.style.top = `${event.pageY}px`;
+            customMenu.style.left = `${event.pageX}px`;
+        }
+    });
+
+    // Hide custom menu on click
     document.addEventListener("click", () => {
         if (customMenu) {
             customMenu.style.display = "none";
         }
     });
 
+    // Hide loading overlay after 3 seconds
     const loadingOverlay = document.getElementById("loadingOverlay");
-
     setTimeout(() => {
         loadingOverlay.classList.add("hidden");
     }, 3000);
 
+    // Load saved font and theme
     try {
         const savedFont = localStorage.getItem("font") || "default";
         console.log("Retrieved font from localStorage:", savedFont);
@@ -31,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         applyTheme("night");
     }
 
+    // Listen for system theme changes
     window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
         try {
             if (!localStorage.getItem("theme")) {
@@ -42,11 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // Theme change event listeners
     document.getElementById("themeLight")?.addEventListener("change", () => applyTheme("light"));
     document.getElementById("themeNight")?.addEventListener("change", () => applyTheme("night"));
     document.getElementById("themeDark")?.addEventListener("change", () => applyTheme("dark"));
 });
 
+// User data
 const users = {
     "Ganesh@5577": {
         name: "J Ganesh",
@@ -55,10 +70,10 @@ const users = {
         loans: [
             {
                 planDate: "20-08-2025",
-                endDate: "08-09-2025",
-                interest: 800,
+                endDate: "13-09-2025",
+                interest: 640,
                 takenAmount: 3200,
-                fineRate: 60 // Loan-specific fine rate (₹ per day)
+                fineRate: 80 // Loan-specific fine rate (₹ per day)
             },
         ]
     }
@@ -126,7 +141,10 @@ function calculateDuration(startDate, endDate) {
 function authenticateUser() {
     const enteredPassword = document.getElementById("passwordInput").value;
     const user = users[enteredPassword];
-    const today = "04-09-2025"; // Updated to current date (04-09-2025)
+    // Use dynamic current date in DD-MM-YYYY format
+    const today = new Date().toLocaleDateString("en-GB").split("/").join("-");
+    // For testing, you can uncomment the line below to simulate the return date or later
+    // const today = "13-09-2025";
 
     if (user) {
         previousSection = "passwordSection";
@@ -149,24 +167,24 @@ function authenticateUser() {
         let loansHTML = user.loans.map((loan, index) => {
             const totalAmountToReturn = loan.takenAmount + loan.interest;
             const daysOverdue = calculateDaysOverdue(loan.endDate, today);
-            const fineRate = loan.fineRate !== undefined ? loan.fineRate : user.fineRate; // Use loan-specific fineRate or fall back to user.fineRate
-            const fine = daysOverdue * fineRate; // Calculate fine based on loan-specific or user default fine rate
-            const duration = calculateDuration(loan.planDate, loan.endDate); // Calculate duration between planDate and endDate
-            const repaymentMessage = daysOverdue > 0 ? 
+            const fineRate = loan.fineRate !== undefined ? loan.fineRate : user.fineRate;
+            const fine = daysOverdue * fineRate;
+            const duration = calculateDuration(loan.planDate, loan.endDate);
+            // Show message on or after the return date
+            const repaymentMessage = daysOverdue >= 0 ? 
                 `<center><p style="color: #ff0000; font-weight: bold; padding: 9px; border-radius: 0px; font-size: 13px; margin: 0px; border-left: solid 4px; background: #ff00001c;">YOU HAVE THIS AMOUNT RETURN TODAY</p></center>` : 
-                loan.endDate === today ? 
-                `<center><p style="color: #ff0000; font-weight: bold; padding: 9px; border-radius: 0px; font-size: 13px; margin: 0px; border-left: solid 4px; background: #ff00001c;">YOU HAVE THIS AMOUNT RETURN TODAY</p></center>` : '';
+                '';
             return `
                 <div class="loan-item">
                     <h4 style="text-align:center;">Amount ${index + 1}</h4>
-                    <p>Taken Amount : <strong>₹${loan.takenAmount}</strong></p>
-                    <p>Taken on : <strong>${loan.planDate}</strong></p>
-                    <p>Return on : <strong>${loan.endDate}</strong></p>
-                    <p>Duration : <strong>${duration} days</strong></p>
-                    <p>Interest for ${duration} day : <strong>₹${loan.interest}</strong></p>
-                    <p>Overdue : <strong>₹${fine}</strong></p>
+                    <p>Taken Amount: <strong>₹${loan.takenAmount}</strong></p>
+                    <p>Taken on: <strong>${loan.planDate}</strong></p>
+                    <p>Return on: <strong>${loan.endDate}</strong></p>
+                    <p>Duration: <strong>${duration} days</strong></p>
+                    <p>Interest for ${duration} day: <strong>₹${loan.interest}</strong></p>
+                    <p>Overdue: <strong>₹${fine}</strong></p>
                     <hr>
-                    <p style="color: #00b99e;">Total Amount to Return : <strong>₹${totalAmountToReturn + fine}</strong></p>
+                    <p style="color: #00b99e;">Total Amount to Return: <strong>₹${totalAmountToReturn + fine}</strong></p>
                     ${repaymentMessage}
                 </div>
             `;
@@ -393,30 +411,3 @@ document.getElementById("popupOverlay")?.addEventListener("click", closePopup);
 document.getElementById("passwordInput")?.addEventListener("keypress", function(event) {
     if (event.key === "Enter") authenticateUser();
 });
-document.addEventListener("DOMContentLoaded", () => {
-    const customMenu = document.querySelector(".custom-menu");
-
-    document.addEventListener("click", () => {
-        if (customMenu) {
-            customMenu.style.display = "none";
-        }
-    });
-});
-        document.addEventListener("DOMContentLoaded", () => {
-            const customMenu = document.querySelector(".custom-menu");
-
-            document.addEventListener("contextmenu", (event) => {
-                event.preventDefault();
-                if (customMenu) {
-                    customMenu.style.display = "block";
-                    customMenu.style.top = `${event.pageY}px`;
-                    customMenu.style.left = `${event.pageX}px`;
-                }
-            });
-
-            document.addEventListener("click", () => {
-                if (customMenu) {
-                    customMenu.style.display = "none";
-                }
-            });
-        });
