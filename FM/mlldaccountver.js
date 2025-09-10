@@ -184,8 +184,8 @@ function authenticateUser() {
                     <p>Taken on: <strong>${loan.planDate}</strong></p>
                     <p>Return on: <strong>${loan.endDate}</strong></p>
                     <p>Duration: <strong>${duration} days</strong></p>
-                    <p>Interest (incl. fines): <strong>₹${loan.interest}</strong></p>
-                    <p>Overdue Fine: <strong>₹${fine}</strong></p>
+                    <p>Interest: <strong>₹${loan.interest}</strong></p>
+                    <p>Overdue Interest: <strong>₹${fine}</strong></p>
                     <hr>
                     <p style="color: #00b99e;">Total Amount to Return: <strong>₹${totalAmountToReturn}</strong></p>
                     ${repaymentMessage}
