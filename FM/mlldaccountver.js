@@ -187,7 +187,7 @@ function authenticateUser() {
                     <p>Interest: <strong>₹${loan.interest}</strong></p>
                     <p>Overdue Interest: <strong>₹${fine}</strong></p>
                     <hr>
-                    <p style="color: #00b99e;">Total Amount to Return: <strong>₹${totalAmountToReturn}</strong></p>
+                    <p style="color: #00b99e;">Total Amount to Return: <strong>₹${totalAmountToReturn+fine}</strong></p>
                     ${repaymentMessage}
                 </div>
             `;
