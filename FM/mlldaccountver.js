@@ -156,19 +156,7 @@ function authenticateUser() {
             console.error("Error saving password to localStorage:", e);
         }
 
-        // Update interest with total fines based on days overdue
-        user.loans.forEach(loan => {
-            const daysOverdue = calculateDaysOverdue(loan.endDate, today);
-            if (daysOverdue > 0) {
-                const fineRate = loan.fineRate !== undefined ? loan.fineRate : user.fineRate;
-                const totalFine = daysOverdue * fineRate;
-                // Set interest to base interest (640) plus total fines
-                loan.interest = 640 + totalFine;
-                console.log(`Updated interest with fine: ₹${totalFine} for ${daysOverdue} days overdue. New interest: ₹${loan.interest}`);
-            } else {
-                loan.interest = 640; // Reset to base interest if not overdue
-            }
-        });
+
 
         document.getElementById("passwordSection").style.display = "none";
         document.getElementById("userDetails").style.display = "block";
@@ -426,4 +414,3 @@ document.getElementById("popupOverlay")?.addEventListener("click", closePopup);
 document.getElementById("passwordInput")?.addEventListener("keypress", function(event) {
     if (event.key === "Enter") authenticateUser();
 });
-
