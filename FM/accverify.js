@@ -24,7 +24,7 @@ const passwords = {
             },
         ]
     },
-        "6275": {
+    "6275": {
         name: "Srikanth Jampana",
         membershipType: "",
         membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
@@ -73,7 +73,6 @@ const passwords = {
             },
         ]
     },
-
     "Mahesh888*": {
         name: "Mahesh Muthinti",
         membershipType: "",
@@ -322,19 +321,10 @@ function displayLoanDetails(loan, index) {
     const user = passwords[userInput];
 
     const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
-
-    if (!loan.hasOwnProperty('cachedFine')) {
-        user.loans[index].cachedFine = overdueInfo.fine;
-        user.loans[index].cachedHoursOverdue = overdueInfo.hoursOverdue;
-        user.loans[index].cachedDaysOverdue = overdueInfo.daysOverdue;
-        user.loans[index].originalInterest = loan.interest;
-        user.loans[index].interest = loan.interest + overdueInfo.fine;
-    }
-
-    const fine = loan.cachedFine || 0;
+    const fine = overdueInfo.fine || 0;
     const fineRate = loan.fineRate !== undefined ? loan.fineRate : user.fineRate;
-    const originalInterest = loan.originalInterest || loan.interest;
-    const totalReturnAmount = (loan.takenAmount + loan.interest).toFixed(2);
+    const originalInterest = loan.interest;
+    const totalReturnAmount = (loan.takenAmount + loan.interest + fine).toFixed(2);
     const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
     const daysBetween = calculateDaysBetween(loan.planDate, cleanEndDate);
 
@@ -344,35 +334,35 @@ function displayLoanDetails(loan, index) {
     let overdueSection = "";
     if (overdueInfo.overdue) {
         overdueSection = `
-            <h3 >Overdue Details</h3>
-            <p style="color: #ff9300;">You are overdue by : ${overdueInfo.daysOverdue} days(${overdueInfo.hoursOverdue} hours)</p>
-            <p style="color: #ff9300;">Overdue interest : ${fine} Rupees</p>
+            <h3>Overdue Details</h3>
+            <p style="color: #ff9300;">You are overdue by: ${overdueInfo.daysOverdue} days (${overdueInfo.hoursOverdue} hours)</p>
+            <p style="color: #ff9300;">Overdue interest: ${fine} Rupees</p>
         `;
     }
 
     loanDetails.innerHTML = `
         <div class="loan-entry">
             <p style="text-align: center; position: sticky; top: 50px; margin-top: 20px; right: 16px; float: right; margin-right: -9px;">
-                <button class="amounts-btn downsingle" style="width: 100%; font-size: 10px; padding: 3px 15px; display: flex; flex-direction: row; justify-content: center; align-items: center;   margin-top: 10px;" onclick="downloadSingleLoan(${index})">
+                <button class="amounts-btn downsingle" style="width: 100%; font-size: 10px; padding: 3px 15px; display: flex; flex-direction: row; justify-content: center; align-items: center; margin-top: 10px;" onclick="downloadSingleLoan(${index})">
                     <i class="fa-solid fa-download" style="margin-right: 2px;"></i> This amount receipt
                 </button>
             </p>
             <h3>Service</h3>
-            <p>Taken in : ${loan.takenFrom} Service</p>
+            <p>Taken in: ${loan.takenFrom} Service</p>
             <h3>Amount</h3>
-            <p><i class="fa-solid fa-money-bill-transfer"></i> Taken Amount : ${loan.takenAmount} Rupees</p>
+            <p><i class="fa-solid fa-money-bill-transfer"></i> Taken Amount: ${loan.takenAmount} Rupees</p>
             <h3>Taken & Return</h3>
-            <p><i class="fa-solid fa-calendar-day"></i> Taken date : ${loan.planDate}</p>
-            <p><i class="fa-solid fa-calendar-check"></i> Return date : ${loan.endDate}</p>
+            <p><i class="fa-solid fa-calendar-day"></i> Taken date: ${loan.planDate}</p>
+            <p><i class="fa-solid fa-calendar-check"></i> Return date: ${loan.endDate}</p>
             <h3>Duration</h3>
-            <p><i class="fa-solid fa-clock"></i> Taken for : ${daysBetween} days</p>
+            <p><i class="fa-solid fa-clock"></i> Taken for: ${daysBetween} days</p>
             <h3>Interest</h3>
-            <p><i class="fa-solid fa-arrow-up-wide-short"></i> Normal Interest : ${originalInterest} Rupees</p>
+            <p><i class="fa-solid fa-arrow-up-wide-short"></i> Normal Interest: ${originalInterest} Rupees</p>
             <hr>
             ${overdueSection}
             <hr>
             <h3>Total to Return</h3>
-            <p><i class="fa-solid fa-money-check-alt"></i> Amount : ${totalReturnAmount} Rupees</p>
+            <p><i class="fa-solid fa-money-check-alt"></i> Amount: ${totalReturnAmount} Rupees</p>
             <hr>
             <div class="issuebtn" style="padding-top: 20px;">  
                 <a target="_blank" href="https://forms.gle/RzTJ8W9bwmm8DVj2A"><button>I have an issue here.!</button></a>
@@ -389,8 +379,10 @@ function showAmountsModal() {
     let totalTaken = 0;
     let totalInterest = 0;
     user.loans.forEach(loan => {
+        const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+        const fine = overdueInfo.fine || 0;
         totalTaken += loan.takenAmount;
-        totalInterest += (loan.cachedFine || 0) + (loan.originalInterest || loan.interest);
+        totalInterest += loan.interest + fine;
     });
     const totalReturn = (totalTaken + totalInterest).toFixed(2);
 
@@ -432,7 +424,6 @@ function generateImage(text, filename) {
     lines.forEach((line, i) => {
         ctx.fillText(line, 30, 40 + i * lineHeight);
     });
-    // Watermark
     ctx.fillStyle = 'gray';
     ctx.font = '16px Poppins';
     ctx.textAlign = 'right';
@@ -442,13 +433,16 @@ function generateImage(text, filename) {
     a.download = filename;
     a.click();
 }
+
 function downloadSingleLoan(index) {
     const userInput = document.getElementById("userPassword").value.trim();
     const user = passwords[userInput];
     if (!user) return;
     const loan = user.loans[index];
     const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
-    const totalReturnAmount = (loan.takenAmount + (loan.cachedFine || 0) + (loan.originalInterest || loan.interest)).toFixed(2);
+    const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+    const fine = overdueInfo.fine || 0;
+    const totalReturnAmount = (loan.takenAmount + loan.interest + fine).toFixed(2);
     const text = `Total Amount ${index + 1} : ${totalReturnAmount} ₹\nReturn date : ${formatDate(cleanEndDate)}`;
     generateImage(text, `total_amount_${index + 1}.png`);
 }
@@ -460,7 +454,9 @@ function downloadAllLoans() {
     let text = '';
     user.loans.forEach((loan, i) => {
         const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
-        const totalReturnAmount = (loan.takenAmount + (loan.cachedFine || 0) + (loan.originalInterest || loan.interest)).toFixed(2);
+        const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+        const fine = overdueInfo.fine || 0;
+        const totalReturnAmount = (loan.takenAmount + loan.interest + fine).toFixed(2);
         text += `Total Amount ${i + 1} : ${totalReturnAmount} ₹\nReturn date : ${formatDate(cleanEndDate)}\n\n`;
     });
     generateImage(text.trim(), 'all_total_amounts.png');
