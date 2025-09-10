@@ -53,7 +53,7 @@ const passwords = {
                 interest: 1275,
                 takenAmount: 5000,
                 takenFrom: "MLLD",
-                fineRate: 86
+                fineRate: 94
             },
             {
                 planDate: "18-08-2025",
