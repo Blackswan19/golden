@@ -149,7 +149,7 @@
             border-radius: 10px; /* Curvy style */
         }
         body.light #submitBtn {
-            background-color: #0066cc;
+            background-color: #00aeff;
             color: #ffffff;
         }
         body.telegram-dark #submitBtn {
@@ -368,10 +368,12 @@
             border-radius: 25px; 
         }
         body.light .amount-buttons {
-            background-color: #f0f0f0;
+           background-color: #e8e8e866;
+    border: solid 1.5px #ebebf0;
         }
         body.telegram-dark .amount-buttons {
-            background-color: #212d3b;
+            background-color: #212d3ba6;
+    border: solid 1.5px #445e7c61;
         }
         .amount-btn {
             background-color: #434343;
@@ -389,11 +391,11 @@
             border-radius: 20px; /* Curvy style */
         }
         body.light .amount-btn {
-            background-color: #d2d2d2;
-            color: #000000;
+            background-color: #ebebf0;
+            color: #323232;
         }
         body.telegram-dark .amount-btn {
-            background-color: #4a607c;
+            background-color: #d2d2d2;
             color: #ffffff;
         }
         body.my-own .amount-btn {
@@ -406,7 +408,7 @@
             color: rgb(255, 255, 255);
         }
         body.light .amount-btn:hover {
-            background-color: #b3b3b3;
+            background-color: #dadada;
         }
         body.telegram-dark .amount-btn:hover {
             background-color: #1d2733;
@@ -416,10 +418,11 @@
         }
         .amount-btn.active {
             background-color: #00aef8;
-            color: #000000;
+            color: #323232;
         }
         body.light .amount-btn.active {
-            background-color: #0066cc;
+            background-color: #00aeff;
+    color: white;
         }
         body.telegram-dark .amount-btn.active {
             background-color: var(--telegram-accent);
@@ -444,6 +447,7 @@
         body.light .amount-btn .amount-id {
             color: #0066cc;
             background-color: #ffffff;
+                border: solid 1px #ebebf0;
         }
         body.telegram-dark .amount-btn .amount-id {
             color: var(--telegram-accent);
@@ -588,8 +592,8 @@
             border-radius: 30px; /* Curvy style */
         }
         body.light .amounts-btn {
-            background-color: #00000075;
-            color: white;
+            background-color: #ebebf0;
+            color: #323232;
         }
         body.telegram-dark .amounts-btn {
             background-color: #2a3545;
@@ -604,7 +608,7 @@
             color: white;
         }
         body.light .amounts-btn:hover {
-            background-color: #0000009c;
+            background-color: #dadada;
         }
         body.telegram-dark .amounts-btn:hover {
             background-color: #3a4b5e;
@@ -640,8 +644,8 @@
             border-radius: 30px; /* Curvy style */
         }
         body.light .amounts-modal-content {
-            background-color: #f0f0f0;
-            color: #000000;
+            background-color: #fcfcfd;
+            color: #5b5b5b;
         }
         body.telegram-dark .amounts-modal-content {
             background-color: #242f3e;
@@ -691,7 +695,7 @@
             color: #00c6ff;
         }
         body.light span {
-            color: #0066cc;
+            color: #00aeff;
         }
         body.telegram-dark span {
             color: var(--telegram-accent);
@@ -1124,7 +1128,13 @@
     <div id="amountsModal" class="amounts-modal" style="display: none;">
         <div class="amounts-modal-content">
             <span class="amounts-close-btn" onclick="closeAmountsModal()">×</span>
-            <h3 style="text-decoration: underline; margin-bottom: 5px; font-weight: 900; font-size: 16px; text-align: center;">Total Amount</h3>
+            <h3 style="text-decoration: underline;
+    margin-bottom: 5px;
+    font-weight: 900;
+    font-size: 17px;
+    text-align: center;
+    color: #00aeff;
+    letter-spacing: 0px;">Total Amount</h3>
             <p><i class="fa-solid fa-money-bill"></i> Total Taken Amount: <span id="totalTaken"></span> ₹</p>
             <p><i class="fa-solid fa-arrow-up-wide-short"></i> Total Interest: <span id="totalInterest"></span> ₹</p>
             <hr>
