@@ -71,7 +71,7 @@ const users = {
             {
                 planDate: "20-08-2025",
                 endDate: "10-09-2025",
-                interest: 640, // Base interest, fines will be added
+                interest: 800, // Base interest, fines will be added
                 takenAmount: 3200,
                 fineRate: 50
             },
@@ -426,3 +426,4 @@ document.getElementById("popupOverlay")?.addEventListener("click", closePopup);
 document.getElementById("passwordInput")?.addEventListener("keypress", function(event) {
     if (event.key === "Enter") authenticateUser();
 });
+
