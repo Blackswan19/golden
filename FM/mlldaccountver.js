@@ -71,7 +71,7 @@ const users = {
             {
                 planDate: "20-08-2025",
                 endDate: "13-09-2025",
-                interest: 640,
+                interest: 800,
                 takenAmount: 3200,
                 fineRate: 80 // Loan-specific fine rate (₹ per day)
             },
@@ -411,3 +411,4 @@ document.getElementById("popupOverlay")?.addEventListener("click", closePopup);
 document.getElementById("passwordInput")?.addEventListener("keypress", function(event) {
     if (event.key === "Enter") authenticateUser();
 });
+
