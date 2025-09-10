@@ -66,7 +66,7 @@
         setTheme(savedTheme);
 
         // Load saved edge style
-        const savedEdgeStyle = localStorage.getItem("edgeStyle") || "sharp";
+        const savedEdgeStyle = localStorage.getItem("edgeStyle") || "curvy";
         if (savedEdgeStyle === "curvy") {
           document.body.classList.add("curvy");
           styleButton.textContent = "V";
@@ -99,7 +99,3 @@
     </script>
   </body>
 </html>
-
-
-
-
