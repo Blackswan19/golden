@@ -61,19 +61,19 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("themeDark")?.addEventListener("change", () => applyTheme("dark"));
 });
 
-// User data
+// Default users object (no localStorage to avoid conflicts during testing)
 const users = {
     "Ganesh@5577": {
         name: "J Ganesh",
-        fineRate: 5, // Default fine rate (₹ per day) if loan-specific fineRate is not provided
+        fineRate: 5,
         profileBackground: "#ffffff00",
         loans: [
             {
                 planDate: "20-08-2025",
-                endDate: "13-09-2025",
-                interest: 800,
+                endDate: "10-09-2025",
+                interest: 640, // Base interest, fines will be added
                 takenAmount: 3200,
-                fineRate: 80 // Loan-specific fine rate (₹ per day)
+                fineRate: 50
             },
         ]
     }
@@ -135,16 +135,17 @@ function calculateDuration(startDate, endDate) {
     const end = new Date(endDate.split("-").reverse().join("-"));
     const diffTime = end - start;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays >= 0 ? diffDays : 0; // Ensure non-negative duration
+    return diffDays >= 0 ? diffDays : 0;
 }
 
 function authenticateUser() {
     const enteredPassword = document.getElementById("passwordInput").value;
     const user = users[enteredPassword];
-    // Use dynamic current date in DD-MM-YYYY format
+    // Use dynamic date; change to test different overdue dates
     const today = new Date().toLocaleDateString("en-GB").split("/").join("-");
-    // For testing, you can uncomment the line below to simulate the return date or later
-    // const today = "13-09-2025";
+    // For testing, uncomment one of these to simulate overdue dates
+    // const today = "14-09-2025"; // 1 day overdue
+    // const today = "15-09-2025"; // 2 days overdue
 
     if (user) {
         previousSection = "passwordSection";
@@ -154,6 +155,21 @@ function authenticateUser() {
         } catch (e) {
             console.error("Error saving password to localStorage:", e);
         }
+
+        // Update interest with total fines based on days overdue
+        user.loans.forEach(loan => {
+            const daysOverdue = calculateDaysOverdue(loan.endDate, today);
+            if (daysOverdue > 0) {
+                const fineRate = loan.fineRate !== undefined ? loan.fineRate : user.fineRate;
+                const totalFine = daysOverdue * fineRate;
+                // Set interest to base interest (640) plus total fines
+                loan.interest = 640 + totalFine;
+                console.log(`Updated interest with fine: ₹${totalFine} for ${daysOverdue} days overdue. New interest: ₹${loan.interest}`);
+            } else {
+                loan.interest = 640; // Reset to base interest if not overdue
+            }
+        });
+
         document.getElementById("passwordSection").style.display = "none";
         document.getElementById("userDetails").style.display = "block";
         document.getElementById("settingsSection").style.display = "none";
@@ -170,7 +186,6 @@ function authenticateUser() {
             const fineRate = loan.fineRate !== undefined ? loan.fineRate : user.fineRate;
             const fine = daysOverdue * fineRate;
             const duration = calculateDuration(loan.planDate, loan.endDate);
-            // Show message on or after the return date
             const repaymentMessage = daysOverdue >= 0 ? 
                 `<center><p style="color: #ff0000; font-weight: bold; padding: 9px; border-radius: 0px; font-size: 13px; margin: 0px; border-left: solid 4px; background: #ff00001c;">YOU HAVE THIS AMOUNT RETURN TODAY</p></center>` : 
                 '';
@@ -181,10 +196,10 @@ function authenticateUser() {
                     <p>Taken on: <strong>${loan.planDate}</strong></p>
                     <p>Return on: <strong>${loan.endDate}</strong></p>
                     <p>Duration: <strong>${duration} days</strong></p>
-                    <p>Interest for ${duration} day: <strong>₹${loan.interest}</strong></p>
-                    <p>Overdue: <strong>₹${fine}</strong></p>
+                    <p>Interest (incl. fines): <strong>₹${loan.interest}</strong></p>
+                    <p>Overdue Fine: <strong>₹${fine}</strong></p>
                     <hr>
-                    <p style="color: #00b99e;">Total Amount to Return: <strong>₹${totalAmountToReturn + fine}</strong></p>
+                    <p style="color: #00b99e;">Total Amount to Return: <strong>₹${totalAmountToReturn}</strong></p>
                     ${repaymentMessage}
                 </div>
             `;
@@ -411,4 +426,3 @@ document.getElementById("popupOverlay")?.addEventListener("click", closePopup);
 document.getElementById("passwordInput")?.addEventListener("keypress", function(event) {
     if (event.key === "Enter") authenticateUser();
 });
-
