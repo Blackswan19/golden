@@ -175,7 +175,7 @@ function authenticateUser() {
             const fine = daysOverdue * fineRate;
             const duration = calculateDuration(loan.planDate, loan.endDate);
             const repaymentMessage = daysOverdue >= 0 ? 
-                `<center><p style="color: #ff0000; font-weight: bold; padding: 9px; border-radius: 0px; font-size: 13px; margin: 0px; border-left: solid 4px; background: #ff00001c;">YOU HAVE THIS AMOUNT RETURN TODAY</p></center>` : 
+                `<center><p style="color: #ff0000; font-weight: bold; padding: 9px; border-radius: 0px; font-size: 13px; margin: 0px; border-left: solid 4px; background: #ff00001c;">YOU HAVE TO RETURN THIS AMOUNT </p></center>` : 
                 '';
             return `
                 <div class="loan-item">
