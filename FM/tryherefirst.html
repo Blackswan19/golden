@@ -379,20 +379,6 @@
             display: flex;
             transform: translateY(0);
         }
-
-        @media (min-width: 600px) {
-            .account-popup {
-                width: 90%;
-                max-width: 600px;
-                left: 50%;
-                transform: translateX(-50%) translateY(100%);
-            }
-
-            .account-popup.show {
-                transform: translateX(-50%) translateY(0);
-            }
-        }
-
         .account-popup-header {
             display: flex;
             align-items: center;
@@ -630,6 +616,37 @@
         .popuphead{
             color:black;
         }
+        .upperline{
+            background-color: #ffffff;
+    height: 6px;
+    width: 10%;
+    z-index: 100;
+    display: flex;
+    border-radius: 10px;
+           transform: translateX(16.5em) translateY(200%);
+        }
+        @media (min-width: 600px) {
+            .account-popup {
+                width: 90%;
+                max-width: 600px;
+                left: 50%;
+                transform: translateX(-50%) translateY(100%);
+            }
+
+            .account-popup.show {
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+        @media (max-width: 600px){
+           
+            .upperline{
+                background-color: #ffffff;
+                height: 6px;
+                width: 10%;
+                transform: translateX(440%) translateY(0.9em);
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -727,6 +744,7 @@
 
     <div class="popup-overlay" id="popupOverlay"></div>
     <div class="account-popup" id="accountPopup">
+        <div class="upperline"></div>
         <div class="account-popup-header">
             <button class="back-btn" id="backBtn" onclick="navigateBack()" style="display: none;"><i class="fa-solid fa-arrow-left"></i></button>
             <h3 id="popupTitle" class="popuphead">Enter Password</h3>
