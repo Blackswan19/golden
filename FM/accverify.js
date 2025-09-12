@@ -342,7 +342,7 @@ function displayLoanDetails(loan, index) {
 
     loanDetails.innerHTML = `
         <div class="loan-entry">
-            <p style="text-align: center; position: sticky; top: 50px; margin-top: 20px; right: 16px; float: right; margin-right: -9px;">
+            <p style="text-align: center; position: sticky; top: 90px; margin-top: 20px; right: 16px; float: right; margin-right: -9px;">
                 <button class="amounts-btn downsingle" style="width: 100%; font-size: 10px; padding: 3px 15px; display: flex; flex-direction: row; justify-content: center; align-items: center; margin-top: 10px;" onclick="downloadSingleLoan(${index})">
                     <i class="fa-solid fa-download" style="margin-right: 2px;"></i> This amount receipt
                 </button>
@@ -461,3 +461,4 @@ function downloadAllLoans() {
     });
     generateImage(text.trim(), 'all_total_amounts.png');
 }
+
