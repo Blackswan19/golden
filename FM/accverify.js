@@ -3,7 +3,7 @@ const passwords = {
         name: "Chaitanya Harsha",
         membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "rgb(130 5 180)",
+        profileBackground: "rgb(154 205 50)",
         stars: 0,
         loans: [
             {
@@ -28,7 +28,7 @@ const passwords = {
         name: "Srikanth Jampana",
         membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "rgb(0 250 5)",
+        profileBackground: "rgb(29 141 250)",
         stars: 0,
         loans: [
             {
@@ -118,7 +118,7 @@ const passwords = {
         name: "Cherish",
         membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "rgb(230 95 5)",
+        profileBackground: "rgb(0 200 175)",
         stars: 0,
         loans: [
             {
