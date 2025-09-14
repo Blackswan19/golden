@@ -78,7 +78,7 @@
                         endDate: "10-09-2025",
                         interest: 800,
                         takenAmount: 3200,
-                        fineRate: 35
+                        fineRate: 46
                     },
                 ]
             }
