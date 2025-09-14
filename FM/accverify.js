@@ -2,7 +2,7 @@ const passwords = {
     "4211": {
         name: "Chaitanya Harsha",
         membershipType: "",
-        membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#ff4d4d",
         stars: 0,
         loans: [
@@ -27,7 +27,7 @@ const passwords = {
     "6275": {
         name: "Srikanth Jampana",
         membershipType: "",
-        membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "red",
         stars: 0,
         loans: [
@@ -76,7 +76,7 @@ const passwords = {
     "Mahesh888*": {
         name: "Mahesh Muthinti",
         membershipType: "",
-        membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#00ff00",
         stars: 0,
         loans: [
@@ -117,7 +117,7 @@ const passwords = {
     "Cherish@123": {
         name: "Cherish",
         membershipType: "",
-        membershipIcon: "https://cdn-icons-png.flaticon.com/512/7641/7641727.png",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "rgb(255 138 0)",
         stars: 0,
         loans: [
@@ -461,4 +461,3 @@ function downloadAllLoans() {
     });
     generateImage(text.trim(), 'all_total_amounts.png');
 }
-
