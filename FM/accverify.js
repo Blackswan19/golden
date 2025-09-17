@@ -45,7 +45,7 @@ const passwords = {
                 interest: 4800,
                 takenAmount: 20000,
                 takenFrom: "MLending",
-                fineRate: 335
+                fineRate: 320
             },
             {
                 planDate: "16-08-2025",
@@ -53,7 +53,7 @@ const passwords = {
                 interest: 1275,
                 takenAmount: 5000,
                 takenFrom: "MLLD",
-                fineRate: 94
+                fineRate: 90
             },
             {
                 planDate: "18-08-2025",
@@ -61,7 +61,7 @@ const passwords = {
                 interest: 1380,
                 takenAmount: 5000,
                 takenFrom: "MLLD",
-                fineRate: 86
+                fineRate: 88
             },
             {
                 planDate: "18-08-2025",
