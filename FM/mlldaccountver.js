@@ -2,14 +2,14 @@
             const customMenu = document.querySelector(".custom-menu");
 
             // Handle context menu (right-click)
-            document.addEventListener("contextmenu", (event) => {
-                event.preventDefault();
-                if (customMenu) {
-                    customMenu.style.display = "block";
-                    customMenu.style.top = `${event.pageY}px`;
-                    customMenu.style.left = `${event.pageX}px`;
-                }
-            });
+            // document.addEventListener("contextmenu", (event) => {
+            //     event.preventDefault();
+            //     if (customMenu) {
+            //         customMenu.style.display = "block";
+            //         customMenu.style.top = `${event.pageY}px`;
+            //         customMenu.style.left = `${event.pageX}px`;
+            //     }
+            // });
 
             // Hide custom menu on click
             document.addEventListener("click", () => {
@@ -78,7 +78,7 @@
                         endDate: "10-09-2025",
                         interest: 800,
                         takenAmount: 3200,
-                        fineRate: 56
+                        fineRate: 50
                     },
                 ]
             }
@@ -172,7 +172,7 @@
                     const fine = daysOverdue * fineRate;
                     const duration = calculateDuration(loan.planDate, loan.endDate);
                     const repaymentMessage = daysOverdue >= 0 ? 
-                        `<center><p style="color: #ff0000; font-weight: bold; padding: 9px; border-radius: 0px; font-size: 13px; margin: 0px; border-left: solid 4px; background: #ff00001c;">YOU HAVE TO RETURN THIS AMOUNT </p></center>` : 
+                        `<center><p style="color: white; font-weight: bold; padding: 9px; border-radius: 2px; font-size: 13px; margin: 0px; border-left: solid 4px; background: red;">YOU HAVE TO RETURN THIS AMOUNT </p></center>` : 
                         '';
                     return `
                         <div class="loan-item">
@@ -192,7 +192,11 @@
                 accountDetails.innerHTML = `
                     <div style="margin: 15px;" class="borrowtop" style="background-color: #212121;">
                         <h2 style="text-align: center; margin: -5px; padding: 0px; font-size: 10px; color: #00a9ff;">Borrower</h2>
-                        <p style="text-align: center; display: block; font-size: 16px; margin: 0px; padding: 0px;"><strong>${user.name}</strong></p>
+                        <p style="text-align: center; display: block; font-size: 16px; margin: 0px; padding: 0px;    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;"><strong>${user.name}</strong> <img width="15px" src="https://static-cdn.jtvnw.net/badges/v1/d12a2e27-16f6-41d0-ab77-b780518f00a3/3" alt=""></p>
                     </div>   
                     ${loansHTML}
                 `;
