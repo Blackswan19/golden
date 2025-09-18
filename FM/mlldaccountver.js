@@ -1,15 +1,15 @@
  document.addEventListener("DOMContentLoaded", () => {
             const customMenu = document.querySelector(".custom-menu");
 
-            // Handle context menu (right-click)
-            // document.addEventListener("contextmenu", (event) => {
-            //     event.preventDefault();
-            //     if (customMenu) {
-            //         customMenu.style.display = "block";
-            //         customMenu.style.top = `${event.pageY}px`;
-            //         customMenu.style.left = `${event.pageX}px`;
-            //     }
-            // });
+            Handle context menu (right-click)
+            document.addEventListener("contextmenu", (event) => {
+                event.preventDefault();
+                if (customMenu) {
+                    customMenu.style.display = "block";
+                    customMenu.style.top = `${event.pageY}px`;
+                    customMenu.style.left = `${event.pageX}px`;
+                }
+            });
 
             // Hide custom menu on click
             document.addEventListener("click", () => {
@@ -398,3 +398,4 @@
         document.getElementById("passwordInput")?.addEventListener("keypress", function(event) {
             if (event.key === "Enter") authenticateUser();
         });
+
