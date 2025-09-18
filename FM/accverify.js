@@ -85,7 +85,7 @@ const passwords = {
                 endDate: "18-10-2025(Extanded to 30 days)",
                 interest: 1250,
                 takenAmount: 5000,
-                takenFrom: "MLLD Offer",
+                takenFrom: "MLLD",
                 fineRate: 6
             },
             {
