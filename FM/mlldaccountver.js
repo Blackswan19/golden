@@ -1,7 +1,6 @@
  document.addEventListener("DOMContentLoaded", () => {
             const customMenu = document.querySelector(".custom-menu");
 
-            Handle context menu (right-click)
             document.addEventListener("contextmenu", (event) => {
                 event.preventDefault();
                 if (customMenu) {
@@ -398,4 +397,3 @@
         document.getElementById("passwordInput")?.addEventListener("keypress", function(event) {
             if (event.key === "Enter") authenticateUser();
         });
-
