@@ -204,18 +204,22 @@
             margin-top: 10px;
         }
         .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            padding: 65px 0px 0px 20px;
-            line-height: 30px;
-            overflow-y: scroll;
-            z-index: 10000000;
-            scrollbar-width: none;
+           display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    padding: 65px 0px 0px 20px;
+    line-height: 30px;
+    overflow-y: scroll;
+    z-index: 10000000;
+    background-image: url(headbg.png);
+    background-size: auto;
+    scrollbar-width: none;
+    background-repeat: no-repeat;
+    background-position: center;
         }
         body.light .modal {
             background-color: #ffffff;
@@ -388,8 +392,8 @@
     max-width: 630px;
     border-radius: 0px;
     border: solid 1.5px #383838;
-    background-image: url('headbg.png');
-    background-size: cover;
+    /* background-image: url('headbg.png');
+    background-size: cover; */
         }
         
          body.curvy .amount-buttons {
