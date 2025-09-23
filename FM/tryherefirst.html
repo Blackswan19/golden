@@ -405,7 +405,7 @@
             background-color: #434343;
     color: lightgray;
     border: none;
-   padding: 12px 12px 12px 50px;
+   padding: 12px 12px 12px 100px;
     font-size: 12.5px;
     border-radius: 0px;
     cursor: pointer;
@@ -1610,7 +1610,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         user.loans.forEach((loan, index) => {
             const btn = document.createElement("button");
             btn.className = "amount-btn";
-            btn.innerHTML = `₹${loan.takenAmount}<span class="amount-id"> ${index + 1}</span>`;
+            btn.innerHTML = `₹${loan.takenAmount}<span class="amount-id"> Amount ${index + 1}</span>`;
             btn.onclick = () => displayLoanDetails(loan, index);
             amountButtons.appendChild(btn);
         });
