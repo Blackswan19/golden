@@ -1,732 +1,1109 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MLending</title>
+    <title>Verify my account</title>
+    <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/736x/68/3d/8f/683d8f58c98a715130b1251a9d59d1b9.jpg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Anta&family=Audiowide&family=Braah+One&family=Cardo:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dongle&family=Dosis:wght@200..800&family=DotGothic16&family=Goldman:wght@400;700&family=Gruppo&family=Handjet:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mandali&family=Michroma&family=Oxanium:wght@200..800&family=Pixelify+Sans:wght@400..700&family=Poiret+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&family=Sarpanch:wght@400;500;600;700;800;900&family=Share+Tech&family=Space+Grotesk:wght@300..700&family=Stalinist+One&family=VT323&family=Zen+Dots&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        :root {
+            --user-accent: #00aaff;
+            --telegram-accent: #0088cc;
+        }
+        * {
+            -webkit-tap-highlight-color: transparent;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 20px;
+        }
+        *::-webkit-scrollbar{
+            display: none;
+        }
+       *::-webkit-scrollbar {
+            width: 8px;
+        }
 
-      :root {
-        --user-accent: #00aaff;
-        --telegram-accent: #0088cc;
-      }
+        *::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
 
-      * {
-        font-family: "Poppins", serif;
-        -webkit-tap-highlight-color: transparent;
-        scrollbar-width: thin;
-        scrollbar-color: #696969 #131313;
-      }
+        *::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
 
-      body {
-        background-color: black;
-        color: #ffffff;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 25px;
-        line-height: 30px;
-        letter-spacing: 0.4px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-      }
+        *::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
 
-      body.light {
-        background-color: white;
-        color: #000000;
-      }
-
-      body.telegram-dark {
-        background-color: #111920;
-        color: #ffffff;
-      }
-
-      h1,
-      h2,
-      h3 {
-        font-weight: 500;
-        color: #00aaff;
-      }
-
-      body.light h1,
-      body.light h2,
-      body.light h3 {
-        color: #007aff;
-      }
-
-      body.telegram-dark h1,
-      body.telegram-dark h2,
-      body.telegram-dark h3 {
-        color: var(--telegram-accent);
-      }
-
-      body.my-own h1,
-      body.my-own h2,
-      body.my-own h3 {
-        color: var(--user-accent);
-      }
-
-      * {
-        -webkit-tap-highlight-color: transparent;
-      }
-
-      body {
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      .about {
-        padding: 15px;
-        top: 135px;
-        text-align: center;
-        max-width: 600px;
-        width: 100%;
-        border-radius: 0px;
-        /* Default sharp */
-        background: #181819;
-        position: relative;
-        margin: 8px 0px;
-        border: none;
-      }
-
-      body.light .about {
-        background: #f0f0f0;
-        border: none;
-      }
-
-      body.telegram-dark .about {
-        background: #1d2733;
-      }
-
-      body.my-own .about {
-        background: #161616;
-      }
-
-      body.curvy .about {
-        border-radius: 25px;
-        /* Curvy style */
-      }
-
-      body.curvy .about .applybtn {
-        border-radius: 20px;
-        /* Curvy style for applybtn inside about */
-      }
-
-      a {
-        color: #00aaff;
-        text-decoration: none;
-      }
-
-      a:hover {
-        text-decoration: underline;
-        color: #ffffff;
-      }
-
-      body.light a {
-        color: #0066cc;
-      }
-
-      body.telegram-dark a {
-        color: var(--telegram-accent);
-      }
-
-      body.my-own a {
-        color: var(--user-accent);
-      }
-
-      body.my-own a:hover {
-        color: #ffffff;
-      }
-
-      .button {
-        display: inline-block;
-        background-color: transparent;
-        color: #b6b6b6;
-        padding: 1px 20px;
-        text-decoration: none;
-        margin: 5px;
-        font-size: 14px;
-        border: solid 1.5px #b6b6b6;
-        border-radius: 0px;
-        /* Default sharp */
-        font-weight: 500;
-      }
-
-      .button:hover {
-        text-decoration: none;
-        background-color: white;
-        color: black;
-        border: solid 1.5px white;
-      }
-
-      body.light .button {
-        color: #007aff;
-        border-color: #007aff;
-        background: transparent;
-      }
-
-      body.light .button:hover {
-        background-color: #007aff;
-        color: #fff;
-        border-color: #007aff;
-      }
-
-      body.telegram-dark .button {
-        color: var(--telegram-accent);
-        border-color: var(--telegram-accent);
-        background: transparent;
-      }
-
-      body.telegram-dark .button:hover {
-        background-color: var(--telegram-accent);
-        color: #fff;
-        border-color: var(--telegram-accent);
-      }
-
-      body.my-own .button {
-        color: var(--user-accent);
-        border-color: var(--user-accent);
-      }
-
-      body.my-own .button:hover {
-        background-color: var(--user-accent);
-        color: #000;
-        border-color: var(--user-accent);
-      }
-
-      body.curvy .button {
-        border-radius: 100px;
-        /* Curvy style */
-      }
-
-      ul {
-        list-style-type: none;
-        padding: 0;
-      }
-
-      ul li {
-        margin-bottom: 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      p {
-        color: #959595;
-        font-size: 12px;
-        font-weight: 400;
-      }
-
-      body.light p {
-        color: #666666;
-      }
-
-      body.telegram-dark p {
-        color: #a0a9b2;
-      }
-
-      body.my-own p {
-        color: #959595;
-      }
-
-      li {
-        font-size: 12px;
-        color: #a9a9a9;
-      }
-
-      body.light li {
-        color: #666666;
-      }
-
-      body.telegram-dark li {
-        color: #a0a9b2;
-      }
-
-      body.my-own li {
-        color: #a9a9a9;
-      }
-
-      .copy-icon {
-        cursor: pointer;
-        background-color: #333;
-        color: white;
-        border-radius: 4px;
-        padding: 5px 10px;
-        font-size: 1.2em;
-      }
-
-      .copy-icon:hover {
-        background-color: #444;
-      }
-
-      .logo {
-        padding: 30px 0px 0px 0px;
-    text-align: center;
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: black;
+            color: #e0e0e0;
+            letter-spacing: 0.5px;
+        }
+        body.light {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        body.telegram-dark {
+            background-color: #111920;
+            color: #ffffff;
+        }
+        body.my-own {
+            background-color: rgb(10 10 10);
+            color: #e0e0e0;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(10 10 10);
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+        body.light .header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        body.telegram-dark .header {
+            background-color: #242f3e;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        body.my-own .header {
+            background-color: rgb(10 10 10);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        .header h2 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-left: 10px;
+            color: #00aaff;
+        }
+        body.light .header h2 {
+            color: #0066cc;
+        }
+        body.telegram-dark .header h2 {
+            color: var(--telegram-accent);
+        }
+        body.my-own .header h2 {
+            color: var(--user-accent);
+        }
+        #passwordContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            width: 100%;
+            text-align: center;
+            line-height: 15px;
+            position: fixed;
+        }
+        #userPassword {
+            font-size: 16px;
+            border: solid 1.5px transparent;
+            background: rgb(44 44 44);
+            color: #fff;
+            padding: 8px 25px;
+            text-align: center;
+            width: 90%;
+            outline: none;
+            max-width: 280px;
+            margin: 26px;
+            border-radius: 0px; /* Default sharp */
+        }
+        body.curvy #userPassword {
+            border-radius: 10px; /* Curvy style */
+        }
+        body.light #userPassword {
+            background: #f0f0f0;
+            color: #000000;
+        }
+        body.telegram-dark #userPassword {
+            background: #2a3545;
+            color: #ffffff;
+        }
+        body.my-own #userPassword {
+            background: rgb(33 33 33);
+            color: #fff;
+        }
+        #userPassword:focus {
+            background: #3a3a3a;
+        }
+        body.light #userPassword:focus {
+            background: #e0e0e0;
+        }
+        body.telegram-dark #userPassword:focus {
+            background: #3a4b5e;
+        }
+        body.my-own #userPassword:focus {
+            background: #3a3a3a;
+        }
+        #submitBtn {
+            background-color: #00aaff;
+            color: #000000;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+            padding: 7.5px 30px;
+            font-weight: 500;
+            border-radius: 0px; /* Default sharp */
+        }
+        body.curvy #submitBtn {
+            border-radius: 10px; /* Curvy style */
+        }
+        body.light #submitBtn {
+            background-color: #00aeff;
+            color: #ffffff;
+        }
+        body.telegram-dark #submitBtn {
+            background-color: var(--telegram-accent);
+            color: #ffffff;
+        }
+        body.my-own #submitBtn {
+            background-color: var(--user-accent);
+            color: #000000;
+        }
+        a {
+            color: #848484;
+            text-decoration: none;
+        }
+        body.light a {
+            color: #0066cc;
+        }
+        body.telegram-dark a {
+            color: var(--telegram-accent);
+        }
+        body.my-own a {
+            color: var(--user-accent);
+        }
+        #error-message {
+            color: #ff1c1c;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            padding: 65px 0px 0px 20px;
+            line-height: 30px;
+            overflow-y: scroll;
+            z-index: 10000000;
+            scrollbar-width: none;
+        }
+        body.light .modal {
+            background-color: #ffffff;
+        }
+        body.telegram-dark .modal {
+            background-color: #111920;
+        }
+        body.my-own .modal {
+            background-color: rgb(10 10 10);
+        }
+        .modal h2 {
+            color: #e0e0e0;
+            font-weight: 500;
+        }
+        body.light .modal h2 {
+            color: #000000;
+        }
+        body.telegram-dark .modal h2 {
+            color: #ffffff;
+        }
+        body.my-own .modal h2 {
+            color: #e0e0e0;
+        }
+        .modal h3 {
+            color: #00aeff;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 25px 0;
+        }
+        body.telegram-dark .modal h3 {
+            color: var(--telegram-accent);
+        }
+        body.my-own .modal h3 {
+            color: var(--user-accent);
+        }
+        .modal p {
+            color: #a0a0a0;
+            font-size: 14px;
+            font-weight: 400;
+            margin: 10px 0;
+            transition: color 0.3s ease;
+        }
+        body.light .modal p {
+            color: #434343;
+        }
+        body.telegram-dark .modal p {
+            color: #a0a9b2;
+        }
+        body.my-own .modal p {
+            color: #a0a0a0;
+        }
+        .close-btn {
+                position: fixed;
+    top: 20px;
+    left: 12px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 11;
+    background: #696969;
+    padding: 5px 12px;
+    border-radius: 0px;
+    outline: none;
+    border: none;
+    backdrop-filter: blur(5px);
+        }
+        body.curvy .close-btn {
+            border-radius: 50px; /* Curvy style */
+        }
+        body.my-own .close-btn {
+            background: #1d1d1d;
+            color: #e0e0e0;
+            border: solid 1.4px var(--user-accent);
+        }
+        i {
+            margin-right: 8px;
+        }
+        .logo {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 11;
+        }
+        .logo img {
+            width: 40px;
+            border-radius: 50%;
+        }
+        body.curvy .logo img {
+            border-radius: 50%; /* Curvy style (unchanged as original is 50%) */
+        }
+        .logout-btn {
+            position: fixed;
+            top: 55px;
+            right: 5px;
+            background-color: #1d1d1d;
+            color: #e0e0e0;
+            border: none;
+            padding: 5px 12px;
+            font-size: 12px;
+            border-radius: 0px; /* Default sharp */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            z-index: 11;
+        }
+        body.curvy .logout-btn {
+            border-radius: 15px; /* Curvy style */
+        }
+        body.light .logout-btn {
+            background-color: #f0f0f0;
+            color: #000000;
+        }
+        body.telegram-dark .logout-btn {
+            background-color: #2a3545;
+            color: #ffffff;
+        }
+        body.my-own .logout-btn {
+            background-color: #1d1d1d;
+            color: #e0e0e0;
+            border: solid 1.4px var(--user-accent);
+        }
+        .logout-btn a {
+            color: #e0e0e0;
+            text-decoration: none;
+        }
+        body.light .logout-btn a {
+            color: #000000;
+        }
+        body.telegram-dark .logout-btn a {
+            color: #ffffff;
+        }
+        body.my-own .logout-btn a {
+            color: var(--user-accent);
+        }
+        .logout-btn:hover {
+            background-color: #3a3a3a;
+        }
+        body.light .logout-btn:hover {
+            background-color: #e0e0e0;
+        }
+        body.telegram-dark .logout-btn:hover {
+            background-color: #3a4b5e;
+        }
+        body.my-own .logout-btn:hover {
+            background-color: #3a3a3a;
+        }
+        .loan-entry {
+            padding: 10px 0px;
+            margin-bottom: 20px;
+            border-bottom: none;
+            width: 98%;
+            padding-bottom: 0px;
+            max-width: 600px;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        .amount-buttons {
+            display: flex
+;
+    gap: 20px;
+    margin: -10px 10px 20px -13px;
+    overflow-x: scroll;
+    white-space: nowrap;
+    position: sticky;
+    top: 0px;
+    background-color: #121212cc;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    padding: 10px 21px 20px 21px;
+    max-width: 630px;
+    border-radius: 0px;
+    border: solid 1.5px #383838;
+        }
+        
+         body.curvy .amount-buttons {
+            border-radius: 26px; 
+        }
+        body.light .amount-buttons {
+           background-color: #e8e8e866;
+    border: solid 1.5px #ebebf0;
+        }
+        body.telegram-dark .amount-buttons {
+            background-color: #212d3ba6;
+    border: solid 1.5px #445e7c61;
+        }
+        .amount-btn {
+            background-color: #434343;
+    color: lightgray;
+    border: none;
+   padding: 12px 15px 12px 100px;
+    font-size: 12.5px;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+    margin-top: 10px;
     display: flex
 ;
-    z-index: 100;
     justify-content: center;
-    /* background: #1f1f20; */
-    background-color: #00000082;
-    width: 45%;
-    position: fixed;
-    top: 0px;
-    font-size: 11px;
-    height: 55px;
-    backdrop-filter: blur(10px);
+    align-items: center;
+    font-weight: 400;
+        }
+        body.curvy .amount-btn {
+            border-radius: 50px; /* Curvy style */
+        }
+        body.light .amount-btn {
+            background-color: #ebebf0;
+            color: #323232;
+        }
+        body.telegram-dark .amount-btn {
+            background-color: #3d4a5c;
+            color: #ffffff;
+        }
+        body.my-own .amount-btn {
+            background-color: rgb(33 33 33);
+            color: #e0e0e0;
+            border: solid 1.4px var(--user-accent);
+        }
+        .amount-btn:hover {
+            background-color: rgb(92, 92, 92);
+            color: rgb(255, 255, 255);
+        }
+        body.light .amount-btn:hover {
+            background-color: #dadada;
+        }
+        body.telegram-dark .amount-btn:hover {
+            background-color: #425975;
+        }
+        body.my-own .amount-btn:hover {
+            background-color: #434343;
+        }
+        .amount-btn.active {
+            background-color: #00aef8;
+            color: rgb(45, 45, 45);
+        }
+        body.light .amount-btn.active {
+            background-color: #00aeff;
+    color: white;
+        }
+        body.telegram-dark .amount-btn.active {
+            background-color: var(--telegram-accent);
+        }
+        body.my-own .amount-btn.active {
+            background-color: var(--user-accent);
+        }
+        .amount-btn .amount-id {
+            position: absolute;
+    left: 6px;
+    font-size: 12px;
+    color: #00aeff;
+    background-color: rgb(10 10 10);
     border-radius: 0px;
-    border-bottom: solid 2.5px #b0b0b091;
-    background-image: url(headbg.png);   
-     background-size: cover;
-    background-repeat: no-repeat;
-    background-blend-mode: hard-light;
-      }
-
-      body.curvy .logo {
-        border-radius: 0px 0px 30px 30px;
-        /* Curvy style */
-      }
-
-      body.light .logo {
-        border-bottom-color: #d2d2d2;
-        background: #f0f0f08e;
-        background-image: url('headbg.png');
-        background-size: 100%;
-        background-repeat: no-repeat;
-        background-blend-mode: hard-light;
-
-      }
-
-      body.telegram-dark .logo {
-        border-bottom-color: var(--telegram-accent);
-        background: #212d3b82;
-        background-image: url('headbg.png');
-        background-size: 100%;
-        background-repeat: no-repeat;
-        background-blend-mode: hard-light;
-      }
-
-      @media (max-width: 600px) {
-        body {
-          padding: 20px;
+    border: none;
+    padding: 6px 14px;
         }
-
-        .logo {
-          width: -webkit-fill-available;
-          border-bottom: solid 2.5px #b0b0b091;
-              background-size: 100%;
-
+        body.curvy .amount-btn .amount-id {
+            border-radius: 50px; /* Curvy style */
         }
-      }
-
-      .loading-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        z-index: 1000;
-        opacity: 1;
-        transition: opacity 0.5s ease;
-      }
-
-      .loading-overlay.hidden {
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      .loading-logo {
-        width: 225px;
-        height: auto;
-        border-radius: 100px;
-      }
-
-      .loading-dots {
-        display: flex;
-        position: fixed;
-        bottom: 100px;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .dot {
-        width: 10px;
-        height: 10px;
-        background-color: #006aff;
-        border-radius: 50%;
-        margin: 0 5px;
-        animation: bounceDot 1s ease-in-out infinite;
-      }
-
-      .dot:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-
-      .dot:nth-child(3) {
-        animation-delay: 0.4s;
-      }
-
-      @keyframes bounceDot {
-        0% {
-          transform: translateY(0);
+        body.light .amount-btn .amount-id {
+            color: #0066cc;
+            background-color: #ffffff;
+                border: solid 1px #ebebf0;
         }
-
-        50% {
-          transform: translateY(-15px);
+        body.telegram-dark .amount-btn .amount-id {
+            color: var(--telegram-accent);
+            background-color: #18222d;
+            border: solid 1px #3d4a5c;
         }
-
-        100% {
-          transform: translateY(0);
+        body.my-own .amount-btn .amount-id {
+            color: var(--user-accent);
+            background-color: rgb(10 10 10);
         }
-      }
-
-      .applybtn {
-        background: rgb(105 105 105);
-        color: #ffffff;
-        border: none;
-        border-radius: 0px;
-        /* Default sharp */
-        padding: 8px 21px;
-        font-weight: 400;
-        border: none;
-      }
-.applybtn:hover{
-      padding: 9px 22px;
-}
-      body.curvy .applybtn {
-        border-radius: 13px;
-        /* Curvy style */
-      }
-
-      body.light .applybtn {
-        color: white;
-        filter: none;
-      }
-
-      body.telegram-dark .applybtn {
-        background: #696969;
-        color: #ffffff;
-        filter: none;
-      }
-
-      body.my-own .applybtn {
-        background: rgb(19, 19, 19);
-        color: #ffffff;
-      }
-
-      .applybtn:hover {
-        text-decoration: none;
-      }
-
-      .theme-button {
-        position: fixed;
-        bottom: 47.5px;
-        right: 20px;
-        background-color: #696969;
-        color: #fff;
-        border: none;
-        border-radius: 50%;
-        width: 45px;
-        height: 45px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 20px;
-        z-index: 500;
-        font-weight: 100;
-        transition: transform 0.3s ease, background-color 0.3s ease;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      .theme-button.visible {
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      .theme-button.active {
-        transform: rotate(90deg);
-      }
-
-      .theme-popup {
-        position: fixed;
-        bottom: 145px;
-        right: 20px;
-        background-color: #4f4f4f;
-        border-radius: 18px;
-        /* Default sharp */
-        padding: 7px 8px;
-        display: none;
-        flex-direction: column;
-        z-index: 999;
-        transform: translateY(20px);
-        opacity: 0;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-        backdrop-filter: blur(5px);
-      }
-
-      body.curvy .theme-popup {
-        border-radius: 18px;
-        /* Curvy style */
-      }
-
-      .theme-popup.open {
-        display: flex;
-        transform: translateY(0);
-        opacity: 1;
-      }
-
-      .theme-option {
-        background-color: transparent;
-        color: #fff;
-        border: none;
-        padding: 6px 15px;
-        cursor: pointer;
-        font-size: 14px;
-        transition: background-color 0.3s ease;
-      }
-
-      .color-picker {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .color-picker input[type="color"] {
-        width: 30px;
-        height: 30px;
-        border: none;
-        padding: 0;
-        background: transparent;
-        cursor: pointer;
-      }
-
-      .style-button {
-        position: fixed;
-        bottom: 104px;
-        right: 30px;
-        background-color: #696969;
-        color: #fff;
-        border: none;
-        border-radius: 50%;
-        width: 25px;
-        height: 25px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 10px;
-        z-index: 998;
-        font-weight: 400;
-        transition: transform 0.3s ease, background-color 0.3s ease;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      .style-button.visible {
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      .container {
-        position: fixed;
-        bottom: 0px;
-        width: 95%;
-        display: flex;
-        justify-content: center;
-        filter: blur(40px);
-        z-index: 500;
-      }
-
-      .sirens {
-        width: 200px;
-        height: 40px;
-        float: left;
-      }
-
-      #red_siren {
-        border-radius: 50px 0px 0px 50px;
-        background-color: transparent;
-        animation: red_light 500ms infinite ease-in-out;
-        z-index: 100;
-      }
-
-      #blue_siren {
-        border-radius: 0px 50px 50px 0px;
-        background-color: transparent;
-        animation: blue_light 500ms infinite ease-in-out;
-        z-index: 100;
-      }
-
-      #white_siren {
-        background-color: blue;
-        box-shadow: 0px 0px 10px orangered, 0px 0px 10px orangered, 0px 0px 50px orangered, 0px 0px 80px orangered;
-      }
-
-      @keyframes red_light {
-        from {
-          background-color: orangered;
-          box-shadow: 0px 0px 10px orangered, 0px 0px 20px orangered, 0px 0px 30px orangered, 0px 0px 30px orangered, 0px 0px 50px orangered, 0px 0px 60px orangered, 0px 0px 70px orangered, 0px 0px 80px orangered, 0px 0px 90px orangered, 0px 0px 100px orangered, 0px 0px 120px orangered;
-        }
-
-        to {
-          background-color: red;
-        }
-      }
-
-      @keyframes blue_light {
-        from {
-          background-color: rgb(255, 221, 0);
-        }
-
-        to {
-          background-color: rgb(255, 221, 0);
-          box-shadow: 0px 0px 10px rgb(255, 221, 0), 0px 0px 20px rgb(255, 221, 0), 0px 0px 30px rgb(255, 221, 0), 0px 0px 40px rgb(255, 221, 0), 0px 0px 50px rgb(255, 221, 0), 0px 0px 60px rgb(255, 221, 0), 0px 0px 70px rgb(255, 221, 0), 0px 0px 80px rgb(255, 221, 0), 0px 0px 120px rgb(255, 221, 0);
-        }
-      }
-
-      .issuebtn button {
-        width: 100%;
-        padding: 10px;
-        background: red;
-        color: white;
-        border: none;
-        font-size: 16px;
-        border-radius: 0px;
-        cursor: pointer;
-      }
-
-      body.curvy .issuebtn button {
-        border-radius: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="loading-overlay" id="loadingOverlay">
-      <img src="https://i.ibb.co/Gf9VCKnZ/MFI-LOGO.png" alt="Loading Doughnut" class="loading-logo">
-      <div class="loading-dots">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-      </div>
-    </div>
-    <div class="logo">
-      <p>
-        <h1>MLending</h1> By Myootive
-      </p>
-
-          <!-- <div class="light">
-            <img style="    position: fixed;
-        top: 3px;
-        left: 5px;
-        width: 58px;
-        rotate: -44deg;" src="https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_f1337249b2ac4482ad1a9318bf2018f2/default/dark/3.0" alt="">
-          </div>
-          <div class="light">
-            <img style="position: fixed;
-        top: -1px;
-        right: 5px;
-        width: 58px;
-        rotate: 50deg;" src="https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_f1337249b2ac4482ad1a9318bf2018f2/default/dark/3.0" alt="">
-          </div>
-          -->
-
-    </div>
-    <div class="about" style=" align-items: center; padding: 15px; max-width: 600px; ">
-      <a href="https://mfi0212.github.io/MFI/starpre" style="color: white;text-decoration: none;cursor: pointer;">
-        <button class="applybtn" style="border: none; outline: none; color: white; background-image: linear-gradient(45deg, rgb(255 169 0), rgb(255 0 198), #5b5bff, #56ffcc); width: 100%; font-size: 15px; cursor: pointer; padding: 10px; margin-bottom: 10px; ">Explore Premium</button>
-      </a>
-      <br>
-      <h2 style="text-align: center; font-size: 11px; margin: 0px; font-weight: 400; opacity: 80%; color: revert;">Sponsored</h2>
-      <a href="https://mfi0212.github.io/swan/offer/programs">
-        <img class="applybtn" style="width: 100%; padding: 0px; max-width: 400px; margin-bottom: -9px; opacity: 80%; margin-top: 10px;" src="addvertisement.png" alt="">
-      </a>
-      <br>
-    </div>
-    <div class="about">
-      <h2>Wait few hours!</h2>
-      <p>To provide the amount, we need to collect the amount first. It takes few hours to arrange the amount, so be patient during this time to get the amount.</p>
-    </div>
-    <div class="about" style="padding: 20px 15px; text-align: center;">
-      <h2 style="margin: 0px;">Check details</h2>
-      <p>Click here to check details like interest and etc...</p>
-      <a href="https://blackswan19.github.io/golden/FM/accverify" class="button">Check my account</a>
-    </div>
-    <div class="about" style="text-align: left;">
-      <h3 style="padding: 0px 25px;">Follow these steps..!</h3>
-      <ol>
-        <li>Click on "Take money"</li>
-        <li>Fill out the form.</li>
-        <li>Wait a few hours.</li>
-        <li>Get funds from your coordinator.</li>
-        <li>Check details like interest and etc... in "My Account."</li>
-        <li>Repay on time.</li>
-        <li>Are you late to return? Say 2 days before we will extend the date (or) Extra fees apply.</li>
-        <li>Pay on time for future loans.</li>
-      </ol>
-    </div>
-    <div class="about" style="padding: 20px 15px; text-align: center;">
-      <h2 style="margin: 0px;">Any issue</h2>
-      <p>Click here to submit the issue you are facing....</p>
-      <div class="issuebtn">
-        <a target="_blank" href="https://forms.gle/RzTJ8W9bwmm8DVj2A">
-          <button>I have an issue here.!</button>
-        </a>
-      </div>
-    </div>
-    <div class="about" style="padding: 20px 15px; text-align: center;">
-      <h2 style="margin: 0px;">Borrow limit</h2>
-      <p>Click here to take the amounts below ₹5,000....</p>
-      <a href="https://blackswan19.github.io/golden/FM/mlld" class="button">MLLD site</a>
-    </div>
-    <div class="about" style="padding-bottom: 100px;">
-      <h2>I'm late</h2>
-      <p>If you are <span class="highlight">late in returning the amount</span>, the interest will <span class="highlight">automatically increased for every 2,3 days based on the amount</span>. </p>
-      <p>Contact us if you think you'll be late so we can help you.</p>
-    </div>
-    <footer>
-      <p style="font-size: 10px; padding: 10px; text-align: center;">
-        <a style="text-decoration: none; color: white;">By Myootive</a>
-      </p>
-    </footer>
-    <div class="applybtn" style="text-align: center; position:fixed; bottom: 47px;">
-      <a style="color: white;text-decoration: none;" onclick="alert('We are redirecting you to taking form.')" href="https://mfi0212.github.io/MFI/takemoney">Take money</a>
-    </div>
-    <button class="theme-button" id="themeButton">
-      <i class="fa-solid fa-gear"></i>
-      <i class="fa-solid fa-xmark" style="display: none;"></i>
-    </button>
-    <div class="cursebtn">
-        <button class="style-button" id="styleButton">S</button>
-    </div>
-    <div class="theme-popup" id="themePopup">
-      <span style="color: #00aaff; font-weight: 500; background: #000000; padding: 0px 15px; border-radius: 10px; text-align: center; font-size: 14px;color: #00aaff; font-weight: 600;">Select theme</span>
-      <button class="theme-option" onclick="setTheme('dark')">Dark</button>
-      <button class="theme-option" onclick="setTheme('light')">Light</button>
-      <button class="theme-option" onclick="setTheme('telegram-dark')">Classic</button>
-      <!-- <div class="theme-option color-picker"><span style="color: #00aaff;">Themes</span><input type="color" id="userAccentColor" value="#00aaff" onchange="setCustomTheme()"></div> -->
-    </div>
-    <style>
-     .date-container {
+        .notice {
+            font-weight: 200;
+            font-size: 12px;
+            line-height: 20px;
             position: fixed;
-    top: 110px;
+            bottom: 60px;
+            color: #ffffffd4;
+            padding: 10px;
+            border: solid 1.4px #9595954d;
+            border-radius: 0px; /* Default sharp */
+            width: 90%;
+            max-width: 400px;
+        }
+        body.curvy .notice {
+            border-radius: 10px; /* Curvy style */
+        }
+        body.light .notice {
+            color: #666666;
+            border-color: #9595954d;
+        }
+        body.telegram-dark .notice {
+            color: #a0a9b2;
+            border-color: #9595954d;
+        }
+        body.my-own .notice {
+            color: #ffffffd4;
+            border: solid 1.4px var(--user-accent);
+        }
+        .powered-by {
+            position: fixed;
+            top: 11px;
+            font-size: 10px;
+            color: #000000;
+            z-index: 1000;
+            background: #ffffff;
+            text-align: center;
+            padding: 6px 15px;
+            display: none;
+            border-radius: 0px; /* Default sharp */
+        }
+        body.curvy .powered-by {
+            border-radius: 8px; /* Curvy style */
+        }
+        body.light .powered-by {
+            background: #f0f0f0;
+        }
+        body.telegram-dark .powered-by {
+            background: #2a3545;
+        }
+        body.my-own .powered-by {
+            background: #ffffff;
+        }
+        .membership-type {
+            color: #00aeff;
+            font-size: 14px;
+            font-weight: 400;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        body.light .membership-type {
+            color: #0066cc;
+        }
+        body.telegram-dark .membership-type {
+            color: var(--telegram-accent);
+        }
+        body.my-own .membership-type {
+            color: var(--user-accent);
+        }
+        .membership-icon {
+            width: 18px;
+            height: 18px;
+        }
+        .user-icon {
+                  width: 25px;
+    height: 25px;
+    border-radius: 6px;
+    padding: 5px;
+        border: solid 1.5px #ababab33;
+    background: #6f6f6f1f;
+        }
+        p#membershipType {
+            font-size: 11px;
+            color: #ff66f9;
+            padding: 0px;
+            font-weight: 300;
+        }
+        .profile-container {
+              max-width: 620px;
+    width: 100%;
+    padding: 10px;
+        }
+        .profile-picture {
+                width: 90px;
+    height: 90px;
+    border-radius: 5px;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+            font-weight: 900;
+            color: white;
+            background-size: cover;
+            background-position: center;
+            margin: 0px auto;
+                position: relative;
+    left: -10px;
+        }
+        body.curvy .profile-picture {
+            border-radius: 50%; /* Curvy style */
+        }
+        .twoOptions {
+         display: flex
+;
+    gap: 17px;
+    width: 103%;
+    margin-left: -15px;
+}
+        .amounts-btn {
+           background-color: #43434378;
+    color: lightgray;
+    border: none;
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 0px;
+    cursor: pointer;
+    margin-top: auto;
+    display: flex
+;
+    flex-direction: column;
+    gap: 3px;
+    width: 35%;
+        }
+        body.curvy .amounts-btn {
+            border-radius: 30px; /* Curvy style */
+        }
+        body.light .amounts-btn {
+            background-color: #ebebf0;
+            color: #323232;
+        }
+        body.telegram-dark .amounts-btn {
+            background-color: #2a3545;
+            color: lightgray;
+        }
+        body.my-own .amounts-btn {
+            background-color: #ffffff;
+            border: solid 1.4px var(--user-accent);
+        }
+        .amounts-btn:hover {
+            background-color: #565656b3;
+            color: white;
+        }
+        body.light .amounts-btn:hover {
+            background-color: #dadada;
+        }
+        body.telegram-dark .amounts-btn:hover {
+            background-color: #3a4b5e;
+        }
+        body.my-own .amounts-btn:hover {
+            background-color: #ffffffd4;
+        }
+        .amounts-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 10000001;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+        }
+        .amounts-modal-content {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 0px; /* Default sharp */
+            width: 95%;
+            max-width: 400px;
+            color: #e0e0e0;
+            position: relative;
+            line-height: 42px;
+        }
+        body.curvy .amounts-modal-content {
+            border-radius: 30px; /* Curvy style */
+        }
+        body.light .amounts-modal-content {
+            background-color: #fcfcfd;
+            color: #5b5b5b;
+        }
+        body.telegram-dark .amounts-modal-content {
+            background-color: #242f3e;
+            color: #ffffff;
+        }
+        body.my-own .amounts-modal-content {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+        .amounts-close-btn {
+            position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #e0e0e0d4;
+    font-size: 30px;
+    cursor: pointer;
+    font-weight: 100;
+    background: #8080806e;
+    padding: 0px 12px;
+    border-radius: 0px;
+        }
+        body.curvy .amounts-close-btn {
+            border-radius: 30px; /* Curvy style */
+        }
+        body.light .amounts-close-btn {
+            color: #666666;
+        }
+        body.telegram-dark .amounts-close-btn {
+            color: #a0a9b2;
+        }
+        body.my-own .amounts-close-btn {
+            color: #e0e0e0d4;
+        }
+        span#userName {
+            color: white;
+        }
+        body.light span#userName {
+            color: #000000;
+        }
+        body.telegram-dark span#userName {
+            color: #ffffff;
+        }
+        body.my-own span#userName {
+            color: white;
+        }
+        span {
+            color: #00c6ff;
+        }
+        body.light span {
+            color: #00aeff;
+        }
+        body.telegram-dark span {
+            color: var(--telegram-accent);
+        }
+        body.my-own span {
+            color: var(--user-accent);
+        }
+        .reminder-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 10000002;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+        }
+        .reminder-modal-content {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 0px; /* Default sharp */
+            width: 90%;
+            max-width: 400px;
+            color: #e0e0e0;
+            position: relative;
+            line-height: 24px;
+            text-align: center;
+        }
+        body.curvy .reminder-modal-content {
+            border-radius: 30px; /* Curvy style */
+        }
+        body.light .reminder-modal-content {
+            background-color: #f0f0f0;
+            color: #000000;
+        }
+        body.telegram-dark .reminder-modal-content {
+            background-color: #242f3e;
+            color: #ffffff;
+        }
+        body.my-own .reminder-modal-content {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+        .reminder-close-btn {
+            color: white;
+            font-size: medium;
+            cursor: pointer;
+            font-weight: 400;
+            background: #008bd1;
+            padding: 5px 16px;
+            display: block;
+        }
+        body.light .reminder-close-btn {
+            color: white;
+        }
+        body.telegram-dark .reminder-close-btn {
+            color: white;
+        }
+        body.my-own .reminder-close-btn {
+            color: #e0e0e0d4;
+        }
+        .downsingle {
+    margin-top: 15px;
+}
+        .reminder-modal-content p {
+            color: #a8a8a8;
+            margin: 15px 0;
+            font-size: 13px;
+            font-weight: 400;
+        }
+        body.light .reminder-modal-content p {
+            color: #000000;
+        }
+        body.telegram-dark .reminder-modal-content p {
+            color: #ffffff;
+        }
+        body.my-own .reminder-modal-content p {
+            color: #ffffff;
+        }
+        .reminder-modal-content h3 {
+            color: #00aeff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        body.light .reminder-modal-content h3 {
+            color: #0066cc;
+        }
+        body.telegram-dark .reminder-modal-content h3 {
+            color: var(--telegram-accent);
+        }
+        body.my-own .reminder-modal-content h3 {
+            color: var(--user-accent);
+        }
+        .stars-display {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            color: #e0e0e0;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0px;
+            z-index: 11;
+            justify-content: center;
+            font-weight: 600;
+        }
+        body.light .stars-display {
+            color: #000000;
+        }
+        body.telegram-dark .stars-display {
+            color: #ffffff;
+        }
+        body.my-own .stars-display {
+            color: var(--user-accent);
+        }
+        hr {
+            background: #80808061;
+            width: 96%;
+            height: 1.5px;
+            border: none;
+            max-width: 400px;
+            outline: none;
+        }
+        .about {
+            padding: 15px;
+            text-align: center;
+            border-radius: 0px; /* Default sharp */
+            position: relative;
+            margin: 10px 0px 0px 0px;
+            border: none;
+            width: 98%;
+            background-color: #181819;
+            margin-left: -7px;
+        }
+        body.curvy .about {
+            border-radius: 25px; /* Curvy style */
+        }
+        body.light .about {
+            border: none;
+            background-color: #f0f0f0;
+        }
+        body.telegram-dark .about {
+            background: #1d2733;
+        }
+        body.my-own .about {
+            background: #161616;
+        }
+        .applybtn {
+            color: #ffffff;
+            border: none;
+            border-radius: 0px; /* Default sharp */
+            font-weight: 400;
+            border: none;
+        }
+        body.curvy .applybtn {
+            border-radius: 30px; /* Curvy style */
+        }
+        body.curvy .about .applybtn {
+            border-radius: 20px; /* Curvy style for applybtn inside about */
+        }
+        body.light .applybtn {
+            color: white;
+            filter: none;
+        }
+        body.telegram-dark .applybtn {
+            background: #0093ff;
+            color: #ffffff;
+            filter: none;
+        }
+        body.my-own .applybtn {
+            background: rgb(19, 19, 19);
+            color: #ffffff;
+        }
+        .applybtn:hover {
+            text-decoration: none;
+        }
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loading-logo {
+            width: 200px;
+            height: auto;
+            border-radius: 100px;
+        }
+        .loading-dots {
+            display: flex;
+            position: fixed;
+            bottom: 100px;
+            align-items: center;
+            justify-content: center;
+        }
+        .nameHead{
+                text-decoration: underline;
+        margin: 0px -6px;
+    font-weight: 900;
+    font-size: 12px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    max-width: 0%;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #006aff;
+            border-radius: 50%;
+            margin: 0 5px;
+            animation: bounceDot 1s ease-in-out infinite;
+        }
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes bounceDot {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        .theme-button {
+            position: fixed;
+            bottom: 47.5px;
+            right: 20px;
+            background-color: #696969;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 500;
+            font-weight: 100;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .theme-button.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .theme-button.active {
+            transform: rotate(90deg);
+        }
+        .theme-popup {
+            position: fixed;
+            bottom: 145px;
+            right: 20px;
+            background-color: #4f4f4f;
+            border-radius: 0px; /* Default sharp */
+            padding: 7px 8px;
+            display: none;
+            flex-direction: column;
+            z-index: 999;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        body.curvy .theme-popup {
+            border-radius: 18px; /* Curvy style */
+        }
+        .theme-popup.open {
+            display: flex;
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .theme-option {
+            background-color: transparent;
+            color: #fff;
+            border: none;
+            padding: 6px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        .color-picker {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .color-picker input[type="color"] {
+            width: 30px;
+            height: 30px;
+            border: none;
+            padding: 0;
+            background: transparent;
+            cursor: pointer;
+        }
+        .style-button {
+            position: fixed;
+            bottom: 104px;
+            right: 30px;
+            background-color: #696969;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 10px;
+            z-index: 998;
+            font-weight: 400;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .style-button.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .issuebtn button{
+            width: 100%;
+            position: relative;
+            left: -6px;
+            padding: 10px;
+            background: red;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 0px;
+            cursor:pointer;
+        }
+        body.curvy .issuebtn button{
+           border-radius: 10px;
+        }
+        @media(max-width:600px){
+            /* .amount-buttons {
+                padding: 15px 21px 21px 21px;
+            } */
+        }
+        .date-container {
+            position: fixed;
+    top: 20px;
+    right: 15px;
     height: 30px;
     overflow: hidden;
     user-select: none;
-    z-index: 0;
+    z-index: 1000;
     border-radius: 0px;
         background: #696969;
     
@@ -743,7 +1120,7 @@ body.curvy .date-container {
         }
 
         .date-text, .day-text {
-              font-size: 13px;
+                font-size: 13px;
     font-weight: 500;
     line-height: 30px;
     text-align: right;
@@ -761,7 +1138,21 @@ body.curvy .date-container {
             }
         }
     </style>
-    <div class="date-container">
+</head>
+<body>
+    <div id="passwordContainer">
+        <center><img style="width: 40px;
+    margin: 15px;" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/refs/heads/main/Objects/Old%20Key.webp" alt=""></center>
+        <h2 style="font-weight: 400; font-size: 20px;">Verify my account</h2>
+        <input type="text" id="userPassword" placeholder="Enter password" autocomplete="current-password">
+        <button id="submitBtn">Verify</button><br>
+        <p id="error-message"></p>
+        <div class="notice">
+            You should return the money before the due date, If not additional interest will be charged.
+        </div>
+    </div>
+    <div id="userInfoModal" class="modal">
+        <div class="date-container">
         <div style="color: white;font-weight: 300;" class="date-slider" id="main-slider">
             <div class="date-text"></div>
             <div class="day-text"></div>
@@ -773,111 +1164,214 @@ body.curvy .date-container {
             <div class="day-text"></div>
         </div>
     </div>
-<div class="container">
-      <div id="red_sirens" class="sirens"></div>
-      <div id="white_sirens" class="sirens"></div>
-      <div id="blue_sirens" class="sirens"></div>
-    </div>
-    <!-- <div>
-        <img style="    width: 100px;
+        <div class="downlog" style="display: flex
+;
+    justify-content: center;
     position: fixed;
-    bottom: 75px;
-    left: 36%;
-    filter: drop-shadow(0px 0px 5px #00000061);
-" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/refs/heads/main/Animals%20and%20Nature/Cow.webp" alt="running gif" width="150px">
-    </div> -->
-<script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const loadingOverlay = document.getElementById("loadingOverlay");
-        const themeButton = document.getElementById("themeButton");
-        const styleButton = document.getElementById("styleButton");
-        const themePopup = document.getElementById("themePopup");
-        const gearIcon = themeButton.querySelector(".fa-gear");
-        const xIcon = themeButton.querySelector(".fa-xmark");
+    bottom: 1px;
+    z-index: 1;
+    right: 15px;
+    font-size: 12px;">
+            <img style="position: fixed;
+            bottom: 24px;
+            right: 15px;
+            width: 10%;
+            max-width: 50px;
+            z-index: 10000;" src="https://raw.githubusercontent.com/goforbg/telegram-emoji-gifs/refs/heads/master/thunder.gif" alt=""> BS&MFI
+        </div>
+        <div class="close">
+            <button onclick="closeModal()" class="close-btn"><i class="fa-solid fa-chevron-left"></i>Back</button>
+        </div>
+        <a href="https://blackswan19.github.io/golden/FM/starspage">
 
-        setTimeout(() => {
-          loadingOverlay.classList.add("hidden");
-          themeButton.classList.add("visible");
-          styleButton.classList.add("visible");
-        }, 3000);
+        </a>
+        <h4 class="nameHead" style="color: gray;">Borrower</h4>
+        <div class="profile-container">
+            <div class="profile-picture" id="profilePicture"></div>
+            <div>
+                <p id="userNameContainer" style="font-size: 20px; display: flex; gap: 5px; justify-content: center; align-items: center;margin: 15px;">
+                    <span style="color: white;" id="userName"></span>
+                </p>
+                <div class="twoOptions">
+                    <button class="amounts-btn" onclick="showAmountsModal()">
+                    <i class="fa-solid fa-eye" style="margin-right: 2px;"></i> Amounts
+                    </button>
+                    <button class="amounts-btn" onclick="downloadAllLoans()">
+                        <i class="fa-solid fa-download" style="margin-right: 2px;"></i> Receipt
+                    </button>
+                    <button class="amounts-btn" style="padding: 5px;
+    display: flex
+;
+    gap: 0px;
+    margin-top: 0px;">
+                        <div style="display: flex
+;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1px;
+    font-size: 11px;">
+                            <i class="fa-solid fa-star" style="    margin-right: 5px;"></i><span style="    font-size: 14px;
+    font-weight: 900;" id="starCount"></span>
+                        </div> 
+                        Star
+                    </button>
+                </div>
+                <p id="membershipType" class="membership-type"></p>
+            </div>
+        </div>
+        <div class="amount-buttons " id="amountButtons"></div>
+        <div class="about" style="align-items: center; padding: 13px; max-width: 615px;">
+            <a href="https://mfi0212.github.io/MFI/starpre" style="color: white; text-decoration: none; cursor: pointer;">
+                <button class="applybtn" style="border: none; outline: none; color: white; background-image: linear-gradient(45deg, rgb(255 169 0), rgb(255 0 198), #5b5bff, #56ffcc); width: 100%; font-size: 15px; cursor: pointer; padding: 10px; margin-bottom: 10px;">Explore Premium</button>
+            </a>
+            <br>
+            <h2 style="text-align: center; font-size: 11px; margin: 0px; font-weight: 400; opacity: 80%; color: revert;">Sponsored</h2>
+            <a href="https://mfi0212.github.io/MFI/paymine" target="_blank">
+                <img class="applybtn" style="width: 100%; padding: 0px; max-width: 400px; margin-bottom: -9px; opacity: 80%; margin-top: 10px;" src="addvertisement.png" alt="">
+            </a>
+            <br>
+        </div>
+        <div id="loanDetails"></div>
+    </div>
+    <div id="amountsModal" class="amounts-modal" style="display: none;">
+        <div class="amounts-modal-content">
+            <span class="amounts-close-btn" onclick="closeAmountsModal()">×</span>
+            <h3 style="text-decoration: underline;
+    margin-bottom: 5px;
+    font-weight: 900;
+    font-size: 17px;
+    text-align: center;
+    color: #00aeff;
+    letter-spacing: 0px;">Total Amount</h3>
+            <p><i class="fa-solid fa-money-bill"></i> Total Taken Amount: <span id="totalTaken"></span> ₹</p>
+            <p><i class="fa-solid fa-arrow-up-wide-short"></i> Total Interest: <span id="totalInterest"></span> ₹</p>
+            <hr>
 
-        themeButton.addEventListener("click", () => {
-          const isOpen = themePopup.classList.contains("open");
-          themePopup.classList.toggle("open");
-          themeButton.classList.toggle("active");
-          gearIcon.style.display = isOpen ? "block" : "none";
-          xIcon.style.display = isOpen ? "none" : "block";
+            <p><i class="fa-solid fa-money-check-alt"></i> Total Amount to Re-Pay: <span id="totalReturn"></span> ₹</p>
+        </div>
+    </div> 
+    <!-- <script src="accverify.js"></script> -->
+    <div id="reminderModal" class="reminder-modal" style="display: none;">
+        <div class="reminder-modal-content">
+            <h3>Reminder.!</h3>
+            <p id="reminderMessage"></p>
+            <span class="reminder-close-btn applybtn" onclick="closeReminderModal()">Okay</span>
+        </div>
+    </div>
+    <div class="mfi" style="position: fixed; bottom: 10px; font-size: 10px; color: #848484; z-index: 1000; background: transparent; width: 100%; text-align: center; padding: 10px;">
+        <a target="_blank" style="text-decoration: none;" href="https://mfi0212.github.io/MFI/mfimain">By Myootive</a>
+    </div>
+    <div class="powered-by" id="poweredBy">
+        Powered by <a style="color: rgb(0, 0, 0); font-weight: 500;" href="https://blackswan19.github.io/Educate/password">BsPsgenerater</a>
+    </div>
+    <button style="display: none;" class="theme-button" id="themeButton">
+        <i class="fa-solid fa-gear"></i>
+        <i class="fa-solid fa-xmark" style="display: none;"></i>
+    </button>
+    <button class="style-button" id="styleButton">S</button>
+    <div class="theme-popup" id="themePopup">
+        <span style="color: #00aaff; font-weight: 500; background: #000000; padding: 0px 15px; border-radius: 10px; text-align: center; font-size: 14px; font-weight: 600;">Select theme</span>
+        <button class="theme-option" onclick="setTheme('dark')">Dark</button>
+        <button class="theme-option" onclick="setTheme('light')">Light</button>
+        <button class="theme-option" onclick="setTheme('telegram-dark')">Classic</button>
+        <!-- <div class="theme-option color-picker"><span style="color: #00aaff;">Themes</span><input type="color" id="userAccentColor" value="#00aaff" onchange="setCustomTheme()"></div> -->
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const loadingOverlay = document.getElementById("loadingOverlay");
+            const themeButton = document.getElementById("themeButton");
+            const styleButton = document.getElementById("styleButton");
+            const themePopup = document.getElementById("themePopup");
+            const gearIcon = themeButton.querySelector(".fa-gear");
+            const xIcon = themeButton.querySelector(".fa-xmark");
+
+            // Show loading overlay initially, hide after 3 seconds
+            setTimeout(() => {
+                loadingOverlay.classList.add("hidden");
+                themeButton.classList.add("visible");
+                styleButton.classList.add("visible");
+            }, 3000);
+
+            // Theme button toggle
+            themeButton.addEventListener("click", () => {
+                const isOpen = themePopup.classList.contains("open");
+                themePopup.classList.toggle("open");
+                themeButton.classList.toggle("active");
+                gearIcon.style.display = isOpen ? "block" : "none";
+                xIcon.style.display = isOpen ? "none" : "block";
+            });
+
+            // Style button toggle
+            styleButton.addEventListener("click", () => {
+                const isCurvy = document.body.classList.contains("curvy");
+                document.body.classList.toggle("curvy");
+                styleButton.textContent = isCurvy ? "S" : "V";
+                localStorage.setItem("edgeStyle", isCurvy ? "sharp" : "curvy");
+            });
+
+            // Theme selection
+            window.setTheme = function(theme) {
+                document.body.classList.remove("dark", "light", "telegram-dark", "my-own");
+                document.body.classList.add(theme);
+                localStorage.setItem("theme", theme);
+                themePopup.classList.remove("open");
+                themeButton.classList.remove("active");
+                gearIcon.style.display = "block";
+                xIcon.style.display = "none";
+            };
+
+            // Custom theme with color picker
+            window.setCustomTheme = function() {
+                const accentColor = document.getElementById("userAccentColor").value;
+                document.body.classList.remove("dark", "light", "telegram-dark", "my-own");
+                document.body.classList.add("my-own");
+                document.documentElement.style.setProperty("--user-accent", accentColor);
+                localStorage.setItem("theme", "my-own");
+                localStorage.setItem("user-accent", accentColor);
+                themePopup.classList.remove("open");
+                themeButton.classList.remove("active");
+                gearIcon.style.display = "block";
+                xIcon.style.display = "none";
+            };
+
+            // Load saved theme
+            const savedTheme = localStorage.getItem("theme") || "dark";
+            if (savedTheme === "my-own") {
+                const accentColor = localStorage.getItem("user-accent") || "#00aaff";
+                document.documentElement.style.setProperty("--user-accent", accentColor);
+            }
+            setTheme(savedTheme);
+
+            // Load saved edge style
+            const savedEdgeStyle = localStorage.getItem("edgeStyle") || "curvy";
+            if (savedEdgeStyle === "curvy") {
+                document.body.classList.add("curvy");
+                styleButton.textContent = "V";
+            } else {
+                styleButton.textContent = "S";
+            }
         });
+   
+        document.addEventListener("DOMContentLoaded", () => {
+            const customMenu = document.querySelector(".custom-menu");
 
-        styleButton.addEventListener("click", () => {
-          const isCurvy = document.body.classList.contains("curvy");
-          document.body.classList.toggle("curvy");
-          styleButton.textContent = isCurvy ? "S" : "V";
-          localStorage.setItem("edgeStyle", isCurvy ? "sharp" : "curvy");
+            // document.addEventListener("contextmenu", (event) => {
+            //     event.preventDefault();
+            //     if (customMenu) {
+            //         customMenu.style.display = "block";
+            //         customMenu.style.top = `${event.pageY}px`;
+            //         customMenu.style.left = `${event.pageX}px`;
+            //     }
+            // });
+
+            document.addEventListener("click", () => {
+                if (customMenu) {
+                    customMenu.style.display = "none";
+                }
+            });
         });
-
-        window.setTheme = function(theme) {
-          document.body.classList.remove("dark", "light", "telegram-dark", "my-own");
-          document.body.classList.add(theme);
-          localStorage.setItem("theme", theme);
-          themePopup.classList.remove("open");
-          themeButton.classList.remove("active");
-          gearIcon.style.display = "block";
-          xIcon.style.display = "none";
-        };
-
-        window.setCustomTheme = function() {
-          const accentColor = document.getElementById("userAccentColor").value;
-          document.body.classList.remove("dark", "light", "telegram-dark", "my-own");
-          document.body.classList.add("my-own");
-          document.documentElement.style.setProperty("--user-accent", accentColor);
-          localStorage.setItem("theme", "my-own");
-          localStorage.setItem("user-accent", accentColor);
-          themePopup.classList.remove("open");
-          themeButton.classList.remove("active");
-          gearIcon.style.display = "block";
-          xIcon.style.display = "none";
-        };
-
-        // Load saved theme
-        const savedTheme = localStorage.getItem("theme") || "dark";
-        if (savedTheme === "my-own") {
-          const accentColor = localStorage.getItem("user-accent") || "#00aaff";
-          document.documentElement.style.setProperty("--user-accent", accentColor);
-        }
-        setTheme(savedTheme);
-
-        // Load saved edge style
-        const savedEdgeStyle = localStorage.getItem("edgeStyle") || "curvy";
-        if (savedEdgeStyle === "curvy") {
-          document.body.classList.add("curvy");
-          styleButton.textContent = "V";
-        } else {
-          styleButton.textContent = "S";
-        }
-      });
-
-      let lastScroll = 0;
-      const logo = document.querySelector('.logo');
-
-      document.addEventListener("DOMContentLoaded", () => {
-        const customMenu = document.querySelector(".custom-menu");
-
-        // document.addEventListener("contextmenu", (event) => {
-        //     event.preventDefault();
-        //     if (customMenu) {
-        //         customMenu.style.display = "block";
-        //         customMenu.style.top = `${event.pageY}px`;
-        //         customMenu.style.left = `${event.pageX}px`;
-        //     }
-        // });
-
-        document.addEventListener("click", () => {
-          if (customMenu) {
-            customMenu.style.display = "none";
-          }
-        });
-      });
+  
         // Get current date and day
         const today = new Date();
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -887,9 +1381,478 @@ body.curvy .date-container {
         // Update text content
         document.querySelectorAll('.day-text').forEach(el => el.textContent = day);
         document.querySelectorAll('.date-text').forEach(el => el.textContent = date);
+      const passwords = {
+    "4211": {
+        name: "Chaitanya Harsha",
+        membershipType: "",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+        profileBackground: "#ff8b24",
+        stars: 0,
+        loans: [
+            {
+                planDate: "24-05-2025",
+                endDate: "-- <p style='color: #ff6200ff;'>(Interest adding stoped by #PY@0212)</p>",
+                interest: 0,
+                takenAmount: 25000,
+                takenFrom: "MLending",
+                fineRate: 5
+            },
+            {
+                planDate: "07-04-2025",
+                endDate: "--<p style='color: #ff6200ff;'>(Interest adding stoped by #PY@0212)</p>",
+                interest: 0,
+                takenAmount: 15000,
+                takenFrom: "MLLD",
+                fineRate: 4
+            },
+        ]
+    },
+    "6275": {
+        name: "Srikanth Jampana",
+        membershipType: "",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+        profileBackground: "#ff4500",
+        stars: 0,
+        loans: [
+            {
+                planDate: "10-08-2025",
+                endDate: "25-08-2025",
+                interest: 1360,
+                takenAmount: 5000,
+                takenFrom: "MLLD",
+                fineRate: 86
+            },
+            {
+                planDate: "15-08-2025",
+                endDate: "30-08-2025",
+                interest: 4800,
+                takenAmount: 20000,
+                takenFrom: "MLending",
+                fineRate: 320
+            },
+            {
+                planDate: "16-08-2025",
+                endDate: "31-08-2025",
+                interest: 1275,
+                takenAmount: 5000,
+                takenFrom: "MLLD",
+                fineRate: 90
+            },
+            {
+                planDate: "18-08-2025",
+                endDate: "02-09-2025",
+                interest: 1380,
+                takenAmount: 5000,
+                takenFrom: "MLLD",
+                fineRate: 88
+            },
+            {
+                planDate: "18-08-2025",
+                endDate: "02-09-2025",
+                interest: 690,
+                takenAmount: 2500,
+                takenFrom: "MLLD",
+                fineRate: 46
+            },
+        ]
+    },
+    "Mahesh888*": {
+        name: "Mahesh Muthinti",
+        membershipType: "",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+        profileBackground: "#8a49f4",
+        stars: 0,
+        loans: [
+            {
+                planDate: "28-06-2025",
+                endDate: "30-09-2025(Extanded to 30 days)",
+                interest: 2000,
+                takenAmount:10000,
+                takenFrom: "MLending",
+                fineRate: 90,
+            },
+            {
+                planDate: "21-09-2025",
+                endDate: "30-09-2025",
+                interest: 600,
+                takenAmount: 4600,
+                takenFrom: "MLLD",
+                fineRate: 44,
+            },
+             {
+                planDate: "01-06-2025",
+                endDate: "18-10-2025(Extanded to 30 days)",
+                interest: 1250,
+                takenAmount: 5000,
+                takenFrom: "MLLD",
+                fineRate: 50,
+            },
+            {
+                planDate: "01-06-2025",
+                endDate: "18-10-2025(Extanded to 30 days)",
+                interest: 480,
+                takenAmount: 4760,
+                takenFrom: "PERS+INT",
+                fineRate: 48,
+            },
+            {
+                planDate: "25-05-2025",
+                endDate: "23-10-2025(Extanded to 30 days)",
+                interest: 1239,
+                takenAmount: 7080,
+                takenFrom: "Delayit offer",
+                fineRate: 50,
+            },
+
+        ]
+    },
+    "Cherish@123": {
+        name: "Cherish",
+        membershipType: "",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+        profileBackground: "rgb(90 135 242)",
+        stars: 0,
+        loans: [
+            {
+                planDate: "21-05-2025",
+                endDate: "-- <p style='color: #ff6200ff;'>(Interest adding stoped by #PY@0212)</p>",
+                interest: 0,
+                takenAmount: 8200,
+                takenFrom: "MLLD",
+                fineRate: 5
+            },
+            {
+                planDate: "29-05-2025",
+                endDate: "-- <p style='color: #ff6200ff;'>(Interest adding stoped by #PY@0212)</p>",
+                interest: 0,
+                takenAmount: 20500,
+                takenFrom: "MLending",
+                fineRate: 7
+            },
+            {
+                planDate: "23-05-2025",
+                endDate: "-- <p style='color: #ff6200ff;'>(Interest adding stoped by #PY@0212)</p>",
+                interest: 0,
+                takenAmount: 7500,
+                takenFrom: "MLLD",
+                fineRate: 5
+            },
+            {
+                planDate: "28-05-2025",
+                endDate: "-- <p style='color: #ff6200ff;'>(Interest adding stoped by #PY@0212)</p>",
+                interest: 0,
+                takenAmount: 3500,
+                takenFrom: "MLLD",
+                fineRate: 4
+            },
+            {
+                planDate: "25-05-2025",
+                endDate: "-- <p style='color: #ff6200ff;'>(Interest adding stoped by #PY@0212)</p>",
+                interest: 0,
+                takenAmount: 3500,
+                takenFrom: "MLLD(Offer)",
+                fineRate: 4
+            },
+            {
+                planDate: "24-05-2025",
+                endDate: "-- <p style='color: #ff6200ff;'>(Interest adding stoped by #PY@0212)</p>",
+                interest: 0,
+                takenAmount: 4800,
+                takenFrom: "MLLD(Offer)",
+                fineRate: 5
+            },
+        ]
+    },
+};
+
+let sessionReferenceTime = null;
+
+document.addEventListener("DOMContentLoaded", () => {
+    const savedPassword = localStorage.getItem("userPassword");
+    if (savedPassword) {
+        const passwordInput = document.getElementById("userPassword");
+        passwordInput.value = savedPassword;
+        document.getElementById("poweredBy").style.display = "block";
+    }
+});
+
+document.getElementById("submitBtn").addEventListener("click", () => {
+    const userInput = document.getElementById("userPassword").value.trim();
+    const errorMessage = document.getElementById("error-message");
+    const user = passwords[userInput];
+
+    if (!userInput) {
+        errorMessage.textContent = "Enter a password.";
+        return;
+    }
+
+    if (user) {
+        localStorage.setItem("userPassword", userInput);
+        document.getElementById("userName").textContent = user.name;
+        document.getElementById("starCount").textContent = user.stars;
+        const membershipTypeContainer = document.getElementById("membershipType");
+        membershipTypeContainer.innerHTML = `
+            <a href="https://mfi0212.github.io/MFI/starpre" style="text-decoration: underline; text-underline-position: under;">${user.membershipType}</a>
+        `;
+
+        const userNameContainer = document.getElementById("userNameContainer");
+        userNameContainer.innerHTML = `
+            <span id="userName">${user.name}</span>
+            <img src="${user.membershipIcon}" alt="${user.membershipType} Icon" class="user-icon">
+        `;
+
+        const profilePicture = document.getElementById("profilePicture");
+        profilePicture.style.backgroundColor = user.profileBackground;
+        const nameParts = user.name.trim().split(/\s+/).slice(0, 2);
+        const iconText = nameParts.map(part => part.charAt(0)).join("").toUpperCase();
+        profilePicture.style.backgroundImage = "none";
+        profilePicture.textContent = iconText;
+
+        const amountButtons = document.getElementById("amountButtons");
+        amountButtons.innerHTML = "";
+
+        user.loans.forEach((loan, index) => {
+            const btn = document.createElement("button");
+            btn.className = "amount-btn";
+            btn.innerHTML = `₹${loan.takenAmount}<span class="amount-id"> Amount ${index + 1}</span>`;
+            btn.onclick = () => displayLoanDetails(loan, index);
+            amountButtons.appendChild(btn);
+        });
+
+        if (user.loans.length > 0) {
+            displayLoanDetails(user.loans[0], 0);
+            checkDueToday(user);
+        } else {
+            errorMessage.textContent = "No active loans found.";
+        }
+
+        document.getElementById("userInfoModal").style.display = "block";
+        document.getElementById("passwordContainer").style.display = "none";
+        errorMessage.textContent = "";
+    } else {
+        errorMessage.textContent = "Invalid password.";
+    }
+});
+
+function checkDueToday(user) {
+    const today = new Date();
+    const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
+    const todayStr = `${String(today.getDate()).padStart(2, '0')}-${String(today.getMonth() + 1).padStart(2, '0')}-${today.getFullYear()}`;
+
+    user.loans.forEach(loan => {
+        const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+        const endMatch = cleanEndDate.match(dateFormat);
+        if (endMatch) {
+            const endDateStr = `${endMatch[1]}-${endMatch[2]}-${endMatch[3]}`;
+            if (endDateStr === todayStr && !loan.endDate.includes('Overdue')) {
+                document.getElementById("reminderMessage").textContent = 
+                    `Mr. ${user.name}, Today(${cleanEndDate}) you have a amount to return which you have taken from the servive (${loan.takenFrom}).Try to clear on time if not overdue interest amount will be added. Thank you!`;
+                document.getElementById("reminderModal").style.display = "flex";
+            }
+        }
+    });
+}
+
+function closeReminderModal() {
+    document.getElementById("reminderModal").style.display = "none";
+}
+
+function calculateDaysBetween(startDate, endDate) {
+    try {
+        const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
+        const startMatch = startDate.match(dateFormat);
+        const endMatch = endDate.split('(')[0].match(dateFormat);
+        if (startMatch && endMatch) {
+            const start = new Date(`${startMatch[3]}-${startMatch[2]}-${startMatch[1]}`);
+            const end = new Date(`${endMatch[3]}-${endMatch[2]}-${endMatch[1]}`);
+            if (isNaN(start) || isNaN(end)) {
+                return "Invalid date";
+            }
+            const diffTime = Math.abs(end - start);
+            return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        }
+        return "Invalid date format";
+    } catch (error) {
+        console.error("Error calculating days:", error);
+        return "Error";
+    }
+}
+
+function calculateOverdueFine(endDate, loan, user) {
+    try {
+        const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
+        const endMatch = endDate.split('(')[0].split('<')[0].match(dateFormat);
+        if (!endMatch) return { overdue: false, fine: 0, hoursOverdue: 0, daysOverdue: 0 };
+
+        const end = new Date(`${endMatch[3]}-${endMatch[2]}-${endMatch[1]}`);
+        end.setHours(23, 59, 59, 999);
+
+        if (!sessionReferenceTime) {
+            sessionReferenceTime = new Date();
+        }
+        const now = sessionReferenceTime;
+
+        if (now > end) {
+            const diffTime = now - end;
+            const hoursOverdue = Math.floor(diffTime / (1000 * 60 * 60));
+            const daysOverdue = Math.floor(hoursOverdue / 24);
+            const fineRate = loan.fineRate !== undefined ? loan.fineRate : user.fineRate;
+            const fine = daysOverdue * fineRate;
+            return { overdue: true, fine: fine, hoursOverdue: hoursOverdue, daysOverdue: daysOverdue };
+        }
+        return { overdue: false, fine: 0, hoursOverdue: 0, daysOverdue: 0 };
+    } catch (error) {
+        console.error("Error calculating overdue fine:", error);
+        return { overdue: false, fine: 0, hoursOverdue: 0, daysOverdue: 0 };
+    }
+}
+
+function displayLoanDetails(loan, index) {
+    const loanDetails = document.getElementById("loanDetails");
+    const userInput = document.getElementById("userPassword").value.trim();
+    const user = passwords[userInput];
+
+    const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+    const fine = overdueInfo.fine || 0;
+    const fineRate = loan.fineRate !== undefined ? loan.fineRate : user.fineRate;
+    const originalInterest = loan.interest;
+    const totalReturnAmount = (loan.takenAmount + loan.interest + fine).toFixed(2);
+    const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+    const daysBetween = calculateDaysBetween(loan.planDate, cleanEndDate);
+
+    document.querySelectorAll(".amount-btn").forEach(btn => btn.classList.remove("active"));
+    document.getElementById("amountButtons").children[index].classList.add("active");
+
+    let overdueSection = "";
+    if (overdueInfo.overdue) {
+        overdueSection = `
+            <h3>Overdue Details</h3>
+            <p style="color: #ff9300;">You are overdue by: ${overdueInfo.daysOverdue} days (${overdueInfo.hoursOverdue} hours)</p>
+            <p style="color: #ff9300;">Overdue interest: ${fine} Rupees</p>
+        `;
+    }
+
+    loanDetails.innerHTML = `
+        <div class="loan-entry">
+            <p style="text-align: center; position: sticky; top: 90px; margin-top: 20px; right: 16px; float: right; margin-right: -9px;">
+                <button class="amounts-btn downsingle" style="width: 100%; font-size: 10px; padding: 3px 15px; display: flex; flex-direction: row; justify-content: center; align-items: center; margin-top: 10px;" onclick="downloadSingleLoan(${index})">
+                    <i class="fa-solid fa-download" style="margin-right: 2px;"></i> This amount receipt
+                </button>
+            </p>
+            <h3>Service</h3>
+            <p>Taken in: ${loan.takenFrom} </p>
+            <h3>Amount</h3>
+            <p><i class="fa-solid fa-money-bill-transfer"></i> Taken Amount: ${loan.takenAmount} Rupees</p>
+            <h3>Taken & Return</h3>
+            <p><i class="fa-solid fa-calendar-day"></i> Taken date: ${loan.planDate}</p>
+            <p><i class="fa-solid fa-calendar-check"></i> Return date: ${loan.endDate}</p>
+            <h3>Duration</h3>
+            <p><i class="fa-solid fa-clock"></i> Taken for: ${daysBetween} days</p>
+            <h3>Interest</h3>
+            <p><i class="fa-solid fa-arrow-up-wide-short"></i> Normal Interest: ${originalInterest} Rupees</p>
+            <hr>
+            ${overdueSection}
+            <hr>
+            <h3>Total to Return</h3>
+            <p><i class="fa-solid fa-money-check-alt"></i> Amount: ${totalReturnAmount} Rupees</p>
+            <hr>
+            <div class="issuebtn" style="padding-top: 20px;">  
+                <a target="_blank" href="https://forms.gle/RzTJ8W9bwmm8DVj2A"><button>I have an issue here.!</button></a>
+            </div>
+        </div>
+    `;
+}
+
+function showAmountsModal() {
+    const userInput = document.getElementById("userPassword").value.trim();
+    const user = passwords[userInput];
+    if (!user) return;
+
+    let totalTaken = 0;
+    let totalInterest = 0;
+    user.loans.forEach(loan => {
+        const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+        const fine = overdueInfo.fine || 0;
+        totalTaken += loan.takenAmount;
+        totalInterest += loan.interest + fine;
+    });
+    const totalReturn = (totalTaken + totalInterest).toFixed(2);
+
+    document.getElementById("totalTaken").textContent = totalTaken;
+    document.getElementById("totalInterest").textContent = totalInterest;
+    document.getElementById("totalReturn").textContent = totalReturn;
+
+    document.getElementById("amountsModal").style.display = "";
+}
+
+function closeAmountsModal() {
+    document.getElementById("amountsModal").style.display = "none";
+}
+
+function closeModal() {
+    document.getElementById("userInfoModal").style.display = "none";
+    document.getElementById("passwordContainer").style.display = "flex";
+    document.getElementById("userPassword").value = "";
+    sessionReferenceTime = null;
+}
+
+function formatDate(dateStr) {
+    const [d, m, y] = dateStr.split('-');
+    return `${d}/${m}/${y.slice(2)}`;
+}
+
+function generateImage(text, filename) {
+    const canvas = document.createElement('canvas');
+    const lines = text.split('\n');
+    const lineHeight = 30;
+    canvas.width = 600;
+    canvas.height = 60 + lines.length * lineHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'black';
+    ctx.font = '20px Poppins';
+    ctx.textAlign = 'left';
+    lines.forEach((line, i) => {
+        ctx.fillText(line, 30, 40 + i * lineHeight);
+    });
+    ctx.fillStyle = 'gray';
+    ctx.font = '16px Poppins';
+    ctx.textAlign = 'right';
+    ctx.fillText('Powered by BsBookpad', canvas.width - 20, 20);
+    const a = document.createElement('a');
+    a.href = canvas.toDataURL('image/png', 1.0);
+    a.download = filename;
+    a.click();
+}
+
+function downloadSingleLoan(index) {
+    const userInput = document.getElementById("userPassword").value.trim();
+    const user = passwords[userInput];
+    if (!user) return;
+    const loan = user.loans[index];
+    const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+    const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+    const fine = overdueInfo.fine || 0;
+    const totalReturnAmount = (loan.takenAmount + loan.interest + fine).toFixed(2);
+    const text = `Total Amount ${index + 1} : ${totalReturnAmount} ₹\nReturn date : ${formatDate(cleanEndDate)}`;
+    generateImage(text, `total_amount_${index + 1}.png`);
+}
+
+function downloadAllLoans() {
+    const userInput = document.getElementById("userPassword").value.trim();
+    const user = passwords[userInput];
+    if (!user) return;
+    let text = '';
+    user.loans.forEach((loan, i) => {
+        const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+        const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+        const fine = overdueInfo.fine || 0;
+        const totalReturnAmount = (loan.takenAmount + loan.interest + fine).toFixed(2);
+        text += `Total Amount ${i + 1} : ${totalReturnAmount} ₹\nReturn date : ${formatDate(cleanEndDate)}\n\n`;
+    });
+    generateImage(text.trim(), 'all_total_amounts.png');
+}
     </script>
-  </body>
+</body>
 </html>
-
-
-
