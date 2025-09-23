@@ -357,7 +357,7 @@ function displayLoanDetails(loan, index) {
                 </button>
             </p>
             <h3>Service</h3>
-            <p>Taken in: ${loan.takenFrom} Service</p>
+            <p>Taken in: ${loan.takenFrom} </p>
             <h3>Amount</h3>
             <p><i class="fa-solid fa-money-bill-transfer"></i> Taken Amount: ${loan.takenAmount} Rupees</p>
             <h3>Taken & Return</h3>
