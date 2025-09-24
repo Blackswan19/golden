@@ -1,9 +1,9 @@
-const passwords = {
+ const passwords = {
     "4211": {
         name: "Chaitanya Harsha",
         membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "rgb(154 205 50)",
+        profileBackground: "#ff8b24",
         stars: 0,
         loans: [
             {
@@ -28,7 +28,7 @@ const passwords = {
         name: "Srikanth Jampana",
         membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "rgb(29 141 250)",
+        profileBackground: "#ff4500",
         stars: 0,
         loans: [
             {
@@ -77,14 +77,14 @@ const passwords = {
         name: "Mahesh Muthinti",
         membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "rgb(130 5 180)",
+        profileBackground: "#8a49f4",
         stars: 0,
         loans: [
             {
                 planDate: "28-06-2025",
                 endDate: "30-09-2025(Extanded to 30 days)",
                 interest: 2000,
-                takenAmount: 10000,
+                takenAmount:10000,
                 takenFrom: "MLending",
                 fineRate: 90,
             },
@@ -127,7 +127,7 @@ const passwords = {
         name: "Cherish",
         membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "rgb(0 200 175)",
+        profileBackground: "rgb(90 135 242)",
         stars: 0,
         loans: [
             {
@@ -231,7 +231,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         user.loans.forEach((loan, index) => {
             const btn = document.createElement("button");
             btn.className = "amount-btn";
-            btn.innerHTML = `${loan.takenAmount} Rupees <span class="amount-id">Amount ${index + 1}</span>`;
+            btn.innerHTML = `₹${loan.takenAmount}<span class="amount-id"> Amount ${index + 1}</span>`;
             btn.onclick = () => displayLoanDetails(loan, index);
             amountButtons.appendChild(btn);
         });
