@@ -232,8 +232,11 @@
       }
 
       li {
-        font-size: 12px;
-        color: #a9a9a9;
+            font-size: 13px;
+    color: #a9a9a9;
+    padding: 0px 24px;
+    line-height: 21px;
+    border-bottom: solid 1px #ffffff1f;
       }
 
       body.light li {
@@ -659,7 +662,9 @@
         width: 100px;
         text-align: center;
       }
-
+.helper::marker{
+    content: "👉";
+}
       @keyframes scroll-up {
         0% {
           transform: translateY(0);
@@ -712,14 +717,14 @@
     <div class="about" style="text-align: left;">
       <h3 style="padding: 0px 25px;" data-en="Follow these steps..!" data-te="ఈ దశలను అనుసరించండి..!">Follow these steps..!</h3>
       <ol>
-        <li data-en="Click on &quot;Take money&quot;" data-te="&quot;డబ్బు తీసుకోండి&quot; పై క్లిక్ చేయండి">Click on "Take money"</li>
-        <li data-en="Fill out the form." data-te="ఫారమ్ నింపండి.">Fill out the form.</li>
-        <li data-en="Wait a few hours." data-te="కొన్ని గంటలు వేచి ఉండండి.">Wait a few hours.</li>
-        <li data-en="Get funds from your coordinator." data-te="మీ సమన్వయకర్త నుండి నిధులను పొందండి.">Get funds from your coordinator.</li>
-        <li data-en="Check details like interest and etc... in &quot;My Account.&quot;" data-te="&quot;నా ఖాతా&quot;లో వడ్డీ మరియు ఇతర వివరాలను తనిఖీ చేయండి...">Check details like interest and etc... in "My Account."</li>
-        <li data-en="Repay on time." data-te="సమయానికి తిరిగి చెల్లించండి.">Repay on time.</li>
-        <li data-en="Are you late to return? Say 2 days before we will extend the date (or) Extra fees apply." data-te="తిరిగి చెల్లించడానికి ఆలస్యమైందా? మేము తేదీని పొడిగించే ముందు 2 రోజులు చెప్పండి (లేదా) అదనపు రుసుము వర్తిస్తుంది.">Are you late to return? Say 2 days before we will extend the date (or) Extra fees apply.</li>
-        <li data-en="Pay on time for future loans." data-te="భవిష్యత్తు రుణాల కోసం సమయానికి చెల్లించండి.">Pay on time for future loans.</li>
+        <li  class="helper" data-en="Click on &quot;Take money&quot;" data-te="&quot;డబ్బు తీసుకోండి&quot; పై క్లిక్ చేయండి"> Click on "Take money"</li>
+        <li class="helper" data-en="Fill out the form." data-te="ఫారమ్ నింపండి.">Fill out the form.</li>
+        <li class="helper" data-en="Wait a few hours." data-te="కొన్ని గంటలు వేచి ఉండండి.">Wait a few hours.</li>
+        <li class="helper" data-en="Get funds from your coordinator." data-te="మీ సమన్వయకర్త నుండి నిధులను పొందండి.">Get funds from your coordinator.</li>
+        <li class="helper" data-en="Check details like interest and etc... in &quot;My Account.&quot;" data-te="&quot;నా ఖాతా&quot;లో వడ్డీ మరియు ఇతర వివరాలను తనిఖీ చేయండి...">Check details like interest and etc... in "My Account."</li>
+        <li class="helper" data-en="Repay on time." data-te="సమయానికి తిరిగి చెల్లించండి.">Repay on time.</li>
+        <li class="helper" data-en="Are you late to return? Say 2 days before we will extend the date (or) Extra fees apply." data-te="తిరిగి చెల్లించడానికి ఆలస్యమైందా? మేము తేదీని పొడిగించే ముందు 2 రోజులు చెప్పండి (లేదా) అదనపు రుసుము వర్తిస్తుంది.">Are you late to return? Say 2 days before we will extend the date (or) Extra fees apply.</li>
+        <li class="helper" data-en="Pay on time for future loans." data-te="భవిష్యత్తు రుణాల కోసం సమయానికి చెల్లించండి.">Pay on time for future loans.</li>
       </ol>
     </div>
     <div class="about" style="padding: 20px 15px; text-align: center;">
@@ -742,7 +747,7 @@
     </div>
     <div class="about" style="padding-bottom: 100px;">
       <h2 data-en="I'm late" data-te="నేను ఆలస్యమయ్యాను">I'm late</h2>
-      <p data-en="If you are <span class='highlight'>late in returning the amount</span>, the interest will <span class='highlight'>automatically increased for every 2,3 days based on the amount</span>." data-te="మీరు <span class='highlight'>మొత్తాన్ని తిరిగి చెల్లించడంలో ఆలస్యమైతే</span>, వడ్డీ <span class='highlight'>ప్రతి 2,3 రోజులకు మొత్తం ఆధారంగా స్వయంచాలకంగా పెరుగుతుంది</span>.">
+      <p data-en="If you are late in returning the amount, the interest will automatically increased for every 2,3 days based on the amount." data-te="మీరు మొత్తాన్ని తిరిగి చెల్లించడంలో ఆలస్యమైతే, వడ్డీ ప్రతి 2,3 రోజులకు మొత్తం ఆధారంగా స్వయంచాలకంగా పెరుగుతుంది.">
         If you are <span class="highlight">late in returning the amount</span>, the interest will <span class="highlight">automatically increased for every 2,3 days based on the amount</span>.
       </p>
       <p data-en="Contact us if you think you'll be late so we can help you." data-te="మీరు ఆలస్యమవుతారని భావిస్తే మమ్మల్ని సంప్రదించండి, తద్వారా మేము మీకు సహాయం చేయవచ్చు.">
