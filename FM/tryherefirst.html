@@ -192,15 +192,17 @@
         }
 
         .account-access {
-            text-align: center;
-            position: sticky;
-            top: 275px;
-            padding: 20px 0px;
-            transition: border-bottom 0.3s ease;
-            z-index: 99;
-            background-color: #216fb2;
-            border-radius: 4px;
-            margin: 1px;
+                text-align: center;
+    position: sticky;
+    top: 0px;
+    padding: 20px 0px;
+    transition: border-bottom 0.3s 
+ease;
+    z-index: 99;
+    background-color: #216fb2;
+    border-radius: 4px;
+    margin: 1px;
+    backdrop-filter: blur(2px);
         }
 
         .account-btn {
@@ -360,20 +362,22 @@
 
         .account-popup {
             display: none;
-            position: fixed;
-            bottom: 0;
-            left: 1px;
-            width: 98%;
-            max-height: 80vh;
-            background-color: var(--bg-color);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-            border-radius: 10px 10px 0px 0px;
-            margin: 0px 3px;
-            border: solid 1px #80808045;
+    position: fixed;
+    bottom: 0;
+    left: 29%;
+    max-height: 80vh;
+    background-color: var(--bg-color);
+    z-index: 1000;
+    display: flex
+;
+    flex-direction: column;
+    transform: translateX(-50%) translateY(100%);
+    transition: transform 0.3s 
+ease;
+    border-radius: 10px 10px 0px 0px;
+    margin: 0px 3px;
+    border: solid 1px #80808045;
+    width: 42%;
         }
 
         .account-popup.show {
@@ -631,18 +635,14 @@
 
         @media (max-width: 480px) {
             .account-popup {
-                width: 90%;
-                max-width: 600px;
-                left: 50%;
-                transform: translateX(-50%) translateY(100%);
+                width: 98%;
+        max-width: 600px;
+        left: 49%;
+        transform: translateX(-50%) translateY(100%);
             }
 
             .account-popup.show {
                 transform: translateX(-50%) translateY(0);
-            }
-            .account-access {
-                position: sticky;
-                top: 170px;
             }
         }
 
@@ -712,14 +712,13 @@
             <div class="terms" data-i18n="terms_repay">-> Repay within days based on your taken days or late fees apply.</div>
             <div class="terms" data-i18n="terms_interest">-> Interest on the amount will be based on the balance on amount you take.</div>
         </div>
-        <div class="loan-option" style="position: sticky;
-    top: 3px;
-    backdrop-filter: blur(5px);
-    padding: 15px;
-    border: dashed 1.4px #808080b8;">
-            <a href="https://mfi0212.github.io/swan/offer/programx"><img style="        margin-bottom: -8px;width: 100%;border-radius: 5px;" src="mlldoffer.png" alt=""></a>
-        </div>
         <div class="account-access">
+            <div class="offerbec" style="padding: 0px 16px;">
+                <a href="https://mfi0212.github.io/swan/offer/programx"><img style="margin-bottom: 10px;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px #000000b3;" src="mlldoffer.png" alt=""></a>
+            </div>
             <button class="account-btn" onclick="showLoginPrompt()" data-i18n="my_account">My Account</button>
             <a href="https://mfi0212.github.io/MFI/takemoney" onclick="alert(getTranslation('alert_redirect'))"><button class="account-btn" data-i18n="take_money">Take Money</button></a>
         </div>
