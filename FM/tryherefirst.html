@@ -89,6 +89,7 @@
             transition: background-color 0.3s ease;
             border: none;
             border-radius: 50px;
+            cursor: pointer;
         }
         .button:hover {
             background-color: #ffffff84;
@@ -163,7 +164,7 @@
             <ul class="fee-list">
                 <li>&rightarrow; For premium account members it was <span class="highlight">Free(No Fee)</span></li>
                 <li>&rightarrow; From normal account members we will <span class="highlight">Charge the fee</span></li>
-                <li>Special Offer: <span class="highlight">15%</span> of interest will be <span class="highlight">paid by us</span>. You have to <span class="highlight">pay</span> only the remaining <span class="highlight">85%</span>.</li>
+                <li>Special Offer: <span class="highlight">15%</span> of interest will be <span class="highlight">paid by us</span>. You have to <span class="highlight">pay</span> only the remaining <span class="highlight">85%</span> interest.</li>
             </ul>
             
             <hr><div class="mainfeepart" style="background: #00000091;
@@ -181,8 +182,7 @@
             
             <p style="text-align: center;margin-top: 30px;font-size: 13px;">Click "Apply Now" to apply for the offers above.</p>
         </div>
-        <button style="background-color: white;" class="button" id="applyButton"><a style="color: black;" href="https://forms.gle/8WP3DU4VZNhFHwNu7" id="applyLink">Apply Now</a></button>
-        <hr>
+        <button style="background-color: white;cursor: pointer;" class="button" id="applyButton"><a style="color: black;cursor: pointer;" href="https://forms.gle/8WP3DU4VZNhFHwNu7" id="applyLink">Apply Now</a></button>
         <div class="expired-message" id="expiredMessage" style="display: none;
     color: white;    margin-top: 25px;
 
@@ -193,6 +193,7 @@
     font-weight: 800;
     line-height: 30px;">The offer has expired. Applications are no longer accepted.</div>
     
+        <hr>
         <div class="interest-calculator">
             <p>Enter Interest Amount (₹):</p>
             <input type="number" id="interestInput" placeholder="Enter the interest amount">
@@ -215,9 +216,9 @@
 
             document.getElementById('result').innerHTML = `
                 Original Interest: <span class="highlight">₹${interest.toFixed(2)}</span><br>
-                By 15% interest off: <span class="highlight">₹${discount.toFixed(2)}</span><br>
-                <hr>
-                Amount After 15% off: <span class="highlight">₹${finalAmount.toFixed(2)}</span>
+                By 15% interest off: <span class="highlight">₹${discount.toFixed(2)}</span>
+                <hr style="margin: 0px;">
+                Interest after 15% off: <span class="highlight">₹${finalAmount.toFixed(2)}</span>
             `;
         }
 
@@ -240,6 +241,25 @@
             checkOfferValidity();
             console.log("Page loaded successfully");
         };
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            const customMenu = document.querySelector(".custom-menu");
+
+            // document.addEventListener("contextmenu", (event) => {
+            //     event.preventDefault();
+            //     if (customMenu) {
+            //         customMenu.style.display = "block";
+            //         customMenu.style.top = `${event.pageY}px`;
+            //         customMenu.style.left = `${event.pageX}px`;
+            //     }
+            // });
+
+            document.addEventListener("click", () => {
+                if (customMenu) {
+                    customMenu.style.display = "none";
+                }
+            });
+        });
     </script>
 </body>
 </html>
