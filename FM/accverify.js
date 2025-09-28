@@ -123,8 +123,8 @@
             {
                 planDate: "28-09-2025",
                 endDate: "28-10-2025",
-                interest: 2000,
-                takenAmount:430,
+                interest: 430,
+                takenAmount:2000,
                 takenFrom: "MLLD(#Dur02ff_#acc@0212)",
                 fineRate: 90,
             },
