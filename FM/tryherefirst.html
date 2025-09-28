@@ -5,98 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="header_title">MLLD</title>
     <link rel="icon" type="image/x-icon" href="logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Telugu:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-        :root {
-            --telegram-accent: #216fb2;
-            --font-family: 'Poppins', sans-serif;
-            --bg-color: #000000;
-            --text-color: gray;
-            --header-bg: #216fb2;
-            --border-color: #4a4a4a;
-            --secondary-bg: #1c1c1c;
-            --button-bg: #1c1c1c;
-            --button-text: #b0b0b0;
-        }
-
         * {
-            font-family: var(--font-family);
+            font-family: 'Helvetica', 'Arial', sans-serif;
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            -webkit-tap-highlight-color: transparent;
-            scrollbar-width: thin;
-            scrollbar-color: #696969 #131313;
         }
 
         body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.8;
-            letter-spacing: 0.3px;
-        }
-
-        body.light-theme {
-            --bg-color: #ffffff;
-            --text-color: rgba(0, 0, 0, 0.65);
-            --header-bg: #216fb2;
-            --border-color: none;
-            --secondary-bg: white;
-            --secondary-text: #828282;
-            --button-bg: #e0e0e0;
-            --button-text: #000000;
+            background-color: #f4f4f4;
+            color: #333333;
+            line-height: 1.6;
         }
 
         body.dark-theme {
-            --bg-color: #0e0e10;
-            --text-color: rgb(255 255 255 / 65%);
-            --header-bg: #216fb2;
-            --border-color: #4a4a4a;
-            --secondary-bg: #1c1c1c;
-            --secondary-text: #828282;
-            --button-bg: #1c1c1c;
-            --button-text: #b0b0b0;
+            background-color: #222222;
+            color: #cccccc;
+        }
+
+        body.light-theme {
+            background-color: #ffffff;
+            color: #333333;
         }
 
         .settings-bar {
             position: fixed;
-            bottom: 15px;
-            z-index: 101;
-            display: flex;
-            justify-content: flex-end;
-            right: 15px;
+            bottom: 10px;
+            right: 10px;
+            z-index: 100;
         }
 
         .settings-btn {
+            background: #0088cc;
+            color: #ffffff;
             border: none;
-            color: white;
-            font-size: 23px;
+            font-size: 18px;
+            padding: 10px;
             cursor: pointer;
-            transition: color 0.2s;
-            border-radius: 30px;
-            background: #3c3c3c;
-            display: flex;
-            padding: 12px;
         }
 
         .settings-panel {
             display: none;
-            position: absolute;
-            bottom: 0px;
-            right: 0px;
-            background: #3c3c3c;
-            width: 200px;
-            z-index: 102;
-            box-shadow: 0px 0px 10px rgb(0 0 0 / 98%);
-            border-radius: 10px;
+            position: fixed;
+            bottom: 50px;
+            right: 10px;
+            background: #ffffff;
+            border: 1px solid #cccccc;
+            width: 180px;
+            z-index: 101;
         }
 
         .settings-panel.show {
@@ -104,242 +62,168 @@
         }
 
         .settings-panel h4 {
-            font-size: 13px;
-            font-weight: 200;
-            color: white;
-            background: #216fb2;
+            font-size: 12px;
+            color: #0088cc;
+            background: #e5f1fb;
+            padding: 8px;
             text-align: center;
-            margin: 5px;
-            border-radius: 6px;
         }
 
         .settings-option {
-            display: flex;
-            margin: 5px;
-            align-items: center;
-            border-radius: 1px;
-            padding: 3px 13px;
+            padding: 8px 10px;
+            font-size: 12px;
+            color: #333333;
         }
 
         .settings-option:hover {
-            background-color: gray;
-            border-radius: 7px;
+            background: #e5f1fb;
         }
 
         .settings-option label {
-            font-size: 12px;
-            color: white;
-            margin-left: 8px;
+            margin-left: 5px;
             cursor: pointer;
         }
 
-        .theme-toggle label {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            font-size: 14px;
-            color: var(--secondary-text);
-            margin: 0 15px;
-            transition: color 0.3s;
-        }
-
-        .theme-toggle input[type="checkbox"] {
+        .theme-toggle {
             display: none;
         }
 
-        .theme-toggle .dark-label .fa-moon,
-        .theme-toggle .light-label .fa-sun {
-            margin-right: 8px;
-            font-size: 16px;
-        }
-
-        .theme-toggle input:checked + .light-label {
-            color: var(--telegram-accent);
-            font-weight: 600;
-        }
-
-        .theme-toggle input:not(:checked) + .dark-label {
-            color: var(--telegram-accent);
-            font-weight: 600;
-        }
-
         .container {
-            margin: 0px auto;
-            max-width: 660px;
-            padding: 0px 0px 35px 0px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 10px;
         }
 
         .header {
+            background: #0088cc;
+            color: #ffffff;
             text-align: center;
-            padding: 40px 0 40px;
-            background: var(--header-bg);
-            border-radius: 4px;
-            margin: 2px;
+            padding: 20px;
+            margin-bottom: 10px;
         }
 
         .header h1 {
-            font-size: 28px;
-            font-weight: 700;
-            color: white;
+            font-size: 24px;
         }
 
         .header p {
-            font-size: 10px;
-            font-weight: 300;
-            color: #ffffffad;
-            margin-top: -11px;
-            letter-spacing: 0.5px;
+            font-size: 12px;
+            color: #e5f1fb;
         }
 
         .account-access {
-                text-align: center;
-    position: sticky;
-    top: 0px;
-    padding: 20px 0px;
-    transition: border-bottom 0.3s 
-ease;
-    z-index: 99;
-    background-color: #216fb2;
-    border-radius: 4px;
-    margin: 1px;
-    backdrop-filter: blur(2px);
+            text-align: center;
+            padding: 15px;
+            background: #e5f1fb;
+            margin-bottom: 10px;
         }
 
         .account-btn {
-            background: transparent;
-            color: white;
-            padding: 10px 20px;
+            background: #0088cc;
+            color: #ffffff;
+            padding: 8px 15px;
             border: none;
             font-size: 14px;
-            font-weight: 500;
             cursor: pointer;
-            margin: 0px 8px;
-            border: solid 1px #ffffff80;
-            border-radius: 5px;
+            margin: 0 5px;
         }
 
         .account-btn:hover {
-            outline: auto;
-            outline-width: thick;
-            outline-style: double;
+            background: #006699;
         }
 
         .loan-option {
-            padding: 20px;
-            margin: 20px 4px;
-            border: 1px solid #4c4c4c9e;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #cccccc;
+            background: #ffffff;
         }
 
         .loan-option h2 {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--telegram-accent);
-            margin-bottom: 12px;
-            letter-spacing: -0.2px;
+            font-size: 16px;
+            color: #0088cc;
+            margin-bottom: 10px;
         }
 
         .loan-option p {
-            font-size: 13px;
-            font-weight: 400;
-            color: var(--secondary-text);
-            margin: 10px 0;
+            font-size: 12px;
+            color: #666666;
         }
 
         .apply-btn {
-            background: var(--button-bg);
-            color: var(--button-text);
-            padding: 8px 20px;
+            background: #0088cc;
+            color: #ffffff;
+            padding: 8px 15px;
             font-size: 14px;
-            font-weight: 500;
             text-decoration: none;
             display: inline-block;
-            margin-top: 12px;
-            transition: background 0.2s;
-        }
-
-        .apply-btn:hover {
-            background: color-mix(in srgb, var(--button-bg) 80%, #ffffff);
-            outline: auto;
-            outline-width: thick;
-            outline-style: double;
-        }
-
-        .terms {
-            font-size: 12px;
-            font-weight: 300;
-            color: #009c7f;
             margin-top: 10px;
         }
 
-        .how-it-works {
-            margin: 20px 4px;
-            padding: 20px;
-            border: 1px solid #4c4c4c9e;
+        .apply-btn:hover {
+            background: #006699;
         }
 
-        a {
-            text-decoration: none;
+        .terms {
+            font-size: 11px;
+            color: #0088cc;
+            margin-top: 8px;
+        }
+
+        .how-it-works {
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #cccccc;
+            background: #ffffff;
         }
 
         .how-it-works h3 {
-            font-size: 18px;
-            color: var(--telegram-accent);
-            margin-bottom: 12px;
-            letter-spacing: -0.2px;
+            font-size: 16px;
+            color: #0088cc;
+            margin-bottom: 10px;
         }
 
         .how-it-works ol {
             padding-left: 20px;
-            font-size: 13px;
-            font-weight: 400;
-            color: var(--secondary-text);
+            font-size: 12px;
+            color: #666666;
         }
 
         .how-it-works li {
             margin: 5px 0;
-            font-size: 13px;
-            line-height: 28px;
-            font-weight: 400;
-            color: var(--secondary-text);
         }
 
         .footer {
             text-align: center;
-            padding: 30px 0 0;
+            padding: 20px 0;
             font-size: 12px;
-            font-weight: 400;
-            color: var(--secondary-text);
+            color: #666666;
         }
 
         .sponsers {
-            background: color-mix(in srgb, var(--secondary-bg) 90%, #ffffff);
+            background: #e5f1fb;
             padding: 15px;
             text-align: center;
-            border: 1px solid #80808045;
-        }
-
-        .sponsers p {
-            font-size: 13px;
-            padding: 10px;
-            color: var(--secondary-text);
+            margin: 10px 0;
         }
 
         .sponsers h2 {
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--telegram-accent);
+            font-size: 16px;
+            color: #0088cc;
+        }
+
+        .sponsers p {
+            font-size: 12px;
+            color: #666666;
         }
 
         .sponsers a {
-            color: var(--telegram-accent);
+            color: #0088cc;
             text-decoration: none;
         }
 
         .sponsers a:hover {
             text-decoration: underline;
-            outline: auto;
-            outline-width: thick;
-            outline-style: double;
         }
 
         .popup-overlay {
@@ -349,181 +233,123 @@ ease;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.5);
             z-index: 999;
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
         .popup-overlay.show {
             display: block;
-            opacity: 1;
         }
 
         .account-popup {
             display: none;
-    position: fixed;
-    bottom: 0;
-    left: 29%;
-    max-height: 80vh;
-    background-color: var(--bg-color);
-    z-index: 1000;
-    display: flex
-;
-    flex-direction: column;
-    transform: translateX(-50%) translateY(100%);
-    transition: transform 0.3s 
-ease;
-    border-radius: 10px 10px 0px 0px;
-    margin: 0px 3px;
-    border: solid 1px #80808045;
-    width: 42%;
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            width: 90%;
+            max-width: 400px;
+            z-index: 1000;
+            border: 1px solid #cccccc;
         }
-   .account-access img{
-    border-radius: 10px;
-}     
-.account-access img:hover{
-    outline: auto;
-    border-radius: 10px;
-    outline-width: thick;
-    outline-style: double;
-    outline-color: white;
-    padding: 5px;
-    
-}
+
         .account-popup.show {
-            display: flex;
-            transform: translateY(0);
+            display: block;
         }
 
         .account-popup-header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            background-color: var(--header-bg);
-            border-radius: inherit;
-            z-index: 1;
+            background: #0088cc;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
         }
 
         .account-popup-header h3 {
-            font-size: 16px;
-            font-weight: 900;
-            color: black;
+            font-size: 14px;
+            margin: 0;
         }
 
         .account-popup-header .close-btn,
         .account-popup-header .settings-btn,
         .account-popup-header .back-btn {
-            background: transparent;
+            background: none;
             border: none;
-            color: var(--text-color);
-            font-size: 20px;
+            color: #ffffff;
+            font-size: 16px;
             cursor: pointer;
-            padding: 8px;
-            transition: color 0.2s;
+            position: absolute;
+            top: 10px;
+        }
+
+        .account-popup-header .close-btn {
+            right: 10px;
+        }
+
+        .account-popup-header .back-btn {
+            left: 10px;
         }
 
         .account-popup-header .close-btn:hover,
         .account-popup-header .back-btn:hover {
-            color: var(--telegram-accent);
-            outline: auto;
-            outline-width: thick;
-            outline-style: double;
+            color: #e5f1fb;
         }
 
         .account-popup-content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 0px;
-            scrollbar-width: thin;
+            padding: 15px;
         }
 
         .account-popup input {
-            padding: 15px;
-            border: none;
-            background: var(--secondary-bg);
-            color: var(--text-color);
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
             font-size: 14px;
-            font-weight: 400;
-            text-align: center;
-            outline: none;
+            margin-bottom: 10px;
         }
 
         .account-popup input:focus {
-            background-color: rgb(157, 157, 157);
-        }
-
-        .account-popup input::placeholder {
-            color: #888888;
-        }
-
-        .settings-option .inputs {
-            width: auto;
+            border-color: #0088cc;
+            outline: none;
         }
 
         .popup-btn {
-            background: var(--telegram-accent);
-            color: white;
-            padding: 9px 25px;
+            background: #0088cc;
+            color: #ffffff;
+            padding: 8px 15px;
             border: none;
             font-size: 14px;
-            font-weight: 500;
             cursor: pointer;
-            transition: background 0.2s;
-            margin: 20px auto 10px;
             display: block;
-            border-radius: 10px;
+            margin: 10px auto;
         }
 
         .popup-btn:hover {
-            background: #0088cccc;
-            outline: auto;
-            outline-width: thick;
-            outline-style: double;
+            background: #006699;
         }
 
         .error-message {
-            color: #ff5555;
+            color: #ff0000;
             font-size: 12px;
-            font-weight: 400;
-            display: none;
-            margin: 10px auto;
             text-align: center;
+            display: none;
+            margin: 10px 0;
         }
 
         .account-details {
-            margin: 0px;
-            max-width: 600px;
-            padding: 16px;
-            background: var(--secondary-bg);
-            border-radius: 5px;
+            padding: 10px;
+            background: #f4f4f4;
         }
 
         .account-details h4 {
-            font-size: 15px;
-            font-weight: 900;
-            color: #0388cc;
-            margin-bottom: 12px;
+            font-size: 14px;
+            color: #0088cc;
+            margin-bottom: 10px;
         }
 
         .account-details p {
-            font-size: 14px;
-            margin: 8px 0;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .account-details .loan-item {
-            margin: 10px 0;
-            border: solid 1px #8080805c;
-            padding: 10px;
-        }
-
-        h4 {
-            position: sticky;
-            top: 0px;
-            padding: 5px 0px;
+            font-size: 12px;
+            color: #666666;
+            margin: 5px 0;
         }
 
         .loading-overlay {
@@ -532,61 +358,46 @@ ease;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #000000;
+            background: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             z-index: 1000;
-            opacity: 1;
-            transition: opacity 0.5s ease;
         }
 
         .loading-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
+            display: none;
         }
 
         .loading-logo {
-            width: 200px;
-            height: auto;
+            width: 150px;
         }
 
         .loading-dots {
             display: flex;
-            position: fixed;
-            bottom: 100px;
-            align-items: center;
-            justify-content: center;
+            margin-top: 20px;
         }
 
         .dot {
-            width: 10px;
-            height: 10px;
-            background-color: #006aff;
-            margin: 0 5px;
+            width: 8px;
+            height: 8px;
+            background: #0088cc;
+            margin: 0 4px;
             border-radius: 50%;
-            animation: bounceDot 1s ease-in-out infinite;
+            animation: bounceDot 1.2s ease-in-out infinite;
         }
 
         .dot:nth-child(2) {
-            animation-delay: 0.2s;
+            animation-delay: 0.3s;
         }
 
         .dot:nth-child(3) {
-            animation-delay: 0.4s;
+            animation-delay: 0.6s;
         }
 
         @keyframes bounceDot {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
-            100% {
-                transform: translateY(0);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .autofill-message {
@@ -594,72 +405,31 @@ ease;
             top: 10px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: var(--secondary-bg);
-            color: var(--text-color);
-            padding: 3px 20px;
+            background: #e5f1fb;
+            color: #333333;
+            padding: 5px 15px;
             font-size: 12px;
-            font-weight: 500;
-            z-index: 1001;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            border: 1px solid #0088cc;
             display: none;
-            width: max-content;
-            border-radius: 30px;
-        }
-
-        hr {
-            background: #5e5e5e;
-            height: 1.5px;
-            outline: none;
-            border: none;
         }
 
         .autofill-message.show {
             display: block;
-            opacity: 1;
-        }
-
-        .fontandicon {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .popuphead {
-            color: black;
-        }
-
-        .upperline {
-            display: none;
         }
 
         .mlending {
-            color: rgb(0, 98, 255);
-            font-size: 13px;
-            padding: 5px;
-            margin: -5px;
+            color: #0088cc;
+            font-size: 12px;
+            text-decoration: none;
         }
 
         .mlending:hover {
-            outline: thick double;
+            text-decoration: underline;
         }
 
         @media (max-width: 480px) {
             .account-popup {
-                width: 98%;
-        max-width: 600px;
-        left: 49%;
-        transform: translateX(-50%) translateY(100%);
-            }
-
-            .account-popup.show {
-                transform: translateX(-50%) translateY(0);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .upperline {
-                display: none;
+                width: 95%;
             }
         }
     </style>
@@ -675,34 +445,34 @@ ease;
     </div>
     <div class="autofill-message" id="autofillMessage" data-i18n="autofill_message">Powered by BsPsgenerater</div>
     <div class="settings-bar">
-        <button class="settings-btn" onclick="toggleSettingsPanelTop()"><i class="fa-solid fa-gear"></i></button>
+        <button class="settings-btn" onclick="toggleSettingsPanelTop()"><i class="fa fa-gear"></i></button>
         <div class="settings-panel" id="settingsPanelTop">
             <h4 class="popuphead" data-i18n="theme_settings">Theme Settings</h4>
             <div class="settings-option">
                 <input type="radio" class="inputs" id="themeDarkTop" name="theme" value="dark" onchange="applyTheme('dark')">
-                <label class="fontandicon" for="themeDarkTop"><i class="fa-solid fa-moon"></i> <span data-i18n="theme_dark">Dark</span></label>
+                <label class="fontandicon" for="themeDarkTop"><i class="fa fa-moon-o"></i> <span data-i18n="theme_dark">Dark</span></label>
             </div>
             <div class="settings-option">
                 <input type="radio" class="inputs" id="themeLightTop" name="theme" value="light" onchange="applyTheme('light')">
-                <label class="fontandicon" for="themeLightTop"><i class="fa-solid fa-sun"></i> <span data-i18n="theme_light">Light</span></label>
+                <label class="fontandicon" for="themeLightTop"><i class="fa fa-sun-o"></i> <span data-i18n="theme_light">Light</span></label>
             </div>
             <h4 class="popuphead" data-i18n="font_settings">Font Settings</h4>
             <div class="settings-option">
                 <input type="radio" class="inputs" id="fontDefaultTop" name="font" value="default" onchange="applyFont('default')">
-                <label class="fontandicon" for="fontDefaultTop"><i class="fa-solid fa-a"></i> <span data-i18n="font_default">Default</span></label>
+                <label class="fontandicon" for="fontDefaultTop"><i class="fa fa-font"></i> <span data-i18n="font_default">Default</span></label>
             </div>
             <div class="settings-option">
                 <input type="radio" class="inputs" id="fontSerifTop" name="font" value="serif" onchange="applyFont('serif')">
-                <label class="fontandicon" for="fontSerifTop"><i class="fa-solid fa-font"></i> <span data-i18n="font_serif">Serif</span></label>
+                <label class="fontandicon" for="fontSerifTop"><i class="fa fa-font"></i> <span data-i18n="font_serif">Serif</span></label>
             </div>
             <h4 class="popuphead" data-i18n="language_settings">Language Settings</h4>
             <div class="settings-option">
                 <input type="radio" class="inputs" id="langEnglishTop" name="language" value="en" onchange="applyLanguage('en')">
-                <label class="fontandicon" for="langEnglishTop"><i class="fa-solid fa-globe"></i> <span data-i18n="lang_english">English</span></label>
+                <label class="fontandicon" for="langEnglishTop"><i class="fa fa-globe"></i> <span data-i18n="lang_english">English</span></label>
             </div>
             <div class="settings-option">
                 <input type="radio" class="inputs" id="langTeluguTop" name="language" value="te" onchange="applyLanguage('te')">
-                <label class="fontandicon" for="langTeluguTop"><i class="fa-solid fa-globe"></i> <span data-i18n="lang_telugu">Telugu</span></label>
+                <label class="fontandicon" for="langTeluguTop"><i class="fa fa-globe"></i> <span data-i18n="lang_telugu">Telugu</span></label>
             </div>
         </div>
     </div>
@@ -724,12 +494,6 @@ ease;
             <div class="terms" data-i18n="terms_interest">-> Interest on the amount will be based on the balance on amount you take.</div>
         </div>
         <div class="account-access">
-            <div class="offerbec" style="padding: 0px 16px;">
-                <a href="https://mfi0212.github.io/swan/offer/programx"><img style="margin-bottom: 10px;
-    width: 100%;
-    border-radius: 5px;
-    box-shadow: 0px 0px 20px #000000b3;" src="mlldoffer.png" alt=""></a>
-            </div>
             <button class="account-btn" onclick="showLoginPrompt()" data-i18n="my_account">My Account</button>
             <a href="https://mfi0212.github.io/MFI/takemoney" onclick="alert(getTranslation('alert_redirect'))"><button class="account-btn" data-i18n="take_money">Take Money</button></a>
         </div>
@@ -768,26 +532,26 @@ ease;
     <div class="account-popup" id="accountPopup">
         <div class="upperline"></div>
         <div class="account-popup-header">
-            <button class="back-btn" id="backBtn" onclick="navigateBack()" style="display: none;"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="back-btn" id="backBtn" onclick="navigateBack()" style="display: none;"><i class="fa fa-arrow-left"></i></button>
             <h3 id="popupTitle" class="popuphead" data-i18n="verification">Enter Password</h3>
             <div>
-                <p style="display: none; position: fixed; left: 1000em;" class="settings-btn" id="settingsBtn" onclick="toggleSettingsPanel()"><i class="fa-solid fa-gear" data-i18n="[title]settings"></i></p>
-                <p class="close-btn" style="color: black; position: fixed; top: 16px; padding: 0px 10px; right: 20px;" onclick="closePopup()"><i class="fa-solid fa-xmark"></i></p>
+                <p style="display: none; position: fixed; left: 1000em;" class="settings-btn" id="settingsBtn" onclick="toggleSettingsPanel()"><i class="fa fa-gear" data-i18n="[title]settings"></i></p>
+                <p class="close-btn" style="position: absolute; top: 10px; right: 10px;" onclick="closePopup()"><i class="fa fa-times"></i></p>
             </div>
         </div>
         <div class="account-popup-content">
             <div class="topicon"></div>
             <div id="passwordSection">
-                <h4 style="text-align: center; padding: 10px 0px 20px 0px; background: none;" data-i18n="enter_password">Enter your password</h4>
+                <h4 style="text-align: center; padding: 10px 0px 20px 0px;" data-i18n="enter_password">Enter your password</h4>
                 <input style="width: 100%;" type="text" id="passwordInput" data-i18n="[placeholder]enter_password">
                 <button class="popup-btn" onclick="authenticateUser()" data-i18n="submit">Submit</button>
                 <p class="error-message" id="errorMessage" data-i18n="error_message">Incorrect password.</p>
             </div>
             <div id="userDetails" style="display: none;">
-                <div class="account-details" id="accountDetails" style="background-color: rgb(44 44 44);"></div>
+                <div class="account-details" id="accountDetails"></div>
             </div>
             <div id="settingsSection" class="settings-section" style="display: none; width: 95%;">
-                <h4 style="background: none;" data-i18n="settings">Settings</h4>
+                <h4 data-i18n="settings">Settings</h4>
                 <div class="settings-option">
                     <input type="radio" class="inputs" id="fontOption" name="settings" value="font" onchange="displayFontOptions()">
                     <label for="fontOption" data-i18n="font">Font</label>
@@ -796,9 +560,9 @@ ease;
                     <input type="radio" class="inputs" id="languageOption" name="settings" value="language" onchange="displayLanguageOptions()">
                     <label for="languageOption" data-i18n="language">Language</label>
                 </div>
-            </div><script src="mlldaccountver.js"></script>
+            </div>
             <div id="fontSettingsSection" class="font-settings-section" style="display: none; width: 95%;">
-                <h4 style="background: none;" data-i18n="font_settings">Font Settings</h4>
+                <h4 data-i18n="font_settings">Font Settings</h4>
                 <div class="settings-sub-option">
                     <input type="radio" class="inputs" id="fontDefault" name="font" value="default" onchange="applyFont('default')">
                     <label for="fontDefault" data-i18n="font_default">Default</label>
@@ -809,7 +573,7 @@ ease;
                 </div>
             </div>
             <div id="languageSettingsSection" class="language-settings-section" style="display: none; width: 95%;">
-                <h4 style="background: none;" data-i18n="language_settings">Language Settings</h4>
+                <h4 data-i18n="language_settings">Language Settings</h4>
                 <div class="settings-sub-option">
                     <input type="radio" class="inputs" id="langEnglish" name="language" value="en" onchange="applyLanguage('en')">
                     <label for="langEnglish" data-i18n="lang_english">English</label>
@@ -821,5 +585,6 @@ ease;
             </div>
         </div>
     </div>
+    <script src="mlldaccountver.js"></script>
 </body>
 </html>
