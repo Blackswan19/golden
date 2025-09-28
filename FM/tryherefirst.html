@@ -94,8 +94,6 @@
         .container {
             max-width: 600px;
             margin: 10px auto;
-            border: 2px solid #000000;
-            background: #ffffff;
             padding: 10px;
         }
 
@@ -460,14 +458,16 @@
                 <input type="radio" class="inputs" id="themeLightTop" name="theme" value="light" onchange="applyTheme('light')">
                 <label class="fontandicon" for="themeLightTop"><i class="fa fa-sun-o"></i> <span data-i18n="theme_light">Light</span></label>
             </div>
-            <h4 class="popuphead" data-i18n="font_settings">Font Settings</h4>
-            <div class="settings-option">
-                <input type="radio" class="inputs" id="fontDefaultTop" name="font" value="default" onchange="applyFont('default')">
-                <label class="fontandicon" for="fontDefaultTop"><i class="fa fa-font"></i> <span data-i18n="font_default">Default</span></label>
-            </div>
-            <div class="settings-option">
-                <input type="radio" class="inputs" id="fontSerifTop" name="font" value="serif" onchange="applyFont('serif')">
-                <label class="fontandicon" for="fontSerifTop"><i class="fa fa-font"></i> <span data-i18n="font_serif">Serif</span></label>
+            <div class="optiondds" style="display: none; width: 95%;">
+                <h4 class="popuphead" data-i18n="font_settings" >Font Settings</h4>
+                <div class="settings-option">
+                    <input type="radio" class="inputs" id="fontDefaultTop" name="font" value="default" onchange="applyFont('default')">
+                    <label class="fontandicon" for="fontDefaultTop"><i class="fa fa-font"></i> <span data-i18n="font_default">Default</span></label>
+                </div>
+                <div class="settings-option">
+                    <input type="radio" class="inputs" id="fontSerifTop" name="font" value="serif" onchange="applyFont('serif')">
+                    <label class="fontandicon" for="fontSerifTop"><i class="fa fa-font"></i> <span data-i18n="font_serif">Serif</span></label>
+                </div>
             </div>
             <h4 class="popuphead" data-i18n="language_settings">Language Settings</h4>
             <div class="settings-option">
@@ -540,7 +540,8 @@
             <h3 id="popupTitle" class="popuphead" data-i18n="verification">Enter Password</h3>
             <div>
                 <p style="display: none; position: fixed; left: 1000em;" class="settings-btn" id="settingsBtn" onclick="toggleSettingsPanel()"><i class="fa fa-gear" data-i18n="[title]settings"></i></p>
-                <p class="close-btn" style="position: absolute; top: 10px; right: 10px;" onclick="closePopup()"><i class="fa fa-times"></i></p>
+                <p class="close-btn" style="position: absolute;top: 15px;
+    right: 20px;" onclick="closePopup()"><i class="fa fa-times"></i></p>
             </div>
         </div>
         <div class="account-popup-content">
