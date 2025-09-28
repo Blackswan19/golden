@@ -192,6 +192,7 @@
                         takenAmount: 3200,
                         fineRate: 50
                     },
+                    
                 ]
             }
         };
@@ -281,7 +282,9 @@
                         <p><span data-i18n="interest"></span>         <strong>₹${loan.interest}</strong></p>
                         <p><span data-i18n="overdue_interest"></span> <strong>₹${fine}</strong></p>
                         <hr>
-                        <p style="color: #00b99e;"><span data-i18n="total_amount_to_return"></span>: <strong>₹${totalAmountToReturn + fine}</strong></p>
+                        <p style="color: white    background: black;
+    padding: 0px 5px;
+;"><span data-i18n="total_amount_to_return"></span>: <strong>₹${totalAmountToReturn + fine}</strong></p>
                         ${repaymentMessage}
                     </div>
                 `;
