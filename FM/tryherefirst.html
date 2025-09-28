@@ -8,53 +8,52 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         * {
-            font-family: 'Helvetica', 'Arial', sans-serif;
+            font-family: 'Times New Roman', 'Arial', sans-serif;
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
         body {
-            background-color: #f4f4f4;
-            color: #333333;
-            line-height: 1.6;
+            background: #ffffff url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAAXNSR0IArs4c6QAAABJJREFUCB1jYGBgYGBhYGBgYHAAAEYACrK0EloAAAAASUVORK5CYII=') repeat;
+            color: #000000;
+            line-height: 1.4;
+            font-size: 16px;
         }
 
         body.dark-theme {
-            background-color: #222222;
-            color: #cccccc;
+            background: #000080 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAAXNSR0IArs4c6QAAABJJREFUCB1jYGBgYGBoaGAAAEAACrK0EloAAAAASUVORK5CYII=') repeat;
+            color: #ffffff;
         }
 
         body.light-theme {
-            background-color: #ffffff;
-            color: #333333;
+            background: #ffffff url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAAXNSR0IArs4c6QAAABJJREFUCB1jYGBgYGBhYGBgYHAAAEYACrK0EloAAAAASUVORK5CYII=') repeat;
+            color: #000000;
         }
 
         .settings-bar {
             position: fixed;
-            bottom: 10px;
-            right: 10px;
-            z-index: 100;
+            bottom: 5px;
+            right: 5px;
         }
 
         .settings-btn {
-            background: #0088cc;
+            background: #0000ff;
             color: #ffffff;
-            border: none;
-            font-size: 18px;
-            padding: 10px;
+            border: 2px solid #000000;
+            font-size: 16px;
+            padding: 5px 10px;
             cursor: pointer;
         }
 
         .settings-panel {
             display: none;
             position: fixed;
-            bottom: 50px;
-            right: 10px;
-            background: #ffffff;
-            border: 1px solid #cccccc;
-            width: 180px;
-            z-index: 101;
+            bottom: 40px;
+            right: 5px;
+            background: #c0c0c0;
+            border: 2px solid #000000;
+            width: 200px;
         }
 
         .settings-panel.show {
@@ -62,21 +61,25 @@
         }
 
         .settings-panel h4 {
-            font-size: 12px;
-            color: #0088cc;
-            background: #e5f1fb;
-            padding: 8px;
+            font-size: 14px;
+            color: #000000;
+            background: #0000ff;
+            color: #ffffff;
+            padding: 5px;
             text-align: center;
+            border-bottom: 1px solid #000000;
         }
 
         .settings-option {
-            padding: 8px 10px;
+            padding: 5px;
             font-size: 12px;
-            color: #333333;
+            color: #000000;
+            border-bottom: 1px solid #808080;
         }
 
         .settings-option:hover {
-            background: #e5f1fb;
+            background: #0000ff;
+            color: #ffffff;
         }
 
         .settings-option label {
@@ -90,103 +93,108 @@
 
         .container {
             max-width: 600px;
-            margin: 0 auto;
+            margin: 10px auto;
+            border: 2px solid #000000;
+            background: #ffffff;
             padding: 10px;
         }
 
         .header {
-            background: #0088cc;
+            background: #0000ff;
             color: #ffffff;
             text-align: center;
-            padding: 20px;
+            padding: 15px;
+            border: 1px solid #000000;
             margin-bottom: 10px;
         }
 
         .header h1 {
-            font-size: 24px;
+            font-size: 20px;
         }
 
         .header p {
             font-size: 12px;
-            color: #e5f1fb;
+            color: #ffff00;
         }
 
         .account-access {
             text-align: center;
-            padding: 15px;
-            background: #e5f1fb;
+            padding: 10px;
+            background: #c0c0c0;
+            border: 1px solid #000000;
             margin-bottom: 10px;
         }
 
         .account-btn {
-            background: #0088cc;
+            background: #0000ff;
             color: #ffffff;
-            padding: 8px 15px;
-            border: none;
+            padding: 5px 10px;
+            border: 1px solid #000000;
             font-size: 14px;
             cursor: pointer;
             margin: 0 5px;
         }
 
         .account-btn:hover {
-            background: #006699;
+            background: #ff0000;
         }
 
         .loan-option {
-            padding: 15px;
+            padding: 10px;
             margin: 10px 0;
-            border: 1px solid #cccccc;
+            border: 1px solid #000000;
             background: #ffffff;
         }
 
         .loan-option h2 {
             font-size: 16px;
-            color: #0088cc;
-            margin-bottom: 10px;
+            color: #0000ff;
+            margin-bottom: 5px;
         }
 
         .loan-option p {
             font-size: 12px;
-            color: #666666;
+            color: #000000;
         }
 
         .apply-btn {
-            background: #0088cc;
+            background: #0000ff;
             color: #ffffff;
-            padding: 8px 15px;
+            padding: 5px 10px;
+            border: 1px solid #000000;
             font-size: 14px;
             text-decoration: none;
             display: inline-block;
-            margin-top: 10px;
+            margin-top: 5px;
         }
 
         .apply-btn:hover {
-            background: #006699;
+            background: #ff0000;
         }
 
         .terms {
-            font-size: 11px;
-            color: #0088cc;
-            margin-top: 8px;
+            font-size: 12px;
+            color: #0000ff;
+            margin-top: 5px;
         }
 
         .how-it-works {
-            padding: 15px;
+            padding: 10px;
             margin: 10px 0;
-            border: 1px solid #cccccc;
+            border: 1px solid #000000;
             background: #ffffff;
         }
 
         .how-it-works h3 {
             font-size: 16px;
-            color: #0088cc;
-            margin-bottom: 10px;
+            color: #0000ff;
+            margin-bottom: 5px;
         }
 
         .how-it-works ol {
             padding-left: 20px;
             font-size: 12px;
-            color: #666666;
+            color: #000000;
         }
 
         .how-it-works li {
@@ -195,35 +203,38 @@
 
         .footer {
             text-align: center;
-            padding: 20px 0;
+            padding: 10px 0;
             font-size: 12px;
-            color: #666666;
+            color: #000000;
+            background: #c0c0c0;
+            border: 1px solid #000000;
         }
 
         .sponsers {
-            background: #e5f1fb;
-            padding: 15px;
+            background: #c0c0c0;
+            padding: 10px;
             text-align: center;
             margin: 10px 0;
+            border: 1px solid #000000;
         }
 
         .sponsers h2 {
             font-size: 16px;
-            color: #0088cc;
+            color: #0000ff;
         }
 
         .sponsers p {
             font-size: 12px;
-            color: #666666;
+            color: #000000;
         }
 
         .sponsers a {
-            color: #0088cc;
-            text-decoration: none;
+            color: #0000ff;
+            text-decoration: underline;
         }
 
         .sponsers a:hover {
-            text-decoration: underline;
+            color: #ff0000;
         }
 
         .popup-overlay {
@@ -233,7 +244,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: #000000;
+            opacity: 0.5;
             z-index: 999;
         }
 
@@ -247,11 +259,11 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            background: #ffffff;
+            background: #c0c0c0;
             width: 90%;
             max-width: 400px;
             z-index: 1000;
-            border: 1px solid #cccccc;
+            border: 2px solid #000000;
         }
 
         .account-popup.show {
@@ -259,10 +271,11 @@
         }
 
         .account-popup-header {
-            background: #0088cc;
+            background: #0000ff;
             color: #ffffff;
             padding: 10px;
             text-align: center;
+            border-bottom: 1px solid #000000;
         }
 
         .account-popup-header h3 {
@@ -292,31 +305,31 @@
 
         .account-popup-header .close-btn:hover,
         .account-popup-header .back-btn:hover {
-            color: #e5f1fb;
+            color: #ffff00;
         }
 
         .account-popup-content {
-            padding: 15px;
+            padding: 10px;
         }
 
         .account-popup input {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #cccccc;
+            padding: 5px;
+            border: 1px solid #000000;
             font-size: 14px;
             margin-bottom: 10px;
+            background: #ffffff;
         }
 
         .account-popup input:focus {
-            border-color: #0088cc;
-            outline: none;
+            border: 1px solid #0000ff;
         }
 
         .popup-btn {
-            background: #0088cc;
+            background: #0000ff;
             color: #ffffff;
-            padding: 8px 15px;
-            border: none;
+            padding: 5px 10px;
+            border: 1px solid #000000;
             font-size: 14px;
             cursor: pointer;
             display: block;
@@ -324,7 +337,7 @@
         }
 
         .popup-btn:hover {
-            background: #006699;
+            background: #ff0000;
         }
 
         .error-message {
@@ -332,23 +345,24 @@
             font-size: 12px;
             text-align: center;
             display: none;
-            margin: 10px 0;
+            margin: 5px 0;
         }
 
         .account-details {
             padding: 10px;
-            background: #f4f4f4;
+            background: #ffffff;
+            border: 1px solid #000000;
         }
 
         .account-details h4 {
             font-size: 14px;
-            color: #0088cc;
-            margin-bottom: 10px;
+            color: #0000ff;
+            margin-bottom: 5px;
         }
 
         .account-details p {
             font-size: 12px;
-            color: #666666;
+            color: #000000;
             margin: 5px 0;
         }
 
@@ -358,7 +372,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: #ffffff;
+            background: #000080;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -370,46 +384,32 @@
         }
 
         .loading-logo {
-            width: 150px;
+            width: 100px;
         }
 
         .loading-dots {
             display: flex;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         .dot {
-            width: 8px;
-            height: 8px;
-            background: #0088cc;
-            margin: 0 4px;
-            border-radius: 50%;
-            animation: bounceDot 1.2s ease-in-out infinite;
-        }
-
-        .dot:nth-child(2) {
-            animation-delay: 0.3s;
-        }
-
-        .dot:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-
-        @keyframes bounceDot {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            width: 10px;
+            height: 10px;
+            background: #ffffff;
+            margin: 0 5px;
+            border: 1px solid #000000;
         }
 
         .autofill-message {
             position: fixed;
-            top: 10px;
+            top: 5px;
             left: 50%;
             transform: translateX(-50%);
-            background: #e5f1fb;
-            color: #333333;
-            padding: 5px 15px;
+            background: #c0c0c0;
+            color: #000000;
+            padding: 5px 10px;
             font-size: 12px;
-            border: 1px solid #0088cc;
+            border: 1px solid #000000;
             display: none;
         }
 
@@ -418,18 +418,22 @@
         }
 
         .mlending {
-            color: #0088cc;
+            color: #0000ff;
             font-size: 12px;
-            text-decoration: none;
+            text-decoration: underline;
         }
 
         .mlending:hover {
-            text-decoration: underline;
+            color: #ff0000;
         }
 
         @media (max-width: 480px) {
             .account-popup {
                 width: 95%;
+            }
+
+            .container {
+                margin: 5px;
             }
         }
     </style>
