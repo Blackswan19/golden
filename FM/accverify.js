@@ -80,22 +80,7 @@
         profileBackground: "#8a49f4",
         stars: 0,
         loans: [
-            {
-                planDate: "28-06-2025",
-                endDate: "30-09-2025(Extanded to 30 days)",
-                interest: 2000,
-                takenAmount:10000,
-                takenFrom: "MLending",
-                fineRate: 90,
-            },
-            {
-                planDate: "20-09-2025",
-                endDate: "30-09-2025",
-                interest: 600,
-                takenAmount: 4600,
-                takenFrom: "MLLD",
-                fineRate: 44,
-            },
+            
              {
                 planDate: "01-06-2025",
                 endDate: "18-10-2025(Extanded to 30 days)",
@@ -121,14 +106,13 @@
                 fineRate: 50,
             },
             {
-                planDate: "28-09-2025",
-                endDate: "28-10-2025",
-                interest: 0,
-                takenAmount:2000,
-                takenFrom: "MLLD(#Dur02ff_#acc@0212)",
+                planDate: "29-09-2025",
+                endDate: "29-10-2025",
+                interest: 490,
+                takenAmount:4200,
+                takenFrom: "MLLD",
                 fineRate: 90,
             },
-
         ]
     },
     "Cherish@123": {
