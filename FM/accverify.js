@@ -89,7 +89,7 @@
                 fineRate: 90,
             },
             {
-                planDate: "21-09-2025",
+                planDate: "20-09-2025",
                 endDate: "30-09-2025",
                 interest: 600,
                 takenAmount: 4600,
