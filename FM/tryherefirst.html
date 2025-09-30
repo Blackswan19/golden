@@ -210,6 +210,7 @@ ease;
     width: -webkit-fill-available;
     margin: 10px;
     padding: 8px;
+        box-shadow: 0px 0px 30px #00000085;
         }
 
         .account-btn {
@@ -253,7 +254,18 @@ ease;
             color: var(--secondary-text);
             margin: 10px 0;
         }
-
+.mattopt {
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    display: flex
+;
+    background: #216fb2;
+    width: -webkit-fill-available;
+    color: white;
+    padding: 12px;
+    max-width: 660px;
+}
         .apply-btn {
             background: var(--button-bg);
             color: var(--button-text);
@@ -695,54 +707,47 @@ ease;
         <div class="header">
             <h1 data-i18n="header_title">MLLD</h1>
             <div class="settings-bar">
-        <button class="settings-btn" onclick="toggleSettingsPanelTop()"><i class="fa-solid fa-gear"></i></button>
-        <div class="settings-panel" id="settingsPanelTop">
-            <h4 class="popuphead" data-i18n="theme_settings">Theme Settings</h4>
-            <div class="settings-option">
-                <input type="radio" class="inputs" id="themeDarkTop" name="theme" value="dark" onchange="applyTheme('dark')">
-                <label class="fontandicon" for="themeDarkTop"><i class="fa-solid fa-moon"></i> <span data-i18n="theme_dark">Dark</span></label>
-            </div>
-            <div class="settings-option">
-                <input type="radio" class="inputs" id="themeLightTop" name="theme" value="light" onchange="applyTheme('light')">
-                <label class="fontandicon" for="themeLightTop"><i class="fa-solid fa-sun"></i> <span data-i18n="theme_light">Light</span></label>
-            </div>
-            <h4 class="popuphead" data-i18n="font_settings">Font Settings</h4>
-            <div class="settings-option">
-                <input type="radio" class="inputs" id="fontDefaultTop" name="font" value="default" onchange="applyFont('default')">
-                <label class="fontandicon" for="fontDefaultTop"><i class="fa-solid fa-a"></i> <span data-i18n="font_default">Default</span></label>
-            </div>
-            <div class="settings-option">
-                <input type="radio" class="inputs" id="fontSerifTop" name="font" value="serif" onchange="applyFont('serif')">
-                <label class="fontandicon" for="fontSerifTop"><i class="fa-solid fa-font"></i> <span data-i18n="font_serif">Serif</span></label>
-            </div>
-            <h4 class="popuphead" data-i18n="language_settings">Language Settings</h4>
-            <div class="settings-option">
-                <input type="radio" class="inputs" id="langEnglishTop" name="language" value="en" onchange="applyLanguage('en')">
-                <label class="fontandicon" for="langEnglishTop"><i class="fa-solid fa-globe"></i> <span data-i18n="lang_english">English</span></label>
-            </div>
-            <div class="settings-option">
-                <input type="radio" class="inputs" id="langTeluguTop" name="language" value="te" onchange="applyLanguage('te')">
-                <label class="fontandicon" for="langTeluguTop"><i class="fa-solid fa-globe"></i> <span data-i18n="lang_telugu">Telugu</span></label>
+                <button class="settings-btn" onclick="toggleSettingsPanelTop()"><i class="fa-solid fa-gear"></i></button>
+                <div class="settings-panel" id="settingsPanelTop">
+                    <h4 class="popuphead" data-i18n="theme_settings">Theme Settings</h4>
+                    <div class="settings-option">
+                        <input type="radio" class="inputs" id="themeDarkTop" name="theme" value="dark" onchange="applyTheme('dark')">
+                        <label class="fontandicon" for="themeDarkTop"><i class="fa-solid fa-moon"></i> <span data-i18n="theme_dark">Dark</span></label>
+                    </div>
+                    <div class="settings-option">
+                        <input type="radio" class="inputs" id="themeLightTop" name="theme" value="light" onchange="applyTheme('light')">
+                        <label class="fontandicon" for="themeLightTop"><i class="fa-solid fa-sun"></i> <span data-i18n="theme_light">Light</span></label>
+                    </div>
+                    <h4 class="popuphead" data-i18n="font_settings">Font Settings</h4>
+                    <div class="settings-option">
+                        <input type="radio" class="inputs" id="fontDefaultTop" name="font" value="default" onchange="applyFont('default')">
+                        <label class="fontandicon" for="fontDefaultTop"><i class="fa-solid fa-a"></i> <span data-i18n="font_default">Default</span></label>
+                    </div>
+                    <div class="settings-option">
+                        <input type="radio" class="inputs" id="fontSerifTop" name="font" value="serif" onchange="applyFont('serif')">
+                        <label class="fontandicon" for="fontSerifTop"><i class="fa-solid fa-font"></i> <span data-i18n="font_serif">Serif</span></label>
+                    </div>
+                    <h4 class="popuphead" data-i18n="language_settings">Language Settings</h4>
+                    <div class="settings-option">
+                        <input type="radio" class="inputs" id="langEnglishTop" name="language" value="en" onchange="applyLanguage('en')">
+                        <label class="fontandicon" for="langEnglishTop"><i class="fa-solid fa-globe"></i> <span data-i18n="lang_english">English</span></label>
+                    </div>
+                    <div class="settings-option">
+                        <input type="radio" class="inputs" id="langTeluguTop" name="language" value="te" onchange="applyLanguage('te')">
+                        <label class="fontandicon" for="langTeluguTop"><i class="fa-solid fa-globe"></i> <span data-i18n="lang_telugu">Telugu</span></label>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+        <div class="mattopt">
+            <p>kvaesilufvrasukfilucvadskfukabs;i</p>
         </div>
-        <div class="loan-option">
+        <div class="loan-option" style="margin-top: 75px;">
             <h2 data-i18n="amount_details">Amount details!</h2>
             <p data-i18n="amount_range">Amount: 100 - 5000₹</p>
             <p data-i18n="repayment_period">Repayment: 1 - 15 Days</p>
             <div class="terms" data-i18n="terms_repay">-> Repay within days based on your taken days or late fees apply.</div>
             <div class="terms" data-i18n="terms_interest">-> Interest on the amount will be based on the balance on amount you take.</div>
-        </div>
-        <div class="account-access">
-            <!-- <div class="offerbec" style="padding: 0px 16px;">
-                <a href="https://mfi0212.github.io/swan/offer/programx"><img style="margin-bottom: 10px;
-    width: 100%;
-    border-radius: 5px;
-    box-shadow: 0px 0px 20px #000000b3;" src="mlldoffer.png" alt=""></a>
-            </div> -->
-            <button class="account-btn" onclick="showLoginPrompt()" data-i18n="my_account">My Account</button>
-            <a href="https://mfi0212.github.io/MFI/takemoney" onclick="alert(getTranslation('alert_redirect'))"><button class="account-btn" data-i18n="take_money">Take Money</button></a>
         </div>
         <div class="how-it-works">
             <h3 data-i18n="how_it_works">Follow these steps..!</h3>
@@ -773,6 +778,16 @@ ease;
             <a class="mlending" href="https://blackswan19.github.io/golden/FM/themain" data-i18n="mlending_site">MLending site</a>
         </div>
         <div class="footer" data-i18n="footer">By Myootive</div>
+         <div class="account-access">
+            <!-- <div class="offerbec" style="padding: 0px 16px;">
+                <a href="https://mfi0212.github.io/swan/offer/programx"><img style="margin-bottom: 10px;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px #000000b3;" src="mlldoffer.png" alt=""></a>
+            </div> -->
+            <button class="account-btn" onclick="showLoginPrompt()" data-i18n="my_account">My Account</button>
+            <a href="https://mfi0212.github.io/MFI/takemoney" onclick="alert(getTranslation('alert_redirect'))"><button class="account-btn" data-i18n="take_money">Take Money</button></a>
+        </div>
     </div>
 
     <div class="popup-overlay" id="popupOverlay"></div>
@@ -831,6 +846,7 @@ ease;
                 </div>
             </div>
         </div>
+        
     </div>
 </body>
 </html>
