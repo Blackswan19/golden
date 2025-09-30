@@ -104,21 +104,20 @@
         }
 
         .settings-panel h4 {
-            font-size: 13px;
-            font-weight: 200;
-            color: white;
-            background: #216fb2;
-            text-align: center;
-            margin: 5px;
-            border-radius: 6px;
+                font-size: 14px;
+    font-weight: 600;
+    color: #0b6fc5;
+    text-align: left;
+    margin: 5px 18px;
         }
 
         .settings-option {
-            display: flex;
-            margin: 5px;
-            align-items: center;
-            border-radius: 1px;
-            padding: 3px 13px;
+            display: flex
+;
+    margin: 6px 10px;
+    align-items: center;
+    border-radius: 1px;
+    padding: 5px;
         }
 
         .settings-option:hover {
@@ -228,6 +227,8 @@ ease;
 
         .account-btn:hover {
             background: #005197;
+            
+                outline: groove;
         }
 
         .loan-option {
@@ -451,9 +452,9 @@ ease;
         .account-popup-header .close-btn:hover,
         .account-popup-header .back-btn:hover {
             color: var(--telegram-accent);
-            outline: auto;
-            outline-width: thick;
-            outline-style: double;
+                outline: groove;
+    background: #ffffffd4;
+    border-radius: 10px;
         }
 
         .account-popup-content {
@@ -501,10 +502,8 @@ ease;
         }
 
         .popup-btn:hover {
-            background: #0088cccc;
-            outline: auto;
-            outline-width: thick;
-            outline-style: double;
+            background: #005197;
+                outline: groove;
         }
 
         .error-message {
@@ -665,7 +664,8 @@ ease;
         }
 
         .mlending:hover {
-            outline: thick double;
+            
+                outline: groove;
         }
 
         @media (max-width: 480px) {
@@ -795,7 +795,7 @@ ease;
     <div class="popup-overlay" id="popupOverlay"></div>
     <div class="account-popup" id="accountPopup">
         <div class="upperline"></div>
-        <div class="account-popup-header">
+        <div class="account-popup-header" style="background-color: #0b6fc5;">
             <button class="back-btn" id="backBtn" onclick="navigateBack()" style="display: none;"><i class="fa-solid fa-arrow-left"></i></button>
             <h3 id="popupTitle" class="popuphead" data-i18n="verification">Enter Password</h3>
             <div>
