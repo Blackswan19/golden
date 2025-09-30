@@ -32,7 +32,7 @@
                 step_8: "Are you late to return? Say 2 days before we will extend the date (or) Extra fees apply.",
                 step_9: "Pay on time for future loans.",
                 late_payment: "I'm late",
-                late_payment_desc: "If you are <span class=\"highlight\">late in returning the amount</span>, the interest will <span class=\"highlight\">double for every 2 hours</span>.",
+                late_payment_desc: "If you are late in returning the amount, the interest will double for every 2 hours.",
                 contact_us: "Contact us if you think you'll be late so we can help you.",
                 long_term_loan: "Can't take for 15+ days?",
                 long_term_terms: "-> Yes, you can take as many days as you need, but if you take more than 15 days, you will have to pay a higher interest rate than the standard one.",
@@ -91,7 +91,7 @@
                 step_8: "తిరిగి చెల్లించడంలో ఆలస్యమైతే? 2 రోజుల ముందు చెప్పండి, మేము తేదీని పొడిగిస్తాము (లేదా) అదనపు రుసుము వర్తిస్తుంది.",
                 step_9: "భవిష్యత్ రుణాల కోసం సమయానికి చెల్లించండి.",
                 late_payment: "నేను ఆలస్యమయ్యాను",
-                late_payment_desc: "మీరు <span class=\"highlight\">మొత్తాన్ని తిరిగి చెల్లించడంలో ఆలస్యమైతే</span>, ప్రతి 2 గంటలకు వడ్డీ <span class=\"highlight\">రెట్టింపు అవుతుంది</span>.",
+                late_payment_desc: "మీరు మొత్తాన్ని తిరిగి చెల్లించడంలో ఆలస్యమైతే, ప్రతి 2 గంటలకు వడ్డీ రెట్టింపు అవుతుంది.",
                 contact_us: "మీరు ఆలస్యం అవుతామని భావిస్తే మమ్మల్ని సంప్రదించండి, మేము మీకు సహాయం చేస్తాము.",
                 long_term_loan: "15+ రోజుల కోసం తీసుకోలేరా?",
                 long_term_terms: "-> అవును, మీకు కావలసినన్ని రోజులు తీసుకోవచ్చు, కానీ 15 రోజుల కంటే ఎక్కువ తీసుకుంటే, సాధారణ రేటు కంటే ఎక్కువ వడ్డీ రేటు చెల్లించాలి.",
@@ -274,7 +274,7 @@
                 return `
                     <div class="loan-item">
                         <h4 style="text-align:center;" data-i18n="amount">${getTranslation("amount")} ${index + 1}</h4>
-                        <p><span data-i18n="taken_amount"></span>    <strong>₹${loan.takenAmount}</strong></p>
+                        <p><span data-i18n="taken_amount">    <strong>₹${loan.takenAmount}</strong></p>
                         <p><span data-i18n="taken_on"></span>         <strong>${loan.planDate}</strong></p>
                         <p><span data-i18n="return_on"></span>        <strong>${loan.endDate}</strong></p>
                         <p><span data-i18n="duration"></span>         <strong>${duration} <span data-i18n="days"></span></strong></p>
@@ -282,7 +282,7 @@
                         <hr>
                         <p><span data-i18n="overdue_interest"></span> <strong>₹${fine}</strong></p>
                         <hr>
-                        <p style="color: #00b99e;"><span data-i18n="total_amount_to_return"></span> <strong>₹${totalAmountToReturn + fine}</strong></p>
+                        <p><span data-i18n="total_amount_to_return"></span> <strong>₹${totalAmountToReturn + fine}</strong></p>
                         ${repaymentMessage}
                     </div>
                 `;
