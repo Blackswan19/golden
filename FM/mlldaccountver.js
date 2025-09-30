@@ -274,7 +274,7 @@
                 return `
                     <div class="loan-item">
                         <h4 style="text-align:center;" data-i18n="amount">${getTranslation("amount")} ${index + 1}</h4>
-                        <p><span data-i18n="taken_amount">    <strong>₹${loan.takenAmount}</strong></p>
+                        <p><span data-i18n="taken_amount"></span>    <strong>₹${loan.takenAmount}</strong></p>
                         <p><span data-i18n="taken_on"></span>         <strong>${loan.planDate}</strong></p>
                         <p><span data-i18n="return_on"></span>        <strong>${loan.endDate}</strong></p>
                         <p><span data-i18n="duration"></span>         <strong>${duration} <span data-i18n="days"></span></strong></p>
@@ -282,7 +282,7 @@
                         <hr>
                         <p><span data-i18n="overdue_interest"></span> <strong>₹${fine}</strong></p>
                         <hr>
-                        <p><span data-i18n="total_amount_to_return"></span> <strong>₹${totalAmountToReturn + fine}</strong></p>
+                        <p style="color: #00b99e;"><span data-i18n="total_amount_to_return"></span> <strong>₹${totalAmountToReturn + fine}</strong></p>
                         ${repaymentMessage}
                     </div>
                 `;
