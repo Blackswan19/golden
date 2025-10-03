@@ -271,15 +271,28 @@
         body.my-own .modal p {
             color: #a0a0a0;
         }
+        .close {
+    display: flex
+;
+    justify-content: space-between;
+    backdrop-filter: blur(10px);
+    position: fixed;
+    padding: 60px 0px;
+    gap: 100px;
+    top: -5px;
+    z-index: 1000;
+    width: 100%;
+    left: 0px;
+}
         .close-btn {
                 position: fixed;
-    top: 20px;
-    left: 12px;
+                left: 10px;
+                top: 20px;
     color: white;
     font-size: 14px;
     cursor: pointer;
     z-index: 11;
-    background: #696969;
+    background: #ffffff88;
     padding: 5px 12px;
     border-radius: 0px;
     outline: none;
@@ -583,9 +596,11 @@
             font-weight: 300;
         }
         .profile-container {
-              max-width: 620px;
+                  max-width: 620px;
     width: 100%;
     padding: 10px;
+    position: relative;
+    z-index: 10000;
         }
         .profile-picture {
                 width: 90px;
@@ -960,6 +975,8 @@
     text-transform: uppercase;
     width: 100%;
     max-width: 0%;
+    position: relative;
+    z-index: 1000;
         }
         .dot {
             width: 10px;
@@ -1105,15 +1122,15 @@
             } */
         }
         .date-container {
-            position: fixed;
-    top: 20px;
-    right: 15px;
+          position: fixed;
+                right: 10px;
+                top: 20px;
     height: 30px;
     overflow: hidden;
     user-select: none;
     z-index: 1000;
     border-radius: 0px;
-        background: #696969;
+        background: #ffffff88;
     
     backdrop-filter: blur(5px);
         }
@@ -1170,18 +1187,6 @@ body.curvy .date-container {
     </div>
     <div id="userInfoModal" class="modal">
         <img style="filter: blur(20px);" id="mdbglogo" src="headbg.png" alt="">
-        <div class="date-container">
-        <div style="color: white;font-weight: 300;" class="date-slider" id="main-slider">
-            <div class="date-text"></div>
-            <div class="day-text"></div>
-            <div class="date-text"></div>
-            <div class="day-text"></div>
-            <div class="date-text"></div>
-            <div class="day-text"></div>
-            <div class="date-text"></div>
-            <div class="day-text"></div>
-        </div>
-    </div>
         <div class="downlog" style="display: flex
 ;
     justify-content: center;
@@ -1197,8 +1202,22 @@ body.curvy .date-container {
             max-width: 50px;
             z-index: 10000;" src="https://raw.githubusercontent.com/goforbg/telegram-emoji-gifs/refs/heads/master/thunder.gif" alt=""> BS&MFI
         </div>
-        <div class="close">
-            <button onclick="closeModal()" class="close-btn"><i class="fa-solid fa-chevron-left"></i>Back</button>
+        <div class="topoption">
+            <div class="close">
+                <button onclick="closeModal()" class="close-btn"><i class="fa-solid fa-chevron-left"></i>Back</button>
+                <div class="date-container">
+                    <div style="color: white;font-weight: 300;" class="date-slider" id="main-slider">
+                        <div class="date-text"></div>
+                        <div class="day-text"></div>
+                        <div class="date-text"></div>
+                        <div class="day-text"></div>
+                        <div class="date-text"></div>
+                        <div class="day-text"></div>
+                        <div class="date-text"></div>
+                        <div class="day-text"></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <a href="https://blackswan19.github.io/golden/FM/starspage">
 
@@ -1207,20 +1226,7 @@ body.curvy .date-container {
         <div class="profile-container">
             <div class="profile-picture" id="profilePicture"></div>
             <div>
-                <p id="userNameContainer" style="font-size: 20px;
-    display: flex
-;
-    gap: 5px;
-    justify-content: center;
-    align-items: center;
-    margin: 5px 15px;
-    backdrop-filter: blur(5px);
-    position: sticky;
-    top: 85px;
-    padding: 17px;
-    border-radius: 100px;
-    font-size: 18px;
-    margin-left: -5px;">
+                <p id="userNameContainer" style="font-size: 20px; display: flex; gap: 5px; justify-content: center; align-items: center;margin: 15px;">
                     <span style="color: white;" id="userName"></span>
                 </p>
                 <div class="twoOptions">
