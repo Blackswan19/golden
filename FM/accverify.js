@@ -84,7 +84,7 @@
                 planDate: "25-05-2025",
                 endDate: "23-10-2025(Extanded to 30 days)",
                 interest: 1400,
-                takenAmount: 7080,
+                takenAmount: 7100,
                 takenFrom: "Delayit offer",
                 fineRate: 50,
             },
