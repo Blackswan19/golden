@@ -80,15 +80,6 @@
         profileBackground: "#8a49f4",
         stars: 0,
         loans: [
-            
-             {
-                planDate: "01-06-2025",
-                endDate: "16-11-2025(Extanded to 39 days)",
-                interest: 2000,
-                takenAmount: 11500,
-                takenFrom: "ProgramsX & Split Pay offer",
-                fineRate: 50,
-            },
             {
                 planDate: "25-05-2025",
                 endDate: "23-10-2025(Extanded to 30 days)",
@@ -104,6 +95,14 @@
                 takenAmount:4200,
                 takenFrom: "MLLD",
                 fineRate: 90,
+            },
+            {
+                planDate: "01-06-2025",
+                endDate: "16-11-2025(Extanded to 39 days)",
+                interest: 2000,
+                takenAmount: 11500,
+                takenFrom: "ProgramsX & Split Pay offer",
+                fineRate: 50,
             },
         ]
     },
