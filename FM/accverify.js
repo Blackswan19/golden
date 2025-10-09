@@ -83,24 +83,16 @@
             
              {
                 planDate: "01-06-2025",
-                endDate: "18-10-2025(Extanded to 30 days)",
-                interest: 1250,
-                takenAmount: 5000,
-                takenFrom: "MLLD",
+                endDate: "16-11-2025(Extanded to 39 days)",
+                interest: 2239,
+                takenAmount: 11500,
+                takenFrom: "ProgramsX & Split Pay offer",
                 fineRate: 50,
-            },
-            {
-                planDate: "01-06-2025",
-                endDate: "18-10-2025(Extanded to 30 days)",
-                interest: 480,
-                takenAmount: 4760,
-                takenFrom: "PERS+INT",
-                fineRate: 48,
             },
             {
                 planDate: "25-05-2025",
                 endDate: "23-10-2025(Extanded to 30 days)",
-                interest: 1239,
+                interest: 1250,
                 takenAmount: 7080,
                 takenFrom: "Delayit offer",
                 fineRate: 50,
@@ -108,7 +100,7 @@
             {
                 planDate: "29-09-2025",
                 endDate: "29-10-2025",
-                interest: 490,
+                interest: 500,
                 takenAmount:4200,
                 takenFrom: "MLLD",
                 fineRate: 90,
