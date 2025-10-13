@@ -71,6 +71,14 @@
                 takenFrom: "MLLD",
                 fineRate: 46
             },
+{
+                planDate: "13-10-2025",
+                endDate: "28-10-2025",
+                interest: 2800,
+                takenAmount: 10000,
+                takenFrom: "MLending",
+                fineRate: 46
+            },
         ]
     },
     "Mahesh888*": {
