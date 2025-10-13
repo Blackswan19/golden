@@ -161,14 +161,7 @@
                 takenFrom: "MLLD(Offer)",
                 fineRate: 4
             },
-            {
-                planDate: "24-05-2025",
-                endDate: "-- <p style='color: #ff6200ff;'>(Interest adding stoped by #PY@0212)</p>",
-                interest: 0,
-                takenAmount: 4800,
-                takenFrom: "MLLD(Offer)",
-                fineRate: 5
-            },
+            
         ]
     },
 };
