@@ -74,8 +74,8 @@
 {
                 planDate: "13-10-2025",
                 endDate: "28-10-2025",
-                interest: 2800,
-                takenAmount: 10000,
+                interest: 0,
+                takenAmount: 7200,
                 takenFrom: "MLending",
                 fineRate: 46
             },
