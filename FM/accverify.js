@@ -37,7 +37,7 @@
                 interest: 1360,
                 takenAmount: 5000,
                 takenFrom: "MLLD",
-                fineRate: 86
+                fineRate: 50
             },
             {
                 planDate: "15-08-2025",
@@ -45,7 +45,7 @@
                 interest: 4800,
                 takenAmount: 20000,
                 takenFrom: "MLending",
-                fineRate: 320
+                fineRate: 250
             },
             {
                 planDate: "16-08-2025",
@@ -53,7 +53,7 @@
                 interest: 1275,
                 takenAmount: 5000,
                 takenFrom: "MLLD",
-                fineRate: 90
+                fineRate: 50
             },
             {
                 planDate: "18-08-2025",
@@ -61,7 +61,7 @@
                 interest: 1380,
                 takenAmount: 5000,
                 takenFrom: "MLLD",
-                fineRate: 88
+                fineRate: 60
             },
             {
                 planDate: "18-08-2025",
@@ -69,7 +69,7 @@
                 interest: 690,
                 takenAmount: 2500,
                 takenFrom: "MLLD",
-                fineRate: 46
+                fineRate: 35
             },
 {
                 planDate: "13-10-2025",
@@ -77,7 +77,7 @@
                 interest: 0,
                 takenAmount: 10000,
                 takenFrom: "MLending",
-                fineRate: 46
+                fineRate: 45
             },
 {
                 planDate: "14-10-2025",
@@ -85,7 +85,7 @@
                 interest: 0,
                 takenAmount: 2700,
                 takenFrom: "MLending",
-                fineRate: 46
+                fineRate: 45
             },
         ]
     },
