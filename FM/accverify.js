@@ -130,44 +130,45 @@
         stars: 0,
         loans: [
             {
-                planDate: "21-05-2025",
-                endDate: "-- <p style='color: #ff6200ff;'>(Interest adding stoped by #PY@0212)</p>",
-                interest: 0,
-                takenAmount: 8200,
+                planDate: "14-10-2025",
+                endDate: "31-10-2025",
+                interest: 1300,
+                takenAmount: 6200,
                 takenFrom: "MLLD",
-                fineRate: 5
+                fineRate: 30
             },
+            {
+                planDate: "14-10-2025",
+                endDate: "31-10-2025",
+                interest: 1500,
+                takenAmount: 6000,
+                takenFrom: "MLLD",
+                fineRate: 30
+            },
+            {
+               planDate: "14-10-2025",
+                endDate: "31-10-2025",
+                interest: 1200,
+                takenAmount: 3500,
+                takenFrom: "MLLD",
+                fineRate: 30
+            },
+            {
+                planDate: "14-10-2025",
+                endDate: "31-10-2025",
+                interest: 1800,
+                takenAmount: 4200,
+                takenFrom: "MLLD(Offer)",
+                fineRate: 30
+            },
+            // undefined candidate
             {
                 planDate: "29-05-2025",
-                endDate: "-- <p style='color: #ff6200ff;'>(Interest adding stoped by #PY@0212)</p>",
-                interest: 0,
-                takenAmount: 20500,
+                endDate: "12-10-2025<p style='color: #ff6200ff;'>(Defaulter)</p>",
+                interest: 5600,
+                takenAmount: 25000,
                 takenFrom: "MLending",
-                fineRate: 7
-            },
-            {
-                planDate: "23-05-2025",
-                endDate: "-- <p style='color: #ff6200ff;'>(Interest adding stoped by #PY@0212)</p>",
-                interest: 0,
-                takenAmount: 7500,
-                takenFrom: "MLLD",
-                fineRate: 5
-            },
-            {
-                planDate: "28-05-2025",
-                endDate: "-- <p style='color: #ff6200ff;'>(Interest adding stoped by #PY@0212)</p>",
-                interest: 0,
-                takenAmount: 3500,
-                takenFrom: "MLLD",
-                fineRate: 4
-            },
-            {
-                planDate: "25-05-2025",
-                endDate: "-- <p style='color: #ff6200ff;'>(Interest adding stoped by #PY@0212)</p>",
-                interest: 0,
-                takenAmount: 3500,
-                takenFrom: "MLLD(Offer)",
-                fineRate: 4
+                fineRate: 30
             },
             
         ]
