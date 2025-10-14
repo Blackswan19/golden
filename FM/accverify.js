@@ -24,7 +24,7 @@
             },
         ]
     },
-    "62755": {
+    "6275": {
         name: "Srikanth Jampana",
         membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
@@ -63,7 +63,7 @@
                 takenFrom: "MLLD",
                 fineRate: 46
             },
-{
+            {
                 planDate: "13-10-2025",
                 endDate: "28-10-2025",
                 interest: 0,
@@ -71,7 +71,7 @@
                 takenFrom: "MLending",
                 fineRate: 46
             },
-{
+            {
                 planDate: "14-10-2025",
                 endDate: "29-10-2025",
                 interest: 0,
@@ -79,15 +79,6 @@
                 takenFrom: "MLending",
                 fineRate: 46
             },
-        ]
-    },
-    "6275": {
-        name: "Srikanth Jampana",
-        membershipType: "",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "#ff4500",
-        stars: 0,
-        loans: [
             {
                 planDate: "16-08-2025",
                 endDate: "31-08-2025",
@@ -95,8 +86,7 @@
                 takenAmount: 5000,
                 takenFrom: "MLLD",
                 fineRate: 90
-            },
-            
+            },     
         ]
     },
     "Mahesh888*": {
@@ -189,6 +179,7 @@
                 takenFrom: "MLending",
                 fineRate: 30
             },
+            
             
         ]
     },
