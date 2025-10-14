@@ -132,32 +132,32 @@
             {
                 planDate: "14-10-2025",
                 endDate: "31-10-2025",
-                interest: 1300,
-                takenAmount: 6200,
+                interest: 2480,
+                takenAmount: 5000,
                 takenFrom: "MLLD",
                 fineRate: 30
             },
             {
                 planDate: "14-10-2025",
                 endDate: "31-10-2025",
-                interest: 1500,
-                takenAmount: 6000,
+                interest: 2180,
+                takenAmount: 4500,
                 takenFrom: "MLLD",
                 fineRate: 30
             },
             {
                planDate: "14-10-2025",
                 endDate: "31-10-2025",
-                interest: 1200,
-                takenAmount: 3500,
+                interest: 1900,
+                takenAmount: 3800,
                 takenFrom: "MLLD",
                 fineRate: 30
             },
             {
                 planDate: "14-10-2025",
                 endDate: "31-10-2025",
-                interest: 1800,
-                takenAmount: 4200,
+                interest: 2800,
+                takenAmount: 5200,
                 takenFrom: "MLLD(Offer)",
                 fineRate: 30
             },   
