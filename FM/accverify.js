@@ -148,31 +148,31 @@ const passwords = {
         stars: 0,
         showCustomContent: "no",
         customContent: {
-            type: "text",
-            value: "NOTE: Your amounts has updated to match the offer criteria",
-            url: ""
+            type: "image",
+            value: "programXoffer.png",
+            url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [ 
             {
                 planDate: "14-10-2025",
                 endDate: "31-10-2025",
-                interest: 3580,
-                takenAmount: 6400,
+                interest: 2980,
+                takenAmount: 6200,
                 takenFrom: "MLLD",
                 fineRate: 30
             },
             {
                 planDate: "14-10-2025",
                 endDate: "31-10-2025",
-                interest: 3240,
-                takenAmount: 6690,
+                interest: 2840,
+                takenAmount: 6600,
                 takenFrom: "MLLD",
                 fineRate: 30
             },
             {
                 planDate: "14-10-2025",
                 endDate: "31-10-2025",
-                interest: 2969,
+                interest: 2660,
                 takenAmount: 5880,
                 takenFrom: "MLLD",
                 fineRate: 30
@@ -180,8 +180,8 @@ const passwords = {
             {
                 planDate: "14-10-2025",
                 endDate: "31-10-2025",
-                interest: 3380,
-                takenAmount: 5560,
+                interest: 3280,
+                takenAmount: 5600,
                 takenFrom: "MLLD(Offer)",
                 fineRate: 30
             }, 
@@ -195,8 +195,8 @@ const passwords = {
         stars: 0,
         showCustomContent: "no",
         customContent: {
-           type: "image",
-            value: "programXoffer.png",
+            type: "text",
+            value: "Hello, Cherish! Check out our exclusive loan discount.",
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
