@@ -146,7 +146,7 @@ const passwords = {
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "rgb(90 135 242)",
         stars: 0,
-        showCustomContent: "yes",
+        showCustomContent: "no",
         customContent: {
             type: "text",
             value: "NOTE: Your amounts has updated to match the offer criteria",
