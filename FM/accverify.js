@@ -146,11 +146,11 @@ const passwords = {
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "rgb(90 135 242)",
         stars: 0,
-        showCustomContent: "no",
+        showCustomContent: "yes",
         customContent: {
-            type: "image",
-            value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
+            type: "text",
+            value: "NOTE: Your amounts has updated to match the offer criteria",
+            url: ""
         },
         loans: [ 
             {
@@ -195,8 +195,8 @@ const passwords = {
         stars: 0,
         showCustomContent: "no",
         customContent: {
-            type: "text",
-            value: "Hello, Cherish! Check out our exclusive loan discount.",
+           type: "image",
+            value: "programXoffer.png",
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
