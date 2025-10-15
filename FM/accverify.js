@@ -148,15 +148,7 @@ const passwords = {
                     type: "text",
                     value: "Hello, Cherish! Check out our exclusive loan discount."
                 },
-                loans: [
-                    {
-                        planDate: "29-05-2025",
-                        endDate: "12-10-2025",
-                        interest: 5600,
-                        takenAmount: 25000,
-                        takenFrom: "MLending",
-                        fineRate: 30
-                    },  
+                loans: [ 
                     {
                         planDate: "14-10-2025",
                         endDate: "31-10-2025",
@@ -191,25 +183,25 @@ const passwords = {
                     }, 
                 ]
             },
-            // "Cherish@1234": {
-            //     name: "Cherish",
-            //     membershipType: "",
-            //     membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-            //     profileBackground: "rgb(90 135 242)",
-            //     stars: 0,
-            //     showCustomContent: "no",
-            //     customContent: null,
-            //     loans: [
-            //         {
-            //             planDate: "29-05-2025",
-            //             endDate: "12-10-2025",
-            //             interest: 5600,
-            //             takenAmount: 25000,
-            //             takenFrom: "MLending",
-            //             fineRate: 30
-            //         },
-            //     ]
-            // },
+            "Cherish@1234": {
+                name: "Cherish",
+                membershipType: "",
+                membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+                profileBackground: "rgb(90 135 242)",
+                stars: 0,
+                showCustomContent: "no",
+                customContent: null,
+                loans: [
+                    {
+                        planDate: "29-05-2025",
+                        endDate: "12-10-2025",
+                        interest: 5600,
+                        takenAmount: 25000,
+                        takenFrom: "MLending",
+                        fineRate: 30
+                    },
+                ]
+            },
         };
 
         let sessionReferenceTime = null;
