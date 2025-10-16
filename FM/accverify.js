@@ -146,33 +146,33 @@ const passwords = {
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "rgb(90 135 242)",
         stars: 0,
-        showCustomContent: "no",
+        showCustomContent: "yes",
         customContent: {
-            type: "image",
-            value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
+            type: "text",
+            value: "NOTE: Your amounts has updated to match the offer criteria",
+            url: ""
         },
         loans: [ 
             {
                 planDate: "14-10-2025",
                 endDate: "31-10-2025",
-                interest: 2980,
-                takenAmount: 6200,
+                interest: 3580,
+                takenAmount: 6400,
                 takenFrom: "MLLD",
                 fineRate: 30
             },
             {
                 planDate: "14-10-2025",
                 endDate: "31-10-2025",
-                interest: 2840,
-                takenAmount: 6600,
+                interest: 3240,
+                takenAmount: 6690,
                 takenFrom: "MLLD",
                 fineRate: 30
             },
             {
                 planDate: "14-10-2025",
                 endDate: "31-10-2025",
-                interest: 2660,
+                interest: 2969,
                 takenAmount: 5880,
                 takenFrom: "MLLD",
                 fineRate: 30
@@ -180,8 +180,8 @@ const passwords = {
             {
                 planDate: "14-10-2025",
                 endDate: "31-10-2025",
-                interest: 3280,
-                takenAmount: 5600,
+                interest: 3380,
+                takenAmount: 5560,
                 takenFrom: "MLLD(Offer)",
                 fineRate: 30
             }, 
@@ -195,8 +195,8 @@ const passwords = {
         stars: 0,
         showCustomContent: "no",
         customContent: {
-            type: "text",
-            value: "Hello, Cherish! Check out our exclusive loan discount.",
+           type: "image",
+            value: "programXoffer.png",
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
