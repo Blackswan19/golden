@@ -189,7 +189,7 @@
                         planDate: "20-08-2025",
                         endDate: "10-09-2025",
                         interest: 800,
-                        takenAmount: 3200,
+                        takenAmount: 0,
                         fineRate: 50
                     },
                 ]
