@@ -141,10 +141,10 @@ const passwords = {
         ]
     },
     "Cherish@123": {
-        name: "Cherish",
+        name: "Cherish #1",
         membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "rgb(90 135 242)",
+        profileBackground: "rgb(255 44 0)",
         stars: 0,
         showCustomContent: "yes",
         customContent: {
@@ -188,7 +188,7 @@ const passwords = {
         ]
     },
     "Cherish@1234":{
-        name: "Cherish",
+        name: "Cherish #2",
         membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "rgb(90 135 242)",
