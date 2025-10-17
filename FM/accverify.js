@@ -6,10 +6,10 @@ const passwords = {
         profileBackground: "#ff8b24",
         stars: 0,
         showCustomContent: "no",
-        customContent: {
+       customContent: {
             type: "text",
-            value: "programXoffer.png",
-            url: null
+            value: "NOTE: Your amounts has updated to match the offer criteria",
+            url: ""
         },
         loans: [
             {
@@ -36,7 +36,7 @@ const passwords = {
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#ff4500",
         stars: 0,
-        showCustomContent: "no",
+        showCustomContent: "yes",
         customContent: {
             type: "image",
             value: "programXoffer.png",
@@ -148,9 +148,9 @@ const passwords = {
         stars: 0,
         showCustomContent: "yes",
         customContent: {
-            type: "text",
-            value: "NOTE: Your amounts has updated to match the offer criteria",
-            url: ""
+            type: "image",
+            value: "programXoffer.png",
+            url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [ 
             {
