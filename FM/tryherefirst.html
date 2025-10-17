@@ -1400,7 +1400,7 @@ body.curvy .date-container {
 }
 #specialContent {
        width: 105%;
-    margin: 15px 0px 25px -19px;
+    margin: 15px 0px 35px -19px;
     text-align: center;
     padding: 0px 15px;
 
@@ -1418,9 +1418,13 @@ body.curvy #specialContent img{
 #specialContent h3 {
     margin: 0 0 5px 0;
     font-size: 16px;
-	    padding: 5px;
-
+    padding: 5px;
+    background: transparent;
+    border-radius: 0px;
+    filter: invert(1);
+    text-decoration: underline 2.5px;
 }
+
 #specialContent p {
     margin: 0;
     font-size: 13px;
@@ -1502,8 +1506,8 @@ body.curvy #specialContent img{
                         <div style="display: flex ; justify-content: center; align-items: center; margin-top: 1px; font-size: 11px;"> <i class="fa-solid fa-star" style=" margin-right: 5px;"></i><span style=" font-size: 14px; font-weight: 900;" id="starCount"></span> </div> Star </button>
                 </div>
                 <!-- specific messages for specific customers -->
-               <div id="specialContent" class="about" style="background: linear-gradient(45deg, red, yellow, blue,#b900ff, white, #00ff00, #00b5ff, black, #ff00a3);" ></div>
-                <p id="membershipType" class="membership-type"></p>
+               <div id="specialContent" class="about" style="background: linear-gradient(45deg, red, yellow, blue,#b900ff, white, #00ff00, #00b5ff, black, #ff00a3);"></div>
+                <p id="membershipType" class="about" class="membership-type"></p>
             </div>
         </div>
         <!-- <div class="about" id="endson" style="    margin-bottom: 45px;
@@ -1721,22 +1725,22 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         ) {
             if (user.customContent.type === "text") {
                 specialContentDiv.innerHTML = `
-                    <h3 style="color: white; font-size: 16px;">Special Offer</h3>
-                    <p style="color: #00aeff; font-size: 14px;">${user.customContent.value}</p>
+                    <h3 style="color: white; font-size: 16px;" class="about">Special Offer</h3>
+                    <p style="color: black; font-size: 14px;">${user.customContent.value}</p>
                 `;
                 endsonSection.innerHTML = `
                     <div id="endson-content">
-                        <p style="color: #00aeff; font-size: 14px;">${user.customContent.value}</p>
+                        <p style="color: black; font-size: 14px;">${user.customContent.value}</p>
                     </div>
                 `;
             } else if (user.customContent.type === "image") {
                 specialContentDiv.innerHTML = `
                     <h3 style="color: white; font-size: 16px;"></h3>
-                    <img src="${user.customContent.value}" alt="Special Offer" onerror="this.src='';">
+                    <img src="${user.customContent.value}" class="about" alt="Special Offer" onerror="this.src='';">
                 `;
                 endsonSection.innerHTML = `
                     <div id="endson-content">
-                        <img src="${user.customContent.value}" alt="Special Offer" onerror="this.src='';">
+                        <img src="${user.customContent.value}" class="about" alt="Special Offer" onerror="this.src='';">
                     </div>
                 `;
             }
