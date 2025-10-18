@@ -36,7 +36,7 @@ const passwords = {
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#ff4500",
         stars: 0,
-        showCustomContent: "yes",
+        showCustomContent: "no",
         customContent: {
             type: "image",
             value: "programXoffer.png",
@@ -143,10 +143,10 @@ const passwords = {
     "Cherish@123": {
         name: "Cherish #1",
         membershipType: "",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/10000/4.gif",
         profileBackground: "rgb(255 44 0)",
         stars: 0,
-        showCustomContent: "no",
+        showCustomContent: "yes",
         customContent: {
             type: "image",
             value: "programXoffer.png",
@@ -156,15 +156,7 @@ const passwords = {
             {
                 planDate: "14-10-2025",
                 endDate: "31-10-2025",
-                interest: 3580,
-                takenAmount: 6400,
-                takenFrom: "MLLD",
-                fineRate: 30
-            },
-            {
-                planDate: "14-10-2025",
-                endDate: "31-10-2025",
-                interest: 3240,
+                interest: 3130,
                 takenAmount: 6690,
                 takenFrom: "MLLD",
                 fineRate: 30
