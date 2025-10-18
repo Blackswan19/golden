@@ -146,7 +146,7 @@ const passwords = {
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "rgb(255 44 0)",
         stars: 0,
-        showCustomContent: "no",
+        showCustomContent: "yes",
         customContent: {
             type: "image",
             value: "programXoffer.png",
