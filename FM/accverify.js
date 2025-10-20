@@ -247,24 +247,22 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         profilePicture.style.backgroundImage = "none";
         profilePicture.textContent = iconText;
 
-        // Check if total taken amount exceeds 20,000
+        // Check if total taken amount exceeds 20,000 and randomly display borrowLimitMessage
         const totalTaken = user.loans.reduce((sum, loan) => sum + loan.takenAmount, 0);
         const borrowLimitMessage = document.createElement("div");
         borrowLimitMessage.id = "borrowLimitMessage";
-        if (totalTaken > 20000) {
+        if (totalTaken > 20000 && Math.random() < 0.8) { // 50% chance to show message
             borrowLimitMessage.innerHTML = `
                 <p class="borrowLimitMessage" style='    
                 color: red;
-        font-size: 11px;
-    text-align: center;
-    font-weight: 500;'>
-                    <span style='    font-size: 13px;
-    color: white;
-    text-decoration: underline 2px;
-'>NOTE</span><r style='    color: white;
-    font-size: 14px;
-'> : </r>You have crossed the borrow limit. From the next borrow, We will charge an extra fee for the amounts. To borrow more then the limit, Use         <a href="https://mfi0212.github.io/MFI/starpre" style='    white-space: nowrap;    color: white;
-    font-size: 12px;'>Premium Plan</a>.
+                font-size: 11px;
+                text-align: center;
+                font-weight: 500;'>
+                    <span style='font-size: 13px; color: white; text-decoration: underline 2px;'>NOTE</span>
+                    <r style='color: white; font-size: 14px;'> : </r>We found you have crossed the borrow limit. 
+                    From the next borrow, We will charge an extra fee for the amounts. 
+                    To borrow more then the limit, Use 
+                    <a href="https://mfi0212.github.io/MFI/starpre" style='white-space: nowrap; color: white; font-size: 12px;'>Premium Plan</a>.
                 </p>
             `;
         } else {
