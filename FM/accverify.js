@@ -255,9 +255,9 @@ document.getElementById("submitBtn").addEventListener("click", () => {
             borrowLimitMessage.innerHTML = `
                 <p class="borrowLimitMessage" style='    
                 color: red;
-    font-size: 11px;
-    text-align: left;
-    font-weight: 600;'>
+        font-size: 11px;
+    text-align: center;
+    font-weight: 500;'>
                     <span style='    font-size: 13px;
     color: white;
     text-decoration: underline 2px;
