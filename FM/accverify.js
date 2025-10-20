@@ -261,7 +261,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
                     <span style='font-size: 13px; color: white; text-decoration: underline 2px;'>NOTE</span>
                     <r style='color: white; font-size: 14px;'> : </r>We found you have crossed the borrow limit. 
                     From the next borrow, We will charge an extra fee for the amounts. 
-                    To borrow more then the limit, Use 
+                    To borrow more than the limit, Use 
                     <a href="https://mfi0212.github.io/MFI/starpre" style='white-space: nowrap; color: white; font-size: 12px;'>Premium Plan</a>.
                 </p>
             `;
@@ -572,3 +572,4 @@ function setTheme(theme) {
 function setCustomTheme() {
     console.log("Custom theme selected");
 }
+
