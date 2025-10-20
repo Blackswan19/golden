@@ -143,7 +143,7 @@ const passwords = {
     "Cherish@123": {
         name: "Cherish #1",
         membershipType: "",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/10000/4.gif",
+        membershipIcon: "https://media.tenor.com/pT6HQx4wIogAAAAj/twitch-rpx-syria.gif",
         profileBackground: "rgb(255 44 0)",
         stars: 0,
         showCustomContent: "no",
@@ -572,4 +572,3 @@ function setTheme(theme) {
 function setCustomTheme() {
     console.log("Custom theme selected");
 }
-
