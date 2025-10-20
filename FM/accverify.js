@@ -263,7 +263,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
     text-decoration: underline 2px;
 '>NOTE</span><r style='    color: white;
     font-size: 14px;
-'> : </r>We found you have crossed the borrow limit. From your next borrow, we will charge an extra fee for the amount. To borrow more then limit use         <a href="https://mfi0212.github.io/MFI/starpre" style='    white-space: nowrap;    color: white;
+'> : </r>You have crossed the borrow limit. From the next borrow, We will charge an extra fee for the amounts. To borrow more then the limit, Use         <a href="https://mfi0212.github.io/MFI/starpre" style='    white-space: nowrap;    color: white;
     font-size: 12px;'>Premium Plan</a>.
                 </p>
             `;
