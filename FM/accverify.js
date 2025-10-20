@@ -6,7 +6,7 @@ const passwords = {
         profileBackground: "#ff8b24",
         stars: 0,
         showCustomContent: "no",
-       customContent: {
+        customContent: {
             type: "text",
             value: "NOTE: Your amounts has updated to match the offer criteria",
             url: ""
@@ -146,7 +146,7 @@ const passwords = {
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/10000/4.gif",
         profileBackground: "rgb(255 44 0)",
         stars: 0,
-        showCustomContent: "yes",
+        showCustomContent: "no",
         customContent: {
             type: "image",
             value: "programXoffer.png",
@@ -179,7 +179,7 @@ const passwords = {
             }, 
         ]
     },
-    "Cherish@1234":{
+    "Cherish@1234": {
         name: "Cherish #2",
         membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
@@ -187,7 +187,7 @@ const passwords = {
         stars: 0,
         showCustomContent: "no",
         customContent: {
-           type: "image",
+            type: "image",
             value: "programXoffer.png",
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
@@ -247,6 +247,33 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         profilePicture.style.backgroundImage = "none";
         profilePicture.textContent = iconText;
 
+        // Check if total taken amount exceeds 20,000
+        const totalTaken = user.loans.reduce((sum, loan) => sum + loan.takenAmount, 0);
+        const borrowLimitMessage = document.createElement("div");
+        borrowLimitMessage.id = "borrowLimitMessage";
+        if (totalTaken > 20000) {
+            borrowLimitMessage.innerHTML = `
+                <p class="borrowLimitMessage" style='    
+                color: red;
+    font-size: 11px;
+    text-align: left;
+    font-weight: 600;'>
+                    <span style='    font-size: 13px;
+    color: white;
+    text-decoration: underline 2px;
+'>NOTE</span><r style='    color: white;
+    font-size: 14px;
+'> : </r>We found you have crossed the borrow limit. From your next borrow, we will charge an extra fee for the amount. To borrow more then limit use         <a href="https://mfi0212.github.io/MFI/starpre" style='    white-space: nowrap;    color: white;
+    font-size: 12px;'>Premium Plan</a>.
+                </p>
+            `;
+        } else {
+            borrowLimitMessage.innerHTML = "";
+        }
+        const userInfoModal = document.getElementById("userInfoModal");
+        const profilePictureContainer = profilePicture.parentElement;
+        userInfoModal.insertBefore(borrowLimitMessage, profilePictureContainer);
+
         const amountButtons = document.getElementById("amountButtons");
         amountButtons.innerHTML = "";
 
@@ -279,12 +306,11 @@ document.getElementById("submitBtn").addEventListener("click", () => {
                             ${contentHtml}
                         </a>
                     `;
-                    // Add explicit click handler for debugging and fallback
                     specialContentDiv.onclick = (e) => {
                         console.log(`specialContent clicked, opening: ${contentUrl}`);
                         try {
                             window.open(contentUrl, '_blank');
-                            e.preventDefault(); // Prevent default if already handled
+                            e.preventDefault();
                         } catch (err) {
                             console.error(`Failed to open URL ${contentUrl}:`, err);
                             errorMessage.textContent = "Error opening link.";
@@ -479,6 +505,7 @@ function closeModal() {
     document.getElementById("passwordContainer").style.display = "flex";
     document.getElementById("userPassword").value = "";
     document.getElementById("specialContent").innerHTML = "";
+    document.getElementById("borrowLimitMessage")?.remove();
     sessionReferenceTime = null;
 }
 
