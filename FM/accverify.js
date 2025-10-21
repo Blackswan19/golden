@@ -45,7 +45,8 @@ const passwords = {
         loans: [
             {
                 planDate: "10-08-2025",
-                endDate: "25-08-2025",
+                endDate: "21-10-2025",
+                // endDate: "25-08-2025",
                 interest: 1360,
                 takenAmount: 5000,
                 takenFrom: "MLLD",
@@ -261,9 +262,11 @@ document.getElementById("submitBtn").addEventListener("click", () => {
                         font-size: 11px;
                         text-align: center;
                         font-weight: 500;'>
-                        <img style="    width: 19px;
+                        <img style="    width: 16px;
     position: relative;
-    top: 5px;" src="https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/2" alt="">
+    top: 3px;
+    left: -1px;
+" src="https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/2" alt="">
                         <img style="width: 19px;
     position: relative;
     top: 5px;
