@@ -261,7 +261,13 @@ document.getElementById("submitBtn").addEventListener("click", () => {
                         font-size: 11px;
                         text-align: center;
                         font-weight: 500;'>
-                        <img style="width: 20px;    position: relative;top: 5px;" src="https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_7d7473ef8ba54ce2b2f8e29d078f90bf/default/dark/2.0" alt="">
+                        <img style="    width: 19px;
+    position: relative;
+    top: 5px;" src="https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/2" alt="">
+                        <img style="width: 19px;
+    position: relative;
+    top: 5px;
+    filter: invert(1);display: none;" src="https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_7d7473ef8ba54ce2b2f8e29d078f90bf/default/dark/2.0" alt="">
                         <span style='font-size: 12px;
                             color: white;
                             text-decoration: none;
