@@ -264,6 +264,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
                         <img style="width: 20px;    position: relative;top: 5px;" src="https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_7d7473ef8ba54ce2b2f8e29d078f90bf/default/dark/2.0" alt="">
                         <span style='font-size: 12px;
                             color: white;
+                            text-decoration: none;
                             border-radius: 10px;'>BsRora (<i style='position: relative; right: -4px;' class="fa-solid fa-robot"></i>)
                         </span> : </r>We found you have crossed the borrow limit. 
                         From the next borrow, We will charge an extra fee for the amounts. 
