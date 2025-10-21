@@ -258,9 +258,9 @@ document.getElementById("submitBtn").addEventListener("click", () => {
                 font-size: 11px;
                 text-align: center;
                 font-weight: 500;'>
-                    <span style='font-size: 13px; color: white; text-decoration: underline 2px;'><i style='position: relative;
-    left: 3px;' class="fa-solid fa-robot"></i>BsRora(Bot)</span>
-                     <r style='color: white; font-size: 14px;'> : </r>We found you have crossed the borrow limit. 
+                    <span style='font-size: 13px; color: white; text-decoration: underline 2px;'>BsRora</span>
+                     <r style='color: white; font-size: 3;'>(<i style='    position: relative;
+    left: 4px;' class="fa-solid fa-robot"></i>) : </r>We found you have crossed the borrow limit. 
                     From the next borrow, We will charge an extra fee for the amounts. 
                     To borrow more than the limit, Use 
                     <a href="https://mfi0212.github.io/MFI/starpre" style='white-space: nowrap; color: white; font-size: 12px;'>Premium Plan</a>.
