@@ -253,18 +253,24 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         borrowLimitMessage.id = "borrowLimitMessage";
         if (totalTaken > 20000 && Math.random() < 0.8) { // 50% chance to show message
             borrowLimitMessage.innerHTML = `
-                <p class="borrowLimitMessage" style='    
-                color: red;
-                font-size: 11px;
-                text-align: center;
-                font-weight: 500;'>
-                    <span style='font-size: 13px; color: white; text-decoration: underline 2px;'>BsRora</span>
-                     <r style='color: white; font-size: 3;'>(<i style='    position: relative;
-    left: 4px;' class="fa-solid fa-robot"></i>) : </r>We found you have crossed the borrow limit. 
-                    From the next borrow, We will charge an extra fee for the amounts. 
-                    To borrow more than the limit, Use 
-                    <a href="https://mfi0212.github.io/MFI/starpre" style='white-space: nowrap; color: white; font-size: 12px;'>Premium Plan</a>.
-                </p>
+                <div class="bot" style="display : flex;
+                    justify-content: center;
+                    align-items: baseline;">
+                    <p class="borrowLimitMessage" style='    
+                        color: red;
+                        font-size: 11px;
+                        text-align: center;
+                        font-weight: 500;'>
+                        <img style="width: 20px;    position: relative;top: 5px;" src="https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_7d7473ef8ba54ce2b2f8e29d078f90bf/default/dark/2.0" alt="">
+                        <span style='font-size: 12px;
+                            color: white;
+                            border-radius: 10px;'>BsRora (<i style='position: relative; right: -4px;' class="fa-solid fa-robot"></i>)
+                        </span> : </r>We found you have crossed the borrow limit. 
+                        From the next borrow, We will charge an extra fee for the amounts. 
+                        To borrow more than the limit, Use 
+                        <a href="https://mfi0212.github.io/MFI/starpre" style='white-space: nowrap; color: white; font-size: 12px;'>Premium Plan</a>.
+                    </p>
+                </div>	
             `;
         } else {
             borrowLimitMessage.innerHTML = "";
@@ -355,8 +361,9 @@ function checkDueToday(user) {
         if (endMatch) {
             const endDateStr = `${endMatch[1]}-${endMatch[2]}-${endMatch[3]}`;
             if (endDateStr === todayStr && !loan.endDate.includes('Overdue')) {
-                document.getElementById("reminderMessage").textContent = 
-                    `Mr. ${user.name}, Today(${cleanEndDate}) you have an amount to return which you have taken from the service (${loan.takenFrom}). Try to clear on time, if not overdue interest will be added. Thank you!`;
+                document.getElementById("reminderMessage").innerHTML = 
+                    `` +
+                    `Mr. ${user.name}, Today (${cleanEndDate}) you have an amount to return which you have taken from the service (${loan.takenFrom}). <br><br> Try to clear on time, if not overdue interest will be added. Thank you!`;
                 document.getElementById("reminderModal").style.display = "flex";
             }
         }
