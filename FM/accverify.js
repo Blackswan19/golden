@@ -115,27 +115,27 @@ const passwords = {
         },
         loans: [
             {
-                planDate: "25-05-2020",
-                endDate: "23-01-2023(Extended to 30 days)",
-                interest: 14000,
-                takenAmount: 17000000,
-                takenFrom: "Dadsasdelayit asdadsdoffer",
+                planDate: "25-05-2025",
+                endDate: "23-10-2025(Extended to 30 days)",
+                interest: 1400,
+                takenAmount: 7100,
+                takenFrom: "Delayit offer",
                 fineRate: 50,
             },
             {
-                planDate: "29-09-2019",
-                endDate: "29-11-2025",
-                interest: 603460,
-                takenAmount: 1420214190,
-                takenFrom: "MLLsdadsadD",
+                planDate: "29-09-2025",
+                endDate: "29-10-2025",
+                interest: 600,
+                takenAmount: 4200,
+                takenFrom: "MLLD",
                 fineRate: 90,
             },
             {
-                planDate: "01-06-2000",
-                endDate: "126-11-2025(Extended to 39 days)",
-                interest: 21233000,
-                takenAmount: 115344346400,
-                takenFrom: "ProgramsasdadX & Split Pasdaay offer",
+                planDate: "01-06-2025",
+                endDate: "16-11-2025(Extended to 39 days)",
+                interest: 2000,
+                takenAmount: 11500,
+                takenFrom: "ProgramsX & Split Pay offer",
                 fineRate: 50,
             },
         ]
@@ -154,27 +154,27 @@ const passwords = {
         },
         loans: [ 
             {
-                planDate: "14-01-2022",
-                endDate: "31-01-2022",
-                interest: 31333420,
-                takenAmount: 66243290,
-                takenFrom: "MsdadadLLDasdasdasdsad",
+                planDate: "14-10-2025",
+                endDate: "31-10-2025",
+                interest: 3130,
+                takenAmount: 6690,
+                takenFrom: "MLLD",
                 fineRate: 30
             },
             {
-                planDate: "01-10-2015",
-                endDate: "13-01-2105",
-                interest: 296232349,
+                planDate: "14-10-2025",
+                endDate: "31-10-2025",
+                interest: 2969,
                 takenAmount: 5880,
-                takenFrom: "MLLaDawdasdas",
+                takenFrom: "MLLD",
                 fineRate: 30
             },
             {
-                planDate: "19-10-2018",
-                endDate: "21-10-2025",
-                interest: 332423480,
-                takenAmount: 55342360,
-                takenFrom: "MLLDwead(Offer)qw21qw",
+                planDate: "14-10-2025",
+                endDate: "31-10-2025",
+                interest: 3380,
+                takenAmount: 5560,
+                takenFrom: "MLLD(Offer)",
                 fineRate: 30
             }, 
         ]
@@ -258,8 +258,9 @@ document.getElementById("submitBtn").addEventListener("click", () => {
                 font-size: 11px;
                 text-align: center;
                 font-weight: 500;'>
-                    <span style='font-size: 13px; color: white; text-decoration: underline 2px;'>NOTE</span>
-                    <r style='color: white; font-size: 14px;'> : </r>We found you have crossed the borrow limit. 
+                    <span style='font-size: 13px; color: white; text-decoration: underline 2px;'><i style='position: relative;
+    left: 3px;' class="fa-solid fa-robot"></i>BsRora(Bot)</span>
+                     <r style='color: white; font-size: 14px;'> : </r>We found you have crossed the borrow limit. 
                     From the next borrow, We will charge an extra fee for the amounts. 
                     To borrow more than the limit, Use 
                     <a href="https://mfi0212.github.io/MFI/starpre" style='white-space: nowrap; color: white; font-size: 12px;'>Premium Plan</a>.
@@ -572,4 +573,3 @@ function setTheme(theme) {
 function setCustomTheme() {
     console.log("Custom theme selected");
 }
-
