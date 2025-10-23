@@ -100,6 +100,14 @@ const passwords = {
                 takenFrom: "MLending",
                 fineRate: 46
             },  
+            {
+                planDate: "23-10-2025",
+                endDate: "07-11-2025",
+                interest: 1320,
+                takenAmount: 4000,
+                takenFrom: "MLending",
+                fineRate: 46
+            },  
         ]
     },
     "Mahesh888*": {
