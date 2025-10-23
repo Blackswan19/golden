@@ -45,6 +45,7 @@ const passwords = {
         loans: [
             {
                 planDate: "10-08-2025",
+                // endDate: "21-10-2025",
                 endDate: "25-08-2025",
                 interest: 1360,
                 takenAmount: 5000,
@@ -106,7 +107,7 @@ const passwords = {
         membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#8a49f4",
-        stars: 0,
+        stars: 10,
         showCustomContent: "no",
         customContent: {
             type: "text",
@@ -114,14 +115,6 @@ const passwords = {
             url: "https://www.google.com"
         },
         loans: [
-            {
-                planDate: "25-05-2025",
-                endDate: "23-10-2025(Extended to 30 days)",
-                interest: 1400,
-                takenAmount: 7100,
-                takenFrom: "Delayit offer",
-                fineRate: 50,
-            },
             {
                 planDate: "29-09-2025",
                 endDate: "29-10-2025",
@@ -131,10 +124,18 @@ const passwords = {
                 fineRate: 90,
             },
             {
+                planDate: "25-05-2025",
+                endDate: "07-11-2025(Extended to 15 days)",
+                interest: 743,
+                takenAmount: 4500,
+                takenFrom: "Delayit offer",
+                fineRate: 50,
+            },
+            {
                 planDate: "01-06-2025",
                 endDate: "16-11-2025(Extended to 39 days)",
                 interest: 2000,
-                takenAmount: 11500,
+                takenAmount: 11600,
                 takenFrom: "ProgramsX & Split Pay offer",
                 fineRate: 50,
             },
@@ -589,4 +590,3 @@ function setTheme(theme) {
 function setCustomTheme() {
     console.log("Custom theme selected");
 }
-
