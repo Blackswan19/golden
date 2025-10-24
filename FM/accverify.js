@@ -610,5 +610,11 @@ function setCustomTheme() {
 }
 function showStarCount() {
       const stars = document.getElementById('starCount').textContent.trim();
-      alert(`You have ${stars} stars. You can use them when you think interest is high.`);
+      if(stars == 0){
+        alert(`BsRora(Bot) : \n\nYou have ${stars} stars. \n\nYou can buy the stars by which you can use them when you think interest is high to reduce the interest.`);
+      }
+      else{
+
+          alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can use these stars when you think interest is high to reduce the interest.`);
+      }
     }
