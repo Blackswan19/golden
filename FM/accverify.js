@@ -97,7 +97,7 @@ const passwords = {
                 endDate: "29-10-2025",
                 interest: 0,
                 takenAmount: 2700,
-                takenFrom: "MLending",
+                takenFrom: "MLLD",
                 fineRate: 46
             },  
             {
@@ -105,7 +105,7 @@ const passwords = {
                 endDate: "07-11-2025",
                 interest: 1320,
                 takenAmount: 4000,
-                takenFrom: "MLending",
+                takenFrom: "MLLD",
                 fineRate: 46
             },  
         ]
