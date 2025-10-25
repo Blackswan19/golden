@@ -48,19 +48,22 @@ body {
 }
     /* Loader */
     .loader {
-      position: fixed; inset: 0; background: var(--bg);
+      position: fixed; inset: 0; background: black;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      z-index: 9999; gap: 16px;
+      z-index: 9999; gap: 6px;
     }
-    .loader img { width: 80px; filter: brightness(1.1); animation: float 2.5s ease-in-out infinite; }
-    @keyframes float { 50% { transform: translateY(-8px); } }
     .loader h1 {
       font-weight: 800; font-size: 1.8rem; letter-spacing: -0.5px;
       background: linear-gradient(135deg, #fff, var(--gold));
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-text-fill-color: transparent;    margin: -5px;
+
     }
-    .loader .dots { display: flex; gap: 8px; }
+    .loader .dots {     display: flex
+;
+    gap: 17px;
+    position: fixed;
+    bottom: 100px; }
     .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 1.4s infinite alternate; }
     .dot:nth-child(2) { animation-delay: .2s; } .dot:nth-child(3) { animation-delay: .4s; }
     @keyframes pulse { from { opacity: .4; transform: scale(.8); } to { opacity: 1; transform: scale(1.2); } }
@@ -90,17 +93,22 @@ body {
       overflow: hidden;
     }
     .loyalty-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--gold));
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.4s var(--ease);
+      content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #0400ff, var(--gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease);
     }
     .loyalty-card:hover::before { transform: scaleX(1); }
     .loyalty-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: var(--shadow);
-      border-color: var(--accent);
-      background: rgba(255, 255, 255, 0.09);
+          transform: translateY(-1px) scale(1.01);
+    box-shadow: var(--shadow);
+    background: rgb(255 255 255 / 15%);
     }
 
     .amount { font-weight: 700; font-size: 1.15rem; color: #e2e8f0; }
@@ -160,12 +168,21 @@ body {
 
     /* Popup */
     .popup {
-      position: fixed; inset: 0;
-      background: rgba(10, 15, 25, 0.96);
-      backdrop-filter: blur(24px);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      opacity: 0; visibility: hidden; transform: scale(0.94);
-      transition: all 0.45s var(--ease); padding: 32px; z-index: 999;
+      position: fixed;
+    inset: 0;
+    background: rgb(0 0 0 / 12%);
+    backdrop-filter: blur(15px);
+    display: flex
+;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.94);
+    transition: all 0.45s var(--ease);
+    padding: 32px;
+    z-index: 999;
     }
     .popup.active { opacity: 1; visibility: visible; transform: scale(1); }
     .popup h2 {
@@ -210,18 +227,20 @@ body {
 
     /* Menu */
     .menu {
-      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+      position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%);
       background: rgba(255,255,255,0.08);
       backdrop-filter: blur(16px);
       border: 1px solid var(--border);
-      border-radius: 50px; padding: 14px 32px;
-      display: flex; gap: 36px; z-index: 1000;
+      border-radius: 50px;     padding: 10px 30px;
+    display: flex
+;
+    gap: 65px; z-index: 1000;
       box-shadow: 0 8px 32px rgba(0,0,0,0.2);
     }
     .menu a {
-      color: var(--subtext); font-size: 1.5rem; transition: all 0.3s var(--ease);
+      color: #636363; font-size: 1.4em; transition: all 0.3s var(--ease);
     }
-    .menu a:hover { color: var(--accent); transform: translateY(-2px); }
+    .menu a:hover { color: #245fe8; transform: translateY(-2px); }
     .menu a.active {
       color: var(--gold); transform: scale(1.3);
       filter: drop-shadow(0 0 10px rgba(251,191,36,0.5));
@@ -229,12 +248,25 @@ body {
 
     /* Game Link */
     .game-link {
-      position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
-      background: linear-gradient(135deg, #1f2937, #111827);
-      color: var(--gold); padding: 10px 28px;
-      border-radius: 0 0 16px 16px; font-weight: 600; font-size: 0.9rem;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3); z-index: 1000;
-      transition: all 0.3s var(--ease);
+      position: fixed;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #1f2937, #111827);
+    color: #0048ff;
+    padding: 10px 20px 10px 9px;
+    border-radius: 0 0 16px 16px;
+    font-weight: 600;
+    z-index: 1000;
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+    }
+    .game-link svg{
+      fill: #0048ff;
     }
     .game-link:hover {
       transform: translateX(-50%) translateY(4px);
@@ -261,14 +293,14 @@ body {
 
   <!-- Loader -->
   <div class="loader" id="loader">
-    <img src="https://i.ibb.co/PZCnKZHB/loadingmfi.png" alt="Loading">
+    <h1>BS&MFI</h1>
     <h1>Loyalty Wolves</h1>
     <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
   </div>
 
   <!-- Game Link -->
-  <a href="https://blackswan19.github.io/bot/game/game1" class="game-link">
-    <i class="fa-solid fa-gamepad"></i> Play Game
+  <a href="#Welcome/BS&MFI/LoyaltyMember" class="game-link">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="m422-232 207-248H469l29-227-185 267h139l-30 208ZM320-80l40-280H160l360-520h80l-40 320h240L400-80h-80Zm151-390Z"/></svg> BS&MFI
   </a>
 
   <div class="container">
@@ -298,9 +330,10 @@ body {
       </div>
 
       <div class="btn-group">
-        <a href="https://forms.gle/rtcayowFYw48u94PA" class="btn btn-primary">
-          <i class="fa-solid fa-crown"></i> Join Loyalty Wolves
-        </a>
+<!-- Button -->
+<a href="javascript:void(0)" class="btn btn-primary" onclick="showThanks()">
+  <i class="fa-solid fa-crown"></i> Welcome Loyal Wolve
+</a>
       </div>
     </div>
 
@@ -418,6 +451,34 @@ body {
       result.classList.add('show');
       gsap.fromTo(result, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.5)" });
     }
+       // Inside <script> – add this function
+function showThanks() {
+  document.getElementById('popup-title').innerText = 'Thank You!';
+  document.getElementById('popup-text').innerHTML = `
+    <strong style="color:var(--gold);font-size:1.2rem;">Welcome Loyal Wolve..!</strong><br><br>
+    Thanks for choosing <strong>BS&MFI Services</strong>.<br>
+    Enjoy exclusive discounts benefits just made for you.<br><br>
+    <em>We’re glad to have you as a Loyalty Wolf...!</em>
+  `;
+  document.getElementById('popup').classList.add('active');
+}
+document.addEventListener("DOMContentLoaded", () => {
+    const customMenu = document.querySelector(".custom-menu");
+
+   
+    document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        customMenu.style.display = "block";
+        customMenu.style.top = `${event.pageY}px`;
+        customMenu.style.left = `${event.pageX}px`;
+    });
+
+    // Hide the menu when clicking elsewhere
+    document.addEventListener("click", () => {
+        customMenu.style.display = "none";
+    });
+});
+
   </script>
 </body>
 </html>
