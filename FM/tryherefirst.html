@@ -40,12 +40,13 @@
       overflow-x: hidden;
       line-height: 1.6;
     }
-body {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
+
+ body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+         }
     /* Loader */
     .loader {
       position: fixed; inset: 0; background: black;
@@ -465,13 +466,12 @@ function showThanks() {
 document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
-   
-    document.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-        customMenu.style.display = "block";
-        customMenu.style.top = `${event.pageY}px`;
-        customMenu.style.left = `${event.pageX}px`;
-    });
+    // document.addEventListener("contextmenu", (event) => {
+    //     event.preventDefault();
+    //     customMenu.style.display = "block";
+    //     customMenu.style.top = `${event.pageY}px`;
+    //     customMenu.style.left = `${event.pageX}px`;
+    // });
 
     // Hide the menu when clicking elsewhere
     document.addEventListener("click", () => {
