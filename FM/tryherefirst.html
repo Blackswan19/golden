@@ -61,7 +61,9 @@
             max-width: 300px;
             margin: 21px;
         }
-
+::-webkit-scrollbar{
+    background-color: transparent;
+}
         #userPassword:focus { background: #3c3c3c; }
 
         #submitBtn {
@@ -136,8 +138,8 @@
 
         .scroll {
             position: relative;
-            top: 250px;
-            padding-bottom: 120px;
+            top: 260px;
+            padding-bottom: 70px;
         }
 
         /* PROFILE */
@@ -262,8 +264,8 @@ ease;
             color: #e0e0e0;
     border: none;
     border-radius: 35px;
-    padding: 2px 5px;
-    font-size: 12px;
+    padding: 3px 60px;
+    font-size: 13px;
     cursor: pointer;
     background: transparent;
     border: 1.5px solid #3a3a3a;
@@ -309,7 +311,17 @@ ease;
     height: 32px;
 
 }
-
+button.move-asaid {
+    padding: 5px 10px;
+    width: 80px;
+    background: #ffffff42;
+    outline: none;
+    border: none;
+    color: white;
+    border-radius: 1000px;
+    position: relative;
+    top: -20px;
+}
         /* POPUPS */
         #totalPopup, #datePopup, #linkConfirmPopup, #emoteChooser {
                display: none;
@@ -443,7 +455,7 @@ ease;
 
         /* GRAPH & CALENDAR */
         #graphContainer, #calendarContainer {
-            background: #111;
+           background: #111;
     border-radius: 16px;
     padding: 18px;
     margin: 18px 0;
@@ -455,6 +467,9 @@ ease;
     left: 46.5%;
     width: 100%;
     max-width: 335px;
+    max-height: 300px;
+    overflow-y: scroll;
+    height: 350%;
         }
 
         #calendarContainer > div > div {
@@ -573,7 +588,8 @@ ease;
     <div id="linkConfirmPopup">
         <p id="linkConfirmText"></p>
         <button class="btn-yes" id="linkYesBtn">Yes</button>
-        <button class="btn-delete" id="linkDeleteBtn">Delete</button>
+        <button style="color: white;
+    background: rgb(176, 0, 0);" class="btn-delete" id="linkDeleteBtn">Delete</button>
     </div>
 
     <div id="emoteChooser">
@@ -857,7 +873,7 @@ ease;
 
         function openLinkConfirm(link, index) {
             pendingLink = { link, index };
-            document.getElementById("linkConfirmText").textContent = `Open "${link.title}"?`;
+            document.getElementById("linkConfirmText").textContent = `Do you like to visit "${link.title}"? or you like delete it?`;
             document.getElementById("linkConfirmPopup").style.display = "block";
         }
 
@@ -995,10 +1011,15 @@ ease;
                 dueMap[`${d}-${m}-${y}`] = i;
             });
 
-            let html = `<div style="text-align:center;margin:12px 0;">
-                <button onclick="prevMonth()" style="background:none;border:none;color:#aaa;font-size:19px;">Previous</button>
-                <span style="margin:0 16px;font-weight:600;color:#eee;">${calendarMonth.toLocaleString('default', { month: 'long', year: 'numeric' })}</span>
-                <button onclick="nextMonth()" style="background:none;border:none;color:#aaa;font-size:19px;">Next</button>
+            let html = `<div style="text-align: center;
+    margin: 12px 0;
+    display: flex
+;
+    justify-content: space-between;
+    align-items: center;">
+                <button class='move-asaid' onclick="prevMonth()">Previous</button>
+                <span style="margin:0 16px;font-weight:600;color:#eee;">${calendarMonth.toLocaleString('default', { month: 'long'})}</span>
+                <button class='move-asaid' onclick="nextMonth()">Next</button>
             </div>
             <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center;font-weight:600;color:#888;">
                 <div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>`;
