@@ -33,7 +33,7 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
-      padding: 100px 20px 130px;
+      padding: 100px 0px 130px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -47,7 +47,6 @@
             -ms-user-select: none;
             user-select: none;
          }
-    /* Loader */
     .loader {
       position: fixed; inset: 0; background: black;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -304,7 +303,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="m422-232 207-248H469l29-227-185 267h139l-30 208ZM320-80l40-280H160l360-520h80l-40 320h240L400-80h-80Zm151-390Z"/></svg> BS&MFI
   </a>
 
-  <div class="container">
+  <div class="container" style="width: 90%;">
 
     <!-- Home -->
     <div id="content-home" class="menu-content active">
@@ -466,14 +465,13 @@ function showThanks() {
 document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
-    // document.addEventListener("contextmenu", (event) => {
-    //     event.preventDefault();
-    //     customMenu.style.display = "block";
-    //     customMenu.style.top = `${event.pageY}px`;
-    //     customMenu.style.left = `${event.pageX}px`;
-    // });
+    document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        customMenu.style.display = "block";
+        customMenu.style.top = `${event.pageY}px`;
+        customMenu.style.left = `${event.pageX}px`;
+    });
 
-    // Hide the menu when clicking elsewhere
     document.addEventListener("click", () => {
         customMenu.style.display = "none";
     });
