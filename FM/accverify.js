@@ -62,7 +62,7 @@ const passwords = {
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#8a49f4",
         stars: 10,
-        tierPoints: 40,  // Tier 2 (auto)
+        tierPoints: 25,  // Tier 2 (auto)
         showCustomContent: "no",
         customContent: {
             type: "image",
