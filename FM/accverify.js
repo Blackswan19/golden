@@ -1,6 +1,4 @@
-// ===============================================
-// 1. USER DATA (with tierPoints)
-// ===============================================
+
 const passwords = {
     "4211": {
         name: "Chaitanya Harsha",
@@ -115,9 +113,6 @@ const passwords = {
     }
 };
 
-// ===============================================
-// 2. TIER SYSTEM: Only Tier 1 & Tier 2
-// ===============================================
 const TIER_THRESHOLDS = [
     { tier: 1, points: 0,   interestRate: "Standard" },
     { tier: 2, points: 100, interestRate: "2% lower" }
@@ -130,10 +125,6 @@ function getTierInfo(points) {
         return { tier: 1, points, needed: 100 - points, nextRate: "2% lower" };
     }
 }
-
-// ===============================================
-// 3. TIER POPUP
-// ===============================================
 function showTierPopup(html) {
     const old = document.getElementById("tierPopupModal");
     if (old) old.remove();
@@ -156,9 +147,6 @@ function showTierPopup(html) {
     document.body.appendChild(modal);
 }
 
-// ===============================================
-// 4. DOM LOADED
-// ===============================================
 document.addEventListener("DOMContentLoaded", () => {
     const savedPassword = localStorage.getItem("userPassword");
     if (savedPassword) {
@@ -167,10 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("poweredBy").style.display = "block";
     }
 });
-
-// ===============================================
-// 5. LOGIN & TIER BAR (AUTO TIER 2 IF ≥100)
-// ===============================================
 document.getElementById("submitBtn").addEventListener("click", () => {
     const userInput = document.getElementById("userPassword").value.trim();
     const errorMessage = document.getElementById("error-message");
@@ -218,7 +202,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         }
 
         const tierProgressHTML = `
-            <div id="tierProgress"style="display: none;" >
+            <div id="tierProgress">
                 <div style="display: flex; align-items: center; gap: 6px; cursor: pointer;" id="tierClickTrigger">
                     <span style="color: #ffd700; font-weight: 600;">Tier ${tierInfo.tier}</span>
                     <div class='tiergraphbar'>
@@ -338,9 +322,6 @@ function closeReminderModal() {
     document.getElementById("reminderModal").style.display = "none";
 }
 
-// ===============================================
-// 7. DATE & OVERDUE
-// ===============================================
 function calculateDaysBetween(startDate, endDate) {
     try {
         const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
@@ -386,9 +367,6 @@ function calculateOverdueFine(endDate, loan, user) {
     }
 }
 
-// ===============================================
-// 8. LOAN DETAILS
-// ===============================================
 function displayLoanDetails(loan, index) {
     const loanDetails = document.getElementById("loanDetails");
     const userInput = document.getElementById("userPassword").value.trim();
@@ -416,7 +394,7 @@ function displayLoanDetails(loan, index) {
         <div class="loan-entry">
             <p style="text-align:center;position:sticky;top:90px;margin-top:20px;right:16px;float:right;margin-right:-9px;">
                 <button class="amounts-btn downsingle" style="width:100%;font-size:9px;padding:0px 12px;display:flex;flex-direction:row;justify-content:center;align-items:center;margin-top:10px;font-weight:400;letter-spacing:0.2px;" onclick="downloadSingleLoan(${index})">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"></path></svg> This amount receipt
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"></path></svg> Download This Receipt
                 </button>
             </p>
             <h3>Service</h3>
@@ -443,9 +421,6 @@ function displayLoanDetails(loan, index) {
     `;
 }
 
-// ===============================================
-// 9. MODALS & DOWNLOADS
-// ===============================================
 function showAmountsModal() {
     const userInput = document.getElementById("userPassword").value.trim();
     const user = passwords[userInput];
