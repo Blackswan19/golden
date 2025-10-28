@@ -38,8 +38,8 @@ const passwords = {
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#ff4500",
         stars: 0,
-        tierPoints: 5,  // Tier 2 (auto)
-        showCustomContent: "",
+        tierPoints: 5,
+        showCustomContent: "no",
         customContent: {
             type: "image",
             value: "programXoffer.png",
@@ -51,9 +51,9 @@ const passwords = {
             { planDate: "16-08-2025", endDate: "31-08-2025", interest: 1275, takenAmount: 5000, takenFrom: "MLLD", fineRate: 90 },
             { planDate: "18-08-2025", endDate: "02-09-2025", interest: 1380, takenAmount: 5000, takenFrom: "MLLD", fineRate: 88 },
             { planDate: "18-08-2025", endDate: "02-09-2025", interest: 690, takenAmount: 2500, takenFrom: "MLLD", fineRate: 46 },
-            { planDate: "13-10-2025", endDate: "28-10-2025", interest: 0, takenAmount: 10000, takenFrom: "MLending", fineRate: 46 },
-            { planDate: "14-10-2025", endDate: "29-10-2025", interest: 0, takenAmount: 2700, takenFrom: "MLLD", fineRate: 46 },
-            { planDate: "23-10-2025", endDate: "07-11-2025", interest: 1480, takenAmount: 4000, takenFrom: "MLLD", fineRate: 46 }
+            { planDate: "13-10-2025", endDate: "31-10-2025", interest: 0, takenAmount: 10000, takenFrom: "MLending", fineRate: 46 },
+            { planDate: "14-10-2025", endDate: "31-10-2025", interest: 0, takenAmount: 2700, takenFrom: "MLLD", fineRate: 46 },
+            { planDate: "23-10-2025", endDate: "31-10-2025", interest: 1480, takenAmount: 4000, takenFrom: "MLLD", fineRate: 46 }
         ]
     },
     "Mahesh888*": {
