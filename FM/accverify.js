@@ -14,22 +14,8 @@ const passwords = {
             url: ""
         },
         loans: [
-            {
-                planDate: "24-05-2025",
-                endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>",
-                interest: 0,
-                takenAmount: 25000,
-                takenFrom: "MLending",
-                fineRate: 5
-            },
-            {
-                planDate: "07-04-2025",
-                endDate: "--<p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>",
-                interest: 0,
-                takenAmount: 15000,
-                takenFrom: "MLLD",
-                fineRate: 4
-            }
+           { planDate: "24-05-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 25000, takenFrom: "MLending", fineRate: 5 },
+           { planDate: "07-04-2025", endDate: "--<p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 15000, takenFrom: "MLLD", fineRate: 4 }
         ]
     },
     "6275": {
@@ -487,35 +473,138 @@ function generateImage(text, filename) {
     a.click();
 }
 
-function downloadSingleLoan(index) {
-    const userInput = document.getElementById("userPassword").value.trim();
-    const user = passwords[userInput];
-    if (!user) return;
-    const loan = user.loans[index];
-    const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
-    const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
-    const fine = overdueInfo.fine || 0;
-    const totalReturnAmount = (loan.takenAmount + loan.interest + fine).toFixed(2);
-    const text = `Total Amount ${index + 1} : ${totalReturnAmount} ₹\nReturn date : ${formatDate(cleanEndDate)}`;
-    generateImage(text, `total_amount_${index + 1}.png`);
-}
-
-function downloadAllLoans() {
-    const userInput = document.getElementById("userPassword").value.trim();
-    const user = passwords[userInput];
-    if (!user) return;
-    let text = '';
-    user.loans.forEach((loan, i) => {
-        const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
-        const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
-        const fine = overdueInfo.fine || 0;
-        const totalReturnAmount = (loan.takenAmount + loan.interest + fine).toFixed(2);
-        text += `Total Amount ${i + 1} : ${totalReturnAmount} ₹\nReturn date : ${formatDate(cleanEndDate)}\n\n`;
-    });
-    generateImage(text.trim(), 'all_total_amounts.png');
-}
-
 function showStarCount() {
     const stars = document.getElementById('starCount').textContent.trim();
     alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can use these stars when you think interest is high to reduce the interest.`);
+}
+
+function formatReturnDateForReceipt(loan) {
+    const userInput = document.getElementById("userPassword").value.trim();
+    const user = passwords[userInput];
+    if (!user) return "Error";
+    
+    const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+    if (overdueInfo.overdue) return "till today";
+    
+    const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+    const [d, m, y] = cleanEndDate.split('-');
+    return `${d}/${m}/${y.slice(-2)}`;
+}
+
+function generateStyledReceipt(textLines, filename) {
+    console.log("🔄 Generating receipt:", filename);
+    
+    const canvas = document.createElement('canvas');
+    const lineHeight = 38;
+    const leftMargin = 40;
+    const topStart = 80;
+    const headingY = 50;
+
+    canvas.width = 720;
+    canvas.height = topStart + textLines.length * lineHeight + 60;
+
+    const ctx = canvas.getContext('2d');
+    
+    
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#00BFFF';
+    ctx.font = 'bold 32px Arial, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('BS&MFI MONEY RECEIPT', leftMargin, headingY);
+
+    textLines.forEach((line, i) => {
+        const y = topStart + i * lineHeight;
+        if (line === 'Try to clear in time, Thank you.') {
+            // SKY BLUE FOOTER
+            ctx.fillStyle = '#00BFFF';
+            ctx.font = 'bold 22px Arial, sans-serif';
+        } else {
+            ctx.fillStyle = '#000000';
+            ctx.font = '22px Arial, sans-serif';
+        }
+        ctx.textAlign = 'left';
+        ctx.fillText(line, leftMargin, y);
+    });
+
+    ctx.fillStyle = '#777777';
+    ctx.font = 'italic 16px Arial';
+    ctx.textAlign = 'right';
+    ctx.fillText('Powered by BsBookpad', canvas.width - 30, canvas.height - 25);
+
+    const dataURL = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.href = dataURL;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    console.log("✅ Download triggered:", filename);
+    alert("📥 Receipt has Downloaded..! Verify once...!");
+}
+
+function downloadSingleLoan(index) {
+    console.log("🔄 Single loan download:", index);
+    const userInput = document.getElementById("userPassword").value.trim();
+    const user = passwords[userInput];
+    if (!user || !user.loans[index]) {
+        alert("❌ No loan found! Enter password first.");
+        return;
+    }
+
+    const loan = user.loans[index];
+    const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+    const fine = overdueInfo.fine || 0;
+    const total = (loan.takenAmount + loan.interest + fine).toFixed(2);
+
+    const lines = [
+        `Mr. ${user.name}`,
+        `Total amount to repay : ₹${total}`,
+        '',
+        `Amount ${index + 1} total : ₹${total}`,
+        `Return date : ${formatReturnDateForReceipt(loan)}`,
+        '',
+        'Try to clear in time, Thank you.'
+    ];
+
+    generateStyledReceipt(lines, `receipt_${user.name}_${index + 1}.png`);
+}
+function downloadAllLoans() {
+    console.log("🔄 All loans download");
+    const userInput = document.getElementById("userPassword").value.trim();
+    const user = passwords[userInput];
+    if (!user || user.loans.length === 0) {
+        alert("❌ No loans found! Enter password first.");
+        return;
+    }
+
+    let totalTaken = 0, totalInterest = 0;
+    const amountLines = [];
+
+    user.loans.forEach((loan, i) => {
+        const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+        const fine = overdueInfo.fine || 0;
+        const total = (loan.takenAmount + loan.interest + fine).toFixed(2);
+        totalTaken += loan.takenAmount;
+        totalInterest += loan.interest + fine;
+
+        amountLines.push(`Amount ${i + 1} total : ₹${total}`);
+        amountLines.push(`Return date : ${formatReturnDateForReceipt(loan)}`);
+        if (i < user.loans.length - 1) amountLines.push('');
+    });
+
+    const grandTotal = (totalTaken + totalInterest).toFixed(2);
+    const lines = [
+        '',
+        `Mr. ${user.name}`,
+        `Total amount to repay : ₹${grandTotal}`,
+        '',
+        ...amountLines,
+        '',
+        'Try to clear in time, Thank you.'
+    ];
+
+    generateStyledReceipt(lines, `all_receipts_${user.name}.png`);
 }
