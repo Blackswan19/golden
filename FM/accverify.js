@@ -71,7 +71,7 @@ const passwords = {
         },
         loans: [
             { planDate: "25-05-2025", endDate: "07-11-2025(Extended to 15 days)", interest: 753, takenAmount: 4500, takenFrom: "Delayit offer", fineRate: 50 },
-            { planDate: "29-09-2025", endDate: "13-11-2025", interest: 670, takenAmount: 4200, takenFrom: "MLLD", fineRate: 90 },
+            { planDate: "29-09-2025", endDate: "13-11-2025(Extended to 15 days)", interest: 670, takenAmount: 4200, takenFrom: "MLLD", fineRate: 90 },
             { planDate: "01-06-2025", endDate: "16-11-2025(Extended to 39 days)", interest: 2000, takenAmount: 11630, takenFrom: "ProgramsX & Split Pay offer", fineRate: 50 }
         ]
     },
