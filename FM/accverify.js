@@ -377,6 +377,7 @@ function displayLoanDetails(loan, index) {
     }
 
     loanDetails.innerHTML = `
+    <p id="scrotamts"></p>
         <div class="loan-entry">
             <p style="text-align:center;position:sticky;top:90px;margin-top:20px;right:16px;float:right;margin-right:-9px;">
                 <button class="amounts-btn downsingle" style="width:100%;font-size:9px;padding:0px 12px;display:flex;flex-direction:row;justify-content:center;align-items:center;margin-top:10px;font-weight:400;letter-spacing:0.2px;" onclick="downloadSingleLoan(${index})">
