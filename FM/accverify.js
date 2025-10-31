@@ -7,7 +7,7 @@ const passwords = {
         profileBackground: "#ff8b24",
         stars: 0,
         tierPoints: 45,  // Tier 1
-        showCustomContent: "no",
+        showCustomContent: "yes",
         customContent: {
             type: "text",
             value: "NOTE: Your amounts has updated to match the offer criteria",
@@ -25,7 +25,7 @@ const passwords = {
         profileBackground: "#ff4500",
         stars: 0,
         tierPoints: 5,
-        showCustomContent: "",
+        showCustomContent: "yes",
         customContent: {
             type: "image",
             value: "programXoffer.png",
@@ -49,7 +49,7 @@ const passwords = {
         profileBackground: "#8a49f4",
         stars: 14,
         tierPoints: 23,  // Tier 2 (auto)
-        showCustomContent: "no",
+        showCustomContent: "yes",
         customContent: {
             type: "image",
             value: "programXoffer.png",
@@ -68,7 +68,7 @@ const passwords = {
         profileBackground: "rgb(255 44 0)",
         stars: 0,
         tierPoints: 40,  // Tier 1
-        showCustomContent: "no",
+        showCustomContent: "yes",
         customContent: {
             type: "image",
             value: "programXoffer.png",
@@ -87,7 +87,7 @@ const passwords = {
         profileBackground: "rgb(90 135 242)",
         stars: 0,
         tierPoints: 0,  // Tier 1
-        showCustomContent: "no",
+        showCustomContent: "yes",
         customContent: {
             type: "image",
             value: "programXoffer.png",
