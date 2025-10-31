@@ -11,7 +11,7 @@ const passwords = {
         customContent: {
             type: "text",
             value: "NOTE: Your amounts has updated to match the offer criteria",
-            url: ""
+            url: "https://blackswan19.github.io/bscrop/watchin/watchin"
         },
         loans: [
            { planDate: "24-05-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 25000, takenFrom: "MLending", fineRate: 5 },
@@ -29,7 +29,7 @@ const passwords = {
         customContent: {
             type: "image",
             value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
+            url: "https://blackswan19.github.io/bscrop/watchin/watchin"
         },
         loans: [
             { planDate: "10-08-2025", endDate: "25-08-2025", interest: 1360, takenAmount: 5000, takenFrom: "MLLD", fineRate: 86 },
@@ -53,7 +53,7 @@ const passwords = {
         customContent: {
             type: "image",
             value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
+            url: "https://blackswan19.github.io/bscrop/watchin/watchin"
         },
         loans: [
             { planDate: "25-05-2025", endDate: "07-11-2025(Extended to 15 days)", interest: 753, takenAmount: 4500, takenFrom: "Delayit offer", fineRate: 50 },
@@ -72,7 +72,7 @@ const passwords = {
         customContent: {
             type: "image",
             value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
+            url: "https://blackswan19.github.io/bscrop/watchin/watchin"
         },
         loans: [
             { planDate: "14-10-2025", endDate: "31-10-2025", interest: 3600, takenAmount: 6690, takenFrom: "MLLD", fineRate: 30 },
@@ -91,7 +91,7 @@ const passwords = {
         customContent: {
             type: "image",
             value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
+            url: "https://blackswan19.github.io/bscrop/watchin/watchin"
         },
         loans: [
             { planDate: "29-05-2025", endDate: "29-05-2025", interest: 5600, takenAmount: 25000, takenFrom: "MLending", fineRate: 80 }
