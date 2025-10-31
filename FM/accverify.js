@@ -11,7 +11,7 @@ const passwords = {
         customContent: {
             type: "text",
             value: "NOTE: Your amounts has updated to match the offer criteria",
-            url: "https://blackswan19.github.io/bscrop/watchin/watchin"
+            url: ""
         },
         loans: [
            { planDate: "24-05-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 25000, takenFrom: "MLending", fineRate: 5 },
@@ -29,7 +29,7 @@ const passwords = {
         customContent: {
             type: "image",
             value: "programXoffer.png",
-            url: "https://blackswan19.github.io/bscrop/watchin/watchin"
+            url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
             { planDate: "10-08-2025", endDate: "25-08-2025", interest: 1360, takenAmount: 5000, takenFrom: "MLLD", fineRate: 86 },
@@ -37,14 +37,11 @@ const passwords = {
             { planDate: "16-08-2025", endDate: "31-08-2025", interest: 1275, takenAmount: 5000, takenFrom: "MLLD", fineRate: 90 },
             { planDate: "18-08-2025", endDate: "02-09-2025", interest: 1380, takenAmount: 5000, takenFrom: "MLLD", fineRate: 88 },
             { planDate: "18-08-2025", endDate: "02-09-2025", interest: 690, takenAmount: 2500, takenFrom: "MLLD", fineRate: 46 },
-            { planDate: "13-10-2025", endDate: "31-10-2025", interest: 0, takenAmount: 10000, takenFrom: "MLending", fineRate: 46 },
-            { planDate: "14-10-2025", endDate: "31-10-2025", interest: 0, takenAmount: 2700, takenFrom: "MLLD", fineRate: 46 },
-            { planDate: "23-10-2025", endDate: "31-10-2025", interest: 1480, takenAmount: 4000, takenFrom: "MLLD", fineRate: 46 }
         ]
     },
     "Mahesh888*": {
         name: "Mahesh Muthinti",
-        membershipType: "",
+        membershipType: "", 
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#8a49f4",
         stars: 14,
@@ -53,7 +50,7 @@ const passwords = {
         customContent: {
             type: "image",
             value: "programXoffer.png",
-            url: "https://blackswan19.github.io/bscrop/watchin/watchin"
+            url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
             { planDate: "25-05-2025", endDate: "07-11-2025(Extended to 15 days)", interest: 753, takenAmount: 4500, takenFrom: "Delayit offer", fineRate: 50 },
@@ -72,7 +69,7 @@ const passwords = {
         customContent: {
             type: "image",
             value: "programXoffer.png",
-            url: "https://blackswan19.github.io/bscrop/watchin/watchin"
+            url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
             { planDate: "14-10-2025", endDate: "31-10-2025", interest: 3600, takenAmount: 6690, takenFrom: "MLLD", fineRate: 30 },
@@ -91,7 +88,7 @@ const passwords = {
         customContent: {
             type: "image",
             value: "programXoffer.png",
-            url: "https://blackswan19.github.io/bscrop/watchin/watchin"
+            url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
             { planDate: "29-05-2025", endDate: "29-05-2025", interest: 5600, takenAmount: 25000, takenFrom: "MLending", fineRate: 80 }
