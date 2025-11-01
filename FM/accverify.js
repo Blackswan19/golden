@@ -37,6 +37,7 @@ const passwords = {
             { planDate: "16-08-2025", endDate: "31-08-2025", interest: 1275, takenAmount: 5000, takenFrom: "MLLD", fineRate: 90 },
             { planDate: "18-08-2025", endDate: "02-09-2025", interest: 1380, takenAmount: 5000, takenFrom: "MLLD", fineRate: 88 },
             { planDate: "18-08-2025", endDate: "02-09-2025", interest: 690, takenAmount: 2500, takenFrom: "MLLD", fineRate: 46 },
+            { planDate: "01-11-2025", endDate: "16-11-2025", interest: 0, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 46 },
         ]
     },
     "Mahesh888*": {
