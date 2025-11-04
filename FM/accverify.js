@@ -5,7 +5,7 @@ const passwords = {
         membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#ff8b24",
-        stars: 0,
+        stars: 2,
         coins: 0,
         tierPoints: 45,  // Tier 1
         showCustomContent: "yes",
@@ -24,8 +24,8 @@ const passwords = {
         membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#ff4500",
-        stars: 0,
-        coins: 10000,
+        stars: 2,
+        coins: 1000,
         tierPoints: 5,
         showCustomContent: "yes",
         customContent: {
@@ -67,7 +67,7 @@ const passwords = {
         membershipType: "",
         membershipIcon: "https://media.tenor.com/pT6HQx4wIogAAAAj/twitch-rpx-syria.gif",
         profileBackground: "rgb(255 44 0)",
-        stars: 0,coins: 0,
+        stars: 2,coins: 0,
         tierPoints: 40,  // Tier 1
         showCustomContent: "yes",
         customContent: {
@@ -86,7 +86,7 @@ const passwords = {
         membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "rgb(90 135 242)",
-        stars: 0,coins: 0,
+        stars: 2,coins: 0,
         tierPoints: 0,  // Tier 1
         showCustomContent: "yes",
         customContent: {
