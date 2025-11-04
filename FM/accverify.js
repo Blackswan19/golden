@@ -6,6 +6,7 @@ const passwords = {
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#ff8b24",
         stars: 0,
+        coins: 0,
         tierPoints: 45,  // Tier 1
         showCustomContent: "yes",
         customContent: {
@@ -24,6 +25,7 @@ const passwords = {
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#ff4500",
         stars: 0,
+        coins: 10000,
         tierPoints: 5,
         showCustomContent: "yes",
         customContent: {
@@ -46,6 +48,7 @@ const passwords = {
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#8a49f4",
         stars: 14,
+        coins: 0,
         tierPoints: 23,  // Tier 2 (auto)
         showCustomContent: "yes",
         customContent: {
@@ -64,7 +67,7 @@ const passwords = {
         membershipType: "",
         membershipIcon: "https://media.tenor.com/pT6HQx4wIogAAAAj/twitch-rpx-syria.gif",
         profileBackground: "rgb(255 44 0)",
-        stars: 0,
+        stars: 0,coins: 0,
         tierPoints: 40,  // Tier 1
         showCustomContent: "yes",
         customContent: {
@@ -83,7 +86,7 @@ const passwords = {
         membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "rgb(90 135 242)",
-        stars: 0,
+        stars: 0,coins: 0,
         tierPoints: 0,  // Tier 1
         showCustomContent: "yes",
         customContent: {
@@ -153,6 +156,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         localStorage.setItem("userPassword", userInput);
         document.getElementById("userName").textContent = user.name;
         document.getElementById("starCount").textContent = user.stars;
+        document.getElementById("coinsCount").textContent = user.coins;
 
         const membershipTypeContainer = document.getElementById("membershipType");
         membershipTypeContainer.innerHTML = `
