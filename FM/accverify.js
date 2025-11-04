@@ -24,8 +24,8 @@ const passwords = {
         membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#ff4500",
-        stars: 2,
-        coins: 1000,
+        stars: 0,
+        coins: 0,
         tierPoints: 5,
         showCustomContent: "yes",
         customContent: {
@@ -478,9 +478,22 @@ function generateImage(text, filename) {
 
 function showStarCount() {
     const stars = document.getElementById('starCount').textContent.trim();
-    alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can use these stars when you think interest is high to reduce the interest.`);
+    if(stars == 0){
+        alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can buy the stars to reduce the interest when you think the interest to high.`);
+    }
+    else{
+        alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can use these stars when you think interest is high to reduce the interest.`);
+    }
 }
-
+function showCoinsCount() {
+    const coins = document.getElementById('coinsCount').textContent.trim();
+    if(coins == 0){
+        alert(`BsRora(Bot) : \n\nYou have ${coins} coins.\n\nYou can increase your coins by extending the return date(Delays it) or by claiming any offers, 100 - 200 coins will be added automatically for each action.`);
+    }
+    else{
+        alert(`BsRora(Bot) : \n\nYou have ${coins} coins.\n\nYou can use these coins to become eligible for the offers..`);
+    }
+}
 function formatReturnDateForReceipt(loan) {
     const userInput = document.getElementById("userPassword").value.trim();
     const user = passwords[userInput];
