@@ -489,12 +489,7 @@ function showStarCount() {
 }
 function showCoinsCount() {
     const coins = document.getElementById('coinsCount').textContent.trim();
-    if(coins == 0){
-        alert(`BsRora(Bot) : \n\nYou have ${coins} coins.\n\nYou can increase your coins by extending the return date(Delays it) or by claiming any offers, 100 - 200 coins will be added automatically for each action.`);
-    }
-    else{
-        alert(`BsRora(Bot) : \n\nYou have ${coins} coins.\n\nYou can use these coins to become eligible for the offers..`);
-    }
+    alert(`BsRora(Bot) : \n\nYou have ${coins} rate exchange coins on your account.`);
 }
 function formatReturnDateForReceipt(loan) {
     const userInput = document.getElementById("userPassword").value.trim();
