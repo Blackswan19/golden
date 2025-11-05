@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Secure Account Verifier</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary: #6366f1;
+        --success: #10b981;
+        --danger: #ef4444;
+        --dark: #1f2937;
+        --light: #f9fafb;
+        --border: #e5e7eb;
+        --gray: #6b7280;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+        font-family:'Inter',sans-serif;
+        background:linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        color:var(--dark);
+        min-height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        padding:20px;
+    }
+    .card{
+        background:#fff;
+        max-width:480px;
+        width:100%;
+        border-radius:16px;
+        box-shadow:0 20px 40px rgba(0,0,0,.08);
+        overflow:hidden;
+        animation:fadeIn .4s ease-out;
+    }
+    .header{
+        background:var(--primary);
+        color:#fff;
+        padding:1.75rem 1.5rem;
+        text-align:center;
+    }
+    .header h1{font-size:1.5rem;font-weight:700;margin:0;}
+    .header p{font-size:.95rem;opacity:.9;margin-top:.4rem;}
+    .body{padding:2rem 1.5rem;}
+    .field{margin-bottom:1.5rem;}
+    label{
+        display:block;
+        font-weight:600;
+        font-size:.95rem;
+        margin-bottom:.5rem;
+        color:#374151;
+    }
+    input{
+        width:100%;
+        padding:.75rem 1rem;
+        border:2px solid var(--border);
+        border-radius:10px;
+        font-size:1rem;
+        transition:all .2s;
+        background:#f8fafc;
+    }
+    input:disabled{
+        background:#e5e7eb;
+        color:#9ca3af;
+        cursor:not-allowed;
+    }
+    input:focus{
+        outline:none;
+        border-color:var(--primary);
+        box-shadow:0 0 0 3px rgba(99,102,241,.2);
+    }
+    .progress-container{
+        height:10px;
+        background:#e5e7eb;
+        border-radius:6px;
+        overflow:hidden;
+        margin:1.2rem 0;
+    }
+    .progress-bar{
+        height:100%;
+        background:var(--primary);
+        width:0%;
+        border-radius:6px;
+        transition:width 0.1s linear;
+    }
+    .btn{
+        display:block;
+        width:100%;
+        padding:.85rem;
+        margin-top:1rem;
+        border:none;
+        border-radius:10px;
+        font-weight:600;
+        font-size:1rem;
+        cursor:pointer;
+        transition:all .2s;
+    }
+    .btn-primary{background:var(--primary);color:#fff;}
+    .btn-primary:hover{background:#4f46e5;}
+    .btn-primary:disabled{
+        background:#9ca3af;
+        cursor:not-allowed;
+        transform:none;
+    }
+    .msg{
+        margin-top:1rem;
+        padding:.75rem 1rem;
+        border-radius:10px;
+        font-weight:500;
+        text-align:center;
+    }
+    .msg.ok{background:#ecfdf5;color:#065f46;}
+    .msg.err{background:#fee2e2;color:#991b1b;}
+    .info{
+        text-align:center;
+        font-size:.9rem;
+        color:var(--gray);
+        margin:1rem 0;
+    }
+    .success-screen{
+        text-align:center;
+        padding:2.5rem 1.5rem;
+    }
+    .success-icon{
+        font-size:3.5rem;
+        color:var(--success);
+        margin-bottom:.75rem;
+    }
+    .hidden{display:none;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <!-- PASSWORD -->
+    <div id="pwdScreen">
+        <div class="header">
+            <h1>Account Verifier</h1>
+            <p>Enter user password to begin</p>
+        </div>
+        <div class="body">
+            <div class="field">
+                <label for="pwdInput">Password</label>
+                <input type="password" id="pwdInput" placeholder="e.g. 6275" autofocus>
+            </div>
+            <button class="btn btn-primary" onclick="unlock()">Start Verification</button>
+            <div id="pwdMsg" class="msg hidden"></div>
+        </div>
+    </div>
+
+    <!-- QUIZ -->
+    <div id="quizScreen" class="hidden">
+        <div class="header">
+            <h1>Verification</h1>
+            <p id="progressInfo"></p>
+        </div>
+        <div class="body">
+            <div class="info">Wait for the progress bar to complete before typing.</div>
+            <div class="progress-container">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+
+            <div class="field">
+                <label id="questionLabel"></label>
+                <input id="answer" disabled placeholder="Wait for bar to finish...">
+            </div>
+
+            <button id="submitBtn" class="btn btn-primary" disabled>Submit</button>
+            <div id="feedback" class="msg hidden"></div>
+        </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div id="successScreen" class="hidden success-screen">
+        <div class="success-icon">Checkmark</div>
+        <h2>Verification Complete</h2>
+        <p>All answers were correct.</p>
+        <button class="btn btn-primary" onclick="restart()">Verify Another</button>
+    </div>
+</div>
+
+<script src="accverify.js"></script>
+<script>
+/* -------------------------------------------------
+   CONFIG
+   ------------------------------------------------- */
+const TIME_PER_QUESTION = 3 * 60 * 1000; // 3 minutes
+let questions = [];
+let current = 0;
+let userKey = '';
+let user = null;
+let timer = null;
+let startTime = 0;
+
+/* -------------------------------------------------
+   UNLOCK
+   ------------------------------------------------- */
+function unlock() {
+    const pwd = document.getElementById('pwdInput').value.trim();
+    const msg = document.getElementById('pwdMsg');
+
+    if (typeof passwords !== 'undefined' && passwords[pwd]) {
+        userKey = pwd;
+        user = passwords[pwd];
+        buildQuestions();
+        current = 0;
+        document.getElementById('pwdScreen').classList.add('hidden');
+        document.getElementById('quizScreen').classList.remove('hidden');
+        startQuestion();
+        msg.classList.add('hidden');
+    } else {
+        msg.textContent = 'Invalid password';
+        msg.className = 'msg err';
+        msg.classList.remove('hidden');
+    }
+}
+
+/* -------------------------------------------------
+   BUILD QUESTIONS (includes coins id at the end)
+   ------------------------------------------------- */
+function buildQuestions() {
+    const u = user;
+    questions = [
+        {field:'name',            expected:u.name,            type:'text'},
+        {field:'membership type', expected:u.membershipType, type:'text'},
+        {field:'stars',           expected:u.stars,           type:'number'},
+        {field:'coins',           expected:u.coins,           type:'number'},
+        {field:'tier points',     expected:u.tierPoints,      type:'number'}
+    ];
+
+    // total return amount
+    let total = 0;
+    if (u.loans && Array.isArray(u.loans)) {
+        u.loans.forEach(l => {
+            total += (Number(l.takenAmount) || 0) + (Number(l.interest) || 0);
+        });
+    }
+    questions.push({field:'total return amount', expected:total, type:'number'});
+
+    // coins id (at the very end)
+    const coinsId = u.coinsId || `CID-${userKey}-${Date.now().toString(36)}`;
+    questions.push({field:'coins id', expected:coinsId, type:'text'});
+}
+
+/* -------------------------------------------------
+   START QUESTION
+   ------------------------------------------------- */
+function startQuestion() {
+    const q = questions[current];
+    document.getElementById('questionLabel').textContent = `What is the ${q.field}?`;
+    document.getElementById('progressInfo').textContent = 
+        `Question ${current+1} of ${questions.length}`;
+
+    const input = document.getElementById('answer');
+    input.type = q.type === 'number' ? 'number' : 'text';
+    input.value = '';
+    input.disabled = true;
+    input.placeholder = 'Wait for bar to finish...';
+
+    document.getElementById('submitBtn').disabled = true;
+    document.getElementById('feedback').classList.add('hidden');
+
+    // Reset bar
+    const bar = document.getElementById('progressBar');
+    bar.style.width = '0%';
+
+    // Start timer
+    startTime = Date.now();
+    timer = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const percent = Math.min((elapsed / TIME_PER_QUESTION) * 100, 100);
+        bar.style.width = percent + '%';
+
+        if (percent >= 100) {
+            clearInterval(timer);
+            enableInput();
+        }
+    }, 50);
+}
+
+/* -------------------------------------------------
+   ENABLE INPUT AFTER BAR
+   ------------------------------------------------- */
+function enableInput() {
+    const input = document.getElementById('answer');
+    const btn = document.getElementById('submitBtn');
+    input.disabled = false;
+    input.placeholder = 'Type your answer...';
+    input.focus();
+    btn.disabled = false;
+}
+
+/* -------------------------------------------------
+   CHECK ANSWER
+   ------------------------------------------------- */
+function check() {
+    clearInterval(timer);
+    const q = questions[current];
+    const answer = document.getElementById('answer').value.trim();
+    const correct = q.type === 'number' 
+        ? Number(answer) === q.expected 
+        : answer === String(q.expected);
+
+    const fb = document.getElementById('feedback');
+
+    if (correct) {
+        fb.textContent = 'Correct';
+        fb.className = 'msg ok';
+        fb.classList.remove('hidden');
+
+        current++;
+        if (current < questions.length) {
+            setTimeout(startQuestion, 1400);
+        } else {
+            setTimeout(showSuccess, 1400);
+        }
+    } else {
+        fail(`Wrong! Correct: ${q.expected}`);
+    }
+}
+
+/* -------------------------------------------------
+   FAIL → RESTART
+   ------------------------------------------------- */
+function fail(msg) {
+    const fb = document.getElementById('feedback');
+    fb.textContent = `${msg} – Restarting...`;
+    fb.className = 'msg err';
+    fb.classList.remove('hidden');
+
+    setTimeout(() => {
+        current = 0;
+        startQuestion();
+    }, 2500);
+}
+
+/* -------------------------------------------------
+   SUCCESS
+   ------------------------------------------------- */
+function showSuccess() {
+    document.getElementById('quizScreen').classList.add('hidden');
+    document.getElementById('successScreen').classList.remove('hidden');
+}
+
+/* -------------------------------------------------
+   RESTART
+   ------------------------------------------------- */
+function restart() {
+    document.getElementById('successScreen').classList.add('hidden');
+    document.getElementById('pwdScreen').classList.remove('hidden');
+    document.getElementById('pwdInput').value = '';
+    document.getElementById('pwdInput').focus();
+}
+
+/* -------------------------------------------------
+   ENTER KEY
+   ------------------------------------------------- */
+document.getElementById('pwdInput').addEventListener('keypress', e => {
+    if (e.key === 'Enter') unlock();
+});
+document.getElementById('answer').addEventListener('keypress', e => {
+    if (e.key === 'Enter' && !document.getElementById('answer').disabled) {
+        check();
+    }
+});
+</script>
+
+</body>
+</html>
