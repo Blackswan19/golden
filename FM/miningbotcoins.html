@@ -109,7 +109,7 @@
           startBot();
         }, 1000);
       } else {
-        addMessage("Please reply <strong>Yes</strong> or <strong>No</strong>.");
+        addMessage("Reply <strong>Yes</strong> or <strong>No</strong>.");
       }
     }
 
@@ -119,7 +119,7 @@
       if (!currentUser.coinsId) {
         const coinsId = input.trim();
         if (!coinsId) {
-          addMessage("Please send a valid <strong>Coins ID</strong>.");
+          addMessage("Send a valid <strong>Coins ID</strong>.");
           return;
         }
         currentUser.coinsId = coinsId;
@@ -131,7 +131,7 @@
       // ---- Second: Phone Number ----
       const phone = input.trim();
       if (!phone) {
-        addMessage("Please send a valid <strong>Phone Number</strong>.");
+        addMessage("Send a valid <strong>Phone Number</strong>.");
         return;
       }
 
