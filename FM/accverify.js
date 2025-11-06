@@ -224,7 +224,7 @@ const ads = [
         name: "Paymine",
         headline: "Paymine",
         desc: "We pay for you when you don’t have, Pay back when you have",
-        link: "https://mfi0212.github.io/swan/offer/programs",
+        link: "https://mfi0212.github.io/MFI/paymine",
         icon: "https://cdn.example.com/paymine-16.png"
     },
     {
