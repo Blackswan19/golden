@@ -281,7 +281,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
             amountButtons.appendChild(btn);
         });
 
-        // Apply initial background colors
+        // Apply initial status colors (non-active)
         updateAllButtonColors(user);
 
         // === SPECIAL CONTENT ===
@@ -417,9 +417,6 @@ function calculateOverdueFine(endDate, loan, user) {
     }
 }
 
-// ===============================================
-// CHECK IF LOAN IS DUE TODAY
-// ===============================================
 function isDueToday(endDate) {
     const today = new Date();
     const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
@@ -434,7 +431,8 @@ function isDueToday(endDate) {
 }
 
 // ===============================================
-// UPDATE BUTTON COLORS: DARKRED (overdue), ORANGE (due today), DEFAULT (others)
+// UPDATE NON-ACTIVE BUTTONS (STATUS COLORS)
+// ===============================================
 function updateAllButtonColors(user) {
     const buttons = document.querySelectorAll("#amountButtons .amount-btn");
     buttons.forEach((btn, idx) => {
@@ -444,24 +442,27 @@ function updateAllButtonColors(user) {
         const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
         const dueToday = isDueToday(loan.endDate);
 
-        if (overdueInfo.overdue) {
-            btn.style.background = "#8B0000"; // darkred
-            btn.style.color = "white";
-            btn.style.border = "1px solid #5D0000";
-        } else if (dueToday) {
-            btn.style.background = "#FF8C00"; // orange
-            btn.style.color = "white";
-            btn.style.border = "1px solid #CC7000";
-        } else {
-            btn.style.background = "";   // default
-            btn.style.color = "";
-            btn.style.border = "";
+        // Only apply status color if NOT active
+        if (!btn.classList.contains("active")) {
+            if (overdueInfo.overdue) {
+                btn.style.background = "#8B0000"; // darkred
+                btn.style.color = "white";
+                btn.style.border = "1px solid #5D0000";
+            } else if (dueToday) {
+                btn.style.background = "#FF8C00"; // orange
+                btn.style.color = "white";
+                btn.style.border = "1px solid #CC7000";
+            } else {
+                btn.style.background = "";
+                btn.style.color = "";
+                btn.style.border = "";
+            }
         }
     });
 }
 
 // ===============================================
-// DISPLAY LOAN DETAILS + ACTIVE STATE
+// DISPLAY LOAN DETAILS + ACTIVE BUTTON LOGIC
 // ===============================================
 function displayLoanDetails(loan, index) {
     const loanDetails = document.getElementById("loanDetails");
@@ -474,25 +475,20 @@ function displayLoanDetails(loan, index) {
     const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
     const daysBetween = calculateDaysBetween(loan.planDate, cleanEndDate);
 
-    // Remove active class from all
-    document.querySelectorAll(".amount-btn").forEach(btn => btn.classList.remove("active"));
+    // === REMOVE ACTIVE FROM ALL ===
+    document.querySelectorAll(".amount-btn").forEach(btn => {
+        btn.classList.remove("active");
+        // Reset non-active buttons to status color
+        updateAllButtonColors(user);
+    });
 
-    // Add active class to current
+    // === ADD ACTIVE TO CURRENT ===
     const activeBtn = document.getElementById("amountButtons").children[index];
     activeBtn.classList.add("active");
 
-    // Apply correct background based on status
-    const dueToday = isDueToday(loan.endDate);
-    if (overdueInfo.overdue) {
-        activeBtn.style.background = "#8B0000"; // darkred
-        activeBtn.style.color = "white";
-    } else if (dueToday) {
-        activeBtn.style.background = "#FF8C00"; // orange
-        activeBtn.style.color = "white";
-    } else {
-        activeBtn.style.background = ""; // default
-        activeBtn.style.color = "";
-    }
+    // === APPLY ACTIVE STYLE (OVERRIDES STATUS) ===
+    activeBtn.style.background = "#0066cc";
+    activeBtn.style.color = "black";
 
     let overdueSection = "";
     if (overdueInfo.overdue) {
