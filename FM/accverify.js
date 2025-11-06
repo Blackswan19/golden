@@ -214,24 +214,75 @@ document.getElementById("submitBtn").addEventListener("click", () => {
             showTierPopup(msg);
         });
 
-        // === BORROW LIMIT MESSAGE ===
-        const totalTaken = user.loans.reduce((sum, loan) => sum + loan.takenAmount, 0);
-        const borrowLimitMessage = document.createElement("div");
-        borrowLimitMessage.id = "borrowLimitMessage";
-        if (totalTaken > 20000 && Math.random() < 0.8) {
-            borrowLimitMessage.innerHTML = `
-                <div class="bot" style="display:flex;justify-content:center;align-items:baseline;">
-                    <p class="borrowLimitMessage" style='color:red;font-size:11px;text-align:center;font-weight:500;'>
-                        <img style="width:16px;position:relative;top:3px;left:-1px;" src="https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/2" alt="">
-                        <span style='font-size:12px;color:white;text-decoration:none;border-radius:10px;'>BsRora (<i style='position:relative;right:-4px;' class="fa-solid fa-robot"></i>)</span> : 
-                        We found you have crossed the borrow limit. From the next borrow, we will charge an extra fee. 
-                        To borrow more, use <a href="https://mfi0212.github.io/MFI/starpre" style='white-space:nowrap;color:white;font-size:12px;'>Premium Plan</a>.
-                    </p>
-                </div>	
-            `;
-        } else {
-            borrowLimitMessage.innerHTML = "";
-        }
+       const totalTaken = user.loans.reduce((sum, loan) => sum + loan.takenAmount, 0);
+const borrowLimitMessage = document.createElement("div");
+borrowLimitMessage.id = "borrowLimitMessage";
+
+/* ---------- 3 Rich Ads – Telegram Big-Group Style ---------- */
+const ads = [
+    {
+        name: "Paymine",
+        headline: "Paymine",
+        desc: "We pay for you when you don’t have, Pay back when you have",
+        link: "https://mfi0212.github.io/swan/offer/programs",
+        icon: "https://cdn.example.com/paymine-16.png"
+    },
+    {
+        name: "Split it",
+        headline: "Split it ",
+        desc: "You can split the large amount into smaller and you can repayment with smaller amounts when you have.",
+        link: "https://splitit.example.com",
+        icon: "https://cdn.example.com/split-16.png"
+    },
+    {
+        name: "Delay it",
+        headline: "Delay it",
+        desc: "It was a program by which you can Extend the returning date of your amounts.",
+        link: "https://mfi0212.github.io/swan/offer/delayit",
+        icon: "https://cdn.example.com/delay-16.png"
+    }
+];
+
+/* Pick random ad */
+const ad = ads[Math.floor(Math.random() * ads.length)];
+
+borrowLimitMessage.innerHTML = `
+    <div class="bot">
+        <p class="borrowLimitMessage" style='color: #ffffffad;
+    font-size: 12px;
+    text-align: left;
+    font-weight: 300;
+    max-width: 615px;
+    line-height: 20px;
+    border-left: solid 3px;
+    background: #ffffff1f;
+    letter-spacing: 0.3px;
+    padding: 14px 10px 18px 15px;
+            '>
+            <span style='    font-size: 13px;
+                    color: white;
+                    text-decoration: none;
+                    border-radius: 10px;
+                    font-weight: 900;
+                '>
+                <strong>${ad.headline}</strong> (Ad)
+            </span> : <br>
+            ${ad.desc}
+            <br><a href="${ad.link}" target="_blank" 
+               style='    white-space: nowrap;
+    color: white;
+    font-size: 13px;
+    text-decoration: underline 1.5px;
+    font-weight: 400;
+    text-underline-position: under;
+    position: relative;
+    top: 6px;
+'>
+               Explore ${ad.name}
+            </a>
+        </p>
+    </div>
+`;
         const userInfoModal = document.getElementById("userInfoModal");
         const profilePictureContainer = profilePicture.parentElement;
         userInfoModal.insertBefore(borrowLimitMessage, profilePictureContainer);
