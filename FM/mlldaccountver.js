@@ -189,7 +189,7 @@
                         planDate: "06-11-2025",
                         endDate: "07-12-2025",
                         interest: 1000,
-                        takenAmount: "cleared",
+                        takenAmount: 0,
                         fineRate: 50
                     },
                 ]
