@@ -186,10 +186,10 @@
                 profileBackground: "#ffffff00",
                 loans: [
                     {
-                        planDate: "20-08-2025",
-                        endDate: "10-09-2025",
-                        interest: 0,
-                        takenAmount: 0,
+                        planDate: "06-11-2025",
+                        endDate: "07-12-2025",
+                        interest: 1000,
+                        takenAmount: "cleared",
                         fineRate: 50
                     },
                 ]
