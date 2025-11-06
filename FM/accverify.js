@@ -248,14 +248,13 @@ const ad = ads[Math.floor(Math.random() * ads.length)];
 
 borrowLimitMessage.innerHTML = `
     <div class="bot">
-        <p class="borrowLimitMessage" style='color: #ffffffad;
+        <p class="borrowLimitMessage" style='
     font-size: 12px;
     text-align: left;
     font-weight: 300;
     max-width: 615px;
     line-height: 20px;
     border-left: solid 3px;
-    background: #ffffff1f;
     letter-spacing: 0.3px;
     padding: 14px 10px 18px 15px;
             '>
