@@ -1,3 +1,4 @@
+
 const passwords = {
     "4211": {
         name: "Chaitanya Harsha",
@@ -113,7 +114,6 @@ function getTierInfo(points) {
         return { tier: 1, points, needed: 100 - points, nextRate: "2% lower" };
     }
 }
-
 function showTierPopup(html) {
     const old = document.getElementById("tierPopupModal");
     if (old) old.remove();
@@ -144,7 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("poweredBy").style.display = "block";
     }
 });
-
 document.getElementById("submitBtn").addEventListener("click", () => {
     const userInput = document.getElementById("userPassword").value.trim();
     const errorMessage = document.getElementById("error-message");
@@ -179,10 +178,11 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         profilePicture.style.backgroundImage = "none";
         profilePicture.textContent = iconText;
 
-        // === TIER PROGRESS ===
+        // === TIER PROGRESS (AUTO TIER 2 IF ≥100) ===
         const tierInfo = getTierInfo(user.tierPoints);
         const percent = tierInfo.tier === 2 ? 100 : (user.tierPoints / 100) * 100;
 
+        // Use profile color for bar
         let barColor = user.profileBackground;
         if (barColor.startsWith("rgb")) {
             const rgb = barColor.match(/\d+/g);
@@ -214,58 +214,74 @@ document.getElementById("submitBtn").addEventListener("click", () => {
             showTierPopup(msg);
         });
 
-        const borrowLimitMessage = document.createElement("div");
-        borrowLimitMessage.id = "borrowLimitMessage";
+       const totalTaken = user.loans.reduce((sum, loan) => sum + loan.takenAmount, 0);
+const borrowLimitMessage = document.createElement("div");
+borrowLimitMessage.id = "borrowLimitMessage";
 
-        const ads = [
-            {
-                name: "Paymine",
-                headline: "Paymine",
-                desc: "We pay for you when you don’t have, Pay back when you have",
-                link: "https://mfi0212.github.io/MFI/paymine",
-                icon: "https://cdn.example.com/paymine-16.png"
-            },
-            {
-                name: "Split it",
-                headline: "Split it ",
-                desc: "You can split the large amount into smaller and you can repayment with smaller amounts when you have.",
-                link: "https://mfi0212.github.io/swan/offer/split",
-                icon: "https://cdn.example.com/split-16.png"
-            },
-            {
-                name: "Delay it",
-                headline: "Delay it",
-                desc: "It was a program by which you can Extend the returning date of your amounts.",
-                link: "https://mfi0212.github.io/swan/offer/delayit",
-                icon: "https://cdn.example.com/delay-16.png"
-            }
-        ];
+/* ---------- 3 Rich Ads – Telegram Big-Group Style ---------- */
+const ads = [
+    {
+        name: "Paymine",
+        headline: "Paymine",
+        desc: "We pay for you when you don’t have, Pay back when you have",
+        link: "https://mfi0212.github.io/MFI/paymine",
+        icon: "https://cdn.example.com/paymine-16.png"
+    },
+    {
+        name: "Split it",
+        headline: "Split it ",
+        desc: "You can split the large amount into smaller and you can repayment with smaller amounts when you have.",
+        link: "https://mfi0212.github.io/swan/offer/split",
+        icon: "https://cdn.example.com/split-16.png"
+    },
+    {
+        name: "Delay it",
+        headline: "Delay it",
+        desc: "It was a program by which you can Extend the returning date of your amounts.",
+        link: "https://mfi0212.github.io/swan/offer/delayit",
+        icon: "https://cdn.example.com/delay-16.png"
+    }
+];
 
-        const ad = ads[Math.floor(Math.random() * ads.length)];
+/* Pick random ad */
+const ad = ads[Math.floor(Math.random() * ads.length)];
 
-        borrowLimitMessage.innerHTML = `
-            <div class="bot">
-                <p class="borrowLimitMessage" style='
-            font-size: 12px;
-            text-align: left;
-            font-weight: 300;
-            max-width: 615px;
-            line-height: 20px;
-            border-left: solid 3px;
-            letter-spacing: 0.3px;
-            padding: 14px 10px 18px 15px;
-                    '>
-                    <span style='font-size: 13px;color: white;text-decoration: none;border-radius: 10px;font-weight: 900;'>
-                        <strong>${ad.headline}</strong> (Ad)
-                    </span> : <br>
-                    ${ad.desc}
-                    <br><a href="${ad.link}" target="_blank" 
-                       style='white-space: nowrap;color: white;font-size: 13px;text-decoration: underline 1.5px;font-weight: 400;text-underline-position: under;position: relative;top: 6px;'>
-                       Explore ${ad.name}
-                    </a>
-                </p>
-            </div>
-        `;
+borrowLimitMessage.innerHTML = `
+    <div class="bot">
+        <p class="borrowLimitMessage" style='
+    font-size: 12px;
+    text-align: left;
+    font-weight: 300;
+    max-width: 615px;
+    line-height: 20px;
+    border-left: solid 3px;
+    letter-spacing: 0.3px;
+    padding: 14px 10px 18px 15px;
+            '>
+            <span style='    font-size: 13px;
+                    color: white;
+                    text-decoration: none;
+                    border-radius: 10px;
+                    font-weight: 900;
+                '>
+                <strong>${ad.headline}</strong> (Ad)
+            </span> : <br>
+            ${ad.desc}
+            <br><a href="${ad.link}" target="_blank" 
+               style='    white-space: nowrap;
+    color: white;
+    font-size: 13px;
+    text-decoration: underline 1.5px;
+    font-weight: 400;
+    text-underline-position: under;
+    position: relative;
+    top: 6px;
+'>
+               Explore ${ad.name}
+            </a>
+        </p>
+    </div>
+`;
         const userInfoModal = document.getElementById("userInfoModal");
         const profilePictureContainer = profilePicture.parentElement;
         userInfoModal.insertBefore(borrowLimitMessage, profilePictureContainer);
@@ -280,9 +296,6 @@ document.getElementById("submitBtn").addEventListener("click", () => {
             btn.onclick = () => displayLoanDetails(loan, index);
             amountButtons.appendChild(btn);
         });
-
-        // Apply initial status colors (non-active)
-        updateAllButtonColors(user);
 
         // === SPECIAL CONTENT ===
         const specialContentDiv = document.getElementById("specialContent");
@@ -310,7 +323,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         // === SHOW FIRST LOAN & REMINDER ===
         if (user.loans.length > 0) {
             displayLoanDetails(user.loans[0], 0);
-            checkDueReminders(user);
+            checkDueToday(user);
         } else {
             errorMessage.textContent = "No active loans found.";
         }
@@ -324,54 +337,31 @@ document.getElementById("submitBtn").addEventListener("click", () => {
 });
 
 // ===============================================
-// REMINDER: DUE TODAY + 1 DAY BEFORE
+// 6. DUE TODAY REMINDER
 // ===============================================
-function checkDueReminders(user) {
+function checkDueToday(user) {
     const today = new Date();
-    const tomorrow = new Date(today);
-    tomorrow.setDate(tomorrow.getDate() + 1);
-
     const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
-    const formatDate = (d) => `${String(d.getDate()).padStart(2,'0')}-${String(d.getMonth()+1).padStart(2,'0')}-${d.getFullYear()}`;
-
-    const todayStr = formatDate(today);
-    const tomorrowStr = formatDate(tomorrow);
-
-    let dueToday = null;
-    let dueTomorrow = null;
+    const todayStr = `${String(today.getDate()).padStart(2, '0')}-${String(today.getMonth() + 1).padStart(2, '0')}-${today.getFullYear()}`;
 
     user.loans.forEach(loan => {
-        const cleanEndDate = loan.endDate.split('(')[0].split('<')[0].trim();
-        const match = cleanEndDate.match(dateFormat);
-        if (!match) return;
-
-        const endDateStr = `${match[1]}-${match[2]}-${match[3]}`;
-
-        if (endDateStr === todayStr) dueToday = { loan, date: cleanEndDate };
-        if (endDateStr === tomorrowStr) dueTomorrow = { loan, date: cleanEndDate };
+        const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+        const endMatch = cleanEndDate.match(dateFormat);
+        if (endMatch) {
+            const endDateStr = `${endMatch[1]}-${endMatch[2]}-${endMatch[3]}`;
+            if (endDateStr === todayStr && !loan.endDate.includes('Overdue')) {
+                document.getElementById("reminderMessage").innerHTML = 
+                    `Mr. ${user.name}, Today (${cleanEndDate}) you have an amount to return from <b>${loan.takenFrom}</b>. <br><br> Clear on time to avoid overdue interest. Thank you!`;
+                document.getElementById("reminderModal").style.display = "flex";
+            }
+        }
     });
-
-    const reminderModal = document.getElementById("reminderModal");
-    const reminderMessage = document.getElementById("reminderMessage");
-
-    if (dueToday) {
-        reminderMessage.innerHTML = 
-            `Mr. ${user.name}, <b>Today (${dueToday.date})</b> you have an amount to return from <b>${dueToday.loan.takenFrom}</b>.<br><br>Clear on time to avoid overdue interest. Thank you!`;
-        reminderModal.style.display = "flex";
-    } else if (dueTomorrow) {
-        reminderMessage.innerHTML = 
-            `Mr. ${user.name}, <b>Tomorrow (${dueTomorrow.date})</b> your amount from <b>${dueTomorrow.loan.takenFrom}</b> is due.<br><br>Plan your repayment today to avoid extra charges!`;
-        reminderModal.style.display = "flex";
-    }
 }
 
 function closeReminderModal() {
     document.getElementById("reminderModal").style.display = "none";
 }
 
-// ===============================================
-// OVERDUE & DUE TODAY CALCULATION
-// ===============================================
 function calculateDaysBetween(startDate, endDate) {
     try {
         const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
@@ -394,7 +384,7 @@ let sessionReferenceTime = null;
 function calculateOverdueFine(endDate, loan, user) {
     try {
         const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
-        const endMatch = endDate.split('(')[0].split('<')[0].trim().match(dateFormat);
+        const endMatch = endDate.split('(')[0].split('<')[0].match(dateFormat);
         if (!endMatch) return { overdue: false, fine: 0, hoursOverdue: 0, daysOverdue: 0 };
 
         const end = new Date(`${endMatch[3]}-${endMatch[2]}-${endMatch[1]}`);
@@ -417,53 +407,6 @@ function calculateOverdueFine(endDate, loan, user) {
     }
 }
 
-function isDueToday(endDate) {
-    const today = new Date();
-    const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
-    const todayStr = `${String(today.getDate()).padStart(2,'0')}-${String(today.getMonth()+1).padStart(2,'0')}-${today.getFullYear()}`;
-    
-    const cleanEndDate = endDate.split('(')[0].split('<')[0].trim();
-    const match = cleanEndDate.match(dateFormat);
-    if (!match) return false;
-    
-    const endDateStr = `${match[1]}-${match[2]}-${match[3]}`;
-    return endDateStr === todayStr;
-}
-
-// ===============================================
-// UPDATE NON-ACTIVE BUTTONS (STATUS COLORS)
-// ===============================================
-function updateAllButtonColors(user) {
-    const buttons = document.querySelectorAll("#amountButtons .amount-btn");
-    buttons.forEach((btn, idx) => {
-        const loan = user.loans[idx];
-        if (!loan) return;
-
-        const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
-        const dueToday = isDueToday(loan.endDate);
-
-        // Only apply status color if NOT active
-        if (!btn.classList.contains("active")) {
-            if (overdueInfo.overdue) {
-                btn.style.background = "#8B0000"; // darkred
-                btn.style.color = "white";
-                btn.style.border = "1px solid #5D0000";
-            } else if (dueToday) {
-                btn.style.background = "#FF8C00"; // orange
-                btn.style.color = "white";
-                btn.style.border = "1px solid #CC7000";
-            } else {
-                btn.style.background = "";
-                btn.style.color = "";
-                btn.style.border = "";
-            }
-        }
-    });
-}
-
-// ===============================================
-// DISPLAY LOAN DETAILS + ACTIVE BUTTON LOGIC
-// ===============================================
 function displayLoanDetails(loan, index) {
     const loanDetails = document.getElementById("loanDetails");
     const userInput = document.getElementById("userPassword").value.trim();
@@ -475,54 +418,42 @@ function displayLoanDetails(loan, index) {
     const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
     const daysBetween = calculateDaysBetween(loan.planDate, cleanEndDate);
 
-    // === REMOVE ACTIVE FROM ALL ===
-    document.querySelectorAll(".amount-btn").forEach(btn => {
-        btn.classList.remove("active");
-        // Reset non-active buttons to status color
-        updateAllButtonColors(user);
-    });
-
-    // === ADD ACTIVE TO CURRENT ===
-    const activeBtn = document.getElementById("amountButtons").children[index];
-    activeBtn.classList.add("active");
-
-    // === APPLY ACTIVE STYLE (OVERRIDES STATUS) ===
-    activeBtn.style.background = "#0066cc";
-    activeBtn.style.color = "black";
+    document.querySelectorAll(".amount-btn").forEach(btn => btn.classList.remove("active"));
+    document.getElementById("amountButtons").children[index].classList.add("active");
 
     let overdueSection = "";
     if (overdueInfo.overdue) {
         overdueSection = `
             <h3>Overdue Details</h3>
-            <p style="color: #ff9300;">You are overdue by: ${overdueInfo.daysOverdue} days (${overdueInfo.hoursOverdue} hours)</p>
-            <p style="color: #ff9300;">Overdue interest: ${fine} Rupees</p>
+            <p style="color: #ff9300;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M440-120q-75 0-140.5-28T185-225q-49-49-77-114.5T80-480q0-75 28-140.5T185-735q49-49 114.5-77T440-840q21 0 40.5 2.5T520-830v82q-20-6-39.5-9t-40.5-3q-118 0-199 81t-81 199q0 118 81 199t199 81q118 0 199-81t81-199q0-11-1-20t-3-20h82q2 11 2 20v20q0 75-28 140.5T695-225q-49 49-114.5 77T440-120Zm112-192L400-464v-216h80v184l128 128-56 56Zm168-288v-120H600v-80h120v-120h80v120h120v80H800v120h-80Z"/></svg> You are overdue by: ${overdueInfo.daysOverdue} days (${overdueInfo.hoursOverdue} hours)</p>
+            <p style="color: #ff9300;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-80q-66 0-127.5-20.5T240-160l58-58q42 29 88 43.5t94 14.5q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480H80q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 155.5 31.5t127 86q54.5 54.5 86 127T880-480q0 82-31.5 155t-86 127.5q-54.5 54.5-127 86T480-80ZM159-243l163-163 120 100 198-198v104h80v-240H480v80h104L438-414 318-514 117-313q11 23 19.5 37.5T159-243Zm321-237Z"/></svg> Overdue interest: ${fine} Rupees</p>
         `;
     }
 
     loanDetails.innerHTML = `
-        <p id="scrotamts"></p>
+    <p id="scrotamts"></p>
         <div class="loan-entry">
             <p style="text-align:center;position:sticky;top:90px;margin-top:20px;right:16px;float:right;margin-right:-9px;">
                 <button class="amounts-btn downsingle" style="width:100%;font-size:9px;padding:0px 12px;display:flex;flex-direction:row;justify-content:center;align-items:center;margin-top:10px;font-weight:400;letter-spacing:0.2px;" onclick="downloadSingleLoan(${index})">
-                    Download This Receipt
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"></path></svg> Download This Receipt
                 </button>
             </p>
             <h3>Service</h3>
-            <p>Taken in : ${loan.takenFrom} </p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M200-280v-280h80v280h-80Zm240 0v-280h80v280h-80ZM80-120v-80h800v80H80Zm600-160v-280h80v280h-80ZM80-640v-80l400-200 400 200v80H80Zm178-80h444-444Zm0 0h444L480-830 258-720Z"/></svg> Taken in : ${loan.takenFrom} </p>
             <h3>Amount</h3>
-            <p>Taken Amount : ${loan.takenAmount} Rupees</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M557-518 387-688l57-56 113 113 227-226 56 56-283 283ZM320-220l278 76 238-74q-5-9-14.5-15.5T800-240H598q-27 0-43-2t-33-8l-93-31 22-78 81 27q17 5 40 8t68 4q0-11-6.5-21T618-354l-234-86h-64v220ZM80-80v-440h304q7 0 14 1.5t13 3.5l235 87q33 12 53.5 42t20.5 66h80q50 0 85 33t35 87v40L600-60l-280-78v58H80Zm80-80h80v-280h-80v280Z"/></svg> Taken Amount : ${loan.takenAmount} Rupees</p>
             <h3>Taken & Return</h3>
-            <p>Taken date : ${loan.planDate}</p>
-            <p>Return date : ${loan.endDate}</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M580-240q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z"/></svg> Taken date : ${loan.planDate}</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v255l-80 80v-175H200v400h248l80 80H200Zm0-560h560v-80H200v80Zm0 0v-80 80ZM662-60 520-202l56-56 85 85 170-170 56 57L662-60Z"/></svg> Return date : ${loan.endDate}</p>
             <h3>Duration</h3>
-            <p>Taken for : ${daysBetween} days</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-520q66 0 113-47t47-113v-120H320v120q0 66 47 113t113 47ZM160-80v-80h80v-120q0-61 28.5-114.5T348-480q-51-32-79.5-85.5T240-680v-120h-80v-80h640v80h-80v120q0 61-28.5 114.5T612-480q51 32 79.5 85.5T720-280v120h80v80H160Z"/></svg> Taken for : ${daysBetween} days</p>
             <h3>Interest</h3>
-            <p>Normal Interest : ${loan.interest} Rupees</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M220-60 80-200l140-140 57 56-44 44h494l-43-44 56-56 140 140L740-60l-57-56 44-44H233l43 44-56 56Zm260-460q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35ZM200-400q-33 0-56.5-23.5T120-480v-320q0-33 23.5-56.5T200-880h560q33 0 56.5 23.5T840-800v320q0 33-23.5 56.5T760-400H200Zm80-80h400q0-33 23.5-56.5T760-560v-160q-33 0-56.5-23.5T680-800H280q0 33-23.5 56.5T200-720v160q33 0 56.5 23.5T280-480Zm-80 0v-320 320Z"/></svg> Normal Interest : ${loan.interest} Rupees</p>
             <hr>
             ${overdueSection}
             <hr>
             <h3>Total to Return</h3>
-            <p>Full Amount : ${totalReturnAmount} Rupees</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-400 40-640l440-240 440 240-440 240Zm0 160L63-467l84-46 333 182 333-182 84 46-417 227Zm0 160L63-307l84-46 333 182 333-182 84 46L480-80Zm0-411 273-149-273-149-273 149 273 149Zm0-149Z"/></svg>Full Amount : ${totalReturnAmount} Rupees</p>
             <hr>
             <div class="issuebtn" style="padding-top: 20px;width: 102.5%;">  
                 <a target="_blank" href="https://forms.gle/RzTJ8W9bwmm8DVj2A"><button>I have an issue here.!</button></a>
@@ -531,9 +462,6 @@ function displayLoanDetails(loan, index) {
     `;
 }
 
-// ===============================================
-// MODALS & UTILITIES
-// ===============================================
 function showAmountsModal() {
     const userInput = document.getElementById("userPassword").value.trim();
     const user = passwords[userInput];
@@ -570,10 +498,65 @@ function closeModal() {
     sessionReferenceTime = null;
 }
 
-// ===============================================
-// RECEIPT GENERATION
-// ===============================================
+function formatDate(dateStr) {
+    const [d, m, y] = dateStr.split('-');
+    return `${d}/${m}/${y.slice(2)}`;
+}
+
+function generateImage(text, filename) {
+    const canvas = document.createElement('canvas');
+    const lines = text.split('\n');
+    const lineHeight = 30;
+    canvas.width = 600;
+    canvas.height = 60 + lines.length * lineHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'black';
+    ctx.font = '20px Poppins, Arial, sans-serif';
+    ctx.textAlign = 'left';
+    lines.forEach((line, i) => {
+        ctx.fillText(line, 30, 40 + i * lineHeight);
+    });
+    ctx.fillStyle = 'gray';
+    ctx.font = '16px Poppins, Arial, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText('Powered by BsBookpad', canvas.width - 20, 20);
+    const a = document.createElement('a');
+    a.href = canvas.toDataURL('image/png', 1.0);
+    a.download = filename;
+    a.click();
+}
+
+function showStarCount() {
+    const stars = document.getElementById('starCount').textContent.trim();
+    if(stars == 0){
+        alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can buy the stars to reduce the interest when you think the interest to high.`);
+    }
+    else{
+        alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can use these stars when you think interest is high to reduce the interest.`);
+    }
+}
+function showCoinsCount() {
+    const coins = document.getElementById('coinsCount').textContent.trim();
+    alert(`BsRora(Bot) : \n\nYou have ${coins} rate exchange coins on your account.`);
+}
+function formatReturnDateForReceipt(loan) {
+    const userInput = document.getElementById("userPassword").value.trim();
+    const user = passwords[userInput];
+    if (!user) return "Error";
+    
+    const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+    if (overdueInfo.overdue) return "till today";
+    
+    const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+    const [d, m, y] = cleanEndDate.split('-');
+    return `${d}/${m}/${y.slice(-2)}`;
+}
+
 function generateStyledReceipt(textLines, filename) {
+    console.log("🔄 Generating receipt:", filename);
+    
     const canvas = document.createElement('canvas');
     const lineHeight = 38;
     const leftMargin = 40;
@@ -584,6 +567,7 @@ function generateStyledReceipt(textLines, filename) {
     canvas.height = topStart + textLines.length * lineHeight + 60;
 
     const ctx = canvas.getContext('2d');
+    
     
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -596,6 +580,7 @@ function generateStyledReceipt(textLines, filename) {
     textLines.forEach((line, i) => {
         const y = topStart + i * lineHeight;
         if (line === 'Try to clear in time, Thank you.') {
+            // SKY BLUE FOOTER
             ctx.fillStyle = '#00BFFF';
             ctx.font = 'bold 22px Arial, sans-serif';
         } else {
@@ -619,27 +604,16 @@ function generateStyledReceipt(textLines, filename) {
     link.click();
     document.body.removeChild(link);
     
-    alert("Receipt has Downloaded..! Verify once...!");
-}
-
-function formatReturnDateForReceipt(loan) {
-    const userInput = document.getElementById("userPassword").value.trim();
-    const user = passwords[userInput];
-    if (!user) return "Error";
-    
-    const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
-    if (overdueInfo.overdue) return "till today";
-    
-    const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
-    const [d, m, y] = cleanEndDate.split('-');
-    return `${d}/${m}/${y.slice(-2)}`;
+    console.log("✅ Download triggered:", filename);
+    alert("📥 Receipt has Downloaded..! Verify once...!");
 }
 
 function downloadSingleLoan(index) {
+    console.log("🔄 Single loan download:", index);
     const userInput = document.getElementById("userPassword").value.trim();
     const user = passwords[userInput];
     if (!user || !user.loans[index]) {
-        alert("No loan found! Enter password first.");
+        alert("❌ No loan found! Enter password first.");
         return;
     }
 
@@ -660,12 +634,12 @@ function downloadSingleLoan(index) {
 
     generateStyledReceipt(lines, `receipt_${user.name}_${index + 1}.png`);
 }
-
 function downloadAllLoans() {
+    console.log("🔄 All loans download");
     const userInput = document.getElementById("userPassword").value.trim();
     const user = passwords[userInput];
     if (!user || user.loans.length === 0) {
-        alert("No loans found! Enter password first.");
+        alert("❌ No loans found! Enter password first.");
         return;
     }
 
@@ -696,19 +670,4 @@ function downloadAllLoans() {
     ];
 
     generateStyledReceipt(lines, `all_receipts_${user.name}.png`);
-}
-
-function showStarCount() {
-    const stars = document.getElementById('starCount').textContent.trim();
-    if(stars == 0){
-        alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can buy the stars to reduce the interest when you think the interest to high.`);
-    }
-    else{
-        alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can use these stars when you think interest is high to reduce the interest.`);
-    }
-}
-
-function showCoinsCount() {
-    const coins = document.getElementById('coinsCount').textContent.trim();
-    alert(`BsRora(Bot) : \n\nYou have ${coins} rate exchange coins on your account.`);
 }
