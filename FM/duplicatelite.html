@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Duplicate Lite</title>
+  <link rel="icon" href="https://i.ibb.co/ZpVQQ2Kp/mfi-logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #037e75;
+      --bg: #25212f;
+      --card: #111;
+      --text: #eee;
+      --border: #333;
+    }
+    body.light {
+      --bg: #fff;
+      --card: #f8f8f8;
+      --text: #222;
+      --border: #ddd;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
+    body { background:var(--bg); color:var(--text); min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:20px; }
+    input, button { font:inherit; }
+    #passwordContainer, #userInfoModal { width:100%; max-width:380px; text-align:center; }
+    input { width:100%; padding:12px; margin:15px 0; border:1px solid var(--border); border-radius:4px; background:#9b9b9b40; color:var(--text); }
+    button { background:var(--accent); color:#fff; border:none; padding:10px 20px; border-radius:4px; cursor:pointer; font-weight:500; }
+    .modal { display:none; background:var(--bg); padding-top:60px; }
+    .header {    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #11111100;
+    padding: 12px;
+    display: flex
+;
+    justify-content: left;
+    align-items: center;
+    z-index: 10;
+    backdrop-filter: blur(50px);
+    border-bottom: solid 1.5px #ffffff1f;
+}
+    .close-btn { background:none; border:none; color:var(--text); font-size:20px; cursor:pointer; }
+    .profile { text-align:center; margin:20px 0; }
+    .avatar { width: 70px;
+    height: 70px;
+    color: white;
+    font-weight: 600;
+    font-size: 24px;
+    border-radius: 4px;
+    display: flex
+;background-color: #9b9b9b40;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;}
+    .amount-btn { background: #9b9b9b40;
+    color: var(--text);
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 1;}
+    .amount-btn.active { background: var(--accent); color:#282828;    font-size: 26px;
+    padding: 10px 20px;border-radius: 100px;}
+    .loan-entry { background:#9b9b9b40; padding:15px; border-radius:4px; margin:15px 0; }
+    .loan-entry h3 { margin: 15px 0 8px;
+    font-size: 18px;
+    color: var(--accent);
+    text-decoration: underline 3px; }
+    .loan-entry p { margin:5px 0; font-size:14px;     line-height: 30px;}
+    .notice { font-size:12px; color:#aaa; margin-top:20px; }
+    .theme-btn, .style-btn { position: fixed;
+    top: 10px;
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    color: var(--text);
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    background: transparent;}
+    .theme-btn { right:10px; }
+    /* .style-btn { right:20px; } */
+    hr { border:none; height:1px; background:#444; margin:15px 0; }
+    #reminderModal, #amountsModal { display:none; position:fixed; inset:0; background:rgba(0, 0, 0, 0.212); justify-content:center; align-items:center; z-index:1000; }
+    .modal-content { background: var(--card);
+    padding: 20px;
+    border-radius: 4px;
+    max-width: 340px;
+    width: 100%;
+    text-align: center;
+    line-height: 35px; }
+    .modal-content button { margin-top: 15px;
+    width: 100%;
+    padding: 5px;
+    font-size: 18px; }
+    .amountbtnss button{
+    width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Password Screen -->
+  <div id="passwordContainer" style="    display: flex
+;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;">
+    <h2>Verify Account</h2>
+    <input type="text" id="userPassword" placeholder="Enter password" autocomplete="off">
+    <button id="submitBtn">Verify</button>
+    <p id="error-message" style="color:#f66; margin-top:10px;"></p>
+    <p class="notice">Return on time to avoid extra interest.</p>
+  </div>
+
+  <!-- Main Modal -->
+  <div id="userInfoModal" class="modal">
+    <div class="header">
+      <button class="close-btn" onclick="closeModal()">←</button>
+      <div style="font-weight:600; color:var(--accent);">Borrower</div>
+      <div></div>
+    </div>
+
+    <div class="profile">
+      <div class="avatar" id="profilePicture"></div>
+      <div id="userName" style="font-size:18px; margin:8px 0;"></div>
+      <div class="amountbtnss" style="display:flex; gap:8px; justify-content: space-between; margin:10px 0;">
+        <button class="amounts-btn" onclick="showAmountsModal()">Wallet</button>
+        <button class="amounts-btn" onclick="downloadAllLoans()">Receipt</button>
+        <button class="amounts-btn" onclick="showStarCount()">★ <span id="starCount">0</span></button>
+      </div>
+    </div>
+
+    <div id="amountButtons" style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px;"></div>
+    <div id="loanDetails"></div>
+  </div>
+
+  <!-- Wallet Modal -->
+  <div id="amountsModal" class="modal">
+    <div class="modal-content">
+      <h3>Wallet Summary</h3>
+      <p>Total Taken: <b><span id="totalTaken">0</span>₹</b></p>
+      <p>Total Interest: <b><span id="totalInterest">0</span>₹</b></p>
+      <p>To Return: <b><span id="totalReturn">0</span>₹</b></p>
+      <button onclick="closeAmountsModal()">Close</button>
+    </div>
+  </div>
+
+  <!-- Reminder Modal -->
+  <div id="reminderModal" class="modal">
+    <div class="modal-content">
+      <h3>Reminder!</h3>
+      <p id="reminderMessage"></p>
+      <button onclick="closeReminderModal()">Okay</button>
+    </div>
+  </div>
+
+  <!-- Theme & Style Toggle -->
+  <button class="style-btn" style="display: none;" id="styleButton">S</button>
+  <button class="theme-btn" id="themeButton">☀️</button>
+  <script>
+    const passwords = {
+    "4211": {
+        name: "Chaitanya Harsha",
+        membershipType: "",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+        profileBackground: "#ff8b24",
+        stars: 0,
+        coins: 0,
+        tierPoints: 45,
+        showCustomContent: "yes",
+        customContent: {
+            type: "text",
+            value: "NOTE: Your amounts has updated to match the offer criteria",
+            url: ""
+        },
+        loans: [
+           { planDate: "24-05-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 25000, takenFrom: "MLending", fineRate: 5 },
+           { planDate: "07-04-2025", endDate: "--<p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 15000, takenFrom: "MLLD", fineRate: 4 }
+        ]
+    },
+    "6275": {
+        name: "Srikanth Jampana",
+        membershipType: "",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+        profileBackground: "#ff4500",
+        stars: 0,
+        coins: 0,
+        tierPoints: 5,
+        showCustomContent: "yes",
+        customContent: {
+            type: "image",
+            value: "programXoffer.png",
+            url: "https://mfi0212.github.io/swan/offer/programx"
+        },
+        loans: [
+            { planDate: "10-08-2025", endDate: "25-08-2025", interest: 1360, takenAmount: 5000, takenFrom: "MLLD", fineRate: 86 },
+            { planDate: "15-08-2025", endDate: "30-08-2025", interest: 4800, takenAmount: 20000, takenFrom: "MLending", fineRate: 320 },
+            { planDate: "16-08-2025", endDate: "31-08-2025", interest: 1275, takenAmount: 5000, takenFrom: "MLLD", fineRate: 90 },
+            { planDate: "18-08-2025", endDate: "02-09-2025", interest: 1380, takenAmount: 5000, takenFrom: "MLLD", fineRate: 88 },
+            { planDate: "18-08-2025", endDate: "02-09-2025", interest: 690, takenAmount: 2500, takenFrom: "MLLD", fineRate: 46 },
+            { planDate: "01-11-2025", endDate: "16-11-2025", interest: 1500, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 46 },
+        ]
+    },
+    "Mahesh888*": {
+        name: "Mahesh Muthinti",
+        membershipType: "", 
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+        profileBackground: "#8a49f4",
+        stars: 14,
+        coins: 0,
+        tierPoints: 23,
+        showCustomContent: "yes",
+        customContent: {
+            type: "image",
+            value: "programXoffer.png",
+            url: "https://mfi0212.github.io/swan/offer/programx"
+        },
+        loans: [
+            { planDate: "25-05-2025", endDate: "07-11-2025(Extended to 15 days)", interest: 753, takenAmount: 4500, takenFrom: "Delayit offer", fineRate: 50 },
+            { planDate: "29-09-2025", endDate: "13-11-2025(Extended to 15 days)", interest: 670, takenAmount: 4200, takenFrom: "MLLD", fineRate: 90 },
+            { planDate: "01-06-2025", endDate: "16-11-2025(Extended to 39 days)", interest: 2000, takenAmount: 11630, takenFrom: "ProgramsX & Split Pay offer", fineRate: 50 }
+        ]
+    },
+    "Cherish@123": {
+        name: "Cherish #1",
+        membershipType: "",
+        membershipIcon: "https://media.tenor.com/pT6HQx4wIogAAAAj/twitch-rpx-syria.gif",
+        profileBackground: "rgb(255 44 0)",
+        stars: 0,
+        coins: 0,
+        tierPoints: 40,
+        showCustomContent: "yes",
+        customContent: {
+            type: "image",
+            value: "programXoffer.png",
+            url: "https://mfi0212.github.io/swan/offer/programx"
+        },
+        loans: [
+            { planDate: "14-10-2025", endDate: "31-10-2025", interest: 3600, takenAmount: 6690, takenFrom: "MLLD", fineRate: 30 },
+            { planDate: "14-10-2025", endDate: "31-10-2025", interest: 2969, takenAmount: 5880, takenFrom: "MLLD", fineRate: 30 },
+            { planDate: "14-10-2025", endDate: "31-10-2025", interest: 3380, takenAmount: 5560, takenFrom: "MLLD(Offer)", fineRate: 30 }
+        ]
+    },
+    "Cherish@1234": {
+        name: "Cherish #2",
+        membershipType: "",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+        profileBackground: "rgb(90 135 242)",
+        stars: 0,
+        coins: 0,
+        tierPoints: 0,
+        showCustomContent: "yes",
+        customContent: {
+            type: "image",
+            value: "programXoffer.png",
+            url: "https://mfi0212.github.io/swan/offer/programx"
+        },
+        loans: [
+            { planDate: "29-05-2025", endDate: "29-05-2025", interest: 5600, takenAmount: 25000, takenFrom: "MLending", fineRate: 80 }
+        ]
+    }
+    };
+
+    const submitBtn = document.getElementById("submitBtn");
+    const errorMsg = document.getElementById("error-message");
+
+    submitBtn.onclick = () => {
+      const pass = document.getElementById("userPassword").value.trim();
+      const user = passwords[pass];
+      if (!pass) return errorMsg.textContent = "Enter password";
+      if (!user) return errorMsg.textContent = "Invalid password";
+
+      localStorage.setItem("userPassword", pass);
+      showUser(user);
+    };
+
+    function showUser(user) {
+      document.getElementById("userName").textContent = user.name;
+      document.getElementById("starCount").textContent = user.stars;
+      const pic = document.getElementById("profilePicture");
+      pic.textContent = user.name.split(" ").map(n=>n[0]).join("").toUpperCase();
+
+      const buttons = document.getElementById("amountButtons");
+      buttons.innerHTML = "";
+      user.loans.forEach((loan, i) => {
+        const btn = document.createElement("button");
+        btn.className = "amount-btn";
+        btn.textContent = `₹${loan.takenAmount}`;
+        btn.onclick = () => displayLoan(loan, i, user);
+        buttons.appendChild(btn);
+      });
+
+      if (user.loans.length) displayLoan(user.loans[0], 0, user);
+      checkDueToday(user);
+
+      document.getElementById("passwordContainer").style.display = "none";
+      document.getElementById("userInfoModal").style.display = "block";
+      errorMsg.textContent = "";
+    }
+
+    function displayLoan(loan, idx, user) {
+      document.querySelectorAll(".amount-btn").forEach(b=>b.classList.remove("active"));
+      document.getElementById("amountButtons").children[idx].classList.add("active");
+
+      const overdue = calculateOverdue(loan.endDate, loan.fineRate);
+      const total = loan.takenAmount + loan.interest + overdue.fine;
+
+      document.getElementById("loanDetails").innerHTML = `
+        <div class="loan-entry">
+          <h3>Service</h3><p>${loan.takenFrom}</p>
+          <h3>Amount</h3><p>₹${loan.takenAmount}</p>
+          <h3>Dates</h3><p>Taken: ${loan.planDate}<br>Due: ${loan.endDate}</p>
+          <h3>Interest</h3><p>₹${loan.interest}</p>
+          ${overdue.fine ? `<h3>Overdue</h3><p>${overdue.days} days → ₹${overdue.fine}</p>` : ""}
+          <hr>
+          <h3>Total to Pay</h3><p><b>₹${total}</b></p>
+          <button onclick="downloadSingle(${idx})" style="margin-top:10px; width:100%;">Download this amount Receipt</button>
+          <button style="margin-top: 20px;
+    background: #ffffff;"><a style=' text-decoration: none; color: black; ' href="https://forms.gle/UwP9fcAxoLNE9wsm8">Add another amount</a></button>
+        </div>
+      `;
+    }
+
+    function calculateOverdue(end, rate) {
+      const [d,m,y] = end.split('-').map(Number);
+      const due = new Date(y, m-1, d, 23, 59, 59);
+      const now = new Date();
+      if (now <= due) return { fine:0, days:0 };
+      const days = Math.ceil((now - due) / 86400000);
+      return { fine: days * rate, days };
+    }
+
+    function checkDueToday(user) {
+      const today = new Date().toLocaleDateString("en-GB").split("/").reverse().join("-").replace(/\//g, "-");
+      user.loans.forEach(loan => {
+        if (loan.endDate.includes(today)) {
+          document.getElementById("reminderMessage").textContent = `Today is your due date for ₹${loan.takenAmount} from ${loan.takenFrom}!`;
+          document.getElementById("reminderModal").style.display = "flex";
+        }
+      });
+    }
+
+    function showAmountsModal() {
+      const user = passwords[localStorage.getItem("userPassword")];
+      let taken = 0, interest = 0;
+      user.loans.forEach(l => { taken += l.takenAmount; interest += l.interest + calculateOverdue(l.endDate, l.fineRate).fine; });
+      document.getElementById("totalTaken").textContent = taken;
+      document.getElementById("totalInterest").textContent = interest;
+      document.getElementById("totalReturn").textContent = taken + interest;
+      document.getElementById("amountsModal").style.display = "flex";
+    }
+
+    function closeAmountsModal() { document.getElementById("amountsModal").style.display = "none"; }
+    function closeReminderModal() { document.getElementById("reminderModal").style.display = "none"; }
+
+    function closeModal() {
+      document.getElementById("userInfoModal").style.display = "none";
+      document.getElementById("passwordContainer").style.display = "block";
+      document.getElementById("userPassword").value = "";
+    }
+
+    function downloadSingle(i) {
+      const user = passwords[localStorage.getItem("userPassword")];
+      const loan = user.loans[i];
+      const total = loan.takenAmount + loan.interest + calculateOverdue(loan.endDate, loan.fineRate).fine;
+      downloadText(`Amount: ₹${total}\nDue: ${loan.endDate}`, `loan_${i+1}.txt`);
+    }
+
+    function downloadAllLoans() {
+      const user = passwords[localStorage.getItem("userPassword")];
+      let text = "";
+      user.loans.forEach((l, i) => {
+        const total = l.takenAmount + l.interest + calculateOverdue(l.endDate, l.fineRate).fine;
+        text += `Loan ${i+1}: ₹${total} (Due: ${l.endDate})\n`;
+      });
+      downloadText(text, "all_loans.txt");
+    }
+
+    function downloadText(text, filename) {
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([text], {type: "text/plain"}));
+      a.download = filename;
+      a.click();
+    }
+
+    function showStarCount() {
+      const stars = document.getElementById("starCount").textContent;
+      alert(`You have ${stars} stars. Use them to reduce interest!`);
+    }
+
+    // Theme & Style
+    document.getElementById("themeButton").onclick = () => {
+      document.body.classList.toggle("light");
+      localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
+    };
+
+    document.getElementById("styleButton").onclick = () => {
+      const isCurvy = document.body.style.borderRadius !== "16px";
+      document.body.style.borderRadius = isCurvy ? "16px" : "0";
+      document.getElementById("styleButton").textContent = isCurvy ? "C" : "S";
+    };
+
+    // Load saved
+    if (localStorage.getItem("theme") === "light") document.body.classList.add("light");
+    if (localStorage.getItem("userPassword")) {
+      document.getElementById("userPassword").value = localStorage.getItem("userPassword");
+    }
+  </script>
+</body>
+</html>
