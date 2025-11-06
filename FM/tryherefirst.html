@@ -186,12 +186,33 @@
         body.light .theme-option:hover {
             background-color: #f0f0f0;
         }
-
-        body.light .borrowLimitMessage {
-            background: #b80000;
-            box-shadow: inset 0px 0px 1000px #6d0000;
+        .borrowLimitMessage {
+            margin-bottom: 10px;
+            width: 100%;
+            max-width: 400px;
+            background: #ffffff1f;
+            color: #ffffff8d;
+            z-index: 1000;
+            position: relative;
+            left: -10px;
+            line-height: 16px;
+            letter-spacing: 0.1px;
+            border-radius: 0px;
+            padding: 10px 13px;
         }
 
+        body.curvy .borrowLimitMessage {
+            border-radius: 16px;
+        }
+        body.light .borrowLimitMessage {
+            background: #0000005c;
+    color: #4c4c4cde;
+        }
+        body.telegram-dark .borrowLimitMessage {
+            background: #2a3545;
+            color: #ffffffad;
+        }
+        
         body.light .applybtn {
             background: #0066cc;
             color: #ffffff;
@@ -1624,25 +1645,6 @@
             cursor: pointer;
             border: 2px solid #00aeff;
         }
-
-        .borrowLimitMessage {
-            margin-bottom: 10px;
-            width: 100%;
-            max-width: 400px;
-            background: #600000e1;
-            z-index: 1000;
-            position: relative;
-            left: -10px;
-            line-height: 16px;
-            letter-spacing: 0.1px;
-            border-radius: 0px;
-            padding: 10px 13px;
-        }
-
-        body.curvy .borrowLimitMessage {
-            border-radius: 16px;
-        }
-
         span#totalTaken,
         #totalInterest,
         #totalReturn {
@@ -1758,7 +1760,7 @@
             </div>
             <br>
             <div class="newsponser">
-                <a onclick="alert('Announcement soon....!')"><img class="applybtn" style="width: 94.5%; max-width: 600px; background: transparent; padding: 0px;" src="choenna_sponser.jpg" alt=""></a>
+                <a onclick="alert('We are redirecting you to Cholennaouii page..!')" href="https://mfi0212.github.io/MFI/cholennaouii.main"><img class="applybtn" style="width: 94.5%; max-width: 600px; background: transparent; padding: 0px;" src="choenna_sponser.jpg" alt=""></a>
             </div>
         </div>
         <div id="loanDetails"></div>
