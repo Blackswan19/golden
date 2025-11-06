@@ -231,7 +231,7 @@ const ads = [
         name: "Split it",
         headline: "Split it ",
         desc: "You can split the large amount into smaller and you can repayment with smaller amounts when you have.",
-        link: "https://splitit.example.com",
+        link: "https://mfi0212.github.io/swan/offer/split",
         icon: "https://cdn.example.com/split-16.png"
     },
     {
