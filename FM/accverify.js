@@ -1,23 +1,5 @@
 
 const passwords = {
-        "Ganesh@5577": {
-        name: "J Ganesh",
-        membershipType: "",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "rgb(90 135 242)",
-        stars: 0,
-        coins: 0,
-        tierPoints: 0,
-        showCustomContent: "yes",
-        customContent: {
-            type: "image",
-            value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
-        },
-        loans: [
-            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 0, takenAmount: 1000, takenFrom: "MLLD", fineRate: 50 }
-        ]
-    },
     "4211": {
         name: "Chaitanya Harsha",
         membershipType: "",
@@ -118,8 +100,27 @@ const passwords = {
         loans: [
             { planDate: "29-05-2025", endDate: "29-05-2025", interest: 5600, takenAmount: 25000, takenFrom: "MLending", fineRate: 80 }
         ]
+    },
+    "Ganesh@5577": {
+        name: "J Ganesh",
+        membershipType: "",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+        profileBackground: "rgb(90 135 242)",
+        stars: 0,
+        coins: 0,
+        tierPoints: 0,
+        showCustomContent: "yes",
+        customContent: {
+            type: "image",
+            value: "programXoffer.png",
+            url: "https://mfi0212.github.io/swan/offer/programx"
+        },
+        loans: [
+            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 0, takenAmount: 1000, takenFrom: "MLLD", fineRate: 50 }
+        ]
     }
 };
+
 
 const TIER_THRESHOLDS = [
     { tier: 1, points: 0,   interestRate: "Standard" },
@@ -133,6 +134,7 @@ function getTierInfo(points) {
         return { tier: 1, points, needed: 100 - points, nextRate: "2% lower" };
     }
 }
+
 function showTierPopup(html) {
     const old = document.getElementById("tierPopupModal");
     if (old) old.remove();
@@ -163,6 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("poweredBy").style.display = "block";
     }
 });
+
 document.getElementById("submitBtn").addEventListener("click", () => {
     const userInput = document.getElementById("userPassword").value.trim();
     const errorMessage = document.getElementById("error-message");
@@ -197,11 +200,10 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         profilePicture.style.backgroundImage = "none";
         profilePicture.textContent = iconText;
 
-        // === TIER PROGRESS (AUTO TIER 2 IF ≥100) ===
+        // === TIER PROGRESS ===
         const tierInfo = getTierInfo(user.tierPoints);
         const percent = tierInfo.tier === 2 ? 100 : (user.tierPoints / 100) * 100;
 
-        // Use profile color for bar
         let barColor = user.profileBackground;
         if (barColor.startsWith("rgb")) {
             const rgb = barColor.match(/\d+/g);
@@ -233,74 +235,58 @@ document.getElementById("submitBtn").addEventListener("click", () => {
             showTierPopup(msg);
         });
 
-       const totalTaken = user.loans.reduce((sum, loan) => sum + loan.takenAmount, 0);
-const borrowLimitMessage = document.createElement("div");
-borrowLimitMessage.id = "borrowLimitMessage";
+        const borrowLimitMessage = document.createElement("div");
+        borrowLimitMessage.id = "borrowLimitMessage";
 
-/* ---------- 3 Rich Ads – Telegram Big-Group Style ---------- */
-const ads = [
-    {
-        name: "Paymine",
-        headline: "Paymine",
-        desc: "We pay for you when you don’t have, Pay back when you have",
-        link: "https://mfi0212.github.io/MFI/paymine",
-        icon: "https://cdn.example.com/paymine-16.png"
-    },
-    {
-        name: "Split it",
-        headline: "Split it ",
-        desc: "You can split the large amount into smaller and you can repayment with smaller amounts when you have.",
-        link: "https://mfi0212.github.io/swan/offer/split",
-        icon: "https://cdn.example.com/split-16.png"
-    },
-    {
-        name: "Delay it",
-        headline: "Delay it",
-        desc: "It was a program by which you can Extend the returning date of your amounts.",
-        link: "https://mfi0212.github.io/swan/offer/delayit",
-        icon: "https://cdn.example.com/delay-16.png"
-    }
-];
+        const ads = [
+            {
+                name: "Paymine",
+                headline: "Paymine",
+                desc: "We pay for you when you don’t have, Pay back when you have",
+                link: "https://mfi0212.github.io/MFI/paymine",
+                icon: "https://cdn.example.com/paymine-16.png"
+            },
+            {
+                name: "Split it",
+                headline: "Split it ",
+                desc: "You can split the large amount into smaller and you can repayment with smaller amounts when you have.",
+                link: "https://mfi0212.github.io/swan/offer/split",
+                icon: "https://cdn.example.com/split-16.png"
+            },
+            {
+                name: "Delay it",
+                headline: "Delay it",
+                desc: "It was a program by which you can Extend the returning date of your amounts.",
+                link: "https://mfi0212.github.io/swan/offer/delayit",
+                icon: "https://cdn.example.com/delay-16.png"
+            }
+        ];
 
-/* Pick random ad */
-const ad = ads[Math.floor(Math.random() * ads.length)];
+        const ad = ads[Math.floor(Math.random() * ads.length)];
 
-borrowLimitMessage.innerHTML = `
-    <div class="bot">
-        <p class="borrowLimitMessage" style='
-    font-size: 12px;
-    text-align: left;
-    font-weight: 300;
-    max-width: 615px;
-    line-height: 20px;
-    border-left: solid 3px;
-    letter-spacing: 0.3px;
-    padding: 14px 10px 18px 15px;
-            '>
-            <span style='    font-size: 13px;
-                    color: white;
-                    text-decoration: none;
-                    border-radius: 10px;
-                    font-weight: 900;
-                '>
-                <strong>${ad.headline}</strong> (Ad)
-            </span> : <br>
-            ${ad.desc}
-            <br><a href="${ad.link}" target="_blank" 
-               style='    white-space: nowrap;
-    color: white;
-    font-size: 13px;
-    text-decoration: underline 1.5px;
-    font-weight: 400;
-    text-underline-position: under;
-    position: relative;
-    top: 6px;
-'>
-               Explore ${ad.name}
-            </a>
-        </p>
-    </div>
-`;
+        borrowLimitMessage.innerHTML = `
+            <div class="bot">
+                <p class="borrowLimitMessage" style='
+            font-size: 12px;
+            text-align: left;
+            font-weight: 300;
+            max-width: 615px;
+            line-height: 20px;
+            border-left: solid 3px;
+            letter-spacing: 0.3px;
+            padding: 14px 10px 18px 15px;
+                    '>
+                    <span style='font-size: 13px;color: white;text-decoration: none;border-radius: 10px;font-weight: 900;'>
+                        <strong>${ad.headline}</strong> (Ad)
+                    </span> : <br>
+                    ${ad.desc}
+                    <br><a href="${ad.link}" target="_blank" 
+                       style='white-space: nowrap;color: white;font-size: 13px;text-decoration: underline 1.5px;font-weight: 400;text-underline-position: under;position: relative;top: 6px;'>
+                       Explore ${ad.name}
+                    </a>
+                </p>
+            </div>
+        `;
         const userInfoModal = document.getElementById("userInfoModal");
         const profilePictureContainer = profilePicture.parentElement;
         userInfoModal.insertBefore(borrowLimitMessage, profilePictureContainer);
@@ -315,6 +301,9 @@ borrowLimitMessage.innerHTML = `
             btn.onclick = () => displayLoanDetails(loan, index);
             amountButtons.appendChild(btn);
         });
+
+        // Apply initial status colors (non-active)
+        updateAllButtonColors(user);
 
         // === SPECIAL CONTENT ===
         const specialContentDiv = document.getElementById("specialContent");
@@ -342,7 +331,7 @@ borrowLimitMessage.innerHTML = `
         // === SHOW FIRST LOAN & REMINDER ===
         if (user.loans.length > 0) {
             displayLoanDetails(user.loans[0], 0);
-            checkDueToday(user);
+            checkDueReminders(user);
         } else {
             errorMessage.textContent = "No active loans found.";
         }
@@ -354,33 +343,58 @@ borrowLimitMessage.innerHTML = `
         errorMessage.textContent = "Invalid password.";
     }
 });
-
 // ===============================================
-// 6. DUE TODAY REMINDER
+// REMINDER: DUE TODAY + 1 DAY BEFORE (UPDATED)
 // ===============================================
-function checkDueToday(user) {
+function checkDueReminders(user) {
     const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
     const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
-    const todayStr = `${String(today.getDate()).padStart(2, '0')}-${String(today.getMonth() + 1).padStart(2, '0')}-${today.getFullYear()}`;
+    const formatDate = (d) => `${String(d.getDate()).padStart(2,'0')}-${String(d.getMonth()+1).padStart(2,'0')}-${d.getFullYear()}`;
+
+    const todayStr = formatDate(today);
+    const tomorrowStr = formatDate(tomorrow);
+
+    let dueToday = null;
+    let dueTomorrow = null;
 
     user.loans.forEach(loan => {
-        const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
-        const endMatch = cleanEndDate.match(dateFormat);
-        if (endMatch) {
-            const endDateStr = `${endMatch[1]}-${endMatch[2]}-${endMatch[3]}`;
-            if (endDateStr === todayStr && !loan.endDate.includes('Overdue')) {
-                document.getElementById("reminderMessage").innerHTML = 
-                    `Mr. ${user.name}, Today (${cleanEndDate}) you have an amount to return from <b>${loan.takenFrom}</b>. <br><br> Clear on time to avoid overdue interest. Thank you!`;
-                document.getElementById("reminderModal").style.display = "flex";
-            }
-        }
-    });
-}
+        const cleanEndDate = loan.endDate.split('(')[0].split('<')[0].trim();
+        const match = cleanEndDate.match(dateFormat);
+        if (!match) return;
 
+        const endDateStr = `${match[1]}-${match[2]}-${match[3]}`;
+
+        if (endDateStr === todayStr) dueToday = { loan, date: cleanEndDate };
+        if (endDateStr === tomorrowStr) dueTomorrow = { loan, date: cleanEndDate };
+    });
+
+    const reminderModal = document.getElementById("reminderModal");
+    const reminderMessage = document.getElementById("reminderMessage");
+
+    if (dueToday) {
+        reminderMessage.innerHTML = 
+            `Mr. ${user.name}, <b>Today (${dueToday.date})</b> you have an amount to return from <b>${dueToday.loan.takenFrom}</b>.<br><br>Clear on time to avoid overdue interest. Thank you!`;
+        reminderModal.style.display = "flex";
+    } 
+    else if (dueTomorrow) {
+        // Custom tomorrow message with extension warning
+        reminderMessage.innerHTML = 
+            `Mr. ${user.name}, <b>Tomorrow (${dueTomorrow.date})</b> your Amount <b>${dueTomorrow.loan.takenAmount}</b> from <b>${dueTomorrow.loan.takenFrom}</b> has to be returned.<br><br>` +
+            `<b>Try to return the amount today or by tomorrow 10 AM.</b><br><br>` +
+            `Note: Do you like to extend? Do so today only. Tomorrow extension will not be provided and additional interest will be added.`;
+        reminderModal.style.display = "flex";
+    }
+}
 function closeReminderModal() {
     document.getElementById("reminderModal").style.display = "none";
 }
 
+// ===============================================
+// OVERDUE & DUE TODAY CALCULATION
+// ===============================================
 function calculateDaysBetween(startDate, endDate) {
     try {
         const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
@@ -403,7 +417,7 @@ let sessionReferenceTime = null;
 function calculateOverdueFine(endDate, loan, user) {
     try {
         const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
-        const endMatch = endDate.split('(')[0].split('<')[0].match(dateFormat);
+        const endMatch = endDate.split('(')[0].split('<')[0].trim().match(dateFormat);
         if (!endMatch) return { overdue: false, fine: 0, hoursOverdue: 0, daysOverdue: 0 };
 
         const end = new Date(`${endMatch[3]}-${endMatch[2]}-${endMatch[1]}`);
@@ -426,6 +440,51 @@ function calculateOverdueFine(endDate, loan, user) {
     }
 }
 
+function isDueToday(endDate) {
+    const today = new Date();
+    const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
+    const todayStr = `${String(today.getDate()).padStart(2,'0')}-${String(today.getMonth()+1).padStart(2,'0')}-${today.getFullYear()}`;
+    
+    const cleanEndDate = endDate.split('(')[0].split('<')[0].trim();
+    const match = cleanEndDate.match(dateFormat);
+    if (!match) return false;
+    
+    const endDateStr = `${match[1]}-${match[2]}-${match[3]}`;
+    return endDateStr === todayStr;
+}
+
+// ===============================================
+// UPDATE NON-ACTIVE BUTTONS (STATUS COLORS)
+// ===============================================
+function updateAllButtonColors(user) {
+    const buttons = document.querySelectorAll("#amountButtons .amount-btn");
+    buttons.forEach((btn, idx) => {
+        const loan = user.loans[idx];
+        if (!loan) return;
+
+        const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+        const dueToday = isDueToday(loan.endDate);
+
+        // Only apply status color if NOT active
+        if (!btn.classList.contains("active")) {
+            if (overdueInfo.overdue) {
+                btn.style.background = "#8B0000"; // darkred
+                btn.style.color = "white";
+            } else if (dueToday) {
+                btn.style.background = "#FF8C00"; // orange
+                btn.style.color = "white";
+            } else {
+                btn.style.background = "";
+                btn.style.color = "";
+                btn.style.border = "";
+            }
+        }
+    });
+}
+
+// ===============================================
+// DISPLAY LOAN DETAILS + ACTIVE BUTTON LOGIC
+// ===============================================
 function displayLoanDetails(loan, index) {
     const loanDetails = document.getElementById("loanDetails");
     const userInput = document.getElementById("userPassword").value.trim();
@@ -437,20 +496,32 @@ function displayLoanDetails(loan, index) {
     const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
     const daysBetween = calculateDaysBetween(loan.planDate, cleanEndDate);
 
-    document.querySelectorAll(".amount-btn").forEach(btn => btn.classList.remove("active"));
-    document.getElementById("amountButtons").children[index].classList.add("active");
+    // === REMOVE ACTIVE FROM ALL ===
+    document.querySelectorAll(".amount-btn").forEach(btn => {
+        btn.classList.remove("active");
+        // Reset non-active buttons to status color
+        updateAllButtonColors(user);
+    });
+
+    // === ADD ACTIVE TO CURRENT ===
+    const activeBtn = document.getElementById("amountButtons").children[index];
+    activeBtn.classList.add("active");
+
+    // === APPLY ACTIVE STYLE (OVERRIDES STATUS) ===
+    activeBtn.style.background = "#0066cc";
+    activeBtn.style.color = "black";
 
     let overdueSection = "";
     if (overdueInfo.overdue) {
         overdueSection = `
             <h3>Overdue Details</h3>
-            <p style="color: #ff9300;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M440-120q-75 0-140.5-28T185-225q-49-49-77-114.5T80-480q0-75 28-140.5T185-735q49-49 114.5-77T440-840q21 0 40.5 2.5T520-830v82q-20-6-39.5-9t-40.5-3q-118 0-199 81t-81 199q0 118 81 199t199 81q118 0 199-81t81-199q0-11-1-20t-3-20h82q2 11 2 20v20q0 75-28 140.5T695-225q-49 49-114.5 77T440-120Zm112-192L400-464v-216h80v184l128 128-56 56Zm168-288v-120H600v-80h120v-120h80v120h120v80H800v120h-80Z"/></svg> You are overdue by: ${overdueInfo.daysOverdue} days (${overdueInfo.hoursOverdue} hours)</p>
-            <p style="color: #ff9300;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-80q-66 0-127.5-20.5T240-160l58-58q42 29 88 43.5t94 14.5q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480H80q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 155.5 31.5t127 86q54.5 54.5 86 127T880-480q0 82-31.5 155t-86 127.5q-54.5 54.5-127 86T480-80ZM159-243l163-163 120 100 198-198v104h80v-240H480v80h104L438-414 318-514 117-313q11 23 19.5 37.5T159-243Zm321-237Z"/></svg> Overdue interest: ${fine} Rupees</p>
+            <p style="color: #ff9300;">You are overdue by: ${overdueInfo.daysOverdue} days (${overdueInfo.hoursOverdue} hours)</p>
+            <p style="color: #ff9300;">Overdue interest: ${fine} Rupees</p>
         `;
     }
 
     loanDetails.innerHTML = `
-    <p id="scrotamts"></p>
+        <p id="scrotamts"></p>
         <div class="loan-entry">
             <p style="text-align:center;position:sticky;top:90px;margin-top:20px;right:16px;float:right;margin-right:-9px;">
                 <button class="amounts-btn downsingle" style="width:100%;font-size:9px;padding:0px 12px;display:flex;flex-direction:row;justify-content:center;align-items:center;margin-top:10px;font-weight:400;letter-spacing:0.2px;" onclick="downloadSingleLoan(${index})">
@@ -481,6 +552,9 @@ function displayLoanDetails(loan, index) {
     `;
 }
 
+// ===============================================
+// MODALS & UTILITIES
+// ===============================================
 function showAmountsModal() {
     const userInput = document.getElementById("userPassword").value.trim();
     const user = passwords[userInput];
@@ -517,65 +591,10 @@ function closeModal() {
     sessionReferenceTime = null;
 }
 
-function formatDate(dateStr) {
-    const [d, m, y] = dateStr.split('-');
-    return `${d}/${m}/${y.slice(2)}`;
-}
-
-function generateImage(text, filename) {
-    const canvas = document.createElement('canvas');
-    const lines = text.split('\n');
-    const lineHeight = 30;
-    canvas.width = 600;
-    canvas.height = 60 + lines.length * lineHeight;
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = 'white';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'black';
-    ctx.font = '20px Poppins, Arial, sans-serif';
-    ctx.textAlign = 'left';
-    lines.forEach((line, i) => {
-        ctx.fillText(line, 30, 40 + i * lineHeight);
-    });
-    ctx.fillStyle = 'gray';
-    ctx.font = '16px Poppins, Arial, sans-serif';
-    ctx.textAlign = 'right';
-    ctx.fillText('Powered by BsBookpad', canvas.width - 20, 20);
-    const a = document.createElement('a');
-    a.href = canvas.toDataURL('image/png', 1.0);
-    a.download = filename;
-    a.click();
-}
-
-function showStarCount() {
-    const stars = document.getElementById('starCount').textContent.trim();
-    if(stars == 0){
-        alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can buy the stars to reduce the interest when you think the interest to high.`);
-    }
-    else{
-        alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can use these stars when you think interest is high to reduce the interest.`);
-    }
-}
-function showCoinsCount() {
-    const coins = document.getElementById('coinsCount').textContent.trim();
-    alert(`BsRora(Bot) : \n\nYou have ${coins} rate exchange coins on your account.`);
-}
-function formatReturnDateForReceipt(loan) {
-    const userInput = document.getElementById("userPassword").value.trim();
-    const user = passwords[userInput];
-    if (!user) return "Error";
-    
-    const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
-    if (overdueInfo.overdue) return "till today";
-    
-    const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
-    const [d, m, y] = cleanEndDate.split('-');
-    return `${d}/${m}/${y.slice(-2)}`;
-}
-
+// ===============================================
+// RECEIPT GENERATION
+// ===============================================
 function generateStyledReceipt(textLines, filename) {
-    console.log("🔄 Generating receipt:", filename);
-    
     const canvas = document.createElement('canvas');
     const lineHeight = 38;
     const leftMargin = 40;
@@ -586,7 +605,6 @@ function generateStyledReceipt(textLines, filename) {
     canvas.height = topStart + textLines.length * lineHeight + 60;
 
     const ctx = canvas.getContext('2d');
-    
     
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -599,7 +617,6 @@ function generateStyledReceipt(textLines, filename) {
     textLines.forEach((line, i) => {
         const y = topStart + i * lineHeight;
         if (line === 'Try to clear in time, Thank you.') {
-            // SKY BLUE FOOTER
             ctx.fillStyle = '#00BFFF';
             ctx.font = 'bold 22px Arial, sans-serif';
         } else {
@@ -623,16 +640,27 @@ function generateStyledReceipt(textLines, filename) {
     link.click();
     document.body.removeChild(link);
     
-    console.log("✅ Download triggered:", filename);
-    alert("📥 Receipt has Downloaded..! Verify once...!");
+    alert("Receipt has Downloaded..! Verify once...!");
+}
+
+function formatReturnDateForReceipt(loan) {
+    const userInput = document.getElementById("userPassword").value.trim();
+    const user = passwords[userInput];
+    if (!user) return "Error";
+    
+    const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+    if (overdueInfo.overdue) return "till today";
+    
+    const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+    const [d, m, y] = cleanEndDate.split('-');
+    return `${d}/${m}/${y.slice(-2)}`;
 }
 
 function downloadSingleLoan(index) {
-    console.log("🔄 Single loan download:", index);
     const userInput = document.getElementById("userPassword").value.trim();
     const user = passwords[userInput];
     if (!user || !user.loans[index]) {
-        alert("❌ No loan found! Enter password first.");
+        alert("No loan found! Enter password first.");
         return;
     }
 
@@ -653,12 +681,12 @@ function downloadSingleLoan(index) {
 
     generateStyledReceipt(lines, `receipt_${user.name}_${index + 1}.png`);
 }
+
 function downloadAllLoans() {
-    console.log("🔄 All loans download");
     const userInput = document.getElementById("userPassword").value.trim();
     const user = passwords[userInput];
     if (!user || user.loans.length === 0) {
-        alert("❌ No loans found! Enter password first.");
+        alert("No loans found! Enter password first.");
         return;
     }
 
@@ -691,3 +719,17 @@ function downloadAllLoans() {
     generateStyledReceipt(lines, `all_receipts_${user.name}.png`);
 }
 
+function showStarCount() {
+    const stars = document.getElementById('starCount').textContent.trim();
+    if(stars == 0){
+        alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can buy the stars to reduce the interest when you think the interest to high.`);
+    }
+    else{
+        alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can use these stars when you think interest is high to reduce the interest.`);
+    }
+}
+
+function showCoinsCount() {
+    const coins = document.getElementById('coinsCount').textContent.trim();
+    alert(`BsRora(Bot) : \n\nYou have ${coins} rate exchange coins on your account.`);
+}
