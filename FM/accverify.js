@@ -41,6 +41,7 @@ const passwords = {
             { planDate: "18-08-2025", endDate: "02-09-2025", interest: 690, takenAmount: 2500, takenFrom: "MLLD", fineRate: 46 },
             { planDate: "01-11-2025", endDate: "16-11-2025", interest: 1500, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 46 },
             { planDate: "06-11-2025", endDate: "21-11-2025", interest: 3650, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 46 },
+            { planDate: "09-11-2025", endDate: "24-11-2025", interest: 2200, takenAmount: 7500, takenFrom: "MLLD", fineRate: 46 },
         ]
     },
     "Mahesh888*": {
