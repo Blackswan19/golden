@@ -61,13 +61,13 @@ const passwords = {
         loans: [
             { planDate: "01-06-2025", endDate: "16-11-2025(Extended to 39 days)", interest: 2000, takenAmount: 11520, takenFrom: "ProgramsX & Split Pay offer", fineRate: 50 },
             { planDate: "25-05-2025", endDate: "21-11-2025(Extended to 15 days)", interest: 680, takenAmount: 5100, takenFrom: "Delayit offer", fineRate: 50 },
-            { planDate: "29-09-2025", endDate: "28-11-2025(Extended to 15 days)", interest: 680, takenAmount: 4200, takenFrom: "MLLD", fineRate: 40 },
+            { planDate: "29-09-2025", endDate: "28-11-2025(Extended to 15 days)", interest: 640, takenAmount: 4200, takenFrom: "MLLD", fineRate: 40 },
         ]
     },
     "Cherish@123": {
         name: "Cherish #1",
         membershipType: "",
-        membershipIcon: "https://media.tenor.com/pT6HQx4wIogAAAAj/twitch-rpx-syria.gif",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "rgb(255 44 0)",
         stars: 0,
         coins: 0,
