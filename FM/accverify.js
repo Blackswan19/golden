@@ -51,7 +51,7 @@ const passwords = {
         profileBackground: "#8a49f4",
         stars: 16,
         coins: 0,
-        tierPoints: 23,
+        tierPoints: 30,
         showCustomContent: "yes",
         customContent: {
             type: "image",
