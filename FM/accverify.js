@@ -41,7 +41,7 @@ const passwords = {
             { planDate: "18-08-2025", endDate: "02-09-2025", interest: 690, takenAmount: 2500, takenFrom: "MLLD", fineRate: 46 },
             { planDate: "01-11-2025", endDate: "16-11-2025", interest: 1500, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 46 },
             { planDate: "06-11-2025", endDate: "21-11-2025", interest: 3650, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 46 },
-            { planDate: "10-11-2025", endDate: "25-11-2025", interest: 2200, takenAmount: 7500, takenFrom: "MLLD", fineRate: 46 },
+            // { planDate: "09-11-2025", endDate: "24-11-2025", interest: 2200, takenAmount: 7500, takenFrom: "MLLD", fineRate: 46 },
         ]
     },
     "Mahesh888*": {
@@ -59,7 +59,7 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "29-09-2025", endDate: "13-11-2025(Extended to 15 days)", interest: 510, takenAmount: 4200, takenFrom: "MLLD", fineRate: 90 },
+            { planDate: "29-09-2025", endDate: "13-11-2025<br> <p style='color: orangered;'>(Extra interest added)</p>", interest: 620, takenAmount: 4200, takenFrom: "MLLD", fineRate: 40 },
             { planDate: "01-06-2025", endDate: "16-11-2025(Extended to 39 days)", interest: 2000, takenAmount: 11520, takenFrom: "ProgramsX & Split Pay offer", fineRate: 50 },
             { planDate: "25-05-2025", endDate: "21-11-2025(Extended to 15 days)", interest: 660, takenAmount: 5100, takenFrom: "Delayit offer", fineRate: 50 }
         ]
@@ -734,4 +734,3 @@ function showCoinsCount() {
     const coins = document.getElementById('coinsCount').textContent.trim();
     alert(`BsRora(Bot) : \n\nYou have ${coins} rate exchange coins on your account.`);
 }
-
