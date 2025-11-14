@@ -269,20 +269,39 @@ document.getElementById("submitBtn").addEventListener("click", () => {
             <div class="bot">
                 <p class="borrowLimitMessage" style='
             font-size: 12px;
-            text-align: left;
-            font-weight: 300;
-            max-width: 615px;
-            line-height: 20px;
-            border-left: solid 3px;
-            letter-spacing: 0.3px;
-            padding: 14px 10px 18px 15px;
+    text-align: center;
+    font-weight: 300;
+    max-width: 615px;
+    line-height: 20px;
+    border: solid 1.4px #7e7e7e00;
+    letter-spacing: 0.3px;
+    padding: 14px 10px 18px 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
                     '>
-                    <span style='font-size: 13px;color: white;text-decoration: none;border-radius: 10px;font-weight: 900;'>
+                    <span style='font-size: 15px;
+    color: #00aeff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 900;
+    text-transform: capitalize;'>
                         <strong>${ad.headline}</strong> (Ad)
                     </span> : <br>
                     ${ad.desc}
                     <br><a href="${ad.link}" target="_blank" 
-                       style='white-space: nowrap;color: white;font-size: 13px;text-decoration: underline 1.5px;font-weight: 400;text-underline-position: under;position: relative;top: 6px;'>
+                       style='white-space: nowrap;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    text-underline-position: under;
+    position: relative;
+    top: 5px;
+    background: #ffffff2e;
+    padding: 5px 15px;
+    border-radius: 51px;
+    display: flex;
+    justify-content: center;
+    left: -5px;'>
                        Explore ${ad.name}
                     </a>
                 </p>
