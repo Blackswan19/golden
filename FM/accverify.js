@@ -297,11 +297,11 @@ document.getElementById("submitBtn").addEventListener("click", () => {
     position: relative;
     top: 5px;
     background: #ffffff2e;
-    padding: 5px 15px;
+    padding: 8px 15px;
     border-radius: 51px;
     display: flex;
     justify-content: center;
-    left: -5px;'>
+    left: -3px;'>
                        Explore ${ad.name}
                     </a>
                 </p>
