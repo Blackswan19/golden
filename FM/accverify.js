@@ -288,7 +288,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
                         <strong>${ad.headline}</strong> (Ad)
                     </span> : <br>
                     ${ad.desc}
-                    <br><a href="${ad.link}" target="_blank" 
+                    <br><a class="exploreadds" href="${ad.link}" target="_blank" 
                        style='white-space: nowrap;
     color: white;
     font-size: 13px;
@@ -296,9 +296,8 @@ document.getElementById("submitBtn").addEventListener("click", () => {
     text-underline-position: under;
     position: relative;
     top: 5px;
-    background: #ffffff2e;
+    background: rgba(255, 255, 255, 0.18);
     padding: 8px 15px;
-    border-radius: 51px;
     display: flex;
     justify-content: center;
     left: -3px;'>
