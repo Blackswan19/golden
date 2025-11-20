@@ -59,8 +59,8 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "25-05-2025", endDate: "21-11-2025(Extended to 15 days)", interest: 640, takenAmount: 5100, takenFrom: "Delayit offer", fineRate: 50 },
             { planDate: "29-09-2025", endDate: "14-12-2025(Extended to 30 days)", interest: 1380, takenAmount: 4720, takenFrom: "MLLD", fineRate: 40 },
+            { planDate: "25-05-2025", endDate: "05-12-2025(Extended to 15 days)", interest: 807, takenAmount: 5740, takenFrom: "Delayit offer", fineRate: 50 },
         ]
     },
     "Cherish@123": {
