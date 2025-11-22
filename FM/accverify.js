@@ -44,25 +44,6 @@ const passwords = {
             { planDate: "09-11-2025", endDate: "24-11-2025", interest: 2400, takenAmount: 7500, takenFrom: "MLLD", fineRate: 85 },
         ]
     },
-    "Mahesh888*": {
-        name: "Mahesh Muthinti",
-        membershipType: "", 
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "#8a49f4",
-        stars: 16,
-        coins: 0,
-        tierPoints: 36,
-        showCustomContent: "yes",
-        customContent: {
-            type: "image",
-            value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
-        },
-        loans: [
-            { planDate: "29-09-2025", endDate: "14-12-2025(Extended to 30 days)", interest: 1380, takenAmount: 4720, takenFrom: "MLLD", fineRate: 40 },
-            { planDate: "25-05-2025", endDate: "05-12-2025(Extended to 15 days)", interest: 657, takenAmount: 5740, takenFrom: "Delayit offer", fineRate: 50 },
-        ]
-    },
     "Cherish@123": {
         name: "Cherish #1",
         membershipType: "",
