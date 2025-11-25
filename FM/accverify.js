@@ -21,7 +21,7 @@ const passwords = {
     },
     "6275": {
         name: "Srikanth Jampana",
-        membershipType: "",
+        membershipType: "Duplicate",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#ff4500",
         stars: 0,
@@ -165,7 +165,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
 
         const membershipTypeContainer = document.getElementById("membershipType");
         membershipTypeContainer.innerHTML = `
-            <a href="https://mfi0212.github.io/MFI/starpre" style="text-decoration: underline; text-underline-position: under;">${user.membershipType}</a>
+            <a href="https://blackswan19.github.io/golden/FM/duplicatelite">${user.membershipType}</a>
         `;
 
         const userNameContainer = document.getElementById("userNameContainer");
