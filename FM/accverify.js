@@ -82,24 +82,6 @@ const passwords = {
             { planDate: "29-05-2025", endDate: "29-05-2025", interest: 5600, takenAmount: 25000, takenFrom: "MLending", fineRate: 80 }
         ]
     },
-    "Ganesh@5577": {
-        name: "J Ganesh",
-        membershipType: "",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "rgb(90 135 242)",
-        stars: 0,
-        coins: 0,
-        tierPoints: 0,
-        showCustomContent: "yes",
-        customContent: {
-            type: "image",
-            value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
-        },
-        loans: [
-            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 0, takenAmount: 1000, takenFrom: "MLLD", fineRate: 50 }
-        ]
-    }
 };
 
 
@@ -732,3 +714,4 @@ function showCoinsCount() {
     const coins = document.getElementById('coinsCount').textContent.trim();
     alert(`BsRora(Bot) : \n\nYou have ${coins} rate exchange coins on your account.`);
 }
+
