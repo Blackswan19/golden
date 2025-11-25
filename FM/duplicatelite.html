@@ -3,412 +3,314 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Duplicate Lite</title>
-  <link rel="icon" href="https://i.ibb.co/ZpVQQ2Kp/mfi-logo.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Lite</title>
   <style>
-    :root {
-      --accent: #037e75;
-      --bg: #25212f;
-      --card: #111;
-      --text: #eee;
-      --border: #333;
-    }
-    body.light {
-      --bg: #fff;
-      --card: #f8f8f8;
-      --text: #222;
-      --border: #ddd;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-    body { background:var(--bg); color:var(--text); min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:20px; }
-    input, button { font:inherit; }
-    #passwordContainer, #userInfoModal { width:100%; max-width:380px; text-align:center; }
-    input { width:100%; padding:12px; margin:15px 0; border:1px solid var(--border); border-radius:4px; background:#9b9b9b40; color:var(--text); }
-    button { background:var(--accent); color:#fff; border:none; padding:10px 20px; border-radius:4px; cursor:pointer; font-weight:500; }
-    .modal { display:none; background:var(--bg); padding-top:60px; }
-    .header {    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #11111100;
-    padding: 12px;
-    display: flex
-;
-    justify-content: left;
-    align-items: center;
-    z-index: 10;
-    backdrop-filter: blur(50px);
-    border-bottom: solid 1.5px #ffffff1f;
-}
-    .close-btn { background:none; border:none; color:var(--text); font-size:20px; cursor:pointer; }
-    .profile { text-align:center; margin:20px 0; }
-    .avatar { width: 70px;
-    height: 70px;
-    color: white;
-    font-weight: 600;
-    font-size: 24px;
-    border-radius: 4px;
-    display: flex
-;background-color: #9b9b9b40;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 10px;}
-    .amount-btn { background: #9b9b9b40;
-    color: var(--text);
-    padding: 8px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    flex: 1;}
-    .amount-btn.active { background: var(--accent); color:#282828;    font-size: 26px;
-    padding: 10px 20px;border-radius: 100px;}
-    .loan-entry { background:#9b9b9b40; padding:15px; border-radius:4px; margin:15px 0; }
-    .loan-entry h3 { margin: 15px 0 8px;
-    font-size: 18px;
-    color: var(--accent);
-    text-decoration: underline 3px; }
-    .loan-entry p { margin:5px 0; font-size:14px;     line-height: 30px;}
-    .notice { font-size:12px; color:#aaa; margin-top:20px; }
-    .theme-btn, .style-btn { position: fixed;
-    top: 10px;
-    width: 44px;
-    height: 44px;
-    border-radius: 4px;
-    color: var(--text);
-    display: flex
-;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 100;
-    background: transparent;}
-    .theme-btn { right:10px; }
-    /* .style-btn { right:20px; } */
-    hr { border:none; height:1px; background:#444; margin:15px 0; }
-    #reminderModal, #amountsModal { display:none; position:fixed; inset:0; background:rgba(0, 0, 0, 0.212); justify-content:center; align-items:center; z-index:1000; }
-    .modal-content { background: var(--card);
-    padding: 20px;
-    border-radius: 4px;
-    max-width: 340px;
-    width: 100%;
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+          font-family: system-ui, -apple-system, sans-serif;
+    background: #0d0d0d;
+    color: #ddd;
+    min-height: 100vh;
     text-align: center;
-    line-height: 35px; }
-    .modal-content button { margin-top: 15px;
-    width: 100%;
-    padding: 5px;
-    font-size: 18px; }
-    .amountbtnss button{
-    width: 200px;
-    }
-  </style>
-</head>
-<body>
-  <!-- Password Screen -->
-  <div id="passwordContainer" style="    display: flex
-;
+    height: 100vh;
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;">
-    <h2>Verify Account</h2>
-    <input type="text" id="userPassword" placeholder="Enter password" autocomplete="off">
-    <button id="submitBtn">Verify</button>
-    <p id="error-message" style="color:#f66; margin-top:10px;"></p>
-    <p class="notice">Return on time to avoid extra interest.</p>
+
+    }
+    body.light { background: #fff; color: #111; }
+
+    h2 { font-size: 18px; margin-bottom: 20px; text-align: center; }
+    input, button {
+      width: 100%; padding: 12px; margin: 10px 0;
+      font-size: 16px; border: 1px solid #444;
+      background: #1a1a1a; color: #ddd;
+    }
+    body.light input, body.light button { background: #f7f7f7; color: #111; border-color: #ccc; }
+    button { background: #037e75; color: white; border: none; cursor: pointer; }
+    #error-message { color: #ff6b6b; text-align: center; font-size: 14px; min-height: 20px; }
+
+    .container {width: 93%;
+    margin: 0 auto;
+    display: none;
+    height: 100vh;
+    max-width: 600px;}
+    .header {
+     padding: 15px 0;
+    border-bottom: 1px solid #333;
+    display: flex;
+    font-weight: bold;
+    gap: 10px;
+    align-items: center;
+    }
+    body.light .header { border-color: #ddd; }
+
+    .profile { text-align: center;}
+    .avatar {
+      width: 60px; height: 60px; background: #037e75; color: white;
+      font-weight: bold; font-size: 22px; border-radius: 8px;
+      margin: 0 auto 12px; display: flex; align-items: center;
+      justify-content: center;
+    }
+    .name { font-size: 18px; margin: 10px 0; }
+
+    .actions {
+      display: flex; gap: 10px; margin: 20px 0;
+    }
+    .actions button {
+      flex: 1; background: transparent; border: 1px solid #444;
+      padding: 10px; font-size: 14px;
+    }
+    body.light .actions button { border-color: #ccc; }
+
+    .amounts {
+      display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+      margin: 20px 0;
+    }
+    .amt-btn {
+      padding: 8px 14px; border: 1px solid #444; background: transparent;
+      font-size: 15px; cursor: pointer;
+    }
+    .amt-btn.active { background: #037e75; color: white; border-color: #037e75; }
+
+    .details {
+      background: #16161a; padding: 18px; border: 1px solid #333;
+      font-size: 15px; margin-top: 10px;
+    }
+    body.light .details { background: #f7f7f7; border-color: #ddd; }
+    .details b { color: #fff; }
+    body.light .details b { color: #000; }
+    .total { font-size: 22px; font-weight: bold; margin: 15px 0 10px; color: #037e75; }
+
+    .modal {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.8);
+      display: none; align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-content {
+      background: #111; padding: 25px; max-width: 340px; width: 100%;
+      border: 1px solid #444;
+    }
+    body.light .modal-content { background: white; border-color: #ccc; }
+
+    .theme-btn {
+      position: fixed;
+    top: 0px;
+    right: 8px;
+    width: 60px;
+    background: #787878;
+    border: none;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    }
+    body.light .theme-btn { background: #ddd; color: #000; }
+  </style>
+</head>
+<body>
+
+  <!-- Password Screen -->
+  <div id="passwordContainer" style="
+    text-align: center;">
+    <h2>Enter Password</h2>
+    <input type="text" id="userPassword" placeholder="password" autocomplete="off">
+    <button id="submitBtn">Continue</button>
+    <p id="error-message"></p>
   </div>
 
-  <!-- Main Modal -->
-  <div id="userInfoModal" class="modal">
+  <!-- Main App -->
+  <div id="userInfoModal" class="container">
     <div class="header">
-      <button class="close-btn" onclick="closeModal()">←</button>
-      <div style="font-weight:600; color:var(--accent);">Borrower</div>
+      <button onclick="logout()" style="background:none;border:none;color:#aaa;font-size:20px;width: 5%;"><</button>
+      <div>Borrower</div>
       <div></div>
     </div>
 
     <div class="profile">
+        <div class="takemoneyoption">
+        <a href="https://forms.gle/tLFrS5ojN2gBfAWT6"><button>Take money</button></a>
+      </div>
       <div class="avatar" id="profilePicture"></div>
-      <div id="userName" style="font-size:18px; margin:8px 0;"></div>
-      <div class="amountbtnss" style="display:flex; gap:8px; justify-content: space-between; margin:10px 0;">
-        <button class="amounts-btn" onclick="showAmountsModal()">Wallet</button>
-        <button class="amounts-btn" onclick="downloadAllLoans()">Receipt</button>
-        <button class="amounts-btn" onclick="showStarCount()">★ <span id="starCount">0</span></button>
+      <div class="name" id="userName"></div>
+      <div class="actions">
+        <button onclick="showAmountsModal()">Wallet</button>
+        <button onclick="downloadAllLoans()">Receipt</button>
       </div>
     </div>
 
-    <div id="amountButtons" style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px;"></div>
+    <div class="amounts" id="amountButtons"></div>
     <div id="loanDetails"></div>
   </div>
 
   <!-- Wallet Modal -->
-  <div id="amountsModal" class="modal">
-    <div class="modal-content">
+  <div class="modal" id="amountsModal" onclick="this.style.display='none'">
+    <div class="modal-content" onclick="event.stopPropagation()">
       <h3>Wallet Summary</h3>
-      <p>Total Taken: <b><span id="totalTaken">0</span>₹</b></p>
-      <p>Total Interest: <b><span id="totalInterest">0</span>₹</b></p>
-      <p>To Return: <b><span id="totalReturn">0</span>₹</b></p>
-      <button onclick="closeAmountsModal()">Close</button>
+      <p>Taken: <b><span id="totalTaken">0</span>₹</b></p>
+      <p>Extra: <b><span id="totalInterest">0</span>₹</b></p>
+      <p style="font-size:20px; margin-top:10px;">Pay: <b><span id="totalReturn">0</span>₹</b></p>
+      <button onclick="closeAmountsModal()" style="margin-top:20px;">Close</button>
     </div>
   </div>
 
-  <!-- Reminder Modal -->
-  <div id="reminderModal" class="modal">
-    <div class="modal-content">
-      <h3>Reminder!</h3>
+  <!-- Reminder -->
+  <div class="modal" id="reminderModal" onclick="this.style.display='none'">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <h3>Reminder</h3>
       <p id="reminderMessage"></p>
-      <button onclick="closeReminderModal()">Okay</button>
+      <button onclick="closeReminderModal()">OK</button>
     </div>
   </div>
 
-  <!-- Theme & Style Toggle -->
-  <button class="style-btn" style="display: none;" id="styleButton">S</button>
-  <button class="theme-btn" id="themeButton">☀️</button>
+  <button class="theme-btn" id="themeButton">Sun</button>
+
   <script>
     const passwords = {
-    "4211": {
-        name: "Chaitanya Harsha",
-        membershipType: "",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "#ff8b24",
-        stars: 0,
-        coins: 0,
-        tierPoints: 45,
-        showCustomContent: "yes",
-        customContent: {
-            type: "text",
-            value: "NOTE: Your amounts has updated to match the offer criteria",
-            url: ""
-        },
+      "6275": {
+        name: "Srikanth Kath",
         loans: [
-           { planDate: "24-05-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 25000, takenFrom: "MLending", fineRate: 5 },
-           { planDate: "07-04-2025", endDate: "--<p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 15000, takenFrom: "MLLD", fineRate: 4 }
+          // { planDate: "13-10-2025", endDate: "31-10-2025", interest: 0, takenAmount: 10000, takenFrom: "MLending", fineRate: 46 }
         ]
-    },
-    "6275": {
-        name: "Srikanth Jampana",
-        membershipType: "",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "#ff4500",
-        stars: 0,
-        coins: 0,
-        tierPoints: 5,
-        showCustomContent: "yes",
-        customContent: {
-            type: "image",
-            value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
-        },
-        loans: [
-            { planDate: "10-08-2025", endDate: "25-08-2025", interest: 1360, takenAmount: 5000, takenFrom: "MLLD", fineRate: 86 },
-            { planDate: "15-08-2025", endDate: "30-08-2025", interest: 4800, takenAmount: 20000, takenFrom: "MLending", fineRate: 320 },
-            { planDate: "16-08-2025", endDate: "31-08-2025", interest: 1275, takenAmount: 5000, takenFrom: "MLLD", fineRate: 90 },
-            { planDate: "18-08-2025", endDate: "02-09-2025", interest: 1380, takenAmount: 5000, takenFrom: "MLLD", fineRate: 88 },
-            { planDate: "18-08-2025", endDate: "02-09-2025", interest: 690, takenAmount: 2500, takenFrom: "MLLD", fineRate: 46 },
-            { planDate: "01-11-2025", endDate: "16-11-2025", interest: 1500, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 46 },
-        ]
-    },
-    "Mahesh888*": {
-        name: "Mahesh Muthinti",
-        membershipType: "", 
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "#8a49f4",
-        stars: 14,
-        coins: 0,
-        tierPoints: 23,
-        showCustomContent: "yes",
-        customContent: {
-            type: "image",
-            value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
-        },
-        loans: [
-            { planDate: "25-05-2025", endDate: "07-11-2025(Extended to 15 days)", interest: 753, takenAmount: 4500, takenFrom: "Delayit offer", fineRate: 50 },
-            { planDate: "29-09-2025", endDate: "13-11-2025(Extended to 15 days)", interest: 670, takenAmount: 4200, takenFrom: "MLLD", fineRate: 90 },
-            { planDate: "01-06-2025", endDate: "16-11-2025(Extended to 39 days)", interest: 2000, takenAmount: 11630, takenFrom: "ProgramsX & Split Pay offer", fineRate: 50 }
-        ]
-    },
-    "Cherish@123": {
-        name: "Cherish #1",
-        membershipType: "",
-        membershipIcon: "https://media.tenor.com/pT6HQx4wIogAAAAj/twitch-rpx-syria.gif",
-        profileBackground: "rgb(255 44 0)",
-        stars: 0,
-        coins: 0,
-        tierPoints: 40,
-        showCustomContent: "yes",
-        customContent: {
-            type: "image",
-            value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
-        },
-        loans: [
-            { planDate: "14-10-2025", endDate: "31-10-2025", interest: 3600, takenAmount: 6690, takenFrom: "MLLD", fineRate: 30 },
-            { planDate: "14-10-2025", endDate: "31-10-2025", interest: 2969, takenAmount: 5880, takenFrom: "MLLD", fineRate: 30 },
-            { planDate: "14-10-2025", endDate: "31-10-2025", interest: 3380, takenAmount: 5560, takenFrom: "MLLD(Offer)", fineRate: 30 }
-        ]
-    },
-    "Cherish@1234": {
-        name: "Cherish #2",
-        membershipType: "",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "rgb(90 135 242)",
-        stars: 0,
-        coins: 0,
-        tierPoints: 0,
-        showCustomContent: "yes",
-        customContent: {
-            type: "image",
-            value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
-        },
-        loans: [
-            { planDate: "29-05-2025", endDate: "29-05-2025", interest: 5600, takenAmount: 25000, takenFrom: "MLending", fineRate: 80 }
-        ]
-    }
+      }
     };
 
-    const submitBtn = document.getElementById("submitBtn");
-    const errorMsg = document.getElementById("error-message");
-
-    submitBtn.onclick = () => {
+    document.getElementById("submitBtn").onclick = () => {
       const pass = document.getElementById("userPassword").value.trim();
-      const user = passwords[pass];
-      if (!pass) return errorMsg.textContent = "Enter password";
-      if (!user) return errorMsg.textContent = "Invalid password";
+      if (!pass) return document.getElementById("error-message").textContent = "Enter password";
+      if (!passwords[pass]) return document.getElementById("error-message").textContent = "Wrong password";
 
-      localStorage.setItem("userPassword", pass);
-      showUser(user);
+      localStorage.setItem("lastPass", pass);
+      showUser(passwords[pass]);
     };
 
     function showUser(user) {
       document.getElementById("userName").textContent = user.name;
-      document.getElementById("starCount").textContent = user.stars;
-      const pic = document.getElementById("profilePicture");
-      pic.textContent = user.name.split(" ").map(n=>n[0]).join("").toUpperCase();
+      document.getElementById("profilePicture").textContent = user.name.split(" ").map(n=>n[0]).join("").toUpperCase().slice(0,2);
 
-      const buttons = document.getElementById("amountButtons");
-      buttons.innerHTML = "";
+      const btns = document.getElementById("amountButtons");
+      btns.innerHTML = "";
       user.loans.forEach((loan, i) => {
-        const btn = document.createElement("button");
-        btn.className = "amount-btn";
-        btn.textContent = `₹${loan.takenAmount}`;
-        btn.onclick = () => displayLoan(loan, i, user);
-        buttons.appendChild(btn);
+        const b = document.createElement("button");
+        b.className = "amt-btn";
+        b.textContent = `₹${loan.takenAmount}`;
+        b.onclick = () => {
+          document.querySelectorAll(".amt-btn").forEach(x=>x.classList.remove("active"));
+          b.classList.add("active");
+          showLoan(loan);
+        };
+        btns.appendChild(b);
       });
 
-      if (user.loans.length) displayLoan(user.loans[0], 0, user);
-      checkDueToday(user);
+      if (user.loans.length) {
+        document.querySelector(".amt-btn").classList.add("active");
+        showLoan(user.loans[0]);
+      }
+
+      checkDue(user);
 
       document.getElementById("passwordContainer").style.display = "none";
       document.getElementById("userInfoModal").style.display = "block";
-      errorMsg.textContent = "";
     }
 
-    function displayLoan(loan, idx, user) {
-      document.querySelectorAll(".amount-btn").forEach(b=>b.classList.remove("active"));
-      document.getElementById("amountButtons").children[idx].classList.add("active");
-
-      const overdue = calculateOverdue(loan.endDate, loan.fineRate);
-      const total = loan.takenAmount + loan.interest + overdue.fine;
+    function showLoan(l) {
+      const over = overdue(l.endDate, l.fineRate);
+      const total = l.takenAmount + l.interest + over.fine;
 
       document.getElementById("loanDetails").innerHTML = `
-        <div class="loan-entry">
-          <h3>Service</h3><p>${loan.takenFrom}</p>
-          <h3>Amount</h3><p>₹${loan.takenAmount}</p>
-          <h3>Dates</h3><p>Taken: ${loan.planDate}<br>Due: ${loan.endDate}</p>
-          <h3>Interest</h3><p>₹${loan.interest}</p>
-          ${overdue.fine ? `<h3>Overdue</h3><p>${overdue.days} days → ₹${overdue.fine}</p>` : ""}
-          <hr>
-          <h3>Total to Pay</h3><p><b>₹${total}</b></p>
-          <button onclick="downloadSingle(${idx})" style="margin-top:10px; width:100%;">Download this amount Receipt</button>
-          <button style="margin-top: 20px;
-    background: #ffffff;"><a style=' text-decoration: none; color: black; ' href="https://forms.gle/UwP9fcAxoLNE9wsm8">Add another amount</a></button>
+        <div class="details">
+          Service<br><b>${l.takenFrom}</b><br><br>
+          Amount<br><b>₹${l.takenAmount}</b><br><br>
+          Dates<br><b>${l.planDate} → ${l.endDate}</b><br><br>
+          Interest<br><b>₹${l.interest}</b><br><br>
+          ${over.fine ? `Overdue (${over.days} days)<br><b>₹${over.fine}</b><br><br>` : ""}
+          <div class="total">Total: ₹${total}</div>
+          <button onclick="downloadSingle('${l.takenAmount}',${total},'${l.endDate}')">Download Receipt</button>
+          <button style="margin-top:8px; background:#333;">
+            <a href="https://forms.gle/UwP9fcAxoLNE9wsm8" style="color:white;text-decoration:none;">Add Amount</a>
+          </button>
         </div>
       `;
     }
 
-    function calculateOverdue(end, rate) {
+    function overdue(end, rate) {
       const [d,m,y] = end.split('-').map(Number);
-      const due = new Date(y, m-1, d, 23, 59, 59);
+      const due = new Date(y, m-1, d);
       const now = new Date();
-      if (now <= due) return { fine:0, days:0 };
+      if (now <= due) return {fine:0, days:0};
       const days = Math.ceil((now - due) / 86400000);
-      return { fine: days * rate, days };
+      return {fine: days * rate, days};
     }
 
-    function checkDueToday(user) {
-      const today = new Date().toLocaleDateString("en-GB").split("/").reverse().join("-").replace(/\//g, "-");
-      user.loans.forEach(loan => {
-        if (loan.endDate.includes(today)) {
-          document.getElementById("reminderMessage").textContent = `Today is your due date for ₹${loan.takenAmount} from ${loan.takenFrom}!`;
+    function checkDue(user) {
+      const today = new Date().toLocaleDateString("en-GB").split("/").reverse().join("-");
+      user.loans.forEach(l => {
+        if (l.endDate === today) {
+          document.getElementById("reminderMessage").textContent = `Today is due date: ₹${l.takenAmount} from ${l.takenFrom}`;
           document.getElementById("reminderModal").style.display = "flex";
         }
       });
     }
 
     function showAmountsModal() {
-      const user = passwords[localStorage.getItem("userPassword")];
-      let taken = 0, interest = 0;
-      user.loans.forEach(l => { taken += l.takenAmount; interest += l.interest + calculateOverdue(l.endDate, l.fineRate).fine; });
+      const user = passwords[localStorage.getItem("lastPass")];
+      let taken = 0, extra = 0;
+      user.loans.forEach(l => {
+        taken += l.takenAmount;
+        extra += l.interest + overdue(l.endDate, l.fineRate).fine;
+      });
       document.getElementById("totalTaken").textContent = taken;
-      document.getElementById("totalInterest").textContent = interest;
-      document.getElementById("totalReturn").textContent = taken + interest;
+      document.getElementById("totalInterest").textContent = extra;
+      document.getElementById("totalReturn").textContent = taken + extra;
       document.getElementById("amountsModal").style.display = "flex";
     }
 
     function closeAmountsModal() { document.getElementById("amountsModal").style.display = "none"; }
     function closeReminderModal() { document.getElementById("reminderModal").style.display = "none"; }
 
-    function closeModal() {
+    function logout() {
       document.getElementById("userInfoModal").style.display = "none";
       document.getElementById("passwordContainer").style.display = "block";
       document.getElementById("userPassword").value = "";
     }
 
-    function downloadSingle(i) {
-      const user = passwords[localStorage.getItem("userPassword")];
-      const loan = user.loans[i];
-      const total = loan.takenAmount + loan.interest + calculateOverdue(loan.endDate, loan.fineRate).fine;
-      downloadText(`Amount: ₹${total}\nDue: ${loan.endDate}`, `loan_${i+1}.txt`);
-    }
-
-    function downloadAllLoans() {
-      const user = passwords[localStorage.getItem("userPassword")];
-      let text = "";
-      user.loans.forEach((l, i) => {
-        const total = l.takenAmount + l.interest + calculateOverdue(l.endDate, l.fineRate).fine;
-        text += `Loan ${i+1}: ₹${total} (Due: ${l.endDate})\n`;
-      });
-      downloadText(text, "all_loans.txt");
-    }
-
-    function downloadText(text, filename) {
+    function downloadSingle(amount, total, due) {
+      const text = `Amount Due: ₹${total}\nTaken: ₹${amount}\nDue Date: ${due}`;
       const a = document.createElement("a");
-      a.href = URL.createObjectURL(new Blob([text], {type: "text/plain"}));
-      a.download = filename;
+      a.href = URL.createObjectURL(new Blob([text], {type:"text/plain"}));
+      a.download = "receipt.txt";
       a.click();
     }
 
-    function showStarCount() {
-      const stars = document.getElementById("starCount").textContent;
-      alert(`You have ${stars} stars. Use them to reduce interest!`);
+    function downloadAllLoans() {
+      const user = passwords[localStorage.getItem("lastPass")];
+      let text = "All Loans\n\n";
+      user.loans.forEach((l,i) => {
+        const total = l.takenAmount + l.interest + overdue(l.endDate, l.fineRate).fine;
+        text += `${i+1}. ₹${total} (Due: ${l.endDate})\n`;
+      });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([text], {type:"text/plain"}));
+      a.download = "all_receipts.txt";
+      a.click();
     }
 
-    // Theme & Style
+    // Theme
     document.getElementById("themeButton").onclick = () => {
       document.body.classList.toggle("light");
-      localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
+      const light = document.body.classList.contains("light");
+      localStorage.setItem("theme", light ? "light" : "dark");
+      document.getElementById("themeButton").textContent = light ? "Moon" : "Sun";
     };
 
-    document.getElementById("styleButton").onclick = () => {
-      const isCurvy = document.body.style.borderRadius !== "16px";
-      document.body.style.borderRadius = isCurvy ? "16px" : "0";
-      document.getElementById("styleButton").textContent = isCurvy ? "C" : "S";
-    };
+    // Load theme
+    if (localStorage.getItem("theme") === "light") {
+      document.body.classList.add("light");
+      document.getElementById("themeButton").textContent = "Moon";
+    }
 
-    // Load saved
-    if (localStorage.getItem("theme") === "light") document.body.classList.add("light");
-    if (localStorage.getItem("userPassword")) {
-      document.getElementById("userPassword").value = localStorage.getItem("userPassword");
+    // Remember last password but DO NOT auto-login
+    if (localStorage.getItem("lastPass")) {
+      document.getElementById("userPassword").value = localStorage.getItem("lastPass");
     }
   </script>
 </body>
