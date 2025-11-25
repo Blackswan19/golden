@@ -1,175 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lite</title>
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-          font-family: system-ui, -apple-system, sans-serif;
-    background: #0d0d0d;
-    color: #ddd;
-    min-height: 100vh;
-    text-align: center;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    }
-    body.light { background: #fff; color: #111; }
-
-    h2 { font-size: 18px; margin-bottom: 20px; text-align: center; }
-    input, button {
-      width: 100%; padding: 12px; margin: 10px 0;
-      font-size: 16px; border: 1px solid #444;
-      background: #1a1a1a; color: #ddd;
-    }
-    body.light input, body.light button { background: #f7f7f7; color: #111; border-color: #ccc; }
-    button { background: #037e75; color: white; border: none; cursor: pointer; }
-    #error-message { color: #ff6b6b; text-align: center; font-size: 14px; min-height: 20px; }
-
-    .container {width: 93%;
-    margin: 0 auto;
-    display: none;
-    height: 100vh;
-    max-width: 600px;}
-    .header {
-     padding: 15px 0;
-    border-bottom: 1px solid #333;
-    display: flex;
-    font-weight: bold;
-    gap: 10px;
-    align-items: center;
-    }
-    body.light .header { border-color: #ddd; }
-
-    .profile { text-align: center;}
-    .avatar {
-      width: 60px; height: 60px; background: #037e75; color: white;
-      font-weight: bold; font-size: 22px; border-radius: 8px;
-      margin: 0 auto 12px; display: flex; align-items: center;
-      justify-content: center;
-    }
-    .name { font-size: 18px; margin: 10px 0; }
-
-    .actions {
-      display: flex; gap: 10px; margin: 20px 0;
-    }
-    .actions button {
-      flex: 1; background: transparent; border: 1px solid #444;
-      padding: 10px; font-size: 14px;
-    }
-    body.light .actions button { border-color: #ccc; }
-
-    .amounts {
-      display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
-      margin: 20px 0;
-    }
-    .amt-btn {
-      padding: 8px 14px; border: 1px solid #444; background: transparent;
-      font-size: 15px; cursor: pointer;
-    }
-    .amt-btn.active { background: #037e75; color: white; border-color: #037e75; }
-
-    .details {
-      background: #16161a; padding: 18px; border: 1px solid #333;
-      font-size: 15px; margin-top: 10px;
-    }
-    body.light .details { background: #f7f7f7; border-color: #ddd; }
-    .details b { color: #fff; }
-    body.light .details b { color: #000; }
-    .total { font-size: 22px; font-weight: bold; margin: 15px 0 10px; color: #037e75; }
-
-    .modal {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.8);
-      display: none; align-items: center; justify-content: center; padding: 20px;
-    }
-    .modal-content {
-      background: #111; padding: 25px; max-width: 340px; width: 100%;
-      border: 1px solid #444;
-    }
-    body.light .modal-content { background: white; border-color: #ccc; }
-
-    .theme-btn {
-      position: fixed;
-    top: 0px;
-    right: 8px;
-    width: 60px;
-    background: #787878;
-    border: none;
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
-    }
-    body.light .theme-btn { background: #ddd; color: #000; }
-  </style>
-</head>
-<body>
-
-  <!-- Password Screen -->
-  <div id="passwordContainer" style="
-    text-align: center;">
-    <h2>Enter Password</h2>
-    <input type="text" id="userPassword" placeholder="password" autocomplete="off">
-    <button id="submitBtn">Continue</button>
-    <p id="error-message"></p>
-  </div>
-
-  <!-- Main App -->
-  <div id="userInfoModal" class="container">
-    <div class="header">
-      <button onclick="logout()" style="background:none;border:none;color:#aaa;font-size:20px;width: 5%;"><</button>
-      <div>Borrower</div>
-      <div></div>
-    </div>
-
-    <div class="profile">
-        <div class="takemoneyoption">
-        <a href="https://forms.gle/tLFrS5ojN2gBfAWT6"><button>Take money</button></a>
-      </div>
-      <div class="avatar" id="profilePicture"></div>
-      <div class="name" id="userName"></div>
-      <div class="actions">
-        <button onclick="showAmountsModal()">Wallet</button>
-        <button onclick="downloadAllLoans()">Receipt</button>
-      </div>
-    </div>
-
-    <div class="amounts" id="amountButtons"></div>
-    <div id="loanDetails"></div>
-  </div>
-
-  <!-- Wallet Modal -->
-  <div class="modal" id="amountsModal" onclick="this.style.display='none'">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <h3>Wallet Summary</h3>
-      <p>Taken: <b><span id="totalTaken">0</span>₹</b></p>
-      <p>Extra: <b><span id="totalInterest">0</span>₹</b></p>
-      <p style="font-size:20px; margin-top:10px;">Pay: <b><span id="totalReturn">0</span>₹</b></p>
-      <button onclick="closeAmountsModal()" style="margin-top:20px;">Close</button>
-    </div>
-  </div>
-
-  <!-- Reminder -->
-  <div class="modal" id="reminderModal" onclick="this.style.display='none'">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <h3>Reminder</h3>
-      <p id="reminderMessage"></p>
-      <button onclick="closeReminderModal()">OK</button>
-    </div>
-  </div>
-
-  <button class="theme-btn" id="themeButton">Sun</button>
-
-  <script>
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <title>BS&MFI | Duplicate account</title> <link rel="icon" href="https://i.ibb.co/ZpVQQ2Kp/mfi-logo.png" /> <style> * { margin:0; padding:0; box-sizing:border-box; } body { font-family: system-ui, -apple-system, sans-serif; background: #0d0d0d; color: #ddd; min-height: 100vh; text-align: center; height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column; } body.light { background: #fff; color: #111; } h2 { font-size: 18px; margin-bottom: 20px; text-align: center; } input, button { width: 100%; padding: 12px; margin: 10px 0; font-size: 16px; border: 1px solid #444; background: #1a1a1a; color: #ddd; } body.light input, body.light button { background: #f7f7f7; color: #111; border-color: #ccc; } button { background: #037e75; color: white; border: none; cursor: pointer; } #error-message { color: #ff6b6b; text-align: center; font-size: 14px; min-height: 20px; } .container {width: 93%; margin: 0 auto; display: none; height: 100vh; max-width: 600px;} .header { padding: 15px 0; border-bottom: 1px solid #333; display: flex; font-weight: bold; gap: 10px; align-items: center; } body.light .header { border-color: #ddd; } .profile { text-align: center;} .avatar { width: 60px; height: 60px; background: #037e75; color: white; font-weight: bold; font-size: 22px; border-radius: 8px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; } .name { font-size: 18px; margin: 10px 0; } .actions { display: flex; gap: 10px; margin: 20px 0; } .actions button { flex: 1; background: transparent; border: 1px solid #444; padding: 10px; font-size: 14px; } body.light .actions button { border-color: #ccc; } .amounts { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 20px 0; } .amt-btn { padding: 10px 14px; border: 1px solid #444; background: transparent; font-size: 15px; cursor: pointer; } .amt-btn.active { background: #037e75; color: white; border-color: #037e75; } .details { background: #16161a; padding: 18px; border: 1px solid #333; font-size: 15px; margin-top: 10px;line-height: 25px; } body.light .details { background: #f7f7f7; border-color: #ddd; } .details b { color: #037e75; } body.light .details b { color: #000; } .total { font-size: 22px; font-weight: bold; margin: 15px 0 10px; color: #037e75; } .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; padding: 20px; } .modal-content { background: #111; padding: 25px; max-width: 340px; width: 100%; border: 1px solid #444; } body.light .modal-content { background: white; border-color: #ccc; } .theme-btn { position: fixed; top: 0px; right: 8px; width: 60px; background: #787878; border: none; color: white; font-size: 15px; cursor: pointer; } body.light .theme-btn { background: #ddd; color: #000; } </style> </head> <body> <!-- Password Screen --> <div id="passwordContainer" style=" text-align: center;"> <h2>Enter Password</h2> <input type="text" id="userPassword" placeholder="password" autocomplete="off"> <button id="submitBtn">Continue</button> <p id="error-message"></p> </div> <!-- Main App --> <div id="userInfoModal" class="container"> <div class="header"> <button onclick="logout()" style="background:none;border:none;color:#aaa;font-size:20px;width: 5%;"><</button> <div>Borrower</div> <div></div> </div> <div class="profile"> <div class="takemoneyoption"> <a href="https://forms.gle/tLFrS5ojN2gBfAWT6"><button>Take money</button></a> </div> <div class="avatar" id="profilePicture"></div> <div class="name" id="userName"></div> <div class="actions"> <button onclick="showAmountsModal()">Wallet</button> <button onclick="downloadAllLoans()">Receipt</button> </div> </div> <div class="amounts" id="amountButtons"></div> <div id="loanDetails"></div> </div> <!-- Wallet Modal --> <div class="modal" id="amountsModal" onclick="this.style.display='none'"> <div class="modal-content" onclick="event.stopPropagation()"> <h3>Wallet Summary</h3> <p>Taken: <b><span id="totalTaken">0</span>₹</b></p> <p>Extra: <b><span id="totalInterest">0</span>₹</b></p> <p style="font-size:20px; margin-top:10px;">Pay: <b><span id="totalReturn">0</span>₹</b></p> <button onclick="closeAmountsModal()" style="margin-top:20px;">Close</button> </div> </div> <!-- Reminder --> <div class="modal" id="reminderModal" onclick="this.style.display='none'"> <div class="modal-content" onclick="event.stopPropagation()"> <h3>Reminder</h3> <p id="reminderMessage"></p> <button onclick="closeReminderModal()">OK</button> </div> </div> <button class="theme-btn" id="themeButton">Sun</button>
+<script>
+  document.addEventListener('contextmenu', e => e.preventDefault());
     const passwords = {
       "6275": {
         name: "Srikanth Kath",
         loans: [
-          // { planDate: "13-10-2025", endDate: "31-10-2025", interest: 0, takenAmount: 10000, takenFrom: "MLending", fineRate: 46 }
+          { planDate: "25-11-2025", endDate: "10-12-2025", interest: 900, takenAmount: 3000, takenFrom: "MLending Duplicate ", fineRate: 46 }
         ]
       }
     };
@@ -226,12 +62,11 @@
           <div class="total">Total: ₹${total}</div>
           <button onclick="downloadSingle('${l.takenAmount}',${total},'${l.endDate}')">Download Receipt</button>
           <button style="margin-top:8px; background:#333;">
-            <a href="https://forms.gle/UwP9fcAxoLNE9wsm8" style="color:white;text-decoration:none;">Add Amount</a>
+            <a onclick="alert('You are not eligible to take another amount...!')" style="color:white;text-decoration:none;">Add Amount</a>
           </button>
         </div>
       `;
     }
-
     function overdue(end, rate) {
       const [d,m,y] = end.split('-').map(Number);
       const due = new Date(y, m-1, d);
@@ -294,7 +129,6 @@
       a.click();
     }
 
-    // Theme
     document.getElementById("themeButton").onclick = () => {
       document.body.classList.toggle("light");
       const light = document.body.classList.contains("light");
@@ -302,13 +136,10 @@
       document.getElementById("themeButton").textContent = light ? "Moon" : "Sun";
     };
 
-    // Load theme
     if (localStorage.getItem("theme") === "light") {
       document.body.classList.add("light");
       document.getElementById("themeButton").textContent = "Moon";
     }
-
-    // Remember last password but DO NOT auto-login
     if (localStorage.getItem("lastPass")) {
       document.getElementById("userPassword").value = localStorage.getItem("lastPass");
     }
