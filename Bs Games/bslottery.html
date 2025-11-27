@@ -1,24 +1,25 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BsGames | Lottery</title> <link rel="icon" href="https://i.ibb.co/ZpVQQ2Kp/mfi-logo.png" /> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Rockstar Font: Anton --> <link href="https://fonts.googleapis.com/css2?family=Anton:wght@400&display=swap" rel="stylesheet"> <!-- Font Awesome --> <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"> <style> :root { --primary: #000000; --secondary: #ffffff; --accent: #ffcc00; --border: #444444; --text: #ffffff; --text-muted: #bbbbbb; --bg: #111111; --card-bg: #000000; --progress-bg: #333333; --progress-fill: #ffcc00; } * { -webkit-tap-highlight-color: transparent; } body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; } * { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2px; line-height: 1.6; } .card { background: var(--card-bg); border: 2px solid var(--border); border-radius: 0; max-width: 620px; width: 100%; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); } .card-header { background: var(--primary); color: var(--secondary); padding: 1.8rem 1.5rem; text-align: center; border-bottom: 2px solid var(--accent); font-family: 'Anton', sans-serif; letter-spacing: 3px; } .logo { font-size: 2.2rem; font-weight: 400; text-transform: uppercase; } .logo span { color: var(--accent); } .card-body { padding: 2rem; background: var(--card-bg); } .form-label { font-weight: 600; color: var(--text); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 0.8rem; } .form-control { background: transparent; border: 1px solid var(--border); color: var(--text); border-radius: 0; padding: 0.9rem 1rem; font-size: 1.1rem; text-align: center; letter-spacing: 1px; transition: border 0.3s ease; } .form-control:focus { border-color: var(--accent); box-shadow: none; color: var(--text); } .form-control::placeholder { color: var(--text-muted); font-weight: 300; } .btn-primary { background: var(--accent); color: #000; border: none; border-radius: 0; padding: 1rem; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1.5px; width: 100%; transition: all 0.3s ease; margin-top: 1rem; } .btn-primary:hover { background: #ffdd33; transform: translateY(-2px); } .btn-primary:disabled { background: #666; color: #999; cursor: not-allowed; transform: none; } .progress-container { height: 4px; background: var(--progress-bg); margin: 1.2rem 0 0.5rem; overflow: hidden; border-radius: 0; display: none; } .progress-bar { height: 100%; background: var(--progress-fill); width: 0; transition: width 0.1s linear; } .welcome-card { text-align: center; padding: 2rem 1.5rem; border: 1px solid var(--border); margin-bottom: 1.5rem; } .welcome-title { font-family: 'Anton', sans-serif; font-size: 1.6rem; color: var(--accent); margin-bottom: 0.8rem; letter-spacing: 2px; text-transform: uppercase; } .welcome-subtitle { font-size: 1rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.5; } .btn-spin-now { background: var(--accent); color: #000; font-weight: 700; font-family: 'Anton', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 1.3rem; padding: 1.1rem; border: none; width: 100%; transition: all 0.3s ease; } .btn-spin-now:hover { background: #ffdd33; transform: translateY(-3px); } .slot-machine { background: transparent; border: 1px solid var(--border); padding: 2.5rem 1.5rem; margin: 2rem 0; text-align: center; position: relative; } .reel { height: 90px; display: flex; align-items: center; justify-content: center; font-size: 3.8rem; font-weight: bold; color: var(--accent); transition: transform 2.2s cubic-bezier(0.2, 0.8, 0.2, 1); transform: translateY(0); } .reel.spinning { animation: spinReel 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; } @keyframes spinReel { 0% { transform: translateY(0) rotateX(0deg); } 15% { transform: translateY(-20px) rotateX(-30deg); } 100% { transform: translateY(0) rotateX(0deg); } } .prize-text { margin-top: 1rem; font-size: 1.1rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 500; opacity: 0; transition: opacity 0.4s ease; } .prize-text.show { opacity: 1; } .chances { text-align: center; margin: 1.5rem 0; font-size: 1.1rem; color: var(--text); text-transform: uppercase; letter-spacing: 1px; } .chances strong { color: var(--accent); font-size: 1.4rem; font-weight: 700; } .results-section { margin-top: 2rem; padding: 1.8rem; background: transparent; border: 1px solid var(--border); } .results-title { font-family: 'Anton', sans-serif; font-size: 1.4rem; color: var(--accent); margin-bottom: 1.2rem; text-align: center; text-transform: uppercase; letter-spacing: 2px; } .prize-item { padding: 1rem 0; border-bottom: 1px solid var(--border); font-size: 1rem; color: var(--text); } .prize-item:last-child { border-bottom: none; } .prize-icon { font-size: 1.6rem; margin-right: 1rem; color: var(--accent); } .prize-code { font-family: 'Courier New', monospace; background: rgba(255, 204, 0, 0.1); padding: 0.4rem 0.8rem; border: 1px solid var(--accent); border-radius: 0; font-weight: bold; color: var(--accent); letter-spacing: 1px; font-size: 0.95rem; } .copy-small { background: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 0.3rem 0.7rem; font-size: 0.8rem; margin-left: 0.8rem; cursor: pointer; text-transform: uppercase; font-weight: 600; transition: all 0.2s; } .copy-small:hover { background: var(--accent); color: #000; } .section { display: none; } .section.active { display: block; } .verifying { color: var(--accent); text-align: center; margin-top: 1.2rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; display: none; } .modal-content { background: var(--card-bg); border: 2px solid var(--border); border-radius: 0; color: var(--text); box-shadow: 0px 0px 10px 1000000px rgba(0, 0, 0, 0.559); } .modal-header { border-bottom: 1px solid var(--border); padding: 1.2rem 1.5rem; } .modal-title { font-family: 'Anton', sans-serif; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-size: 1.4rem; } .modal-body { text-align: center; padding: 2rem; } .modal-prize-icon { font-size: 4rem; margin-bottom: 1rem; color: var(--accent); } .modal-prize-title { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: var(--accent); margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 2px; } .coupon-code { background: rgba(255, 204, 0, 0.1); border: 2px solid var(--accent); padding: 1.2rem; margin: 1.2rem 0; font-family: 'Courier New', monospace; font-size: 1.4rem; font-weight: bold; color: var(--accent); letter-spacing: 3px; } .copy-btn { background: var(--accent); color: #000; border: none; padding: 0.7rem 1.5rem; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 0.6rem; width: 100%; transition: background 0.3s; } .copy-btn:hover { background: #ffdd33; } .copy-btn.copied { background: #00cc00; color: white; } .stars { color: var(--accent); } .text-success { color: #00cc00 !important; } .text-warning { color: var(--accent) !important; } .text-muted { color: var(--text-muted) !important; } @media (max-width: 480px) { .card-body { padding: 1.5rem; } .reel { font-size: 3rem; } .modal-prize-icon { font-size: 3.2rem; } .logo { font-size: 1.9rem; } } </style> </head> <body> <div class="card"> <div class="card-header"> <div class="logo">Bs<span>Games</span></div> </div> <div class="card-body"> <!-- Phone Input --> <div id="phoneSection" class="section active"> <form id="phoneForm"> <div class="mb-3"> <label for="phone" class="form-label">PHONE NUMBER</label> <input type="tel" class="form-control" id="phone" style="color: gray;" placeholder="ENTER YOU PHONE NUMBER" maxlength="10" required> </div> <button type="submit" class="btn btn-primary" id="verifyBtn">VERIFY</button> <div class="progress-container" id="verifyProgressContainer"> <div class="progress-bar" id="verifyProgress"></div> </div> <div id="verifyingText" class="verifying"> VERIFYING... WAIT FOR FEW SECONDS </div> </form> </div> <!-- Welcome --> <div id="welcomeSection" class="section"> <div class="welcome-card"> <div class="welcome-title" id="userNameDisplay"></div> <div class="welcome-subtitle"> You are eligible for the BsGames Lottery.<br> You have 3 chances to win. </div> <button class="btn-spin-now" id="goToSpinBtn">SPIN NOW</button> </div> </div> <!-- Spin Section --> <div id="spinSection" class="section"> <div class="chances" id="chancesLeft">CHANCES LEFT: <strong>3</strong></div> <div class="slot-machine"> <div class="reel" id="reel">?</div> <div class="prize-text" id="prizeHint">PRESS SPIN</div> </div> <button id="spinButton" class="btn btn-primary">SPIN</button> <!-- Results Summary --> <div id="resultsSection" class="results-section" style="display: none;"> <div class="results-title">YOUR PRIZE</div> <div id="winList"></div> </div> </div> </div> </div> <!-- Result Modal --> <div class="modal fade" id="resultModal" tabindex="-1"> <div class="modal-dialog modal-dialog-centered"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">RESULT</h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> </div> <div class="modal-body"> <div id="prizeIcon" class="modal-prize-icon"></div> <div id="prizeTitle" class="modal-prize-title"></div> <div id="prizeDesc" class="text-muted mb-3"></div> <div id="couponSection" style="display: none;"> <div class="coupon-code" id="couponCode"></div> <button class="copy-btn" id="copyBtn">COPY CODE</button> <div class="text-success mt-2" id="copyStatus" style="display: none;">COPIED</div> </div> </div> <div class="modal-footer border-0 justify-content-center"> <button type="button" class="btn btn-primary" data-bs-dismiss="modal">CLOSE</button> </div> </div> </div> </div>
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BsGames | Lottery</title> <link rel="icon" href="https://i.ibb.co/ZpVQQ2Kp/mfi-logo.png" /> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> <link href="https://fonts.googleapis.com/css2?family=Anton:wght@400&display=swap" rel="stylesheet"> <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"> <style> :root { --primary: #000000; --secondary: #ffffff; --accent: #ffcc00; --border: #444444; --text: #ffffff; --text-muted: #bbbbbb; --bg: #111111; --card-bg: #000000; --progress-bg: #333333; --progress-fill: #ffcc00; } * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; } body { font-family: 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2px; line-height: 1.6; -webkit-user-select: none; user-select: none; } .card { background: var(--card-bg); border: 2px solid var(--border); border-radius: 0; max-width: 620px; width: 100%; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); } .card-header { background: var(--primary); color: var(--secondary); padding: 1.8rem 1.5rem; text-align: center; border-bottom: 2px solid var(--accent); font-family: 'Anton', sans-serif; letter-spacing: 3px; } .logo { font-size: 2.2rem; font-weight: 400; text-transform: uppercase; } .logo span { color: var(--accent); } .card-body { padding: 2rem; background: var(--card-bg); } .form-label { font-weight: 600; color: var(--text); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 0.8rem; } .form-control { background: transparent; border: 1px solid var(--border); color: var(--text); border-radius: 0; padding: 0.9rem 1rem; font-size: 1.1rem; text-align: center; letter-spacing: 1px; transition: border 0.3s ease; } .form-control:focus { border-color: var(--accent); box-shadow: none; color: var(--text); } .form-control::placeholder { color: var(--text-muted); font-weight: 300; } .btn-primary { background: var(--accent); color: #000; border: none; border-radius: 0; padding: 1rem; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1.5px; width: 100%; transition: all 0.3s ease; margin-top: 1rem; } .btn-primary:hover { background: #ffdd33; transform: translateY(-2px); } .btn-primary:disabled { background: #666; color: #999; cursor: not-allowed; transform: none; } .progress-container { height: 4px; background: var(--progress-bg); margin: 1.2rem 0 0.5rem; overflow: hidden; display: none; } .progress-bar { height: 100%; background: var(--progress-fill); width: 0; transition: width 0.1s linear; } .welcome-card { text-align: center; padding: 2rem 1.5rem; border: 1px solid var(--border); margin-bottom: 1.5rem; } .welcome-title { font-family: 'Anton', sans-serif; font-size: 1.6rem; color: var(--accent); margin-bottom: 0.8rem; letter-spacing: 2px; text-transform: uppercase; } .welcome-subtitle { font-size: 1rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.5; } .btn-spin-now { background: var(--accent); color: #000; font-weight: 700; font-family: 'Anton', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 1.3rem; padding: 1.1rem; border: none; width: 100%; } .btn-spin-now:hover { background: #ffdd33; transform: translateY(-3px); } .slot-machine { background: transparent; border: 1px solid var(--border); padding: 2.5rem 1.5rem; margin: 2rem 0; text-align: center; } .reel { height: 90px; display: flex; align-items: center; justify-content: center; font-size: 3.8rem; font-weight: bold; color: var(--accent); transition: transform 2.2s cubic-bezier(0.2, 0.8, 0.2, 1); } .reel.spinning { animation: spinReel 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; } @keyframes spinReel { 0% { transform: translateY(0) rotateX(0deg); } 15% { transform: translateY(-20px) rotateX(-30deg); } 100% { transform: translateY(0) rotateX(0deg); } } .prize-text { margin-top: 1rem; font-size: 1.1rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 500; opacity: 0; transition: opacity 0.4s ease; } .prize-text.show { opacity: 1; } .chances { text-align: center; margin: 1.5rem 0; font-size: 1.1rem; color: var(--text); text-transform: uppercase; letter-spacing: 1px; } .chances strong { color: var(--accent); font-size: 1.4rem; font-weight: 700; } .cooldown { color: #ff5555; font-size: 0.95rem; margin-top: 10px; text-align: center; } .results-section { margin-top: 2rem; padding: 1.8rem; background: transparent; border: 1px solid var(--border); } .results-title { font-family: 'Anton', sans-serif; font-size: 1.4rem; color: var(--accent); margin-bottom: 1.2rem; text-align: center; text-transform: uppercase; letter-spacing: 2px; } .prize-item { padding: 1rem 0; border-bottom: 1px solid var(--border); font-size: 1rem; color: var(--text); } .prize-item:last-child { border-bottom: none; } .prize-icon { font-size: 1.6rem; margin-right: 1rem; color: var(--accent); } .prize-code { font-family: 'Courier New', monospace; background: rgba(255, 204, 0, 0.1); padding: 0.4rem 0.8rem; border: 1px solid var(--accent); font-weight: bold; color: var(--accent); letter-spacing: 1px; } .copy-small { background: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 0.3rem 0.7rem; font-size: 0.8rem; margin-left: 0.8rem; cursor: pointer; text-transform: uppercase; font-weight: 600; } .copy-small:hover { background: var(--accent); color: #000; } .section { display: none; } .section.active { display: block; } .verifying { color: var(--accent); text-align: center; margin-top: 1.2rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; display: none; } .modal-content { background: var(--card-bg); border: 2px solid var(--border); border-radius: 0; color: var(--text); } .modal-title { font-family: 'Anton', sans-serif; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-size: 1.4rem; } .modal-prize-icon { font-size: 4rem; margin-bottom: 1rem; color: var(--accent); } .modal-prize-title { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: var(--accent); margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 2px; } .coupon-code { background: rgba(255, 204, 0, 0.1); border: 2px solid var(--accent); padding: 1.2rem; margin: 1.2rem 0; font-family: 'Courier New', monospace; font-size: 1.4rem; font-weight: bold; color: var(--accent); letter-spacing: 3px; } .copy-btn { background: var(--accent); color: #000; border: none; padding: 0.7rem 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; width: 100%; } .copy-btn:hover { background: #ffdd33; } .copy-btn.copied { background: #00cc00; color: white; } .stars { color: var(--accent); } .text-success { color: #00cc00 !important; } @media (max-width: 480px) { .card-body { padding: 1.5rem; } .reel { font-size: 3rem; } .modal-prize-icon { font-size: 3.2rem; } .logo { font-size: 1.9rem; } } </style> </head> <body> <div class="card"> <div class="card-header"> <div class="logo">BsGames | <span>Lottery</span></div> </div> <div class="card-body"> <!-- Phone Input --> <div id="phoneSection" class="section active"> <form id="phoneForm"> <div class="mb-3"> <label for="phone" class="form-label">PHONE NUMBER</label> <input type="tel" class="form-control" id="phone" placeholder="ENTER YOUR PHONE NUMBER" maxlength="10" required> </div> <button type="submit" class="btn btn-primary" id="verifyBtn">VERIFY</button> <div class="progress-container" id="verifyProgressContainer"> <div class="progress-bar" id="verifyProgress"></div> </div> <div id="verifyingText" class="verifying">VERIFYING... WAIT FOR FEW SECONDS</div> </form> </div> <!-- Welcome --> <div id="welcomeSection" class="section"> <div class="welcome-card"> <div class="welcome-title" id="userNameDisplay"></div> <div class="welcome-subtitle"> You are eligible for the BsGames Lottery.<br> You have <strong>3 spins</strong> (one every 2 days). </div> <button class="btn-spin-now" id="goToSpinBtn">GO TO SPIN</button> </div> </div> <!-- Spin Section --> <div id="spinSection" class="section"> <div class="chances" id="chancesLeft">SPINS USED: <strong>0</strong>/3</div> <div id="cooldownText" class="cooldown" style="display:none;"></div> <div class="slot-machine"> <div class="reel" id="reel">?</div> <div class="prize-text" id="prizeHint">PRESS SPIN</div> </div> <button id="spinButton" class="btn btn-primary">SPIN</button> <div id="resultsSection" class="results-section" style="display: none;"> <div class="results-title">YOUR PRIZES</div> <div id="winList"></div> </div> </div> </div> </div> <!-- Result Modal --> <div class="modal fade" id="resultModal" tabindex="-1"> <div class="modal-dialog modal-dialog-centered"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">SPIN RESULT</h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> </div> <div class="modal-body"> <div id="prizeIcon" class="modal-prize-icon"></div> <div id="prizeTitle" class="modal-prize-title"></div> <div id="prizeDesc" class="text-muted mb-3"></div> <div id="couponSection" style="display: none;"> <div class="coupon-code" id="couponCode"></div> <button class="copy-btn" id="copyBtn">COPY CODE</button> <div class="text-success mt-2" id="copyStatus" style="display: none;">COPIED!</div> </div> </div> <div class="modal-footer border-0 justify-content-center"> <button type="button" class="btn btn-primary" data-bs-dismiss="modal">CLOSE</button> </div> </div> </div> </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     document.addEventListener('contextmenu', e => e.preventDefault());
-    const SPECIAL_NUMBER = "0000";
-    const USER_NAME = "";
-    const USER_ID = "";
+
+    const SPECIAL_NUMBER = "7075454293";
+    const USER_NAME = "Mahesh Muthinti";
+    const USER_ID = "Mahesh888*";
+    const COOLDOWN_HOURS = 48;
 
     const prizes = [
-        { type: 'stars', name: '50 Free Stars', id: 'SGAM50BST', icon: '<i class="fas fa-star"></i>'.repeat(5), class: 'stars' },
-        { type: 'discount', name: '40% OFF', desc: 'on next borrowing amount', id: 'SBGI0XOF4', icon: '<i class="fas fa-tag"></i>', class: 'text-warning' },
-        { type: 'discount', name: '60% OFF', desc: 'on next borrowing amount', id: 'SBGI6XOF0', icon: '<i class="fas fa-tag"></i>', class: 'text-success' },
-        { type: 'nothing', name: 'Nothing', icon: '<i class="fas fa-times-circle"></i>', class: 'text-muted' }
+        { type: 'nothing', name: 'EMPTY', icon: '<i class="fas fa-times-circle"></i>', class: 'text-muted' },
+        { type: 'swans', name: '250 Free Swans', id: 'SWFRE25AN0', icon: '<i class="fas fa-star"></i>'.repeat(5), class: 'stars' },
+        { type: 'swans', name: '300 Free Swans', id: 'SWFRE03AN0', icon: '<i class="fas fa-star"></i>'.repeat(6), class: 'stars text-warning' },
+        { type: 'lottery', name: 'Jackpot Ticket', desc: 'Chance to win the big prize!', id: 'RE-LOTT#FRE3645', icon: '<i class="fas fa-ticket-alt"></i>', class: 'text-danger jackpot' }
     ];
 
-    const spinOrder = [3, -1, 3]; // Nothing, Random, Nothing
-    let wins = JSON.parse(localStorage.getItem('lotteryWins') || '[]');
+    let wins = [];
 
-    function getRandomPrize() {
-        const valid = [0, 1, 2];
-        return prizes[valid[Math.floor(Math.random() * valid.length)]];
+    function getRandomGoodPrize() {
+        const goodPrizes = [1, 2, 3]; // 250 Swans, 300 Swans, Jackpot
+        return prizes[goodPrizes[Math.floor(Math.random() * goodPrizes.length)]];
     }
 
     function showSection(id) {
@@ -26,7 +27,79 @@
         document.getElementById(id).classList.add('active');
     }
 
-    // Verification with Progress Bar
+    function canSpinNow() {
+        const lastSpinTime = localStorage.getItem('lotteryLastSpinTime');
+        if (!lastSpinTime) return true;
+
+        const lastTime = parseInt(lastSpinTime);
+        const now = Date.now();
+        const hoursPassed = (now - lastTime) / (1000 * 60 * 60);
+
+        return hoursPassed >= COOLDOWN_HOURS;
+    }
+
+    function updateChances() {
+        let chances = parseInt(localStorage.getItem('lotteryChances') || '3');
+        const spinBtn = document.getElementById('spinButton');
+        const chancesDiv = document.getElementById('chancesLeft');
+
+        if (chances <= 0) {
+            const lastSpinTime = localStorage.getItem('lotteryLastSpinTime');
+            if (lastSpinTime && !canSpinNow()) {
+                const remaining = COOLDOWN_HOURS - Math.ceil((Date.now() - parseInt(lastSpinTime)) / (1000 * 60 * 60));
+                chancesDiv.innerHTML = `<span style="color:#ff6b6b;">0 SPINS LEFT</span>`;
+                spinBtn.textContent = "LOCKED";
+                spinBtn.disabled = true;
+                return;
+            } else {
+                chances = 3;
+                localStorage.setItem('lotteryChances', '3');
+                localStorage.removeItem('lotteryLastSpinTime');
+                localStorage.removeItem('lotteryWins');
+                wins = [];
+            }
+        }
+
+        chancesDiv.innerHTML = `CHANCES LEFT: <strong>${chances}</strong>`;
+        spinBtn.disabled = chances <= 0;
+        spinBtn.textContent = chances > 0 ? "SPIN" : "NO SPINS";
+    }
+
+    function showResults() {
+        const resultsSection = document.getElementById('resultsSection');
+        const winList = document.getElementById('winList');
+        wins = JSON.parse(localStorage.getItem('lotteryWins') || '[]');
+
+        if (wins.length === 0) {
+            resultsSection.style.display = 'none';
+            return;
+        }
+
+        winList.innerHTML = '';
+        wins.forEach(win => {
+            const item = document.createElement('div');
+            item.className = 'prize-item';
+            item.innerHTML = `
+                <div><span class="prize-icon ${win.class || ''}">${win.icon}</span> ${win.name}</div>
+                ${win.id ? `<div><span class="prize-code">${win.id}</span><button class="copy-small" onclick="copyCode('${win.id}')">COPY</button></div>` : ''}
+            `;
+            winList.appendChild(item);
+        });
+        resultsSection.style.display = 'block';
+    }
+
+    window.copyCode = function(code) {
+        navigator.clipboard.writeText(code).then(() => {
+            const btn = event.target;
+            const original = btn.innerHTML;
+            btn.innerHTML = 'COPIED';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.innerHTML = original;
+                btn.classList.remove('copied');
+            }, 1500);
+        });
+    };
     document.getElementById('phoneForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const phone = document.getElementById('phone').value.trim();
@@ -46,26 +119,22 @@
 
         let progress = 0;
         const interval = setInterval(() => {
-            progress += 1;
+            progress += 2;
             progressBar.style.width = progress + '%';
             if (progress >= 100) {
                 clearInterval(interval);
                 setTimeout(() => {
                     localStorage.setItem('lotteryPhone', phone);
-                    localStorage.setItem('lotteryChances', '3');
-                    localStorage.setItem('spinIndex', '0');
-                    wins = [];
-                    localStorage.setItem('lotteryWins', JSON.stringify(wins));
-
-                    document.getElementById('userNameDisplay').innerHTML = `${USER_NAME}<br><small style="color:#aaa;letter-spacing:1px;">(${USER_ID})</small>`;
                     showSection('welcomeSection');
+                    document.getElementById('userNameDisplay').innerHTML = `${USER_NAME}<br><small style="color:#aaa;letter-spacing:1px;">(${USER_ID})</small>`;
+
                     verifyBtn.disabled = false;
                     progressContainer.style.display = 'none';
                     verifyingText.style.display = 'none';
                     progressBar.style.width = '0%';
-                }, 300);
+                }, 400);
             }
-        }, 100); // 10 seconds = 100 * 100ms
+        }, 80);
     });
 
     document.getElementById('goToSpinBtn').addEventListener('click', () => {
@@ -73,77 +142,28 @@
         updateChances();
         showResults();
     });
-
-    function updateChances() {
-        const chances = parseInt(localStorage.getItem('lotteryChances') || '0');
-        const spinBtn = document.getElementById('spinButton');
-        const chancesDiv = document.getElementById('chancesLeft');
-
-        chancesDiv.innerHTML = `CHANCES LEFT: <strong>${chances}</strong>`;
-        spinBtn.disabled = chances <= 0;
-        spinBtn.textContent = chances > 0 ? "SPIN" : "NO SPINS";
-    }
-
-    function showResults() {
-        const resultsSection = document.getElementById('resultsSection');
-        const winList = document.getElementById('winList');
-        if (wins.length === 0) {
-            resultsSection.style.display = 'none';
-            return;
-        }
-
-        winList.innerHTML = '';
-        wins.forEach(win => {
-            const item = document.createElement('div');
-            item.className = 'prize-item';
-            item.innerHTML = `
-                <div><span class="prize-icon ${win.class}">${win.icon}</span> ${win.name}</div>
-                <div><span class="prize-code">${win.id}</span><button class="copy-small" onclick="copyCode('${win.id}')">COPY</button></div>
-            `;
-            winList.appendChild(item);
-        });
-        resultsSection.style.display = 'block';
-    }
-
-    window.copyCode = function(code) {
-        navigator.clipboard.writeText(code).then(() => {
-            const btn = event.target;
-            const original = btn.innerHTML;
-            btn.innerHTML = 'COPIED';
-            btn.style.background = '#00cc00';
-            btn.style.color = 'white';
-            setTimeout(() => {
-                btn.innerHTML = original;
-                btn.style.background = '';
-                btn.style.color = '';
-            }, 1500);
-        });
-    };
-
-    // Smooth Spin Animation
     document.getElementById('spinButton').addEventListener('click', function() {
-        const chances = parseInt(localStorage.getItem('lotteryChances') || '0');
-        const spinIndex = parseInt(localStorage.getItem('spinIndex') || '0');
-        if (chances <= 0) return;
+        let chances = parseInt(localStorage.getItem('lotteryChances') || '3');
+        if (chances <= 0 || !canSpinNow()) return;
 
         this.disabled = true;
         const reel = document.getElementById('reel');
         const prizeHint = document.getElementById('prizeHint');
         prizeHint.classList.remove('show');
         prizeHint.textContent = 'SPINNING...';
-
         reel.classList.add('spinning');
 
         let result;
-        const order = spinOrder[spinIndex];
 
-        if (order === 3) {
-            result = prizes[3];
-        } else {
-            result = getRandomPrize();
-            wins.push({ ...result });
-            localStorage.setItem('lotteryWins', JSON.stringify(wins));
+        if (chances === 3 || chances === 2) {
+            result = prizes[0]; 
+        } else if (chances === 1) {
+            result = getRandomGoodPrize(); 
         }
+
+        wins.push(result);
+        localStorage.setItem('lotteryWins', JSON.stringify(wins));
+
         setTimeout(() => {
             reel.classList.remove('spinning');
             reel.innerHTML = result.icon;
@@ -154,10 +174,10 @@
 
                 const modal = new bootstrap.Modal(document.getElementById('resultModal'));
                 document.getElementById('prizeIcon').innerHTML = result.icon;
-                document.getElementById('prizeIcon').className = `modal-prize-icon ${result.class}`;
+                document.getElementById('prizeIcon').className = `modal-prize-icon ${result.class || ''}`;
                 document.getElementById('prizeTitle').textContent = result.name.toUpperCase();
-                document.getElementById('prizeTitle').className = `modal-prize-title ${result.class}`;
-                document.getElementById('prizeDesc').textContent = result.desc || 'Try again.';
+                document.getElementById('prizeTitle').className = `modal-prize-title ${result.class || ''}`;
+                document.getElementById('prizeDesc').textContent = result.desc || 'Better luck next time!';
 
                 const couponSection = document.getElementById('couponSection');
                 if (result.id) {
@@ -170,25 +190,29 @@
 
                 modal.show();
 
-                localStorage.setItem('lotteryChances', chances - 1);
-                localStorage.setItem('spinIndex', spinIndex + 1);
+                // Reduce chances
+                chances--;
+                localStorage.setItem('lotteryChances', chances);
+
+                if (chances === 0) {
+                    localStorage.setItem('lotteryLastSpinTime', Date.now().toString());
+                }
+
                 setTimeout(() => {
                     updateChances();
                     showResults();
                     document.getElementById('spinButton').disabled = false;
-                }, 300);
+                }, 400);
             }, 300);
         }, 2200);
     });
-
-    // Load saved state
     window.onload = function() {
         const savedPhone = localStorage.getItem('lotteryPhone');
         if (savedPhone === SPECIAL_NUMBER) {
-            const chances = parseInt(localStorage.getItem('lotteryChances') || '0');
-            wins = JSON.parse(localStorage.getItem('lotteryWins') || '[]');
             document.getElementById('userNameDisplay').innerHTML = `${USER_NAME}<br><small style="color:#aaa;letter-spacing:1px;">(${USER_ID})</small>`;
-            if (chances > 0) {
+            wins = JSON.parse(localStorage.getItem('lotteryWins') || '[]');
+
+            if (parseInt(localStorage.getItem('lotteryChances') || '3') > 0 || canSpinNow()) {
                 showSection('welcomeSection');
             } else {
                 showSection('spinSection');
@@ -198,7 +222,5 @@
         }
     };
 </script>
-
 </body>
 </html>
-
