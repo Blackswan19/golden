@@ -449,10 +449,10 @@ function updateAllButtonColors(user) {
         // Only apply status color if NOT active
         if (!btn.classList.contains("active")) {
             if (overdueInfo.overdue) {
-                btn.style.background = "#8B0000"; // darkred
+                btn.style.background = "rgb(195 86 0)"; // darkred
                 btn.style.color = "white";
             } else if (dueToday) {
-                btn.style.background = "#FF8C00"; // orange
+                btn.style.background = "#ff9900ff"; // orange
                 btn.style.color = "white";
             } else {
                 btn.style.background = "";
