@@ -59,9 +59,9 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "14-10-2025", endDate: "31-10-2025", interest: 3600, takenAmount: 6690, takenFrom: "MLLD", fineRate: 30 },
-            { planDate: "14-10-2025", endDate: "31-10-2025", interest: 2969, takenAmount: 5880, takenFrom: "MLLD", fineRate: 30 },
-            { planDate: "14-10-2025", endDate: "31-10-2025", interest: 3380, takenAmount: 5560, takenFrom: "MLLD(Offer)", fineRate: 30 }
+            { planDate: "14-10-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 6690, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "14-10-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 5880, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "14-10-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 5560, takenFrom: "MLLD(Offer)", fineRate: 0 }
         ]
     },
     "Cherish@1234": {
