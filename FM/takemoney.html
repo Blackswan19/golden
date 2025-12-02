@@ -8,7 +8,7 @@
         hash = ((hash << 5) + hash) + today.charCodeAt(i); 
     }
 
-    const rate = 27 + (Math.abs(hash) % 14);
+    const rate = 28 + (Math.abs(hash) % 14);
     return rate;
 }
         function calculateInterest(amount, percentage) {
