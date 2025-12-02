@@ -39,9 +39,9 @@ const passwords = {
             { planDate: "16-08-2025", endDate: "31-08-2025", interest: 1275, takenAmount: 5000, takenFrom: "MLLD", fineRate: 90 },
             { planDate: "18-08-2025", endDate: "02-09-2025", interest: 1380, takenAmount: 5000, takenFrom: "MLLD", fineRate: 88 },
             { planDate: "18-08-2025", endDate: "02-09-2025", interest: 690, takenAmount: 2500, takenFrom: "MLLD", fineRate: 46 },
-            { planDate: "01-11-2025", endDate: "01-12-2025<br><ex>(Extra 160rs added for delay)</ex>", interest: 3560, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 60 },
-            { planDate: "06-11-2025", endDate: "01-12-2025<br><ex>(Extra 160rs added for delay)</ex>", interest: 4880, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 130 },
-            { planDate: "09-11-2025", endDate: "01-12-2025<br><ex>(Extra 160rs added for delay)", interest: 3860, takenAmount: 7500, takenFrom: "MLLD", fineRate: 85 },
+            { planDate: "01-11-2025", endDate: "01-12-2025", interest: 3560, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 90 },
+            { planDate: "06-11-2025", endDate: "01-12-2025", interest: 4880, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 180 },
+            { planDate: "09-11-2025", endDate: "01-12-2025", interest: 3860, takenAmount: 7500, takenFrom: "MLLD", fineRate: 120 },
         ]
     },
     "Cherish@123": {
@@ -395,29 +395,48 @@ function calculateDaysBetween(startDate, endDate) {
 
 let sessionReferenceTime = null;
 
-function calculateOverdueFine(endDate, loan, user) {
+function calculateOverdueFine(endDateString, loan, user = {}) {
     try {
-        const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
-        const endMatch = endDate.split('(')[0].split('<')[0].trim().match(dateFormat);
-        if (!endMatch) return { overdue: false, fine: 0, hoursOverdue: 0, daysOverdue: 0 };
+        // Clean any extra text: "(overdue)", HTML, etc.
+        const clean = endDateString.split('(')[0].split('<')[0].trim();
 
-        const end = new Date(`${endMatch[3]}-${endMatch[2]}-${endMatch[1]}`);
-        end.setHours(23, 59, 59, 999);
+        // Match DD-MM-YYYY strictly
+        const match = clean.match(/^(\d{2})-(\d{2})-(\d{4})$/);
+        if (!match) return { overdue: false, fine: 0, daysOverdue: 0, hoursOverdue: 0 };
 
-        if (!sessionReferenceTime) sessionReferenceTime = new Date();
-        const now = sessionReferenceTime;
+        const [, day, month, year] = match;
+        const endDate = new Date(`${year}-${month}-${day}`);
+        
+        // Fine starts the NEXT day → so we consider end of endDate as deadline
+        endDate.setHours(23, 59, 59, 999);
 
-        if (now > end) {
-            const diffTime = now - end;
-            const hoursOverdue = Math.floor(diffTime / (1000 * 60 * 60));
-            const daysOverdue = Math.floor(hoursOverdue / 24);
-            const fineRate = loan.fineRate !== undefined ? loan.fineRate : user.fineRate || 0;
-            const fine = daysOverdue * fineRate;
-            return { overdue: true, fine, hoursOverdue, daysOverdue };
+        const now = new Date(); // Real current time
+
+        if (now <= endDate) {
+            return { overdue: false, fine: 0, daysOverdue: 0, hoursOverdue: 0 };
         }
-        return { overdue: false, fine: 0, hoursOverdue: 0, daysOverdue: 0 };
-    } catch (error) {
-        return { overdue: false, fine: 0, hoursOverdue: 0, daysOverdue: 0 };
+
+        // Calculate exact days overdue (starts from the day after endDate)
+        const diffMs = now - endDate;
+        const hoursOverdue = Math.floor(diffMs / (1000 * 60 * 60));
+        const daysOverdue = Math.ceil(diffMs / (1000 * 60 * 60 * 24)); // This is key!
+
+        const fineRate = loan?.fineRate ?? user?.fineRate ?? 0;
+        const fine = daysOverdue * fineRate;
+
+        return {
+            overdue: true,
+            fine,
+            daysOverdue,
+            hoursOverdue,
+            fineRateUsed: fineRate,
+            endDate: endDate.toISOString().split('T')[0],
+            calculatedAt: now.toISOString()
+        };
+
+    } catch (err) {
+        console.error("Fine calc error:", err);
+        return { overdue: false, fine: 0, daysOverdue: 0, hoursOverdue: 0 };
     }
 }
 
