@@ -1,8 +1,5 @@
   const blockedPasswords = ["6275"];
 
  const specialRates = {
-            'Mon Nov 17 2025': 46
+            'Thu Dec 04 2025': 32
         };
-
-
-  const validPasswords = ["9919", "Mahesh888*"];
