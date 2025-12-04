@@ -1,5 +1,6 @@
   const blockedPasswords = ["6275"];
 
  const specialRates = {
-            'Thu Dec 04 2025': 32
+            'Thu Dec 04 2025': 34
         };
+
