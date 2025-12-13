@@ -259,7 +259,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
     text-underline-position: under;
     position: relative;
     top: 5px;
-    background: rgba(255, 255, 255, 0.18);
+    background: #80808066;
     padding: 8px 15px;
     display: flex;
     justify-content: center;
@@ -525,7 +525,17 @@ function displayLoanDetails(loan, index) {
         <p id="scrotamts"></p>
         <div class="loan-entry">
             <p style="text-align:center;position:sticky;top:90px;margin-top:20px;right:16px;float:right;margin-right:-9px;">
-                <button class="amounts-btn downsingle" style="width:100%;font-size:9px;padding:0px 12px;display:flex;flex-direction:row;justify-content:center;align-items:center;margin-top:10px;font-weight:400;letter-spacing:0.2px;    backdrop-filter: blur(1.5px);" onclick="downloadSingleLoan(${index})">
+                <button class="amounts-btn downsingle" style="width: 100%;
+    font-size: 9px;
+    padding: 0px 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    backdrop-filter: blur(1.5px);" onclick="downloadSingleLoan(${index})">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"></path></svg> Download This Receipt
                 </button>
             </p>
@@ -734,3 +744,4 @@ function showCoinsCount() {
     const coins = document.getElementById('coinsCount').textContent.trim();
     alert(`BsRora(Bot) : \n\nYou have ${coins} rate exchange coins on your account.`);
 }
+
