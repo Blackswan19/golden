@@ -239,7 +239,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
     border: solid 1.4px #7e7e7e00;
     letter-spacing: 0.3px;
     padding: 14px 10px 18px 15px;
-    margin-top: 10px;
+    margin-top: 30px;
     margin-bottom: 10px;
                     '>
                     <span style='font-size: 15px;
@@ -524,14 +524,7 @@ function displayLoanDetails(loan, index) {
     loanDetails.innerHTML = `
         <p id="scrotamts"></p>
         <div class="loan-entry">
-            <p style="text-align: center;
-    position: sticky;
-    top: -45px;
-    margin-top: 20px;
-    right: 10px;
-    float: right;
-    margin-right: -9px;
-    z-index: 1000000;">
+            <p style="text-align:center;position:sticky;top:90px;margin-top:20px;right:16px;float:right;margin-right:-9px;">
                 <button class="amounts-btn downsingle" style="width: 100%;
     font-size: 9px;
     padding: 0px 12px;
@@ -539,7 +532,7 @@ function displayLoanDetails(loan, index) {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 25px;
     font-weight: 400;
     letter-spacing: 0.2px;
     backdrop-filter: blur(1.5px);" onclick="downloadSingleLoan(${index})">
