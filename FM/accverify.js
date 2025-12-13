@@ -524,7 +524,14 @@ function displayLoanDetails(loan, index) {
     loanDetails.innerHTML = `
         <p id="scrotamts"></p>
         <div class="loan-entry">
-            <p style="text-align:center;position:sticky;top:90px;margin-top:20px;right:16px;float:right;margin-right:-9px;">
+            <p style="text-align: center;
+    position: sticky;
+    top: -45px;
+    margin-top: 20px;
+    right: 10px;
+    float: right;
+    margin-right: -9px;
+    z-index: 1000000;">
                 <button class="amounts-btn downsingle" style="width: 100%;
     font-size: 9px;
     padding: 0px 12px;
