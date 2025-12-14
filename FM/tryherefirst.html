@@ -226,7 +226,7 @@
         #main-content {
             opacity: 0;
             transition: opacity 1.2s ease 0.6s;
-            padding: 180px 60px 120px;
+            padding: 140px 10px 80px 10px;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -376,10 +376,6 @@
                 display: block;
             }
 
-            #main-content {
-                padding: 140px 30px 80px;
-            }
-
             .hero {
                 padding: 80px 0 120px;
             }
@@ -396,7 +392,12 @@
                 grid-template-columns: 1fr;
                 gap: 60px;
             }
-
+ .cta-section {
+           text-align: center;
+    padding: 50px 5px;
+    background: var(--primary);
+    color: var(--bg);
+        }
             #close-menu-btn {
                 top: 40px;
         right: 33px;
@@ -484,7 +485,7 @@
     </div>
 
     <script>
-        document.addEventListener('contextmenu', e => e.preventDefault());
+        // document.addEventListener('contextmenu', e => e.preventDefault());
         const correctPassword = '1234';
         const loginScreen = document.getElementById('login-screen');
         const mainLogo = document.getElementById('main-logo');
