@@ -742,6 +742,6 @@ function showStarCount() {
 
 function showCoinsCount() {
     const coins = document.getElementById('coinsCount').textContent.trim();
-    alert(`BsRora(Bot) : \n\nYou have ${coins} rate exchange coins on your account.`);
+    alert(`BsRora(Bot) : \n\nYou have using ${coins} Duplicate Clone account.`);
 }
 
