@@ -21,11 +21,11 @@ const passwords = {
     },
     "6275": {
         name: "Srikanth Jampana",
-        membershipType: "Duplicate",
+        membershipType: "Duplicate clone",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#ff4500",
         stars: 0,
-        coins: 0,
+        coins: 1,
         tierPoints: 5,
         showCustomContent: "yes",
         customContent: {
