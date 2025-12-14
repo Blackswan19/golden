@@ -1,1 +1,557 @@
-no test...
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BS&MFI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+         * { margin:0; padding:0; box-sizing:border-box;letter-spacing:0.6px; }
+        body {
+            font-family: "Red Hat Display", sans-serif;}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;scrollbar-width: none;
+        }
+
+        :root {
+            --primary: #0000e6; /* Your main blue color */
+            --text: #1a1a1a;
+            --bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;scrollbar-width: none;
+        }
+* {
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Login Screen */
+        #login-screen {
+            position: fixed;
+            inset: 0;
+            background-color: var(--bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        #main-logo {
+           width: 450px;
+    max-width: 95vw;
+    transition: all 1.4s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        #main-logo.authenticated {
+            width: 100px;
+            position: fixed;
+            top: 40px;
+            left: 60px;
+            z-index: 100;
+        }
+
+        #password-form {
+           display: flex;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.8s ease 0.4s;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+        }
+
+        #password-input {
+           padding: 16px 24px;
+    font-size: 16px;
+    font-weight: 300;
+    background: transparent;
+    width: 300px;
+    text-align: center;
+    color: var(--primary);
+    outline: none;
+    border: none;letter-spacing: 1px;
+    text-transform: none;font-family: "Red Hat Display", sans-serif;
+    border-bottom: solid 1.5px #000000a6;
+        }
+        #password-input:focus{
+            border-bottom: solid 2px #1100ff;
+            color: #1100ff;
+        }
+        #submit-btn {
+            margin-top: 24px;
+            padding: 14px 48px;
+            background: transparent;
+            border: 1px solid var(--primary);
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary);
+            cursor: pointer;font-family: "Red Hat Display", sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        #submit-btn:hover {
+            background: var(--primary);
+            color: var(--bg);
+        }
+
+        #error-message {
+            margin-top: 16px;
+            font-size: 14px;
+            color: #a00;
+            font-weight: 300;
+        }
+
+        /* Fixed Header - Logo left, Nav right */
+        header {
+           position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    backdrop-filter: blur(40px);
+    background: #ffffffb5;
+        }
+
+        #logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        #desktop-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        #desktop-nav a {
+            margin-left: 48px;
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+        }
+
+        #desktop-nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* Mobile Menu Button (visible on mobile, placed right) */
+        #mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Full Page Mobile Menu Overlay */
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg);
+            z-index: 200;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #mobile-menu.active {
+            display: flex;
+        }
+
+        #mobile-menu a {
+            font-size: 32px;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin: 30px 0;
+            text-decoration: none;
+            color: var(--primary);
+            transition: opacity 0.3s;
+        }
+
+        #mobile-menu a:hover {
+            opacity: 0.7;
+        }
+
+        #close-menu-btn {
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            background: none;
+            border: none;
+            font-size: 36px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        #main-content {
+            opacity: 0;
+            transition: opacity 1.2s ease 0.6s;
+            padding: 180px 60px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        #main-content.visible {
+            opacity: 1;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 120px 0 180px;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 10em;
+            font-weight: 600;
+            letter-spacing: 3px;
+            margin-bottom: 0px;
+            color: var(--primary);
+            height: 200px;
+        }
+
+        .hero p {
+            font-size: clamp(18px, 2vw, 22px);
+    font-weight: 300;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: "Red Hat Display", sans-serif;
+    color: #3e3e3e;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 80px;
+            margin: 120px 0;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .service-card h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(36px, 5vw, 48px);
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+
+        .service-card p {
+                font-size: 19px;
+    font-weight: 300;
+    margin-bottom: 32px;
+    font-family: "Red Hat Display", sans-serif;
+    color: #3e3e3e;
+
+        }
+
+        .explore-btn {
+            display: inline-block;
+            padding: 12px 36px;
+            border: 1px solid var(--primary);
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .explore-btn:hover {
+            background: var(--primary);
+            color: var(--bg);
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 120px 0;
+            background: var(--primary);
+            color: var(--bg);
+        }
+
+        .cta-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(48px, 6vw, 64px);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.8;
+        }
+
+        .cta-btn {
+            padding: 14px 48px;
+            border: 1px solid var(--bg);
+            background: transparent;
+            color: var(--bg);
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background: var(--bg);
+            color: var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 80px 0;
+            font-size: 13px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            opacity: 0.6;
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            #main-logo.authenticated {
+                width: 80px;
+                top: 30px;
+                left: 30px;
+            }
+
+            header {
+                padding: 0 30px;
+            }
+
+            #desktop-nav {
+                display: none;
+            }
+
+            #mobile-menu-btn {
+                display: block;
+            }
+
+            #main-content {
+                padding: 140px 30px 80px;
+            }
+
+            .hero {
+                padding: 80px 0 120px;
+            }
+            .hero h1 {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 6em;
+                font-weight: 600;
+                letter-spacing: 3px;
+                margin-bottom: 0px;
+                color: var(--primary);
+                height: 140px;
+                }
+            .services {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            #close-menu-btn {
+                top: 40px;
+        right: 33px;
+        font-weight: 100;
+            }
+
+            #mobile-menu a {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #password-input {
+                width: 80vw;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Login Screen -->
+    <div id="login-screen">
+        <img id="main-logo" src="https://i.ibb.co/bjy8q1jz/bsmfi-logo.png" alt="BS&MFI">
+        <div id="password-form">
+            <input type="text" id="password-input" placeholder="Enter passcode">
+            <button id="submit-btn">SUBMIT</button>
+            <div id="error-message"></div>
+        </div>
+        <a href="https://mfi0212.github.io/MFI/entrysheet" style="margin-top: 30px;
+    color: #3e3e3e;
+    text-decoration: underline;
+    text-underline-position: under;">ENTER INTO BS&MFI</a>
+    </div>
+
+    <!-- Fixed Header: Logo Left + Nav Right -->
+    <header>
+        <div id="logo-container">
+            <img id="header-logo" src="https://i.ibb.co/bjy8q1jz/bsmfi-logo.png" alt="BS&MFI" style="display:none; width:100px;">
+        </div>
+        <nav id="desktop-nav">
+            <a href="#" id="account-link">Account</a>
+            <a href="#" id="take-money-link">Take Money</a>
+            <a href="#" id="contact-link">Contact</a>
+        </nav>
+        <button id="mobile-menu-btn">☰</button>
+    </header>
+
+    <!-- Full Page Mobile Menu -->
+    <div id="mobile-menu">
+        <button id="close-menu-btn">×</button>
+        <a href="#" id="mobile-account">Account</a>
+        <a href="#" id="mobile-take-money">Take Money</a>
+        <a href="#" id="mobile-contact">Contact</a>
+    </div>
+
+    <div id="main-content">
+        <section class="hero">
+            <h1>BS&MFI</h1>
+            <p>Timeless financial elegance, crafted for the discerning.</p>
+        </section>
+
+        <section class="services">
+            <div class="service-card">
+                <h2>Delay It</h2>
+                <p>Extend your financial commitments with unmatched grace and precision, tailored to your rhythm.</p>
+                <a href="#" class="explore-btn">Discover Delay It</a>
+            </div>
+
+            <div class="service-card">
+                <h2>Split It</h2>
+                <p>Transform expenses into effortless installments, designed for seamless integration into your lifestyle.</p>
+                <a href="#" class="explore-btn">Discover Split It</a>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Your Journey Begins</h2>
+            <p>Experience financial solutions that elevate your aspirations with unparalleled sophistication.</p>
+            <a href="#" class="cta-btn">Start Now</a>
+        </section>
+
+        <footer>
+            &copy; 2025 BS&MFI. Crafted with Precision.
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        const correctPassword = '1234';
+        const loginScreen = document.getElementById('login-screen');
+        const mainLogo = document.getElementById('main-logo');
+        const passwordForm = document.getElementById('password-form');
+        const passwordInput = document.getElementById('password-input');
+        const submitBtn = document.getElementById('submit-btn');
+        const errorMessage = document.getElementById('error-message');
+        const mainContent = document.getElementById('main-content');
+        const headerLogo = document.getElementById('header-logo');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+
+        window.addEventListener('load', () => {
+            passwordForm.style.opacity = '1';
+        });
+
+        submitBtn.addEventListener('click', () => {
+            if (passwordInput.value === correctPassword) {
+                mainLogo.classList.add('authenticated');
+                headerLogo.style.display = 'block';
+
+                loginScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loginScreen.style.display = 'none';
+                }, 1000);
+
+                setTimeout(() => {
+                    mainContent.classList.add('visible');
+                }, 800);
+            } else {
+                errorMessage.textContent = 'Incorrect Password';
+            }
+        });
+
+        // Mobile menu open/close
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Placeholder actions
+        ['account-link', 'mobile-account', 'take-money-link', 'mobile-take-money', 'contact-link', 'mobile-contact'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    alert('Feature coming soon.');
+                });
+            }
+        });
+
+        document.querySelectorAll('.explore-btn, .cta-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Service coming soon.');
+            });
+        });
+    </script>
+</body>
+</html>
