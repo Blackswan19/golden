@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BSMFI Portfolio - Exclusive Access</title>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <style>
+       <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+   <style>
+        * { margin:0; padding:0; box-sizing:border-box; letter-spacing:0.6px;}
         :root {
             --main-blue: #0000e6;
             --light-blue: #f0f0ff;
@@ -16,7 +21,7 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Libre Baskerville', Georgia, serif;
+            font-family: 'Cormorant Garamond', serif;
             background-color: #ffffff;
             color: var(--text);
             line-height: 1.6;
@@ -45,28 +50,27 @@
 
         #password-form img {
             width: 320px;
-            margin-bottom: 60px;
         }
 
         #password-form label {
-            font-size: 1.5rem;
-            font-style: italic;
-            letter-spacing: 0.12em;
-            display: block;
-            margin-bottom: 50px;
+           font-size: 25px;
+    font-style: italic;
+    display: block;
+    margin-bottom: 50px;
         }
 
         #password-input {
-            padding: 20px 30px;
-            font-size: 1.4rem;
-            width: 100%;
-            border: none;
-            border-bottom: 3px solid var(--light-text);
-            background: transparent;
-            color: var(--light-text);
-            text-align: center;
-            letter-spacing: 0.2em;
-            margin-bottom: 40px;
+        padding: 15px;
+    font-size: 20px;
+    width: 100%;
+    border: none;
+    border-bottom: 1.5px solid var(--light-text);
+    background: transparent;
+    color: var(--light-text);
+    text-align: center;
+    margin-bottom: 10px;
+    outline: none;
+    font-family: "Red Hat Display", sans-serif;
         }
 
         #password-input::placeholder {
@@ -74,15 +78,18 @@
         }
 
         #submit-btn {
-            background: transparent;
-            color: var(--light-text);
-            border: 2px solid var(--light-text);
-            padding: 20px 70px;
-            font-size: 1.3rem;
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
-            cursor: pointer;
-            transition: all 0.4s;
+          margin-top: 24px;
+    padding: 14px 48px;
+    background: transparent;
+    border: 1px solid;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+    cursor: pointer;
+    font-family: "Red Hat Display", sans-serif;
+    transition: all 0.3s ease;
         }
 
         #submit-btn:hover {
@@ -91,12 +98,16 @@
         }
 
         #saved-message {
-            margin-top: 30px;
-            font-size: 1.2rem;
-            font-style: italic;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-            height: 30px; /* fixed height to prevent layout shift */
+           margin-top: 30px;
+    font-size: 13px;
+    transition: opacity 0.6s ease;
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    transform: translate(-50%, -100%);
+    left: 50%;
+    background: black;
+    padding: 10px;
         }
 
         #main-content {
@@ -106,8 +117,10 @@
         }
 
         header {
-            text-align: center;
-            background-color: var(--light-blue);
+               text-align: center;
+    background-color: var(--light-blue);
+    position: sticky;
+    top: 0px;
         }
 
         header img {
@@ -115,14 +128,19 @@
         }
 
         .current-date {
-            text-align: center;
+           text-align: center;
     font-size: 15px;
     color: #333;
+    font-family: "Red Hat Display", sans-serif;
+    font-weight: 600;
         }
-
+span#grand-total-amount {
+    font-family: "Red Hat Display", sans-serif;
+    font-size: 15px;
+}
         .profile-header {
             text-align: center;
-            padding: 80px 20px;
+            padding:20px;
         }
 
         .membership-icon {
@@ -158,19 +176,21 @@
        
 
         .stat-card h3 {
-           font-size: 15px;
+           font-size: 18px;
     color: var(--main-blue);
         }
 
         .stat-value {
-           font-size: 20px;
+              font-size: 16px;
     font-weight: 600;
     color: var(--main-blue);
+    font-family: "Red Hat Display", sans-serif;
+
         }
 
         .custom-content {
             text-align: center;
-            margin: 100px auto;
+            margin: 35px;
             max-width: 900px;
             padding: 0 20px;
         }
@@ -192,49 +212,50 @@
         }
 
         .amounts-section {
-            margin: 100px auto;
-            max-width: 1200px;
-            padding: 0 20px;
+           margin: 50px auto;
+    max-width: 1200px;
+    padding: 0 20px;
         }
 
         .amounts-section h2 {
-            font-size: 2.4rem;
-            text-align: center;
-            margin-bottom: 60px;
-            color: var(--main-blue);
+            font-size: 21px;
+    text-align: center;
+    margin-bottom: unset;
+    color: #000000;
         }
 
         .amount-buttons {
-           display: flex;
+         display: flex;
     gap: 30px;
     margin-bottom: 80px;
     overflow: auto;
-    padding: 14px;
+    padding: 20px;
     position: sticky;
-    top: 10px;
+    top: 105px;
     background: white;
     width: 100%;
     scrollbar-width: thin;
         }
 
         .amount-btn {
-            background: var(--main-blue);
-    color: white;
+          background: transparent;
+    color: blue;
     text-transform: uppercase;
     border: none;
     cursor: pointer;
     transition: all 0.4s;
-    padding: 13px;
-    font-size: 17px;
+    padding: 12px 16px;
+    font-size: 13px;
     width: fit-content;
     white-space: nowrap;
     border: solid;
+    font-family: "Red Hat Display", sans-serif;
         }
 
         .amount-btn:hover, .amount-btn.active {
-            background: #ffffff;
-            color: #0000b3;
-            border: solid;
+           background: #0000b3;
+    color: #ffffff;
+    border: solid blue;
         }
 
         .loan-details-panel {
@@ -257,12 +278,18 @@
         }
 
         th, td {
-               padding: 20px;
+              padding: 14px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-    font-size: 15px;
+    font-size: 18px;
+    font-weight: 900;
         }
-
+td {
+    font-family: "Red Hat Display", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: end;
+}
         th {
             color: var(--main-blue);
         }
@@ -280,22 +307,21 @@
         }
 
         .grand-total {
-               text-align: center;
-    margin: 60px 0px 0px 0px;
+            text-align: center;
     padding: 10px;
     background: var(--main-blue);
     color: white;
     font-size: 20px;
-    max-width: 900px;
-    width: fit-content;
+    width: 100%;
+    margin-top: 10px;
         }
 
         footer {
-            text-align: center;
-            padding: 100px 20px;
-            font-size: 1.1rem;
-            color: #555;
-            letter-spacing: 0.12em;
+         text-align: center;
+    padding: 20px 0px 55px 0px;
+    font-size: 14px;
+    color: #000000c9;
+    font-family: "Red Hat Display", sans-serif;
         }
 
         @media (max-width: 768px) {
@@ -312,8 +338,8 @@
     <div id="password-overlay">
         <div id="password-form">
             <img src="https://i.ibb.co/bjy8q1jz/bsmfi-logo.png" alt="BSMFI">
-            <label for="password-input">Enter Your Exclusive Access Code</label>
-            <input type="text" id="password-input" placeholder="e.g. 6275 or Cherish@123">
+            <label for="password-input">My account</label>
+            <input type="text" id="password-input" placeholder="Enter password">
             <div id="saved-message"></div>
             <br><br>
             <button id="submit-btn">Enter</button>
@@ -325,12 +351,12 @@
             <img src="https://i.ibb.co/bjy8q1jz/bsmfi-logo.png" alt="BSMFI">
         </header>
 
-        <p class="current-date">Current Date: <span id="current-date-display">December 15, 2025</span></p>
+        <p class="current-date"><span id="current-date-display">December 15, 2025</span></p>
 
         <div class="profile-header" id="profile-bg">
             <img id="membership-icon" class="membership-icon" src="" alt="Membership Icon">
             <h2 class="client-name" id="client-name"></h2>
-            <p class="membership-type" id="membership-type"></p>
+            <p class="membership-type" id="membership-type" style="display: none;"></p>
         </div>
  <div class="grand-total" id="grand-total">
                 Total Amount to Repay: ₹<span id="grand-total-amount">0</span>
@@ -341,7 +367,7 @@
                 <p class="stat-value" id="stars">0</p>
             </div>
             <div class="stat-card">
-                <h3>Coins</h3>
+                <h3>Duplicate</h3>
                 <p class="stat-value" id="coins">0</p>
             </div>
             <div class="stat-card" style="display: none;">
@@ -353,15 +379,14 @@
         <div class="custom-content" id="custom-content"></div>
 
         <div class="amounts-section">
-            <h2>Select Amount to View Details</h2>
+            <h2>Amount Borrowed</h2>
             <div class="amount-buttons" id="amount-buttons"></div>
 
             <div id="loan-panels"></div>
         </div>
 
         <footer>
-            Exclusive Access • Confidential Portfolio • BSMFI<br>
-            Powered by BsPsgenerater
+           © BS&MFI. All rights reserved.
         </footer>
     </div>
 
