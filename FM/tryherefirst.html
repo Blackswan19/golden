@@ -237,13 +237,14 @@ span#grand-total-amount {
     scrollbar-width: thin;
         }
 #loan-panels h3 {
-   text-align: center;
+text-align: center;
     margin: 0px;
     color: var(--main-blue);
     font-family: "Red Hat Display", sans-serif;
     font-size: 15px;
     border-bottom: solid;
-    padding: 18px;
+    padding: 15px;
+    background: black;
 }
         .amount-btn {
           background: transparent;
@@ -280,9 +281,9 @@ span#grand-total-amount {
 
         table {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 30px;
-            font-size: 1.15rem;
+    border-collapse: collapse;
+    font-size: 1.15rem;
+    margin-top: -40px;
         }
 
         th, td {
@@ -554,7 +555,7 @@ td {
                         statusRow = "";
                     }
                     panel.innerHTML = `
-                        <h3 style="text-align:center; margin-bottom:40px; color:var(--main-blue);">
+                        <h3 style="text-align:center; margin-bottom:40px; color:white;">
                             Amount ${index + 1} — ₹${loan.takenAmount}
                         </h3>
                         <table>
