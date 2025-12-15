@@ -3,561 +3,545 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BS&MFI</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
+    <title>BSMFI Portfolio - Exclusive Access</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-         * { margin:0; padding:0; box-sizing:border-box;letter-spacing:0.6px; }
-        body {
-            font-family: "Red Hat Display", sans-serif;}
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;scrollbar-width: none;
-        }
-
         :root {
-            --primary: #0000e6; /* Your main blue color */
-            --text: #1a1a1a;
-            --bg: #ffffff;
+            --main-blue: #0000e6;
+            --light-blue: #f0f0ff;
+            --text: #000000;
+            --light-text: #ffffff;
         }
 
-        * {
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;scrollbar-width: none;
-        }
-* {
-            -webkit-tap-highlight-color: transparent;
-        }
-        body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg);
+            font-family: 'Libre Baskerville', Georgia, serif;
+            background-color: #ffffff;
             color: var(--text);
-            line-height: 1.8;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Login Screen */
-        #login-screen {
+        #password-overlay {
             position: fixed;
-            inset: 0;
-            background-color: var(--bg);
+            top: 0; left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--main-blue);
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-
-        #main-logo {
-           width: 450px;
-    max-width: 95vw;
-    transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-
-        #main-logo.authenticated {
-            width: 100px;
-            position: fixed;
-            top: 10px;
-            left: 60px;
-            z-index: 100;
+            transition: opacity 0.8s ease;
         }
 
         #password-form {
-           display: flex;
-    margin-top: 20px;
-    opacity: 0;
-    transition: opacity 0.8s ease 0.4s;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            color: var(--light-text);
+        }
+
+        #password-form img {
+            width: 320px;
+            margin-bottom: 60px;
+        }
+
+        #password-form label {
+            font-size: 1.5rem;
+            font-style: italic;
+            letter-spacing: 0.12em;
+            display: block;
+            margin-bottom: 50px;
         }
 
         #password-input {
-           padding: 16px 24px;
-    font-size: 16px;
-    font-weight: 300;
-    background: transparent;
-    width: 300px;
-    text-align: center;
-    color: var(--primary);
-    outline: none;
-    border: none;letter-spacing: 1px;
-    text-transform: none;font-family: "Red Hat Display", sans-serif;
-    border-bottom: solid 1.5px #000000a6;
-        }
-        #password-input:focus{
-            border-bottom: solid 2px #1100ff;
-            color: #1100ff;
-        }
-        #submit-btn {
-            margin-top: 24px;
-            padding: 14px 48px;
+            padding: 20px 30px;
+            font-size: 1.4rem;
+            width: 100%;
+            border: none;
+            border-bottom: 3px solid var(--light-text);
             background: transparent;
-            border: 1px solid var(--primary);
-            font-size: 14px;
-            font-weight: 300;
-            letter-spacing: 2px;
+            color: var(--light-text);
+            text-align: center;
+            letter-spacing: 0.2em;
+            margin-bottom: 40px;
+        }
+
+        #password-input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        #submit-btn {
+            background: transparent;
+            color: var(--light-text);
+            border: 2px solid var(--light-text);
+            padding: 20px 70px;
+            font-size: 1.3rem;
             text-transform: uppercase;
-            color: var(--primary);
-            cursor: pointer;font-family: "Red Hat Display", sans-serif;
-            transition: all 0.3s ease;
+            letter-spacing: 0.25em;
+            cursor: pointer;
+            transition: all 0.4s;
         }
 
         #submit-btn:hover {
-            background: var(--primary);
-            color: var(--bg);
+            background: var(--light-text);
+            color: var(--main-blue);
         }
 
-        #error-message {
-            margin-top: 16px;
-            font-size: 14px;
-            color: #a00;
-            font-weight: 300;
+        #saved-message {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            height: 30px; /* fixed height to prevent layout shift */
         }
 
-        /* Fixed Header - Logo left, Nav right */
-        header {
-           position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 120px;
-    z-index: 90;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 60px;
-    backdrop-filter: blur(40px);
-    background: #ffffffb5;
-        }
-
-        #logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        #desktop-nav {
-            display: flex;
-            align-items: center;
-        }
-
-        #desktop-nav a {
-                margin-left: 48px;
-    text-decoration: none;
-    color: #282828;
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-
-        }
-
-        #desktop-nav a:hover {
-            color: #0000e6;
-        }
-
-        /* Mobile Menu Button (visible on mobile, placed right) */
-        #mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 28px;
-            cursor: pointer;
-            color: var(--primary);
-        }
-
-        /* Full Page Mobile Menu Overlay */
-        #mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--bg);
-            z-index: 200;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #mobile-menu.active {
-            display: flex;
-        }
-
-        #mobile-menu a {
-            font-size: 32px;
-    font-weight: 400;
-    text-transform: uppercase;
-    margin: 30px 0;
-    text-decoration: none;
-    color: rgb(49, 49, 49);
-    transition: opacity 0.3s;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 800;
-        }
-
-        #mobile-menu a:hover {
-            color:#0000e6;
-        }
-
-        #close-menu-btn {
-            position: absolute;
-            top: 40px;
-            right: 60px;
-            background: none;
-            border: none;
-            font-size: 36px;
-            cursor: pointer;
-            color: var(--primary);
-        }
-
-        /* Main Content */
         #main-content {
-           opacity: 0;
-    transition: opacity 1.2s ease 0.6s;
-    padding: 165px 10px 10px 10px;
-    max-width: 1400px;
-    margin: 0 auto;
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease;
         }
 
-        #main-content.visible {
-            opacity: 1;
-        }
-
-        .hero {
+        header {
             text-align: center;
-            padding: 120px 0 180px;
+            background-color: var(--light-blue);
         }
 
-        .hero h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 10em;
-            font-weight: 600;
-            letter-spacing: 3px;
-            margin-bottom: 0px;
-            color: var(--primary);
-            height: 200px;
+        header img {
+            width: 100px;
         }
 
-        .hero p {
-          font-size: 16px;
+        .current-date {
+            text-align: center;
+    font-size: 15px;
+    color: #333;
+        }
+
+        .profile-header {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .membership-icon {
+           width: 40px;
+    height: 40px;
+    margin-bottom: 0px;
+    background: black;
+    padding: 10px;
+    border-radius: 50%;
+        }
+
+        .client-name {
+          font-size: 25px;
+    margin: 10px 0 15px 0;
+    color: #ffffff;
+        }
+
+        .membership-type {
+            font-size: 15px;
+    font-style: italic;
+    color: #000000;
+        }
+
+        .stats-grid {
+           display: flex;
+    margin: 10px auto;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    background: #00000017;
+        }
+
+       
+
+        .stat-card h3 {
+           font-size: 15px;
+    color: var(--main-blue);
+        }
+
+        .stat-value {
+           font-size: 20px;
     font-weight: 600;
-    margin: 0px;
-    font-family: "Red Hat Display", sans-serif;
-    color: #3e3e3e;
+    color: var(--main-blue);
+        }
+
+        .custom-content {
+            text-align: center;
+            margin: 100px auto;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .custom-content p {
+            margin-bottom: 40px;
+        }
+
+        .custom-content a {
+            background: var(--main-blue);
+    color: white;
+    transition: 0.4s;
+    text-decoration: none;
+    padding: 10px;
+        }
+
+        .custom-content a:hover {
+            background: #0000b3;
+        }
+
+        .amounts-section {
+            margin: 100px auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .amounts-section h2 {
+            font-size: 2.4rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--main-blue);
+        }
+
+        .amount-buttons {
+           display: flex;
+    gap: 30px;
+    margin-bottom: 80px;
+    overflow: auto;
+    padding: 14px;
+    position: sticky;
+    top: 10px;
+    background: white;
+    width: 100%;
+    scrollbar-width: thin;
+        }
+
+        .amount-btn {
+            background: var(--main-blue);
+    color: white;
     text-transform: uppercase;
-    letter-spacing: 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s;
+    padding: 13px;
+    font-size: 17px;
+    width: fit-content;
+    white-space: nowrap;
+    border: solid;
         }
 
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 80px;
-            margin: 120px 0;
+        .amount-btn:hover, .amount-btn.active {
+            background: #ffffff;
+            color: #0000b3;
+            border: solid;
         }
 
-        .service-card {
-            text-align: center;
-            padding: 40px;
+        .loan-details-panel {
+            display: none;
+            background: #f9f9f9;
+            padding: 0px;
+            border: 1px solid #ddd;
+            margin-top: 40px;
         }
 
-        .service-card h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(36px, 5vw, 48px);
-            font-weight: 600;
-            letter-spacing: 2px;
-            margin-bottom: 24px;
-            color: var(--primary);
+        .loan-details-panel.active {
+            display: block;
         }
 
-        .service-card p {
-                font-size: 19px;
-    font-weight: 300;
-    margin-bottom: 32px;
-    font-family: "Red Hat Display", sans-serif;
-    color: #3e3e3e;
-
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            font-size: 1.15rem;
         }
 
-        .explore-btn {
-            display: inline-block;
-            padding: 12px 36px;
-            border: 1px solid var(--primary);
-            text-decoration: none;
-            color: var(--primary);
-            font-size: 12px;
-            font-weight: 400;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
+        th, td {
+               padding: 20px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 15px;
         }
 
-        .explore-btn:hover {
-            background: var(--primary);
-            color: var(--bg);
+        th {
+            color: var(--main-blue);
         }
 
-        .cta-section {
-            text-align: center;
-            padding: 120px 0;
-            background: var(--primary);
-            color: var(--bg);
+        .summary-row td {
+            font-weight: bold;
+            font-size: 15px;
+            background: black;
+            color: white;
         }
 
-        .cta-section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(48px, 6vw, 64px);
-            font-weight: 600;
-            margin-bottom: 24px;
+        .total-repay {
+            color: #b30000;
+            font-weight: bold;
         }
 
-        .cta-section p {
-            font-size: 18px;
-            font-weight: 300;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            opacity: 0.8;
-        }
-
-        .cta-btn {
-            padding: 14px 48px;
-            border: 1px solid var(--bg);
-            background: transparent;
-            color: var(--bg);
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .cta-btn:hover {
-            background: var(--bg);
-            color: var(--primary);
+        .grand-total {
+               text-align: center;
+    margin: 60px 0px 0px 0px;
+    padding: 10px;
+    background: var(--main-blue);
+    color: white;
+    font-size: 20px;
+    max-width: 900px;
+    width: fit-content;
         }
 
         footer {
-                text-align: center;
-    padding: 30px;
-    font-size: 13px;
-    font-weight: 300;
-    color: #1c1c1c;
+            text-align: center;
+            padding: 100px 20px;
+            font-size: 1.1rem;
+            color: #555;
+            letter-spacing: 0.12em;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            #main-logo.authenticated {
-                width: 80px;
-                top: 30px;
-                left: 30px;
-            }
-
-            header {
-                padding: 0 30px;
-            }
-
-            #desktop-nav {
-                display: none;
-            }
-
-            #mobile-menu-btn {
-                display: block;
-            }
-
-            
-            .hero h1 {
-                font-family: 'Cormorant Garamond', serif;
-                font-size: 6em;
-                font-weight: 600;
-                letter-spacing: 3px;
-                margin-bottom: 0px;
-                color: var(--primary);
-                height: 140px;
-                }
-            .services {
-                grid-template-columns: 1fr;
-                gap: 60px;
-            }
- .cta-section {
-           text-align: center;
-    padding: 50px 5px;
-    background: var(--primary);
-    color: var(--bg);
-        }
-            #close-menu-btn {
-                top: 40px;
-        right: 33px;
-        font-weight: 500;
-            }
- .hero p {
-          font-size: 16px;
-    font-weight: 600;
-    margin: -10px;
-    font-family: "Red Hat Display", sans-serif;
-    color: #3e3e3e;
-    text-transform: uppercase;
-    letter-spacing: 20px;
-        }
-            #mobile-menu a {
-                font-size: 28px;
-            }
+            #password-form img { width: 260px; }
         }
 
         @media (max-width: 480px) {
-            #password-input {
-                width: 80vw;
-            }
+            #password-form img { width: 220px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Login Screen -->
-    <div id="login-screen">
-        <img id="main-logo" src="https://i.ibb.co/bjy8q1jz/bsmfi-logo.png" alt="BS&MFI">
+    <div id="password-overlay">
         <div id="password-form">
-            <input type="text" id="password-input" placeholder="Enter passcode">
-            <button id="submit-btn">SUBMIT</button>
-            <div id="error-message"></div>
+            <img src="https://i.ibb.co/bjy8q1jz/bsmfi-logo.png" alt="BSMFI">
+            <label for="password-input">Enter Your Exclusive Access Code</label>
+            <input type="text" id="password-input" placeholder="e.g. 6275 or Cherish@123">
+            <div id="saved-message"></div>
+            <br><br>
+            <button id="submit-btn">Enter</button>
         </div>
-        <a href="https://mfi0212.github.io/MFI/entrysheet" style="margin-top: 30px;
-    color: #3e3e3e;
-    text-decoration: underline;
-    text-underline-position: under;">ENTER INTO BS&MFI</a>
-    </div>
-
-    <!-- Fixed Header: Logo Left + Nav Right -->
-    <header>
-        <div id="logo-container">
-            <img id="header-logo" src="https://i.ibb.co/bjy8q1jz/bsmfi-logo.png" alt="BS&MFI" style="display:none; width:100px;">
-        </div>
-        <nav id="desktop-nav">
-            <a href="#" id="account-link">Account</a>
-            <a href="#" id="take-money-link">Take Money</a>
-            <a href="#" id="contact-link">Helper</a>
-        </nav>
-        <button id="mobile-menu-btn">☰</button>
-    </header>
-
-    <!-- Full Page Mobile Menu -->
-    <div id="mobile-menu">
-        <button id="close-menu-btn">×</button>
-        <a href="#" id="mobile-account">My Account</a>
-        <a href="#" id="mobile-take-money">Take Money</a>
-        <a href="#" id="mobile-contact">Helper</a>
     </div>
 
     <div id="main-content">
-        <section class="hero">
-            <h1>BS&MFI</h1>
-            <p>Services</p>
-        </section>
+        <header>
+            <img src="https://i.ibb.co/bjy8q1jz/bsmfi-logo.png" alt="BSMFI">
+        </header>
 
-        <section class="services">
-            <div class="service-card">
-                <h2>Delay It</h2>
-                <p>Extend your financial commitments with unmatched grace and precision, tailored to your rhythm.</p>
-                <a href="#" class="explore-btn">Discover Delay It</a>
+        <p class="current-date">Current Date: <span id="current-date-display">December 15, 2025</span></p>
+
+        <div class="profile-header" id="profile-bg">
+            <img id="membership-icon" class="membership-icon" src="" alt="Membership Icon">
+            <h2 class="client-name" id="client-name"></h2>
+            <p class="membership-type" id="membership-type"></p>
+        </div>
+ <div class="grand-total" id="grand-total">
+                Total Amount to Repay: ₹<span id="grand-total-amount">0</span>
             </div>
-
-            <div class="service-card">
-                <h2>Split It</h2>
-                <p>Transform expenses into effortless installments, designed for seamless integration into your lifestyle.</p>
-                <a href="#" class="explore-btn">Discover Split It</a>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Stars</h3>
+                <p class="stat-value" id="stars">0</p>
             </div>
-        </section>
+            <div class="stat-card">
+                <h3>Coins</h3>
+                <p class="stat-value" id="coins">0</p>
+            </div>
+            <div class="stat-card" style="display: none;">
+                <h3>Tier Points</h3>
+                <p class="stat-value" id="tier-points">0</p>
+            </div>
+        </div>
 
-        <section class="cta-section">
-            <h2>Your Journey Begins</h2>
-            <p>Experience financial solutions that elevate your aspirations with unparalleled sophistication.</p>
-            <a href="#" class="cta-btn">Start Now</a>
-        </section>
+        <div class="custom-content" id="custom-content"></div>
+
+        <div class="amounts-section">
+            <h2>Select Amount to View Details</h2>
+            <div class="amount-buttons" id="amount-buttons"></div>
+
+            <div id="loan-panels"></div>
+        </div>
 
         <footer>
-           © BS&MFI. All rights reserved.
+            Exclusive Access • Confidential Portfolio • BSMFI<br>
+            Powered by BsPsgenerater
         </footer>
     </div>
 
     <script>
-        // document.addEventListener('contextmenu', e => e.preventDefault());
-        const correctPassword = '1234';
-        const loginScreen = document.getElementById('login-screen');
-        const mainLogo = document.getElementById('main-logo');
-        const passwordForm = document.getElementById('password-form');
-        const passwordInput = document.getElementById('password-input');
-        const submitBtn = document.getElementById('submit-btn');
-        const errorMessage = document.getElementById('error-message');
-        const mainContent = document.getElementById('main-content');
-        const headerLogo = document.getElementById('header-logo');
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const CURRENT_DATE = new Date("2025-12-15");
+        const STORAGE_KEY = "bsmfi_saved_password";
+        const MESSAGE_DELAY = 1000;
 
-        window.addEventListener('load', () => {
-            passwordForm.style.opacity = '1';
+        const data = {
+            "6275": {
+                name: "Srikanth Jampana",
+                membershipType: "Duplicate clone",
+                membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+                profileBackground: "red",
+                stars: 0,
+                coins: 1,
+                tierPoints: 5,
+                showCustomContent: "no",
+                customContent: { url: "https://mfi0212.github.io/swan/offer/programx" },
+                loans: [
+                    { planDate: "10-08-2025", endDate: "25-08-2025", interest: 1360, takenAmount: 5000, takenFrom: "MLLD", fineRate: 86 },
+                    { planDate: "15-08-2025", endDate: "30-08-2025", interest: 4800, takenAmount: 20000, takenFrom: "MLending", fineRate: 320 },
+                    { planDate: "16-08-2025", endDate: "31-08-2025", interest: 1275, takenAmount: 5000, takenFrom: "MLLD", fineRate: 90 },
+                    { planDate: "18-08-2025", endDate: "02-09-2025", interest: 1380, takenAmount: 5000, takenFrom: "MLLD", fineRate: 88 },
+                    { planDate: "18-08-2025", endDate: "02-09-2025", interest: 690, takenAmount: 2500, takenFrom: "MLLD", fineRate: 46 },
+                    { planDate: "01-11-2025", endDate: "01-12-2025", interest: 3560, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 90 },
+                    { planDate: "06-11-2025", endDate: "01-12-2025", interest: 4880, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 180 },
+                    { planDate: "09-11-2025", endDate: "01-12-2025", interest: 3860, takenAmount: 7500, takenFrom: "MLLD", fineRate: 120 },
+                    { planDate: "25-11-2025", endDate: "10-12-2025", interest: 900, takenAmount: 3000, takenFrom: "MLending Duplicate ", fineRate: 46 }
+                ]
+            },
+            "Cherish@123": {
+                name: "Cherish #1",
+                membershipType: "",
+                membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+                profileBackground: "red",
+                stars: 0,
+                coins: 0,
+                tierPoints: 40,
+                showCustomContent: "yes",
+                customContent: { url: "https://mfi0212.github.io/swan/offer/programx" },
+                loans: [
+                    { planDate: "14-10-2025", endDate: "-- (Interest adding stopped by #PY@0212)", interest: 0, takenAmount: 6690, takenFrom: "MLLD", fineRate: 0 },
+                    { planDate: "14-10-2025", endDate: "-- (Interest adding stopped by #PY@0212)", interest: 0, takenAmount: 5880, takenFrom: "MLLD", fineRate: 0 },
+                    { planDate: "14-10-2025", endDate: "-- (Interest adding stopped by #PY@0212)", interest: 0, takenAmount: 5560, takenFrom: "MLLD(Offer)", fineRate: 0 }
+                ]
+            }
+        };
+
+        function parseDate(dateStr) {
+            if (dateStr.includes("--")) return null;
+            const [d, m, y] = dateStr.split("-").map(Number);
+            return new Date(y, m - 1, d);
+        }
+
+        function calculateOverdue(loan) {
+            if (!loan.endDate || loan.endDate.includes("--")) return { days: 0, fine: 0 };
+            const end = parseDate(loan.endDate);
+            if (!end) return { days: 0, fine: 0 };
+            const diffDays = Math.ceil((CURRENT_DATE - end) / (1000 * 60 * 60 * 24));
+            const overdueDays = Math.max(0, diffDays);
+            return { days: overdueDays, fine: overdueDays * loan.fineRate };
+        }
+
+        // On page load: fill saved password with 1-second delay and show message
+        window.addEventListener("load", () => {
+            const savedPass = localStorage.getItem(STORAGE_KEY);
+            const messageEl = document.getElementById("saved-message");
+
+            if (savedPass && data[savedPass]) {
+                setTimeout(() => {
+                    document.getElementById("password-input").value = savedPass;
+                    messageEl.textContent = "Powered by BsPsgenerater";
+                    messageEl.style.opacity = "1";
+                }, MESSAGE_DELAY);
+            }
         });
 
-        submitBtn.addEventListener('click', () => {
-            if (passwordInput.value === correctPassword) {
-                mainLogo.classList.add('authenticated');
-                headerLogo.style.display = 'block';
+        document.getElementById("submit-btn").addEventListener("click", function() {
+            const input = document.getElementById("password-input").value.trim();
+            const profile = data[input];
 
-                loginScreen.style.opacity = '0';
-                setTimeout(() => {
-                    loginScreen.style.display = 'none';
-                }, 1000);
+            if (profile) {
+                localStorage.setItem(STORAGE_KEY, input);
 
+                const overlay = document.getElementById("password-overlay");
+                overlay.style.opacity = "0";
                 setTimeout(() => {
-                    mainContent.classList.add('visible');
+                    overlay.style.display = "none";
+                    document.getElementById("main-content").style.display = "block";
+                    setTimeout(() => { document.getElementById("main-content").style.opacity = "1"; }, 100);
                 }, 800);
-            } else {
-                errorMessage.textContent = 'Incorrect Password';
-            }
-        });
 
-        // Mobile menu open/close
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-        });
+                // Populate data (same as before)
+                document.getElementById("client-name").textContent = profile.name;
+                document.getElementById("membership-type").textContent = profile.membershipType || "Premium Member";
+                document.getElementById("membership-icon").src = profile.membershipIcon;
+                document.getElementById("profile-bg").style.backgroundColor = profile.profileBackground;
 
-        closeMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-        });
+                document.getElementById("stars").textContent = profile.stars;
+                document.getElementById("coins").textContent = profile.coins;
+                document.getElementById("tier-points").textContent = profile.tierPoints;
 
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-            });
-        });
+                const customDiv = document.getElementById("custom-content");
+                if (profile.showCustomContent === "yes") {
+                    customDiv.innerHTML = `
+                        <p>A special Diwali Program X offer is available for premium members: <strong>25% discount</strong> on the total amount (pay only 75%).</p>
+                        <a href="${profile.customContent.url}" target="_blank">View Details & Apply Now →</a>
+                    `;
+                } else {
+                    customDiv.innerHTML = "";
+                }
 
-        // Placeholder actions
-        ['account-link', 'mobile-account', 'take-money-link', 'mobile-take-money', 'contact-link', 'mobile-contact'].forEach(id => {
-            const el = document.getElementById(id);
-            if (el) {
-                el.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    alert('Feature coming soon.');
+                const buttonsContainer = document.getElementById("amount-buttons");
+                const panelsContainer = document.getElementById("loan-panels");
+                buttonsContainer.innerHTML = "";
+                panelsContainer.innerHTML = "";
+                let grandTotal = 0;
+
+                profile.loans.forEach((loan, index) => {
+                    const overdue = calculateOverdue(loan);
+                    const totalForThis = loan.takenAmount + loan.interest + overdue.fine;
+                    grandTotal += totalForThis;
+
+                    const btn = document.createElement("button");
+                    btn.className = "amount-btn";
+                    btn.textContent = `Amount ${index + 1} (₹${loan.takenAmount})`;
+                    btn.dataset.index = index;
+                    buttonsContainer.appendChild(btn);
+
+                    const panel = document.createElement("div");
+                    panel.className = "loan-details-panel";
+                    panel.id = `panel-${index}`;
+                    panel.innerHTML = `
+                        <h3 style="text-align:center; margin-bottom:40px; color:var(--main-blue);">
+                            Amount ${index + 1} — ₹${loan.takenAmount}
+                        </h3>
+                        <table>
+                            <tbody>
+                                <tr><th>Plan Date</th><td>${loan.planDate}</td></tr>
+                                <tr><th>End Date</th><td>${loan.endDate}</td></tr>
+                                <tr><th>Interest</th><td>₹${loan.interest}</td></tr>
+                                <tr><th>Taken Amount</th><td>₹${loan.takenAmount}</td></tr>
+                                <tr><th>Taken From</th><td>${loan.takenFrom}</td></tr>
+                                ${overdue.days > 0 ? `
+                                <tr><th>Overdue By</th><td style="color: #ff7400;">${overdue.days} days</td></tr>
+                                <tr><th>Overdue Fine</th><td style="color: #ff7400;">₹${overdue.fine}</td></tr>
+                                ` : `<tr><th>Status</th><td>No overdue</td></tr>`}
+                                <tr class="summary-row">
+                                    <td style="text-align: center;"><strong>Total to Repay</strong></td>
+                                    <td style="text-align: center;" class="total-repay"><strong>₹${totalForThis.toLocaleString()}</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    `;
+                    panelsContainer.appendChild(panel);
                 });
+
+                document.getElementById("grand-total-amount").textContent = grandTotal.toLocaleString();
+
+                document.querySelectorAll(".amount-btn").forEach(btn => {
+                    btn.addEventListener("click", function() {
+                        document.querySelectorAll(".amount-btn").forEach(b => b.classList.remove("active"));
+                        document.querySelectorAll(".loan-details-panel").forEach(p => p.classList.remove("active"));
+                        this.classList.add("active");
+                        document.getElementById(`panel-${this.dataset.index}`).classList.add("active");
+                    });
+                });
+
+                if (profile.loans.length > 0) document.querySelector(".amount-btn").click();
+            } else {
+                alert("Wrong code. Try again.");
+                document.getElementById("password-input").value = "";
+                document.getElementById("saved-message").textContent = "";
+                document.getElementById("saved-message").style.opacity = "0";
             }
         });
 
-        document.querySelectorAll('.explore-btn, .cta-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('Service coming soon.');
-            });
+        document.getElementById("password-input").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") document.getElementById("submit-btn").click();
         });
     </script>
 </body>
