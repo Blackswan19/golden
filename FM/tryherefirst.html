@@ -536,12 +536,12 @@ td {
                             <tbody>
                                 <tr><th>Plan Date</th><td>${loan.planDate}</td></tr>
                                 <tr><th>End Date</th><td>${loan.endDate}</td></tr>
-                                <tr><th>Interest</th><td>₹${loan.interest}</td></tr>
                                 <tr><th>Taken Amount</th><td>₹${loan.takenAmount}</td></tr>
+                                <tr><th>Interest</th><td>₹${loan.interest}</td></tr>
                                 <tr><th>Taken From</th><td>${loan.takenFrom}</td></tr>
                                 ${overdue.days > 0 ? `
                                 <tr><th>Overdue By</th><td style="color: #ff7400;">${overdue.days} days</td></tr>
-                                <tr><th>Overdue Fine</th><td style="color: #ff7400;">₹${overdue.fine}</td></tr>
+                                <tr><th>Overdue Interest</th><td style="color: #ff7400;">₹${overdue.fine}</td></tr>
                                 ` : `<tr><th>Status</th><td>No overdue</td></tr>`}
                                 <tr class="summary-row">
                                     <td style="text-align: center;"><strong>Total to Repay</strong></td>
