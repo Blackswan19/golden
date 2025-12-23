@@ -1,18 +1,18 @@
-  const blockedPasswords = ["6275"];
+const blockedPasswords = ["6275"];
 
- const specialRates = {
-            'Tue Dec 23 2025': 43
-        };
+const specialRates = {
+  '2025-12-23': 42
+};
+
 function getDailyInterestRate() {
-    const today = new Date().toISOString().slice(0, 10,10); 
-
-    let hash = 5381;
-    for (let i = 0; i < today.length; i++) {
-        hash = ((hash << 5) + hash) + today.charCodeAt(i); 
-    }
-
-    const rate = 40 + (Math.abs(hash) % 15);
-    return rate;
+  const today = new Date().toISOString().slice(0, 10); 
+  if (specialRates[today]) {
+    return specialRates[today];
+  }
+  let hash = 5381;
+  for (let i = 0; i < today.length; i++) {
+    hash = ((hash << 5) + hash + today.charCodeAt(i)) | 0;
+  }
+  const rate = 20 + (Math.abs(hash) % 5);
+  return rate;
 }
-
-
