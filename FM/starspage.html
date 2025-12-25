@@ -267,13 +267,13 @@
         <img src="https://i.pinimg.com/originals/0f/6d/10/0f6d1085f9055f584ae0e5c8bdca199b.gif" alt="Christmas Stars GIF">
         <h1>MLLD - Stars</h1>
         <p>interest reducer.</p>
-        <div class="christmas-promo">🎄 Special Christmas Offer: 35% OFF on all Stars purchases! 🎄<br>Limited offer – Celebrate the season with Stars till 26th December 12pm!</div>
+        <div class="christmas-promo">🎄 Special Christmas Offer: 25% OFF on all Stars purchases! 🎄<br>Limited offer – Celebrate the season with Stars till 26th December 12pm!</div>
     </div>
 
     <div class="main-container">
         <div class="section calculator-container">
             <h2>Stars Calculator</h2>
-            <p style="font-size: 18px; color: var(--red); font-weight: 600; margin-bottom: 20px;">Christmas Special: 35% Discount Applied!</p>
+            <p style="font-size: 18px; color: var(--red); font-weight: 600; margin-bottom: 20px;">Christmas Special: 25% Discount Applied!</p>
             <input type="number" id="starInput" placeholder="Enter number of stars to buy" min="1">
             <button onclick="calculateCost()">Calculate Cost</button>
             <div id="result"></div>
@@ -299,7 +299,7 @@
 
         <div class="section testimonials-container">
             <h2>Stars Store</h2><br>
-            <a href="https://forms.gle/SVZE13rMgnoqRMF88"><button>Buy Stars Now (35% Off!)</button></a>
+            <a href="https://forms.gle/SVZE13rMgnoqRMF88"><button>Buy Stars Now (25% Off!)</button></a>
             <br><br><p>Power by BS&MFI House</p>
         </div>
 
@@ -355,14 +355,14 @@
             }
 
             const originalCostPerStar = 1.5;
-            const discountedCostPerStar = originalCostPerStar * 0.65; // 35% off
+            const discountedCostPerStar = originalCostPerStar * 0.75; // 25% off
             const totalOriginalCost = stars * originalCostPerStar;
             const totalDiscountedCost = stars * discountedCostPerStar;
             const reductionPerStar = 2.25;
             const totalReduction = stars * reductionPerStar;
 
             resultDiv.innerHTML = `
-                <strong>Christmas Special (35% OFF):</strong><br>
+                <strong>Christmas Special (25% OFF):</strong><br>
                 Buy ${stars} stars for <span style="text-decoration: line-through; color: #888;">₹${totalOriginalCost.toFixed(2)}</span> 
                 <span style="color: var(--red); font-size: 24px;">₹${totalDiscountedCost.toFixed(2)}</span><br><br>
                 Interest reduction: ₹${totalReduction.toFixed(2)}.<br>
