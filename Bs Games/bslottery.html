@@ -14,22 +14,13 @@ if(localStorage.getItem("claimed")){
         "Reward already claimed on this device.";
     document.getElementById("message").style.color = "#e53935";
 }
-function verify(){
-    if(document.getElementById("code").value === ""){
-        document.getElementById("lock").classList.add("hidden");
-        document.getElementById("game").classList.remove("hidden");
-        initGame();
-    }else{
-        document.getElementById("message").textContent = "Invalid code";
-        document.getElementById("message").style.color = "#e53935";
-    }
-}
 const totalCards = 6;
 const maxOpens = 3;
 let opened = 0;
 let giftGiven = false;
 const gifts = ["100 Stars","200 Stars","300 Stars"];
 const selectedGift = gifts[Math.floor(Math.random()*3)];
+
 function initGame(){
     const wrap = document.getElementById("cards");
     wrap.innerHTML = "";
