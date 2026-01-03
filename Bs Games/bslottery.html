@@ -1,232 +1,72 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BsGames | Lottery</title> <link rel="icon" href="https://i.ibb.co/ZpVQQ2Kp/mfi-logo.png" /> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> <link href="https://fonts.googleapis.com/css2?family=Anton:wght@400&display=swap" rel="stylesheet"> <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"> <style> :root { --primary: #000000; --secondary: #ffffff; --accent: #ffcc00; --border: #444444; --text: #ffffff; --text-muted: #bbbbbb; --bg: #111111; --card-bg: #000000; --progress-bg: #333333; --progress-fill: #ffcc00; } * { margin: 0; padding: 0; box-sizing: border-box; scrollbar-width: none; -webkit-tap-highlight-color: transparent; } body { font-family: 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2px; line-height: 1.6; -webkit-user-select: none; user-select: none; } .card { background: var(--card-bg); border: 2px solid var(--border); border-radius: 0; max-width: 620px; width: 100%; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); } .card-header { background: var(--primary); color: var(--secondary); padding: 1.8rem 1.5rem; text-align: center; border-bottom: 2px solid var(--accent); font-family: 'Anton', sans-serif; letter-spacing: 3px; } .logo { font-size: 2.2rem; font-weight: 400; text-transform: uppercase; } .logo span { color: var(--accent); } .card-body { padding: 2rem; background: var(--card-bg); } .form-label { font-weight: 600; color: var(--text); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 0.8rem; } .form-control { background: transparent; border: 1px solid var(--border); color: var(--text); border-radius: 0; padding: 0.9rem 1rem; font-size: 1.1rem; text-align: center; letter-spacing: 1px; transition: border 0.3s ease; } .form-control:focus { border-color: var(--accent); box-shadow: none; color: var(--text); } .form-control::placeholder { color: var(--text-muted); font-weight: 300; } .btn-primary { background: var(--accent); color: #000; border: none; border-radius: 0; padding: 1rem; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1.5px; width: 100%; transition: all 0.3s ease; margin-top: 1rem; } .btn-primary:hover { background: #ffdd33; transform: translateY(-2px); } .btn-primary:disabled { background: #666; color: #999; cursor: not-allowed; transform: none; } .progress-container { height: 4px; background: var(--progress-bg); margin: 1.2rem 0 0.5rem; overflow: hidden; display: none; } .progress-bar { height: 100%; background: var(--progress-fill); width: 0; transition: width 0.1s linear; } .welcome-card { text-align: center; padding: 2rem 1.5rem; border: 1px solid var(--border); margin-bottom: 1.5rem; } .welcome-title { font-family: 'Anton', sans-serif; font-size: 1.6rem; color: var(--accent); margin-bottom: 0.8rem; letter-spacing: 2px; text-transform: uppercase; } .welcome-subtitle { font-size: 1rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.5; } .btn-spin-now { background: var(--accent); color: #000; font-weight: 700; font-family: 'Anton', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 1.3rem; padding: 1.1rem; border: none; width: 100%; } .btn-spin-now:hover { background: #ffdd33; transform: translateY(-3px); } .slot-machine { background: transparent; border: 1px solid var(--border); padding: 2.5rem 1.5rem; margin: 2rem 0; text-align: center; } .reel { height: 90px; display: flex; align-items: center; justify-content: center; font-size: 3.8rem; font-weight: bold; color: var(--accent); transition: transform 2.2s cubic-bezier(0.2, 0.8, 0.2, 1); } .reel.spinning { animation: spinReel 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; } @keyframes spinReel { 0% { transform: translateY(0) rotateX(0deg); } 15% { transform: translateY(-20px) rotateX(-30deg); } 100% { transform: translateY(0) rotateX(0deg); } } .prize-text { margin-top: 1rem; font-size: 1.1rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 500; opacity: 0; transition: opacity 0.4s ease; } .prize-text.show { opacity: 1; } .chances { text-align: center; margin: 1.5rem 0; font-size: 1.1rem; color: var(--text); text-transform: uppercase; letter-spacing: 1px; } .chances strong { color: var(--accent); font-size: 1.4rem; font-weight: 700; } .cooldown { color: #ff5555; font-size: 0.95rem; margin-top: 10px; text-align: center; } .results-section { margin-top: 2rem; padding: 1.8rem; background: transparent; border: 1px solid var(--border); } .results-title { font-family: 'Anton', sans-serif; font-size: 1.4rem; color: var(--accent); margin-bottom: 1.2rem; text-align: center; text-transform: uppercase; letter-spacing: 2px; } .prize-item { padding: 1rem 0; border-bottom: 1px solid var(--border); font-size: 1rem; color: var(--text); } .prize-item:last-child { border-bottom: none; } .prize-icon { font-size: 1.6rem; margin-right: 1rem; color: var(--accent); } .prize-code { font-family: 'Courier New', monospace; background: rgba(255, 204, 0, 0.1); padding: 0.4rem 0.8rem; border: 1px solid var(--accent); font-weight: bold; color: var(--accent); letter-spacing: 1px; } .copy-small { background: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 0.3rem 0.7rem; font-size: 0.8rem; margin-left: 0.8rem; cursor: pointer; text-transform: uppercase; font-weight: 600; } .copy-small:hover { background: var(--accent); color: #000; } .section { display: none; } .section.active { display: block; } .verifying { color: var(--accent); text-align: center; margin-top: 1.2rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; display: none; } .modal-content { background: var(--card-bg); border: 2px solid var(--border); border-radius: 0; color: var(--text); } .modal-title { font-family: 'Anton', sans-serif; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-size: 1.4rem; } .modal-prize-icon { font-size: 4rem; margin-bottom: 1rem; color: var(--accent); } .modal-prize-title { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: var(--accent); margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 2px; } .coupon-code { background: rgba(255, 204, 0, 0.1); border: 2px solid var(--accent); padding: 1.2rem; margin: 1.2rem 0; font-family: 'Courier New', monospace; font-size: 1.4rem; font-weight: bold; color: var(--accent); letter-spacing: 3px; } .copy-btn { background: var(--accent); color: #000; border: none; padding: 0.7rem 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; width: 100%; } .copy-btn:hover { background: #ffdd33; } .copy-btn.copied { background: #00cc00; color: white; } .stars { color: var(--accent); } .text-success { color: #00cc00 !important; } @media (max-width: 480px) { .card-body { padding: 1.5rem; } .reel { font-size: 3rem; } .modal-prize-icon { font-size: 3.2rem; } .logo { font-size: 1.9rem; } } </style> </head> <body> <div class="card"> <div class="card-header"> <div class="logo">BsGames | <span>Lottery</span></div> </div> <div class="card-body"> <!-- Phone Input --> <div id="phoneSection" class="section active"> <form id="phoneForm"> <div class="mb-3"> <label for="phone" class="form-label">PHONE NUMBER</label> <input type="tel" class="form-control" id="phone" placeholder="ENTER YOUR PHONE NUMBER" maxlength="10" required> </div> <button type="submit" class="btn btn-primary" id="verifyBtn">VERIFY</button> <div class="progress-container" id="verifyProgressContainer"> <div class="progress-bar" id="verifyProgress"></div> </div> <div id="verifyingText" class="verifying">VERIFYING... WAIT FOR FEW SECONDS</div> </form> </div> <!-- Welcome --> <div id="welcomeSection" class="section"> <div class="welcome-card"> <div class="welcome-title" id="userNameDisplay"></div> <div class="welcome-subtitle"> You are eligible for the BsGames Lottery.<br> You have <strong>3 spins</strong>. </div> <button class="btn-spin-now" id="goToSpinBtn">GO TO SPIN</button> </div> </div> <!-- Spin Section --> <div id="spinSection" class="section"> <div class="chances" id="chancesLeft">SPINS USED: <strong>0</strong>/3</div> <div id="cooldownText" class="cooldown" style="display:none;"></div> <div class="slot-machine"> <div class="reel" id="reel">?</div> <div class="prize-text" id="prizeHint">PRESS SPIN</div> </div> <button id="spinButton" class="btn btn-primary">SPIN</button> <div id="resultsSection" class="results-section" style="display: none;"> <div class="results-title">YOUR PRIZES</div> <div id="winList"></div> </div> </div> </div> </div> <!-- Result Modal --> <div class="modal fade" id="resultModal" tabindex="-1"> <div class="modal-dialog modal-dialog-centered"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">SPIN RESULT</h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> </div> <div class="modal-body"> <div id="prizeIcon" class="modal-prize-icon"></div> <div id="prizeTitle" class="modal-prize-title"></div> <div id="prizeDesc" class="text-muted mb-3"></div> <div id="couponSection" style="display: none;"> <div class="coupon-code" id="couponCode"></div> <button class="copy-btn" id="copyBtn">COPY CODE</button> <div class="text-success mt-2" id="copyStatus" style="display: none;">COPIED!</div> </div> </div> <div class="modal-footer border-0 justify-content-center"> <button type="button" class="btn btn-primary" data-bs-dismiss="modal">CLOSE</button> </div> </div> </div> </div>
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BsGames | BsLottery</title> <link rel="icon" href="https://i.ibb.co/ZpVQQ2Kp/mfi-logo.png" /> <style> :root{ --yellow:#f5c518; --red:#e53935; --blue:#1e88e5; --bg:#0e0e0e; --card:#161616; } body{ margin:0; min-height:100vh; background:var(--bg); font-family:system-ui, -apple-system, Segoe UI, sans-serif; color:#fff; display:flex; justify-content:center; align-items:center; } * { -webkit-tap-highlight-color: transparent; } body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; } .container{ width:90%; max-width:680px; background:#111; border-radius:14px; padding:32px; box-shadow:0 12px 28px rgba(0,0,0,.6); text-align:center; } h1{ margin:0 0 12px; color:var(--yellow); font-weight:600; } p{ color:#ccc; margin-bottom:20px; } input{ width:220px; padding:12px; font-size:16px; background:#000; color:#fff; border:1px solid #333; border-radius:8px; outline:none; } button{ padding:12px 22px; font-size:16px; margin-left:8px; background:var(--blue); color:#fff; border:none; border-radius:8px; cursor:pointer; } button:hover{opacity:.9} .cards{ margin-top:28px; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; } .card{ height:130px; background:var(--card); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:600; cursor:pointer; border:1px solid #222; } .card:hover{background:#1c1c1c} .card.revealed{cursor:default} .win{color:var(--yellow)} .empty{color:var(--red)} .hidden{display:none} #message{ margin-top:20px; font-size:18px; font-weight:500; } </style> </head> <body> <div class="container"> <h1>Reward Claim</h1> <div id="lock"> <p>Enter access code</p> <input id="code" type="password" placeholder="•••••••••"> <button onclick="verify()">Verify</button> </div> <div id="game" class="hidden"> <p>Select any 3 cards</p> <div class="cards" id="cards"></div> </div> <div id="message"></div> </div>
 <script>
-    document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('contextmenu', e => e.preventDefault());
+if(localStorage.getItem("claimed")){
+    document.getElementById("lock").classList.add("hidden");
+    document.getElementById("message").textContent =
+        "Reward already claimed on this device.";
+    document.getElementById("message").style.color = "#e53935";
+}
+function verify(){
+    if(document.getElementById("code").value === "123456789"){
+        document.getElementById("lock").classList.add("hidden");
+        document.getElementById("game").classList.remove("hidden");
+        initGame();
+    }else{
+        document.getElementById("message").textContent = "Invalid code";
+        document.getElementById("message").style.color = "#e53935";
+    }
+}
+const totalCards = 6;
+const maxOpens = 3;
+let opened = 0;
+let giftGiven = false;
 
-    const SPECIAL_NUMBER = "";
-    const USER_NAME = "";
-    const USER_ID = "";
+const gifts = ["140 Stars","240 Stars","320 Stars"];
+const selectedGift = gifts[Math.floor(Math.random()*3)];
 
-    const EVENT_START = new Date("2025-12-14T00:00:00+05:30");
-    const EVENT_END   = new Date("2025-12-14T23:59:59+05:30");
+function initGame(){
+    const wrap = document.getElementById("cards");
+    wrap.innerHTML = "";
 
-    const WIN_CHANCE_PERCENT = 40;
-    const EXTRA_SPIN_PRICE = 80;
-    const EXTRA_SPIN_PIN = "Allow888*RPT14";
+    for(let i=0;i<totalCards;i++){
+        const c = document.createElement("div");
+        c.className = "card";
+        c.textContent = "?";
+        c.onclick = ()=>openCard(c);
+        wrap.appendChild(c);
+    }
+}
 
-    const prizes = [
-        { type: 'nothing', name: 'EMPTY', icon: '<i class="fas fa-times-circle"></i>', class: 'text-muted' },
-        { type: 'swans', name: '550 Free Swans', id: 'SWFEE5AN50', icon: '<i class="fas fa-star"></i>'.repeat(5), class: 'stars' },
-        { type: 'swans', name: '600 Free Swans', id: 'SWFEE00AN6', icon: '<i class="fas fa-star"></i>'.repeat(6), class: 'stars text-warning' },
-    ];
+function openCard(card){
+    if(card.classList.contains("revealed")) return;
+    if(opened >= maxOpens) return;
 
-    let wins = [];
+    opened++;
+    card.classList.add("revealed");
 
-    function getRandomGoodPrize() {
-        const goodPrizes = prizes.slice(1);
-        return goodPrizes[Math.floor(Math.random() * goodPrizes.length)];
+    let giveGift =
+        (opened === maxOpens && !giftGiven) ||
+        (!giftGiven && Math.random() < 0.33);
+
+    if(giveGift && !giftGiven){
+        giftGiven = true;
+        card.textContent = selectedGift;
+        card.classList.add("win");
+        document.getElementById("message").textContent =
+            "You won " + selectedGift;
+        document.getElementById("message").style.color = "#f5c518";
+        localStorage.setItem("claimed","true");
+    }else{
+        card.textContent = "Empty";
+        card.classList.add("empty");
     }
 
-    function showSection(id) {
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
+    if(opened === maxOpens){
+        localStorage.setItem("claimed","true");
     }
-
-    function isEventActive() {
-        const now = new Date();
-        return now >= EVENT_START && now <= EVENT_END;
-    }
-
-    function updateChances() {
-        const spinBtn = document.getElementById('spinButton');
-        const chancesDiv = document.getElementById('chancesLeft');
-        let chances = parseInt(localStorage.getItem('lotteryChances') || '3');
-
-        if (!isEventActive()) {
-            if (new Date() < EVENT_START) {
-                chancesDiv.innerHTML = `<span style="color:#ffa500;">EVENT STARTS SOON</span>`;
-                spinBtn.textContent = "COMING SOON";
-            } else {
-                chancesDiv.innerHTML = `<span style="color:#ff4444;">EVENT ENDED</span>`;
-                spinBtn.textContent = "CLOSED";
-            }
-            spinBtn.disabled = true;
-            return;
-        }
-
-        if (chances <= 0) {
-            chancesDiv.innerHTML = `<span style="color:#ff6b6b;">0 SPINS LEFT</span>`;
-            spinBtn.textContent = "NO MORE SPINS";
-            spinBtn.disabled = true;
-            return;
-        }
-
-        chancesDiv.innerHTML = `CHANCES LEFT: <strong>${chances}</strong>`;
-        spinBtn.textContent = "SPIN NOW";
-        spinBtn.disabled = false;
-    }
-
-
-    function cleanOldPrizes() {
-        const now = Date.now();
-        const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000;
-
-        wins = JSON.parse(localStorage.getItem('lotteryWins') || '[]');
-
-        const freshWins = wins.filter(win => {
-            return (now - win.timestamp) < TWENTY_FOUR_HOURS;
-        });
-        wins = freshWins;
-        localStorage.setItem('lotteryWins', JSON.stringify(wins));
-    }
-
-    function showResults() {
-        cleanOldPrizes();
-        const resultsSection = document.getElementById('resultsSection');
-        const winList = document.getElementById('winList');
-
-        if (wins.length === 0) {
-            resultsSection.style.display = 'none';
-            return;
-        }
-
-        winList.innerHTML = '';
-        wins.forEach(win => {
-            const item = document.createElement('div');
-            item.className = 'prize-item';
-            item.innerHTML = `
-                <div><span class="prize-icon ${win.class || ''}">${win.icon}</span> ${win.name}</div>
-                ${win.id ? `<div><span class="prize-code">${win.id}</span> <button class="copy-small" onclick="copyCode('${win.id}')">COPY</button></div>` : ''}
-            `;
-            winList.appendChild(item);
-        });
-        resultsSection.style.display = 'block';
-
-        // Offer extra spins if last 3 were empty
-        if (wins.length >= 3) {
-            const lastThree = wins.slice(-3);
-            const allEmpty = lastThree.every(w => w.type === 'nothing');
-            const chances = parseInt(localStorage.getItem('lotteryChances') || '0');
-            if (allEmpty && chances <= 0 && isEventActive()) {
-                setTimeout(showExtraSpinOffer, 1000);
-            }
-        }
-    }
-
-    function showExtraSpinOffer() {
-        if (confirm(`Bad luck! 3 EMPTY in a row!\n\nGet 3 MORE SPINS for ₹${EXTRA_SPIN_PRICE} only?`)) {
-            const pin = prompt(`Enter PIN (₹${EXTRA_SPIN_PRICE}):`);
-            if (pin === EXTRA_SPIN_PIN) {
-                localStorage.setItem('lotteryChances', '3');
-                alert("PIN Accepted! You got 3 new spins!");
-                updateChances();
-            } else if (pin !== null) {
-                alert("Wrong PIN!");
-            }
-        }
-    }
-
-    window.copyCode = function(code) {
-        navigator.clipboard.writeText(code).then(() => {
-            const btn = event.target;
-            const orig = btn.innerHTML;
-            btn.innerHTML = 'COPIED';
-            btn.classList.add('copied');
-            setTimeout(() => {
-                btn.innerHTML = orig;
-                btn.classList.remove('copied');
-            }, 1500);
-        });
-    };
-
-    // Phone verification
-    document.getElementById('phoneForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const phone = document.getElementById('phone').value.trim();
-        if (phone !== SPECIAL_NUMBER) {
-            alert("Invalid number or already claimed.");
-            return;
-        }
-        localStorage.setItem('lotteryPhone', phone);
-        showSection('welcomeSection');
-        document.getElementById('userNameDisplay').innerHTML = `${USER_NAME}<br><small style="color:#aaa;">(${USER_ID})</small>`;
-        updateChances();
-        showResults();
-    });
-
-    document.getElementById('goToSpinBtn').addEventListener('click', () => {
-        showSection('spinSection');
-        updateChances();
-        showResults();
-    });
-
-    // SPIN BUTTON
-    document.getElementById('spinButton').addEventListener('click', function() {
-        if (!isEventActive()) return;
-
-        let chances = parseInt(localStorage.getItem('lotteryChances') || '3');
-        if (chances <= 0) return;
-
-        this.disabled = true;
-        const reel = document.getElementById('reel');
-        const prizeHint = document.getElementById('prizeHint');
-        prizeHint.classList.remove('show');
-        prizeHint.textContent = 'SPINNING...';
-        reel.classList.add('spinning');
-
-        const result = (Math.random() * 100 < WIN_CHANCE_PERCENT)
-            ? getRandomGoodPrize()
-            : prizes[0];
-        result.timestamp = Date.now();
-
-        wins.push(result);
-        localStorage.setItem('lotteryWins', JSON.stringify(wins));
-
-        setTimeout(() => {
-            reel.classList.remove('spinning');
-            reel.innerHTML = result.icon;
-
-            setTimeout(() => {
-                prizeHint.textContent = result.name.toUpperCase();
-                prizeHint.classList.add('show');
-
-                const modal = new bootstrap.Modal(document.getElementById('resultModal'));
-                document.getElementById('prizeIcon').innerHTML = result.icon;
-                document.getElementById('prizeIcon').className = `modal-prize-icon ${result.class || ''}`;
-                document.getElementById('prizeTitle').textContent = result.name.toUpperCase();
-                document.getElementById('prizeTitle').className = `modal-prize-title ${result.class || ''}`;
-                document.getElementById('prizeDesc').textContent = result.desc || 'Better luck next time!';
-
-                const couponSection = document.getElementById('couponSection');
-                couponSection.style.display = result.id ? 'block' : 'none';
-                if (result.id) {
-                    document.getElementById('couponCode').textContent = result.id;
-                    document.getElementById('copyBtn').onclick = () => copyCode(result.id);
-                }
-
-                modal.show();
-
-                chances--;
-                localStorage.setItem('lotteryChances', chances);
-
-                setTimeout(() => {
-                    updateChances();
-                    showResults();
-                    this.disabled = false;
-                }, 400);
-            }, 300);
-        }, 2200);
-    });
-
-    window.onload = function() {
-        const savedPhone = localStorage.getItem('lotteryPhone');
-        if (savedPhone === SPECIAL_NUMBER) {
-            document.getElementById('userNameDisplay').innerHTML = `${USER_NAME}<br><small style="color:#aaa;">(${USER_ID})</small>`;
-            cleanOldPrizes();
-            showSection('welcomeSection');
-            updateChances();
-            showResults();
-        }
-    };
+}
 </script>
+
 </body>
 </html>
