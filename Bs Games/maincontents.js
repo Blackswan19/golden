@@ -1,5 +1,6 @@
 function verify(){
-    if(document.getElementById("code").value === "121"){
+    if(document.getElementById("code").value === "")//every user has there own code
+    {
         document.getElementById("lock").classList.add("hidden");
         document.getElementById("game").classList.remove("hidden");
         initGame();
@@ -9,4 +10,5 @@ function verify(){
     }
 }
 
-const gifts = ["100 Stars","200 Stars","300 Stars"];
+
+const gifts = ["3100 Stars","1200 Stars","1300 Stars","300 Stars","120 Stars","130 Stars","3100 Stars","1200 Stars","1300 Stars",];
