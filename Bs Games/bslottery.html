@@ -9,7 +9,8 @@ if(localStorage.getItem("claimed")){
     document.getElementById("message").style.color = "#e53935";
 }
 function verify(){
-    if(document.getElementById("code").value === "123456789"){
+    //each client each code(only this user can see this code)
+    if(document.getElementById("code").value === "7075454293"){
         document.getElementById("lock").classList.add("hidden");
         document.getElementById("game").classList.remove("hidden");
         initGame();
