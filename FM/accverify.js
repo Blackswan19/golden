@@ -39,7 +39,7 @@ const passwords = {
     },
     "6275": {
         name: "Srikanth Jampana",
-        membershipType: "Duplicate clone",
+        membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#ff4500",
         stars: 0,
@@ -545,7 +545,7 @@ function displayLoanDetails(loan, index) {
             <p style="text-align:center;position:sticky;top:90px;margin-top:20px;right:16px;float:right;margin-right:-9px;">
                 <button class="amounts-btn downsingle" style="width: 100%;
     font-size: 9px;
-    padding: 0px 12px;
+    padding: 2px 12px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -762,4 +762,3 @@ function showCoinsCount() {
     const coins = document.getElementById('coinsCount').textContent.trim();
     alert(`BsRora(Bot) : \n\nYou have using ${coins} Duplicate Clone account.`);
 }
-
