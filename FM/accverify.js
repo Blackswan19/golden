@@ -550,7 +550,7 @@ function displayLoanDetails(loan, index) {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 25px;
+    margin-top: 10px;
     font-weight: 400;
     letter-spacing: 0.2px;
     backdrop-filter: blur(1.5px);gap: 5px;" onclick="downloadSingleLoan(${index})">
