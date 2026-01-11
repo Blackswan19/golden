@@ -553,8 +553,12 @@ function displayLoanDetails(loan, index) {
     margin-top: 25px;
     font-weight: 400;
     letter-spacing: 0.2px;
-    backdrop-filter: blur(1.5px);" onclick="downloadSingleLoan(${index})">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"></path></svg> Download This Receipt
+    backdrop-filter: blur(1.5px);gap: 5px;" onclick="downloadSingleLoan(${index})">
+                    <svg style="width: 14px;
+    height: 20px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="512" height="512">
+                            <g id="_01_align_center" data-name="01 align center"><path d="M24,9a3,3,0,0,0-3-3H19V0H5V6H3A3,3,0,0,0,0,9V21H5v3H19V21h5ZM7,2H17V6H7ZM17,22H7V16H17Zm5-3H19V14H5v5H2V9A1,1,0,0,1,3,8H21a1,1,0,0,1,1,1Z"/><rect x="15" y="10" width="4" height="2"/></g>
+                        </svg>
+                        Download This Receipt
                 </button>
             </p>
             <h3>Service</h3>
