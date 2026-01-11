@@ -863,14 +863,7 @@
             height: 18px;
         }
 
-        .user-icon {
-            width: 25px;
-            height: 25px;
-            border-radius: 6px;
-            padding: 5px;
-            border: solid 1.5px #ababab33;
-            background: #6f6f6f1f;
-        }
+       
 
         p#membershipType {
            font-size: 14px;
@@ -950,7 +943,69 @@
                 box-shadow: inset 0px 0px 20px #00000000, inset -35px -40px 30px #00000000;
             }
         }
+         .user-icon {
+           width: 25px;
+    height: 25px;
+    border-radius: 25px;
+    padding: 5px;
+    border: solid 1.5px #ababab33;
+    background: #6f6f6f1f;
+        }
+p#userNameContainer {
+ font-size: 16px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0px;
+    border-radius: 0px;
+    padding: 0px 3px 0px 20px;
+    cursor: pointer;
+    background: transparent;
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 45%;
+    position: relative;
+    transform: translate(-50%, 0%);
+    background: #80808066;
+}
+body.curvy p#userNameContainer {
+    border-radius: 25px;
+}
+p#userNameContainer:hover{
+    background: #71717154;
+}
+        span#userName {
+          color: transparent;
+    background: linear-gradient(90deg, transparent, rgb(126 126 126), #ffffff, transparent);
+    background-size: 200% 100%;
+    animation: shimmer 5s linear infinite;
+    background-clip: text;
+    font-weight: 500; cursor: pointer;
+    }
+   
 
+        body.light span#userName {
+            color: transparent;
+    background: linear-gradient(90deg, transparent, rgb(126 126 126), #000000, transparent);
+    background-size: 200% 100%;
+    animation: shimmer 5s linear infinite;
+    background-clip: text;
+    font-weight: 500;
+        }
+
+        body.telegram-dark span#userName {
+            color: transparent;
+    background: linear-gradient(90deg, transparent, rgb(126 126 126), #ffffff, transparent);
+    background-size: 200% 100%;
+    animation: shimmer 5s linear infinite;
+    background-clip: text;
+    font-weight: 500;
+        }
+ @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+ 
         .twoOptions {
             display: flex;
             justify-content: space-between;
@@ -1099,36 +1154,6 @@
         body.my-own .amounts-close-btn {
             color: #e0e0e0d4;
         }
-
-        span#userName {
-          color: transparent;
-    background: linear-gradient(90deg, transparent, rgb(126 126 126), #ffffff, transparent);
-    background-size: 200% 100%;
-    animation: shimmer 5s linear infinite;
-    background-clip: text;
-    font-weight: 500;
-    }
-   
-
-        body.light span#userName {
-            color: transparent;
-    background: linear-gradient(90deg, transparent, rgb(126 126 126), #000000, transparent);
-    background-size: 200% 100%;
-    animation: shimmer 5s linear infinite;
-    background-clip: text;
-    font-weight: 500;
-        }
-
-        body.telegram-dark span#userName {
-            color: transparent;
-    background: linear-gradient(90deg, transparent, rgb(126 126 126), #ffffff, transparent);
-    background-size: 200% 100%;
-    animation: shimmer 5s linear infinite;
-    background-clip: text;
-    font-weight: 500;
-        }
- @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-     
         body.my-own span#userName {
             color: white;
         }
@@ -1710,20 +1735,11 @@
         #totalReturn {
             margin: 0px -8px 0px 0px;
         }
-
-        /* Clickable Name */
-        #userNameContainer {
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-
-        #userNameContainer:hover {
-            opacity: 0.8;
-        }
         ex{
             display: contents;
     color: #00ffbb;
         }
+        
     </style>
 </head>
 
@@ -1831,7 +1847,7 @@
         <div class="profile-container">
             <div class="profile-picture" id="profilePicture"></div>
             <div>
-                <p id="userNameContainer" style="font-size: 20px; display: flex; gap: 5px; justify-content: center; align-items: center;margin: 15px;">
+                <p id="userNameContainer">
                     <span style="color: white;" id="userName"></span>
                 </p>
                 <div class="twoOptions">
