@@ -542,7 +542,13 @@ function displayLoanDetails(loan, index) {
     loanDetails.innerHTML = `
         <p id="scrotamts"></p>
         <div class="loan-entry">
-            <p style="text-align:center;position:sticky;top:90px;margin-top:20px;right:16px;float:right;margin-right:-9px;">
+            <p style="text-align: center;
+    position: sticky;
+    top: 85px;
+    margin-top: 0px;
+    right: 16px;
+    float: right;
+    margin-right: -9px;">
                 <button class="amounts-btn downsingle" style="width: 100%;
     font-size: 9px;
     padding: 2px 12px;
@@ -550,7 +556,7 @@ function displayLoanDetails(loan, index) {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 30px;
     font-weight: 400;
     letter-spacing: 0.2px;
     backdrop-filter: blur(1.5px);gap: 5px;" onclick="downloadSingleLoan(${index})">
