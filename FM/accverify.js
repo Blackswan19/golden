@@ -19,24 +19,7 @@ const passwords = {
            { planDate: "07-04-2025", endDate: "--<p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 15000, takenFrom: "MLLD", fineRate: 4 }
         ]
     },
-    "Deepak@1": {
-        name: "Deepak Tallapudi",
-        membershipType: "",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "red",
-        stars: 0,
-        coins: 0,
-        tierPoints: 0,
-        showCustomContent: "no",
-        customContent: {
-            type: "text",
-            value: "NOTE: Your amounts has updated to match the offer criteria",
-            url: ""
-        },
-        loans: [
-           { planDate: "18-12-2025", endDate: "17-01-2026", interest: 1650, takenAmount: 5000, takenFrom: "MLLD", fineRate: 45 },
-        ]
-    },
+   
     "6275": {
         name: "Srikanth Jampana",
         membershipType: "",
