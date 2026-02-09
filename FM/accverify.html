@@ -60,13 +60,19 @@
             }
             setTheme(savedTheme);
 
-            const savedEdgeStyle = localStorage.getItem("edgeStyle") || "curvy";
-            if (savedEdgeStyle === "curvy") {
-                document.body.classList.add("curvy");
-                styleButton.textContent = "V";
-            } else {
-                styleButton.textContent = "S";
-            }
+            if (!localStorage.getItem("edgeStyle")) {
+			    localStorage.setItem("edgeStyle", "sharp");        
+			}
+			const savedStyle = localStorage.getItem("edgeStyle") || "sharp";
+			if (savedStyle === "curvy") {
+			    document.body.classList.add("curvy");
+			}
+			styleButton.textContent = savedStyle === "curvy" ? "V" : "S";
+			styleButton.addEventListener("click", () => {
+			    const isCurvy = document.body.classList.toggle("curvy");
+			    styleButton.textContent = isCurvy ? "V" : "S";
+			    localStorage.setItem("edgeStyle", isCurvy ? "curvy" : "sharp");
+			});
         });
 
         const today = new Date();
