@@ -205,10 +205,10 @@ document.getElementById("submitBtn").addEventListener("click", () => {
 
         const ads = [
             {
-                name: "Paymine",
-                headline: "Paymine",
-                desc: "We pay for you when you don’t have, Pay back when you have",
-                link: "https://mfi0212.github.io/MFI/paymine",
+                name: "Pre-Saver",
+                headline: "Pre-Saver",
+                desc: "We pre save the offer or amount for your next borrow.",
+                link: "https://mfi0212.github.io/swan/offer/presave",
                 icon: "https://cdn.example.com/paymine-16.png"
             },
             {
