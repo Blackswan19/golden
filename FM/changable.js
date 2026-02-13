@@ -20,11 +20,11 @@ function getDailyInterestRate() {
 
   
 const offer = {
-//   leftHeart:  "💓",
-//   text:      "Valentine's Day offer",     // ← leave "" to hide text
-//   rightHeart: "💓",
-//   linkUrl:    "https://mfi0212.github.io/swan/offer/presave",
-//   linkText:   "Pre-Save here"
+  leftHeart:  "💓",
+  text:      "Valentine's Day offer",     // ← leave "" to hide text
+  rightHeart: "💓",
+  linkUrl:    "https://mfi0212.github.io/swan/offer/presave",
+  linkText:   "Pre-Save here"
 };
 
 
@@ -61,3 +61,4 @@ banner.innerHTML = html;
 banner.insertAdjacentHTML('beforeend',
 //   '<div style="font-size:0.72rem; opacity:0.7; margin-top:6px; text-align:right;">Feb 14</div>'
 );
+
