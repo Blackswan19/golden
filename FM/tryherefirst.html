@@ -251,7 +251,6 @@ padding: 13px 25px;
        
 
 button {
-    padding: 10px 25px;
     background: var(--navy);
     color: #ffffff;
     border: none;
@@ -366,9 +365,9 @@ button {
             const totalReduction = stars * reductionPerStar;
 
             resultDiv.innerHTML = `
-                <strong>Valentine's Day Special:</strong><br>
-                Buy ${stars} stars for <span style="text-decoration: line-through; color: #888;">₹${totalOriginalCost.toFixed(2)}</span> 
-                <span style="color: #ff00de; font-size: 24px;">₹${totalDiscountedCost.toFixed(2)}</span>
+                <p>Valentine's Day Special:</p>
+                By ${stars} stars interest cut : <span style="text-decoration: line-through; color: #888;">₹${totalOriginalCost.toFixed(2)}</span> 
+                <span style="color: #ffffff; font-size: 20px;">₹${totalDiscountedCost.toFixed(2)}</span>
                 `;
             }
             // Interest reduction: ₹${totalReduction.toFixed(2)}.<br>
