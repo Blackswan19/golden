@@ -41,7 +41,8 @@
         }
 
         body {
-            background: linear-gradient(0deg, #abd3ff, #ff95ff, #00ffbb);
+            background: linear-gradient(
+89deg, #02ffe8, #ff2ed4, #ffd400);
     color: var(--dark-text);
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
@@ -86,24 +87,25 @@
             margin: 0 auto;padding: 5px;
         }
   .christmas-promo {
-         background: #ffffff66;
-    color: black;
+        color: black;
     padding: 15px;
     text-align: center;
     font-size: 15px;
     font-weight: 100;
     max-width: 1100px;
     border-radius: 25px;
-    border: solid 1px #ffffff;
     margin: 30px auto;
+    background: #ffffff66;
+    box-shadow: var(--shadow);
+    border: solid 1.5px #ffffff7d;
         }
         .section {
-          background: #ffffff29;
+          background: #ffffff66;
     padding: 70px 60px;
     margin-bottom: 20px;
     box-shadow: var(--shadow);
     border-radius: 25px;
-    border: solid 1px #ffffffb5;
+    border: solid 1.5px #ffffff7d;
         }
 
         .section h2 {
@@ -137,7 +139,7 @@
             color: var(--dark-text);
             font-size: 15px;
             font-family: 'Poppins', sans-serif;
-            border-radius: 0;border-radius: 10px;
+            border-radius: 0;border-radius: 13px;
         }
 .benefits-container ul li, .steps-container ol li {
     margin: 25px 0;
@@ -147,7 +149,7 @@
 }
         input:focus, textarea:focus {
             outline: none;
-            border-color: var(--gold);
+            border-color: black;
         }
 
         button {
@@ -195,9 +197,9 @@ padding: 13px 25px;
             counter-reset: step;
         }
 
-       .steps-container li::marker {
+       /* .steps-container li::marker {
         font-weight: 600;
-}
+} */
         .star-earn-container a button {
             margin: 20px 15px 0;
         }
@@ -275,7 +277,7 @@ button {
         <div class="section calculator-container">
             <h2>Stars Calculator</h2>
             <p style="font-size: 15px;
-    color: #ff00de;">Valentine's Day Special..!</p>
+    color: #000000;">Valentine's Day Special..!</p>
             <input type="number" id="starInput" placeholder="Enter number of stars to buy" min="1">
             <button onclick="calculateCost()">Calculate Cost</button>
             <div id="result"></div>
