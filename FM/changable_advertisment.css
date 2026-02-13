@@ -1,0 +1,47 @@
+    /* When there's almost nothing to show */
+    .valentines-banner.empty {
+      background: transparent;
+      box-shadow: none;
+      padding: 4px 12px;
+      font-size: 1rem;
+      opacity: 0.6;
+    }
+
+
+    .valentines-banner {
+      background: linear-gradient(135deg, #ff3366, #cc33ff);
+    padding: 16px 28px;
+    border-radius: 12px;
+    box-shadow: 0 6px 25px rgba(255, 51, 102, 0.4);
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.5px;
+    max-width: 90%;
+    }
+
+    .valentines-banner a {
+      color: white;
+    }
+
+
+    .valentines-banner a:hover {
+      background: rgba(255,255,255,0.35);
+      transform: translateY(-1px);
+    }
+
+    .heart {
+      display: inline-block;
+      animation: pulse 1.8s infinite;
+      margin: 0 4px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.28); }
+    }
+
+    .nothing {
+      font-size: 0.9rem;
+      opacity: 0.5;
+    }
