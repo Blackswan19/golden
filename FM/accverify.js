@@ -1,4 +1,4 @@
-
+       
 const passwords = {
     "4211": {
         name: "Chaitanya Harsha",
@@ -231,18 +231,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
 
         borrowLimitMessage.innerHTML = `
             <div class="bot">
-                <p class="borrowLimitMessage" style='
-            font-size: 12px;
-    text-align: center;
-    font-weight: 300;
-    max-width: 615px;
-    line-height: 20px;
-    border: solid 1.4px #7e7e7e00;
-    letter-spacing: 0.3px;
-    padding: 14px 10px 18px 15px;
-    margin-top: 30px;
-    margin-bottom: 10px;
-                    '>
+                <p class="borrowLimitMessage">
                     <span style='font-size: 15px;
     color: #00aeff;
     text-decoration: none;
@@ -253,23 +242,13 @@ document.getElementById("submitBtn").addEventListener("click", () => {
                     </span> : <br>
                     ${ad.desc}
                     <br><a class="exploreadds" href="${ad.link}" target="_blank" 
-                       style='white-space: nowrap;
-    color: white;
-    font-size: 13px;
-    font-weight: 500;
-    text-underline-position: under;
-    position: relative;
-    top: 5px;
-    background: #80808066;
-    padding: 8px 15px;
-    display: flex;
-    justify-content: center;
-    left: -3px;'>
-                       Explore ${ad.name}
-                    </a>
-                </p>
-            </div>
-        `;
+                       >
+            <i class="fa-solid fa-arrow-left"></i>
+    </a>
+    </p>
+    </div>
+    `;
+    //    Explore ${ad.name}
         const userInfoModal = document.getElementById("userInfoModal");
         const profilePictureContainer = profilePicture.parentElement;
         userInfoModal.insertBefore(borrowLimitMessage, profilePictureContainer);
@@ -535,11 +514,12 @@ function displayLoanDetails(loan, index) {
         <div class="loan-entry">
             <p style="text-align: center;
     position: sticky;
-    top: 85px;
-    margin-top: 0px;
-    right: 16px;
+    top: 0px;
+    margin-top: 30px;
+    right: 5px;
     float: right;
-    margin-right: -9px;">
+    margin-right: -15px;
+    z-index: 10000;">
                 <button class="amounts-btn downsingle" style="width: 100%;
     font-size: 9px;
     padding: 2px 12px;
@@ -547,10 +527,11 @@ function displayLoanDetails(loan, index) {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 0px;
     font-weight: 400;
     letter-spacing: 0.2px;
-    backdrop-filter: blur(1.5px);gap: 5px;" onclick="downloadSingleLoan(${index})">
+    backdrop-filter: blur(1.5px);
+    gap: 5px;" onclick="downloadSingleLoan(${index})">
                     <svg style="width: 14px;
     height: 20px;" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512"><path d="M19,6V4a4,4,0,0,0-4-4H9A4,4,0,0,0,5,4V6a5.006,5.006,0,0,0-5,5v5a5.006,5.006,0,0,0,5,5,3,3,0,0,0,3,3h8a3,3,0,0,0,3-3,5.006,5.006,0,0,0,5-5V11A5.006,5.006,0,0,0,19,6ZM7,4A2,2,0,0,1,9,2h6a2,2,0,0,1,2,2V6H7ZM17,21a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V17a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1Zm5-5a3,3,0,0,1-3,3V17a3,3,0,0,0-3-3H8a3,3,0,0,0-3,3v2a3,3,0,0,1-3-3V11A3,3,0,0,1,5,8H19a3,3,0,0,1,3,3Z"/><path d="M18,10H16a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z"/></svg>
 
@@ -867,3 +848,8 @@ function showCoinsCount() {
     const coins = document.getElementById('coinsCount').textContent.trim();
     alert(`BsRora(Bot) : \n\nYou have using ${coins} Duplicate Clone account.`);
 }
+
+
+
+
+
