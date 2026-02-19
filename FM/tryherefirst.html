@@ -13,7 +13,7 @@
 
 :root {
 	--user-accent: #00aaff;
-	--telegram-accent: #0088cc;
+	--telegram-accent: #00aaff;
 }
 
 * {
@@ -209,34 +209,23 @@ body.telegram-dark .bottomtakeoptions {
 
         .button {
             display: inline-block;
-            background-color: transparent;
             color: #b6b6b6;
             padding: 1px 20px;
             text-decoration: none;
-            margin: 5px;
+            margin: 10px 0px 0px 0px;
             font-size: 14px;
-            border: solid 1.5px #b6b6b6;
+             color: var(--telegram-accent);
+            border: solid 1.5px var(--telegram-accent);
+            background: transparent;
             border-radius: 8px;
             font-weight: 500;
         }
 
         .button:hover {
             text-decoration: none;
-            background-color: white;
-            color: black;
-            border: solid 1.5px white;
-        }
-
-        body.telegram-dark .button {
-            color: var(--telegram-accent);
-            border-color: var(--telegram-accent);
-            background: transparent;
-        }
-
-        body.telegram-dark .button:hover {
-            background-color: var(--telegram-accent);
+           background-color: var(--telegram-accent);
             color: #fff;
-            border-color: var(--telegram-accent);
+            border-color: transparent;
         }
 
         body.my-own .button {
@@ -278,11 +267,13 @@ body.telegram-dark .bottomtakeoptions {
             justify-content: space-between;
             align-items: center;
         }
-
+ol {
+    margin-bottom: 0px;
+}
         p {
             color: #959595;
             font-size: 12px;
-            font-weight: 400;padding: 0px 20px;
+            font-weight: 400;padding: 0px 20px;    margin-bottom: 0px;
         }
 
         body.telegram-dark p {
