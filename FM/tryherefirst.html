@@ -123,7 +123,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(0deg, #000000c5 35%, transparent);
+    background: linear-gradient(0deg, #181819e6 35%, transparent);
     height: 170px;
 } 
 body.telegram-dark .bottomtakeoptions {
@@ -513,19 +513,18 @@ body.curvy .takemoneybtn{
         }
 
         .theme-popup {
-           position: fixed;
+          position: fixed;
     right: 10px;
-    background-color: rgb(105 105 105);
+    background-color: #62676c;
     border-radius: 0px;
-    padding: 6px;
+    padding: 10px 12px;
     display: none;
     flex-direction: column;
-    z-index: 999;
+    z-index: 2999;
     transform: translateY(20px);
     opacity: 0;
     transition: transform 0.3s ease, opacity 0.3s ease;
-    backdrop-filter: blur(5px);
-    top: 75px;
+    top: 95px;
         }
 
         body.curvy .theme-popup {
@@ -533,15 +532,16 @@ body.curvy .takemoneybtn{
         }
 
         .theme-popup-mini {
-            color: #00aaff;
-            font-weight: 500;
-            background: #000000;
-            padding: 0px 15px;
-            border-radius: 0px;
-            text-align: center;
-            font-size: 14px;
-            color: #00aaff;
-            font-weight: 600;
+          color: #00aaff;
+    font-weight: 500;
+    background: #000000;
+    padding: 0px 15px;
+    border-radius: 0px;
+    text-align: center;
+    font-size: 12px;
+    color: #00aaff;
+    font-weight: 500;
+    margin: 0px;
         }
 
         body.curvy .theme-popup-mini {
@@ -748,10 +748,9 @@ img.sponserimg:hover{
             </button>
             
        </div>
-        <div class="theme-popup" id="themePopup">
+        <div class="theme-popup" id="themePopup" style="    backdrop-filter: blur(18px);">
             <span class="theme-popup-mini">Select theme</span>
             <button class="theme-option" onclick="setTheme('dark')">Dark</button>
-            <!-- <button class="theme-option" onclick="setTheme('light')">Light</button> -->
             <button class="theme-option" onclick="setTheme('telegram-dark')">Classic</button>
         </div>
     </div>
