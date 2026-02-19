@@ -282,7 +282,16 @@ body.telegram-dark .bottomtakeoptions {
         body.telegram-dark p {
             color: #a0a9b2;
         }
-
+.takemonetbtn{
+    background: #ffffff57;
+    padding: 10px 37px;
+    backdrop-filter: blur(2px);
+    border-radius: 1000px;
+    z-index: 10000;
+}
+.takemonetbtn:focus{
+    background: #229af0;
+}
         body.my-own p {
             color: #959595;
         }
@@ -845,11 +854,7 @@ img.sponserimg:hover{
     </footer>
 
     <div class="bottomtakeoptions">
-        <div class="takemonetbtn" style="background: #ffffff57;
-    padding: 10px 37px;
-    backdrop-filter: blur(2px);
-    border-radius: 1000px;
-    z-index: 10000;">
+        <div class="takemonetbtn">
             <a style="color: white; text-decoration: none;" onclick="alert('We are redirecting you to taking form.')" href="https://blackswan19.github.io/golden/FM/takemoney">
                 <svg style="fill: white;
     width: 20px;
