@@ -4,151 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Myootive | MLending</title>
+    <title>Verify my account</title>
+    <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/736x/68/3d/8f/683d8f58c98a715130b1251a9d59d1b9.jpg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="mfi.logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Anta&family=Audiowide&family=Braah+One&family=Cardo:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dongle&family=Dosis:wght@200..800&family=DotGothic16&family=Goldman:wght@400;700&family=Gruppo&family=Handjet:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mandali&family=Michroma&family=Oxanium:wght@200..800&family=Pixelify+Sans:wght@400..700&family=Poiret+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&family=Sarpanch:wght@400;500;600;700;800;900&family=Share+Tech&family=Space+Grotesk:wght@300..700&family=Stalinist+One&family=VT323&family=Zen+Dots&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-:root {
-	--user-accent: #00aaff;
-	--telegram-accent: #00aaff;
-}
-
-* {
-	font-family: "Poppins", serif;
-	-webkit-tap-highlight-color: transparent;
-	scrollbar-width: none;
-	scrollbar-color: #696969 #131313;scrollbar-width: none;
-}
-
-
-        body {
-            background-color: black;
-            color: #ffffff;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 25px;
-            line-height: 30px;
-            letter-spacing: 0.4px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        /* LIGHT THEME – FULLY REVISED */
-        body.light {
-            background-color: #fafafa;
-            color: #222222;
-        }
-
-        body.light h1,
-        body.light h2,
-        body.light h3 {
-            color: #0066cc;
-        }
-
-        body.light a {
-            color: #0066cc;
-        }
-
-        body.light a:hover {
-            color: #004499;
-        }
-
-        body.light .button {
-            color: #0066cc;
-            border-color: #0066cc;
-            background: transparent;
-        }
-
-        body.light .button:hover {
-            background: #0066cc;
-            color: #fff;
-            border-color: #0066cc;
-        }
-
-        
-
-        body.light .about {
-            background: #ffffff;
-            border: 1px solid #e0e0e0;
-            box-shadow: 0 2px 6px rgba(0,0,0,.05);
-        }
-
-        body.light p,
-        body.light li {
-            color: #555555;
-        }
-
-       
-        .date-container {
-          position: fixed;
-    top: 12px;
-    height: 30px;
-    overflow: hidden;
-    user-select: none;
-    z-index: 10000;
-    border-radius: 8px;
-    background: #ffffff57;
-        }
-
-        body.curvy .date-container {
-            border-radius: 30px;
-        }
-
-        body.light #red_siren,
-        body.light #blue_siren {
-            opacity: .6;
-        }
-
-        body.light footer p {
-            color: #777777;
-        }
-
-        /* END LIGHT THEME FIXES */
-
-        body.telegram-dark {
-            background-color: #111920;
-            color: #ffffff;
-        }
-.bottomtakeoptions{
-   text-align: center;
-    position: fixed;
-    bottom: 0px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: linear-gradient(0deg, #181819e6 35%, transparent);
-    height: 170px;
-    font-size: 14px;
-    gap: 5px;
-} 
-body.telegram-dark .bottomtakeoptions {
-    background: linear-gradient(0deg, #111920c7 35%, transparent);
-    color: #ffffff;
-}
-        h1,
-        h2,
-        h3 {
-                font-weight: 500;
-    color: #00aaff;
-    padding: 0px;
-    margin: 0px;
-        }
-
-        body.my-own h1,
-        body.my-own h2,
-        body.my-own h3 {
-            color: var(--user-accent);
+        :root {
+            --user-accent: #00aaff;
+            --telegram-accent: #00aeff;
         }
 
         * {
             -webkit-tap-highlight-color: transparent;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;scrollbar-width: none;
+        }
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        *::-webkit-scrollbar {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-track,::-webkit-meter-bar{
+            width: 0px;
         }
 
         body {
@@ -156,43 +40,379 @@ body.telegram-dark .bottomtakeoptions {
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: black;
+            color: #e0e0e0;
+            letter-spacing: 0.5px;
         }
 
-       .about {
-            padding: 17px;
-    text-align: center;
-    max-width: 600px;
-    width: 105%;
-    border-radius: 15px;
-    background: #181819;
-    position: relative;
-    margin: 8px 0px;
-    border: none;top: 20px;
-        }
-        body.telegram-dark .about {
-            background: #1d2733;
+        /* LIGHT THEME */
+        body.light {
+            background-color: #fafafa;
+            color: #212121;
         }
 
-        body.my-own .about {
-            background: #161616;
+        body.light .header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
-        body.curvy .about {
+        body.light .header h2 {
+            color: #0066cc;
+        }
+
+        body.light #userPassword {
+            background: #ffffff;
+            color: #212121;
+        }
+
+        body.light #submitBtn {
+            background-color: #0066cc;
+            color: #ffffff;
+        }
+
+        body.light a {
+            color: #0066cc;
+        }
+
+        body.light .notice {
+            color: gray;
+        }
+
+        body.light .modal {
+            background-color: #ffffff;
+        }
+
+        body.light .modal h2 {
+            color: #212121;
+        }
+
+        body.light .modal h3 {
+            color: #0066cc;
+        }
+
+        body.light .modal p {
+            color: #424242;
+        }
+
+        body.light .close-btn {
+            background: rgba(0,0,0,0.07);
+            color: #212121;
+        }
+
+        body.light .close-btn svg {
+            fill: #212121;
+        }
+
+        body.light .amount-buttons {
+            border-color: rgba(0,0,0,0.12);
+        }
+
+        body.light .amount-btn {
+            background-color: #ffffff;
+            color: #212121;
+            border: 1px solid #e0e0e0;
+        }
+
+        body.light .amount-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        body.light .amount-btn.active {
+            background-color: #0066cc;
+            color: #ffffff;
+        }
+
+        body.light .amount-btn .amount-id {
+            background-color: #f5f5f5;
+            color: #0066cc;
+        }
+
+        body.light .logout-btn {
+            background-color: #f0f0f0;
+            color: #212121;
+            border: 1.4px solid #0066cc;
+        }
+
+        body.light .logout-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        body.light .logout-btn a {
+            color: #0066cc;
+        }
+
+        body.light .amounts-modal-content {
+            background-color: #ffffff;
+            color: #212121;
+        }
+
+        body.light .amounts-close-btn {
+            background: rgba(0,0,0,0.07);
+            color: #212121;
+        }
+
+        body.light .reminder-modal-content {
+            background-color: #ffffff;
+            color: #212121;
+        }
+
+        body.light .reminder-modal-content h3 {
+            color: #0066cc;
+        }
+
+        body.light .reminder-modal-content p {
+            color: #424242;
+        }
+
+        body.light .reminder-close-btn {
+            background: #0066cc;
+        }
+
+        body.light .profile-picture {
+            background-color: #e0e0e0;
+            color: #212121;
+        }
+
+        body.light .theme-popup {
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        body.light .theme-option {
+            color: #212121;
+        }
+
+        body.light .theme-option:hover {
+            background-color: #f0f0f0;
+        }
+        .borrowLimitMessage {
+            margin-bottom: 10px;
+            width: 100%;
+            max-width: 400px;
+            background: #ffffff1f;
+            color: #ffffff8d;
+            z-index: 1000;
+            position: relative;
+            left: -10px;
+            line-height: 16px;
+            letter-spacing: 0.1px;
+            border-radius: 8px;
+            padding: 10px 13px;
+        }
+p.borrowLimitMessage {
+    font-size: 12px;
+    text-align: left;
+    font-weight: 300;
+    max-width: 615px;
+    line-height: 20px;
+    border: solid 1.4px #7e7e7e00;
+    letter-spacing: 0.3px;
+    padding: 15px 10px 30px 15px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    line-height: 18px;
+}
+        body.curvy .borrowLimitMessage {
             border-radius: 50px;
+        }a.exploreadds {
+    position: absolute;
+    right: 0px;
+    bottom: 7px;
+}i.fa-solid.fa-arrow-left {
+    color: white;
+    font-size: 15px;
+    background: #80808066;
+    rotate: 180deg;
+    padding: 12px; border-radius: 8px;
+}
+body.curvy i.fa-solid.fa-arrow-left{
+     border-radius: 50px;
+}
+        .exploreadds{
+            
+    border-radius: 8px;
+        }
+        body.curvy .exploreadds{
+            border-radius: 25px;
+        }
+        body.light .borrowLimitMessage {
+            background: #00000012;
+    color: #4c4c4cde;
+        }
+        body.telegram-dark .borrowLimitMessage {
+            background: #2a3545;
+            color: #ffffffad;
+        }
+        
+        body.light .applybtn {
+            background: #0066cc;
+            color: #ffffff;
         }
 
-        body.curvy .about .applybtn {
-            border-radius: 35px;
+        body.light .applybtn:hover {
+            background: #004c99;
+        }
+
+        body.telegram-dark {
+            background-color: #111920;
+            color: #ffffff;
+        }
+
+        body.my-own {
+            background-color: rgb(10 10 10);
+            color: #e0e0e0;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(10 10 10);
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        body.light .header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        body.telegram-dark .header {
+            background-color: #242f3e;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        body.my-own .header {
+            background-color: rgb(10 10 10);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .header h2 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-left: 10px;
+            color: #00aaff;
+        }
+
+        body.light .header h2 {
+            color: #0066cc;
+        }
+
+        body.telegram-dark .header h2 {
+            color: var(--telegram-accent);
+        }
+
+        body.my-own .header h2 {
+            color: var(--user-accent);
+        }
+
+        #passwordContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            width: 100%;
+            text-align: center;
+            line-height: 15px;
+            position: fixed;
+        }
+
+        #userPassword {
+            font-size: 16px;
+            border: solid 1.5px transparent;
+            background: rgb(255 255 255 / 12%);
+            color: #fff;
+            padding: 8px 25px;
+            text-align: center;
+            width: 90%;
+            outline: none;
+            max-width: 280px;
+            margin: 26px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        body.curvy #userPassword {
+            border-radius: 12px;
+        }
+
+        body.light #userPassword {
+            background: #00000012;
+            color: #000000;
+        }
+
+        body.telegram-dark #userPassword {
+           background: #587fb82b;
+    color: #ffffff;
+        }
+
+        body.my-own #userPassword {
+            background: rgb(33 33 33);
+            color: #fff;
+        }
+
+        #userPassword:focus {
+            background: #3a3a3a;
+        }
+
+        body.light #userPassword:focus {
+            background: #e0e0e0;
+        }
+
+        body.telegram-dark #userPassword:focus {
+            background: #3a4b5e;
+        }
+
+        body.my-own #userPassword:focus {
+            background: #3a3a3a;
+        }
+
+        #submitBtn {
+            background-color: #00aaff;
+            color: #000000;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+            padding: 7.5px 30px;
+            font-weight: 500;
+            border-radius: 8px;
+        }
+
+        body.curvy #submitBtn {
+            border-radius: 10px;
+        }
+
+        body.light #submitBtn {
+            background-color: #00aeff;
+            color: #ffffff;
+        }
+
+        body.telegram-dark #submitBtn {
+            background-color: var(--telegram-accent);
+            color: #ffffff;
+        }
+
+        body.my-own #submitBtn {
+            background-color: var(--user-accent);
+            color: #000000;
         }
 
         a {
-            color: #00aaff;
+            color: #848484;
             text-decoration: none;
         }
 
-        a:hover {
-            text-decoration: underline;
-            color: #ffffff;
+        body.light a {
+            color: #0066cc;
         }
 
         body.telegram-dark a {
@@ -203,272 +423,1005 @@ body.telegram-dark .bottomtakeoptions {
             color: var(--user-accent);
         }
 
-        body.my-own a:hover {
-            color: #ffffff;
+        #error-message {
+            color: #ff1c1c;
+            font-size: 12px;
+            margin-top: 10px;
         }
 
-        .button {
-            display: inline-block;
-            color: #b6b6b6;
-            padding: 1px 20px;
-            text-decoration: none;
-            margin: 10px 0px 0px 0px;
-            font-size: 14px;
-             color: var(--telegram-accent);
-            border: solid 1.5px var(--telegram-accent);
-            background: transparent;
-            border-radius: 8px;
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            height: 100%;
+            background-color: black;
+            padding: 65px 10px 0px 30px;
+            line-height: 30px;
+            overflow-y: scroll;
+            z-index: 10000000;
+            margin: 0px;
+        }
+
+        body.light .modal {
+            background-color: #ffffff;
+        }
+
+        body.telegram-dark .modal {
+            background-color: #111920;
+        }
+
+        body.my-own .modal {
+            background-color: rgb(10 10 10);
+        }
+
+        .modal h2 {
+            color: #e0e0e0;
             font-weight: 500;
         }
 
-        .button:hover {
-            text-decoration: none;
-           background-color: var(--telegram-accent);
-            color: #fff;
-            border-color: transparent;
+        body.light .modal h2 {
+            color: #000000;
         }
 
-        body.my-own .button {
+        body.telegram-dark .modal h2 {
+            color: #ffffff;
+        }
+
+        body.my-own .modal h2 {
+            color: #e0e0e0;
+        }
+
+        .modal h3 {
+            color: #00aeff;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 25px 0;
+        }
+
+        body.telegram-dark .modal h3 {
+            color: var(--telegram-accent);
+        }
+
+        body.my-own .modal h3 {
             color: var(--user-accent);
-            border-color: var(--user-accent);
         }
 
-        body.my-own .button:hover {
+        .loan-entry p {
+            color: #a0a0a0;
+            font-size: 14px;
+            font-weight: 400;
+            margin: 10px 0;
+            transition: color 0.3s ease;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal svg {
+           fill: #a0a0a0;
+    width: 16px;
+    height: 16px;
+        }
+
+        body.light .modal p {
+            color: #434343;
+        }
+
+        body.telegram-dark .modal p {
+            color: #a0a9b2;
+        }
+
+        body.my-own .modal p {
+            color: #a0a0a0;
+        }
+
+        .close {
+        display: flex;
+    justify-content: space-between;
+    backdrop-filter: blur(3px);
+    position: fixed;
+    padding: 20px 10px 5px 15px;
+    gap: 100px;
+    top: 0px;
+    z-index: 100000;
+    width: 100%;
+    left: 0px;
+        }
+
+        .close-btn {
+           
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 11;
+            background: #ffffff57;
+            padding: 4px 10px 4px 5px;
+            border-radius: 8px;
+            outline: none;
+            border: none;
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .close-btn svg {
+            fill: white;
+        }
+
+        body.curvy .close-btn {
+            border-radius: 50px;
+        }
+
+        body.my-own .close-btn {
+            background: #1d1d1d;
+            color: #e0e0e0;
+            border: solid 1.4px var(--user-accent);
+        }
+
+        i {
+            margin-right: 8px;
+        }
+
+        .logo {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 11;
+        }
+
+        .logo img {
+            width: 40px;
+            border-radius: 50%;
+        }
+
+        body.curvy .logo img {
+            border-radius: 50%;
+        }
+
+        .logout-btn {
+            position: fixed;
+            top: 55px;
+            right: 5px;
+            background-color: #1d1d1d;
+            color: #e0e0e0;
+            border: none;
+            padding: 5px 12px;
+            font-size: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            z-index: 11;
+        }
+
+        body.curvy .logout-btn {
+            border-radius: 15px;
+        }
+
+        body.light .logout-btn {
+            background-color: #f0f0f0;
+            color: #000000;
+        }
+
+        body.telegram-dark .logout-btn {
+            background-color: #2a3545;
+            color: #ffffff;
+        }
+
+        body.my-own .logout-btn {
+            background-color: #1d1d1d;
+            color: #e0e0e0;
+            border: solid 1.4px var(--user-accent);
+        }
+
+        .logout-btn a {
+            color: #e0e0e0;
+            text-decoration: none;
+        }
+
+        body.light .logout-btn a {
+            color: #000000;
+        }
+
+        body.telegram-dark .logout-btn a {
+            color: #ffffff;
+        }
+
+        body.my-own .logout-btn a {
+            color: var(--user-accent);
+        }
+
+        .logout-btn:hover {
+            background-color: #3a3a3a;
+        }
+
+        body.light .logout-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        body.telegram-dark .logout-btn:hover {
+            background-color: #3a4b5e;
+        }
+
+        body.my-own .logout-btn:hover {
+            background-color: #3a3a3a;
+        }
+
+        .loan-entry {
+            padding: 10px 0px;
+            margin-bottom: 20px;
+            border-bottom: none;
+            width: 98%;
+            padding-bottom: 0px;
+            max-width: 600px;
+            margin-left: -5px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .amount-buttons {
+        display: flex;
+    gap: 20px;
+    margin: 20px 0px 20px -18px;
+    overflow-x: scroll;
+    white-space: nowrap;
+    position: sticky;
+        bottom: 10px;
+    background-color: #ffffff1f;
+    z-index: 100000;
+    backdrop-filter: blur(10px);
+    max-width: 645px;
+    border-radius: 8px;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: -10px;
+        }
+
+        body.curvy .amount-buttons {
+            border-radius: 50px;
+        }
+
+        body.telegram-dark .amount-buttons {
+            background-color: #6795cb1f;
+        }
+
+        .amount-btn {
+            background-color: #ffffff36;
+            color: lightgray;
+            border: none;
+            padding: 12px 15px 12px 100px;
+            font-size: 12.5px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 400;
+            width: 100%;
+        }
+
+        body.curvy .amount-btn {
+            border-radius: 50px;
+        }
+
+        body.light .amount-btn {
+            background-color: #00000058;
+            color: white;
+            border: none;
+        }
+
+        body.telegram-dark .amount-btn {
+            background-color: #4972a16b;
+            color: #ffffff;
+            border: none;
+        }
+
+        body.my-own .amount-btn {
+            background-color: rgb(33 33 33);
+            color: #e0e0e0;
+            border: solid 1.4px var(--user-accent);
+        }
+
+        .amount-btn:hover {
+            background-color: rgb(92, 92, 92);
+            color: rgb(255, 255, 255);
+        }
+
+        body.light .amount-btn:hover {
+            background-color: #00000075;
+        }
+
+        body.telegram-dark .amount-btn:hover {
+            background-color: #425975;
+        }
+
+        body.my-own .amount-btn:hover {
+            background-color: #434343;
+        }
+
+        .amount-btn.active {
+            background-color: #00aef8;
+            color: rgb(45, 45, 45);
+        }
+
+        body.light .amount-btn.active {
+            background-color: #00aeff;
+            color: white;
+        }
+
+        body.telegram-dark .amount-btn.active {
+            background-color: var(--telegram-accent);
+        }
+
+        body.my-own .amount-btn.active {
             background-color: var(--user-accent);
-            color: #000;
-            border-color: var(--user-accent);
         }
 
-        body.curvy .button {
+        .amount-btn .amount-id {
+            position: absolute;
+            left: 6px;
+            font-size: 12px;
+            color: #00aeff;
+            background-color: rgb(10 10 10);
+            border-radius: 8px;
+            border: none;
+            padding: 6px 14px;
+            width: 55%;
+            max-width: 150px;
+        }
+
+        body.curvy .amount-btn .amount-id {
+            border-radius: 50px;
+        }
+
+        body.light .amount-btn .amount-id {
+            color: #0066cc;
+            background-color: #ffffff;
+            border: solid 1px #ebebf0;
+        }
+
+        body.telegram-dark .amount-btn .amount-id {
+            color: var(--telegram-accent);
+            background-color: #18222d;
+        }
+
+        body.my-own .amount-btn .amount-id {
+            color: var(--user-accent);
+            background-color: rgb(10 10 10);
+        }
+
+        .notice {
+            font-weight: 200;
+            font-size: 12px;
+            line-height: 20px;
+            position: fixed;
+            bottom: 10px;
+            color: #ffffffd4;
+            padding: 10px;
+            border: solid 1.4px #9595954d;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        body.curvy .notice {
+            border-radius: 16px;
+        }
+
+        body.light .notice {
+            color: #666666;
+            border-color: #9595954d;
+        }
+
+        body.telegram-dark .notice {
+            color: #a0a9b2;
+            border-color: #9595954d;
+        }
+
+        body.my-own .notice {
+            color: #ffffffd4;
+            border: solid 1.4px var(--user-accent);
+        }
+
+        .powered-by {
+            position: fixed;
+            top: 11px;
+            font-size: 10px;
+            color: #ffffff;
+            z-index: -1;
+            background: #212121;
+            text-align: center;
+            padding: 6px 15px;
+            display: none;
+            border-radius: 8px;
+        }
+
+        body.curvy .powered-by {
+            border-radius: 8px;
+        }
+
+        body.light .powered-by {
+            background: #f0f0f0;
+        }
+
+        body.telegram-dark .powered-by {
+            background: #2a3545;
+        }
+
+        body.my-own .powered-by {
+            background: #ffffff;
+        }
+
+        .membership-type {
+            color: #00aeff;
+            font-size: 14px;
+            font-weight: 400;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+                
+        }
+        body.light .membership-type {
+            color: #0066cc;
+        }
+
+        body.telegram-dark .membership-type {
+            color: var(--telegram-accent);
+        }
+
+        body.my-own .membership-type {
+            color: var(--user-accent);
+        }
+
+        .membership-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+       
+
+        p#membershipType {
+           font-size: 14px;
+    color: #ff66f9;
+    padding: 5px;
+    font-weight: 600;
+    margin: -10px 0px 35px -15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: #037e75;
+    border-radius: 8px;
+    z-index: 0;
+    position: relative;
+    display: none;
+        }
+        p#membershipType a{
+            text-decoration: none;
+            color:  #25212f;
+        }
+        body.curvy p#membershipType {
             border-radius: 100px;
         }
+        .profile-container {
+            max-width: 620px;
+            width: 100%;
+            padding: 10px;
+            position: relative;
+            z-index: 10000;
+        }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .profile-picture {
+            width: 90px;
+            height: 90px;
+            border-radius: 8px;
+            display: flex;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 900;
+            color: #ffffff;
+            background-size: cover;
+            background-position: center;
+            margin: 0px auto;
+            position: relative;
+            left: -10px;
         }
-        .sponserheading{
-            text-align: center;
-    font-size: 13px;
-    font-weight: 400;
-    opacity: 80%;
-    color: white;
-    display: inline;
-    background: #ffffff57;
-    padding: 6px 15px;
+
+        body.curvy .profile-picture {
+            border-radius: 30%;
+        }
+
+        .profile-picture:hover {
+            box-shadow: inset 0px 0px 20px #00000000, inset -35px 20px 30px #00000000;
+            animation: profile-container infinite 5s ease-in-out;
+            border: none;
+        }
+
+        @keyframes profile-container {
+            from {
+                box-shadow: inset 0px 0px 20px #00000000, inset -35px -40px 30px #00000000;
+            }
+            20% {
+                box-shadow: inset -30px -10px 20px #000000, inset -65px 20px 30px #000000;
+            }
+            40% {
+                box-shadow: inset -30px -10px 20px #000000, inset -35px 40px 30px #000000;
+            }
+            60% {
+                box-shadow: inset -30px -10px 20px #000000, inset -20px 20px 30px #000000;
+            }
+            80% {
+                box-shadow: inset 0px 0px 20px #000000, inset -135px 40px 30px #000000;
+            }
+            to {
+                box-shadow: inset 0px 0px 20px #00000000, inset -35px -40px 30px #00000000;
+            }
+        }
+         .user-icon{
+           width: 25px;
+    height: 25px;
     border-radius: 8px;
+    padding: 5px;
+    border: solid 1.5px #ababab33;
+    background: #6f6f6f1f;
         }
-        body.curvy .sponserheading{
-             border-radius: 80px;
+         body.curvy .user-icon{
+            border-radius: 50%;
         }
-        ul li {
-            margin-bottom: 10px;
+p#userNameContainer {
+ font-size: 16px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0px;
+    border-radius: 8px;
+    padding: 0px 3px 0px 20px;
+    cursor: pointer;
+    background: transparent;
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    position: relative;
+    transform: translate(-55%, 0%);
+    background: #71717154;
+}
+body.curvy p#userNameContainer {
+    border-radius: 25px;
+}
+p#userNameContainer:hover{
+    background: #80808066;
+}
+        span#userName {
+          color: transparent;
+    background: linear-gradient(90deg, transparent, rgb(126 126 126), #ffffff, transparent);
+    background-size: 200% 100%;
+    animation: shimmer 5s linear infinite;
+    background-clip: text;
+    font-weight: 500; cursor: pointer;
+    }
+   
+
+        body.light span#userName {
+            color: transparent;
+    background: linear-gradient(90deg, transparent, rgb(126 126 126), #000000, transparent);
+    background-size: 200% 100%;
+    animation: shimmer 5s linear infinite;
+    background-clip: text;
+    font-weight: 500;
+        }
+
+        body.telegram-dark span#userName {
+            color: transparent;
+    background: linear-gradient(90deg, transparent, rgb(126 126 126), #ffffff, transparent);
+    background-size: 200% 100%;
+    animation: shimmer 5s linear infinite;
+    background-clip: text;
+    font-weight: 500;
+        }
+ @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+ 
+        .twoOptions {
             display: flex;
             justify-content: space-between;
+            margin-left: -20px;
+            gap: 5px;
+        }
+
+        .amounts-btn {
+            background-color: #ffffff24;
+            color: lightgray;
+            border: none;
+            padding: 5px;
+            font-size: 13px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 45%;
             align-items: center;
         }
-ol {
-    margin-bottom: 0px;
+        button.amounts-btn {
+    padding: 5px 0px;
+    display: flex;
+    margin-top: 0px;
 }
-        p {
-            color: #959595;
-            font-size: 12px;
-            font-weight: 400;padding: 0px 20px;    margin-bottom: 0px;
+        .amounts-btn svg {
+            fill: lightgray;
+            width: 20px;
+            height: 20px;
         }
 
-        body.telegram-dark p {
-            color: #a0a9b2;
+        body.curvy .amounts-btn {
+            border-radius: 35px;
         }
-.takemonetbtn{
-    background: #ffffff57;
-    padding: 10px 37px;
-    backdrop-filter: blur(2px);
-    border-radius: 8px;
-    z-index: 10000;
+
+        body.light .amounts-btn {
+            background-color: #81818124;
+            color: #323232;
+            border: solid 1px #ffffff65;
+        }
+         img.sponserimg{
+    width: 80%; 
+    padding: 0px; 
+    max-width: 400px; 
+    margin-bottom: -9px; 
+    margin-top: 10px;
 }
-.takemonetbtn:hover{
-    background: #229af0;
-}body.curvy .takemonetbtn {
-            border-radius: 1035px;
+        .sponserimges {
+         display: flex;
+    gap: 0px;
+    margin-bottom: -20px;
         }
-        body.my-own p {
-            color: #959595;
-        }
-
-        li {
-            font-size: 12px;
-            color: #a9a9a9;
-        }
-
-        body.telegram-dark li {
-            color: #a0a9b2;
-        }
-
-        body.my-own li {
-            color: #a9a9a9;
+        img.sponserimg {
+    opacity: 80%;
+}
+img.sponserimg:hover{
+    opacity: 100%;
+}
+        body.curvy .sponserimg{
+    border-radius: 20px;
+}
+        body.light svg {
+            fill: rgb(36, 36, 36);
+            width: 20px;
         }
 
-        .copy-icon {
-            cursor: pointer;
-            background-color: #333;
+        body.telegram-dark .amounts-btn {
+            background-color: #30455d5e;
+            color: lightgray;
+        }
+
+        body.my-own .amounts-btn {
+            background-color: #ffffff;
+            border: solid 1.4px var(--user-accent);
+        }
+
+        .amounts-btn:hover {
+            background-color: #565656b3;
             color: white;
-            border-radius: 4px;
-            padding: 5px 10px;
-            font-size: 1.2em;
         }
 
-        .copy-icon:hover {
-            background-color: #444;
+        body.light .amounts-btn:hover {
+            background-color: #dadada;
         }
 
-         /* .logo {
-             z-index: 100;
-    font-size: 14px;
-    display: flex;
-    width: 110%;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0px;
-    padding: 40px 10px 10px 10px;
-    background: transparent;
-    backdrop-filter: blur(4px);
-        } */
-.logo{
-   z-index: 100;
-    font-size: 13px;
-    display: flex;
-    width: 110%;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0px;
-    padding: 40px 10px 10px 10px;
-    background: linear-gradient(359deg, #ffffff1a, transparent);
-    border-radius: 0px 0px 15px 15px;
-    backdrop-filter: blur(4px);
-    border-bottom: solid 1.5px #ffffff2e;
-}
-body.telegram-dark .logo {
-            background: linear-gradient(359deg, #1d2733, transparent);
-    border-bottom: solid 1.5px #323f4e;
-        }
-        body.curvy .logo {
-            border-radius: 0px 0px 35px 35px;
-        }
-        img#mdbglogo2 {
-            position: fixed;
-            width: 100%;
-            z-index: -1;
-            top: 0px;
-            left: 0px;
-            filter: blur(0px);
+        body.telegram-dark .amounts-btn:hover {
+            background-color: #3a4b5e;
         }
 
-        @media (max-width: 600px) {
-            body {
-                padding: 30px;
-            }
-
+        body.my-own .amounts-btn:hover {
+            background-color: #ffffffd4;
         }
 
-        .loading-overlay {
+        .amounts-modal {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #00003b;
+            background-color: #000000b5;
+            z-index: 10000001;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-            z-index: 1000000000000;
-            opacity: 1;
-            transition: opacity 0.5s ease;
+            user-select: none;
         }
 
-        .loading-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
+        .amounts-modal-content {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            width: 95%;
+            max-width: 400px;
+            color: #e0e0e0;
+            position: relative;
+            line-height: 42px;
         }
-         .loading-logo {
-            width: 300px;
-            height: auto;
+
+        body.curvy .amounts-modal-content {
+            border-radius: 30px;
         }
-        .loading-dots {
-            display: flex;
+
+        body.light .amounts-modal-content {
+            background-color: #fcfcfd;
+            color: #5b5b5b;
+        }
+
+        body.telegram-dark .amounts-modal-content {
+            background-color: #242f3e;
+            color: #ffffff;
+        }
+
+        body.my-own .amounts-modal-content {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        .amounts-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #e0e0e0d4;
+            font-size: 30px;
+            cursor: pointer;
+            font-weight: 100;
+            background: #8080806e;
+            padding: 0px 12px;
+            border-radius: 8px;
+        }
+
+        body.curvy .amounts-close-btn {
+            border-radius: 30px;
+        }
+
+        body.light .amounts-close-btn {
+            color: #666666;
+        }
+
+        body.telegram-dark .amounts-close-btn {
+            color: #a0a9b2;
+        }
+
+        body.my-own .amounts-close-btn {
+            color: #e0e0e0d4;
+        }
+        body.my-own span#userName {
+            color: white;
+        }
+
+        span {
+            color: #00c6ff;
+        }
+
+        body.light span {
+            color: #00aeff;
+        }
+
+        body.telegram-dark span {
+            color: var(--telegram-accent);
+        }
+
+        body.my-own span {
+            color: var(--user-accent);
+        }
+
+        .reminder-modal {
+            display: none;
             position: fixed;
-            bottom: 100px;
-            align-items: center;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 10000002;
+            display: flex;
             justify-content: center;
+            align-items: center;
+            user-select: none;
         }
-        img.sponserimg{
-width: 90%;
-    padding: 0px;
-    max-width: 400px;
-    margin-bottom: -15px;
-    margin-top: 10px;
-}
-        a{
-            text-decoration: none;
+
+        .reminder-modal-content {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            width: 95%;
+            max-width: 400px;
+            color: #e0e0e0;
+            position: relative;
+            line-height: 24px;
+            text-align: center;
         }
-       .dot {
-    width: 160px;
-    height: 1.5px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 15px;
-    overflow: hidden;
+
+        body.curvy .reminder-modal-content {
+            border-radius: 30px;
+        }
+
+        body.light .reminder-modal-content {
+            background-color: #f0f0f0;
+            color: #000000;
+        }
+
+        body.telegram-dark .reminder-modal-content {
+            background-color: #242f3e;
+            color: #ffffff;
+        }
+
+        body.my-own .reminder-modal-content {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        .reminder-close-btn {
+            color: white;
+            font-size: medium;
+            cursor: pointer;
+            font-weight: 400;
+            background: #008bd1;
+            padding: 5px 16px;
+            display: block;
+        }
+
+        body.light .reminder-close-btn {
+            color: white;
+        }
+
+        body.telegram-dark .reminder-close-btn {
+            color: white;
+        }
+
+        body.my-own .reminder-close-btn {
+            color: #e0e0e0d4;
+        }
+
+        .downsingle {
+            margin-top: 15px;
+        }
+
+        .reminder-modal-content p {
+            color: #a8a8a8;
+            margin: 15px 0;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        body.light .reminder-modal-content p {
+            color: #000000;
+        }
+
+        body.telegram-dark .reminder-modal-content p {
+            color: #ffffff;
+        }
+
+        body.my-own .reminder-modal-content p {
+            color: #ffffff;
+        }
+
+        .reminder-modal-content h3 {
+            color: #00aeff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        body.light .reminder-modal-content h3 {
+            color: #0066cc;
+        }
+
+        body.telegram-dark .reminder-modal-content h3 {
+            color: var(--telegram-accent);
+            text-decoration: underline;
+            font-size: 16px;
+        }
+
+        body.my-own .reminder-modal-content h3 {
+            color: var(--user-accent);
+        }
+
+        .stars-display {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            color: #e0e0e0;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0px;
+            z-index: 11;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        body.light .stars-display {
+            color: #000000;
+        }
+
+        body.telegram-dark .stars-display {
+            color: #ffffff;
+        }
+
+        body.my-own .stars-display {
+            color: var(--user-accent);
+        }
+
+        hr {
+            background: linear-gradient(to right, transparent, #a4a4a461, transparent);
+            width: 96%;
+            height: 1.5px;
+            border: none;
+            max-width: 400px;
+            outline: none;
+        }
+
+        .about {
+           padding: 17px;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 8px;
+    background: #181819;
     position: relative;
-}
-.rightsideopt{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.dot::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 100%;
-    background: rgba(255,255,255,0.9);
-    animation: pulse1 1.5s ease-in-out infinite;
-}
-@keyframes pulse1 {
-    0% { width: 0%; opacity: 0; left: 0; }
-    50% { width: 100%; opacity: 1; left: 0; }
-    100% { width: 0%; opacity: 0; left: 100%; }
-}
+    margin: 8px 0px;
+    border: none;top: 20px;
+        }
+
+        body.curvy .about {
+            border-radius: 50px;
+        }
+
+        body.light .about {
+            border: none;
+            background-color: #81818124;
+        }
+
+        body.telegram-dark .about {
+            background: #30455d5e;
+        }
+
+        body.my-own .about {
+            background: #161616;
+        }
 
         .applybtn {
-            background: rgb(105 105 105);
             color: #ffffff;
             border: none;
             border-radius: 8px;
-            padding: 8px 21px;
             font-weight: 400;
-        }
-.takemoneybtn{
-     background: rgb(105 105 105);
-            color: #ffffff;
             border: none;
-            padding: 8px 21px;
-            font-weight: 400;
-    border-radius: 15px;
-}
-body.curvy .takemoneybtn{
-            border-radius: 13px;
         }
-      
-        
-
+        .topdec{
+            display: none;
+        }
         body.curvy .applybtn {
+            border-radius: 30px;
+        }
+
+        body.curvy .about .applybtn {
             border-radius: 35px;
         }
 
+        body.light .applybtn {
+            color: white;
+            filter: none;
+        }
+
         body.telegram-dark .applybtn {
-            background: #696969;
+            background: #0093ff;
             color: #ffffff;
+            filter: none;
         }
 
         body.my-own .applybtn {
@@ -480,108 +1433,106 @@ body.curvy .takemoneybtn{
             text-decoration: none;
         }
 
-        .theme-button {
-            background-color:#ffffff57;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            width: 40px;
-            height: 40px;
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
             display: flex;
-            align-items: center;
             justify-content: center;
-            cursor: pointer;
-            font-size: 20px;
-            z-index: 500;
-            font-weight: 100;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-overlay.hidden {
             opacity: 0;
             pointer-events: none;
-            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
-        body.curvy .theme-button {
-            border-radius: 50%;
+        .loading-logo {
+            width: 200px;
+            height: auto;
+            border-radius: 100px;
         }
 
-        .theme-button.visible {
-            opacity: 1;
-            pointer-events: auto;
+        .loading-dots {
+            display: flex;
+            position: fixed;
+            bottom: 100px;
+            align-items: center;
+            justify-content: center;
         }
 
-        .theme-button.active {
-            transform: rotate(90deg);
-        }
-
-        .style-button {
-           background-color: transparent;
-    color: #fff;
-    border: none;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 15px;
-    z-index: 998;
-    font-weight: 400;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    opacity: 0;
-    pointer-events: none;
-    margin-top: 8px;
-        }
-
-        body.curvy .style-button {
-            border-radius: 30px;
-        }
-
-        .style-button.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-.logo h1 {
+        .nameHead {
+          margin: 0px -6px;
+    font-weight: 900;
+    font-size: 12px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    max-width: 0%;
     position: relative;
-    left: 10px;
-}
+    z-index: 100000;
+    position: sticky;
+    top: -14px;
+    white-space: nowrap;
+    
+    backdrop-filter: blur(1px);
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #006aff;
+            border-radius: 50%;
+            margin: 0 5px;
+            animation: bounceDot 1s ease-in-out infinite;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounceDot {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
         .theme-popup {
-          position: fixed;
-    right: 5px;
-    background: #575757;
-    border-radius: 15px;
-    padding: 10px 12px;
-    display: none;
-    flex-direction: column;
-    z-index: 2999;
-    transform: translateY(20px);
-    opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    top: 100px;
+            position: fixed;
+            bottom: 145px;
+            right: 20px;
+            background-color: #4f4f4f;
+            border-radius: 8px;
+            padding: 7px 8px;
+            display: none;
+            flex-direction: column;
+            z-index: 999;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            backdrop-filter: blur(5px);
         }
 
         body.curvy .theme-popup {
-            border-radius: 27px;
-        }
- body.telegram-dark .theme-popup {
-           background-color: #62676c;
-        }
-        .theme-popup-mini {
-          color: #00aaff;
-    font-weight: 500;
-    background: #000000;
-    padding: 0px 15px;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 12px;
-    color: #00aaff;
-    font-weight: 500;
-    margin: 0px;
+            border-radius: 18px;
         }
 
-        body.curvy .theme-popup-mini {
-            border-radius: 30px;
-        }
-		.curvestyler{
-			border-radius: 10px;
-		}
         .theme-popup.open {
             display: flex;
             transform: translateY(0);
@@ -613,108 +1564,105 @@ body.curvy .takemoneybtn{
             cursor: pointer;
         }
 
-        .container {
+        .style-button {
             position: fixed;
-            bottom: 0px;
-            width: 95%;
+            bottom: 104px;
+            right: 30px;
+            background-color: #696969;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
             display: flex;
+            align-items: center;
             justify-content: center;
-            filter: blur(40px);
-            z-index: 500;
+            cursor: pointer;
+            font-size: 10px;
+            z-index: 998;
+            font-weight: 400;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
         }
 
-        .sirens {
-            width: 200px;
-            height: 40px;
-            float: left;
-        }
-
-        #red_siren {
-            border-radius: 50px 0px 0px 50px;
-            background-color: transparent;
-            animation: red_light 500ms infinite ease-in-out;
-            z-index: 100;
-        }
-
-        #blue_siren {
-            border-radius: 0px 50px 50px 0px;
-            background-color: transparent;
-            animation: blue_light 500ms infinite ease-in-out;
-            z-index: 100;
-        }
-
-        #white_siren {
-            background-color: blue;
-            box-shadow: 0px 0px 10px orangered, 0px 0px 10px orangered, 0px 0px 50px orangered, 0px 0px 80px orangered;
-        }
-
-        @keyframes red_light {
-            from {
-                background-color: orangered;
-                box-shadow: 0px 0px 10px orangered, 0px 0px 20px orangered, 0px 0px 30px orangered, 0px 0px 30px orangered, 0px 0px 50px orangered, 0px 0px 60px orangered, 0px 0px 70px orangered, 0px 0px 80px orangered, 0px 0px 90px orangered, 0px 0px 100px orangered, 0px 0px 120px orangered;
-            }
-
-            to {
-                background-color: red;
-            }
-        }
-
-        @keyframes blue_light {
-            from {
-                background-color: rgb(255, 221, 0);
-            }
-
-            to {
-                background-color: rgb(255, 221, 0);
-                box-shadow: 0px 0px 10px rgb(255, 221, 0), 0px 0px 20px rgb(255, 221, 0), 0px 0px 30px rgb(255, 221, 0), 0px 0px 40px rgb(255, 221, 0), 0px 0px 50px rgb(255, 221, 0), 0px 0px 60px rgb(255, 221, 0), 0px 0px 70px rgb(255, 221, 0), 0px 0px 80px rgb(255, 221, 0), 0px 0px 120px rgb(255, 221, 0);
-            }
+        .style-button.visible {
+            opacity: 1;
+            pointer-events: auto;
         }
 
         .issuebtn button {
-            width: 95%;
+            width: 100%;
+            position: relative;
+            left: -6px;
             padding: 10px;
             background: red;
             color: white;
             border: none;
-            font-size: 14px;
+            font-size: 16px;
             border-radius: 8px;
-            cursor: pointer;margin-bottom: 4px;
+            cursor: pointer;
         }
-footer {
-       position: fixed;
-    bottom: -20px;
-    margin: 0px;
-    z-index: 1000000;
-    opacity: 40%;
 
-}
         body.curvy .issuebtn button {
             border-radius: 35px;
         }
-
-        .sponserimges {
-         display: flex;
-    gap: 0px;
-    margin-bottom: -20px;
-    margin-top: 10px;
+.downlog {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 85px;
+    z-index: 1000000;
+    right: 10px;
+    font-size: 12px;
+    background: rgb(255 255 255 / 11%);
+    padding: 5px;
+    border-radius: 31px;
+    backdrop-filter: blur(5px);
+}
+        @media(max-width:600px) {
+            .amount-buttons {
+             display: flex;
+        gap: 15px;
+        white-space: nowrap;
+        position: sticky;
+        bottom: 10px;
+        background-color: #ffffff1f;
+        align-items: center;
+        max-width: 645px;
+        width: 110%;
+        padding: 10px;
+        margin-left: -26px;
+        border-radius: 8px;
+        scrollbar-width: none;
+        margin-top: 10px;
+            }
+            .twoOptions {
+            display: flex;
+    justify-content: space-between;
+    margin-left: -25px;
+    gap: 5px;
+    margin-right: -5px;
         }
-        img.sponserimg {
-    opacity: 80%;
-    border-radius: 10px;
-}
-img.sponserimg:hover{
-    opacity: 100%;
-}
-        body.curvy img.sponserimg{
-    border-radius: 25px;
-}
-        .fa-xmark {
-            width: 26px;
-            height: 26px;
-            fill: white;
-            font-weight: 100;
+    .modal {
+    width: 100%;
+            }
         }
 
+        .date-container {
+            
+            height: 30px;
+            overflow: hidden;
+            user-select: none;
+            z-index: 1000;
+            border-radius: 8px;
+            background: #ffffff57;
+            backdrop-filter: blur(5px);
+        }
+
+        body.curvy .date-container {
+            border-radius: 30px;
+        }
 
         .date-slider {
             display: flex;
@@ -738,67 +1686,307 @@ img.sponserimg:hover{
             0% {
                 transform: translateY(0);
             }
-
             100% {
                 transform: translateY(-120px);
             }
         }
+
+        .amounts-modal-content p {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .amounts-modal-content svg {
+            fill: #e0e0e0c4;
+            width: 16px;
+        }
+
+        #specialContent {
+            width: 105%;
+            margin: 15px 0px 25px -19px;
+            text-align: center;
+            padding: 0px 10px;
+        }
+
+        #specialContent img {
+            max-width: 100%;
+            border-radius: 8px;
+            padding: 0px;
+            margin: -5px 0px 0px 0px;
+        }
+
+        .tiergraphbar {
+            flex: 1;
+            height: 6px;
+            background: #83838348;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        body.curvy .tiergraphbar {
+            border-radius: 3px;
+        }
+
+        #tierProgress {
+            margin: -10px 0px 10px 0px;
+            font-size: 13px;
+            color: #ddd;
+            position: relative;
+            left: -10px;
+            padding: 0px 0px;
+        }
+
+        body.curvy #specialContent img {
+            border-radius: 18px;
+        }
+
+        #specialContent h3 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        #specialContent p {
+            margin: 0;
+            font-size: 13px;
+            color: red;
+            padding: 0px 0px 10px 0px;
+        }
+
+        .modal {
+            display: none;
+        }
+ .sponserimges {
+           display: flex;
+    gap: 15px;
+    margin-bottom: -28px;
+        }
+
+        #specialContent a {
+            text-decoration: none;
+            display: block;
+        }
+
+        #specialContent a:hover {
+            opacity: 0.8;
+        }
+
+        #specialContent a:hover h3,
+        #specialContent a:hover p {
+            text-decoration: underline;
+        }
+
+        #specialContent a:hover img.applybtn {
+            cursor: pointer;
+            border: 2px solid #00aeff;
+        }
+        span#totalTaken,
+        #totalInterest,
+        #totalReturn {
+            margin: 0px -8px 0px 0px;
+        }
+        ex{
+            display: contents;
+    color: #00ffbb;
+        }
+        
     </style>
 </head>
 
 <body>
-    <div class="loading-overlay" id="loadingOverlay">
-         <div class="servicename" style="position: fixed;
-    top: 10px;
-    font-size: 11px;
-    letter-spacing: 0.5px;
-    background: #ffffff24;
-    padding:0px 15px;
-    border-radius: 100px;
-    color: #ffffff;
-    font-weight: 300;">
-            Myootive Service
+
+    <div id="passwordContainer">
+        <div class="topdec">
+            <img class="topdec" style="    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+" src="https://www.animatedimages.org/data/media/1071/animated-christmas-decoration-image-0059.gif" alt="">
         </div>
-        <img src="loadinglogo.png" alt="Loading Doughnut" class="loading-logo">
-        <div class="loading-dots">
-            <div class="dot"></div>
-            <!-- <div class="dot"></div>
-            <div class="dot"></div> -->
+        <div class="decoration topdec" style="width: 100%;
+    position: fixed;
+    display: contents;">
+            <img class="topdec" style="width: 450px;
+    position: fixed;
+    top: 0px;
+    object-fit: cover;    z-index: -1;" src="https://i.ibb.co/pvVBN7cr/tread.png" alt="">
         </div>
+        <center><img style="width: 40px; margin: 15px;z-index: -4;position: relative;" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/refs/heads/main/Objects/Old%20Key.webp" alt=""></center>
+        <h2 style="font-weight: 400; font-size: 20px;z-index: -3;">Verify my account</h2>
+        <input type="text" id="userPassword" placeholder="Enter password" autocomplete="current-password">
+        <button id="submitBtn">Verify</button>
+        <br><div class="treee" style="width: 100%;
+    position: fixed;
+    bottom: 10%;
+    left: 47.8%;
+    transform: translate(-50%, 0%);">
+            <img class="topdec" style="width: 85px;" src="https://media.tenor.com/Mreg30jYSooAAAAi/christmas-tree-christmas-lights.gif" alt="">
+        </div>
+       <p id="error-message"></p>
+        <div class="notice"> You should return the money before the due date, If not additional interest will be charged. </div>
     </div>
 
-    <div class="logo">
-        <h1>MLending</h1>
-       <div class="rightsideopt">
-          
-            <button class="theme-button" id="themeButton">
-                <svg class="fa-solid fa-xmark" style="display: none;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
-                    <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
-                </svg>
-                <i class="fa-solid fa-gear"></i>
-            </button>
+    <div id="userInfoModal" class="modal">
+        <div class="downlog">
+            <img style="max-width: 35px;
+    border-radius: 23px;" onclick="alert('Welcome to Myootive a service from BS&MFI Services')" src="mfi.gif" alt="">
+        </div>
+
+        <div class="topoption">
+            <div class="close">
+                
+                <div class="topdec">
+
+                    <img class="topdec" style="position: fixed;
+    width: 50px;
+    top: 45px;
+    left: 20px;
+    filter: drop-shadow(2px 4px 6px #00000057);" src="https://www.animatedimages.org/data/media/1076/animated-christmas-glitter-image-0249.gif" alt="">
+                    <img class="topdec" style="position: fixed;
+    top: 80px;
+    width: 90px;
+    right: 5px;
+    filter: drop-shadow(2px 4px 6px #00000057);
+    z-index: 100000;" src="https://www.animatedimages.org/data/media/1076/animated-christmas-glitter-image-0189.gif" alt="">
+         
+                    <img style="position: fixed;
+    top: 0px;
+    width: 100%;" src="https://www.animatedimages.org/data/media/1081/animated-christmas-line-image-0080.gif" alt="">
+               </div>
+                <button onclick="closeModal()" class="close-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+                        <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
+                    </svg>Back
+                </button>
+                <div class="date-container">
+                    <div style="color: white;font-weight: 300;" class="date-slider" id="main-slider">
+                        <div class="date-text"></div>
+                        <div class="day-text"></div>
+                        <div class="date-text"></div>
+                        <div class="day-text"></div>
+                        <div class="date-text"></div>
+                        <div class="day-text"></div>
+                        <div class="date-text"></div>
+                        <div class="day-text"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="https://blackswan19.github.io/golden/FM/starspage"> </a>
+
+        <div class="profile-container">
+            <div class="profile-picture" id="profilePicture"></div>
+            <div style="width: 100%;">
+                <p id="userNameContainer">
+                    <span style="color: white;" id="userName"></span>
+                </p>
+                <div class="twoOptions">
+                    <button class="amounts-btn" onclick="showAmountsModal()">
+                        <svg style="fill: lightgray;
+    width: 15px;
+    height: 20px;" id="Layer_1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="m20.5 8h-15c-.789 0-1.53-.376-2-1 .102-.136.218-.262.347-.376.621-.548.68-1.496.132-2.117-.549-.621-1.496-.681-2.117-.132-1.183 1.044-1.862 2.547-1.862 4.125v10c0 3.033 2.467 5.5 5.5 5.5h15c1.93 0 3.5-1.57 3.5-3.5v-9c0-1.93-1.57-3.5-3.5-3.5zm.5 12.5c0 .276-.225.5-.5.5h-15c-1.378 0-2.5-1.122-2.5-2.5v-8.104c.763.39 1.618.604 2.5.604h15c.275 0 .5.224.5.5zm-2-4.5c0 .828-.672 1.5-1.5 1.5s-1.5-.672-1.5-1.5.672-1.5 1.5-1.5 1.5.672 1.5 1.5zm2-16h-12c-1.657 0-3 1.343-3 3v3h6c0-1.657 1.343-3 3-3s3 1.343 3 3h2.5c1.33 0 2.549.472 3.5 1.257v-4.257c0-1.657-1.343-3-3-3zm-12 4.5c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm12 0c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5z"/></svg>Wallet
+                    </button>
+                    <button class="amounts-btn" onclick="downloadAllLoans()">
+                        <svg style="width: 16px;
+    height: 19px;
+    fill: lightgray;" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512"><path d="M19,6V4a4,4,0,0,0-4-4H9A4,4,0,0,0,5,4V6a5.006,5.006,0,0,0-5,5v5a5.006,5.006,0,0,0,5,5,3,3,0,0,0,3,3h8a3,3,0,0,0,3-3,5.006,5.006,0,0,0,5-5V11A5.006,5.006,0,0,0,19,6ZM7,4A2,2,0,0,1,9,2h6a2,2,0,0,1,2,2V6H7ZM17,21a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V17a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1Zm5-5a3,3,0,0,1-3,3V17a3,3,0,0,0-3-3H8a3,3,0,0,0-3,3v2a3,3,0,0,1-3-3V11A3,3,0,0,1,5,8H19a3,3,0,0,1,3,3Z"/><path d="M18,10H16a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z"/></svg>
+
+                        Receipt
+                    </button>
+                    <button class="amounts-btn" onclick="showStarCount()">
+                        <div style="display: flex ; justify-content: center; align-items: center; margin: 0px 0px -2px 0px; gap: 3px; width: 33px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="#ffffff"><g fill="none" stroke="#ffffff" stroke-width="1.5"><path d="m9.99 16.5l-.975.474c-1.98.548-2.971.822-3.505.245c-.534-.576-.258-1.62.295-3.71l.142-.54c.157-.595.236-.891.197-1.186c-.04-.294-.193-.553-.499-1.07l-.278-.47C4.29 8.422 3.752 7.512 4.11 6.787c.36-.724 1.379-.783 3.418-.9l.527-.03c.58-.034.869-.05 1.122-.185c.252-.135.439-.372.813-.848l.34-.432c1.316-1.673 1.974-2.509 2.73-2.38s1.11 1.137 1.817 3.154l.183.522c.201.573.302.86.497 1.07c.196.212.464.324 1.001.547l.489.204c1.89.786 2.835 1.18 2.942 1.983c.092.686-.477 1.283-1.64 2.29" opacity=".5"/><path d="M15.252 10.689c-.987-1.18-1.48-1.77-2.048-1.68c-.567.091-.832.803-1.362 2.227l-.138.368c-.15.405-.226.607-.373.756c-.146.149-.348.228-.75.386l-.367.143c-1.417.555-2.126.833-2.207 1.4c-.08.567.52 1.049 1.721 2.011l.31.25c.342.273.513.41.611.597c.1.187.115.404.146.837l.029.394c.11 1.523.166 2.285.683 2.545c.517.26 1.154-.155 2.427-.983l.329-.215c.362-.235.543-.353.75-.387c.208-.033.42.022.841.132l.385.1c1.485.386 2.228.58 2.629.173c.4-.407.193-1.144-.221-2.62l-.108-.38c-.117-.42-.176-.63-.147-.837c.03-.208.145-.39.374-.756l.21-.332c.807-1.285 1.21-1.927.94-2.438c-.269-.511-1.033-.553-2.562-.635l-.396-.022c-.434-.023-.652-.035-.841-.13c-.19-.095-.33-.263-.61-.599l-.255-.305Z"/></g></svg>
+                            <span style=" font-size: 14px; font-weight: 600; position: relative; top: 0.5px;" id="starCount"></span>
+                        </div> Stars
+                    </button>
+                    <button class="amounts-btn" onclick="showCoinsCount()">
+                                <div style="display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                gap: 5px;">
+                               <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg style="fill: lightgray;
+    width: 17px;
+    height: 20px;"
+   version="1.1"
+   id="svg243"
+   xml:space="preserve"
+   width="32"
+   height="32"
+   viewBox="0 0 32 32"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs247"><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath257"><path
+         d="M 0,24 H 24 V 0 H 0 Z"
+         id="path255" /></clipPath></defs><g
+     id="g249"
+     transform="matrix(1.3333333,0,0,-1.3333333,0,32)"><g
+       id="g251"><g
+         id="g253"
+         clip-path="url(#clipPath257)"><g
+           id="g259"
+           transform="translate(12.5,6.5)"><path
+             d="m 0,0 h -5 c -2.209,0 -4,1.791 -4,4 v 8 c 0,2.209 1.791,4 4,4 h 2.929 c 1.326,0 2.598,-0.527 3.535,-1.464 L 2.536,13.464 C 3.473,12.527 4,11.255 4,9.929 V 4 C 4,1.791 2.209,0 0,0 Z"
+             style="fill:none;stroke: lightgray;
+    stroke-width: 2px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path261" /></g><g
+           id="g263"
+           transform="translate(21.5,15.5)"><path
+             d="m 0,0 v -10 c 0,-2.209 -1.791,-4 -4,-4 h -8"
+             style="fill:none;stroke: rgb(146 146 146);
+    stroke-width: 2px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path265" /></g><g
+           id="g267"
+           transform="translate(11,22.5)"><path
+             d="m 0,0 v -3.5 c 0,-1.104 0.896,-2 2,-2 h 3.5"
+             style="stroke: lightgray;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path269" /></g></g></g></g></svg>
+
+                            <span style=" font-size: 14px; font-weight: 600; position: relative; top: 0.5px;" id="coinsCount"></span>
+                        </div> Clone
+                    </button>
+                </div>
+                <div id="specialContent" class="about"></div>
+                <p id="membershipType" class="membership-type"></p>
+            </div>
+            <div class="topdec">
+            </div>
+            <img style="position: fixed;
+    bottom: -1px;
+    width: 100%;
+    rotate: 180deg;
+    left: 0px;" class="topdec" src="https://www.animatedimages.org/data/media/333/animated-christmas-tree-decorations-image-0062.gif" alt="">
+                
+        <img class="topdec" style="position: fixed;
+    bottom: 0px;
+    width: 100%;
+    filter: drop-shadow(2px 4px 6px #00000057);
+    left: 15px;" src="https://www.animatedimages.org/data/media/1081/animated-christmas-line-image-0129.gif" alt="">
+    </div>
+
+       <div class="about" style="align-items: center; padding: 15px;    margin-top: -35px; max-width: 625px; width: 103%; margin-left: -15.5px;">
             <a href="https://mfi0212.github.io/MFI/starpre" style="color: white; text-decoration: none; cursor: pointer;">
             <button class="applybtn" style="border: none;
     outline: none;
     color: white;
     background-image: linear-gradient(45deg, rgb(255 169 0), rgb(255 0 198), #5b5bff, #56ffcc);
-    cursor: pointer;">
-               <svg style="width: 20px;
-    height: 20px;" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="#ffffff"><g fill="#ffffff"><path d="M18.483 16.767A8.5 8.5 0 0 1 8.118 7.081a1.27 1.27 0 0 1-.113.097c-.28.213-.63.292-1.33.45l-.635.144c-2.46.557-3.69.835-3.983 1.776c-.292.94.546 1.921 2.223 3.882l.434.507c.476.557.715.836.822 1.18c.107.345.071.717-.001 1.46l-.066.677c-.253 2.617-.38 3.925.386 4.506c.766.582 1.918.052 4.22-1.009l.597-.274c.654-.302.981-.452 1.328-.452c.347 0 .674.15 1.329.452l.595.274c2.303 1.06 3.455 1.59 4.22 1.01c.767-.582.64-1.89.387-4.507l-.048-.487Z"/><path d="m9.153 5.408l-.328.588c-.36.646-.54.969-.82 1.182c.04-.03.077-.062.113-.097a8.5 8.5 0 0 0 10.366 9.686l-.02-.19c-.071-.743-.107-1.115 0-1.46c.107-.344.345-.623.822-1.18l.434-.507c1.677-1.96 2.515-2.941 2.222-3.882c-.292-.941-1.522-1.22-3.982-1.776l-.636-.144c-.699-.158-1.049-.237-1.33-.45c-.28-.213-.46-.536-.82-1.182l-.327-.588C13.58 3.136 12.947 2 12 2c-.947 0-1.58 1.136-2.847 3.408Z" opacity=".5"/></g></svg>
+    width: 95%;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 5px;">
+                Explore Premium
             </button>
         </a>
-       </div>
-        <div class="theme-popup" id="themePopup" style="    backdrop-filter: blur(18px);">
-            <span class="theme-popup-mini">Select theme</span>
-            <button class="theme-option" onclick="setTheme('dark')">Dark</button>
-            <button class="theme-option" onclick="setTheme('telegram-dark')">Classic</button>
-            <span class="theme-popup-mini">Shape</span>
-            <button class="style-button" id="styleButton">S</button>
-        </div>
-    </div>
-
-    <div class="about" style="align-items: center; padding: 17px; max-width: 600px;">
-        <h2 class="sponserheading">Sponsored by</h2>
+        <br>
+        <h2 style="text-align: center; font-size: 11px; margin: 0px; font-weight: 400; opacity: 80%; color: revert;">Sponsored by</h2>
         <div class="sponserimges">
             <a onclick="alert('We are redirecting you to Programs page..!')" href="https://mfi0212.github.io/swan/offer/programs">
                 <img class="sponserimg" src="sponser_program.png" alt="">
@@ -810,98 +1998,90 @@ img.sponserimg:hover{
                 <img class="sponserimg" src="sponser_star.png" alt="">
             </a>
         </div>
-        <br>
-        <!-- <div class="newsponser">
-                <a onclick="alert('We are redirecting you to Chloennaouii page..!')" href="https://mfi0212.github.io/MFI/cholennaouii.main"><img class="applybtn" style="width: 94.5%; max-width: 600px; background: transparent; padding: 0px;" src="choenna_sponser.jpg" alt=""></a>
-            </div> -->
-    </div>
-    <div class="about">
-        <h2 style="    margin: 5px;
-">Wait few hours!</h2>
-        <p>To provide the amount, we need to collect the amount first. It takes few hours to arrange the amount, so be patient during this time to get the amount.</p>
-    </div>
-    <div class="about" style="padding: 20px 17px; text-align: center;">
-        <h2 style="margin: 0px;">Check details</h2>
-        <p>Click here to check details like interest and etc...</p>
-        <a href="https://blackswan19.github.io/golden/FM/accverify" class="button">Check my account</a>
-    </div>
-
-    <div class="about" style="text-align: left;">
-        <h3 style="padding: 0px 25px;">Follow these steps..!</h3>
-        <ol>
-            <li>Click on "Take money"</li>
-            <li>Fill out the form.</li>
-            <li>Wait a few hours.</li>
-            <li>Get funds from your coordinator.</li>
-            <li>Check details like interest and etc... in "My Account."</li>
-            <li>Repay on time.</li>
-            <li>Are you late to return? Say 2 days before we will extend the date (or) Extra fees apply.</li>
-            <li>Pay on time for future loans.</li>
-        </ol>
-    </div>
-
-    <div class="about" style="padding: 20px 17px; text-align: center;">
-        <h2 style="margin: 0px;">Any issue</h2>
-        <p>Click here to submit the issue you are facing....</p>
-        <div class="issuebtn">
-            <a target="_blank" href="https://forms.gle/RzTJ8W9bwmm8DVj2A">
-                <button>I have an issue here.!</button>
-            </a>
+            <br>
         </div>
+        <div id="loanDetails"></div>
+        <div class="amount-buttons" id="amountButtons"></div>
     </div>
 
-    <div class="about" style="padding: 20px 17px; text-align: center;">
-        <h2 style="margin: 0px;">Borrow limit</h2>
-        <p>Click here to take the amounts below ₹5,000....</p>
-        <a href="https://blackswan19.github.io/golden/FM/mlld" class="button">MLLD site</a>
-    </div>
-
-    <div class="about curvestyler" style="margin-bottom: 145px;">
-        <h2>I'm late</h2>
-        <p>If you are <span class="highlight">late in returning the amount</span>, the interest will <span class="highlight">automatically increased for every 2,3 days based on the amount</span>.</p>
-        <p>Contact us if you think you'll be late so we can help you.</p>
-    </div>
-
-    <footer>
-        <p style="font-size: 10px; padding: 10px; text-align: center;">
-            <a style="text-decoration: none; color: white;">By Myootive</a>
+    <!-- Amounts Modal -->
+    <div id="amountsModal" class="amounts-modal" style="display: none;">
+        <div class="amounts-modal-content">
+            <span class="amounts-close-btn" onclick="closeAmountsModal()">×</span>
+            <h3 style="text-decoration: underline; margin-bottom: 5px; font-weight: 900; font-size: 17px; text-align: center; color: #00aeff; letter-spacing: 0px;">Wallet Balance</h3>
             <link rel="stylesheet" href="lightning.css">
-        </p>
-    </footer>
-
-    <div class="bottomtakeoptions">
-        <div class="takemonetbtn">
-            <a style="color: white; text-decoration: none;" onclick="alert('We are redirecting you to taking form.')" href="https://blackswan19.github.io/golden/FM/takemoney">
-                <svg style="fill: white;
-    width: 20px;
-    height: 20px;
-    margin: -5px;
-    padding: 0px;" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"><path d="m23.018,8.785c-.595-.542-1.356-.82-2.169-.782-.804.037-1.545.386-2.085.981l-3.217,3.535c-.551-.91-1.55-1.519-2.689-1.519H4c-2.206,0-4,1.794-4,4v5c0,2.206,1.794,4,4,4h4.965c2.849,0,5.57-1.22,7.467-3.348l6.804-7.637c1.094-1.226.996-3.123-.218-4.23Zm-1.275,2.899l-6.804,7.638c-1.518,1.701-3.695,2.678-5.974,2.678h-4.965c-1.103,0-2-.897-2-2v-5c0-1.103.897-2,2-2h8.858c.629,0,1.142.513,1.142,1.143,0,.564-.421,1.051-.98,1.13l-5.161.737c-.546.078-.926.585-.848,1.132.078.548.587.928,1.131.849l5.161-.737c1.175-.168,2.129-.987,2.514-2.058l4.427-4.865c.181-.2.43-.316.699-.329.272-.008.529.082.728.262.407.372.44,1.009.072,1.421Zm-7.449-7.391c-.391-.391-.391-1.023,0-1.414l2.293-2.293c.373-.374.914-.586,1.414-.586s1.041.212,1.414.586l2.293,2.293c.391.391.391,1.023,0,1.414-.195.195-.451.293-.707.293s-.512-.098-.707-.293l-1.293-1.293v3c0,.552-.447,1-1,1s-1-.448-1-1v-3l-1.293,1.293c-.391.391-1.023.391-1.414,0Zm-7.543,4.707h3.5c1.517,0,2.75-1.31,2.75-2.919,0-1.665-1.581-3.473-3.138-4.223.164-.164.322-.342.462-.531.405-.55.032-1.326-.651-1.326h-2.347c-.646,0-1.067.73-.695,1.259.151.214.327.415.51.598-1.558.75-3.14,2.559-3.14,4.224,0,1.61,1.233,2.919,2.75,2.919Zm1.75-5.5c.745,0,2.5,1.527,2.5,2.581,0,.507-.336.919-.75.919h-3.5c-.414,0-.75-.413-.75-.919,0-1.054,1.755-2.581,2.5-2.581Z"/></svg>
-            </a>
-        </div>
-         Take money
-    </div>
-
-    <div class="date-container">
-        <div style="color: white; font-weight: 300;" class="date-slider" id="main-slider">
-            <div class="date-text"></div>
-            <div class="day-text"></div>
-            <div class="date-text"></div>
-            <div class="day-text"></div>
-            <div class="date-text"></div>
-            <div class="day-text"></div>
-            <div class="date-text"></div>
-            <div class="day-text"></div>
+            <p><svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+  <path d="m23.018,8.785c-.595-.542-1.356-.82-2.169-.782-.804.037-1.545.386-2.085.981l-3.217,3.535c-.551-.91-1.55-1.519-2.689-1.519H4c-2.206,0-4,1.794-4,4v5c0,2.206,1.794,4,4,4h4.965c2.849,0,5.57-1.22,7.467-3.348l6.804-7.637c1.094-1.226.996-3.123-.218-4.23Zm-1.275,2.899l-6.804,7.638c-1.518,1.701-3.695,2.678-5.974,2.678h-4.965c-1.103,0-2-.897-2-2v-5c0-1.103.897-2,2-2h8.858c.629,0,1.142.513,1.142,1.143,0,.564-.421,1.051-.98,1.13l-5.161.737c-.546.078-.926.585-.848,1.132.078.548.587.928,1.131.849l5.161-.737c1.175-.168,2.129-.987,2.514-2.058l4.427-4.865c.181-.2.43-.316.699-.329.272-.008.529.082.728.262.407.372.44,1.009.072,1.421Zm-7.449-7.391c-.391-.391-.391-1.023,0-1.414l2.293-2.293c.373-.374.914-.586,1.414-.586s1.041.212,1.414.586l2.293,2.293c.391.391.391,1.023,0,1.414-.195.195-.451.293-.707.293s-.512-.098-.707-.293l-1.293-1.293v3c0,.552-.447,1-1,1s-1-.448-1-1v-3l-1.293,1.293c-.391.391-1.023.391-1.414,0Zm-7.543,4.707h3.5c1.517,0,2.75-1.31,2.75-2.919,0-1.665-1.581-3.473-3.138-4.223.164-.164.322-.342.462-.531.405-.55.032-1.326-.651-1.326h-2.347c-.646,0-1.067.73-.695,1.259.151.214.327.415.51.598-1.558.75-3.14,2.559-3.14,4.224,0,1.61,1.233,2.919,2.75,2.919Zm1.75-5.5c.745,0,2.5,1.527,2.5,2.581,0,.507-.336.919-.75.919h-3.5c-.414,0-.75-.413-.75-.919,0-1.054,1.755-2.581,2.5-2.581Z"/>
+</svg> Total Taken Amount : <span id="totalTaken"></span>₹</p>
+            <p><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+  <path d="m14,1.5c0-.828.672-1.5,1.5-1.5s1.5.672,1.5,1.5-.672,1.5-1.5,1.5-1.5-.672-1.5-1.5Zm8.5,3.5c-.828,0-1.5.672-1.5,1.5s.672,1.5,1.5,1.5,1.5-.672,1.5-1.5-.672-1.5-1.5-1.5Zm-4.667,3L22.5,0h-2.333l-4.667,8h2.333Zm5.167,4.5v8c0,1.995-2.58,3.5-6,3.5-2.151,0-3.968-.596-5.022-1.534-1.217,1.01-3.353,1.534-5.478,1.534-3.23,0-6.5-1.202-6.5-3.5V4.5C0,2.202,3.27,1,6.5,1s6.5,1.202,6.5,3.5v5.353c1.047-.534,2.433-.853,4-.853,3.42,0,6,1.505,6,3.5ZM2,4.5c0,.436,1.577,1.5,4.5,1.5s4.5-1.064,4.5-1.5-1.577-1.5-4.5-1.5-4.5,1.064-4.5,1.5Zm0,4c0,.436,1.577,1.5,4.5,1.5s4.5-1.064,4.5-1.5v-1.409c-1.226.601-2.867.909-4.5.909s-3.274-.308-4.5-.909v1.409Zm0,4c0,.436,1.577,1.5,4.5,1.5s4.5-1.064,4.5-1.5v-1.409c-1.226.601-2.867.909-4.5.909s-3.274-.308-4.5-.909v1.409Zm0,4c0,.436,1.577,1.5,4.5,1.5s4.5-1.064,4.5-1.5v-1.409c-1.226.601-2.867.909-4.5.909s-3.274-.308-4.5-.909v1.409Zm9,4v-1.409c-1.226.601-2.867.909-4.5.909s-3.274-.308-4.5-.909v1.409c0,.436,1.577,1.5,4.5,1.5s4.5-1.064,4.5-1.5Zm10,0v-1.353c-1.047.534-2.433.853-4,.853s-2.953-.319-4-.853v1.353c0,.529,1.519,1.5,4,1.5s4-.971,4-1.5Zm0-4v-1.353c-1.047.534-2.433.853-4,.853s-2.953-.319-4-.853v1.353c0,.529,1.519,1.5,4,1.5s4-.971,4-1.5Zm0-4c0-.529-1.519-1.5-4-1.5s-4,.971-4,1.5,1.519,1.5,4,1.5,4-.971,4-1.5Z"/>
+</svg> Total Interest : <span id="totalInterest"></span>₹</p>
+            <hr>
+            <p><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+  <path d="m19,18c-1.379,0-2.5-1.121-2.5-2.5s1.121-2.5,2.5-2.5,2.5,1.121,2.5,2.5-1.121,2.5-2.5,2.5Zm2-14H5c-.856,0-1.653-.381-2.216-1.004.549-.607,1.335-.996,2.216-.996h18c.552,0,1-.448,1-1s-.448-1-1-1H5C2.239,0,0,2.239,0,5v10c0,2.761,2.239,5,5,5h8c.552,0,1-.448,1-1s-.448-1-1-1H5c-1.657,0-3-1.343-3-3V5s.002-.001.005-.002c.853.638,1.901,1.002,2.995,1.002h16c.552,0,1,.448,1,1v5c0,.552.448,1,1,1s1-.448,1-1v-5c0-1.657-1.343-3-3-3Zm-2,15c-2.333,0-4.375,1.538-4.966,3.741-.143.533.173,1.082.707,1.225.534.143,1.081-.173,1.225-.707.357-1.33,1.605-2.259,3.034-2.259s2.677.929,3.034,2.259c.12.447.524.741.965.741.085,0,.173-.011.26-.035.533-.143.85-.692.707-1.225-.591-2.203-2.633-3.741-4.966-3.741Z"/>
+</svg> Total to Return : <span id="totalReturn"></span>₹</p>
         </div>
     </div>
 
-    <!-- <div class="container">
-        <div id="red_siren" class="sirens"></div>
-        <div id="white_siren" class="sirens"></div>
-        <div id="blue_siren" class="sirens"></div>
-    </div> -->
+    <!-- Reminder Modal -->
+    <div id="reminderModal" class="reminder-modal" style="display: none;">
+        <div class="reminder-modal-content">
+            <div class="bot" style="display : flex; justify-content: center; align-items: baseline;">
+                <img style="width: 16px; position: relative; top: -2px; left: 3px;" src="https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/2" alt="">
+                <span style='font-size: 13px; color: white; padding: 5px 8px; border-radius: 10px; position: relative; top: -5px;'>BsRora (<i style='position: relative; right: -4px;' class="fa-solid fa-robot"></i>)</span>
+            </div>
+            <h3>Amount Reminder.!</h3>
+            <p id="reminderMessage"></p>
+            <span class="reminder-close-btn applybtn" onclick="closeReminderModal()">Okay</span>
+        </div>
+    </div>
+
+    <!-- Duplicate Account Modal -->
+    <div id="duplicateAccountModal" class="reminder-modal" style="display: none;">
+        <div class="reminder-modal-content">
+            <h3>Apply for Duplicate Account</h3>
+            <p>If your account is lost or blocked, apply for a duplicate.</p>
+            <button class="applybtn reminder-close-btn" style="background: #0088cc; margin-top: 10px;width: 100%;padding: 8px;" onclick="openDuplicateForm()">Apply Now</button>
+            <button class="applybtn reminder-close-btn" style="background: #8080806e; margin-top: 10px;width: 100%;padding: 8px;" onclick="closeDuplicateModal()">Cancel</button>
+        </div>
+    </div>
+
+    <script src="try.js"></script>
+
+    <div class="powered-by" id="poweredBy" style="position: fixed;z-index: 100000;"> Powered by <a style="color: rgb(0, 191, 255); font-weight: 500;" href="https://blackswan19.github.io/Educate/password">BsPsgenerater</a> </div>
+
+    <button style="display: none;" class="theme-button" id="themeButton">
+        <i class="fa-solid fa-gear"></i>
+        <i class="fa-solid fa-xmark" style="display: none;"></i>
+    </button>
+
+    <button class="style-button" id="styleButton" style="display: none;">S</button>
+
+    <div class="theme-popup" id="themePopup">
+        <span style="color: #00aaff; font-weight: 500; background: #000000; padding: 0px 15px; border-radius: 10px; text-align: center; font-size: 14px; font-weight: 600;">Select theme</span>
+        <button class="theme-option" onclick="setTheme('dark')">Dark</button>
+        <button class="theme-option" onclick="setTheme('light')">Light</button>
+        <button class="theme-option" onclick="setTheme('telegram-dark')">Classic</button>
+    </div>
 
     <script>
+        
+        //  document.addEventListener('contextmenu', e => e.preventDefault());
+        function openDuplicateForm() {
+            window.open("https://forms.gle/yT6xhHtrxHELfS447", "_blank");
+            closeDuplicateModal();
+        }
+
+        function closeDuplicateModal() {
+            document.getElementById("duplicateAccountModal").style.display = "none";
+        }
+
+        document.getElementById("userNameContainer").addEventListener("click", () => {
+            document.getElementById("duplicateAccountModal").style.display = "flex";
+        });
+
         document.addEventListener("DOMContentLoaded", () => {
             const loadingOverlay = document.getElementById("loadingOverlay");
             const themeButton = document.getElementById("themeButton");
@@ -911,10 +2091,11 @@ img.sponserimg:hover{
             const xIcon = themeButton.querySelector(".fa-xmark");
 
             setTimeout(() => {
-                loadingOverlay.classList.add("hidden");
+                loadingOverlay?.classList.add("hidden");
                 themeButton.classList.add("visible");
                 styleButton.classList.add("visible");
-            }, 5000);
+            }, 3000);
+
             themeButton.addEventListener("click", () => {
                 const isOpen = themePopup.classList.contains("open");
                 themePopup.classList.toggle("open");
@@ -922,7 +2103,32 @@ img.sponserimg:hover{
                 gearIcon.style.display = isOpen ? "block" : "none";
                 xIcon.style.display = isOpen ? "none" : "block";
             });
-			if (!localStorage.getItem("edgeStyle")) {
+
+            styleButton.addEventListener("click", () => {
+                const isCurvy = document.body.classList.contains("curvy");
+                document.body.classList.toggle("curvy");
+                styleButton.textContent = isCurvy ? "S" : "V";
+                localStorage.setItem("edgeStyle", isCurvy ? "sharp" : "curvy");
+            });
+
+            window.setTheme = function(theme) {
+                document.body.classList.remove("dark", "light", "telegram-dark", "my-own");
+                document.body.classList.add(theme);
+                localStorage.setItem("theme", theme);
+                themePopup.classList.remove("open");
+                themeButton.classList.remove("active");
+                gearIcon.style.display = "block";
+                xIcon.style.display = "none";
+            };
+
+            const savedTheme = localStorage.getItem("theme") || "dark";
+            if (savedTheme === "my-own") {
+                const accentColor = localStorage.getItem("user-accent") || "#00aaff";
+                document.documentElement.style.setProperty("--user-accent", accentColor);
+            }
+            setTheme(savedTheme);
+
+            if (!localStorage.getItem("edgeStyle")) {
 			    localStorage.setItem("edgeStyle", "sharp");        
 			}
 			const savedStyle = localStorage.getItem("edgeStyle") || "sharp";
@@ -935,52 +2141,952 @@ img.sponserimg:hover{
 			    styleButton.textContent = isCurvy ? "V" : "S";
 			    localStorage.setItem("edgeStyle", isCurvy ? "curvy" : "sharp");
 			});
-            window.setTheme = function(theme) {
-                document.body.classList.remove("dark", "light", "telegram-dark", "my-own");
-                document.body.classList.add(theme);
-                localStorage.setItem("theme", theme);
-                themePopup.classList.remove("open");
-                themeButton.classList.remove("active");
-                gearIcon.style.display = "block";
-                xIcon.style.display = "none";
-            };
-            const savedTheme = localStorage.getItem("theme") || "dark";
-            if (savedTheme === "my-own") {
-                const accentColor = localStorage.getItem("user-accent") || "#00aaff";
-                document.documentElement.style.setProperty("--user-accent", accentColor);
-            }
-            setTheme(savedTheme);
-            const savedEdgeStyle = localStorage.getItem("edgeStyle") || "curvy";
-            if (savedEdgeStyle === "curvy") {
-                document.body.classList.add("curvy");
-                styleButton.textContent = "V";
-            } else {
-                styleButton.textContent = "S";
-            }
-            const today = new Date();
-            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-            const day = days[today.getDay()];
-            const date = `${String(today.getDate()).padStart(2, '0')}-${String(today.getMonth() + 1).padStart(2, '0')}-${today.getFullYear()}`;
+        });
 
-            document.querySelectorAll('.day-text').forEach(el => el.textContent = day);
-            document.querySelectorAll('.date-text').forEach(el => el.textContent = date);
-        });
-		 document.addEventListener("DOMContentLoaded", () => {
-            const customMenu = document.querySelector(".custom-menu");
-            // document.addEventListener("contextmenu", (event) => {
-            //     event.preventDefault();
-            //     if (customMenu) {
-            //         customMenu.style.display = "block";
-            //         customMenu.style.top = `${event.pageY}px`;
-            //         customMenu.style.left = `${event.pageX}px`;
-            //     }
-            // });
-            document.addEventListener("click", () => {
-                if (customMenu) {
-                    customMenu.style.display = "none";
+        const today = new Date();
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const day = days[today.getDay()];
+        const date = `${String(today.getDate()).padStart(2, '0')}-${String(today.getMonth() + 1).padStart(2, '0')}-${today.getFullYear()}`;
+
+        document.querySelectorAll('.day-text').forEach(el => el.textContent = day);
+        document.querySelectorAll('.date-text').forEach(el => el.textContent = date);
+
+        const startDate = new Date('2025-10-31T20:00:00');
+        const endDate = new Date('2025-11-01T08:00:00');
+
+        document.getElementById("submitBtn").addEventListener("click", () => {
+            const userInput = document.getElementById("userPassword").value.trim();
+            const errorMessage = document.getElementById("error-message");
+            const user = passwords[userInput];
+
+            if (!userInput) {
+                errorMessage.textContent = "Enter a password.";
+                return;
+            }
+
+            if (user) {
+                localStorage.setItem("userPassword", userInput);
+                document.getElementById("userName").textContent = user.name;
+                document.getElementById("starCount").textContent = user.stars;
+                const membershipTypeContainer = document.getElementById("membershipType");
+                membershipTypeContainer.innerHTML = `
+                    <a href="https://blackswan19.github.io/golden/FM/duplicatelite">${user.membershipType}</a>
+                `;
+
+                const userNameContainer = document.getElementById("userNameContainer");
+                userNameContainer.innerHTML = `
+                    <span id="userName">${user.name}</span>
+                    <img src="${user.membershipIcon}" alt="${user.membershipType} Icon" class="user-icon">
+                `;
+
+                const profilePicture = document.getElementById("profilePicture");
+                profilePicture.style.backgroundColor = user.profileBackground;
+                const nameParts = user.name.trim().split(/\s+/).slice(0, 2);
+                const iconText = nameParts.map(part => part.charAt(0)).join("").toUpperCase();
+                profilePicture.style.backgroundImage = "none";
+                profilePicture.textContent = iconText;
+
+                const amountButtons = document.getElementById("amountButtons");
+                amountButtons.innerHTML = "";
+
+                user.loans.forEach((loan, index) => {
+                    const btn = document.createElement("button");
+                    btn.className = "amount-btn";
+                    btn.innerHTML = `<a style="display: flex; justify-content: center; align-items: center;color: white;" href="#scrotamts"> ₹${loan.takenAmount}<span class="amount-id" > Amount ${index + 1}</span></a>`;
+                    btn.onclick = () => displayLoanDetails(loan, index);
+                    amountButtons.appendChild(btn);
+                });
+
+                const specialContentDiv = document.getElementById("specialContent");
+                const currentDate = new Date();
+
+                if (
+                    user.showCustomContent === "yes" &&
+                    user.customContent &&
+                    user.customContent.value &&
+                    currentDate >= startDate &&
+                    currentDate <= endDate
+                ) {
+                    if (user.customContent.type === "text") {
+                        specialContentDiv.innerHTML = `
+                            <h3 style="color: white; font-size: 16px;">Special Offer</h3>
+                            <p style="color: #00aeff; font-size: 14px;">${user.customContent.value}</p>
+                        `;
+                    } else if (user.customContent.type === "image") {
+                        specialContentDiv.innerHTML = `
+                            <h3 style="color: white; font-size: 16px;"></h3>
+                            <img src="${user.customContent.value}" alt="Special Offer" onerror="this.src='';">
+                        `;
+                    }
+                } else {
+                    specialContentDiv.innerHTML = "";
                 }
-            });
+
+                if (user.loans.length > 0) {
+                    displayLoanDetails(user.loans[0], 0);
+                    checkDueToday(user);
+                } else {
+                    errorMessage.textContent = "No active loans found.";
+                }
+
+                document.getElementById("userInfoModal").style.display = "block";
+                document.getElementById("passwordContainer").style.display = "none";
+                errorMessage.textContent = "";
+            } else {
+                errorMessage.textContent = "Invalid password (or) amount cleared.";
+            }
         });
+        
+const passwords = {
+    "4211": {
+        name: "Chaitanya Harsha",
+        membershipType: "",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+        profileBackground: "#ff8b24",
+        stars: 0,
+        coins: 0,
+        tierPoints: 45,
+        showCustomContent: "no",
+        customContent: {
+            type: "text",
+            value: "NOTE: Your amounts has updated to match the offer criteria",
+            url: ""
+        },
+        loans: [
+           { planDate: "24-05-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 25000, takenFrom: "MLending", fineRate: 5 },
+           { planDate: "07-04-2025", endDate: "--<p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 15000, takenFrom: "MLLD", fineRate: 4 }
+        ]
+    },
+   
+    "6275": {
+        name: "Srikanth Jampana",
+        membershipType: "",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+        profileBackground: "#ff4500",
+        stars: 0,
+        coins: 1,
+        tierPoints: 5,
+        showCustomContent: "no",
+        customContent: {
+            type: "image",
+            value: "programXoffer.png",
+            url: "https://mfi0212.github.io/swan/offer/programx"
+        },
+        loans: [
+            { planDate: "10-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 1360, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "15-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 4800, takenAmount: 20000, takenFrom: "MLending", fineRate: 0 },
+            { planDate: "16-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 1275, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "18-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 1380, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "18-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 690, takenAmount: 2500, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "01-11-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 1460, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 0 },
+            { planDate: "06-11-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 4880, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 0 },
+            { planDate: "09-11-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 2360, takenAmount: 7500, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "25-11-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 900, takenAmount: 3000, takenFrom: "MLending Duplicate ", fineRate: 0 }
+        ]
+    },
+    "Cherish@123": {
+        name: "Cherish #1",
+        membershipType: "",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+        profileBackground: "rgb(255 44 0)",
+        stars: 0,
+        coins: 0,
+        tierPoints: 40,
+        showCustomContent: "no",
+        customContent: {
+            type: "image",
+            value: "programXoffer.png",
+            url: "https://mfi0212.github.io/swan/offer/programx"
+        },
+        loans: [
+            { planDate: "14-10-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 6690, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "14-10-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 5880, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "14-10-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 5560, takenFrom: "MLLD(Offer)", fineRate: 0 }
+        ]
+    },
+    "Cherish@1234": {
+        name: "Cherish #2",
+        membershipType: "",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+        profileBackground: "rgb(90 135 242)",
+        stars: 0,
+        coins: 0,
+        tierPoints: 0,
+        showCustomContent: "no",
+        customContent: {
+            type: "image",
+            value: "programXoffer.png",
+            url: "https://mfi0212.github.io/swan/offer/programx"
+        },
+        loans: [
+            { planDate: "29-05-2025", endDate: "29-05-2025", interest: 5600, takenAmount: 25000, takenFrom: "MLending", fineRate: 80 }
+        ]
+    },
+};
+
+
+const TIER_THRESHOLDS = [
+    { tier: 1, points: 0,   interestRate: "Standard" },
+    { tier: 2, points: 100, interestRate: "2% lower" }
+];
+
+function getTierInfo(points) {
+    if (points >= 100) {
+        return { tier: 2, points, needed: 0, nextRate: null };
+    } else {
+        return { tier: 1, points, needed: 100 - points, nextRate: "2% lower" };
+    }
+}
+
+function showTierPopup(html) {
+    const old = document.getElementById("tierPopupModal");
+    if (old) old.remove();
+
+    const modal = document.createElement("div");
+    modal.id = "tierPopupModal";
+    modal.style.cssText = `
+        position:fixed; inset:0; background:rgba(0,0,0,0.75); 
+        display:flex; align-items:center; justify-content:center; z-index:9999;
+    `;
+    modal.innerHTML = `
+        <div style="background:#111; color:#fff; padding:20px; border-radius:12px; max-width:320px; text-align:center; font-family:sans-serif;">
+            <p style="margin:0 0 16px; line-height:1.5;">${html}</p>
+            <button onclick="this.closest('#tierPopupModal').remove()" 
+                    style="background:#00ff9d; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:600;">
+                OK
+            </button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const savedPassword = localStorage.getItem("userPassword");
+    if (savedPassword) {
+        const passwordInput = document.getElementById("userPassword");
+        passwordInput.value = savedPassword;
+        document.getElementById("poweredBy").style.display = "block";
+    }
+});
+
+document.getElementById("submitBtn").addEventListener("click", () => {
+    const userInput = document.getElementById("userPassword").value.trim();
+    const errorMessage = document.getElementById("error-message");
+    const user = passwords[userInput];
+
+    if (!userInput) {
+        errorMessage.textContent = "Enter a password.";
+        return;
+    }
+
+    if (user) {
+        localStorage.setItem("userPassword", userInput);
+        document.getElementById("userName").textContent = user.name;
+        document.getElementById("starCount").textContent = user.stars;
+        document.getElementById("coinsCount").textContent = user.coins;
+
+        const membershipTypeContainer = document.getElementById("membershipType");
+        membershipTypeContainer.innerHTML = `
+            <a href="https://blackswan19.github.io/golden/FM/duplicatelite">${user.membershipType}</a>
+        `;
+
+        const userNameContainer = document.getElementById("userNameContainer");
+        userNameContainer.innerHTML = `
+            <span id="userName">${user.name}</span>
+            <img src="${user.membershipIcon}" alt="${user.membershipType} Icon" class="user-icon">
+        `;
+
+        const profilePicture = document.getElementById("profilePicture");
+        profilePicture.style.backgroundColor = user.profileBackground;
+        const nameParts = user.name.trim().split(/\s+/).slice(0, 2);
+        const iconText = nameParts.map(part => part.charAt(0)).join("").toUpperCase();
+        profilePicture.style.backgroundImage = "none";
+        profilePicture.textContent = iconText;
+
+        // === TIER PROGRESS ===
+        const tierInfo = getTierInfo(user.tierPoints);
+        const percent = tierInfo.tier === 2 ? 100 : (user.tierPoints / 100) * 100;
+
+        let barColor = user.profileBackground;
+        if (barColor.startsWith("rgb")) {
+            const rgb = barColor.match(/\d+/g);
+            if (rgb) barColor = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 0.9)`;
+        } else if (barColor.startsWith("#")) {
+            barColor = barColor + "cc";
+        }
+
+        const tierProgressHTML = `
+            <div id="tierProgress">
+                <div style="display: flex; align-items: center; gap: 6px; cursor: pointer;" id="tierClickTrigger">
+                    <span style="color: #ffd700; font-weight: 600;">Tier ${tierInfo.tier}</span>
+                    <div class='tiergraphbar'>
+                        <div style="width: ${percent}%; height: 100%; background: ${barColor}; transition: width 0.4s ease;"></div>
+                    </div>
+                    <span style="color: #aaa; font-size: 12px;">${user.tierPoints} pts</span>
+                </div>
+            </div>
+        `;
+
+        const existingTier = document.getElementById("tierProgress");
+        if (existingTier) existingTier.remove();
+        userNameContainer.insertAdjacentHTML("afterend", tierProgressHTML);
+
+        document.getElementById("tierClickTrigger").addEventListener("click", () => {
+            const msg = tierInfo.tier === 2
+                ? `You have <b>Tier 2</b> (${user.tierPoints} points).<br>You unlocked <b>2% lower interest rate</b>!`
+                : `You have <b>Tier 1</b> (${user.tierPoints} points).<br>You need <b>${tierInfo.needed}</b> more points to reach <b>Tier 2</b> and get <b>2% lower interest</b>.`;
+            showTierPopup(msg);
+        });
+
+        const borrowLimitMessage = document.createElement("div");
+        borrowLimitMessage.id = "borrowLimitMessage";
+
+        const ads = [
+            {
+                name: "Pre-Saver",
+                headline: "Pre-Saver",
+                desc: "We pre save the offer or amount for your next borrow.",
+                link: "https://mfi0212.github.io/swan/offer/presave",
+                icon: "https://cdn.example.com/paymine-16.png"
+            },
+            {
+                name: "Split it",
+                headline: "Split it ",
+                desc: "You can split the large amount into smaller and you can repayment with smaller amounts when you have.",
+                link: "https://mfi0212.github.io/swan/offer/split",
+                icon: "https://cdn.example.com/split-16.png"
+            },
+            {
+                name: "Delay it",
+                headline: "Delay it",
+                desc: "It was a program by which you can Extend the returning date of your amounts.",
+                link: "https://mfi0212.github.io/swan/offer/delayit",
+                icon: "https://cdn.example.com/delay-16.png"
+            }
+        ];
+
+        const ad = ads[Math.floor(Math.random() * ads.length)];
+
+        borrowLimitMessage.innerHTML = `
+            <div class="bot">
+                <p class="borrowLimitMessage">
+                    <span style='font-size: 15px;
+    color: #00aeff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 900;
+    text-transform: capitalize;'>
+                        <strong>${ad.headline}</strong> (Ad)
+                    </span> : <br>
+                    ${ad.desc}
+                    <br><a class="exploreadds" href="${ad.link}" target="_blank" 
+                       >
+            <i class="fa-solid fa-arrow-left"></i>
+    </a>
+    </p>
+    </div>
+    `;
+    //    Explore ${ad.name}
+        const userInfoModal = document.getElementById("userInfoModal");
+        const profilePictureContainer = profilePicture.parentElement;
+        userInfoModal.insertBefore(borrowLimitMessage, profilePictureContainer);
+
+        // === AMOUNT BUTTONS ===
+        const amountButtons = document.getElementById("amountButtons");
+        amountButtons.innerHTML = "";
+        user.loans.forEach((loan, index) => {
+            const btn = document.createElement("button");
+            btn.className = "amount-btn";
+            btn.innerHTML = `₹${loan.takenAmount}<span class="amount-id"> Amount ${index + 1}</span>`;
+            btn.onclick = () => displayLoanDetails(loan, index);
+            amountButtons.appendChild(btn);
+        });
+
+        // Apply initial status colors (non-active)
+        updateAllButtonColors(user);
+
+        // === SPECIAL CONTENT ===
+        const specialContentDiv = document.getElementById("specialContent");
+        try {
+            if (user.showCustomContent === "yes" && user.customContent && user.customContent.value) {
+                const contentUrl = user.customContent.url && /^https?:\/\//.test(user.customContent.url) ? user.customContent.url : null;
+                const contentHtml = user.customContent.type === "text"
+                    ? `<h3 style="color:white;font-size:16px;">Special Offer</h3><p style="color:#00aeff;font-size:14px;">${user.customContent.value}</p>`
+                    : `<h3 style="color:white;font-size:16px;">Special Offer</h3><img class="applybtn" src="${user.customContent.value}" alt="Special Offer" style="cursor:pointer;" onerror="this.src='';">`;
+                if (contentUrl) {
+                    specialContentDiv.innerHTML = `<a href="${contentUrl}" style="text-decoration:none;display:block;" aria-label="Special offer">${contentHtml}</a>`;
+                    specialContentDiv.onclick = (e) => { window.open(contentUrl, '_blank'); e.preventDefault(); };
+                } else {
+                    specialContentDiv.innerHTML = contentHtml;
+                }
+            } else {
+                specialContentDiv.innerHTML = "";
+            }
+        } catch (error) {
+            console.error("Error rendering specialContent:", error);
+            specialContentDiv.innerHTML = "";
+            errorMessage.textContent = "Error loading special content.";
+        }
+
+        // === SHOW FIRST LOAN & REMINDER ===
+        if (user.loans.length > 0) {
+            displayLoanDetails(user.loans[0], 0);
+            checkDueReminders(user);
+        } else {
+            errorMessage.textContent = "No active loans found.";
+        }
+
+        document.getElementById("userInfoModal").style.display = "block";
+        document.getElementById("passwordContainer").style.display = "none";
+        errorMessage.textContent = "";
+    } else {
+        errorMessage.textContent = "Invalid password.";
+    }
+});
+// ===============================================
+// REMINDER: DUE TODAY + 1 DAY BEFORE (UPDATED)
+// ===============================================
+function checkDueReminders(user) {
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
+    const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
+    const formatDate = (d) => `${String(d.getDate()).padStart(2,'0')}-${String(d.getMonth()+1).padStart(2,'0')}-${d.getFullYear()}`;
+
+    const todayStr = formatDate(today);
+    const tomorrowStr = formatDate(tomorrow);
+
+    let dueToday = null;
+    let dueTomorrow = null;
+
+    user.loans.forEach(loan => {
+        const cleanEndDate = loan.endDate.split('(')[0].split('<')[0].trim();
+        const match = cleanEndDate.match(dateFormat);
+        if (!match) return;
+
+        const endDateStr = `${match[1]}-${match[2]}-${match[3]}`;
+
+        if (endDateStr === todayStr) dueToday = { loan, date: cleanEndDate };
+        if (endDateStr === tomorrowStr) dueTomorrow = { loan, date: cleanEndDate };
+    });
+
+    const reminderModal = document.getElementById("reminderModal");
+    const reminderMessage = document.getElementById("reminderMessage");
+
+    if (dueToday) {
+        reminderMessage.innerHTML = 
+            `Mr. ${user.name}, <b>Today (${dueToday.date})</b> you have an amount to return from <b>${dueToday.loan.takenFrom}</b>.<br><br>Clear on time to avoid overdue interest. Thank you!`;
+        reminderModal.style.display = "flex";
+    } 
+    else if (dueTomorrow) {
+        // Custom tomorrow message with extension warning
+        reminderMessage.innerHTML = 
+            `Mr. ${user.name}, <b>Tomorrow (${dueTomorrow.date})</b> your Amount <b>${dueTomorrow.loan.takenAmount}</b> from <b>${dueTomorrow.loan.takenFrom}</b> has to be returned.<br><br>` +
+            `<b>Try to return the amount today or by tomorrow 10 AM.</b><br><br>` +
+            `Note: Do you like to extend? Do so today only. Tomorrow extension will not be provided and additional interest will be added.`;
+        reminderModal.style.display = "flex";
+    }
+}
+function closeReminderModal() {
+    document.getElementById("reminderModal").style.display = "none";
+}
+
+// ===============================================
+// OVERDUE & DUE TODAY CALCULATION
+// ===============================================
+function calculateDaysBetween(startDate, endDate) {
+    try {
+        const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
+        const startMatch = startDate.match(dateFormat);
+        const endMatch = endDate.split('(')[0].match(dateFormat);
+        if (startMatch && endMatch) {
+            const start = new Date(`${startMatch[3]}-${startMatch[2]}-${startMatch[1]}`);
+            const end = new Date(`${endMatch[3]}-${endMatch[2]}-${endMatch[1]}`);
+            const diffTime = Math.abs(end - start);
+            return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        }
+        return "Invalid date format";
+    } catch (error) {
+        return "Error";
+    }
+}
+
+let sessionReferenceTime = null;
+
+function calculateOverdueFine(endDateString, loan, user = {}) {
+    try {
+        // Clean any extra text: "(overdue)", HTML, etc.
+        const clean = endDateString.split('(')[0].split('<')[0].trim();
+
+        // Match DD-MM-YYYY strictly
+        const match = clean.match(/^(\d{2})-(\d{2})-(\d{4})$/);
+        if (!match) return { overdue: false, fine: 0, daysOverdue: 0, hoursOverdue: 0 };
+
+        const [, day, month, year] = match;
+        const endDate = new Date(`${year}-${month}-${day}`);
+        
+        // Fine starts the NEXT day → so we consider end of endDate as deadline
+        endDate.setHours(23, 59, 59, 999);
+
+        const now = new Date(); // Real current time
+
+        if (now <= endDate) {
+            return { overdue: false, fine: 0, daysOverdue: 0, hoursOverdue: 0 };
+        }
+
+        // Calculate exact days overdue (starts from the day after endDate)
+        const diffMs = now - endDate;
+        const hoursOverdue = Math.floor(diffMs / (1000 * 60 * 60));
+        const daysOverdue = Math.ceil(diffMs / (1000 * 60 * 60 * 24)); // This is key!
+
+        const fineRate = loan?.fineRate ?? user?.fineRate ?? 0;
+        const fine = daysOverdue * fineRate;
+
+        return {
+            overdue: true,
+            fine,
+            daysOverdue,
+            hoursOverdue,
+            fineRateUsed: fineRate,
+            endDate: endDate.toISOString().split('T')[0],
+            calculatedAt: now.toISOString()
+        };
+
+    } catch (err) {
+        console.error("Fine calc error:", err);
+        return { overdue: false, fine: 0, daysOverdue: 0, hoursOverdue: 0 };
+    }
+}
+
+function isDueToday(endDate) {
+    const today = new Date();
+    const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
+    const todayStr = `${String(today.getDate()).padStart(2,'0')}-${String(today.getMonth()+1).padStart(2,'0')}-${today.getFullYear()}`;
+    
+    const cleanEndDate = endDate.split('(')[0].split('<')[0].trim();
+    const match = cleanEndDate.match(dateFormat);
+    if (!match) return false;
+    
+    const endDateStr = `${match[1]}-${match[2]}-${match[3]}`;
+    return endDateStr === todayStr;
+}
+
+// ===============================================
+// UPDATE NON-ACTIVE BUTTONS (STATUS COLORS)
+// ===============================================
+function updateAllButtonColors(user) {
+    const buttons = document.querySelectorAll("#amountButtons .amount-btn");
+    buttons.forEach((btn, idx) => {
+        const loan = user.loans[idx];
+        if (!loan) return;
+
+        const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+        const dueToday = isDueToday(loan.endDate);
+
+        // Only apply status color if NOT active
+        if (!btn.classList.contains("active")) {
+            if (overdueInfo.overdue) {
+                btn.style.background = "rgb(195 86 0)"; // darkred
+                btn.style.color = "white";
+            } else if (dueToday) {
+                btn.style.background = "#ff9900ff"; // orange
+                btn.style.color = "white";
+            } else {
+                btn.style.background = "";
+                btn.style.color = "";
+                btn.style.border = "";
+            }
+        }
+    });
+}
+
+// ===============================================
+// DISPLAY LOAN DETAILS + ACTIVE BUTTON LOGIC
+// ===============================================
+function displayLoanDetails(loan, index) {
+    const loanDetails = document.getElementById("loanDetails");
+    const userInput = document.getElementById("userPassword").value.trim();
+    const user = passwords[userInput];
+
+    const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+    const fine = overdueInfo.fine || 0;
+    const totalReturnAmount = (loan.takenAmount + loan.interest + fine).toFixed(2);
+    const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+    const daysBetween = calculateDaysBetween(loan.planDate, cleanEndDate);
+
+    // === REMOVE ACTIVE FROM ALL ===
+    document.querySelectorAll(".amount-btn").forEach(btn => {
+        btn.classList.remove("active");
+        // Reset non-active buttons to status color
+        updateAllButtonColors(user);
+    });
+
+    // === ADD ACTIVE TO CURRENT ===
+    const activeBtn = document.getElementById("amountButtons").children[index];
+    activeBtn.classList.add("active");
+
+    // === APPLY ACTIVE STYLE (OVERRIDES STATUS) ===
+    activeBtn.style.background = "#0066cc";
+    activeBtn.style.color = "black";
+
+    let overdueSection = "";
+    if (overdueInfo.overdue) {
+        overdueSection = `
+             <h3>Overdue Details</h3>
+            <p style="color: #ff9300;"><?xml version="1.0" encoding="UTF-8"?>
+<svg style='    fill: #ff9300;' xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+  <path d="m17.776,21.334c-.564,1.595-2.085,2.666-3.781,2.666H4.005c-1.17,0-2.279-.51-3.044-1.398-.753-.875-1.087-2.025-.917-3.158.405-2.698,1.885-5.198,4.401-7.444C1.929,9.754.449,7.254.044,4.556c-.17-1.132.164-2.283.917-3.157C1.726.51,2.835,0,4.005,0h9.99c1.696,0,3.217,1.071,3.781,2.666.185.521-.088,1.092-.608,1.276-.521.187-1.092-.088-1.276-.608-.283-.798-1.045-1.334-1.896-1.334H4.005c-.587,0-1.145.257-1.528.703-.378.439-.539.991-.454,1.555.375,2.499,1.922,4.84,4.598,6.958.24.189.38.479.38.784s-.14.595-.38.784c-2.676,2.118-4.223,4.458-4.598,6.957-.085.564.076,1.117.454,1.556.384.446.941.703,1.528.703h9.99c.852,0,1.613-.536,1.896-1.333.185-.521.758-.796,1.276-.608.521.184.793.756.608,1.276Zm-8.15-7.39l.508.405c1.172.932,2.727,2.431,3.474,4.275.125.309.088.659-.098.935-.186.275-.496.441-.829.441h-7.362c-.332,0-.643-.166-.829-.441-.186-.275-.223-.625-.099-.933.746-1.853,2.3-3.346,3.472-4.273l.52-.411c.364-.289.88-.288,1.244.002Zm-.627,2.06c-.631.509-1.371,1.194-1.965,1.996h3.928c-.594-.798-1.332-1.484-1.963-1.996Zm15.001-4.003c0,3.309-2.691,6-6,6s-6-2.691-6-6,2.691-6,6-6,6,2.691,6,6Zm-2,0c0-2.206-1.794-4-4-4s-4,1.794-4,4,1.794,4,4,4,4-1.794,4-4Zm-3-.414v-1.586c0-.552-.447-1-1-1s-1,.448-1,1v2c0,.265.105.52.293.707l1,1c.195.195.451.293.707.293s.512-.098.707-.293c.391-.391.391-1.023,0-1.414l-.707-.707Z"/>
+</svg>
+ You are overdue by : ${overdueInfo.daysOverdue} days (${overdueInfo.hoursOverdue} hours)</p>
+            <p style="color: #ff9300;"><?xml version="1.0" encoding="UTF-8"?>
+<svg  style='    fill: #ff9300;    width: 14px;
+    height: 15px;
+' xmlns="http://www.w3.org/2000/svg" id="Bold" viewBox="0 0 24 24" width="512" height="512"><path d="M18.5,0H13a1.5,1.5,0,0,0,0,3h5.5a2.43,2.43,0,0,1,.344.035l-18.4,18.4a1.5,1.5,0,0,0,2.122,2.122l18.4-18.4A2.43,2.43,0,0,1,21,5.5V11a1.5,1.5,0,0,0,3,0V5.5A5.507,5.507,0,0,0,18.5,0Z"/><path d="M6.5,11A4.5,4.5,0,1,0,2,6.5,4.505,4.505,0,0,0,6.5,11Zm0-6A1.5,1.5,0,1,1,5,6.5,1.5,1.5,0,0,1,6.5,5Z"/><path d="M17.5,13A4.5,4.5,0,1,0,22,17.5,4.505,4.505,0,0,0,17.5,13Zm0,6A1.5,1.5,0,1,1,19,17.5,1.5,1.5,0,0,1,17.5,19Z"/></svg>
+ Overdue interest : ${fine} Rupees</p>
+        `;
+    }
+
+    loanDetails.innerHTML = `
+        <p id="scrotamts"></p>
+        <div class="loan-entry">
+            <p style="text-align: center;
+    position: sticky;
+    top: 0px;
+    margin-top: 30px;
+    right: 0px;
+    float: right;
+    margin-right: -15px;
+    z-index: 10000;">
+                <button class="amounts-btn downsingle" style="width: 100%;
+    font-size: 9px;
+    padding: 2px 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    backdrop-filter: blur(1.5px);
+    gap: 5px;" onclick="downloadSingleLoan(${index})">
+                    <svg style="width: 14px;
+    height: 20px;" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512"><path d="M19,6V4a4,4,0,0,0-4-4H9A4,4,0,0,0,5,4V6a5.006,5.006,0,0,0-5,5v5a5.006,5.006,0,0,0,5,5,3,3,0,0,0,3,3h8a3,3,0,0,0,3-3,5.006,5.006,0,0,0,5-5V11A5.006,5.006,0,0,0,19,6ZM7,4A2,2,0,0,1,9,2h6a2,2,0,0,1,2,2V6H7ZM17,21a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V17a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1Zm5-5a3,3,0,0,1-3,3V17a3,3,0,0,0-3-3H8a3,3,0,0,0-3,3v2a3,3,0,0,1-3-3V11A3,3,0,0,1,5,8H19a3,3,0,0,1,3,3Z"/><path d="M18,10H16a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z"/></svg>
+
+                        Download This Receipt
+                </button>
+            </p>
+            <h3>Service</h3>
+            <p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg423"
+   xml:space="preserve"
+   width="32"
+   height="32"
+   viewBox="0 0 32 32"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs427"><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath437"><path
+         d="M 0,24 H 24 V 0 H 0 Z"
+         id="path435" /></clipPath></defs><g
+     id="g429"
+     transform="matrix(1.3333333,0,0,-1.3333333,0,32)"><g
+       id="g431"><g
+         id="g433"
+         clip-path="url(#clipPath437)"><g
+           id="g439"
+           transform="translate(1,1)"><path
+             d="M 0,0 H 22"
+             style="fill:none;stroke:#a0a0a0;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path441" /></g><g
+           id="g443"
+           transform="translate(2,5)"><path
+             d="M 0,0 H 20"
+             style="fill:none;stroke:#a0a0a0;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path445" /></g><g
+           id="g447"
+           transform="translate(21.4258,18.6245)"><path
+             d="m 0,0 -7.501,3.907 c -1.2,0.625 -2.649,0.625 -3.85,0 L -18.852,0 c -0.523,-0.272 -0.966,-0.689 -1.308,-1.181 -0.726,-1.045 0.13,-2.444 1.442,-2.444 h 18.584 c 1.313,0 2.168,1.399 1.443,2.444 C 0.967,-0.689 0.523,-0.272 0,0 Z"
+             style="fill:none;stroke:#a0a0a0;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path449" /></g><g
+           id="g451"
+           transform="translate(9,15)"><path
+             d="M 0,0 V -10"
+             style="fill:none;stroke:#a0a0a0;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path453" /></g><g
+           id="g455"
+           transform="translate(15,15)"><path
+             d="M 0,0 V -10"
+             style="fill:none;stroke:#a0a0a0;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path457" /></g><g
+           id="g459"
+           transform="translate(4,15)"><path
+             d="M 0,0 V -10"
+             style="fill:none;stroke:#a0a0a0;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path461" /></g><g
+           id="g463"
+           transform="translate(20,15)"><path
+             d="M 0,0 V -10"
+             style="fill:none;stroke:#a0a0a0;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path465" /></g></g></g></g></svg>
+ Taken in : ${loan.takenFrom} </p>
+            <h3>Amount</h3>
+            <p><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+  <path d="m23.018,8.785c-.595-.542-1.356-.82-2.169-.782-.804.037-1.545.386-2.085.981l-3.217,3.535c-.551-.91-1.55-1.519-2.689-1.519H4c-2.206,0-4,1.794-4,4v5c0,2.206,1.794,4,4,4h4.965c2.849,0,5.57-1.22,7.467-3.348l6.804-7.637c1.094-1.226.996-3.123-.218-4.23Zm-1.275,2.899l-6.804,7.638c-1.518,1.701-3.695,2.678-5.974,2.678h-4.965c-1.103,0-2-.897-2-2v-5c0-1.103.897-2,2-2h8.858c.629,0,1.142.513,1.142,1.143,0,.564-.421,1.051-.98,1.13l-5.161.737c-.546.078-.926.585-.848,1.132.078.548.587.928,1.131.849l5.161-.737c1.175-.168,2.129-.987,2.514-2.058l4.427-4.865c.181-.2.43-.316.699-.329.272-.008.529.082.728.262.407.372.44,1.009.072,1.421Zm-7.449-7.391c-.391-.391-.391-1.023,0-1.414l2.293-2.293c.373-.374.914-.586,1.414-.586s1.041.212,1.414.586l2.293,2.293c.391.391.391,1.023,0,1.414-.195.195-.451.293-.707.293s-.512-.098-.707-.293l-1.293-1.293v3c0,.552-.447,1-1,1s-1-.448-1-1v-3l-1.293,1.293c-.391.391-1.023.391-1.414,0Zm-7.543,4.707h3.5c1.517,0,2.75-1.31,2.75-2.919,0-1.665-1.581-3.473-3.138-4.223.164-.164.322-.342.462-.531.405-.55.032-1.326-.651-1.326h-2.347c-.646,0-1.067.73-.695,1.259.151.214.327.415.51.598-1.558.75-3.14,2.559-3.14,4.224,0,1.61,1.233,2.919,2.75,2.919Zm1.75-5.5c.745,0,2.5,1.527,2.5,2.581,0,.507-.336.919-.75.919h-3.5c-.414,0-.75-.413-.75-.919,0-1.054,1.755-2.581,2.5-2.581Z"/>
+</svg>
+ Taken Amount : ${loan.takenAmount} Rupees</p>
+            <h3>Taken & Return</h3>
+            <p><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="m8,12h-2c-1.103,0-2,.897-2,2v2c0,1.103.897,2,2,2h2c1.103,0,2-.897,2-2v-2c0-1.103-.897-2-2-2Zm-2,4v-2h2v2s-2,0-2,0ZM19,2h-1v-1c0-.552-.447-1-1-1s-1,.448-1,1v1h-8v-1c0-.552-.447-1-1-1s-1,.448-1,1v1h-1C2.243,2,0,4.243,0,7v12c0,2.757,2.243,5,5,5h14c2.757,0,5-2.243,5-5V7c0-2.757-2.243-5-5-5Zm-14,2h14c1.654,0,3,1.346,3,3v1H2v-1c0-1.654,1.346-3,3-3Zm14,18H5c-1.654,0-3-1.346-3-3v-9h20v9c0,1.654-1.346,3-3,3Z"/></svg>
+Taken date : ${loan.planDate}</p>
+            <p><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="M17,10.039c-3.859,0-7,3.14-7,7,0,3.838,3.141,6.961,7,6.961s7-3.14,7-7c0-3.838-3.141-6.961-7-6.961Zm0,11.961c-2.757,0-5-2.226-5-4.961,0-2.757,2.243-5,5-5s5,2.226,5,4.961c0,2.757-2.243,5-5,5Zm1.707-4.707c.391,.391,.391,1.023,0,1.414-.195,.195-.451,.293-.707,.293s-.512-.098-.707-.293l-1-1c-.188-.188-.293-.442-.293-.707v-2c0-.552,.447-1,1-1s1,.448,1,1v1.586l.707,.707Zm5.293-10.293v2c0,.552-.447,1-1,1s-1-.448-1-1v-2c0-1.654-1.346-3-3-3H5c-1.654,0-3,1.346-3,3v1H11c.552,0,1,.448,1,1s-.448,1-1,1H2v9c0,1.654,1.346,3,3,3h4c.552,0,1,.448,1,1s-.448,1-1,1H5c-2.757,0-5-2.243-5-5V7C0,4.243,2.243,2,5,2h1V1c0-.552,.448-1,1-1s1,.448,1,1v1h8V1c0-.552,.447-1,1-1s1,.448,1,1v1h1c2.757,0,5,2.243,5,5Z"/></svg>
+Return date : ${loan.endDate}</p>
+            <h3>Duration</h3>
+            <p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg693"
+   xml:space="preserve"
+   width="32"
+   height="32"
+   viewBox="0 0 32 32"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs697"><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath707"><path
+         d="M 0,24 H 24 V 0 H 0 Z"
+         id="path705" /></clipPath></defs><g
+     id="g699"
+     transform="matrix(1.3333333,0,0,-1.3333333,0,32)"><g
+       id="g701"><g
+         id="g703"
+         clip-path="url(#clipPath707)"><g
+           id="g709"
+           transform="translate(14.1309,5)"><path
+             d="m 0,0 v 0 h -2.131 -2.132 c -0.289,0 -0.558,0.144 -0.72,0.383 -0.162,0.239 -0.194,0.543 -0.086,0.81 0.367,0.909 1.073,1.782 2.099,2.593 l 0.301,0.237 c 0.316,0.251 0.764,0.25 1.08,-0.002 L -1.295,3.787 C -0.268,2.971 0.438,2.098 0.805,1.194 0.913,0.926 0.882,0.622 0.72,0.383 0.559,0.144 0.289,0 0,0"
+             style="fill:#a0a0a0;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path711" /></g><g
+           id="g713"
+           transform="translate(14.7402,12)"><path
+             d="M 0,0 C 1.913,-1.521 4.248,-3.957 4.741,-7.252 4.998,-8.965 3.637,-10.5 1.904,-10.5 l -9.263,10e-4 c -1.734,0 -3.095,1.536 -2.837,3.251 0.496,3.302 2.824,5.731 4.741,7.248 -1.917,1.517 -4.245,3.946 -4.741,7.248 -0.258,1.715 1.103,3.251 2.837,3.251 L 1.904,10.5 C 3.637,10.5 4.998,8.965 4.741,7.252 4.248,3.957 1.913,1.521 0,0 Z"
+             style="fill:none;stroke:#a0a0a0;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+             id="path715" /></g></g></g></g></svg>
+ Taken for : ${daysBetween} days</p>
+            <h3>Interest</h3>
+            <p><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+  <path d="m14,1.5c0-.828.672-1.5,1.5-1.5s1.5.672,1.5,1.5-.672,1.5-1.5,1.5-1.5-.672-1.5-1.5Zm8.5,3.5c-.828,0-1.5.672-1.5,1.5s.672,1.5,1.5,1.5,1.5-.672,1.5-1.5-.672-1.5-1.5-1.5Zm-4.667,3L22.5,0h-2.333l-4.667,8h2.333Zm5.167,4.5v8c0,1.995-2.58,3.5-6,3.5-2.151,0-3.968-.596-5.022-1.534-1.217,1.01-3.353,1.534-5.478,1.534-3.23,0-6.5-1.202-6.5-3.5V4.5C0,2.202,3.27,1,6.5,1s6.5,1.202,6.5,3.5v5.353c1.047-.534,2.433-.853,4-.853,3.42,0,6,1.505,6,3.5ZM2,4.5c0,.436,1.577,1.5,4.5,1.5s4.5-1.064,4.5-1.5-1.577-1.5-4.5-1.5-4.5,1.064-4.5,1.5Zm0,4c0,.436,1.577,1.5,4.5,1.5s4.5-1.064,4.5-1.5v-1.409c-1.226.601-2.867.909-4.5.909s-3.274-.308-4.5-.909v1.409Zm0,4c0,.436,1.577,1.5,4.5,1.5s4.5-1.064,4.5-1.5v-1.409c-1.226.601-2.867.909-4.5.909s-3.274-.308-4.5-.909v1.409Zm0,4c0,.436,1.577,1.5,4.5,1.5s4.5-1.064,4.5-1.5v-1.409c-1.226.601-2.867.909-4.5.909s-3.274-.308-4.5-.909v1.409Zm9,4v-1.409c-1.226.601-2.867.909-4.5.909s-3.274-.308-4.5-.909v1.409c0,.436,1.577,1.5,4.5,1.5s4.5-1.064,4.5-1.5Zm10,0v-1.353c-1.047.534-2.433.853-4,.853s-2.953-.319-4-.853v1.353c0,.529,1.519,1.5,4,1.5s4-.971,4-1.5Zm0-4v-1.353c-1.047.534-2.433.853-4,.853s-2.953-.319-4-.853v1.353c0,.529,1.519,1.5,4,1.5s4-.971,4-1.5Zm0-4c0-.529-1.519-1.5-4-1.5s-4,.971-4,1.5,1.519,1.5,4,1.5,4-.971,4-1.5Z"/>
+</svg>
+ Normal Interest : ${loan.interest} Rupees</p>
+            <hr>
+            ${overdueSection}
+            <hr>
+            <h3>Total to Return</h3>
+            <p><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+  <path d="m19,18c-1.379,0-2.5-1.121-2.5-2.5s1.121-2.5,2.5-2.5,2.5,1.121,2.5,2.5-1.121,2.5-2.5,2.5Zm2-14H5c-.856,0-1.653-.381-2.216-1.004.549-.607,1.335-.996,2.216-.996h18c.552,0,1-.448,1-1s-.448-1-1-1H5C2.239,0,0,2.239,0,5v10c0,2.761,2.239,5,5,5h8c.552,0,1-.448,1-1s-.448-1-1-1H5c-1.657,0-3-1.343-3-3V5s.002-.001.005-.002c.853.638,1.901,1.002,2.995,1.002h16c.552,0,1,.448,1,1v5c0,.552.448,1,1,1s1-.448,1-1v-5c0-1.657-1.343-3-3-3Zm-2,15c-2.333,0-4.375,1.538-4.966,3.741-.143.533.173,1.082.707,1.225.534.143,1.081-.173,1.225-.707.357-1.33,1.605-2.259,3.034-2.259s2.677.929,3.034,2.259c.12.447.524.741.965.741.085,0,.173-.011.26-.035.533-.143.85-.692.707-1.225-.591-2.203-2.633-3.741-4.966-3.741Z"/>
+</svg>
+ Full Amount : ${totalReturnAmount} Rupees</p>
+            <hr>
+            <div class="issuebtn" style="padding-top: 20px;width: 102.5%;">  
+                <a target="_blank" href="https://forms.gle/RzTJ8W9bwmm8DVj2A"><button>I have an issue here.!</button></a>
+            </div>
+        </div>
+    `;
+}
+
+// ===============================================
+// MODALS & UTILITIES
+// ===============================================
+function showAmountsModal() {
+    const userInput = document.getElementById("userPassword").value.trim();
+    const user = passwords[userInput];
+    if (!user) return;
+
+    let totalTaken = 0;
+    let totalInterest = 0;
+    user.loans.forEach(loan => {
+        const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+        const fine = overdueInfo.fine || 0;
+        totalTaken += loan.takenAmount;
+        totalInterest += loan.interest + fine;
+    });
+    const totalReturn = (totalTaken + totalInterest).toFixed(2);
+
+    document.getElementById("totalTaken").textContent = totalTaken;
+    document.getElementById("totalInterest").textContent = totalInterest;
+    document.getElementById("totalReturn").textContent = totalReturn;
+
+    document.getElementById("amountsModal").style.display = "";
+}
+
+function closeAmountsModal() {
+    document.getElementById("amountsModal").style.display = "none";
+}
+
+function closeModal() {
+    document.getElementById("userInfoModal").style.display = "none";
+    document.getElementById("passwordContainer").style.display = "flex";
+    document.getElementById("userPassword").value = "";
+    document.getElementById("specialContent").innerHTML = "";
+    document.getElementById("borrowLimitMessage")?.remove();
+    document.getElementById("tierProgress")?.remove();
+    sessionReferenceTime = null;
+}
+
+// ===============================================
+// RECEIPT GENERATION
+// ===============================================
+function generateStyledReceipt(textLines, filename) {
+    const canvas = document.createElement('canvas');
+    const lineHeight = 38;
+    const leftMargin = 40;
+    const topStart = 80;
+    const headingY = 50;
+
+    canvas.width = 720;
+    canvas.height = topStart + textLines.length * lineHeight + 60;
+
+    const ctx = canvas.getContext('2d');
+    
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#00BFFF';
+    ctx.font = 'bold 32px Arial, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('BS&MFI MONEY RECEIPT', leftMargin, headingY);
+
+    textLines.forEach((line, i) => {
+        const y = topStart + i * lineHeight;
+        if (line === 'Try to clear in time, Thank you.') {
+            ctx.fillStyle = '#00BFFF';
+            ctx.font = 'bold 22px Arial, sans-serif';
+        } else {
+            ctx.fillStyle = '#000000';
+            ctx.font = '22px Arial, sans-serif';
+        }
+        ctx.textAlign = 'left';
+        ctx.fillText(line, leftMargin, y);
+    });
+
+    ctx.fillStyle = '#777777';
+    ctx.font = 'italic 16px Arial';
+    ctx.textAlign = 'right';
+    ctx.fillText('Powered by BsBookpad', canvas.width - 30, canvas.height - 25);
+
+    const dataURL = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.href = dataURL;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    alert("Receipt has Downloaded..! Verify once...!");
+}
+
+function formatReturnDateForReceipt(loan) {
+    const userInput = document.getElementById("userPassword").value.trim();
+    const user = passwords[userInput];
+    if (!user) return "Error";
+    
+    const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+    if (overdueInfo.overdue) return "till today";
+    
+    const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
+    const [d, m, y] = cleanEndDate.split('-');
+    return `${d}/${m}/${y.slice(-2)}`;
+}
+
+function downloadSingleLoan(index) {
+    const userInput = document.getElementById("userPassword").value.trim();
+    const user = passwords[userInput];
+    if (!user || !user.loans[index]) {
+        alert("No loan found! Enter password first.");
+        return;
+    }
+
+    const loan = user.loans[index];
+    const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+    const fine = overdueInfo.fine || 0;
+    const total = (loan.takenAmount + loan.interest + fine).toFixed(2);
+
+    const lines = [
+        `Mr. ${user.name}`,
+        `Total amount to repay : ₹${total}`,
+        '',
+        `Amount ${index + 1} total : ₹${total}`,
+        `Return date : ${formatReturnDateForReceipt(loan)}`,
+        '',
+        'Try to clear in time, Thank you.'
+    ];
+
+    generateStyledReceipt(lines, `receipt_${user.name}_${index + 1}.png`);
+}
+
+function downloadAllLoans() {
+    const userInput = document.getElementById("userPassword").value.trim();
+    const user = passwords[userInput];
+    if (!user || user.loans.length === 0) {
+        alert("No loans found! Enter password first.");
+        return;
+    }
+
+    let totalTaken = 0, totalInterest = 0;
+    const amountLines = [];
+
+    user.loans.forEach((loan, i) => {
+        const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
+        const fine = overdueInfo.fine || 0;
+        const total = (loan.takenAmount + loan.interest + fine).toFixed(2);
+        totalTaken += loan.takenAmount;
+        totalInterest += loan.interest + fine;
+
+        amountLines.push(`Amount ${i + 1} total : ₹${total}`);
+        amountLines.push(`Return date : ${formatReturnDateForReceipt(loan)}`);
+        if (i < user.loans.length - 1) amountLines.push('');
+    });
+
+    const grandTotal = (totalTaken + totalInterest).toFixed(2);
+    const lines = [
+        '',
+        `Mr. ${user.name}`,
+        `Total amount to repay : ₹${grandTotal}`,
+        '',
+        ...amountLines,
+        '',
+        'Try to clear in time, Thank you.'
+    ];
+
+    generateStyledReceipt(lines, `all_receipts_${user.name}.png`);
+}
+
+function showStarCount() {
+    const stars = document.getElementById('starCount').textContent.trim();
+    if(stars == 0){
+        alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can buy the stars to reduce the interest when you think the interest to high.`);
+    }
+    else{
+        alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can use these stars when you think interest is high to reduce the interest.`);
+    }
+}
+
+function showCoinsCount() {
+    const coins = document.getElementById('coinsCount').textContent.trim();
+    alert(`BsRora(Bot) : \n\nYou have using ${coins} Duplicate Clone account.`);
+}
+
     </script>
 </body>
 </html>
