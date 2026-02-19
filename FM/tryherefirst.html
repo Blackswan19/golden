@@ -264,7 +264,20 @@ body.telegram-dark .bottomtakeoptions {
             list-style-type: none;
             padding: 0;
         }
-
+        .sponserheading{
+            text-align: center;
+    font-size: 13px;
+    font-weight: 400;
+    opacity: 80%;
+    color: revert;
+    display: inline;
+    background: #ffffff57;
+    padding: 6px 15px;
+    border-radius: 8px;
+        }
+        body.curvy .sponserheading{
+             border-radius: 80px;
+        }
         ul li {
             margin-bottom: 10px;
             display: flex;
@@ -337,7 +350,7 @@ body.telegram-dark .bottomtakeoptions {
     backdrop-filter: blur(4px);
         } */
 .logo{
-    z-index: 100;
+   z-index: 100;
     font-size: 13px;
     display: flex;
     width: 110%;
@@ -346,12 +359,14 @@ body.telegram-dark .bottomtakeoptions {
     position: sticky;
     top: 0px;
     padding: 40px 10px 10px 10px;
-    background: #00000075;    border-radius: 0px 0px 15px 15px;
-
-    backdrop-filter: blur(3px);    border-bottom: solid 1.5px #ffffff1f;
+    background: linear-gradient(359deg, #ffffff1a, transparent);
+    border-radius: 0px 0px 15px 15px;
+    backdrop-filter: blur(3px);
+    border-bottom: solid 1.5px #2c2c2c;
 }
 body.telegram-dark .logo {
-            background: #101921c4;
+            background: linear-gradient(359deg, #1d2733, transparent);
+    border-bottom: solid 1.5px #323f4e;
         }
         body.curvy .logo {
             border-radius: 0px 0px 35px 35px;
@@ -797,7 +812,7 @@ img.sponserimg:hover{
     </div>
 
     <div class="about" style="align-items: center; padding: 17px; max-width: 600px;">
-        <h2 style="text-align: center; font-size: 13px; margin: 0px; font-weight: 400; opacity: 80%; color: revert;">Sponsored by</h2>
+        <h2 class="sponserheading">Sponsored by</h2>
         <div class="sponserimges">
             <a onclick="alert('We are redirecting you to Programs page..!')" href="https://mfi0212.github.io/swan/offer/programs">
                 <img class="sponserimg" src="sponser_program.png" alt="">
