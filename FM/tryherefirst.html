@@ -115,7 +115,22 @@
             background-color: #111920;
             color: #ffffff;
         }
-
+.bottomtakeoptions{
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(0deg, #000000d4 35%, transparent);
+    height: 170px;
+} 
+body.telegram-dark .bottomtakeoptions {
+    background: linear-gradient(0deg, #111920 35%, transparent);
+    color: #ffffff;
+}
         h1,
         h2,
         h3 {
@@ -260,7 +275,7 @@
         p {
             color: #959595;
             font-size: 12px;
-            font-weight: 400;
+            font-weight: 400;padding: 0px 20px;
         }
 
         body.telegram-dark p {
@@ -634,7 +649,14 @@ body.curvy .takemoneybtn{
             border-radius: 0px;
             cursor: pointer;margin-bottom: 4px;
         }
+footer {
+       position: fixed;
+    bottom: -20px;
+    margin: 0px;
+    z-index: 1000000;
+    opacity: 40%;
 
+}
         body.curvy .issuebtn button {
             border-radius: 35px;
         }
@@ -642,7 +664,7 @@ body.curvy .takemoneybtn{
         .sponserimges {
           display: flex;
     gap: 0px;
-    margin-bottom: -25px;
+    margin-bottom: -20px;
         }
         img.sponserimg {
     opacity: 80%;
@@ -809,7 +831,7 @@ img.sponserimg:hover{
         <a href="https://blackswan19.github.io/golden/FM/mlld" class="button">MLLD site</a>
     </div>
 
-    <div class="about curvestyler" style="margin-bottom: 50px;">
+    <div class="about curvestyler" style="margin-bottom: 145px;">
         <h2>I'm late</h2>
         <p>If you are <span class="highlight">late in returning the amount</span>, the interest will <span class="highlight">automatically increased for every 2,3 days based on the amount</span>.</p>
         <p>Contact us if you think you'll be late so we can help you.</p>
@@ -822,16 +844,7 @@ img.sponserimg:hover{
         </p>
     </footer>
 
-    <div style="text-align: center;
-    position: fixed;
-    bottom: 0px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: linear-gradient(0deg, #000000d4 35%, transparent);
-    height: 135px;">
+    <div class="bottomtakeoptions">
         <div class="takemonetbtn" style="background: #ffffff57;
     padding: 10px 37px;
     backdrop-filter: blur(2px);
