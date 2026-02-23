@@ -35,15 +35,15 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "10-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 1360, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "15-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 4800, takenAmount: 20000, takenFrom: "MLending", fineRate: 0 },
-            { planDate: "16-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 1275, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "18-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 1380, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "18-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 690, takenAmount: 2500, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "01-11-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 1460, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 0 },
-            { planDate: "06-11-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 4880, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 0 },
-            { planDate: "09-11-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 2360, takenAmount: 7500, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "25-11-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 900, takenAmount: 3000, takenFrom: "MLending Duplicate ", fineRate: 0 }
+            { planDate: "10-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 2660, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "15-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 6800, takenAmount: 20000, takenFrom: "MLending", fineRate: 0 },
+            { planDate: "16-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 2275, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "18-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 2380, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "18-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 1690, takenAmount: 2500, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "01-11-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 2650, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 0 },
+            { planDate: "06-11-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 4980, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 0 },
+            { planDate: "09-11-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 3580, takenAmount: 8000, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "25-11-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 3900, takenAmount: 3500, takenFrom: "MLending Duplicate ", fineRate: 0 }
         ]
     },
     "Cherish@123": {
@@ -848,8 +848,3 @@ function showCoinsCount() {
     const coins = document.getElementById('coinsCount').textContent.trim();
     alert(`BsRora(Bot) : \n\nYou have using ${coins} Duplicate Clone account.`);
 }
-
-
-
-
-
