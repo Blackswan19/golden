@@ -1,1 +1,677 @@
-no test...
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BsNote</title>
+  <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/originals/22/fb/32/22fb32654195b989444117ae2f1a479b.gif" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Orbitron:wght@400..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Strait&display=swap');
+
+* {
+	color: rgb(219, 219, 219);
+	font-family: "Red Hat Display", sans-serif;
+}
+
+    :root {
+      --bg: #000000;
+      --text: #e8e8e8;
+      --text-dim: #777777;
+      --accent: #002aff;
+      --accent-dim: #0040ff;
+      --line: rgba(40,40,40,0.9);
+      --star: #ffcc00;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      color: var(--text);letter-spacing: 0.2px;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    html, body { height: 100%; background: var(--bg); overflow: hidden; }
+    body { display: flex; flex-direction: column; }
+
+    header {
+      padding: 48px 20px 20px;
+      font-size: 34px;
+      font-weight: 600;
+      letter-spacing: -0.6px;
+      color: var(--accent);
+      text-align: center;
+      background: var(--bg);
+      z-index: 10;
+      flex-shrink: 0;
+    }
+
+    .folders-container {
+background: var(--bg);
+    flex-shrink: 0;
+    }
+
+    .folders {
+      padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    }
+
+    .folders::-webkit-scrollbar { display: none; }
+
+    .add-folder-fixed {
+      flex-shrink: 0;
+      padding: 10px 16px;
+      background: linear-gradient(269deg, #002aff, #000000);
+      color: #ffffff;
+      border-radius: 0px 100px 100px 0px;
+      font-size: 15px;
+      cursor: pointer;
+      white-space: nowrap;
+      position: sticky;
+      left: -20px;
+      border: none;
+      backdrop-filter: blur(11px);
+      filter: drop-shadow(10px 0px 5px black);
+    }
+
+    .folder-btn {
+      flex-shrink: 0;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: transparent;
+      border: 1.5px solid var(--line);
+      color: var(--text-dim);
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+
+    .folder-btn.active,
+    .folder-btn:hover {
+          border-color: #ffffff00;
+    color: white;
+    background: var(--accent);
+
+    }
+
+    .notes-container {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 24px 20px;
+    }
+
+    .note {
+      font-size: 17px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    position: relative;
+    word-break: break-word;
+    padding: 12px 20px 12px 30px;
+    border-radius: 15px;
+    background: rgb(255 255 255 / 7%);
+    transition: background 0.2s;
+    }
+
+    .note:hover { background: rgba(255,255,255,0.08); }
+
+    .note:last-child { margin-bottom: 5px; }
+
+    .note .star {
+      position: absolute;
+      right: 34px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 25px;
+      cursor: pointer;
+      color: var(--text-dim);
+      transition: color 0.2s;
+    }
+
+    .note.important .star {
+      color: var(--star);
+    }
+
+    .note img {
+          max-width: 50%;
+    border-radius: 6px;
+    margin: 0 0 0 -18px;
+    display: block;
+    cursor: pointer;opacity: 60%;
+    }
+
+    .empty-state {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dim);
+      font-size: 17px;
+      text-align: center;
+      padding: 0 40px;
+    }
+
+    .input-area {
+      padding: 0px 2px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 20;
+      flex-shrink: 0;
+      justify-content: center;
+      border-radius: 100px;
+      border: solid 1.5px #ffffff2b;
+      position: relative;
+      bottom: 10px;    background: black;
+    }
+
+    #noteInput {
+      flex: 1;
+      background: rgb(255 255 255 / 12%);
+      border-radius: 16px;
+      font-size: 16px;
+      outline: none;
+      padding: 14px 19px;
+      border: none;
+      position: relative;
+      left: -10px;
+      color: #ffffffc9;
+    }
+
+    #noteInput::placeholder { color: #555; }
+::placeholder{
+  color: white;
+}
+    .btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all 0.2s;
+    }
+
+    .btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .attach-label {
+      font-size: 24px;
+      color: var(--text-dim);
+      cursor: pointer;
+      padding: 12px;
+    }
+
+    #contextMenu {
+      position: fixed;
+      background: rgb(255 255 255 / 17%);
+      border-radius: 25px;
+      padding: 6px 8px;
+      min-width: 100px;
+      z-index: 100;
+      backdrop-filter: blur(5px);
+      list-style: none;
+      text-align: center;
+    }
+
+    #contextMenu li {
+      padding: 7px 0px;
+      font-size: 15px;
+      cursor: pointer;
+      border-radius: 1000px;
+    }
+
+    #contextMenu li:hover {
+      background: rgb(255 255 255 / 22%);
+    }
+
+    #popup {
+      position: fixed;
+      inset: 0;
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      cursor: pointer;
+    }
+
+    .popup-box {
+      background: #282828;
+      border-radius: 40px;
+      padding: 20px;
+      width: 80%;
+      max-width: 460px;
+      text-align: center;
+      position: relative;
+    }
+
+    .popup-image {
+      max-width: 100%;
+      max-height: 74vh;
+      border-radius: 12px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 16px;
+    }
+
+    .popup-msg {
+      font-size: 17px;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .popup-buttons {
+         display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 15px;
+    }
+
+    .popup-btn {
+      padding: 7px 25px;
+    border-radius: 21px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    }
+
+    .cancel { background: #ffffff1c; color: #ccc; }
+    .danger  { background: #ff3b30; color: white; }
+    .confirm { background: var(--accent); color: white; }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-thumb { background: #222; border-radius: 4px; }
+
+    @media (min-width: 768px) {
+      header { font-size: 40px; padding-top: 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="header">BsNote</header>
+
+  <div class="folders-container">
+    <div class="folders" id="folders"></div>
+  </div>
+
+  <div class="notes-container" id="notes">
+    <div class="empty-state">Select a folder to view or add notes</div>
+  </div>
+
+  <div class="input-area" id="inputArea">
+    <label class="attach-label" for="imageInput">
+      <svg style="width: 18px;height: 18px;fill: white;background: transparent;" id="clipIcon" onclick="attachImage()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="512" height="512"><path d="M9,5.5c0-.83,.67-1.5,1.5-1.5s1.5,.67,1.5,1.5-.67,1.5-1.5,1.5-1.5-.67-1.5-1.5Zm15-.5v6c0,2.76-2.24,5-5,5H10c-2.76,0-5-2.24-5-5V5C5,2.24,7.24,0,10,0h9c2.76,0,5,2.24,5,5ZM7,11c0,.77,.29,1.47,.77,2.01l5.24-5.24c.98-.98,2.69-.98,3.67,0l1.04,1.04c.23,.23,.62,.23,.85,0l3.43-3.43v-.38c0-1.65-1.35-3-3-3H10c-1.65,0-3,1.35-3,3v6Zm15,0v-2.79l-2.02,2.02c-.98,.98-2.69,.98-3.67,0l-1.04-1.04c-.23-.23-.61-.23-.85,0l-4.79,4.79c.12,.02,.24,.02,.37,.02h9c1.65,0,3-1.35,3-3Zm-3.91,7.04c-.53-.15-1.08,.17-1.23,.7l-.29,1.06c-.21,.77-.71,1.42-1.41,1.81-.7,.4-1.51,.5-2.28,.29l-8.68-2.38c-1.6-.44-2.54-2.09-2.1-3.69l.96-3.56c.14-.53-.17-1.08-.7-1.23-.53-.14-1.08,.17-1.23,.7L.18,15.29c-.73,2.66,.84,5.42,3.5,6.15l8.68,2.38c.44,.12,.89,.18,1.33,.18,.86,0,1.7-.22,2.47-.66,1.16-.66,1.99-1.73,2.35-3.02l.29-1.06c.15-.53-.17-1.08-.7-1.23Z"/></svg>
+    </label>
+    <input type="file" id="imageInput" accept="image/*" style="display:none" />
+    
+    <input type="text" id="noteInput" placeholder="New note…" disabled />
+    
+    <button class="btn" id="sendBtn" disabled>
+      <svg style="width: 18px;height: 18px;fill: white;background: transparent;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="512" height="512"><path d="M1.444,6.669a2,2,0,0,0-.865,3.337l3.412,3.408V20h6.593l3.435,3.43a1.987,1.987,0,0,0,1.408.588,2.034,2.034,0,0,0,.51-.066,1.978,1.978,0,0,0,1.42-1.379L23.991.021ZM2,8.592l17.028-5.02L5.993,16.586v-4Zm13.44,13.424L11.413,18h-4L20.446,4.978Z"/></svg>
+    </button>
+  </div>
+
+  <!-- Context menu -->
+  <ul id="contextMenu" style="display:none">
+    <li id="edit">Edit</li>
+    <li id="copy">Copy</li>
+    <li id="delete">Delete</li>
+  </ul>
+
+  <!-- Popup -->
+  <div id="popup">
+    <div class="popup-box">
+      <p class="popup-msg" id="popupMsg"></p>
+      <div id="popupExtra"></div>
+      <div class="popup-buttons" id="popupButtons"></div>
+    </div>
+  </div>
+
+<script>
+const folders = JSON.parse(localStorage.getItem('bsnote_minimal_v2')) || {};
+let current = null;
+let ctxItem = null;
+
+const foldersEl    = document.getElementById('folders');
+const notesEl      = document.getElementById('notes');
+const headerEl     = document.getElementById('header');
+const input        = document.getElementById('noteInput');
+const sendBtn      = document.getElementById('sendBtn');
+const popup        = document.getElementById('popup');
+const popupMsg     = document.getElementById('popupMsg');
+const popupExtra   = document.getElementById('popupExtra');
+const popupButtons = document.getElementById('popupButtons');
+
+function save() {
+  localStorage.setItem('bsnote_minimal_v2', JSON.stringify(folders));
+}
+
+function closePopup() {
+  popup.style.display = 'none';
+  popupExtra.innerHTML = '';
+  popupButtons.innerHTML = '';
+}
+
+function showPopup(message = '', extraHTML = '', buttons = []) {
+  popupMsg.textContent = message;
+  popupExtra.innerHTML = extraHTML;
+  popupButtons.innerHTML = '';
+  buttons.forEach(b => {
+    const btn = document.createElement('button');
+    btn.className = `popup-btn ${b.class || 'confirm'}`;
+    btn.textContent = b.text;
+    btn.onclick = () => { b.action(); closePopup(); };
+    popupButtons.appendChild(btn);
+  });
+  popup.style.display = 'flex';
+}
+
+function showImagePopup(src) {
+  showPopup('', `<img src="${src}" class="popup-image" alt="Note image">`, [
+    { text: 'Close', class: 'cancel', action: closePopup }
+  ]);
+}
+
+function getImportantNotes() {
+  const important = [];
+  Object.entries(folders).forEach(([folderName, notes]) => {
+    notes.forEach((note, idx) => {
+      if (note.important) {
+        important.push({ folder: folderName, index: idx, note });
+      }
+    });
+  });
+  return important;
+}
+
+function renderFolders() {
+  foldersEl.innerHTML = '';
+
+  // Fixed + button
+  const addBtn = document.createElement('button');
+  addBtn.className = 'add-folder-fixed';
+  addBtn.innerHTML = '<i class="fa-solid fa-plus"></i>';
+  addBtn.onclick = addFolder;
+  foldersEl.appendChild(addBtn);
+
+  // Important (special view)
+  const impBtn = document.createElement('button');
+  impBtn.className = `folder-btn ${current === 'important' ? 'active' : ''}`;
+  impBtn.innerHTML = '<i class="fas fa-star"></i> Important';
+  impBtn.onclick = () => select('important');
+  foldersEl.appendChild(impBtn);
+
+  // Regular folders
+  Object.keys(folders).sort().forEach(name => {
+    const b = document.createElement('button');
+    b.className = `folder-btn ${name === current ? 'active' : ''}`;
+    b.textContent = name;
+    b.onclick = () => select(name);
+    foldersEl.appendChild(b);
+  });
+}
+
+function select(name) {
+  current = name;
+
+  // Update header
+  headerEl.textContent = name === 'important' ? 'Important Notes' : (name || 'BsNote');
+
+  // Enable/disable input
+  const canWrite = name !== null && name !== 'important' && folders[name] !== undefined;
+  input.disabled = sendBtn.disabled = !canWrite;
+
+  // Re-render folders → this updates .active class on all buttons
+  renderFolders();
+
+  // Render content
+  if (name === 'important') {
+    renderImportantNotes();
+  } else if (name && folders[name]) {
+    renderNotes(name);
+  } else {
+    notesEl.innerHTML = '<div class="empty-state">Welcome to BsNotes</div>';
+  }
+}
+
+function renderNotes(folderName) {
+  notesEl.innerHTML = '';
+  const notes = folders[folderName] || [];
+
+  if (notes.length === 0) {
+    notesEl.innerHTML = '<div class="empty-state">This folder is empty<br>Start typing to add notes</div>';
+    return;
+  }
+
+  notes.forEach((note, i) => {
+    createNoteElement(note, i, folderName);
+  });
+}
+
+function renderImportantNotes() {
+  notesEl.innerHTML = '';
+  const important = getImportantNotes();
+
+  if (important.length === 0) {
+    notesEl.innerHTML = '<div class="empty-state">No important notes yet<br>Long-press or right-click notes to pin them</div>';
+    return;
+  }
+
+  important.forEach(({folder, index, note}) => {
+    const el = createNoteElement(note, index, folder, true);
+    const badge = document.createElement('div');
+    badge.style.cssText = 'font-size:11px; color:#888; margin-top:6px; opacity:0.7;';
+    badge.textContent = `from ${folder}`;
+    el.appendChild(badge);
+  });
+}
+
+function createNoteElement(note, index, folderName, isImportantView = false) {
+  const div = document.createElement('div');
+  div.className = `note ${note.important ? 'important' : ''}`;
+  div.dataset.folder = folderName;
+  div.dataset.index = index;
+
+  const star = document.createElement('span');
+  star.className = 'star';
+  star.innerHTML = '★';
+  star.onclick = (e) => {
+    e.stopPropagation();
+    toggleImportant(folderName, index);
+  };
+  div.appendChild(star);
+
+  if (note.type === 'image') {
+    const img = document.createElement('img');
+    img.src = note.content;
+    img.onclick = () => showImagePopup(note.content);
+    div.appendChild(img);
+  } else {
+    const textDiv = document.createElement('div');
+    textDiv.textContent = note.content;
+    div.appendChild(textDiv);
+  }
+
+  div.oncontextmenu = e => {
+    e.preventDefault();
+    ctxItem = { folder: folderName, index };
+    showContext(e);
+  };
+
+  let pressTimer;
+  div.onpointerdown = () => {
+    pressTimer = setTimeout(() => {
+      ctxItem = { folder: folderName, index };
+      showContext({ pageX: window.innerWidth/2, pageY: window.innerHeight/2 });
+    }, 500);
+  };
+  div.onpointerup = () => clearTimeout(pressTimer);
+  div.onpointercancel = () => clearTimeout(pressTimer);
+  div.onpointerleave = () => clearTimeout(pressTimer);
+
+  notesEl.appendChild(div);
+  return div;
+}
+
+function toggleImportant(folderName, index) {
+  if (!folders[folderName]?.[index]) return;
+  folders[folderName][index].important = !folders[folderName][index].important;
+  save();
+
+  // Refresh current view
+  if (current === 'important') {
+    renderImportantNotes();
+  } else if (current === folderName) {
+    renderNotes(folderName);
+  }
+}
+
+function addFolder() {
+  showPopup("Create title", `
+    <input type="text" id="folderNameInput" placeholder="Enter title here..." style="width: 95%;
+    padding: 9px;
+    background: #ffffff3b;
+    border: 1px solid #333;
+    border-radius: 38px;
+    font-size: 17px;
+    color: white;
+    text-align: center;">
+  `, [
+    { text: 'Cancel', class: 'cancel', action: closePopup },
+    { text: 'Create', class: 'confirm', action: () => {
+      const name = document.getElementById('folderNameInput').value.trim();
+      if (!name) return;
+      if (folders[name] || name.toLowerCase() === 'important') {
+        alert("Folder name already exists or not allowed");
+        return;
+      }
+      folders[name] = [];
+      save();
+      renderFolders();
+      select(name);
+    }}
+  ]);
+}
+
+function addNote() {
+  const txt = input.value.trim();
+  if (!txt || !current || current === 'important') return;
+  folders[current].push({ type: 'text', content: txt, important: false });
+  input.value = '';
+  save();
+  renderNotes(current);
+}
+
+function attach(e) {
+  const file = e.target.files[0];
+  if (!file || !current || current === 'important') return;
+  const r = new FileReader();
+  r.onload = ev => {
+    folders[current].push({ type: 'image', content: ev.target.result, important: false });
+    save();
+    renderNotes(current);
+  };
+  r.readAsDataURL(file);
+}
+
+function showContext(e) {
+  const m = document.getElementById('contextMenu');
+  m.style.left = Math.min(e.pageX, window.innerWidth - 180) + 'px';
+  m.style.top  = Math.min(e.pageY, window.innerHeight - 160) + 'px';
+  m.style.display = 'block';
+}
+
+function hideContext() {
+  document.getElementById('contextMenu').style.display = 'none';
+}
+
+// Context menu actions
+document.getElementById('edit').onclick = () => {
+  hideContext();
+  if (!ctxItem) return;
+  const {folder, index} = ctxItem;
+  const note = folders[folder]?.[index];
+  if (!note || note.type === 'image') return alert("Can't edit images");
+
+  showPopup("Edit note", `
+    <textarea id="editInput" style="width:100%;min-height:140px;padding:14px;background:#1a1a1a;border:1px solid #333;border-radius:10px;font-size:17px;color:white;resize:vertical;">${note.content}</textarea>
+  `, [
+    { text: 'Cancel', class: 'cancel', action: closePopup },
+    { text: 'Save', class: 'confirm', action: () => {
+      const newText = document.getElementById('editInput').value.trim();
+      if (newText) {
+        note.content = newText;
+        save();
+        if (current === 'important') renderImportantNotes();
+        else if (current === folder) renderNotes(folder);
+      }
+    }}
+  ]);
+};
+
+document.getElementById('delete').onclick = () => {
+  hideContext();
+  if (!ctxItem) return;
+  showPopup("Delete this note permanently?", '', [
+    { text: 'Cancel', class: 'cancel', action: closePopup },
+    { text: 'Delete', class: 'danger', action: () => {
+      const {folder, index} = ctxItem;
+      if (folders[folder]) {
+        folders[folder].splice(index, 1);
+        save();
+        if (current === 'important') renderImportantNotes();
+        else if (current === folder) renderNotes(folder);
+      }
+    }}
+  ]);
+};
+
+document.getElementById('copy').onclick = () => {
+  hideContext();
+  if (!ctxItem) return;
+  const note = folders[ctxItem.folder]?.[ctxItem.index];
+  if (!note || note.type === 'image') return alert("Can't copy image");
+  navigator.clipboard.writeText(note.content)
+    .then(() => alert("Copied!"))
+    .catch(() => alert("Copy failed"));
+};
+
+// Events
+sendBtn.onclick = addNote;
+input.onkeypress = e => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    addNote();
+  }
+};
+document.getElementById('imageInput').onchange = attach;
+document.body.onclick = e => {
+  if (!e.target.closest('#contextMenu') && !e.target.closest('.popup-box')) hideContext();
+};
+popup.onclick = e => {
+  if (e.target === popup) closePopup();
+};
+
+// Init
+renderFolders();
+select(null); // or select('important') if you prefer to start there
+</script>
+</body>
+</html>
