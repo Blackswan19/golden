@@ -1,71 +1,24 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>MLLD | Stars</title> <link rel="icon" href="mfi.logo.png" /> <link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans"> <style> @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap'); * { margin: 0; padding: 0; box-sizing: border-box; scrollbar-width: none; font-family: "Noto Sans", sans-serif; } * { -webkit-tap-highlight-color: transparent; } body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; } :root { --navy: #0a1f3a; /* Deep navy */ --gold: #f9c342; /* Warm gold accent */ --cream: #f8f5f0; /* Background */ --white: #ffffff; --dark-text: #1a1a1a; --light-text: #444444; --border: #e8e8e8; --shadow: 0 8px 30px rgba(0, 0, 0, 0.08); } body { background: var(--cream); color: var(--dark-text); font-family: 'Poppins', sans-serif; font-weight: 400; line-height: 1.8; overflow-x: hidden; } .header { text-align: center; padding: 100px 20px 80px; } .header img { width: 160px; margin-bottom: 40px; } .header h1 { font-family: 'Hahmlet', serif; font-size: 30px; font-weight: 600; color: var(--navy); } .header p { font-size: 13px; color: #00000078; max-width: 900px; margin: -5px auto; font-weight: 100; text-transform: uppercase; letter-spacing: 2px; } .main-container { max-width: 800px; margin: 0 auto; } .section { background: var(--white); padding: 70px 60px; margin-bottom: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); } .section h2 { font-family: 'Hahmlet', serif; font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; position: relative; display: inline-block; } .section h2::after { content: ''; position: absolute; bottom: -15px; left: 0; width: 80px; height: 3px; background: var(--gold); } input, textarea { width: 100%; padding: 10px 30px; margin: 20px 0; border: 1px solid var(--border); background: var(--white); color: var(--dark-text); font-size: 15px; font-family: 'Poppins', sans-serif; border-radius: 0; } .benefits-container ul li, .steps-container ol li { margin: 25px 0; font-size: 15px; position: relative; padding-left: 5px; } input:focus, textarea:focus { outline: none; border-color: var(--gold); } button { padding: 13px 25px; background: var(--navy); color: #ffffff; border: none; font-family: 'Poppins', sans-serif; font-weight: 200; font-size: 14px; cursor: pointer; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 0; } button:hover { background: #08152c; } #result { margin-top: 40px; font-size: 16px; text-align: center; font-weight: 400; color: #0a1f3a; } .benefits-container ul, .steps-container ol { padding-left: 30px; } .benefits-container ul li, .steps-container ol li { margin: 25px 0; font-size: 16px; position: relative; padding-left: 5px; } .steps-container ol { counter-reset: step; } .steps-container li::marker { font-weight: 600; } .star-earn-container a button { margin: 20px 15px 0; } .faq-item h3 { font-family: 'Hahmlet', serif; font-size: 16px; color: var(--navy); font-weight: 600; margin-top: 31px; } .faq-item p, .benefits-container li, .steps-container li, p { font-size: 15px; color: #00000087; } footer { text-align: center; padding: 20px; font-size: 11px; color: #666; border-top: 1px solid var(--border); margin-top: 5px; } @media (max-width: 768px) { .header img { width: 130px; } .section { padding: 50px 30px; } .section h2 { font-size: 15px; } .benefits-container ul li, .steps-container ol li { margin: 14px 0; font-size: 13px; position: relative; } button { padding: 10px 25px; background: var(--navy); color: #ffffff; border: none; font-family: 'Poppins', sans-serif; font-weight: 200; font-size: 12px; cursor: pointer; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 0;} } </style> </head> <body> <!-- <span style="background: #e1b507; width: 100%; position: fixed; text-align: center; padding: 10px 0px; top: 0px; z-index: 100; border-radius: 0px 0px 20px 20px; font-size: 15px;">💓 Valentine's Day offer💓<a style="color: white; padding: 0px 5px;" href="https://mfi0212.github.io/swan/offer/presave">Pre-Save here </a></span> --> <div class="header"> <img src="https://raw.githubusercontent.com/goforbg/telegram-emoji-gifs/refs/heads/master/star.gif" alt="Star Icon"> <h1>MLLD - Stars</h1> <p>interest reducer.</p> </div> <div class="main-container"> <div class="section calculator-container"> <h2>Stars Calculator</h2> <input type="number" id="starInput" placeholder="Enter number of stars to buy" min="1"> <button onclick="calculateCost()">Calculate Cost</button> <div id="result" title="Click to increase the font size...!" ></div> </div> <div class="section benefits-container"> <h2>Why Stars?</h2> <ul> <li>Stars are used to reduce the interest rates when the interests are very high.</li> </ul> </div> <div class="section steps-container"> <h2>How It Works</h2> <ol> <li>Enter the number of stars you want to buy in the "Star Calculator".</li> <li>Check the cost of the stars using the calculator.</li> <li>Send the payment to your coordinator to purchase the stars.</li> <li>Fill out the form by clicking "Buy Stars Now" to confirm your purchase.</li> <li>Receive your stars on the service site you are in and use them to lower high interest rates.</li> </ol> Note : When you use more than 100 stars extra 12% stars will be used to digital convertion process </div> <div class="section testimonials-container"> <h2>Stars Store</h2><br> <a href="https://forms.gle/SVZE13rMgnoqRMF88"><button>Buy Stars Now</button></a> <br><br><p>Power by BS&MFI House</p> </div> <div class="section faq-container"> <h2>FAQ</h2> <div class="faq-item"> <h3>How do stars reduce interest?</h3> <p>If you buy 100 stars for 90₹ then the interest reduced upto 150₹.</p> </div> <div class="faq-item"> <h3>Can I use stars for other things?</h3> <p>Yes, you can use stars to buy the offers and store in BsMansion.</p> </div> <div class="faq-item"> <h3>How do I buy stars?</h3> <p>After checking the cost for stars sent amount to coordinator and click on "Buy Stars Now" and fill the form</p> </div> <div class="faq-item"> <h3>Can I use stars to pay rent for BsMasion stash's?</h3> <p>Yes, you can use stars to pay rent for BsMasion stash rents.</p> </div> </div> <footer> © MLLD / BS&MFI Programs. All Rights Reserved. </footer> </div>
-<script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const customMenu = document.querySelector(".custom-menu");
-            document.addEventListener("contextmenu", (event) => {
-                event.preventDefault();
-                if (customMenu) {
-                    customMenu.style.display = "block";
-                    customMenu.style.top = `${event.pageY}px`;
-                    customMenu.style.left = `${event.pageX}px`;
-                }
-            });
-            document.addEventListener("click", () => {
-                if (customMenu) {
-                    customMenu.style.display = "none";
-                }
-            });
-        });
-
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>MLLD | Stars</title> <link rel="icon" href="mfi.logo.png" /> <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"> <style> :root { --bg: #000000; --bg-card: #0a0a0a; --bg-input: #111111; --text: #e8ecf0; --text-dim: #ffffff6e; --accent: #007aff; /* Telegram blue */ --accent-hover: #007bffd4; --border: #1a1a1a; } * { -webkit-tap-highlight-color: transparent; } body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; } * { margin: 0; padding: 0;scrollbar-width: none; box-sizing: border-box; -webkit-tap-highlight-color: transparent; } body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; line-height: 1.5; min-height: 100vh; padding: 15px 10px; } .container { max-width: 540px; margin: 0 auto; } .header { text-align: center; padding: 44px 0 36px; } .header img { width: 88px; height: 88px; margin-bottom: 12px; } .header h1 { font-size: 26px; font-weight: 600; margin-bottom: 4px; } .header p { font-size: 12.5px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.2px; } .section { background: #181818; border-radius: 15px; padding: 20px; margin-bottom: 12px; } .section h2 { font-size: 16px; font-weight: 600; color: var(--accent); margin-bottom: 16px; } input[type="number"] { width: 100%; padding: 12px 16px; background: transparent; border: none; border-bottom: 1.5px solid #2c2c2c; color: var(--text); font-size: 16px; border-radius: 4px 4px 0 0; margin-bottom: 12px; } input[type="number"]::placeholder { color: #555; } input[type="number"]:focus { border-bottom-color: var(--accent); outline: none; } button { background: var(--accent); color: #fff; border: none; padding: 12px 28px; font-size: 15px; font-weight: 500; border-radius: 8px; cursor: pointer; transition: all 0.15s; } button:hover { background: var(--accent-hover); } #result { font-size: 15px; color: var(--text-dim); line-height: 1.55; padding: 10px 0px 0px 0px; } #result strong { color: var(--text); } ul, ol { padding-left: 20px; margin: 0; } li { margin: 10px 0; color: var(--text-dim); font-size: 14.5px; } .faq-item h3 { font-size: 15px; font-weight: 500; color: var(--text); margin: 18px 0 6px; } .faq-item p { color: var(--text-dim); font-size: 14px; } .center { text-align: center; } .note { font-size: 13px; color: #666; margin-top: 12px; line-height: 1.4; } footer { text-align: center; padding: 30px 0 20px; font-size: 12px; color: #ffffff57; } @media (max-width: 480px) { .section { padding: 18px; } .header { padding: 36px 0 28px; } button { padding: 11px 24px; } } </style> </head> <body> <div class="container"> <div class="header"> <img src="https://raw.githubusercontent.com/goforbg/telegram-emoji-gifs/refs/heads/master/star.gif" alt="Star"> <h1>MLLD Stars</h1> <p>interest reducer</p> </div> <div class="section"> <h2>Stars Calculator</h2> <input type="number" id="starInput" placeholder="How many stars?" min="1"> <button onclick="calculateCost()">Calculate</button> <div id="result"></div> </div> <div class="section"> <h2>Why Stars?</h2> <ul> <li>Reduce high interest rates instantly</li> </ul> </div> <div class="section"> <h2>How It Works</h2> <ol> <li>Enter number of stars you want</li> <li>See cost & interest reduction</li> <li>Pay your coordinator</li> <li>Confirm via form</li> <li>Get stars → lower your interest</li> </ol> <div class="note"> Note: Using more than 100 stars → +12% used for digital conversion </div> </div> <div class="section center"> <h2>Buy Stars</h2> <a href="https://forms.gle/SVZE13rMgnoqRMF88" style="text-decoration:none;"> <button>Buy Stars Now</button> </a> </div> <div class="section"> <h2>FAQ</h2> <div class="faq-item"> <h3>How much interest can stars reduce?</h3> <p>100 stars (~₹90) → up to ₹150 interest reduction</p> </div> <div class="faq-item"> <h3>Other uses for stars?</h3> <p>Offers, BsMansion storage, stash rent payments</p> </div> <div class="faq-item"> <h3>How to buy?</h3> <p>After checking the cost for stars sent amount to coordinator and click on "Buy Stars Now" and fill the form</p> </div> <div class="faq-item"> <h3>Pay rent with stars?</h3> <p>Yes — accepted for BsMansion stash rent</p> </div> </div> <footer> © MLLD / BS&MFI All Rights Reserved. </footer> </div> 
+        <script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
         function calculateCost() {
-            const stars = parseInt(document.getElementById('starInput').value);
-            const resultDiv = document.getElementById('result');
+            const input = document.getElementById('starInput');
+            const result = document.getElementById('result');
+            const stars = parseInt(input.value) || 0;
 
-            if (isNaN(stars) || stars <= 0) {
-                // resultDiv.innerHTML = "Enter a valid number of stars...";
+            if (stars < 1) {
+                result.innerHTML = "";
                 return;
             }
 
-            const costPerStar = 0.9;
-            const totalCost = stars * costPerStar;
-            const reductionPerStar = 1.5;
-            const totalReduction = stars * reductionPerStar;
+            const cost = (stars * 0.9).toFixed(2);
+            const reduction = (stars * 1.5).toFixed(2);
 
-            resultDiv.innerHTML = `Buy ${stars} stars costs you:  ₹${totalCost.toFixed(2)}.<br>By ${stars} stars, interest decrease upto : ₹${totalReduction.toFixed(2)}.`;
-        }
-
-        function calculateEarnedStars() {
-            const borrowAmount = parseInt(document.getElementById('borrowInput').value);
-            const earnResultDiv = document.getElementById('earnResult');
-
-            if (isNaN(borrowAmount) || borrowAmount <= 0) {
-                earnResultDiv.innerHTML = "Enter a valid borrow amount.";
-                return;
-            }
-
-            let earnedStars;
-            if (borrowAmount <= 5000) {
-                earnedStars = 20;
-            } else if (borrowAmount >= 25000) {
-                earnedStars = 100;
-            } else {
-                const minAmount = 5000;
-                const maxAmount = 25000;
-                const minStars = 20;
-                const maxStars = 100;
-                earnedStars = Math.round(minStars + (maxStars - minStars) * (borrowAmount - minAmount) / (maxAmount - minAmount));
-            }
-
-            earnResultDiv.innerHTML = `Borrowing ₹${borrowAmount.toFixed(2)} earns you ${earnedStars} stars.`;
-        }
-
-        function submitForm(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value;
-            alert(`Thank you, ${name}! Your message has been sent to our team.`);
-            document.getElementById('contactForm').reset();
+            result.innerHTML = 
+                `Cost: <strong>₹${cost}</strong><br>` +
+                `Interest reduced up to: <strong>₹${reduction}</strong>`;
         }
     </script>
+
 </body>
 </html>
-
