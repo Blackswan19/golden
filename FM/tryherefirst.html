@@ -49,18 +49,18 @@
     }
 
     .folders-container {
-background: var(--bg);
-    flex-shrink: 0;
+      background: var(--bg);
+      flex-shrink: 0;
     }
 
     .folders {
       padding: 10px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
 
     .folders::-webkit-scrollbar { display: none; }
@@ -82,25 +82,24 @@ background: var(--bg);
     }
 
     .folder-btn {
-     flex-shrink: 0;
-    padding: 7px 15px;
-    border-radius: 999px;
-    background: transparent;
-    border: 1.5px solid var(--line);
-    color: var(--text-dim);
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.18s;
-    white-space: nowrap;
+      flex-shrink: 0;
+      padding: 7px 15px;
+      border-radius: 999px;
+      background: transparent;
+      border: 1.5px solid var(--line);
+      color: var(--text-dim);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s;
+      white-space: nowrap;
     }
 
     .folder-btn.active,
     .folder-btn:hover {
-          border-color: #ffffff00;
-    color: white;
-    background: var(--accent);
-
+      border-color: #ffffff00;
+      color: white;
+      background: var(--accent);
     }
 
     .notes-container {
@@ -112,14 +111,14 @@ background: var(--bg);
 
     .note {
       font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-    position: relative;
-    word-break: break-word;
-    padding: 12px 20px 12px 30px;
-    border-radius: 25px;
-    background: rgb(255 255 255 / 8%);
-    transition: background 0.2s;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      position: relative;
+      word-break: break-word;
+      padding: 12px 20px 12px 30px;
+      border-radius: 25px;
+      background: rgb(255 255 255 / 8%);
+      transition: background 0.2s;
     }
 
     .note:hover { background: rgba(255, 255, 255, 0.151); }
@@ -128,35 +127,35 @@ background: var(--bg);
 
     .note .star {
       position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 25px;
-    cursor: pointer;
-    color: #ffffff91;
-    transition: color 0.2s;
-    background: #ffffff1c;
-    width: 35px;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100px;
-    backdrop-filter: blur(5px);
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 25px;
+      cursor: pointer;
+      color: #ffffff91;
+      transition: color 0.2s;
+      background: #ffffff1c;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 100px;
+      backdrop-filter: blur(5px);
     }
 
     .note.important .star {
-          color: #ffffff;
-    background: #002aff;
-
+      color: #ffffff;
+      background: #002aff;
     }
 
     .note img {
-          max-width: 50%;
-    border-radius: 6px;
-    margin: 0 0 0 -18px;
-    display: block;
-    cursor: pointer;opacity: 60%;
+      max-width: 50%;
+      border-radius: 6px;
+      margin: 0 0 0 -18px;
+      display: block;
+      cursor: pointer;
+      opacity: 60%;
     }
 
     .empty-state {
@@ -181,7 +180,8 @@ background: var(--bg);
       border-radius: 100px;
       border: solid 1.5px #ffffff2b;
       position: relative;
-      bottom: 10px;    background: black;
+      bottom: 10px;
+      background: black;
     }
 
     #noteInput {
@@ -198,9 +198,8 @@ background: var(--bg);
     }
 
     #noteInput::placeholder { color: #555; }
-::placeholder{
-  color: white;
-}
+    ::placeholder { color: white; }
+
     .btn {
       width: 50px;
       height: 50px;
@@ -273,11 +272,11 @@ background: var(--bg);
 
     .popup-image {
       max-width: 100%;
-    max-height: 74vh;
-    border-radius: 20px;
-    object-fit: contain;
-    display: block;
-    margin: -18px 0 0 0;
+      max-height: 74vh;
+      border-radius: 20px;
+      object-fit: contain;
+      display: block;
+      margin: -18px 0 0 0;
     }
 
     .popup-msg {
@@ -287,22 +286,21 @@ background: var(--bg);
     }
 
     .popup-buttons {
-         display: flex;
-    gap: 16px;
-    justify-content: center;
-    margin-top: 15px;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 15px;
     }
 
     .popup-btn {
       padding: 7px 25px;
-    border-radius: 21px;
-    border: none;
-    font-size: 15px;
-    cursor: pointer;
+      border-radius: 21px;
+      border: none;
+      font-size: 15px;
+      cursor: pointer;
     }
 
-    .cancel { background: #4c4c4c;
-    color: #ffffffb5; }
+    .cancel { background: #4c4c4c; color: #ffffffb5; }
     .danger  { background: #ff0d00; color: white; }
     .confirm { background: var(--accent); color: white; }
 
@@ -328,7 +326,7 @@ background: var(--bg);
 
   <div class="input-area" id="inputArea">
     <label class="attach-label" for="imageInput">
-      <svg style="width: 18px;height: 18px;fill: white;background: transparent;" id="clipIcon" onclick="attachImage()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="512" height="512"><path d="M9,5.5c0-.83,.67-1.5,1.5-1.5s1.5,.67,1.5,1.5-.67,1.5-1.5,1.5-1.5-.67-1.5-1.5Zm15-.5v6c0,2.76-2.24,5-5,5H10c-2.76,0-5-2.24-5-5V5C5,2.24,7.24,0,10,0h9c2.76,0,5,2.24,5,5ZM7,11c0,.77,.29,1.47,.77,2.01l5.24-5.24c.98-.98,2.69-.98,3.67,0l1.04,1.04c.23,.23,.62,.23,.85,0l3.43-3.43v-.38c0-1.65-1.35-3-3-3H10c-1.65,0-3,1.35-3,3v6Zm15,0v-2.79l-2.02,2.02c-.98,.98-2.69,.98-3.67,0l-1.04-1.04c-.23-.23-.61-.23-.85,0l-4.79,4.79c.12,.02,.24,.02,.37,.02h9c1.65,0,3-1.35,3-3Zm-3.91,7.04c-.53-.15-1.08,.17-1.23,.7l-.29,1.06c-.21,.77-.71,1.42-1.41,1.81-.7,.4-1.51,.5-2.28,.29l-8.68-2.38c-1.6-.44-2.54-2.09-2.1-3.69l.96-3.56c.14-.53-.17-1.08-.7-1.23-.53-.14-1.08,.17-1.23,.7L.18,15.29c-.73,2.66,.84,5.42,3.5,6.15l8.68,2.38c.44,.12,.89,.18,1.33,.18,.86,0,1.7-.22,2.47-.66,1.16-.66,1.99-1.73,2.35-3.02l.29-1.06c.15-.53-.17-1.08-.7-1.23Z"/></svg>
+      <svg style="width: 18px;height: 18px;fill: white;background: transparent;" id="clipIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="512" height="512"><path d="M9,5.5c0-.83,.67-1.5,1.5-1.5s1.5,.67,1.5,1.5-.67,1.5-1.5,1.5-1.5-.67-1.5-1.5Zm15-.5v6c0,2.76-2.24,5-5,5H10c-2.76,0-5-2.24-5-5V5C5,2.24,7.24,0,10,0h9c2.76,0,5,2.24,5,5ZM7,11c0,.77,.29,1.47,.77,2.01l5.24-5.24c.98-.98,2.69-.98,3.67,0l1.04,1.04c.23,.23,.62,.23,.85,0l3.43-3.43v-.38c0-1.65-1.35-3-3-3H10c-1.65,0-3,1.35-3,3v6Zm15,0v-2.79l-2.02,2.02c-.98,.98-2.69,.98-3.67,0l-1.04-1.04c-.23-.23-.61-.23-.85,0l-4.79,4.79c.12,.02,.24,.02,.37,.02h9c1.65,0,3-1.35,3-3Zm-3.91,7.04c-.53-.15-1.08,.17-1.23,.7l-.29,1.06c-.21,.77-.71,1.42-1.41,1.81-.7,.4-1.51,.5-2.28,.29l-8.68-2.38c-1.6-.44-2.54-2.09-2.1-3.69l.96-3.56c.14-.53-.17-1.08-.7-1.23-.53-.14-1.08,.17-1.23,.7L.18,15.29c-.73,2.66,.84,5.42,3.5,6.15l8.68,2.38c.44,.12,.89,.18,1.33,.18,.86,0,1.7-.22,2.47-.66,1.16-.66,1.99-1.73,2.35-3.02l.29-1.06c.15-.53-.17-1.08-.7-1.23Z"/></svg>
     </label>
     <input type="file" id="imageInput" accept="image/*" style="display:none" />
     
@@ -356,6 +354,51 @@ background: var(--bg);
   </div>
 
 <script>
+// ────────────────────────────────────────────────
+// Migration from old format (one-time)
+// ────────────────────────────────────────────────
+(function migrateOldData() {
+  const oldKey = 'users';
+  const newKey = 'bsnote_minimal_v2';
+
+  if (localStorage.getItem(newKey)) return;           // already migrated
+  if (!localStorage.getItem(oldKey)) return;          // no old data
+
+  try {
+    const oldData = JSON.parse(localStorage.getItem(oldKey) || '{}');
+    const newData = {};
+
+    Object.entries(oldData).forEach(([title, oldNotes]) => {
+      newData[title] = oldNotes.map(note => {
+        if (note.type === 'image') {
+          return {
+            type: 'image',
+            content: note.text,
+            important: !!note.important
+          };
+        }
+        // text note
+        return {
+          type: 'text',
+          content: note.text || '',
+          important: !!note.important
+        };
+      });
+    });
+
+    localStorage.setItem(newKey, JSON.stringify(newData));
+    localStorage.removeItem(oldKey);                    // clean up
+    console.info("[BsNote] Migrated old data → new format");
+  } catch (err) {
+    console.warn("[BsNote] Migration failed", err);
+  }
+})();
+
+
+// ────────────────────────────────────────────────
+// Main application
+// ────────────────────────────────────────────────
+
 const folders = JSON.parse(localStorage.getItem('bsnote_minimal_v2')) || {};
 let current = null;
 let ctxItem = null;
@@ -442,23 +485,19 @@ function renderFolders() {
 function select(name) {
   current = name;
 
-  // Update header
   headerEl.textContent = name === 'important' ? 'Important Notes' : (name || 'BsNote');
 
-  // Enable/disable input
-  const canWrite = name !== null && name !== 'important' && folders[name] !== undefined;
+  const canWrite = name && name !== 'important' && folders[name] !== undefined;
   input.disabled = sendBtn.disabled = !canWrite;
 
-  // Re-render folders → this updates .active class on all buttons
   renderFolders();
 
-  // Render content
   if (name === 'important') {
     renderImportantNotes();
   } else if (name && folders[name]) {
     renderNotes(name);
   } else {
-    notesEl.innerHTML = '<div class="empty-state">Welcome to BsNotes</div>';
+    notesEl.innerHTML = '<div class="empty-state">Welcome to BsNote</div>';
   }
 }
 
@@ -481,7 +520,7 @@ function renderImportantNotes() {
   const important = getImportantNotes();
 
   if (important.length === 0) {
-    notesEl.innerHTML = '<div class="empty-state">No important notes<br>Click on star icon on the notes to pin as importan</div>';
+    notesEl.innerHTML = '<div class="empty-state">No important notes yet<br>Click ★ to mark notes as important</div>';
     return;
   }
 
@@ -546,7 +585,6 @@ function toggleImportant(folderName, index) {
   folders[folderName][index].important = !folders[folderName][index].important;
   save();
 
-  // Refresh current view
   if (current === 'important') {
     renderImportantNotes();
   } else if (current === folderName) {
@@ -555,22 +593,15 @@ function toggleImportant(folderName, index) {
 }
 
 function addFolder() {
-  showPopup("Create title", `
-    <input type="text" id="folderNameInput" placeholder="Enter title here..." style="width: 95%;
-    padding: 9px;
-    background: #ffffff3b;
-    border: 1px solid #333;
-    border-radius: 38px;
-    font-size: 17px;
-    color: white;
-    text-align: center;">
+  showPopup("Create new title", `
+    <input type="text" id="folderNameInput" placeholder="Enter title here..." style="width: 95%; padding: 9px; background: #ffffff3b; border: 1px solid #333; border-radius: 38px; font-size: 17px; color: white; text-align: center;">
   `, [
     { text: 'Cancel', class: 'cancel', action: closePopup },
     { text: 'Create', class: 'confirm', action: () => {
-      const name = document.getElementById('folderNameInput').value.trim();
+      const name = document.getElementById('folderNameInput')?.value?.trim();
       if (!name) return;
       if (folders[name] || name.toLowerCase() === 'important') {
-        alert("Folder name already exists or not allowed");
+        alert("This title already exists or is not allowed");
         return;
       }
       folders[name] = [];
@@ -619,14 +650,14 @@ document.getElementById('edit').onclick = () => {
   if (!ctxItem) return;
   const {folder, index} = ctxItem;
   const note = folders[folder]?.[index];
-  if (!note || note.type === 'image') return alert("Can't edit images");
+  if (!note || note.type === 'image') return alert("Images cannot be edited");
 
   showPopup("Edit note", `
-    <textarea id="editInput" style="width:100%;min-height:140px;padding:14px;background:#1a1a1a;border:1px solid #333;border-radius:10px;font-size:17px;color:white;resize:vertical;">${note.content}</textarea>
+    <textarea id="editInput" style="width:100%;min-height:140px;padding:14px;background:#1a1a1a;border:1px solid #333;border-radius:10px;font-size:17px;color:white;resize:vertical;">${note.content.replace(/</g,'&lt;')}</textarea>
   `, [
     { text: 'Cancel', class: 'cancel', action: closePopup },
     { text: 'Save', class: 'confirm', action: () => {
-      const newText = document.getElementById('editInput').value.trim();
+      const newText = document.getElementById('editInput')?.value?.trim();
       if (newText) {
         note.content = newText;
         save();
@@ -658,9 +689,9 @@ document.getElementById('copy').onclick = () => {
   hideContext();
   if (!ctxItem) return;
   const note = folders[ctxItem.folder]?.[ctxItem.index];
-  if (!note || note.type === 'image') return alert("Can't copy image");
+  if (!note || note.type === 'image') return alert("Can't copy images");
   navigator.clipboard.writeText(note.content)
-    .then(() => alert("Copied!"))
+    .then(() => alert("Copied to clipboard"))
     .catch(() => alert("Copy failed"));
 };
 
@@ -682,7 +713,9 @@ popup.onclick = e => {
 
 // Init
 renderFolders();
-select(null); // or select('important') if you prefer to start there
+select(null); // start with welcome screen
+// select('important'); // ← uncomment if you want to start on Important view
+
 </script>
 </body>
 </html>
