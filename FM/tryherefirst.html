@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="mfi.logo.png">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="mfi.logo.png">
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Anta&family=Audiowide&family=Braah+One&family=Cardo:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dongle&family=Dosis:wght@200..800&family=DotGothic16&family=Goldman:wght@400;700&family=Gruppo&family=Handjet:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mandali&family=Michroma&family=Oxanium:wght@200..800&family=Pixelify+Sans:wght@400..700&family=Poiret+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&family=Sarpanch:wght@400;500;600;700;800;900&family=Share+Tech&family=Space+Grotesk:wght@300..700&family=Stalinist+One&family=VT323&family=Zen+Dots&display=swap');
 
@@ -995,130 +999,81 @@ img.sponserimg:hover{
     </div> -->
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const loadingOverlay    = document.getElementById("loadingOverlay");
-            const startBtn          = document.getElementById("startAudioBtn");
-            const audioControls     = document.getElementById("audioControls");
-            const progressFill      = document.getElementById("audioProgressFill");
-            const audioStatus       = document.getElementById("audioStatus");
-            const audio             = document.getElementById("introAudio");
-            const muteToggle        = document.getElementById("muteToggle");
+document.addEventListener("DOMContentLoaded", () => {
 
-            const themeButton = document.getElementById("themeButton");
-            const styleButton = document.getElementById("styleButton");
-            const themePopup  = document.getElementById("themePopup");
+    const loadingOverlay = document.getElementById("loadingOverlay");
+    const startBtn       = document.getElementById("startAudioBtn");
+    const audioControls  = document.getElementById("audioControls");
+    const progressFill   = document.getElementById("audioProgressFill");
+    const audioStatus    = document.getElementById("audioStatus");
+    const audio          = document.getElementById("introAudio");
 
-            let audioDuration = 0;
-            let startTime = null;
-            let raf = null;
-            let isMuted = false;
+    let randomStopTime = 0;
+    let raf = null;
 
-            // Mute / Unmute toggle
-            muteToggle.addEventListener("click", () => {
-                isMuted = !isMuted;
-                audio.muted = isMuted;
-                muteToggle.innerHTML = isMuted 
-                    ? '<i class="fas fa-volume-xmark"></i>'
-                    : '<i class="fas fa-volume-high"></i>';
-                muteToggle.title = isMuted ? "Unmute" : "Mute";
-            });
+    // Update progress using real audio time
+    function updateProgress() {
 
-            function animateProgress() {
-                if (!startTime) return;
+        if (!audio.duration) return;
 
-                const elapsed = (Date.now() - startTime) / 1000;
-                let progress = 0;
+        let percent = (audio.currentTime / randomStopTime) * 100;
 
-                if (audioDuration > 0 && audio.currentTime > 0 && !audio.paused && !audio.ended) {
-                    progress = (audio.currentTime / audioDuration) * 100;
-                } else {
-                    const fake = Math.min(100, (elapsed / (audioDuration || 12)) * 108);
-                    progress = fake * (0.88 + Math.random() * 0.24);
-                    progress = Math.min(100, progress);
-                }
+        if (percent >= 100) {
+            percent = 100;
+        }
 
-                progressFill.style.width = progress + "%";
-                audioStatus.textContent = Math.round(progress) + "% • Loading...";
+        progressFill.style.width = percent + "%";
+        audioStatus.textContent = Math.round(percent) + "% • Loading...";
 
-                if (progress >= 100 || audio.ended) {
-                    progressFill.style.width = "100%";
-                    audioStatus.textContent = "100% • complete";
-                    setTimeout(() => {
-                        loadingOverlay.classList.add("hidden");
-                        if (themeButton) themeButton.classList.add("visible");
-                        if (styleButton) styleButton.classList.add("visible");
-                    }, 1000);
-                } else {
-                    raf = requestAnimationFrame(animateProgress);
-                }
+        // Stop at random time
+        if (audio.currentTime >= randomStopTime) {
+
+            audio.pause();
+            audioStatus.textContent = "100% • Complete";
+
+            setTimeout(() => {
+                loadingOverlay.classList.add("hidden");
+            }, 800);
+
+            return;
+        }
+
+        raf = requestAnimationFrame(updateProgress);
+    }
+
+    startBtn.addEventListener("click", async () => {
+
+        startBtn.style.display = "none";
+        audioControls.style.display = "flex";
+
+        try {
+
+            // Wait for metadata
+            if (audio.readyState < 1) {
+                await new Promise(resolve => {
+                    audio.addEventListener("loadedmetadata", resolve, { once: true });
+                });
             }
 
-            startBtn.addEventListener("click", () => {
-                startBtn.style.display = "none";
-                audioControls.style.display = "flex";
-                audioStatus.textContent = "Starting audio...";
+            const fullDuration = audio.duration;
 
-                audio.play().then(() => {
-                    startTime = Date.now();
-                    animateProgress();
-                }).catch(e => {
-                    console.warn("Autoplay blocked", e);
-                    audioStatus.textContent = "Audio start failed • simulating progress...";
-                    startTime = Date.now();
-                    animateProgress();
-                });
-            });
+            // 🎲 Random stop between 2 sec and full duration
+            randomStopTime = Math.random() * (fullDuration - 2) + 2;
 
-            audio.addEventListener("loadedmetadata", () => {
-                audioDuration = audio.duration || 12;
-                audioStatus.textContent = `Ready (${Math.round(audioDuration)}s)`;
-            });
+            progressFill.style.width = "0%";
+            audioStatus.textContent = "0% • Loading...";
 
-            // Safety fallback
-            setTimeout(() => {
-                if (!loadingOverlay.classList.contains("hidden")) {
-                    loadingOverlay.classList.add("hidden");
-                    if (themeButton) themeButton.classList.add("visible");
-                    if (styleButton) styleButton.classList.add("visible");
-                }
-            }, 60000);
+            await audio.play();
+            updateProgress();
 
-            // ─── Theme / Style / Date logic ───
-            if (!localStorage.getItem("edgeStyle")) localStorage.setItem("edgeStyle", "sharp");
-            let savedStyle = localStorage.getItem("edgeStyle") || "sharp";
-            if (savedStyle === "curvy") document.body.classList.add("curvy");
-            if (styleButton) styleButton.textContent = savedStyle === "curvy" ? "V" : "S";
+        } catch (err) {
+            console.error("Audio failed:", err);
+            audioStatus.textContent = "Audio blocked";
+        }
 
-            styleButton?.addEventListener("click", () => {
-                const curvy = document.body.classList.toggle("curvy");
-                styleButton.textContent = curvy ? "V" : "S";
-                localStorage.setItem("edgeStyle", curvy ? "curvy" : "sharp");
-            });
+    });
 
-            window.setTheme = (theme) => {
-                document.body.classList.remove("dark", "light", "telegram-dark", "my-own");
-                document.body.classList.add(theme);
-                localStorage.setItem("theme", theme);
-                themePopup?.classList.remove("open");
-                themeButton?.classList.remove("active");
-            };
-
-            const savedTheme = localStorage.getItem("theme") || "telegram-dark";
-            setTheme(savedTheme);
-
-            const today = new Date();
-            const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-            const day = days[today.getDay()];
-            const dateStr = `${String(today.getDate()).padStart(2,'0')}-${String(today.getMonth()+1).padStart(2,'0')}-${today.getFullYear()}`;
-
-            document.querySelectorAll('.day-text').forEach(el => el.textContent = day);
-            document.querySelectorAll('.date-text').forEach(el => el.textContent = dateStr);
-
-            themeButton?.addEventListener("click", () => {
-                const open = themePopup?.classList.toggle("open");
-                themeButton?.classList.toggle("active");
-            });
-        });
-    </script>
+});
+</script>
 </body>
 </html>
