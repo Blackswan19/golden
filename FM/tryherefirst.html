@@ -836,6 +836,17 @@ img.sponserimg:hover{
 
 <body>
    <div class="loading-overlay" id="loadingOverlay">
+    <div class="servicename" style="position: fixed;
+    top: 10px;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    background: #ffffff24;
+    padding:0px 15px;
+    border-radius: 100px;
+    color: #ffffff;
+    font-weight: 300;">
+            Myootive Service
+        </div>
         <img src="loadinglogo.png" alt="Loading Doughnut" class="loading-logo">
         
         <div class="servicenmae">
@@ -1083,15 +1094,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
-
-document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener("DOMContentLoaded", () => {
+            const loadingOverlay = document.getElementById("loadingOverlay");
             const themeButton = document.getElementById("themeButton");
             const styleButton = document.getElementById("styleButton");
             const themePopup = document.getElementById("themePopup");
             const gearIcon = themeButton.querySelector(".fa-gear");
             const xIcon = themeButton.querySelector(".fa-xmark");
 
-           
+            setTimeout(() => {
+                loadingOverlay.classList.add("hidden");
+                themeButton.classList.add("visible");
+                styleButton.classList.add("visible");
+            }, 5000);
             themeButton.addEventListener("click", () => {
                 const isOpen = themePopup.classList.contains("open");
                 themePopup.classList.toggle("open");
@@ -1142,6 +1157,22 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll('.day-text').forEach(el => el.textContent = day);
             document.querySelectorAll('.date-text').forEach(el => el.textContent = date);
         });
-</script>
+		 document.addEventListener("DOMContentLoaded", () => {
+            const customMenu = document.querySelector(".custom-menu");
+            // document.addEventListener("contextmenu", (event) => {
+            //     event.preventDefault();
+            //     if (customMenu) {
+            //         customMenu.style.display = "block";
+            //         customMenu.style.top = `${event.pageY}px`;
+            //         customMenu.style.left = `${event.pageX}px`;
+            //     }
+            // });
+            document.addEventListener("click", () => {
+                if (customMenu) {
+                    customMenu.style.display = "none";
+                }
+            });
+        });
+    </script>
 </body>
 </html>
