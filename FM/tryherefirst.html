@@ -1089,90 +1089,61 @@ img.sponserimg:hover{
     </script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+const loadingOverlay = document.getElementById("loadingOverlay");
+const startBtn = document.getElementById("startAudioBtn");
+const audioControls = document.getElementById("audioControls");
+const progressFill = document.getElementById("audioProgressFill");
+const audioStatus = document.getElementById("audioStatus");
+const audio = document.getElementById("introAudio");
+const muteToggle = document.getElementById("muteToggle");
+let stopTime = 0;
+let progressInterval;
+muteToggle?.addEventListener("click", () => {
+    audio.muted = !audio.muted;
+    muteToggle.innerHTML = audio.muted
+        ? '<i class="fas fa-volume-xmark"></i>'
+        : '<i class="fas fa-volume-high"></i>';
 
-    const loadingOverlay = document.getElementById("loadingOverlay");
-    const startBtn       = document.getElementById("startAudioBtn");
-    const audioControls  = document.getElementById("audioControls");
-    const progressFill   = document.getElementById("audioProgressFill");
-    const audioStatus    = document.getElementById("audioStatus");
-    const audio          = document.getElementById("introAudio");
-    const muteToggle     = document.getElementById("muteToggle");
-
-    let stopTime = 0;
-    let progressInterval = null;
-    let stopTimeout = null;
-
-    // 🔊 Mute / Unmute
-    muteToggle?.addEventListener("click", () => {
-        audio.muted = !audio.muted;
-        muteToggle.innerHTML = audio.muted
-            ? '<i class="fas fa-volume-xmark"></i>'
-            : '<i class="fas fa-volume-high"></i>';
-    });
-
-    // ▶ Start
-    startBtn?.addEventListener("click", async () => {
-
-        startBtn.style.display = "none";
-        audioControls.style.display = "flex";
-
-        try {
-
-            // Wait for metadata
-            if (audio.readyState < 1) {
-                await new Promise(resolve => {
-                    audio.addEventListener("loadedmetadata", resolve, { once: true });
-                });
-            }
-
-            const fullDuration = audio.duration;
-
-            // 🎯 MAX LIMIT = 8 seconds
-            const maxAllowed = Math.min(8, fullDuration);
-
-            // 🎲 Random stop between 0.5 and maxAllowed
-            stopTime = Math.random() * (maxAllowed - 0.5) + 0.5;
-
-            progressFill.style.width = "0%";
-            audioStatus.textContent = "0% • Loading...";
-
-            await audio.play();
-
-            // 🔥 Hard stop exactly at stopTime
-            stopTimeout = setTimeout(() => {
-
-                audio.pause();
-                audio.currentTime = stopTime;
-
-                clearInterval(progressInterval);
-
+});
+startBtn?.addEventListener("click", async () => {
+    startBtn.style.display = "none";
+    audioControls.style.display = "flex";
+    try {
+        if (audio.readyState < 1) {
+            await new Promise(resolve => {
+                audio.addEventListener("loadedmetadata", resolve, { once:true });
+            });
+        }
+        const duration = audio.duration;
+        const minPlay = 5;
+        const maxPlay = Math.min(8, duration);
+        stopTime = Math.random() * (maxPlay - minPlay) + minPlay;
+        progressFill.style.width = "0%";
+        audioStatus.textContent = "0% • Loading...";
+        await audio.play();
+        progressInterval = setInterval(() => {
+            let percent = (audio.currentTime / stopTime) * 100;
+            if (percent >= 100 || audio.currentTime >= stopTime) {
+                percent = 100;
                 progressFill.style.width = "100%";
                 audioStatus.textContent = "100% • Complete";
-
+                audio.pause();
+                audio.currentTime = stopTime;
+                clearInterval(progressInterval);
                 setTimeout(() => {
                     loadingOverlay?.classList.add("hidden");
-                }, 500);
+                },500);
+                return;
+            }
+            progressFill.style.width = percent + "%";
+            audioStatus.textContent = Math.round(percent) + "% • Loading...";
 
-            }, stopTime * 1000);
-
-            // 🔄 Sync progress
-            progressInterval = setInterval(() => {
-
-                let percent = (audio.currentTime / stopTime) * 100;
-                if (percent > 100) percent = 100;
-
-                progressFill.style.width = percent + "%";
-                audioStatus.textContent = Math.round(percent) + "% • Loading...";
-
-            }, 40);
-
-        } catch (err) {
-            console.error("Audio failed:", err);
-            audioStatus.textContent = "Audio blocked by browser";
-        }
-
-    });
-
+        }, 40);
+    } catch(e) {
+        console.error(e);
+        audioStatus.textContent = "Audio blocked";
+    }
+});
 });
 </script>
 </body>
