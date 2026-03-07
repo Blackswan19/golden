@@ -15,8 +15,8 @@ const passwords = {
             url: ""
         },
         loans: [
-           { planDate: "24-05-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 25000, takenFrom: "MLending", fineRate: 5 },
-           { planDate: "07-04-2025", endDate: "--<p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 15000, takenFrom: "MLLD", fineRate: 4 }
+           { planDate: "24-05-2025", endDate: "-- <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 0, takenAmount: 25000, takenFrom: "MLending", fineRate: 5 },
+           { planDate: "07-04-2025", endDate: "--<p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 0, takenAmount: 15000, takenFrom: "MLLD", fineRate: 4 }
         ]
     },
    
@@ -35,15 +35,15 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "10-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 2660, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "15-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 6800, takenAmount: 25000, takenFrom: "MLending", fineRate: 0 },
-            { planDate: "16-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 2275, takenAmount: 5500, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "18-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 2380, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "18-08-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 2690, takenAmount: 3500, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "01-11-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 2650, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 0 },
-            { planDate: "06-11-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 4980, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 0 },
-            { planDate: "09-11-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 3580, takenAmount: 8000, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "25-11-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 3900, takenAmount: 3500, takenFrom: "MLending Duplicate ", fineRate: 0 }
+            { planDate: "10-08-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 3890, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "15-08-2025", endDate: "10-03-2026-- <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 10800, takenAmount: 25000, takenFrom: "MLending", fineRate: 0 },
+            { planDate: "16-08-2025", endDate: "10-03-2026-- <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 5275, takenAmount: 6500, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "18-08-2025", endDate: "10-03-2026-- <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 3780, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "18-08-2025", endDate: "10-03-2026-- <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 3990, takenAmount: 3500, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "01-11-2025", endDate: "10-03-2026-- <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 3850, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 0 },
+            { planDate: "06-11-2025", endDate: "10-03-2026-- <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 4980, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 0 },
+            { planDate: "09-11-2025", endDate: "10-03-2026-- <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 7680, takenAmount: 8000, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "25-11-2025", endDate: "10-03-2026-- <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 5200, takenAmount: 3500, takenFrom: "MLending Duplicate ", fineRate: 0 }
         ]
     },
     "Cherish@123": {
@@ -61,9 +61,9 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "14-10-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 6690, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "14-10-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 5880, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "14-10-2025", endDate: "-- <p style='color: #ff36ff;'>(Interest adding stopped by #PY@0212)</p>", interest: 0, takenAmount: 5560, takenFrom: "MLLD(Offer)", fineRate: 0 }
+            { planDate: "14-10-2025", endDate: "-- <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 0, takenAmount: 6690, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "14-10-2025", endDate: "-- <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 0, takenAmount: 5880, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "14-10-2025", endDate: "-- <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 0, takenAmount: 5560, takenFrom: "MLLD(Offer)", fineRate: 0 }
         ]
     },
     "Cherish@1234": {
@@ -534,7 +534,7 @@ function displayLoanDetails(loan, index) {
     text-align: center;
     position: sticky;
     top: 70px;
-    margin-top: 25px;
+    margin-top: 30px;
     right: 5px;
     float: right;
     margin-right: -15px;
@@ -867,3 +867,8 @@ function showCoinsCount() {
     const coins = document.getElementById('coinsCount').textContent.trim();
     alert(`BsRora(Bot) : \n\nYou have using ${coins} Duplicate Clone account.`);
 }
+
+
+
+
+
