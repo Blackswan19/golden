@@ -261,7 +261,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
                     ${ad.desc}
                     <br><a class="exploreadds" href="${ad.link}" target="_blank" 
                        >
-            <i class="fa-solid fa-arrow-left"></i>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
     </a>
     </p>
     </div>
@@ -532,8 +532,8 @@ function displayLoanDetails(loan, index) {
         <div class="loan-entry">
             <p style="text-align: center;
     position: sticky;
-    top: 0px;
-    margin-top: 30px;
+    top: 70px;
+    margin-top: 25px;
     right: 5px;
     float: right;
     margin-right: -15px;
