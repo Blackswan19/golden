@@ -665,20 +665,19 @@ body.curvy i.fa-solid.fa-arrow-left{
         }
 
         .amount-buttons {
-   display: flex;
+  display: flex;
     gap: 20px;
     overflow-x: scroll;
     white-space: nowrap;
     position: sticky;
     top: -70px;
-    background-color: #1f1f1f00;
-    z-index: 100000;
+    background-color: transparent;
+    z-index: 1000000;
     max-width: 663px;
     width: 100%;
-    padding: 40px 20px 0px 20px;
+    padding: 20px;
     border-radius: 0px;
     margin-left: -20px;
-    backdrop-filter: blur(15px);
         }
 
         body.telegram-dark .amount-buttons {
@@ -686,7 +685,7 @@ body.curvy i.fa-solid.fa-arrow-left{
         }
 
         .amount-btn {
-                background-color: #333438;
+                background-color: #3a3b40;
     color: lightgray;
     border: none;
     padding: 10px 10px 10px 55px;
@@ -1666,6 +1665,8 @@ body.curvy .downlog{
         scrollbar-width: none;
         margin-top: 0px;
         margin-left: -30px;
+        background: #1f1f1f;
+        z-index: 100000;
             }
             .twoOptions {
             display: flex;
