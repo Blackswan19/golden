@@ -220,26 +220,26 @@ button.theme-btn {
     
     .apply-btn {
     position: fixed;
-    bottom: 80px;
+    bottom: 77px;
     left: 50%;
     right: 0;
     z-index: 40;
-    width: 40%;
+    width: max-content;
     background-color: #00aaff;
-    color: white;
+    color: #000000;
     font-weight: 600;
     font-size: 14px;
-    padding: 13px;
+    padding: 12px 15px;
     border-radius: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     transition: all 0.2s;
     border: none;
     max-width: 550px;
     transform: translate(-50%, 0);
-    outline: solid 4px black;
+    border: solid 5px #000000;
     }
    p {
     text-align: center;
@@ -340,11 +340,11 @@ button.theme-btn {
     text-align: justify;
     }
     .amount-box {
-      display: flex;
-      align-items: center;
-      background-color: #00000061;
-      border-radius: 13px;
-      padding: 1.25rem 1.5rem;
+          display: flex;
+    align-items: center;
+    background-color: #000000;
+    border-radius: 13px;
+    padding: 0 1.5rem;
     }
     .amount-input {
       flex: 1;
@@ -357,9 +357,9 @@ button.theme-btn {
     }
     
     .calc-result {
-      background-color: #00000061;
-     border-radius: 13px;
-      padding: 1.5rem;
+      background-color: #000000;
+    border-radius: 13px;
+    padding: 10px 20px;
     }
     
     .btn-primary {
@@ -783,9 +783,17 @@ button.theme-btn {
             <div>
               <label style="display:block; font-size:0.75rem; text-align: center; color:var(--text2); margin-bottom:1rem; letter-spacing:1px;">AMOUNT TO PROCESS</label>
               <div class="amount-box">
-                <span style="font-size:2.25rem; color:#888;">$</span>
+                <span style="font-size: 30px;
+    color: #888;">$</span>
                 <input id="amount-input" type="number" value="1000"
-                       style="flex:1; background:transparent; border: none; font-size:2.75rem; font-weight:500; outline:none; padding:0 1rem; color:var(--text);">
+                       style="flex: 1;
+    background: transparent;
+    border: none;
+    font-size: 25px;
+    font-weight: 500;
+    outline: none;
+    padding: 0 0.5rem;
+    color: var(--text);">
               </div>
             </div>
            
