@@ -225,22 +225,22 @@ document.getElementById("submitBtn").addEventListener("click", () => {
             {
                 name: "Pre-Saver",
                 headline: "Pre-Saver",
-                desc: "We pre save the offer or amount for your next borrow.",
-                link: "https://mfi0212.github.io/swan/offer/presave",
-                icon: "https://cdn.example.com/paymine-16.png"
+                link: "",
+                desc: "We pre save the offer or amount for your next borrow.<br><red class='red'>NOTE : You subscription plan does not have excess to these services.</red>",
+                icon: "https://cdn.example.com/paymine-16.png",
             },
             {
                 name: "Split it",
                 headline: "Split it ",
                 desc: "You can split the large amount into smaller and you can repayment with smaller amounts when you have.",
-                link: "https://mfi0212.github.io/swan/offer/split",
+                link: "https://blackswan19.github.io/golden/FM/solution",
                 icon: "https://cdn.example.com/split-16.png"
             },
             {
                 name: "Delay it",
                 headline: "Delay it",
                 desc: "It was a program by which you can Extend the returning date of your amounts.",
-                link: "https://mfi0212.github.io/swan/offer/delayit",
+                link: "https://blackswan19.github.io/golden/FM/solution",
                 icon: "https://cdn.example.com/delay-16.png"
             }
         ];
@@ -259,9 +259,9 @@ document.getElementById("submitBtn").addEventListener("click", () => {
                         <strong>${ad.headline}</strong> (Ad)
                     </span> : <br>
                     ${ad.desc}
-                    <br><a class="exploreadds" href="${ad.link}" target="_blank" 
+                    <br><a class="exploreadds" href="${ad.link}" 
                        >
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <i  class="fa-solid fa-arrow-up-right-from-square"></i>
     </a>
     </p>
     </div>
