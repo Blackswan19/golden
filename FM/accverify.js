@@ -223,16 +223,16 @@ document.getElementById("submitBtn").addEventListener("click", () => {
 
         const ads = [
             {
-                name: "Pre-Saver",
-                headline: "Pre-Saver",
+                name: "LendLink - Mid",
+                headline: "LendLink - Mid",
                 link: "",
-                desc: "We pre save the offer or amount for your next borrow.<br><red class='red'>NOTE : You subscription plan does not have excess to these services.</red>",
+                desc: "A servive from lendlink by which you can turn your money into income.</red>",
                 icon: "https://cdn.example.com/paymine-16.png",
             },
             {
-                name: "Split it",
-                headline: "Split it ",
-                desc: "You can split the large amount into smaller and you can repayment with smaller amounts when you have.",
+                name: "Split half it",
+                headline: "Split half it ",
+                desc: "With Split half pay, you can pay half of the total amount and extend the remaining half with a flexibility while ensuring smooth repayment.",
                 link: "https://blackswan19.github.io/golden/FM/solution",
                 icon: "https://cdn.example.com/split-16.png"
             },
@@ -255,7 +255,8 @@ document.getElementById("submitBtn").addEventListener("click", () => {
     text-decoration: none;
     border-radius: 10px;
     font-weight: 900;
-    text-transform: capitalize;'>
+    text-transform: capitalize;
+    line-height: 30px;'>
                         <strong>${ad.headline}</strong> (Ad)
                     </span> : <br>
                     ${ad.desc}
@@ -867,3 +868,8 @@ function showCoinsCount() {
     const coins = document.getElementById('coinsCount').textContent.trim();
     alert(`BsRora(Bot) : \n\nYou have using ${coins} Duplicate Clone account.`);
 }
+
+
+
+
+
