@@ -322,7 +322,7 @@ if (now < START_TIME || now > END_TIME) {
 } else if (localStorage.getItem("lotteryClaimed") === "true") {
   content.innerHTML = `
     <div class="status-message" style="color:#ff0600;">
-      Reward already claimed on this device.
+      You already claimed the reward.
     </div>
     <p style="margin-top: 1.5rem;
     color: #888;
@@ -333,7 +333,7 @@ if (now < START_TIME || now > END_TIME) {
     color: white;
     border-radius: 100px;
     padding: 5px 10px;box-shadow: inset 0.5px 0.5px 0px 0.1px #ffffff54, inset -1.5px -2.5px 0px -1.9px #ffffff54;">
-      Only one claim per device is allowed.
+      You can only spin once at a time.
     </p>
   `;
 } else {
