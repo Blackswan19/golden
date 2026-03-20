@@ -32,12 +32,18 @@ body{
     justify-content:center;
     align-items:center;
 }
-
+::placeholder{
+    color: white;
+}
 .container{
-    width:90%;
-    max-width:680px;
-    padding:32px;
-    text-align:center;
+   width: 90%;
+    max-width: 680px;
+    padding: 32px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 h1{color:var(--yellow);margin-bottom:10px}
@@ -99,7 +105,7 @@ button{
     font-size:18px;
 }
     .exchange-btn {
-      background: #2481cc;
+      background: #4f698c;
     color: white;
     border: none;
     padding: 10px;
@@ -109,13 +115,13 @@ button{
     cursor: pointer;
     transition: all 0.2s;
     position: fixed;
-    top: 10px;
+    top: 0px;
     right: 10px;
     box-shadow: inset 0.5px 0.5px 0px 0.1px #ffffff54, inset -1.5px -2.5px 0px -1.9px #ffffff54;
     }
 
     .exchange-btn:hover {
-      background: #0066cc;
+      background: #4f698cc9;
     }
 
     /* Modal */
@@ -131,7 +137,7 @@ button{
 
     .modal-content {
        background: #232323;
-    border-radius: 45px;
+    border-radius: 40px;
     border: none;
     position: relative;
     animation: popup 0.28s ease-out;
@@ -139,7 +145,6 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60%;
     }
 
     @keyframes popup {
@@ -185,7 +190,7 @@ button{
     }
 
     .submit-btn {
-      background: #2481cc;
+      background: #4f6594;
     color: white;
     border: none;
     padding: 10px 21px;
@@ -199,7 +204,7 @@ button{
     }
 
     .submit-btn:hover {
-      background: #1a6bb3;
+      background: #4f6594d1;
     }
 
     /* States */
@@ -227,7 +232,7 @@ button{
 
     .close-btn {
       position: absolute;
-      top: 16px;
+      top: 20px;
       right: 20px;
       font-size: 28px;
       cursor: pointer;
@@ -247,184 +252,216 @@ button{
 </head>
 <body>
 
-  <button class="exchange-btn" id="exchangeBtn">Exchange Gift</button>
 
-  <!-- Modal -->
-  <div class="modal-overlay" id="exchangeModal">
-    <div class="modal-content">
+<!-- Exchange Gift Button – placed here so it's fixed in top-right -->
+<button class="exchange-btn" id="exchangeBtn">Exchange Gift</button>
 
-      <span class="close-btn" id="closeModal">×</span>
+<!-- Modal -->
+<div class="modal-overlay" id="exchangeModal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeModal">×</span>
 
-      <!-- Form -->
-      <div id="formStep">
-        <h2>Exchange Gift</h2>
-
-        <div class="form-group">
-          <!-- <label>Your ID</label> -->
-          <input type="text" id="yourId" placeholder="Your ID" required>
-        </div>
-
-        <div class="form-group">
-          <!-- <label>Exchanger ID</label> -->
-          <input type="text" id="exchangerId" placeholder="Exchanger ID" required>
-        </div>
-
-        <div class="form-group">
-          <!-- <label>Exchanger Gift ID</label> -->
-          <input type="text" id="giftId" placeholder="Exchanger Gift ID" required>
-        </div>
-
-        <button class="submit-btn" id="submitExchange">Submit</button>
+    <div id="formStep">
+      <h2>Exchange Gift</h2>
+      <div class="form-group">
+        <input type="text" id="yourId" placeholder="Your ID" required>
       </div>
-
-      <!-- Verifying -->
-      <div class="loading-state" id="loadingStep">
-        <div style="font-size:44px; margin-bottom:24px;">⟳</div>
-        <h2>Verifying...</h2>
-        <p style="color:#999;">Wait a moment</p>
+      <div class="form-group">
+        <input type="text" id="exchangerId" placeholder="Exchanger ID" required>
       </div>
-
-      <!-- Success -->
-      <div class="success-state" id="successStep">
-        <div class="success-icon">✅</div>
-        <div class="success-title">Exchange Requested!</div>
-        <p>Gift exchange fee was <span class="fee-highlight">₹460</span> from Exchanger.</p>
-        <p>We will verify your fee and exchange details shortly.</p>
-        <p style="margin-top:24px; color:#0066cc; font-size:15px;">Thank you!</p>
+      <div class="form-group">
+        <input type="text" id="giftId" placeholder="Exchanger Gift ID" required>
       </div>
+      <button class="submit-btn" id="submitExchange">Submit</button>
+    </div>
 
+    <div class="loading-state" id="loadingStep">
+      <div style="font-size:44px; margin-bottom:24px;">⟳</div>
+      <h2>Verifying...</h2>
+      <p style="color:#999;">Wait a moment</p>
+    </div>
+
+    <div class="success-state" id="successStep">
+      <div class="success-icon">✅</div>
+      <div class="success-title">Exchange Requested!</div>
+      <p>Gift exchange fee was <span class="fee-highlight">₹460</span> from Exchanger.</p>
+      <p>We will verify your fee and exchange details shortly.</p>
+      <p style="margin-top:24px; color:#0066cc; font-size:15px;">Thank you!</p>
     </div>
   </div>
+</div>
 
-  <script>
-    const modal = document.getElementById('exchangeModal');
-    const btn = document.getElementById('exchangeBtn');
-    const closeBtn = document.getElementById('closeModal');
-    const submitBtn = document.getElementById('submitExchange');
-
-    const formStep   = document.getElementById('formStep');
-    const loadingStep = document.getElementById('loadingStep');
-    const successStep = document.getElementById('successStep');
-
-    btn.onclick = () => {
-      modal.style.display = 'flex';
-      formStep.style.display = 'block';
-      loadingStep.style.display = 'none';
-      successStep.style.display = 'none';
-    };
-
-    closeBtn.onclick = () => modal.style.display = 'none';
-    modal.onclick = (e) => {
-      if (e.target === modal) modal.style.display = 'none';
-    };
-
-    submitBtn.onclick = () => {
-      const yourId     = document.getElementById('yourId').value.trim();
-      const exchangerId = document.getElementById('exchangerId').value.trim();
-      const giftId     = document.getElementById('giftId').value.trim();
-
-      if (!yourId || !exchangerId || !giftId) {
-        alert("Fill all fields");
-        return;
-      }
-
-      formStep.style.display = 'none';
-      loadingStep.style.display = 'block';
-
-      setTimeout(() => {
-        loadingStep.style.display = 'none';
-        successStep.style.display = 'block';
-      }, 2000);
-    };
-  </script>
 <div class="container" id="app">
-    <h1>Lottery Spins</h1>
-    <div id="content"></div>
+  <h1>Lottery Spins</h1>
+  <div id="content"></div>
 </div>
 
 <script>
+// ────────────────────────────────────────────────
+//  CONFIG
+// ────────────────────────────────────────────────
 const START_TIME = new Date("2026-02-17T18:00:00");
 const END_TIME   = new Date("2026-03-22T23:59:00");
-const now = new Date();
+const now        = new Date();
+
+const TOTAL_CARDS = 6;
+const MAX_OPENS   = 3;
+const GIFTS       = ["100 Stars", "200 Stars", "300 Stars"];
+
 const content = document.getElementById("content");
-// document.addEventListener('contextmenu', e => e.preventDefault());
-if(now < START_TIME || now > END_TIME){
-    content.innerHTML = `
-        <p style="color:#e53935;font-size:20px;font-weight:600">
-            No Current Spins Available
-        </p>
-    `;
-    throw new Error("Spin window closed");
+
+// ────────────────────────────────────────────────
+//  DATE & CLAIM CHECK
+// ────────────────────────────────────────────────
+if (now < START_TIME || now > END_TIME) {
+  content.innerHTML = `
+    <div class="status-message" style="color:#ff0600;">
+      There is no lottery spins currently
+    </div>
+  `;
+} else if (localStorage.getItem("lotteryClaimed") === "true") {
+  content.innerHTML = `
+    <div class="status-message" style="color:#ff0600;">
+      Reward already claimed on this device.
+    </div>
+    <p style="margin-top: 1.5rem;
+    color: #888;
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+    background: #35353d;
+    color: white;
+    border-radius: 100px;
+    padding: 5px 10px;box-shadow: inset 0.5px 0.5px 0px 0.1px #ffffff54, inset -1.5px -2.5px 0px -1.9px #ffffff54;">
+      Only one claim per device is allowed.
+    </p>
+  `;
+} else {
+  // Code entry screen
+  content.innerHTML = `
+    <p style="margin-bottom:1.5rem;">Enter access code</p>
+    <input id="code" type="password" placeholder="•••••••••" autocomplete="off">
+    <button onclick="verifyCode()">Verify</button>
+    <div id="message" style="margin-top:1.5rem; min-height:1.6em;"></div>
+  `;
 }
-// if(localStorage.getItem("claimed")){
-//     content.innerHTML = `
-//         <p style="color:#e53935;font-size:18px">
-//             Reward already claimed on this device.
-//         </p>
-//     `;
-//     throw new Error("Already claimed");
-// }
-content.innerHTML = `
-    <p>Enter access code</p>
-    <input id="code" type="password" placeholder="•••••••••">
-    <button onclick="verify()">Verify</button>
-    <div id="message"></div>
-`;
-function verify(){
-    if(document.getElementById("code").value === "123456789"){
-        startGame();
-    }else{
-        document.getElementById("message").textContent = "Invalid code";
-        document.getElementById("message").style.color = "#e53935";
-    }
+
+function verifyCode() {
+  const codeInput = document.getElementById("code");
+  const msg = document.getElementById("message");
+
+  if (!codeInput) return;
+
+  const code = codeInput.value.trim();
+
+  if (code === "123456789") {
+    startGame();
+  } else {
+    msg.textContent = "Invalid code";
+    msg.style.color = "#e53935";
+  }
 }
-const totalCards = 6;
-const maxOpens = 3;
-let opened = 0;
-let giftGiven = false;
-const gifts = ["100 Stars","200 Stars","300 Stars"];
-const selectedGift = gifts[Math.floor(Math.random()*3)];
-function startGame(){
-    content.innerHTML = `
-        <p>Select any 3 cards</p>
-        <div class="cards" id="cards"></div>
-        <div id="message"></div>
-    `;
-    const wrap = document.getElementById("cards");
-    for(let i=0;i<totalCards;i++){
-        const c = document.createElement("div");
-        c.className = "card";
-        c.textContent = "?";
-        c.onclick = ()=>openCard(c);
-        wrap.appendChild(c);
-    }
-}
-function openCard(card){
-    if(card.classList.contains("revealed")) return;
-    if(opened >= maxOpens) return;
+
+function startGame() {
+  let opened = 0;
+  const selectedGift = GIFTS[Math.floor(Math.random() * GIFTS.length)];
+
+  content.innerHTML = `
+    <p style="    margin-bottom: 1.2rem;
+    background: #4e688b;
+    color: white;
+    border-radius: 100px;
+    padding: 5px;">Select any ${MAX_OPENS} cards</p>
+    <div class="cards" id="cardsGrid"></div>
+    <div id="message" style="margin:2rem 0; min-height:1.8em; font-size:1.4rem;"></div>
+  `;
+
+  const grid = document.getElementById("cardsGrid");
+
+  for (let i = 0; i < TOTAL_CARDS; i++) {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.textContent = "?";
+    card.onclick = () => openCard(card);
+    grid.appendChild(card);
+  }
+
+  function openCard(card) {
+    if (card.classList.contains("revealed") || opened >= MAX_OPENS) return;
+
     opened++;
     card.classList.add("revealed");
-    let giveGift =
-        (opened === maxOpens && !giftGiven) ||
-        (!giftGiven && Math.random() < 0.33);
 
-    if(giveGift && !giftGiven){
-        giftGiven = true;
-        card.textContent = selectedGift;
-        card.classList.add("win");
-        document.getElementById("message").textContent =
-            "You won " + selectedGift;
-        document.getElementById("message").style.color = "#f5c518";
-        localStorage.setItem("claimed","true");
-    }else{
-        card.textContent = "Empty";
-        card.classList.add("empty");
-    }
+    if (opened < MAX_OPENS) {
+      card.textContent = "Empty";
+      card.classList.add("empty");
+      showMessage("Keep going...", "#888");
+    } else {
+      // 3rd card → guaranteed win
+      card.textContent = selectedGift;
+      card.classList.add("win");
+      showMessage(`You won ${selectedGift}! 🎉`, "var(--yellow)");
 
-    if(opened === maxOpens){
-        localStorage.setItem("claimed","true");
+      localStorage.setItem("lotteryClaimed", "true");
+
+      // Disable remaining cards
+      document.querySelectorAll(".card:not(.revealed)").forEach(c => {
+        c.style.opacity = "0.4";
+        c.style.cursor = "default";
+        c.onclick = null;
+      });
     }
+  }
+
+  function showMessage(text, color = "#ccc") {
+    const msgEl = document.getElementById("message");
+    if (msgEl) {
+      msgEl.textContent = text;
+      msgEl.style.color = color;
+    }
+  }
 }
+
+// ────────────────────────────────────────────────
+//  EXCHANGE MODAL LOGIC
+// ────────────────────────────────────────────────
+const modal       = document.getElementById("exchangeModal");
+const exchangeBtn = document.getElementById("exchangeBtn");
+const closeBtn    = document.getElementById("closeModal");
+const submitBtn   = document.getElementById("submitExchange");
+
+const formStep    = document.getElementById("formStep");
+const loadingStep = document.getElementById("loadingStep");
+const successStep = document.getElementById("successStep");
+
+exchangeBtn.onclick = () => {
+  modal.style.display = "flex";
+  formStep.style.display = "block";
+  loadingStep.style.display = "none";
+  successStep.style.display = "none";
+};
+
+closeBtn.onclick = () => modal.style.display = "none";
+modal.onclick = e => { if (e.target === modal) modal.style.display = "none"; };
+
+submitBtn.onclick = () => {
+  const yourId     = document.getElementById("yourId").value.trim();
+  const exchangerId = document.getElementById("exchangerId").value.trim();
+  const giftId     = document.getElementById("giftId").value.trim();
+
+  if (!yourId || !exchangerId || !giftId) {
+    alert("Fill all fields");
+    return;
+  }
+
+  formStep.style.display = "none";
+  loadingStep.style.display = "block";
+
+  setTimeout(() => {
+    loadingStep.style.display = "none";
+    successStep.style.display = "block";
+  }, 1800);
+};
 </script>
 </body>
 </html>
