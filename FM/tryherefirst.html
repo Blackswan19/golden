@@ -1,31 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BS&MFI Services</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BS&MFI Solution</title>
     <link rel="icon" href="mfi.logo.png" />
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+       <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Balthazar&family=Della+Respira&family=Hahmlet:wght@100..900&family=Niconne&family=Stalemate&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-  <style> @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: "Noto Sans", sans-serif;letter-spacing: 0.5px;}
     :root {
-      --bg-primary: #111920;
-      --bg-secondary: #17171c;
-      --bg-message: #1c1c24;
-      --text-primary: #e0e0e8;
-      --text-secondary: #a0a0b0;
-      --accent: #0021ff;
-      --accent-dark: #0021ff;
-      --border: #2a2a35;
+      --bg: #111920;
+      --header: #121212;
+      --card: #ffffff0f;
+      --text: #ffffff;
+      --text2: #888888;
+      --accent: #0000ff;
     }
-* {
+    .light {
+      --bg: #f8f9fa;
+      --header: #ffffff;
+      --card: #ffffff;
+      --text: #111111;
+      --text2: #666666;
+      --accent: #0000ff;
+    }* {
             -webkit-tap-highlight-color: transparent;
         }
         body {
@@ -34,349 +43,861 @@
             -ms-user-select: none;
             user-select: none;
         }
-    * {
-      margin: 0;scrollbar-width: none;
-      padding: 0;font-family: "Noto Sans", sans-serif;
-      box-sizing: border-box;letter-spacing: 0.3px;
-    }
-
-    body {
-      
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      min-height: 100vh;
-      padding:10px;
-    }
+body {
+  --c-glass: #bbbbbc;
+  --c-light: #fff;
+  --c-dark: #000;
   
-    .container {
-      max-width: 680px;
-      margin: 0 auto;
-    }
+  --c-content: rgb(255, 255, 255);
+  --c-action: #0052f5;
+  
+  --glass-reflex-dark: 1;
+  --glass-reflex-light: 1;
+  
+  --saturation: 150%;
+  
+  color: var(--c-content);
+}
 
-    .header {
-      padding: 0px;
-    text-align: center;
-    }
+body:has(input[value="dark"]:checked) {
+  --c-glass: #bbbbbc;
+  --c-light: #fff;
+  --c-dark: #000;
+  
+  --c-content: #e1e1e1;
+  --c-action: #03d5ff;
+  
+  --c-bg: #1b1b1d;
+}
 
-    .header h1 {
-      font-weight: 100;
-    color: #ffffffa6;
-    font-size: 20px;
-    padding: 15px 0 0 0;
-    }
+body:has(input[value="dim"]:checked) {
+  --c-light: #99deff;
+  --c-dark: #20001b;
+  --c-glass: hsl(335 250% 74% / 1);
+  
+  --c-content: #d5dbe2;
+  --c-action: #ff48a9;
+  
+  --c-bg: #152433;
 
-    .search-box {
-    position: sticky;
-    top: 0px;
-    padding: 10px 0px 10px 0px;
+}
+    * { margin:0; padding:0; box-sizing:border-box; scrollbar-width: none;}
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    header {
+      position: fixed;
+    top: 0;
+    left: 5px;
+    right: 0;
+    z-index: 50;
+    padding: 10px 0px;
     display: flex;
-    border-radius: 0px;
+    align-items: center;
+    justify-content: space-between;
+    }
+    button.btn-primary {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    font-size: 16px;
+    background: #00aaff;
+}
+    header button {
+background: transparent;
+    color: white;
+    border: none;
+    font-size: 16px;
+    }
+    
+    .theme-btn {
+      transition: all 0.3s;
+    }
+    
+    main {
+     flex: 1;
+    overflow-y: auto;
+    background: #00000012;
+    padding: 25px 10px 130px 10px;
+    }
+button.theme-btn {
+   width: fit-content;
+    padding: 15px;
+    display: flex;
+    gap: 8px;
+    font-size: 17px;
+}
+   
+.nav-container svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+}
+.nav {
+  background: #4d5156;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    padding: 10px;
+    max-width: 550px;
+    filter: drop-shadow(-4px -2px 10px #1d1d1d);
+}
+   .nav-container {
+    display: flex;
+    font-size: 10px;
+    font-weight: 500;
     justify-content: center;
     align-items: center;
-    z-index: 1;
-    background: #111920;
+    width: 100%;
+    gap: 10px;
+}
+    .first4icons {
+   box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+    border-radius: 1000px;
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 4px;
+}footer {
+    text-align: center;
+    font-size: 10px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    left: 0;
+    color: #ffffffc9;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}span {
+    color: white;
+}
+    .tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: black;
+    transition: color 0.2s;
+    cursor: pointer;
+    padding: 5px 20px;
+    justify-content: center;
+    width: 100%;
     }
-
-    #searchInput {
-   width: 100%;
-    padding: 8px 2px 8px 45px;
-    font-size: 17px;
-    border-radius: 40px;
-    background: #4d515600;
+    .tab-active {
+   background: #00aaff;
+    filter: none;
+    opacity: 100%;
+    border-radius: 35px;
+    color: black;
+    }
+    .tab i {
+      font-size: 1.75rem;
+    }
+    
+    .apply-btn {
+   position: fixed;
+    bottom: 75px;
+    left: 50%;
+    right: 0;
+    z-index: 40;
+    width: max-content;
+    background-color: #4d5156;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 20px;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.2s;
     border: none;
-    color: var(--text-primary);
-    outline: none;
+    max-width: 550px;
+    transform: translate(-50%, 0);
+    border: solid 3.5px #10171e;
+    background-color: #00aaff;
+   
+    }
+   p {
+    text-align: center;
+    color: #00aaff;
+    font-weight: 600;
+}
+    .card {
+      background-color: var(--card);
+      border-radius: 16px;
+    }
+    
+    .text-secondary {
+      color: var(--text2);
+    }
+    
+    .accent {
+      color: var(--accent);
+    }
+    
+    .modal {
+     position: fixed;
+    inset: 0;
+    background-color: rgb(59 62 66);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    }
+    .modal.show {
+      display: flex;
+    }
+    
+    .modal-content {
+     background-color: #3b3e42;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 16px 16px 0 0;
+    overflow: hidden;
+    animation: slideUp 0.3s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+}
+    
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .modal-header {
+     padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+    }
+    
+    .section-title {
+    font-size: 35px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #00aaff;
+    margin: 5px 0px;
+    text-align: center;
+}
+    
+    .how-it-works {
+   background: #30455d5e;
+    border-radius: 15px;
+    padding: 13px;
+    }
+    
+    /* FAQ STYLING */
+    .faq-container {
+     background: #30455d5e;
+    border-radius: 15px;
+    padding: 13px;
+    }
+.faq-item {
+    padding: 5px;
+}
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    .faq-item h3 {
+      font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    }li {
+    line-height: 23px;
+}
+    .faq-item p {
+     color: var(--text2);
+    line-height: 1.6;
+    font-size: 14px;
+    text-align: left;
+    font-weight: 500;
+    }
+    .amount-box {
+          display: flex;
+    align-items: center;
+    background-color: #000000;
+    border-radius: 13px;
+    padding: 0 1.5rem;
+    }
+    .amount-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 2.75rem;
+      font-weight: 300;
+      color: var(--text);
+    }
+    
+    .calc-result {
+      background-color: #000000;
+    border-radius: 13px;
+    padding: 10px 20px;
+    }
+    
+    .btn-primary {
+     width: 100%;
+    background-color: #0000ff;
+    color: white;
+    font-weight: 300;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    }i.fa-solid.fa-xmark.text-3xl.cursor-pointer {
+    font-size: 20px;
+}
+    
+    .btn-secondary {
+       width: 100%;
+    border: 2px solid #00aaff;
+    background: transparent;
+    color: #00aaff;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 17px;
+    margin-top: 0px;
+    cursor: pointer;
     transition: all 0.2s;
     }
-
-    #searchInput:focus {
-      background: #1d2a3a;
-    }
-
-    .search-icon {
-position: absolute;
-    left: 19px;
-    font-size: 13px;
-    color: rgb(255 255 255 / 60%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 25px;
-    }
-
-  .section {
-    margin-bottom: 10px;
-    position: relative;
-    background: #30455d5e;
-    border-radius: 15px;
-    }
-
-    .section h2 {
-     font-size: 15px;
-    font-weight: 400;
-    color: #00b7ff;
-    margin-bottom: 0px;
-    padding-left: 15px;
-    padding-top: 10px;
-    }
-
-   .site-item {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-radius: 46px;
+    .btn-secondary a {
     text-decoration: none;
-    color: var(--text-primary);
-    transition: background 0.18s;
+    color: #00aaff;
 }
-
-    .letter-icon {
-     width: 48px;
-    height: 48px;
-    margin-right: 7px;
-    border-radius: 50%;
-    background: var(--accent-dark);
-    color: white;
-    font-weight: 600;
-    font-size: 1.35rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    text-transform: uppercase;
+    
+    .btn-secondary a:hover>.btn-secondary:hover {
+      background-color: #0000ff;
+      color: white;
     }
-
-    .site-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .site-info h3 {
-      font-size: 16px;
-      font-weight: 500;
-      margin: 0 0 3px 0;
-    }
-
-    .site-info p {
-      font-size: 13px;
-    color: #ffffff82;
-    line-height: 1.3;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-weight: 300;
-    width: 75%;
-    }
-.section:first-child {
-    border: none;
-}
-
-    .no-results {
-      text-align: center;
-      padding: 80px 20px;
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-      display: none;
-    }
-footer{
-  text-align: center;
-    font-size: 12px;
-    color: #ffffff85;
-    background: #111920;
-    position: sticky;
-    bottom: 0px;
-    padding: 5px 0px;
-      }
+  
   </style>
 </head>
 <body>
-<div class="container">
 
-  <div class="header">
-    <h1>BS&MFI Services</h1>
-  </div>
+ <header>
+    <button onclick="goBack()" class="theme-btn">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <!-- <button onclick="toggleTheme()" class="theme-btn">
+      <i id="theme-icon" class="fa-solid fa-moon text-xl"></i> Theme
+    </button> -->
+  </header>
 
-  <div class="search-box">
-    <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-    <input type="text" id="searchInput" placeholder="Search here..." autocomplete="off"/>
-  </div>
+  <main id="main-content"></main>
 
-  <div id="sectionsContainer"></div>
+  <button onclick="showPopup()" class="apply-btn">
+    <i class="fa-solid fa-check"></i>
+   Apply Now
+  </button>
 
-  <div class="no-results" id="noResults">
-    Nothing found
-  </div>
-  <footer>
-    © BS&MFI. All rights reserved.
-  </footer>
-</div>
-
-<script>
-const siteGroups = [
-    {
-    heading: "Return Management",
-    sites: [
-      { name: "BS&MFI Solutions",      desc: "Return date extender",       url: "https://blackswan19.github.io/golden/FM/solution",      icon: "fab fa-youtube"       },
-]
-},
-{
-  heading: "New in & issue",
-  sites: [
-    { name: "Enterance Form", desc: "New members form",       url: "https://mfi0212.github.io/MFI/entrysheet", icon: "fas fa-code"         },
-    { name: "Helper",      desc: "I have issue form",           url: "https://mfi0212.github.io/MFI/abt.hlp",      icon: "fas fa-film"          },
-  ]
-},
-{
-  heading: "Offer & Earns",
-  sites: [
-    { name: "Lendlink-Mid",    desc: "Turn your money into income",        url: "https://mfi0212.github.io/swan/lndlnk-mid",    icon: "fas fa-book-open"     },
-    { name: "BsGames",       desc: "Exclusive rewards and benefits for BS&MFI members.",          url: "https://blackswan19.github.io/golden/Bs%20Games/bsgames",       icon: "fab fa-reddit"        },
-    { name: "Stars",       desc: "Interest reducer.",          url: "https://blackswan19.github.io/golden/FM/starspage",       icon: "fab fa-reddit"        },
-  ]
-},
-{
-  heading: "For VIPs Only Services",
-  sites: [
-      { name: "BsMansion",      desc: "Store offer to use after",              url: "https://mfi0212.github.io/MFI/bsmansion",  icon: "fas fa-robot"         },
-      { name: "Chloennaouii",    desc: "Discover Your Discount",                  url: "https://mfi0212.github.io/MFI/cholennaouii.main",    icon: "fab fa-instagram"     },
-    ]
-  },  
-  {
-    heading: "Services",
-    sites: [
-      { name: "All Services", desc: "All service from BS&MFI",       url: "https://blackswan19.github.io/BS/bslends", icon: "fas fa-code"         },
-      { name: "Golden", desc: "A service from BsLends",       url: "https://mfi0212.github.io/MFI/rate", icon: "fas fa-code"         },
-      { name: "Lendlink", desc: "A service from BsLends",       url: "https://mfi0212.github.io/swan/home", icon: "fas fa-code"         },
-      { name: "MLending", desc: "A service from Myootive",       url: "https://blackswan19.github.io/golden/FM/themain", icon: "fas fa-code"         },
-      { name: "MLLD", desc: "A service from Myootive",       url: "https://blackswan19.github.io/golden/FM/mlld", icon: "fas fa-code"         },
-      { name: "Vintage Lender(VIPs)", desc: "VIPs only site",       url: "", icon: "fas fa-code"         },
-      { name: "Short Term Loan",            desc: "Quick amounts for 1 to 15 days.",        url: "https://mfi0212.github.io/MFI/1.5.days",            icon: "fab fa-x-twitter"     },
-    ]
-  }
-];
-// document.addEventListener('contextmenu', e => e.preventDefault());
-function getColor(name) {
-  let hash = 0;
-  for (let i = 0; i < name.length; i++) {
-    hash = name.charCodeAt(i) + ((hash << 5) - hash);
-  }
-  const hue = Math.abs(hash) % 360;
-  return `hsl(${hue}, 75%, 58%)`;
-}
-
-function getInitial(name) {
-  return name.trim()[0]?.toUpperCase() || "?";
-}
-
-function renderAll() {
-  const container = document.getElementById("sectionsContainer");
-  container.innerHTML = "";
-
-  siteGroups.forEach(group => {
-    const section = document.createElement("div");
-    section.className = "section";
-
-    const h2 = document.createElement("h2");
-    h2.textContent = group.heading;
-    section.appendChild(h2);
-
-    const list = document.createElement("div");
-    list.className = "site-list";
-
-    group.sites.forEach(site => {
-      const a = document.createElement("a");
-      a.href = site.url;
-      a.target = "_parent";
-      a.className = "site-item";
-
-      const bg = getColor(site.name);
-      const initial = getInitial(site.name);
-
-      a.innerHTML = `
-        <div class="letter-icon" style="background: ${bg};">${initial}</div>
-        <div class="site-info">
-          <h3>${site.name}</h3>
-          <p>${site.desc}</p>
+  <nav class="nav">
+    <div class="nav-container">
+        <div onclick="switchTab(0)" id="tab-0" class="tab tab-active">
+            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"><path d="M3.999,18.5v-5H13.025c.347,1.89,1.181,3.429,1.225,3.509,.22,.395,.677,.593,1.115,.484,4.574-1.137,7.325-4.736,7.434-4.894,.467-.677-.021-1.228-.036-1.244-.496-.616-3.187-3.743-7.484-4.847-.45-.115-.92,.095-1.135,.506-.042,.08-.82,1.612-1.136,3.485H3.999V5.5c0-.828-.671-1.5-1.5-1.5s-1.5,.672-1.5,1.5v13c0,.828,.671,1.5,1.5,1.5s1.5-.672,1.5-1.5Z"/></svg>
+            <span>Delay</span>
         </div>
-      `;
-
-      list.appendChild(a);
-    });
-
-    section.appendChild(list);
-    container.appendChild(section);
-  });
-}
-
-function renderFiltered(query = "") {
-  const q = query.toLowerCase().trim();
-  const container = document.getElementById("sectionsContainer");
-  const noResults = document.getElementById("noResults");
-
-  container.innerHTML = "";
-
-  if (!q) {
-    renderAll();
-    noResults.style.display = "none";
-    return;
-  }
-
-  let found = false;
-
-  siteGroups.forEach(group => {
-    const matches = group.sites.filter(s =>
-      s.name.toLowerCase().includes(q) ||
-      s.desc.toLowerCase().includes(q) ||
-      s.url.toLowerCase().includes(q)
-    );
-
-    if (!matches.length) return;
-
-    found = true;
-
-    const section = document.createElement("div");
-    section.className = "section";
-
-    const h2 = document.createElement("h2");
-    h2.textContent = group.heading;
-    section.appendChild(h2);
-
-    const list = document.createElement("div");
-    list.className = "site-list";
-
-    matches.forEach(site => {
-      const a = document.createElement("a");
-      a.href = site.url;
-      a.target = "_parent";
-      a.className = "site-item";
-
-      const bg = getColor(site.name);
-      const initial = getInitial(site.name);
-
-      a.innerHTML = `
-        <div class="letter-icon" style="background: ${bg};">${initial}</div>
-        <div class="site-info">
-          <h3>${site.name}</h3>
-          <p>${site.desc}</p>
+        <div onclick="switchTab(1)" id="tab-1" class="tab">
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"><path d="M23.649,6.349l-3.6,3.796c-.756,.756-2.049,.221-2.049-.849v-2.296h-2c-1.378,0-2.5,1.121-2.5,2.5v13c0,.828-.671,1.5-1.5,1.5s-1.5-.672-1.5-1.5V9.5c0-1.379-1.122-2.5-2.5-2.5h-2v2.296c0,1.069-1.293,1.604-2.049,.849L.351,6.349c-.469-.469-.469-1.228,0-1.697L3.951,.855c.756-.756,2.049-.221,2.049,.849v2.296h2c1.577,0,2.996,.671,4,1.737,1.004-1.066,2.423-1.737,4-1.737h2V1.704c0-1.069,1.293-1.604,2.049-.849l3.6,3.796c.469,.469,.469,1.228,0,1.697Z"/></svg>
+                <span>Split</span>
         </div>
-      `;
+        <div onclick="switchTab(2)" id="tab-2" class="tab"  style="display: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="m23.229,9.219l-3.223-5.5c-.983-1.677-2.802-2.719-4.745-2.719h-6.551c-1.944,0-3.762,1.042-4.745,2.719L.742,9.219c-1.005,1.716-1.005,3.847,0,5.562l3.223,5.5c.983,1.677,2.801,2.719,4.745,2.719h6.551c1.943,0,3.762-1.042,4.745-2.719l3.223-5.5c1.005-1.716,1.005-3.847,0-5.562Zm-2.588,4.045l-3.223,5.5c-.447.763-1.274,1.236-2.157,1.236h-6.551c-.884,0-1.71-.474-2.157-1.236l-3.223-5.5c-.457-.779-.457-1.748,0-2.527l3.223-5.5c.447-.763,1.273-1.236,2.157-1.236h6.551c.883,0,1.71.474,2.157,1.236l3.223,5.5c.457.779.457,1.748,0,2.527Zm-7.142-5.764v5c0,.828-.671,1.5-1.5,1.5s-1.5-.672-1.5-1.5v-5c0-.828.671-1.5,1.5-1.5s1.5.672,1.5,1.5Zm0,9c0,.828-.672,1.5-1.5,1.5s-1.5-.672-1.5-1.5.672-1.5,1.5-1.5,1.5.672,1.5,1.5Z"/></svg>
+            <span>Limit</span>
+        </div>
+        <div onclick="switchTab(3)" id="tab-3" class="tab" style="display: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="M18,12c-3.31,0-6,2.69-6,6s2.69,6,6,6,6-2.69,6-6-2.69-6-6-6Zm2.41,7.41l-1.71,1.71c-.2,.2-.45,.29-.71,.29s-.51-.1-.71-.29c-.39-.39-.39-1.02,0-1.41l.71-.71h-3c-.55,0-1-.45-1-1s.45-1,1-1h3l-.71-.71c-.39-.39-.39-1.02,0-1.41s1.02-.39,1.41,0l1.71,1.71c.39,.39,.58,.9,.58,1.41,0,0,0,0,0,0s0,0,0,0c0,.51-.2,1.02-.58,1.41Zm-9.83,1.59H5c-2.76,0-5-2.24-5-5V5C0,2.24,2.24,0,5,0V6c0,1.1,.9,2,2,2h7c1.1,0,2-.9,2-2V.28c.33,.15,.64,.35,.89,.61l3.24,3.27c.56,.56,.87,1.31,.87,2.11v3.73c0,.19-.07,.37-.17,.53-.88-.34-1.84-.53-2.83-.53-1.73,0-3.33,.56-4.64,1.5-.63-.9-1.68-1.5-2.86-1.5-1.93,0-3.5,1.57-3.5,3.5,0,1.78,1.35,3.24,3.08,3.46-.04,.34-.08,.69-.08,1.04,0,1.06,.21,2.07,.59,3Zm3.41-15H7V0h7V6Zm-2.14,6.88c-.53,.63-.95,1.34-1.27,2.11-.03,0-.06,0-.09,0-.83,0-1.5-.67-1.5-1.5s.67-1.5,1.5-1.5c.6,0,1.12,.36,1.36,.88Z"/></svg>
+            <span>Saver</span>
+        </div>
+        <div onclick="switchTab(4)" id="tab-4" class="tab" >
+            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"><path d="m6,0C2.691,0,0,2.691,0,6s2.691,6,6,6,6-2.691,6-6S9.309,0,6,0Zm2.776,8.87c-.445-1.095-1.514-1.87-2.768-1.87h-.016c-1.254,0-2.325.773-2.769,1.868-.751-.728-1.222-1.742-1.222-2.868,0-2.206,1.794-4,4-4s4,1.794,4,4c0,1.127-.472,2.142-1.224,2.87Zm-1.276-4.37c0,.828-.672,1.5-1.5,1.5s-1.5-.672-1.5-1.5.672-1.5,1.5-1.5,1.5.672,1.5,1.5Zm10.5,7.5c-3.309,0-6,2.691-6,6s2.691,6,6,6,6-2.691,6-6-2.691-6-6-6Zm2.776,8.87c-.445-1.095-1.514-1.87-2.768-1.87h-.016c-1.254,0-2.325.773-2.769,1.868-.751-.728-1.222-1.742-1.222-2.868,0-2.206,1.794-4,4-4s4,1.794,4,4c0,1.127-.472,2.142-1.224,2.87Zm-1.276-4.37c0,.828-.672,1.5-1.5,1.5s-1.5-.672-1.5-1.5.672-1.5,1.5-1.5,1.5.672,1.5,1.5Zm-5.5-12.5c0-.552.447-1,1-1h2c2.206,0,4,1.794,4,4v2c0,.552-.447,1-1,1s-1-.448-1-1v-2c0-1.103-.897-2-2-2h-2c-.553,0-1-.448-1-1Zm-4,16c0,.552-.447,1-1,1h-2c-2.206,0-4-1.794-4-4v-2c0-.552.447-1,1-1s1,.448,1,1v2c0,1.103.897,2,2,2h2c.553,0,1,.448,1,1Z"/></svg>
+            <span>Mid</span>
+        </div>
+    </div>
+  </nav>
 
-      list.appendChild(a);
-    });
+  <!-- MODAL -->
+  <div id="modal" class="modal" onclick="if(event.target.id==='modal') hideModal()">
+    <div onclick="event.stopImmediatePropagation()" class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title" style="font-size:1.25rem; font-weight:600;">Calculator</h2>
+        <i onclick="hideModal()" class="fa-solid fa-xmark text-3xl cursor-pointer"></i>
+      </div>
+      <div id="modal-content" class="modal-body"></div>
+    </div>
+  </div>
 
-    section.appendChild(list);
-    container.appendChild(section);
-  });
+  <script>
+    let currentTab = 0;
+    let isDarkMode = true;
+    const tabNames = ["Delay It Calculater", "Split Pay Calculater", "Buy Limit Calculater", "Pre-Saver", "Lendlink - Mid"];
+    const fees = [6.5, 7.2, 8.2, null, null];
+    const googleFormUrl = "https://forms.gle/YOUR_GOOGLE_FORM_LINK_HERE";
+    // document.addEventListener('contextmenu', e => e.preventDefault());
+    const tabContents = {
+      0: `
+        <div style="padding-top:1.5rem;">
+          <h2 class="section-title">Delay It</h2>
+          <div style="    margin-top: -0.3rem;
+    font-size: 13px;
+    color: var(--text2);
+    position: relative;
+    left: 2px;text-align: center;
+">Return date extender</div>
+           <div class="how-it-works" style="margin-top:1rem;">
+            <p style=" margin-bottom:1rem;">About Us</p>
+            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;">
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Delay It by BS&MFI Solutions helps to extend your payment deadlines with transparent fees. Our service provides the flexibility you need to manage your returns.</li>
+            </ul>
+          </div>
+          <div class="how-it-works" style="margin-top:1rem;">
+            <p style=" margin-bottom:1rem;">How Delay It works?</p>
+            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
+">
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> You can extend the return date of the amount.</li>
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Transparent fees with no hidden costs.</li>
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Fast extend process.</li>
+            </ul>
+          </div>
+          
+          <div style="margin: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text2);
+    padding: 0px;
+    text-align: center;;">
+            Note : The Process Fee must be paid before applying for Delay It. If not, we can't provide the extension.
+          </div>
 
-  noResults.style.display = found ? "none" : "block";
+          <div class="faq-container" style="margin-top:1rem;">
+            <h2 style="font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    color: #00aaff;
+    margin-top: 0.5rem;">FAQ's</h2>
+            <div class="faq-item">
+              <h3>What is the minimum amount I can extend?</h3>
+              <p>The minimum amount is ₹500.</p>
+            </div>
+            <div class="faq-item">
+              <h3>How is the fee calculated?</h3>
+              <p>The fee is 4.5% of the amount multiplied by the number of days you choose.</p>
+            </div>
+            <div class="faq-item">
+              <h3>Can I apply for multiple extensions?</h3>
+              <p>Yes, you can apply multiple times. Each extension is treated separately with its own fee.</p>
+            </div>
+            <div class="faq-item">
+              <h3>If today is my return date, can I still extend?</h3>
+              <p>No, you must apply at least 24 hours before the original return date.</p>
+            </div>
+            <div class="faq-item">
+              <h3>How many days can I extend?</h3>
+              <p>Standard range is 15–30 days. Premium members can go up to 60 days.</p>
+            </div>
+            <div class="faq-item">
+              <h3>Will my credit score be affected?</h3>
+              <p>No. Delay It is a paid service and does not impact your credit report.</p>
+            </div>
+          </div>
+        </div>
+      `,
+
+      1: `
+        <div style="padding-top:1.5rem;">
+          <h2 class="section-title">Split Half Pay</h2>
+          <div style="    margin-top: -0.3rem;
+    font-size: 13px;
+    color: var(--text2);
+    position: relative;
+    left: 2px;text-align: center;
+">Flexible Repayment</div>
+          
+          <div class="how-it-works" style="margin-top:1rem;">
+            <p style=" margin-bottom:1rem;">About Us</p>
+            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
+">
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> With Split half pay, you can pay half of the total amount and extend the remaining half with a flexibility while ensuring smooth repayment.</li>
+            </ul>
+          </div>
+          
+
+           <div class="how-it-works" style="margin-top:1rem;">
+            <p style=" margin-bottom:1rem;">How Half Split Pay works?</p>
+            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
+">
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Paying 50% of the amount now and split the remaining 50% in instalments.</li>
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Fast approval and simple process.</li>
+            </ul>
+          </div>
+          
+          <div style="margin: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text2);
+    padding: 0px;
+    text-align: center;">
+            Note: The split fee must be paid upfront along with the first 50%. This allows you to split the remaining amount.
+          </div>
+
+          <div class="faq-container" style="margin-top:1rem;">
+            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">FAQ's</h2>
+            <div class="faq-item">
+              <h3>What is the minimum amount I can split?</h3>
+              <p>The minimum amount is 2000₹.</p>
+            </div>
+            <div class="faq-item">
+              <h3>How is the 5.2% fee divided?</h3>
+              <p>The fee is shared equally among all participants.</p>
+            </div>
+            <div class="faq-item">
+              <h3>Can I choose different number of splits?</h3>
+              <p>Yes — you can select between 2 to 8 splits.</p>
+            </div>
+          </div>
+        </div>
+      `,
+
+      2: `
+        <div style="padding-top:1.5rem;">
+          <h2 class="section-title">Buy Limit</h2>
+          <div style="    margin-top: -0.3rem;
+    font-size: 13px;
+    color: var(--text2);
+    position: relative;
+    left: 2px;text-align: center;
+">Limit extender</div>
+          
+          <div class="how-it-works" style="margin-top:1rem;">
+            <p style=" margin-bottom:1rem;">About Us</p>
+            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
+">
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Buy Limit by BS&MFI Solutions helps to borrow more than the borrow limit with transparent fees. Our service let you borrow when you reaches the limit.</li>
+            </ul>
+          </div>
+
+          <div class="how-it-works" style="margin-top:1rem;">
+            <p style=" margin-bottom:1rem;">How Buy Limit works?</p>
+            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
+">
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> You can borrow more than your account borrow amount limit.</li>
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Transparent fees with no hidden costs.</li>
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Fast approv process.</li>
+            </ul>
+          </div>
+          
+          <div style="margin: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text2);
+    padding: 0px;
+    text-align: center;">
+           Note: The Buy Limit fee must be paid upfront along with the first 50%. This allows you to Buy Limit and borrow the amount.
+          </div>
+
+          <div class="faq-container" style="margin-top:1rem;">
+            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">FAQ's</h2>
+            <div class="faq-item">
+              <h3>How many times i can Buy Limit?</h3>
+              <p>Its based on the amount you borrowing.</p>
+            </div>
+          </div>
+        </div>
+      `,
+
+      3: `
+        <div style="padding-top:1.5rem;">
+          <h2 class="section-title">Pre-Saver</h2>
+          <div style="    margin-top: -0.3rem;
+    font-size: 13px;
+    color: var(--text2);
+    position: relative;
+    left: 2px;text-align: center;
+">Save on time</div>
+          
+              <div class="how-it-works" style="margin-top:1rem;">
+            <p style=" margin-bottom:1rem;">About Us</p>
+            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
+">
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> By using Pre-saver you can save the particular upcoming offer (or) amounts on a perticular date.</li>
+            </ul>
+          </div>
+
+
+          <div class="how-it-works" style="margin-top:1rem;">
+            <p style=" margin-bottom:1rem;">How Pre-Saver works?</p>
+            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
+">
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Pre saves the offers and amounts on the date you want.</li>
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Fast approval process</li>
+            </ul>
+          </div>
+          
+          <div style="margin: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text2);
+    padding: 0px;
+    text-align: center;">
+            Note: The fee will be based on number of slots available.
+          </div>
+
+          <div class="faq-container" style="margin-top:1rem;">
+            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">For VIP members</h2>
+            <div class="faq-item">
+              <h3>1. Private Offer</h3>
+              <p>VIPs get private offer.</p>
+            </div>
+            <div class="faq-item">
+              <h3>2. Customize Offer</h3>
+              <p>VIPs can custom their offer based on their needs.</p>
+            </div>
+            <div class="faq-item">
+              <h3>3. RLO(Rare Limited Offer)</h3>
+              <p>VIPs can get very rare limited offers for every 2-3 months.</p>
+            </div>
+          </div>
+        </div>
+
+          <div class="faq-container" style="margin-top:1rem;">
+            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">FAQ's</h2>
+            <div class="faq-item">
+              <h3>Can I pre-save when ever i want?</h3>
+              <p>Yes, if you are VIP then you can use when ever you want.</p>
+            </div>
+            <div class="faq-item">
+              <h3>Where can i find the fee for pre-saver?</h3>
+              <p>The fee for pre-saver is based on the offer or amount you applying(Ask coordinator).</p>
+            </div>
+            <div class="faq-item">
+              <h3>Can I pre-save when ever i want? But i'm not VIP..!</h3>
+              <p>No, but you can apply when ever their will be offer avaiable soon.</p>
+            </div>
+            <div class="faq-item">
+              <h3>Is there any withdrawal fee?</h3>
+              <p>No fee if you withdraw after 30 days. Early withdrawal has 1% fee.</p>
+            </div>
+            <div class="faq-item">
+              <h3>Can I set different rules for different accounts?</h3>
+              <p>Yes, you can create multiple Pre-Saver goals (Travel, Emergency, etc.).</p>
+            </div>
+            <div class="faq-item">
+              <h3>How secure is my saved money?</h3>
+              <p>100% secure with bank-level encryption and insurance up to ₹5 lakh.</p>
+            </div>
+          </div>
+        </div>
+      `,
+
+      4: `
+        <div style="padding-top:1.5rem;">
+          <h2 class="section-title">Lendlink - Mid</h2>
+          <div style="    margin-top: -0.3rem;
+    font-size: 13px;
+    color: var(--text2);
+    position: relative;
+    left: 2px;text-align: center;
+">Turn your money into income</div>
+          
+          <div class="how-it-works" style="margin-top:1rem;">
+            <p style=" margin-bottom:1rem;">About us</p>
+            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
+">
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span>Lendlink - Mid from Lendlink hepls you to turn your money into income that mean you can lend your money and earn interest for the amount you lended.</li>
+            </ul>
+          </div>
+          
+          <div style="margin: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text2);
+    padding: 0px;
+    text-align: center;">
+            Note: MID has 2 plans, Before lending you have to select 1 plan to continue the lending process.
+          </div>
+
+          <div class="faq-container" style="margin-top:1rem;">
+            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">FAQ's</h2>
+            <div class="faq-item">
+              <h3>How much money i can lend?</h3>
+              <p>Their is no limit on the lending limit, It will be based on the borrower.</p>
+            </div>
+          </div>
+        </div>
+      `
+    };
+
+    function switchTab(tabIndex) {
+      currentTab = tabIndex;
+      for (let i = 0; i < 5; i++) {
+        const tabEl = document.getElementById(`tab-${i}`);
+        if (tabEl) tabEl.classList.toggle('tab-active', i === tabIndex);
+      }
+      document.getElementById('main-content').innerHTML = tabContents[tabIndex];
+    }
+
+    function showPopup() {
+    const modal = document.getElementById('modal');
+    const titleEl = document.getElementById('modal-title');
+    const contentEl = document.getElementById('modal-content');
+    
+    modal.classList.add('show');
+    const rate = fees[currentTab];
+
+    const formLinks = {
+        0: "https://forms.gle/9URS1LAqd3iB8qDUA",
+        1: "https://forms.gle/ujs36QQpBpMPBRPu6",
+        2: "https://forms.gle/VqJ1Wqtj8HxXa84e9",
+    };
+
+    if (rate !== null) {
+        titleEl.textContent = tabNames[currentTab];
+        const applyFormUrl = formLinks[currentTab] || "https://forms.gle/9URS1LAqd3iB8qDUA"; 
+        contentEl.innerHTML = `
+          <div style="display:flex; flex-direction:column; gap:1.5rem;">
+            <div>
+              <label style="display:block; font-size:0.75rem; text-align: center; color:var(--text2); margin-bottom:1rem; letter-spacing:1px;">AMOUNT TO PROCESS</label>
+              <div class="amount-box">
+                <span style="font-size: 30px;
+    color: #888;">$</span>
+                <input id="amount-input" type="number" value="1000"
+                       style="flex: 1;
+    background: transparent;
+    border: none;
+    font-size: 25px;
+    font-weight: 500;
+    outline: none;
+    padding: 0 0.5rem;
+    color: var(--text);">
+              </div>
+            </div>
+           
+            <div class="calc-result" style="display:flex; flex-direction:column; gap:1.25rem; font-size:0.875rem;">
+              <div style="display:none; justify-content:space-between;">
+                <span class="text-secondary">Base amount</span>
+                <span id="base-amount" style="font-weight:500;">$1,000.00</span>
+              </div>
+              <div style="display:flex; justify-content:space-between;">
+                <span class="text-secondary">${tabNames[currentTab]} fee (${rate}%)</span>
+                <span id="fee-amount" style="font-weight: 600; color: #ffffff; font-size: 16px;">$45.00</span>
+              </div>
+              <div style="height:1px; background:#333; display: none;"></div>
+              <div style="display:none; justify-content:space-between; font-size:1.25rem; font-weight:600;">
+                <span>Total</span>
+                <span id="total-amount" class="accent">$1,045.00</span>
+              </div>
+            </div>
+            
+            <button onclick="calculateFee()" class="btn-primary">Calculate</button>
+            
+            <!-- Dynamic Apply Now button with correct form link -->
+            <button class="btn-secondary">
+              <a href="${applyFormUrl}">
+                Apply Now
+              </a>
+            </button>
+            <footer>© BS&MFI Solutions. All Rights Reserved.</footer>
+          </div>
+          
+        `;
+        calculateFee();
+    } 
+    else if (currentTab === 3) {
+        titleEl.textContent = "Pre-Saver";
+        contentEl.innerHTML = `
+          <div style="text-align:center;">
+            <p style="color:var(--text2);    margin-bottom: 20px;line-height:1.5;">
+              By using Pre-saver you can save the particular upcoming offer (or) amounts on a perticular date..
+            </p>
+            <a href="https://forms.gle/rtcayowFYw48u94PA">
+              <button class="btn-primary">Pre-Save Now</button>
+            </a>
+          </div>
+        `;
+    } 
+    else {
+        titleEl.textContent = "Lendlink - Mid";
+        contentEl.innerHTML = `
+          <div style="text-align:center;">
+            <i class="fa-solid fa-star" style="font-size:4rem; color:#00aaff; margin-bottom:1.5rem;"></i>
+            <h3 style="font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 0.75rem;">Welcome to Lendlink - Mid</h3>
+            <p style="color:var(--text2); max-width:240px; margin:0 auto;">Turn your money into income.</p>
+            <a href="https://mfi0212.github.io/swan/lndlnk-mid">
+              <button class="btn-primary" style="margin-top:3rem;">Explore Now</button>
+            </a>
+          </div>
+        `;
+    }
 }
 
-renderAll();
+    function submitApplication() {
+      hideModal();
+      window.open(googleFormUrl, '_blank');
+    }
 
-document.getElementById("searchInput").addEventListener("input", e => {
-  renderFiltered(e.target.value);
-});
-</script>
+    function calculateFee() {
+      const input = document.getElementById('amount-input');
+      if (!input) return;
+      let amount = parseFloat(input.value) || 1000;
+      const rate = fees[currentTab];
+      const fee = (amount * rate / 100);
+      const total = amount + fee;
 
+      document.getElementById('base-amount').textContent = '$' + amount.toFixed(2);
+      document.getElementById('fee-amount').textContent = '$' + fee.toFixed(2);
+      document.getElementById('total-amount').textContent = '$' + total.toFixed(2);
+    }
+
+    function hideModal() {
+      const modal = document.getElementById('modal');
+      modal.classList.remove('show');
+    }
+
+    function toggleTheme() {
+      isDarkMode = !isDarkMode;
+      if (isDarkMode) {
+        document.body.classList.remove('light');
+        document.getElementById('theme-icon').classList.replace('fa-sun', 'fa-moon');
+      } else {
+        document.body.classList.add('light');
+        document.getElementById('theme-icon').classList.replace('fa-moon', 'fa-sun');
+      }
+    }
+
+    window.onload = () => {
+      switchTab(0);
+      console.log('%c✅ BS & MFI — Full pure CSS version (NO Tailwind CDN)', 'color:#0000ff; font-weight:600');
+    };    function goBack() {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        alert("✅ Back button clicked!\n\n(In a real app this would take you to previous screen or home.)");
+      }
+    }
+  </script>
 </body>
 </html>
