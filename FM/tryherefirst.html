@@ -184,7 +184,7 @@ button.theme-btn {
     text-align: center;
     font-size: 10px;
     position: fixed;
-    bottom: 0px;
+    bottom: 15px;
     width: 100%;
     left: 0;
     color: #ffffffc9;
@@ -263,7 +263,7 @@ button.theme-btn {
     .modal {
      position: fixed;
     inset: 0;
-    background-color: #4d5156;
+    background-color: #000000b8;
     display: none;
     align-items: center;
     justify-content: center;
@@ -274,18 +274,14 @@ button.theme-btn {
     }
     
     .modal-content {
-     background-color: transparent;
-    width: 100%;
+    width: 94%;
     max-width: 600px;
-    border-radius: 16px 16px 0 0;
+    border-radius: 25px;
     overflow: hidden;
-    animation: slideUp 0.3s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+    animation: 0.3s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+    background: #4d5156;
 }
-    
-    @keyframes slideUp {
-      from { transform: translateY(100%); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
+
     
     .modal-header {
      padding: 1.25rem 1.5rem;
@@ -295,7 +291,7 @@ button.theme-btn {
     }
     
     .modal-body {
-      padding: 1.5rem;
+      padding: 0 1rem 1rem;
     }
     
     .section-title {
@@ -345,7 +341,7 @@ button.theme-btn {
     align-items: center;
     background-color: #000000;
     border-radius: 13px;
-    padding: 0 1.5rem;
+    padding: 0 1rem;
     }
     .amount-input {
       flex: 1;
@@ -379,7 +375,7 @@ button.theme-btn {
     
     .btn-secondary {
        width: 100%;
-    border: 2px solid #00aaff;
+    border: 1.5px solid #00aaff;
     background: transparent;
     color: #00aaff;
     font-weight: 600;
