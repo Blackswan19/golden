@@ -18,13 +18,13 @@
 
         * { margin:0; padding:0; box-sizing:border-box; }
         body {
-            font-family: "Noto Sans", sans-serif;letter-spacing: 0.5px;}
+            font-family: "Noto Sans", sans-serif;letter-spacing: 0.2px;}
     :root {
       --bg: #111920;
       --header: #121212;
       --card: #ffffff0f;
       --text: #ffffff;
-      --text2: #d2d2d2;
+      --text2: #ffffff63;
       --accent: #0000ff;
     }
     .light {
@@ -82,7 +82,10 @@ body:has(input[value="dim"]:checked) {
 
 }
     * { margin:0; padding:0; box-sizing:border-box; scrollbar-width: none;}
-    
+    h2 {
+    text-align: center;
+    color: #00aaff;
+}
     body {
       background-color: var(--bg);
       color: var(--text);
@@ -145,7 +148,7 @@ button.theme-btn {
     width: 100%;
     left: 50%;
     transform: translate(-50%, 0%);
-    padding: 15px;
+    padding: 15px;backdrop-filter: blur(1px);
     max-width: 550px;
 }
    .nav-container {
@@ -242,6 +245,7 @@ button.theme-btn {
     text-align: center;
     color: #00aaff;
     font-weight: 600;
+    font-size: 1.125rem;
 }
     .card {
       background-color: var(--card);
@@ -305,14 +309,14 @@ button.theme-btn {
     
     .how-it-works {
    background: #30455d5e;
-    border-radius: 15px;
+    border-radius: 25px;
     padding: 13px;
     }
     
     /* FAQ STYLING */
     .faq-container {
      background: #30455d5e;
-    border-radius: 15px;
+    border-radius: 25px;
     padding: 13px;
     }
 .faq-item {
@@ -327,7 +331,7 @@ button.theme-btn {
     color: var(--text);
     margin-bottom: 0.5rem;
     }li {
-    line-height: 23px;
+    line-height: 25px;
 }
     .faq-item p {
      color: var(--text2);
