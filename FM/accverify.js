@@ -99,7 +99,7 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "26-02-2026", endDate: "28-03-2026", interest: 1600, takenAmount: 5000, takenFrom: "MLLD", fineRate: 80 }
+            { planDate: "26-02-2026", endDate: "28-03-2026", interest: 1600, takenAmount: 5000, takenFrom: "MLLD", fineRate: 55 }
         ]
     },
 };
