@@ -84,24 +84,7 @@ const passwords = {
             { planDate: "29-05-2025", endDate: "29-05-2025", interest: 5600, takenAmount: 25000, takenFrom: "MLending", fineRate: 80 }
         ]
     },
-    "Deepak@1": {
-        name: "Deepak",
-        membershipType: "",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "rgb(255, 0, 0)",
-        stars: 0,
-        coins: 0,
-        tierPoints: 0,
-        showCustomContent: "no",
-        customContent: {
-            type: "image",
-            value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
-        },
-        loans: [
-            { planDate: "26-02-2026", endDate: "28-03-2026", interest: 1600, takenAmount: 5000, takenFrom: "MLLD", fineRate: 55 }
-        ]
-    },
+    
 };
 
 
