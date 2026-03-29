@@ -250,15 +250,9 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         borrowLimitMessage.innerHTML = `
             <div class="bot">
                 <p class="borrowLimitMessage">
-                    <span style='font-size: 15px;
-    color: #00aeff;
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: 900;
-    text-transform: capitalize;
-    line-height: 30px;'>
+                    <span>
                         <strong>${ad.headline}</strong> (Ad)
-                    </span> : <br>
+                    </span>  <br>
                     ${ad.desc}
                     <br><a class="exploreadds" href="${ad.link}" 
                        >
