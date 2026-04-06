@@ -4,19 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BsRora</title>
-    <link href="https://fonts.googleapis.com/css2?family=Balthazar&family=Della+Respira&family=Hahmlet:wght@100..900&family=Niconne&family=Stalemate&display=swap" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box;scrollbar-width: thin; }
 
         body {
             font-family: 'Roboto', sans-serif;
@@ -26,43 +20,37 @@
             justify-content: center;
             min-height: 100vh;
             color: #e0e0e0;
+            scrollbar-color: gray transparent;
         }
 
         .chat-container {
-           width: 100%;
-    max-width: 420px;
-    height: 92vh;
-    background: #0a0a0a;
-    border: 1px solid #1a1a1a;
-    border-radius: 0px;
-    overflow: hidden;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
-    display: flex;
-    flex-direction: column;
+            width: 100%;
+            max-width: 420px;
+            height: 92vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Header */
         .header {
-            background: #111111;
-            padding: 14px 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border-bottom: 1px solid #222;
+               background: transparent;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
         }
 
         .avatar {
-            width: 38px;
-    height: 38px;
-    border-radius: 35%;
-    background: linear-gradient(135deg, #007acc, #8bd0ff);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 21px;
-    font-weight: 500;
-    color: #000;
-    flex-shrink: 0;
+            width: 38px; height: 38px;
+            border-radius: 35%;
+            background: linear-gradient(135deg, #007acc, #8bd0ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            font-weight: 500;
+            color: #000;    position: sticky;
+    top: 0px;
         }
 
         .header-info h1 {
@@ -71,69 +59,31 @@
             color: #ffffff;
         }
 
-        .status {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            color: #007acc;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: #007acc;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-
-        /* Chat Messages */
         .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px 16px;
-            background: #0a0a0a;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            scrollbar-width: thin;
-            scrollbar-color: #333 #0a0a0a;
-        }
-
-        .chat-messages::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        .chat-messages::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 20px;
+                flex: 1;
+    overflow-y: auto;
+    padding: 20px 16px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
         }
 
         .message {
             display: flex;
-            max-width: 85%;
+            max-width: 100%;
             gap: 8px;
         }
 
-        .bot-message {
-            align-self: flex-start;
-        }
-
-        .user-message {
-            align-self: flex-end;
-            flex-direction: row-reverse;
-        }
+        .bot-message { align-self: flex-start; }
+        .user-message { align-self: flex-end; flex-direction: row-reverse; }
 
         .bubble {
-            padding: 11px 16px;
+            padding: 11px 10px;
             border-radius: 18px;
             font-size: 15.5px;
             line-height: 1.45;
+            width: 80%;
         }
 
         .bot-bubble {
@@ -148,13 +98,11 @@
             border-bottom-right-radius: 5px;
         }
 
-        /* Offer Card */
         .offer-card {
             background: #161616;
             border: 1px solid #252525;
             border-radius: 12px;
-            padding: 16px;
-            margin: 10px 0;
+            padding: 16px;    margin-bottom: 10px;
             border-left: 4px solid #007acc;
         }
 
@@ -169,17 +117,15 @@
             font-size: 15.5px;
             font-weight: 500;
             color: #ffffff;
-            flex: 1;
         }
 
         .discount-badge {
             background: #003322;
-            color: #007acc;
+            color: #00ffaa;
             font-size: 12px;
             font-weight: bold;
             padding: 4px 10px;
             border-radius: 20px;
-            white-space: nowrap;
         }
 
         .offer-description {
@@ -189,45 +135,38 @@
         }
 
         .offer-dates {
-            display: flex;
-            justify-content: space-between;
             font-size: 13px;
             color: #888888;
+            margin-top: 8px;
         }
 
         .apply-btn {
             margin-top: 12px;
             width: 100%;
             background: #007acc;
-            color: #000000;
+            color: #000;
             font-weight: 500;
             padding: 10px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 14px;
-            transition: all 0.2s;
         }
 
         .apply-btn:hover {
-            background: #00cc7a;
-            transform: scale(1.02);
+            background: #002fff;
+            color: white;
         }
 
-        /* Input Area */
         .input-area {
-            background: #111111;
             padding: 14px 16px;
-            border-top: 1px solid #222;
         }
 
         .input-box {
             background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 9999px;
-            padding: 8px 16px;
-            display: flex;
-            align-items: center;
+    border-radius: 9999px;
+    padding: 5px 5px 5px 15px;
+    display: flex;
+    align-items: center;
         }
 
         #user-input {
@@ -237,10 +176,6 @@
             outline: none;
             color: #ffffff;
             font-size: 15.5px;
-        }
-
-        #user-input::placeholder {
-            color: #666666;
         }
 
         .send-btn {
@@ -254,7 +189,6 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 16px;
         }
 
         .hint {
@@ -268,39 +202,28 @@
 <body>
 
     <div class="chat-container">
-
-        <!-- Header -->
         <div class="header">
             <div class="avatar">B</div>
             <div class="header-info">
                 <h1>BsRora</h1>
             </div>
-            <div style="    margin-left: auto;
-    color: #007acc;
-    font-size: 16px;
-    font-weight: 500;">
-                <a style="    text-decoration: underline;
-    color: #0079ca;" href="https://forms.gle/JdHM4sXKS8VY9Doc9">Turbo : 8$/mon</a>
+            <div style="margin-left: auto; color: #007acc; font-size: 16px; font-weight: 500;">
+                <a href="https://forms.gle/JdHM4sXKS8VY9Doc9" style="color:#0079ca; text-decoration:underline;">Turbo : 8$/mon</a>
             </div>
         </div>
 
-        <!-- Messages Area -->
         <div id="chat-messages" class="chat-messages"></div>
 
-        <!-- Input Area -->
         <div class="input-area">
             <div class="input-box">
-                <input 
-                    id="user-input"
-                    type="password"
-                    placeholder="Enter password to unlock offers..."
-                    onkeydown="if(event.key === 'Enter') sendMessage()">
+                <input id="user-input" type="password" placeholder="Enter password to unlock offers..." 
+                       onkeydown="if(event.key === 'Enter') sendMessage()">
                 <button onclick="sendMessage()" class="send-btn">
                     <i class="fas fa-paper-plane"></i>
                 </button>
             </div>
             <div id="hint" class="hint">
-                Demo Password: <span style="color:#007acc; font-family: monospace;">bsrora2026</span>
+                Power by BS&MFI
             </div>
         </div>
     </div>
@@ -313,7 +236,7 @@
                 title: "Summer Mega Sale",
                 description: "Up to 70% OFF on Electronics, Fashion & Home Appliances",
                 startDate: "2026-03-25",
-                endDate: "2026-04-25",
+                endDate: "2026-04-03",
                 discount: "70% OFF"
             },
             {
@@ -325,7 +248,7 @@
             },
             {
                 title: "Festive Cashback",
-                description: "Flat ₹300 cashback on orders above ₹1500 using any bank card",
+                description: "Flat ₹300 cashback on orders above ₹1500",
                 startDate: "2026-04-05",
                 endDate: "2026-04-20",
                 discount: "₹300 CB"
@@ -334,11 +257,21 @@
 
         function formatDate(dateStr) {
             const date = new Date(dateStr);
-            return date.toLocaleDateString('en-IN', { 
-                day: 'numeric', 
-                month: 'short', 
-                year: 'numeric' 
-            });
+            return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+        }
+
+        // Check if offer is currently active (today is between start and end date)
+        function isOfferActive(offer) {
+            const today = new Date();
+            const start = new Date(offer.startDate);
+            const end = new Date(offer.endDate);
+
+            // Reset time to compare only dates
+            today.setHours(0, 0, 0, 0);
+            start.setHours(0, 0, 0, 0);
+            end.setHours(23, 59, 59, 999);
+
+            return today >= start && today <= end;
         }
 
         function addMessage(sender, content, isHTML = false) {
@@ -349,16 +282,10 @@
             if (sender === 'bot') {
                 div.innerHTML = `
                     <div class="avatar">B</div>
-                    <div class="bubble bot-bubble">
-                        ${isHTML ? content : `<p>${content}</p>`}
-                    </div>
+                    <div class="bubble bot-bubble">${isHTML ? content : `<p>${content}</p>`}</div>
                 `;
             } else {
-                div.innerHTML = `
-                    <div class="bubble user-bubble">
-                        <p>${content}</p>
-                    </div>
-                `;
+                div.innerHTML = `<div class="bubble user-bubble"><p>${content}</p></div>`;
             }
             chat.appendChild(div);
             chat.scrollTop = chat.scrollHeight;
@@ -373,51 +300,48 @@
                     </div>
                     <div class="offer-description">${offer.description}</div>
                     <div class="offer-dates">
-                        <div>Start: <span style="color:#ddd">${formatDate(offer.startDate)}</span></div>
-                        <div>End: <span style="color:#ddd">${formatDate(offer.endDate)}</span></div>
+                        Start: ${formatDate(offer.startDate)} &nbsp; | &nbsp; End: ${formatDate(offer.endDate)}
                     </div>
-                    <a href="https://forms.gle/8qEYp6UqVfh65Vir7"><button onclick="applyOffer('${offer.title}')" class="apply-btn">
-                        Apply Now
-                    </button></a>
+                    <button onclick="applyOffer('${offer.title}')" class="apply-btn">Apply Now</button>
                 </div>
             `;
         }
 
+        function applyOffer(title) {
+            alert(`✅ You successfully applied for: "${title}"`);
+        }
+
         function showOffers() {
+            const activeOffers = OFFERS.filter(isOfferActive);
+
             addMessage('bot', '✅ Password verified!<br>Here are the currently active offers:', true);
 
-            let offersHTML = '';
-            OFFERS.forEach(offer => {
-                offersHTML += createOfferCard(offer);
-            });
+            if (activeOffers.length === 0) {
+                addMessage('bot', '😕 No active offers right now.<br>Please check back later!', true);
+                return;
+            }
+
+            let offersHTML = activeOffers.map(offer => createOfferCard(offer)).join('');
 
             const chat = document.getElementById('chat-messages');
             const offerDiv = document.createElement('div');
             offerDiv.className = 'message bot-message';
             offerDiv.innerHTML = `
                 <div class="avatar">B</div>
-                <div class="bubble bot-bubble">
-                    ${offersHTML}
-                </div>
+                <div class="bubble bot-bubble">${offersHTML}</div>
             `;
             chat.appendChild(offerDiv);
             chat.scrollTop = chat.scrollHeight;
         }
-
-    //    function applyOffer(title) {
-    //         alert(`🎉 You applied for the offer: "${title}"\n\nOffer has been successfully applied!`);
-    //     } 
 
         let isVerified = false;
 
         function sendMessage() {
             const input = document.getElementById('user-input');
             const value = input.value.trim();
-
             if (!value) return;
 
             if (!isVerified) {
-                // Show masked password
                 addMessage('user', '••••••••••');
 
                 setTimeout(() => {
@@ -425,33 +349,28 @@
                         isVerified = true;
                         addMessage('bot', '🔓 Access Granted!<br>Welcome to BsRora!', true);
 
-                        // Change input to normal mode
                         input.type = 'text';
                         input.placeholder = 'Type a message...';
-                        document.getElementById('hint').innerHTML = 
-                            '<span style="color:#007acc">✅ Verified • Full access unlocked</span>';
+                        document.getElementById('hint').innerHTML = '<span style="color:#007acc">✅ Verified • Full access unlocked</span>';
 
-                        setTimeout(showOffers, 600);
+                        setTimeout(showOffers, 700);
                     } else {
-                        addMessage('bot', '❌ Incorrect password. Please try again.', true);
+                        addMessage('bot', '❌ Incorrect password. Try again.', true);
                     }
                 }, 600);
             } else {
                 addMessage('user', value);
-                setTimeout(() => {
-                    addMessage('bot', 'Here are the active offers 👆', true);
-                }, 400);
+                setTimeout(() => addMessage('bot', 'Here are the currently active offers 👆', true), 400);
             }
 
             input.value = '';
         }
 
-        // Initialize Chat
         window.onload = () => {
             addMessage('bot', `
                 Hello! 👋<br><br>
                 I am <strong>BsRora</strong>.<br>
-                Enter the password to view all active offers.<br><br>If you don't have a password or would like to create an account, click here: $8/month and apply for account activation..
+                Enter the password to view currently active offers.
             `, true);
 
             document.getElementById('user-input').focus();
