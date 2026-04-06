@@ -294,7 +294,7 @@
             <h2>Stars Calculator</h2>
             
             <div class="stars-slider">
-                <div id="starsCount" class="stars-count">1,000 ⭐</div>
+                <div id="starsCount" class="stars-count">1,000⭐</div>
 
                 <!-- Extra Quick Buttons -->
                 <div class="extra-controls">
@@ -388,7 +388,7 @@
         function updateDisplay() {
             let stars = parseInt(slider.value);
             
-            starsCount.textContent = stars.toLocaleString('en-IN') + " ⭐";
+            starsCount.textContent = stars.toLocaleString('en-IN') + "⭐";
             starsCount.classList.add('pop');
             setTimeout(() => starsCount.classList.remove('pop'), 180);
 
