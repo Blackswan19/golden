@@ -65,7 +65,18 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-
+.buyNow{
+    background: var(--accent);
+    color: #000;
+    border: none;
+    padding: 14px 25px;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+}
         .header {
             text-align: center;
             padding: 32px 0 40px;
@@ -119,7 +130,7 @@
             font-size: 48px;
             font-weight: 700;
             color: var(--accent);
-            margin-bottom: 8px;
+            margin-bottom: 16px;
             transition: transform 0.2s ease-out;
         }
 
@@ -129,13 +140,13 @@
 
         .slider-wrapper {
             position: relative;
-            padding: 0 20px;
+            padding: 0 12px;
         }
 
         .slider-controls {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
         }
 
         .control-btn {
@@ -145,8 +156,8 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            font-size: 24px;
-            font-weight: 500;
+            font-size: 22px;
+            font-weight: 600;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -158,6 +169,31 @@
             background: var(--accent);
             color: #000;
             transform: scale(0.9);
+        }
+
+        /* Extra control buttons */
+        .extra-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 12px 0;
+        }
+
+        .extra-btn {
+            background: rgba(255,255,255,0.08);
+            color: var(--text);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .extra-btn:active {
+            background: var(--accent);
+            color: #000;
         }
 
         input[type="range"] {
@@ -175,7 +211,7 @@
             justify-content: space-between;
             font-size: 15px;
             color: var(--text-dim);
-            margin-top: 6px;
+            margin-top: 8px;
         }
 
         button#main-btn {
@@ -188,7 +224,7 @@
             border-radius: 30px;
             cursor: pointer;
             width: 100%;
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
         #result {
@@ -258,13 +294,21 @@
             <h2>Stars Calculator</h2>
             
             <div class="stars-slider">
-                <div id="starsCount" class="stars-count">1000 ⭐</div>
+                <div id="starsCount" class="stars-count">1,000 ⭐</div>
+
+                <!-- Extra Quick Buttons -->
+                <div class="extra-controls">
+                    <button class="extra-btn" onclick="changeStars(-10)">−10</button>
+                    <button class="extra-btn" onclick="changeStars(-1)">−1</button>
+                    <button class="extra-btn" onclick="changeStars(1)">+1</button>
+                    <button class="extra-btn" onclick="changeStars(10)">+10</button>
+                </div>
 
                 <div class="slider-wrapper">
                     <div class="slider-controls">
-                        <button class="control-btn" onclick="changeStars(-1)">−</button>
+                        <button class="control-btn" onclick="changeStars(-100)">−</button>
                         <input type="range" id="starSlider" min="1" max="10000" value="1000" step="1">
-                        <button class="control-btn" onclick="changeStars(1)">+</button>
+                        <button class="control-btn" onclick="changeStars(100)">+</button>
                     </div>
                 </div>
 
@@ -278,7 +322,7 @@
             <div id="result"></div>
         </div>
 
-        <!-- Rest of your sections remain the same -->
+        <!-- Rest of the sections remain unchanged -->
         <div class="section">
             <h2>Why Stars?</h2>
             <ul>
@@ -302,7 +346,7 @@
 
         <div class="section center">
             <a href="https://forms.gle/SVZE13rMgnoqRMF88" style="text-decoration:none;">
-                <button style="width:49%; padding:12px; max-width:300px;">Buy Stars Now</button>
+                <button class="buyNow">Buy Stars Now</button>
             </a>
         </div>
 
@@ -344,12 +388,10 @@
         function updateDisplay() {
             let stars = parseInt(slider.value);
             
-            // Update big count with animation
             starsCount.textContent = stars.toLocaleString('en-IN') + " ⭐";
             starsCount.classList.add('pop');
             setTimeout(() => starsCount.classList.remove('pop'), 180);
 
-            // Update progress fill
             const percent = ((stars - slider.min) / (slider.max - slider.min)) * 100;
             slider.style.setProperty('--progress', percent + '%');
         }
@@ -372,12 +414,8 @@
             `;
         }
 
-        // Real-time update while sliding
-        slider.addEventListener('input', () => {
-            updateDisplay();
-            // Optional: auto calculate while sliding
-            // calculateCost();
-        });
+        // Real-time update
+        slider.addEventListener('input', updateDisplay);
 
         // Initialize
         updateDisplay();
