@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BsRora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Balthazar&family=Della+Respira&family=Hahmlet:wght@100..900&family=Niconne&family=Stalemate&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
@@ -48,17 +53,16 @@
 
         .avatar {
             width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #00ff9d, #00cc6e);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 21px;
-            font-weight: bold;
-            color: #000;
-            flex-shrink: 0;
-            box-shadow: 0 0 10px rgba(0, 255, 140, 0.3);
+    height: 38px;
+    border-radius: 35%;
+    background: linear-gradient(135deg, #007acc, #8bd0ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+    font-weight: 500;
+    color: #000;
+    flex-shrink: 0;
         }
 
         .header-info h1 {
@@ -72,13 +76,13 @@
             align-items: center;
             gap: 6px;
             font-size: 12px;
-            color: #00ff9d;
+            color: #007acc;
         }
 
         .status-dot {
             width: 8px;
             height: 8px;
-            background: #00ff9d;
+            background: #007acc;
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
@@ -151,7 +155,7 @@
             border-radius: 12px;
             padding: 16px;
             margin: 10px 0;
-            border-left: 4px solid #00ff9d;
+            border-left: 4px solid #007acc;
         }
 
         .offer-header {
@@ -170,7 +174,7 @@
 
         .discount-badge {
             background: #003322;
-            color: #00ff9d;
+            color: #007acc;
             font-size: 12px;
             font-weight: bold;
             padding: 4px 10px;
@@ -194,7 +198,7 @@
         .apply-btn {
             margin-top: 12px;
             width: 100%;
-            background: #00ff9d;
+            background: #007acc;
             color: #000000;
             font-weight: 500;
             padding: 10px;
@@ -270,13 +274,13 @@
             <div class="avatar">B</div>
             <div class="header-info">
                 <h1>BsRora</h1>
-                <div class="status">
-                    <span class="status-dot"></span>
-                    online
-                </div>
             </div>
-            <div style="margin-left: auto; color: #666; font-size: 20px;">
-                <i class="fas fa-ellipsis-v"></i>
+            <div style="    margin-left: auto;
+    color: #007acc;
+    font-size: 16px;
+    font-weight: 500;">
+                <a style="    text-decoration: underline;
+    color: #0079ca;" href="https://forms.gle/JdHM4sXKS8VY9Doc9">Turbo : 8$/mon</a>
             </div>
         </div>
 
@@ -296,7 +300,7 @@
                 </button>
             </div>
             <div id="hint" class="hint">
-                Demo Password: <span style="color:#00ff9d; font-family: monospace;">bsrora2026</span>
+                Demo Password: <span style="color:#007acc; font-family: monospace;">bsrora2026</span>
             </div>
         </div>
     </div>
@@ -372,9 +376,9 @@
                         <div>Start: <span style="color:#ddd">${formatDate(offer.startDate)}</span></div>
                         <div>End: <span style="color:#ddd">${formatDate(offer.endDate)}</span></div>
                     </div>
-                    <button onclick="applyOffer('${offer.title}')" class="apply-btn">
+                    <a href="https://forms.gle/8qEYp6UqVfh65Vir7"><button onclick="applyOffer('${offer.title}')" class="apply-btn">
                         Apply Now
-                    </button>
+                    </button></a>
                 </div>
             `;
         }
@@ -400,9 +404,9 @@
             chat.scrollTop = chat.scrollHeight;
         }
 
-        function applyOffer(title) {
-            alert(`🎉 You applied for the offer: "${title}"\n\nOffer has been successfully applied!`);
-        }
+    //    function applyOffer(title) {
+    //         alert(`🎉 You applied for the offer: "${title}"\n\nOffer has been successfully applied!`);
+    //     } 
 
         let isVerified = false;
 
@@ -425,7 +429,7 @@
                         input.type = 'text';
                         input.placeholder = 'Type a message...';
                         document.getElementById('hint').innerHTML = 
-                            '<span style="color:#00ff9d">✅ Verified • Full access unlocked</span>';
+                            '<span style="color:#007acc">✅ Verified • Full access unlocked</span>';
 
                         setTimeout(showOffers, 600);
                     } else {
@@ -447,7 +451,7 @@
             addMessage('bot', `
                 Hello! 👋<br><br>
                 I am <strong>BsRora</strong>.<br>
-                Enter the password to unlock and view all active offers with start &amp; end dates.
+                Enter the password to view all active offers.<br><br>If you don't have a password or would like to create an account, click here: $8/month and apply for account activation..
             `, true);
 
             document.getElementById('user-input').focus();
