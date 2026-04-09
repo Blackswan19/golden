@@ -190,7 +190,6 @@
     justify-content: center;
     }
     .time-icon i:hover { cursor: pointer; color: white; }
-/* ----------  POP-UP TRANSITIONS  ---------- */
 .popup-container {
   position: fixed;
   top: 0; left: 0;
@@ -198,10 +197,9 @@
   background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
-  justify-content: center;          /* centre the popup */
+  justify-content: center;
   visibility: hidden;
   opacity: 0;
-  /* NEW TRANSFORM ANIMATION */
   transform: scale(0.7) translateY(-40px);
   transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s;
   z-index: 300;
@@ -223,12 +221,13 @@
   transform: scale(1);
 }
     .popup {
-      background-color: #0e0e0e;
-      max-width: 400px;
-      padding: 20px;
-      border-radius: 30px;
-      border: 1px solid #a2a2a224;
-      width: 95%;
+     background-color: transparent;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 40px;
+    border: 1.5px solid #a2a2a247;
+    width: 95%;
+    backdrop-filter: blur(3px);
     }
     .country-list li {
       cursor: pointer;
@@ -241,20 +240,21 @@
     .popup h2 { margin-top: 0; }
     .country-list { list-style: none; padding: 0; }
     .popup button {
-      padding: 8px;
-      background-color: #004aff;
-      color: #fff;
-      border: none;
-      border-radius: 43px;
-      cursor: pointer;
-      width: 100%;
+    padding: 10px;
+    background-color: #002aff;
+    color: #fff;
+    border: none;
+    border-radius: 53px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 15px;
     }
     .popup button:hover { background-color: #002bb5; }
     .popup-container.visible {
       visibility: visible;
       opacity: 1;
       justify-content: center;
-      z-index: 300;
+      z-index: 30000000;
     }
     .time-display { margin-top: 15px; font-weight: bold; white-space: nowrap;}
 
@@ -364,7 +364,10 @@
       box-shadow: 0 4px 15px rgba(0, 64, 255, 0.4);
       cursor: pointer;
       z-index: 150;
-    }
+    }strong {
+    color: #ff9300;
+    text-decoration: underline;
+}
     .fab:hover {
       transform: scale(1.1);
     }
@@ -464,7 +467,7 @@
     <div class="popup privacy-popup">
       <h2><i class="fa-solid fa-lock"></i> Privacy First</h2>
       <p style="color: #ccc; line-height: 1.6; font-size: 15px;">
-        At <strong>Black Swan</strong>, we <u>don't track</u>, we don't need any data, and we don't use cookies for analytics.<br><br>
+        At <strong>Black Swan</strong>, we <strong>don't track</strong>, we don't need any data, and we don't use cookies for analytics.<br><br>
         All the data <strong>generated from using our site</strong> including notes, search history, saved links, and etc.. are <strong>stored locally on your device only.</strong>
       </p>
       <p style="color: #ccc; font-size: 14px;">
