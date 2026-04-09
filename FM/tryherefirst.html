@@ -73,31 +73,28 @@
 
     /* Options */
     .options {
-       overflow-x: scroll;
-    scrollbar-width: thin;
-    scrollbar-color: #ffffff3b transparent;
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 5px;
+    margin-bottom: 10px;
+    z-index: 1;
     max-width: 700px;
+    width: 100%;
     }
     .option {
-        border-radius: 40px;
-    cursor: pointer;
-    color: white;
-    font-weight: 600;
-    border: none;
-    padding: 2px 10px;
-    background: #ffffff3d;
-
-    }.allsites {
-    display: flex;
-    justify-content: flex-start;
-    gap: 10px;
-    margin-bottom: 10px;
-    padding: 10px;
-}
+      padding: 8px 15px;
+      border: 2px solid #343434b3;
+      border-radius: 40px;
+      background-color: #00000091;
+      cursor: pointer;
+      color: #8c8c8c;
+      font-weight: 600;
+    }
     .option:hover {
-     border-radius: 100px;
-    background: blue;
+      background-color: #0040ff;
+      color: white;
+      border: solid 2px #0040ff;
     }
 
     .search-buttons {
@@ -190,6 +187,7 @@
     justify-content: center;
     }
     .time-icon i:hover { cursor: pointer; color: white; }
+/* ----------  POP-UP TRANSITIONS  ---------- */
 .popup-container {
   position: fixed;
   top: 0; left: 0;
@@ -197,9 +195,10 @@
   background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center;          /* centre the popup */
   visibility: hidden;
   opacity: 0;
+  /* NEW TRANSFORM ANIMATION */
   transform: scale(0.7) translateY(-40px);
   transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s;
   z-index: 300;
@@ -240,7 +239,7 @@
     .popup h2 { margin-top: 0; }
     .country-list { list-style: none; padding: 0; }
     .popup button {
-    padding: 10px;
+     padding: 10px;
     background-color: #002aff;
     color: #fff;
     border: none;
@@ -248,7 +247,10 @@
     cursor: pointer;
     width: 100%;
     font-size: 15px;
-    }
+    }strong {
+    color: #ff9300;
+    text-decoration: underline;
+}
     .popup button:hover { background-color: #002bb5; }
     .popup-container.visible {
       visibility: visible;
@@ -364,10 +366,7 @@
       box-shadow: 0 4px 15px rgba(0, 64, 255, 0.4);
       cursor: pointer;
       z-index: 150;
-    }strong {
-    color: #ff9300;
-    text-decoration: underline;
-}
+    }
     .fab:hover {
       transform: scale(1.1);
     }
@@ -421,6 +420,7 @@
       .search-buttons { padding: 5px 10px; }
       .search-buttons button { font-size: 16px; }
       .options { gap: 8px; }
+      .option { padding: 8px 15px; font-size: 12px; }
       .extra-options { width: 100%; gap: 8px; }
     }
 </style>
@@ -474,7 +474,7 @@
         <em>MEAN :</em><br>
         No servers, no cloud, no third-party access<br>
       </p>
-      <div style="margin-top: 20px; padding: 10px; background: #1a1a1a; border-radius: 10px; font-size: 13px; color: rgb(0, 255, 251);">
+      <div style="margin-top: 20px; padding: 10px; background: #1a1a1a; border-radius: 20px; font-size: 13px; color: rgb(0, 255, 251);">
         Use <code>Ctrl+Shift+Delete</code> to Clear data from local store.
       </div>
       <button onclick="closePrivacyPopup()" style="margin-top: 15px;">Got it!</button>
@@ -507,8 +507,7 @@
   </div>
 
   <div class="options">
-    <div class="allsites">
-       <button class="option" onclick="openLink(20)">BsBlackroom</button>
+    <button class="option" onclick="openLink(20)">BsBlackroom</button>
     <button class="option" onclick="openLink(1)">BsNote</button>
     <button class="option" onclick="openLink(2)">BsWebs</button>
     <button class="option" onclick="openLink(10)">BsFilexplorer</button>
