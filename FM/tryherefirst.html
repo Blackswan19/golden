@@ -56,18 +56,23 @@
 
     /* Search Bar */
     .search-bar {
-      margin: 12px 20px 20px;
-      padding: 14px 20px;
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.08);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 16px;
-      color: var(--text-secondary);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+     margin: 12px 20px 20px;
+    padding: 10px;
+    border-radius: 9999px;
+    background: rgb(255 255 255 / 15%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    color: var(--text-secondary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    justify-content: center;
     }
-
+.search-bar img{
+  width: 35px;
+    height: 35px;
+    border-radius: 10px;
+}
     .search-bar input {
       background: transparent;
       border: none;
@@ -79,11 +84,11 @@
 
     /* App Grid */
     .app-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 28px 16px;
-      padding: 0 24px;
-      margin-bottom: 40px;
+     display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 28px 16px;
+    padding: 0 24px;
+    margin-bottom: 40px;
     }
 
     .app-item {
@@ -124,34 +129,28 @@
 
     .notes-header {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       margin-bottom: 16px;
     }
 
     .note-card {
-      background: #2a2a2a;
-      color: white;
-      border-radius: 24px;
-      padding: 18px;
-      margin-bottom: 14px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+          background: #2a2a2a;
+    color: white;
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     }
 
     /* Bottom Navigation (Android Style) */
     .bottom-nav {
-      position: absolute;
-      bottom: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(30, 30, 35, 0.95);
-      backdrop-filter: blur(30px);
-      border-radius: 9999px;
-      padding: 8px 16px;
-      display: flex;
-      gap: 28px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+         position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 28px;
     }
 
     .nav-icon {
@@ -262,8 +261,8 @@
 
     <!-- Search Bar -->
     <div class="search-bar">
-      <span style="opacity: 0.7;">🔍</span>
-      <input id="search" type="text" placeholder="Search apps, web & more">
+      <span style="opacity: 0.7;"><img src="mfi.gif" alt=""></span>
+      <span> Myootive Services ></span>
     </div>
 
     <!-- App Grid -->
