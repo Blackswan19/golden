@@ -4,197 +4,390 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>iOS Home</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600&display=swap');
-    
+
+    :root {
+      --bg: #0a0a0a;
+      --glass: rgba(30, 30, 40, 0.75);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --text: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.75);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'SF Pro Display', system-ui, sans-serif;
-      background: linear-gradient(180deg, #1e3a8a, #312e81, #1e1b4b);
+      font-family: 'SF Pro Display', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(180deg, #0f172a, #1e1b4b, #0a0a0a);
       height: 100vh;
       overflow: hidden;
-      color: white;
+      color: var(--text);
+      user-select: none;
     }
 
+    /* Glass Effect */
     .glass {
-      background: rgba(255, 255, 255, 0.13);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: var(--glass);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
     }
 
-    /* App Icons with Spring Press */
+    /* Container */
+    .phone-frame {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      height: 100vh;
+      max-height: 812px;
+      background: #111;
+      border-radius: 48px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 80px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Status Bar */
+    .status-bar {
+      height: 44px;
+      padding: 0 24px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* Search Bar */
+    .search-bar {
+      margin: 8px 20px 16px;
+      padding: 12px 20px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 17px;
+      color: var(--text-secondary);
+    }
+
+    .search-bar input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: white;
+      flex: 1;
+      font-size: 17px;
+    }
+
+    /* App Grid */
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px 16px;
+      padding: 0 20px;
+      margin-bottom: 40px;
+    }
+
+    .app-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .app-item:active {
+      transform: scale(0.82);
+    }
+
     .app-icon {
-      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    }
-    .app-icon:active {
-      transform: scale(0.78) !important;
-    }
-
-    /* Dock Bounce */
-    .dock-icon {
-      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .dock:hover .dock-icon {
-      transform: scale(1.32);
+      width: 68px;
+      height: 68px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    /* Notes Fade-in */
+    .app-item:active .app-icon {
+      transform: scale(0.75);
+    }
+
+    .app-label {
+      margin-top: 8px;
+      font-size: 12px;
+      opacity: 0.9;
+    }
+
+    /* Quick Notes */
+    .notes-section {
+      padding: 0 20px;
+    }
+
+    .notes-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding: 0 4px;
+    }
+
     .note-card {
-      background: rgba(255, 255, 255, 0.96);
-      color: #1f2937;
-      animation: notePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+      background: rgba(255, 255, 255, 0.95);
+      color: #111;
+      border-radius: 22px;
+      padding: 18px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      animation: notePop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
     }
+
     @keyframes notePop {
-      from { opacity: 0; transform: translateY(20px) scale(0.95); }
+      from { opacity: 0; transform: translateY(30px) scale(0.9); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    /* Lock Screen Unlock Animation */
-    #lock-screen {
-      transition: all 0.75s cubic-bezier(0.32, 0.72, 0, 1);
+    /* Bottom Dock */
+    .dock {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(30, 30, 40, 0.85);
+      backdrop-filter: blur(40px);
+      border-radius: 28px;
+      padding: 10px 18px;
+      display: flex;
+      gap: 24px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
+
+    .dock-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #111;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .dock:hover .dock-icon {
+      transform: scale(1.25);
+    }
+
+    /* Lock Screen */
+    #lock-screen {
+      position: absolute;
+      inset: 0;
+      z-index: 100;
+      background: linear-gradient(180deg, #0a0a0a, #1a1a2e);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.8s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
     #lock-screen.unlocking {
-      transform: scale(0.92) translateY(-40px);
+      transform: scale(0.88) translateY(-60px);
       opacity: 0;
     }
 
-    /* Modal Animation */
-    #app-modal .modal-content {
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      transform: scale(0.8);
-      opacity: 0;
+    .lock-time {
+      font-size: 88px;
+      font-weight: 300;
+      letter-spacing: -4px;
+      margin-bottom: 8px;
     }
+
+    .lock-date {
+      font-size: 22px;
+      opacity: 0.8;
+      font-weight: 400;
+    }
+
+    .passcode-container {
+      margin-top: 60px;
+      width: 280px;
+    }
+
+    .passcode-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 18px;
+      padding: 18px 0;
+      font-size: 36px;
+      text-align: center;
+      letter-spacing: 20px;
+      color: white;
+      outline: none;
+    }
+
+    .passcode-input:focus {
+      border-color: rgba(100, 150, 255, 0.6);
+      box-shadow: 0 0 0 4px rgba(100, 150, 255, 0.2);
+    }
+
+    #pass-error {
+      color: #ff6b6b;
+      text-align: center;
+      margin-top: 16px;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    /* Modal */
+    #app-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+    }
+
+    #app-modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--glass);
+      width: 320px;
+      border-radius: 28px;
+      padding: 32px 24px;
+      text-align: center;
+      transform: scale(0.7);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
     #app-modal.show .modal-content {
       transform: scale(1);
       opacity: 1;
     }
-
-    .passcode-input {
-      letter-spacing: 18px;
-      font-size: 34px;
-      font-weight: 500;
-      background: transparent;
-      border: none;
-      color: white;
-      text-align: center;
-      outline: none;
-      transition: all 0.2s ease;
-    }
-    .passcode-input:focus {
-      text-shadow: 0 0 20px rgba(255,255,255,0.6);
-    }
   </style>
 </head>
-<body class="flex items-center justify-center bg-black">
+<body>
 
   <!-- Lock Screen -->
-  <div id="lock-screen" class="w-full max-w-[420px] mx-auto h-screen flex flex-col items-center justify-center absolute inset-0 z-50 bg-gradient-to-b from-zinc-950 via-blue-950 to-black">
-    <div class="text-center mb-20">
-      <div id="lock-time" class="text-8xl font-light tracking-tighter mb-2"></div>
-      <div id="lock-date" class="text-2xl opacity-75 font-light"></div>
+  <div id="lock-screen">
+    <div class="text-center">
+      <div id="lock-time" class="lock-time"></div>
+      <div id="lock-date" class="lock-date"></div>
     </div>
 
-    <div class="glass rounded-3xl px-12 py-10 w-80 text-center shadow-2xl">
-      <p class="text-sm mb-6 text-white/80">Enter Passcode</p>
+    <div class="passcode-container">
       <input id="passcode" type="password" maxlength="9" inputmode="numeric"
-             class="passcode-input mx-auto block w-64 py-4 rounded-2xl" placeholder="•••••••••">
-      <div id="pass-error" class="text-red-400 text-sm mt-6 hidden">Incorrect passcode</div>
+             class="passcode-input glass" placeholder="•••••••••">
+      <div id="pass-error">Incorrect passcode</div>
     </div>
 
-    <div class="absolute bottom-12 text-xs opacity-60 flex items-center gap-1.5">
-      <i class="fa-solid fa-chevron-up animate-bounce"></i>
-      <span class="tracking-widest">slide up to unlock</span>
+    <div style="position: absolute; bottom: 80px; font-size: 13px; opacity: 0.6;">
+      <span>↑ Slide up to unlock</span>
     </div>
   </div>
 
   <!-- Home Screen -->
-  <div id="home-screen" class="w-full max-w-[420px] mx-auto h-screen bg-black/30 rounded-3xl shadow-2xl overflow-hidden flex flex-col hidden" style="max-height: 812px; box-shadow: 0 0 100px rgba(0,0,0,0.7);">
-    
+  <div id="home-screen" class="phone-frame hidden">
+
     <!-- Status Bar -->
-    <div class="h-11 bg-transparent flex items-end justify-between px-6 text-sm font-medium">
-      <div id="status-time" class="font-semibold"></div>
-      <div id="status-date" class="text-xs opacity-75"></div>
+    <div class="status-bar glass">
+      <div id="status-time"></div>
+      <div id="status-date"></div>
     </div>
 
     <!-- Search Bar -->
-    <div class="px-5 pt-3 pb-5">
-      <div class="glass rounded-3xl px-5 py-3 flex items-center gap-3">
-        <i class="fa-solid fa-magnifying-glass text-white/60"></i>
-        <input id="search" type="text" placeholder="Search" 
-               class="bg-transparent outline-none flex-1 text-white placeholder-white/60 text-[17px]">
+    <div class="search-bar glass">
+      <span style="opacity: 0.6;">🔍</span>
+      <input id="search" type="text" placeholder="Search">
+    </div>
+
+    <!-- App Grid -->
+    <div class="app-grid">
+      <div onclick="openApp(1)" class="app-item">
+        <div class="app-icon" style="background: linear-gradient(135deg, #3b82f6, #6366f1);">📱</div>
+        <div class="app-label">Messages</div>
+      </div>
+      <div onclick="openApp(2)" class="app-item">
+        <div class="app-icon" style="background: linear-gradient(135deg, #10b981, #34d399);">📸</div>
+        <div class="app-label">Camera</div>
+      </div>
+      <div onclick="openApp(3)" class="app-item">
+        <div class="app-icon" style="background: linear-gradient(135deg, #8b5cf6, #ec4899);">🎵</div>
+        <div class="app-label">Music</div>
+      </div>
+      <div onclick="openApp(4)" class="app-item">
+        <div class="app-icon" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">🗺️</div>
+        <div class="app-label">Maps</div>
+      </div>
+
+      <div onclick="openApp(5)" class="app-item">
+        <div class="app-icon" style="background: linear-gradient(135deg, #22d3ee, #14b8a6);">🌤️</div>
+        <div class="app-label">Weather</div>
+      </div>
+      <div onclick="openApp(6)" class="app-item">
+        <div class="app-icon" style="background: linear-gradient(135deg, #f43f5e, #c026d3);">📅</div>
+        <div class="app-label">Calendar</div>
+      </div>
+      <div onclick="openApp(7)" class="app-item">
+        <div class="app-icon" style="background: linear-gradient(135deg, #fbbf24, #eab308);">💰</div>
+        <div class="app-label">Wallet</div>
+      </div>
+      <div onclick="openApp(8)" class="app-item">
+        <div class="app-icon" style="background: linear-gradient(135deg, #84cc16, #4ade80);">🛒</div>
+        <div class="app-label">Store</div>
       </div>
     </div>
 
-    <!-- Content -->
-    <div class="flex-1 px-5 overflow-auto pb-4">
-      <div class="grid grid-cols-4 gap-x-6 gap-y-8 mb-12">
-        <!-- 8 Apps with spring press -->
-        <div onclick="openApp(1)" class="flex flex-col items-center cursor-pointer">
-          <div class="app-icon w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-3xl flex items-center justify-center text-4xl">📱</div>
-          <p class="text-xs mt-2 opacity-90">Messages</p>
-        </div>
-        <div onclick="openApp(2)" class="flex flex-col items-center cursor-pointer">
-          <div class="app-icon w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl flex items-center justify-center text-4xl">📸</div>
-          <p class="text-xs mt-2 opacity-90">Camera</p>
-        </div>
-        <div onclick="openApp(3)" class="flex flex-col items-center cursor-pointer">
-          <div class="app-icon w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-3xl flex items-center justify-center text-4xl">🎵</div>
-          <p class="text-xs mt-2 opacity-90">Music</p>
-        </div>
-        <div onclick="openApp(4)" class="flex flex-col items-center cursor-pointer">
-          <div class="app-icon w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-3xl flex items-center justify-center text-4xl">🗺️</div>
-          <p class="text-xs mt-2 opacity-90">Maps</p>
-        </div>
-
-        <div onclick="openApp(5)" class="flex flex-col items-center cursor-pointer">
-          <div class="app-icon w-16 h-16 bg-gradient-to-br from-cyan-500 to-teal-600 rounded-3xl flex items-center justify-center text-4xl">🌤️</div>
-          <p class="text-xs mt-2 opacity-90">Weather</p>
-        </div>
-        <div onclick="openApp(6)" class="flex flex-col items-center cursor-pointer">
-          <div class="app-icon w-16 h-16 bg-gradient-to-br from-rose-500 to-purple-600 rounded-3xl flex items-center justify-center text-4xl">📅</div>
-          <p class="text-xs mt-2 opacity-90">Calendar</p>
-        </div>
-        <div onclick="openApp(7)" class="flex flex-col items-center cursor-pointer">
-          <div class="app-icon w-16 h-16 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-3xl flex items-center justify-center text-4xl">💰</div>
-          <p class="text-xs mt-2 opacity-90">Wallet</p>
-        </div>
-        <div onclick="openApp(8)" class="flex flex-col items-center cursor-pointer">
-          <div class="app-icon w-16 h-16 bg-gradient-to-br from-lime-500 to-green-600 rounded-3xl flex items-center justify-center text-4xl">🛒</div>
-          <p class="text-xs mt-2 opacity-90">App Store</p>
-        </div>
+    <!-- Quick Notes -->
+    <div class="notes-section">
+      <div class="notes-header">
+        <h2 style="font-size: 20px; font-weight: 600;">Quick Notes</h2>
+        <button onclick="addNote()" style="background: rgba(255,255,255,0.1); padding: 6px 16px; border-radius: 9999px; font-size: 14px; border: none; color: white; cursor: pointer;">
+          + Add
+        </button>
       </div>
-
-      <!-- Quick Notes -->
-      <div>
-        <div class="flex justify-between items-center mb-4 px-1">
-          <h2 class="text-xl font-semibold">Quick Notes</h2>
-          <button onclick="addNote()" class="glass px-5 py-2 rounded-3xl text-sm font-medium flex items-center gap-2 active:scale-95 transition-transform">
-            <i class="fa-solid fa-plus"></i> Add
-          </button>
-        </div>
-        <div id="notes-container" class="space-y-4"></div>
-      </div>
+      <div id="notes-container"></div>
     </div>
 
     <!-- Bottom Dock -->
-    <div class="glass mx-6 mb-9 rounded-3xl p-3 flex justify-around shadow-2xl" style="height: 82px;">
-      <div onclick="openApp(9)" class="dock-icon w-14 h-14 bg-white/90 rounded-2xl flex items-center justify-center text-4xl cursor-pointer">📞</div>
-      <div onclick="openApp(10)" class="dock-icon w-14 h-14 bg-white/90 rounded-2xl flex items-center justify-center text-4xl cursor-pointer">💬</div>
-      <div onclick="openApp(11)" class="dock-icon w-14 h-14 bg-white/90 rounded-2xl flex items-center justify-center text-4xl cursor-pointer">🌐</div>
-      <div onclick="openApp(12)" class="dock-icon w-14 h-14 bg-white/90 rounded-2xl flex items-center justify-center text-4xl cursor-pointer">📷</div>
+    <div class="dock glass">
+      <div onclick="openApp(9)" class="dock-icon">📞</div>
+      <div onclick="openApp(10)" class="dock-icon">💬</div>
+      <div onclick="openApp(11)" class="dock-icon">🌐</div>
+      <div onclick="openApp(12)" class="dock-icon">📷</div>
     </div>
   </div>
 
   <!-- App Modal -->
-  <div id="app-modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-    <div class="modal-content glass w-80 rounded-3xl p-9 text-center">
-      <div id="modal-icon" class="mx-auto w-28 h-28 rounded-3xl flex items-center justify-center text-7xl mb-6"></div>
-      <h2 id="modal-title" class="text-2xl font-semibold mb-1"></h2>
-      <p class="text-white/60 mb-8">Opening app...</p>
-      <button onclick="closeModal()" class="glass w-full py-4 rounded-3xl text-base font-medium active:scale-95 transition-transform">Close</button>
+  <div id="app-modal">
+    <div class="modal-content glass">
+      <div id="modal-icon" style="font-size: 68px; margin-bottom: 20px;"></div>
+      <h2 id="modal-title" style="font-size: 24px; margin-bottom: 12px;"></h2>
+      <p style="opacity: 0.7; margin-bottom: 28px;">This is a placeholder app</p>
+      <button onclick="closeModal()" 
+              style="width: 100%; padding: 16px; background: rgba(255,255,255,0.1); border: none; border-radius: 18px; color: white; font-size: 17px; cursor: pointer;">
+        Close
+      </button>
     </div>
   </div>
 
@@ -202,12 +395,15 @@
     // Real-time Clock
     function updateClock() {
       const now = new Date();
+      
+      // Status bar
       document.getElementById('status-time').textContent = 
         now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }).replace(' AM', 'am').replace(' PM', 'pm');
       
       document.getElementById('status-date').textContent = 
         now.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 
+      // Lock screen
       document.getElementById('lock-time').textContent = 
         now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: false });
       
@@ -217,129 +413,127 @@
 
     // Passwords
     const correctPasswords = ["6275", "9919", "123456789"];
+    let notes = JSON.parse(localStorage.getItem('quickNotes')) || [];
+
     const passInput = document.getElementById('passcode');
     const errorEl = document.getElementById('pass-error');
     const lockScreen = document.getElementById('lock-screen');
     const homeScreen = document.getElementById('home-screen');
 
     passInput.addEventListener('input', () => {
-      const value = passInput.value.trim();
-      if (value.length >= 4 && correctPasswords.includes(value)) {
+      const val = passInput.value.trim();
+      if (val.length >= 4 && correctPasswords.includes(val)) {
         unlockPhone();
-      } else if (value.length >= 9) {
-        lockScreen.classList.add('shake');
-        errorEl.classList.remove('hidden');
+      } else if (val.length >= 9) {
+        errorEl.style.opacity = '1';
         setTimeout(() => {
-          lockScreen.classList.remove('shake');
-          errorEl.classList.add('hidden');
+          errorEl.style.opacity = '0';
           passInput.value = '';
-        }, 500);
+        }, 1200);
       }
     });
 
     function unlockPhone() {
       lockScreen.classList.add('unlocking');
-      
       setTimeout(() => {
         lockScreen.style.display = 'none';
         homeScreen.classList.remove('hidden');
         renderNotes();
-      }, 650);
+      }, 700);
     }
 
-    // Notepad with fade-in
-    let notes = JSON.parse(localStorage.getItem('quickNotes')) || [];
-
+    // Notepad
     function renderNotes() {
       const container = document.getElementById('notes-container');
       container.innerHTML = '';
       
-      notes.forEach((note, i) => {
+      notes.forEach((note, index) => {
         const div = document.createElement('div');
-        div.className = 'note-card rounded-3xl p-6 shadow';
-        div.style.animationDelay = (i * 80) + 'ms';
+        div.className = 'note-card';
         div.innerHTML = `
-          <div class="flex justify-between">
-            <p class="text-[15px] leading-tight">${note.text}</p>
-            <button onclick="deleteNote(${i})" class="text-red-500 text-2xl -mt-1">×</button>
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <p style="font-size: 15.5px; line-height: 1.4;">${note.text}</p>
+            <button onclick="deleteNote(${index})" style="color: #ef4444; font-size: 22px; line-height: 1; background: none; border: none; cursor: pointer;">×</button>
           </div>
-          <p class="text-xs text-gray-500 mt-4">${new Date(note.time).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</p>
+          <p style="font-size: 12px; opacity: 0.6; margin-top: 10px;">
+            ${new Date(note.time).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}
+          </p>
         `;
         container.appendChild(div);
       });
     }
 
     function addNote() {
-      const text = prompt("Quick note:");
-      if (!text?.trim()) return;
-      notes.unshift({ text: text.trim(), time: Date.now() });
-      if (notes.length > 10) notes.pop();
+      const text = prompt("Write your quick note:");
+      if (!text || !text.trim()) return;
+      
+      notes.unshift({
+        text: text.trim(),
+        time: Date.now()
+      });
+      
+      if (notes.length > 12) notes.pop();
       localStorage.setItem('quickNotes', JSON.stringify(notes));
       renderNotes();
     }
 
-    function deleteNote(i) {
-      notes.splice(i, 1);
+    function deleteNote(index) {
+      notes.splice(index, 1);
       localStorage.setItem('quickNotes', JSON.stringify(notes));
       renderNotes();
     }
 
-    // App Modal with nice animation
-    function openApp(n) {
+    // App Modal
+    function openApp(num) {
       const modal = document.getElementById('app-modal');
-      const icon = document.getElementById('modal-icon');
-      const title = document.getElementById('modal-title');
+      const iconEl = document.getElementById('modal-icon');
+      const titleEl = document.getElementById('modal-title');
 
-      const appList = {
-        1: {icon:'📱', name:'Messages'}, 2:{icon:'📸', name:'Camera'},
-        3:{icon:'🎵', name:'Music'}, 4:{icon:'🗺️', name:'Maps'},
-        5:{icon:'🌤️', name:'Weather'}, 6:{icon:'📅', name:'Calendar'},
-        7:{icon:'💰', name:'Wallet'}, 8:{icon:'🛒', name:'App Store'},
-        9:{icon:'📞', name:'Phone'}, 10:{icon:'💬', name:'Messages'},
-        11:{icon:'🌐', name:'Safari'}, 12:{icon:'📷', name:'Photos'}
+      const apps = {
+        1: {icon: '📱', title: 'Messages'},
+        2: {icon: '📸', title: 'Camera'},
+        3: {icon: '🎵', title: 'Music'},
+        4: {icon: '🗺️', title: 'Maps'},
+        5: {icon: '🌤️', title: 'Weather'},
+        6: {icon: '📅', title: 'Calendar'},
+        7: {icon: '💰', title: 'Wallet'},
+        8: {icon: '🛒', title: 'App Store'},
+        9: {icon: '📞', title: 'Phone'},
+        10: {icon: '💬', title: 'Messages'},
+        11: {icon: '🌐', title: 'Safari'},
+        12: {icon: '📷', title: 'Photos'}
       };
 
-      const app = appList[n] || {icon:'⭐', name:'App'};
-      icon.textContent = app.icon;
-      title.textContent = app.name;
-      
-      modal.classList.remove('hidden');
-      setTimeout(() => {
-        modal.classList.add('show');
-      }, 10);
+      const app = apps[num] || {icon: '⭐', title: 'App'};
+      iconEl.textContent = app.icon;
+      titleEl.textContent = app.title;
+
+      modal.style.display = 'flex';
+      setTimeout(() => modal.classList.add('show'), 10);
     }
 
     function closeModal() {
       const modal = document.getElementById('app-modal');
       modal.classList.remove('show');
       setTimeout(() => {
-        modal.classList.add('hidden');
-      }, 300);
+        modal.style.display = 'none';
+      }, 350);
     }
-
-    // Shake animation for wrong password
-    const style = document.createElement('style');
-    style.innerHTML = `
-      @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        10%, 30%, 50%, 70%, 90% { transform: translateX(-6px); }
-        20%, 40%, 60%, 80% { transform: translateX(6px); }
-      }
-      .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
-    `;
-    document.head.appendChild(style);
 
     // Initialize
     window.onload = () => {
       updateClock();
       setInterval(updateClock, 1000);
 
-      setTimeout(() => {
-        passInput.focus();
-      }, 800);
+      // Focus passcode
+      setTimeout(() => passInput.focus(), 600);
 
+      // Demo note
       if (notes.length === 0) {
-        notes = [{text: "Welcome! Tap + to add quick notes. Everything has smooth animations now ✨", time: Date.now()}];
+        notes = [{ 
+          text: "Welcome to your dark iOS-style home screen. Everything is fully customizable now.", 
+          time: Date.now() 
+        }];
       }
     };
   </script>
