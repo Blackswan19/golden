@@ -73,7 +73,7 @@ a{
      width: 100%;
     max-width: 420px;
     margin: 0 auto;
-    /* height: 100vh; */
+    height: 100vh;
     max-height: 812px;
     background: #000000;
     overflow: hidden;
@@ -100,7 +100,7 @@ a{
     color: var(--text-secondary);
     position: fixed;
     width: fit-content;
-    bottom: 110px;
+    bottom: 120px;
     left: 50%;
     padding: 4px;
     transform: translate(-50%, 0);
@@ -129,6 +129,10 @@ a{
 svg {
    width: 45px;
     height: 45px;
+}div#notes-container {
+   overflow: scroll;
+    height: 500px;
+    padding-bottom: 160px;
 }
 .logo {
     background: #ffffff2e;
@@ -241,8 +245,8 @@ svg {
 
     /* Bottom Dock */
     .dock {
-      position: absolute;
-    bottom: 24px;
+     position: fixed;
+    bottom: 35px;
     left: 50%;
     transform: translateX(-50%);
     background: rgb(255 255 255 / 3%);
