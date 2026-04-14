@@ -82,15 +82,17 @@ a{
 
     /* Status Bar */
     .status-bar {
-      height: 44px;
-    padding: 0 24px;
+      height: 60px;
+    padding: 0 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 13px;
     font-weight: 100;
     }
-
+div#status-time {
+    display: none;
+}
     /* Search Bar */
     .search-bar {
     border-radius: 18px;
@@ -100,7 +102,7 @@ a{
     color: var(--text-secondary);
     position: fixed;
     width: fit-content;
-    bottom: 120px;
+    bottom: 135px;
     left: 50%;
     padding: 4px;
     transform: translate(-50%, 0);
@@ -154,7 +156,8 @@ svg {
     grid-template-columns: repeat(4, 1fr);
     gap: 24px 16px;
     padding: 15px 15px 0 15px;
-    margin-bottom: 15px;
+    margin-bottom: 35px;
+    margin-top: -15px;
     }
 
     .app-item {
@@ -243,14 +246,15 @@ svg {
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 .bottombar {
-    background: linear-gradient(0deg, #000000, transparent);
+  background: linear-gradient(0deg, #000000d4, transparent);
     width: 95%;
     position: fixed;
     bottom: 0px;
     left: 50%;
     transform: translateX(-50%);
-    padding: 45px 0;
+    padding: 0 0 45px 0;
     right: 0;
+    backdrop-filter: blur(5px);
 }
     .dock {
     backdrop-filter: blur(5px);
@@ -475,8 +479,18 @@ svg {
     <div class="notes-section">
       <div class="notes-header">
         <h2 style="font-size: 20px; font-weight: 600;">Quick Notes</h2>
-        <button onclick="addNote()" style="background: rgba(255,255,255,0.1); padding: 6px 16px; border-radius: 9999px; font-size: 14px; border: none; color: white; cursor: pointer;">
-          + Add
+        <button onclick="addNote()" style="background: rgba(255, 255, 255, 0.1);
+    padding: 6px;
+    border-radius: 9999px;
+    font-size: 14px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;">
+          <svg style="width: 28px;
+    height: 28px;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M460-460H240v-40h220v-220h40v220h220v40H500v220h-40v-220Z"/></svg> Add
         </button>
       </div>
       <div id="notes-container"></div>
@@ -560,10 +574,21 @@ svg {
         div.className = 'note-card';
         div.innerHTML = `
           <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <p style="font-size: 15.5px; line-height: 1.4;">${note.text}</p>
-            <button onclick="deleteNote(${index})" style="color: #ef4444; font-size: 22px; line-height: 1; background: none; border: none; cursor: pointer;">×</button>
+            <p style="font-size: 15.5px;
+    line-height: 1.4;
+    font-weight: 500;">${note.text}</p>
+            <button onclick="deleteNote(${index})" style="color: #ff0000;
+    font-size: 30px;
+    line-height: 1;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 100;">×</button>
           </div>
-          <p style="font-size: 12px; opacity: 0.6; margin-top: 10px;">
+          <p style="font-size: 11px;
+    opacity: 0.6;
+    margin-top: 0px;
+    font-weight: 100;">
             ${new Date(note.time).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}
           </p>
         `;
