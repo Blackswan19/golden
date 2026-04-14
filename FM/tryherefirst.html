@@ -152,7 +152,23 @@ div#audioStatus {
     img{
       width: 20%;
     }
-
+  .top-bar {
+           position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 500px;
+    height: 60px;
+    background: linear-gradient(180deg, #000000, transparent 100%);
+    z-index: 998;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    padding-top: env(safe-area-inset-top);
+    left: 50%;
+    transform: translateX(-50%);
+        }
 p {
    line-height: 19px;
     margin: 10px;
@@ -197,7 +213,34 @@ a {
     flex-direction: column;
     position: fixed;
     bottom: 10px;
-    }
+    }.helper-button, .helper-buttons {
+    position: fixed;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 60px;
+    color: #000000;
+    font-weight: 550;
+    border: none;    margin: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+    filter: saturate(2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .job-card a {
    font-size: 14px;
     box-shadow: inset 0 0 0 1px 
@@ -412,34 +455,36 @@ filter: saturate(2);
     100% { width: 0%; opacity: 0; left: 100%; }
 }
 
-                .content {
-text-align: center;
+            .content {
+	text-align: center;
     z-index: 10000;
     border-radius: 8px 8px 15px 15px;
-    background: #ffffff30;
-    padding: 0px 5px 0px 15px;
-    position: fixed;
-    left: 50%;top: 0%;
-    transform: translate(-50%, 50%);
-        }
-
+    background: #ffffff1f;
+    filter: saturate(2); backdrop-filter: blur(5px);
+    padding: 2px 5px 2px 10px;
+}
         .content h1 {
             font-size: 3rem;
             margin-bottom: 20px;
         }
-
+.rightsideopt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;   
+    flex-direction: row-reverse;
+}
 .toggle-switch {
 	display: flex;
     align-items: center;
     font-size: 13px;
     color: white;
-    gap: 0;
-    font-weight: 300;
+    gap: 0px;font-weight: 100;
 }
 .toggle-switch span {
-    color: white;
+   color: white;
     background: #ffffff26;
-    padding: 0px 5px;
+    padding: 2px 5px;
     border-radius: 26px;
 }
 .toggle-switch label {
@@ -612,38 +657,10 @@ text-align: center;
         100% { background-position: 0 0; }
     }
     
-    .helper-button {
-        position: fixed;
-    top: 15px;
-    font-size: 13px;
-    padding: 5px 7px;
-    border-radius: 60px;
-    color: #ffffff;
-    text-decoration: none;
-    border: none;
-    z-index: 100000000;
-    transition: all 0.3s ease;
-    box-shadow: inset 0 0 0 1px 
- color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
- color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
- color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
- color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
-    border: solid 1px #ffffff14;
-filter: saturate(2);
-    margin: 0px;
-  }
-        .helper-button:hover{
-            transform: scale(1.05); 
-        }
-        .helper-button:active{
-            transform: scale(0.90); 
-        } 
+   a.helper-buttons {
+    width: 40px;
+    height: 40px;
+}
     
     .animated-border::before {
         content: "";
@@ -706,13 +723,7 @@ filter: saturate(2);
         <div class="edge-glow right"></div>
     </div>
 
-  <div class="content" >
-                    <div class="toggle-switch">
-                        <label>Power by</label>
-                        <label style="display: none;" class="switch"><input type="checkbox" id="glowToggle"> <span class="slider"></span> </label>
-                        <a href="https://mfi0212.github.io/MFI/bsmfi_search"><span>BS&MFI</span></a>
-                    </div>
-                </div>
+
 <div class="loading-overlay" id="loadingOverlay">
     <div class="servicename" style="position: fixed;
     top: 10px;
@@ -771,9 +782,20 @@ filter: saturate(2);
     text-decoration: underline 1.5px;
     text-underline-position: under;">Lendlink - Mid</p></a>
  </div>
-       <a style="left: 5px;" class="helper-button" href="https://mfi0212.github.io/MFI/abt.hlp">Helper</a>
-      <a style="right: 5px;" class="helper-button" href="https://mfi0212.github.io/MFI/imlate">I'm late</a>
-   
+     <div class="top-bar">
+        <div class="content" >
+            <div class="toggle-switch">
+                <label>Power by</label>
+                <label style="display: none;" class="switch"><input type="checkbox" id="glowToggle"> <span class="slider"></span> </label>
+                <a href="https://mfi0212.github.io/MFI/bsmfi_search"><span>BS&MFI</span></a>
+            </div>
+        </div>
+        <div class="rightsideopt">
+            <a class="helper-button" href="https://mfi0212.github.io/MFI/abt.hlp" style="position: relative;border: none;">Helper</a>
+            <a class="helper-buttons" href="https://mfi0212.github.io/MFI/imlate" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m352.46-85.39-71.38-120.3-135.54-29.7 13.23-139.53L66.93-480l91.84-105.08-13.23-139.53 135.54-29.7 71.38-120.3L480-820.46l127.54-54.15 71.38 120.3 135.54 29.7-13.23 139.53L893.07-480l-91.84 105.08 13.23 139.53-135.54 29.7-71.38 120.3L480-139.54 352.46-85.39ZM378-162l102-43.23L583.23-162 640-258l110-25.23L740-396l74-84-74-85.23L750-678l-110-24-58-96-102 43.23L376.77-798 320-702l-110 24 10 112.77L146-480l74 84-10 114 110 24 58 96Zm102-318Zm22.92 179.85q9.39-9.39 9.39-22.93T502.92-346q-9.38-9.38-22.92-9.38-13.54 0-22.92 9.38-9.39 9.38-9.39 22.92 0 13.54 9.39 22.93 9.38 9.38 22.92 9.38 13.54 0 22.92-9.38ZM450-436.92h60v-240h-60v240Z"/></svg></a>
+        </div>    
+    </div>
+
 <div class="option">
     <a href="https://mfi0212.github.io/MFI/accverify"><svg style="width: 20px;
     height: 20px;" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="#ffffff"><g fill="none" stroke="#ffffff" stroke-width="1.5"><circle cx="12" cy="6" r="4"/><path d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5Z"/></g></svg>
