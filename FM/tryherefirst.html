@@ -3,364 +3,1324 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Android Home</title>
-  <style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+  <title>BS&MFI Solution</title>
+    <link rel="icon" href="mfi.logo.png" />
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Balthazar&family=Della+Respira&family=Hahmlet:wght@100..900&family=Niconne&family=Stalemate&display=swap" rel="stylesheet">
 
-* {
-	-webkit-tap-highlight-color: transparent;
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	font-family: 'Poppins', sans-serif;
-	scrollbar-width: none;letter-spacing: 0.5px;
-}
-
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box;font-family: "Red Hat Display", sans-serif;letter-spacing: 0.5px;}
     :root {
-      --bg: #0a0a0a;
-      --surface: #1e1e1e;
-      --primary: #8ab4f8;
+      --bg: #000000;
+      --header: #121212;
+      --card: #ffffff0f;
       --text: #ffffff;
-      --text-secondary: rgba(255, 255, 255, 0.7);
+      --text2: #888888;
+      --accent: #0000ff;
     }
+    .light {
+      --bg: #f8f9fa;
+      --header: #ffffff;
+      --card: #ffffff;
+      --text: #111111;
+      --text2: #666666;
+      --accent: #0000ff;
+    }* {
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        }
+body {
+  --c-glass: #bbbbbc;
+  --c-light: #fff;
+  --c-dark: #000;
+  
+  --c-content: rgb(255, 255, 255);
+  --c-action: #0052f5;
+  
+  --glass-reflex-dark: 1;
+  --glass-reflex-light: 1;
+  
+  --saturation: 150%;
+  
+  color: var(--c-content);
+}
 
+body:has(input[value="dark"]:checked) {
+  --c-glass: #bbbbbc;
+  --c-light: #fff;
+  --c-dark: #000;
+  
+  --c-content: #e1e1e1;
+  --c-action: #03d5ff;
+  
+  --c-bg: #1b1b1d;
+}
+
+body:has(input[value="dim"]:checked) {
+  --c-light: #99deff;
+  --c-dark: #20001b;
+  --c-glass: hsl(335 250% 74% / 1);
+  
+  --c-content: #d5dbe2;
+  --c-action: #ff48a9;
+  
+  --c-bg: #152433;
+
+}
+    * { margin:0; padding:0; box-sizing:border-box; scrollbar-width: none;}
+    
     body {
-      font-family: 'Roboto', system-ui, sans-serif;
-      background: #111920;
-      height: 100vh;
-      overflow: hidden;
-      color: var(--text);
-      user-select: none;
-    }
-svg {
-   fill: white;
-    width: 35px;
-    height: 35px;
-}
-.dock-icon svg {
-   background: #30455d5e;
-    border-radius: 100px;
-    padding: 10px;
-    width: 50px;
-    height: 50px;
-}
-a{
-  text-decoration: none;
-}
-    .phone-frame {
-      width: 100%;
-      max-width: 420px;
-      margin: 0 auto;
-      height: 100vh;
-      max-height: 812px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* Status Bar */
-    .status-bar {
-      height: 32px;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 13px;
-      font-weight: 500;
-      color: white;
-    }
-
-    /* Search Bar */
-    .search-bar {
-    margin: 10px;
-    padding: 9px;
-    border-radius: 9999px;
-    background: #30455d5e;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 15px;
-    color: var(--text-secondary);
-    width: 85%;
-    }
-
-    .search-bar img {
-     width: 30px;
-    border-radius: 100px;
-    display: flex;
-    }
-
-    /* App Grid - Now right above bottom nav */
-    .app-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px 14px;
-    padding: 0 24px;
-    position: absolute;
-    bottom: 185px;
-    left: 0;
-    right: 0;
-    }
-
-    .app-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    .app-item:active {
-      transform: scale(0.88);
-    }
-
-    .app-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    border-radius: 100px;
-    border: solid 5px #1d2936;
-    }
-
-    .app-label {
-     margin-top: 8px;
-    font-size: 12px;
-    opacity: 0.9;
-    text-align: center;
-    color: white;
-    font-weight: 100;
-    }
-
-    /* Bottom Navigation */
-    .bottom-nav {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    backdrop-filter: blur(12px);
+      background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    width: 100%;
     justify-content: center;
     align-items: center;
-    }.bottomicons {
+    }
+    
+    header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    padding: 12px 7px;
     display: flex;
-    justify-content: space-evenly;
+    align-items: flex-start;
+    justify-content: space-between;
+    background: linear-gradient(180deg, black, transparent);
+    }
+    header img {
+   width: 42px;
+    height: 42px;
+    border-radius: 35px;
+    box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+    filter: saturate(2);
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+transition: all 0.3s ease;}
+        header img:hover{
+              transform: scale(1.03); 
+        }
+        header img:active{
+              transform: scale(0.90); 
+        } 
+    button.btn-primary {
+      box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+    filter: saturate(2);
+    padding: 10px;
+    border-radius: 22px;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    font-size: 17px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    }
+        button.btn-primary:hover{
+              transform: scale(1.03); 
+        }
+        button.btn-primary:active{
+              transform: scale(0.90); 
+        } 
+        a{
+            text-decoration: none;
+        }
+    button.back-btn{
+box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+    filter: saturate(2);
+    backdrop-filter: blur(5px) url(#switcher) saturate(var(--saturation));
+    width: 40px;
+    height: 40px;cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: transparent;
+    color: white;
+    font-size: 18px;
+   transition: all 0.3s ease;}
+        header button:hover{
+              transform: scale(1.03); 
+        }
+        header button:active{
+              transform: scale(0.90); 
+        } 
+    .theme-btn {
+      transition: all 0.3s;
+    }
+button.btn-close {
+   background: red;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    font-weight: 550;
+    border-radius: 100px;
+    margin: -30px 0 15px 0;
+    font-size: 17px;
+    box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+    filter: saturate(2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }div#modal-content svg {
+    width: 95px;
+    height: 95px;
+    margin-bottom: 15px;
+    background: #ffffff1f;
+    border-radius: 30px;
+    padding: 19px;   
+    fill: white;
+}
+        button.btn-close:hover{
+              transform: scale(1.03); 
+        }
+        button.btn-close:active{
+              transform: scale(0.90); 
+        } 
+
+    main {
+    flex: 1;
+    overflow-y: auto;
+    background: #00000012;
+    padding: 40px 5px 147px 5px;max-width: 650px;
+    }
+button.theme-btn {
+   display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    box-shadow: none;
+    border: none;
+}
+        button.theme-btn:hover{
+              transform: scale(1.03); 
+        }
+        button.theme-btn:active{
+              transform: scale(0.90); 
+        } 
+        .bottomtop {
+    position: fixed;
+    bottom: 90px;
+    z-index: 40;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+button.theme-btn span{
+font-weight: 600;
+    font-size: 14px;
+    color: #ffffffc7;
+    padding: 5px;
+    width: max-content;
+    box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+    filter: saturate(2);
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -5px;
+    backdrop-filter: blur(5px);
+}
+h6 svg{
+  width: 20px;
+    height: 20px;
+}
+    .second1icon{
+  box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff1a;
+    border-radius: 100px;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px) url(#switcher) saturate(var(--saturation));
+    width: 65%;
+    opacity: 100%;
+    /* border: none; */
+}
+/* div#tab-4 {
+    width: 50px;
+    height: 50px;
+} */
+.nav-container svg {
+     width: 20px;
+    height: 18px;
+    fill: white;
+}
+.nav {
+width: 100%;
+    padding: 25px 10px;
+    max-width: 650px;
+    position: fixed;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background: linear-gradient(0deg, black, transparent);
+}
+   .nav-container {
+    display: flex;
+    font-size: 10px;
+    font-weight: 500;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
+    gap: 10px;
+}.mficolblogo{
+   width: 60px;
+    height: 60px;
+    filter: saturate(2);
+    background: linear-gradient(45deg, #0021ffbd 34%, #00d0ffcc);
+    position: relative;
+    z-index: 100000;
+    border: none;
+    padding: 5px;
+    border-radius: 100px;
+    backdrop-filter: blur(2px);
 }
-    .nav-icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 27px;
-      color: white;
-      transition: transform 0.3s ease;
-    }
-
-    .nav-icon:active {
-      transform: scale(0.85);
-    }
-
-    /* Lock Screen */
-    #lock-screen {
-      position: absolute;
-      inset: 0;
-      z-index: 100;
-      background: #111920;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    #lock-screen.unlocking {
-      transform: scale(0.92) translateY(-40px);
-      opacity: 0;
-    }
-
-    .lock-time {
-       font-size: 92px;
+.tab span{
+  font-size: 11px;
     font-weight: 100;
-    letter-spacing: 5px;
-    margin-bottom: 8px;
-    text-align: center;
-    transform: scaleY(2);
+}
+    .first4icons {
+   box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+    filter: saturate(2);
+    border-radius: 1000px;
+    backdrop-filter: blur(5px) url(#switcher) saturate(var(--saturation));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 4px;
     }
 
-    .lock-date {
-      font-size: 15px;
-    opacity: 50%;
+footer {
+    text-align: center;
+    font-size: 10px;
+    position: fixed;
+    bottom: 15px;
+    width: 100%;
+    left: 0;
+    color: #ffffffc9;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+    .tab {
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #ffffff;
+    transition: color 0.2s;
+    cursor: pointer;
+    padding: 4px 20px;
+    justify-content: center;
+    width: 100%;
+    /* opacity: 40%; */
+    transition: all 0.3s ease;}
+        .tab:hover{
+              transform: scale(1.03); 
+        }
+        .tab:active{
+              transform: scale(0.90); 
+        } 
+
+    .tab-active {
+      background: #0020ff;
+    filter: none;opacity: 100%;
+    border-radius: 1000px;box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+    filter: saturate(2);
+    }
+    .tab i {
+      font-size: 1.75rem;
+    }
+    
+    .apply-btn {
+    background-color: #0020ffcc;
+    color: white;
     font-weight: 100;
-    text-align: center;
-    }
+    font-size: 15px;
+    padding: 9px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    max-width: 400px;
+    box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+    filter: saturate(2);
+    backdrop-filter: blur(1.8px);
+    transition: all 0.3s ease;}
+        .apply-btn:hover{
+              transform: scale(1.03); 
+        }
+        .apply-btn:active{
+              transform: scale(0.90); 
+        } 
+   .maiinoptionsatapply {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}.exclamation {
+       color: rgb(255 255 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+    filter: saturate(2);
+    backdrop-filter: blur(1.8px);
+   padding: 9px;
+    border-radius: 100px;
+    background: rgb(255 0 0 / 69%);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-size: 15px;
+    border: none;
 
-    .fingerprint-hint {
-      margin-top: 80px;
-    font-size: 48px;
-    background: #003b57;
-    border-radius: 15px;
+}
+span svg{
+      width: 18px;
+}
+.exclamation:hover{
+              transform: scale(1.03); 
+        }
+        .exclamation:active{
+              transform: scale(0.90); 
+        } 
+    .card {
+      background-color: var(--card);
+      border-radius: 16px;
     }
-
-    /* Modal */
-    #app-modal {
+    
+    .text-secondary {
+      color: var(--text2);
+    }
+    
+    .accent {
+      color: var(--accent);
+    }
+    
+    .modal {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.8);
+      /* background-color: rgba(0,0,0,0.7); */
       display: none;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
-      z-index: 200;
+      z-index: 9999;
     }
-
-    #app-modal.show {
+    .modal.show {
       display: flex;
     }
-
+    
     .modal-content {
-      background: #1e1e1e;
-      width: 320px;
-      border-radius: 28px;
-      padding: 32px 24px;
-      text-align: center;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+   width: 98%;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    max-width: 600px;
+    overflow: hidden;
+    animation: slideUp 0.3s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+    margin-bottom: 5px;
+    box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+    filter: saturate(2);
+    border-radius: 68px;
+    corner-shape: superellipse(2);
+}
+    
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
+    
+    .modal-header {
+          padding: 20px;
+    border-bottom: 1px solid #ffffff21;
+    display: flex;
+    justify-content: center;
+    align-items: center
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+    }
+    
+    .section-title {
+      font-size: 35px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: #0000ff;
+    margin: 5px 0 0 0;
+    }
+    .how-it-works:first-child{
+      margin-top: 20px;
+    }
+    .how-it-works {
+       margin: 13px 0px;
+    padding: 1.5rem;
+    box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+    filter: saturate(2);
+    backdrop-filter: blur(5px);
+    border-radius: 68px;
+    corner-shape: superellipse(2);
+   
+    }
+    
+    /* FAQ STYLING */
+    .faq-container {
+    box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+    filter: saturate(2);
+       border-radius: 35px;
+   
+    backdrop-filter: blur(5px); margin: 13px 0px;
+      padding: 1.5rem;
+    }
+    .faq-item {
+      border-bottom: 1px solid #333;
+      padding: 1.25rem 0;
+      transition: all 0.3s;
+    }
+    .faq-item:first-child {
+      border-bottom: none;
+      padding: 0 0 20px 0;
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+      padding: 20px 0 0 0;
+    }
+    .faq-item h3 {
+      font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    }li {
+    line-height: 23px;
+}
+    .faq-item p {
+      color: var(--text2);
+    line-height: 1.6;
+    font-size: 15px;
+    }
+    .amount-box {
+display: flex;
+    align-items: center;
+    background: #8282821a;
+    border-radius: 25px;
+    padding: 15px 25px;
+    transition: all 0.3s ease;
+    }
+      .amount-box:focus{
+              background: #8282822b;
+        } 
+        .amount-box:active{
+              transform: scale(0.90); 
+        } 
+    .amount-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 2.75rem;
+      font-weight: 300;
+      color: var(--text);
+    }
+    
+    .calc-result {
+      background-color: #8282821a;
+    border-radius: 37px;
+    padding: 10px 15px;
+    }
+    
+    .btn-primary {
+     width: 100%;
+    background-color: #0000ff;
+    color: white;
+    font-weight: 300;
+    padding: 10px;
+    border-radius: 34px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    }
+    .popup_close {
+        box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+    filter: saturate(2);
+    backdrop-filter: blur(5px) url(#switcher) saturate(var(--saturation));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: #ffffff00;
+    color: white;
+    font-size: 18px;
+    width: 40px;
+    height: 40px;cursor: pointer;
+ transition: all 0.3s ease;}
+         .popup_close:hover{
+              transform: scale(1.03); 
+        }
+         .popup_close:active{
+              transform: scale(0.90); 
+        } 
+    
+    .btn-secondary {
+   background: #00ff31cf;
+    cursor: pointer;
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+    width: 100%;
+    padding: 10px;
+    font-weight: 550;
+    border-radius: 100px;
+    font-size: 17px;
+  }
+        .btn-secondary:hover{
+              transform: scale(1.03); 
+        }
+        .btn-secondary:active{
+              transform: scale(0.90); 
+        } 
+    .btn-secondary svg{
+    fill: black;
+    width: 20px;
+    height: 20px;
+    }   
+     .btn-secondary a {
+   text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+    
+    .btn-secondary a:hover>.btn-secondary:hover {
+      background-color: #0000ff;
+      color: white;
+        }
   </style>
 </head>
 <body>
 
-  <!-- Lock Screen -->
-  <div id="lock-screen">
-    <div class="text-center">
-      <div id="lock-time" class="lock-time"></div>
-      <div id="lock-date" class="lock-date"></div>
-    </div>
-    <div class="fingerprint-hint">🔒</div>
-    <div style="position: absolute; bottom: 100px; font-size: 14px; opacity: 0.6;">
-      Tap to unlock
-    </div>
-  </div>
+ <header>
+    <button onclick="goBack()" class="back-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M640-107.69 267.69-480 640-852.31l42.54 42.54L352.77-480l329.77 329.77L640-107.69Z"/></svg>
+   </button>
+    <button class="theme-btn">
+        <img class="mficolblogo" src="https://github.com/goforbg/telegram-emoji-gifs/blob/master/thunder.gif?raw=true" alt="">
+      <span>BS&MFI Solutions <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m320.23-107.69-42.54-42.54L607.46-480 277.69-809.77l42.54-42.54L692.54-480 320.23-107.69Z"/></svg></span>
+    </button>
+    <img onclick="alert('Welcome to BS&MFI Solutions from BS&MFI Services')" src="mfi.gif" alt="">
+  </header>
 
-  <!-- Home Screen -->
-  <div id="home-screen" class="phone-frame hidden">
+  <main id="main-content"></main>
 
-    <!-- Status Bar -->
-    <div class="status-bar">
-      <div id="status-time"></div>
-      <div style="display: flex; gap: 12px;display: none;">
-        <span>4G</span>
-        <span>92%</span>
+ <div class="bottomtop">
+     <button onclick="showPopup()" class="apply-btn">
+    <i class="fa-regular fa-compass"></i>
+   Click to Explore / Apply Now
+  </button>
+   <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmCSWXieZpqTiUqIVVihwn8vdGl-RyHijMNmovi_Bfc2GRbg/viewform"><p class="exclamation">I've Issue</p></a>
+  
+ </div>
+
+  <nav class="nav">
+    <div class="nav-container">
+        <div class="first4icons">
+            <div onclick="switchTab(0)" id="tab-0" class="tab tab-active">
+<svg id="Layer_1" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="m23 18h-3v-3a1 1 0 0 0 -2 0v3h-3a1 1 0 0 0 0 2h3v3a1 1 0 0 0 2 0v-3h3a1 1 0 0 0 0-2z"/><path d="m11 7v4.586l-2.707 2.707a1 1 0 1 0 1.414 1.414l3-3a1 1 0 0 0 .293-.707v-5a1 1 0 0 0 -2 0z"/><path d="m14.728 21.624a9.985 9.985 0 1 1 6.9-6.895 1 1 0 1 0 1.924.542 11.989 11.989 0 1 0 -8.276 8.277 1 1 0 1 0 -.544-1.924z"/></svg>
+<span>Delay</span>
+            </div>
+            <div onclick="switchTab(1)" id="tab-1" class="tab">
+                   <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+  <path d="m23.452,5.325l-2.66,2.66-1.414-1.414,1.57-1.571h-8.948c-3.86,0-7,3.14-7,7,0,1.075.251,2.09.687,3h-2.151c-.335-.941-.536-1.945-.536-3C3,7.038,7.038,3,12,3h8.948l-1.57-1.571L20.792.015l2.659,2.659c.729.731.729,1.92,0,2.65Zm-12.252,1.675v1.2h-.327c-1.198,0-2.173.975-2.173,2.173,0,1.033.734,1.929,1.747,2.131l2.791.559c.268.054.462.291.462.563,0,.316-.258.574-.574.574h-2.126c-.316,0-.585-.211-.671-.5h-1.62c.102,1.175,1.09,2.1,2.291,2.1h.2v1.2h1.6v-1.2h.326c1.199,0,2.174-.975,2.174-2.173,0-1.033-.734-1.929-1.747-2.131l-2.792-.559c-.267-.054-.461-.291-.461-.562,0-.316.257-.574.573-.574h2.127c.316,0,.585.211.671.5h1.62c-.102-1.175-1.09-2.1-2.291-2.1h-.2v-1.2h-1.6Zm7.113,2c.436.91.687,1.925.687,3,0,3.86-3.141,7-7,7H3.052l1.571-1.571-1.414-1.414-2.659,2.659c-.731.731-.731,1.92,0,2.651l2.659,2.659,1.414-1.414-1.571-1.571h8.948c4.963,0,9-4.038,9-9,0-1.055-.2-2.059-.536-3h-2.151Z"/>
+</svg>
+<span>Split</span>
+            </div>
+            <div onclick="switchTab(2)" id="tab-2" class="tab">
+  <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="m23.34,9.481l-3.5-6c-.893-1.53-2.548-2.481-4.319-2.481h-7.069c-1.771,0-3.427.951-4.319,2.481L.632,9.481c-.905,1.553-.905,3.483,0,5.038l3.501,6c.893,1.53,2.547,2.48,4.318,2.48h7.069c1.771,0,3.426-.95,4.319-2.48l3.5-6.001c.905-1.554.905-3.484,0-5.038Zm-1.729,4.031l-3.499,6c-.536.918-1.529,1.488-2.592,1.488h-7.069c-1.062,0-2.056-.57-2.591-1.488l-3.5-5.999c-.544-.933-.544-2.092,0-3.024l3.5-6c.535-.918,1.528-1.489,2.591-1.489h7.069c1.062,0,2.056.57,2.591,1.489l3.5,6c.544.933.544,2.091,0,3.023Zm-4.611-1.512c0,.552-.447,1-1,1h-3v3c0,.553-.447,1-1,1s-1-.447-1-1v-3h-3c-.553,0-1-.448-1-1s.447-1,1-1h3v-3c0-.552.447-1,1-1s1,.448,1,1v3h3c.553,0,1,.448,1,1Z"/></svg>
+<span>Limit</span>
+            </div>
+        </div>
+       <div class="second1icon">
+         <div onclick="switchTab(3)" id="tab-3" class="tab">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="M19,3h-6.528c-.154,0-.31-.036-.447-.105l-3.156-1.578c-.415-.207-.878-.316-1.341-.316h-2.528C2.243,1,0,3.243,0,6v12c0,2.757,2.243,5,5,5h1c.552,0,1-.447,1-1s-.448-1-1-1h-1c-1.654,0-3-1.346-3-3V9H22v9c0,1.654-1.346,3-3,3h-1c-.553,0-1,.447-1,1s.447,1,1,1h1c2.757,0,5-2.243,5-5V8c0-2.757-2.243-5-5-5ZM2,6c0-1.654,1.346-3,3-3h2.528c.154,0,.31,.036,.447,.105l3.156,1.578c.415,.207,.878,.316,1.341,.316h6.528c1.302,0,2.402,.839,2.816,2H2v-1Zm13.707,13.105c.391,.391,.391,1.023,0,1.414l-1.613,1.613c-.577,.577-1.335,.865-2.094,.865s-1.516-.288-2.093-.865l-1.614-1.613c-.391-.391-.391-1.023,0-1.414s1.023-.391,1.414,0l1.293,1.293v-7.398c0-.553,.448-1,1-1s1,.447,1,1v7.398l1.293-1.293c.391-.391,1.023-.391,1.414,0Z"/></svg>
+<span>Saver</span>
+            </div>
+         <div onclick="switchTab(4)" id="tab-4" class="tab">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+  <path d="m6,0C2.691,0,0,2.691,0,6s2.691,6,6,6,6-2.691,6-6S9.309,0,6,0Zm2.776,8.87c-.445-1.095-1.514-1.87-2.768-1.87h-.016c-1.254,0-2.325.773-2.769,1.868-.751-.728-1.222-1.742-1.222-2.868,0-2.206,1.794-4,4-4s4,1.794,4,4c0,1.127-.472,2.142-1.224,2.87Zm-1.276-4.37c0,.828-.672,1.5-1.5,1.5s-1.5-.672-1.5-1.5.672-1.5,1.5-1.5,1.5.672,1.5,1.5Zm10.5,7.5c-3.309,0-6,2.691-6,6s2.691,6,6,6,6-2.691,6-6-2.691-6-6-6Zm2.776,8.87c-.445-1.095-1.514-1.87-2.768-1.87h-.016c-1.254,0-2.325.773-2.769,1.868-.751-.728-1.222-1.742-1.222-2.868,0-2.206,1.794-4,4-4s4,1.794,4,4c0,1.127-.472,2.142-1.224,2.87Zm-1.276-4.37c0,.828-.672,1.5-1.5,1.5s-1.5-.672-1.5-1.5.672-1.5,1.5-1.5,1.5.672,1.5,1.5Zm-5.5-12.5c0-.552.447-1,1-1h2c2.206,0,4,1.794,4,4v2c0,.552-.447,1-1,1s-1-.448-1-1v-2c0-1.103-.897-2-2-2h-2c-.553,0-1-.448-1-1Zm-4,16c0,.552-.447,1-1,1h-2c-2.206,0-4-1.794-4-4v-2c0-.552.447-1,1-1s1,.448,1,1v2c0,1.103.897,2,2,2h2c.553,0,1,.448,1,1Z"/>
+</svg>
+<span>Mid</span>
+        </div>
+       </div>
+       
+    </div>
+
+  </nav>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal" onclick="if(event.target.id==='modal') hideModal()">
+    <div onclick="event.stopImmediatePropagation()" class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title" style="font-size:1.25rem; font-weight:600;">Calculator</h2>
+        <!-- <p onclick="hideModal()" class="popup_close"><i class="fa-solid fa-xmark"></i></p> -->
       </div>
+      <div id="modal-content" class="modal-body"></div>
+      <footer>© BS&MFI Solutions. All Rights Reserved.</footer>
     </div>
-
-
-   <div class="app-grid">
-      <a href="https://blackswan19.github.io/golden/FM/solution"><div onclick="openApp(1)" class="app-item">
-      <div class="app-icon" style="background: linear-gradient(135deg, #f3d214, rgb(243 174 0))"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M414.62-255.38q-26.85 0-45.74-18.89Q350-293.15 350-320v-77.69q-51.62-33.62-80.81-86.93Q240-537.92 240-599.23q0-100.08 69.96-170.42Q379.92-840 480-840t170.04 69.96Q720-700.08 720-600q0 62.08-29.19 115.27T610-397.69V-320q0 26.85-18.88 45.73-18.89 18.89-45.74 18.89H414.62Zm0-40h130.76q10.77 0 17.7-6.93Q570-309.23 570-320v-98.92L594-436q40.23-28.77 63.12-71.88Q680-551 680-600q0-83-58.5-141.5T480-800q-83 0-141.5 58.5T280-600q0 49 22.88 92.12Q325.77-464.77 366-436l24 17.08V-320q0 10.77 6.92 17.69 6.93 6.93 17.7 6.93ZM406.92-120q-8.54 0-14.27-5.73T386.92-140v-20h186.16v20q0 8.54-5.73 14.27T553.08-120H406.92ZM480-600Z"/></svg></div>
-      <div class="app-label">Solutions</div>
-    </div></a>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmCSWXieZpqTiUqIVVihwn8vdGl-RyHijMNmovi_Bfc2GRbg/viewform"><div onclick="openApp(3)" class="app-item">
-      <div class="app-icon" style="background: linear-gradient(135deg, #ff0000, #ff8d00);"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M497.35-308.81q7.27-7.27 7.27-17.34 0-10.08-7.27-17.35-7.27-7.27-17.35-7.27-10.08 0-17.35 7.27-7.27 7.27-7.27 17.35 0 10.07 7.27 17.34t17.35 7.27q10.08 0 17.35-7.27ZM460-433.85h40v-240h-40v240Zm20 350.47L362.75-200H200v-162.75L83.38-480 200-597.25V-760h162.75L480-876.62 597.25-760H760v162.75L876.62-480 760-362.75V-200H597.25L480-83.38Zm0-56.62 100-100h140v-140l100-100-100-100v-140H580L480-820 380-720H240v140L140-480l100 100v140h140l100 100Zm0-340Z"/></svg></div>
-      <div class="app-label">Issue</div>
-    </div></a>
-    <a href="https://blackswan19.github.io/golden/FM/starspage"><div onclick="openApp(4)" class="app-item">
-      <div class="app-icon" style="background: linear-gradient(135deg, #365acb, #147ac9)"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m325-676.31 104.31-138.84q9.69-12.93 22.73-18.89Q465.08-840 480-840q14.92 0 27.96 5.96 13.04 5.96 22.73 18.89L635-676.31l160.77 54.69q21.38 7.24 32.92 24.12 11.54 16.88 11.54 37.5 0 9.69-2.73 19t-9.19 18L722.92-380.08l4 153.23q1 28.08-18.77 47.47Q688.38-160 662.54-160q.31 0-18.16-2.23L480-210.69l-164.38 48.46q-5 2-9.47 2.11-4.46.12-8.69.12-26.61 0-46-19.38-19.38-19.39-18.38-47.47l4-154.23L131.92-523q-6.46-8.69-9.19-18-2.73-9.31-2.73-19 0-20.38 11.81-37.65T165-622.38l160-53.93Zm25.15 34.39-171.69 57.84q-11.54 3.85-15.77 15.77-4.23 11.93 3.46 21.93l111.7 153.61-4.77 166.39q-.77 13.07 9.23 20.76 10 7.7 22.31 3.85L480-252.15l175.38 51.38q12.31 3.85 22.31-3.85 10-7.69 9.23-20.76l-4.77-167.39 111.7-151.61q7.69-10 3.46-21.93-4.23-11.92-15.77-15.77l-171.69-59.84-110.62-147.31q-6.92-10-19.23-10t-19.23 10L350.15-641.92ZM480-499.23Z"/></svg></div>
-      <div class="app-label">Stars</div>
-    </div></a>
-    <a href="https://blackswan19.github.io/golden/Bs%20Games/bsgames"><div onclick="openApp(7)" class="app-item">
-      <div class="app-icon" style="background: linear-gradient(135deg, #d68613, #d65f26)"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M597.23-398.77 631.69-524l-107.38-74.15-34.46 125.23 107.38 74.15ZM184.62-188.54l-16.85-7.54Q136-209.85 125-241.73q-11-31.89 3-62.12l56.62-121.38v236.69ZM360-129.23q-33 0-56.5-23.62-23.5-23.61-23.5-56.61v-189l88.54 243.23q3 7.77 5.77 13.88 2.77 6.12 7.77 12.12H360Zm174.46-38.85q-25.61 9.46-49.69-1.46-24.08-10.92-33.54-36.54L288.85-652q-9.47-25.62 1.84-49.58Q302-725.54 327.62-735L584-828.85q25.62-9.46 49.58 1.85 23.96 11.31 33.42 36.92l162.62 445.93q9.46 25.61-1.47 49.57-10.92 23.96-36.53 33.43l-257.16 93.07Zm-13.38-38.84L776.92-300q10-3.85 14.23-12.69 4.23-8.85.39-18.85L630.23-775.38q-3.85-10-12.69-14.24-8.85-4.23-18.85-.38l-255.61 93.08q-10 3.84-14.23 12.69t-.39 18.85l161.08 443.84q3.84 10 12.69 14.23t18.85.39ZM560-498.46Z"/></svg></div>
-      <div class="app-label">BsGames</div>
-    </div></a>
-    </div>
-
-    <div class="bottom-nav">
-      <div class="bottomicons">
-          <a href="https://blackswan19.github.io/golden/FM/accverify"><div class="dock-icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M247.85-260.62q51-36.69 108.23-58.03Q413.31-340 480-340t123.92 21.35q57.23 21.34 108.23 58.03 39.62-41 63.73-96.84Q800-413.31 800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 66.69 24.12 122.54 24.11 55.84 63.73 96.84Zm146.88-234.11Q360-529.46 360-580t34.73-85.27Q429.46-700 480-700t85.27 34.73Q600-630.54 600-580t-34.73 85.27Q530.54-460 480-460t-85.27-34.73ZM480-120q-75.31 0-141-28.04t-114.31-76.65Q176.08-273.31 148.04-339 120-404.69 120-480t28.04-141q28.04-65.69 76.65-114.31 48.62-48.61 114.31-76.65Q404.69-840 480-840t141 28.04q65.69 28.04 114.31 76.65 48.61 48.62 76.65 114.31Q840-555.31 840-480t-28.04 141q-28.04 65.69-76.65 114.31-48.62 48.61-114.31 76.65Q555.31-120 480-120Zm108.85-59.35q53.53-19.34 92.53-52.96-39-31.31-90.23-49.5Q539.92-300 480-300q-59.92 0-111.54 17.81-51.61 17.81-89.84 49.88 39 33.62 92.53 52.96Q424.69-160 480-160q55.31 0 108.85-19.35Zm-52-343.8Q560-546.31 560-580t-23.15-56.85Q513.69-660 480-660t-56.85 23.15Q400-613.69 400-580t23.15 56.85Q446.31-500 480-500t56.85-23.15ZM480-580Zm0 350Z"/></svg></div></a>
-          <a href="https://mfi0212.github.io/MFI/applydivert"><div class="dock-icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M241.54-211.54Q138.31-243.15 89.92-322q-48.38-78.85-48.38-158t48.38-158q48.39-78.85 151.62-110.46V-706q-71 24-115.5 86t-44.5 140q0 78 44.5 140t115.5 86v42.46Zm320 11.54q-116.85 0-198.42-81.58-81.58-81.57-81.58-198.42t81.58-198.42Q444.69-760 561.54-760q54.46 0 103.61 19.62 49.16 19.61 87.77 55.15l-28.3 28.31q-32.24-29.93-73.43-46.5Q610-720 561.54-720q-100 0-170 70t-70 170q0 100 70 170t170 70q48.46 0 89.65-16.58 41.19-16.57 73.43-46.5l28.3 28.31q-38.61 35.54-87.77 55.15Q616-200 561.54-200Zm224.61-147.69L757.85-376l84-84h-315.7v-40h315.7l-84-84 28.3-28.31L918.46-480 786.15-347.69Z"/></svg></div></a>
-          <a href="https://blackswan19.github.io/golden/FM/starpre"><div class="dock-icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M306.92-119.23 468.46-400 160-436.15l450-404.62h44.62L489.23-559.23 800-523.85 350-119.23h-43.08Zm113.54-120.08 287.16-254.77-282.85-31.69L540.85-722 252.38-466.46l281.85 33.77-113.77 193.38ZM480-480.77Z"/></svg></div></a>
-          <a href="https://blackswan19.github.io/golden/FM/bsmfi_search"><div class="dock-icon"><svg class="serchareicon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M779.38-153.85 528.92-404.31q-30 25.54-69 39.54t-78.38 14q-95.92 0-162.58-66.65-66.65-66.66-66.65-162.58 0-95.92 66.65-162.58 66.66-66.65 162.58-66.65 95.92 0 162.58 66.65 66.65 66.66 66.65 162.58 0 41.69-14.77 80.69t-38.77 66.69l250.46 250.47-28.31 28.3ZM381.54-390.77q79.61 0 134.42-54.81 54.81-54.8 54.81-134.42 0-79.62-54.81-134.42-54.81-54.81-134.42-54.81-79.62 0-134.42 54.81-54.81 54.8-54.81 134.42 0 79.62 54.81 134.42 54.8 54.81 134.42 54.81Z"/></svg>
-            </div></a>
-        </div>
-        <div class="search-bar">
-          <span style="opacity: 0.7;"><img src="mfi.gif" alt=""></span>
-          <span>Myootive Services</span>
-        </div>
-     </div>
   </div>
 
   <script>
-    function updateClock() {
-      const now = new Date();
-      document.getElementById('status-time').textContent =
-        now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })
-           .replace(' AM', 'am').replace(' PM', 'pm');
-      
-      document.getElementById('lock-time').textContent =
-        now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: false });
-      
-      document.getElementById('lock-date').textContent =
-        now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+    let currentTab = 0;
+    let isDarkMode = true;
+    const tabNames = ["Delay It Calculater", "Split Pay Calculater", "Buy Limit Calculater", "Pre-Saver", "Lendlink - Mid"];
+    const fees = [4.5, 5.0, 5.5, null, null];
+    const googleFormUrl = "https://forms.gle/YOUR_GOOGLE_FORM_LINK_HERE";
+    // document.addEventListener('contextmenu', e => e.preventDefault());
+    const tabContents = {
+      0: `
+        <div style="padding-top: 5rem;">
+          <h2 class="section-title">Delay It</h2>
+          <div style="    margin-top: -0.3rem;
+    font-size: 13px;
+    color: var(--text2);
+    position: relative;
+    left: 2px;text-align: center;
+">Return date extender</div>
+           <div class="how-it-works" >
+            <p style="font-weight:700; margin-bottom:1rem;">About Us</p>
+            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;">
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Delay It by BS&MFI Solutions helps to extend your payment deadlines with transparent fees. Our service provides the flexibility you need to manage your returns.</li>
+            </ul>
+          </div>
+          <div class="how-it-works" >
+            <p style="font-weight:700; margin-bottom:1rem;">How Delay It works?</p>
+            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
+">
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> You can extend the return date of the amount.</li>
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Transparent fees with no hidden costs.</li>
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Fast extend process.</li>
+            </ul>
+          </div>
+          
+          <div style="margin: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text2);
+    padding: 0px;
+    text-align: center;;">
+            Note : The Process Fee must be paid before applying for Delay It. If not, we can't provide the extension.
+          </div>
+
+          <div class="faq-container" >
+            <h2 style="font-size:1.125rem; font-weight:600;">FAQ's</h2>
+            <div class="faq-item">
+              <h3>What is the minimum amount I can extend?</h3>
+              <p>The minimum amount is ₹500.</p>
+            </div>
+            <div class="faq-item">
+              <h3>How is the fee calculated?</h3>
+              <p>The fee is 4.5% of the amount multiplied by the number of days you choose.</p>
+            </div>
+            <div class="faq-item">
+              <h3>Can I apply for multiple extensions?</h3>
+              <p>Yes, you can apply multiple times. Each extension is treated separately with its own fee.</p>
+            </div>
+            <div class="faq-item">
+              <h3>If today is my return date, can I still extend?</h3>
+              <p>No, you must apply at least 24 hours before the original return date.</p>
+            </div>
+            <div class="faq-item">
+              <h3>How many days can I extend?</h3>
+              <p>Standard range is 15–30 days. Premium members can go up to 60 days.</p>
+            </div>
+            <div class="faq-item">
+              <h3>Will my credit score be affected?</h3>
+              <p>No. Delay It is a paid service and does not impact your credit report.</p>
+            </div>
+          </div>
+        </div>
+      `,
+
+      1: `
+        <div style="padding-top: 5rem;">
+          <h2 class="section-title">Split Half Pay</h2>
+          <div style="    margin-top: -0.3rem;
+    font-size: 13px;
+    color: var(--text2);
+    position: relative;
+    left: 2px;text-align: center;
+">Flexible Repayment</div>
+          
+          <div class="how-it-works" >
+            <p style="font-weight:700; margin-bottom:1rem;">About Us</p>
+            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
+">
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> With Split half pay, you can pay half of the total amount and extend the remaining half with a flexibility while ensuring smooth repayment.</li>
+            </ul>
+          </div>
+          
+
+           <div class="how-it-works" >
+            <p style="font-weight:700; margin-bottom:1rem;">How Half Split Pay works?</p>
+            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
+">
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Paying 50% of the amount now and split the remaining 50% in instalments.</li>
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Fast approval and simple process.</li>
+            </ul>
+          </div>
+          
+          <div style="margin: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text2);
+    padding: 0px;
+    text-align: center;">
+            Note: The split fee must be paid upfront along with the first 50%. This allows you to split the remaining amount.
+          </div>
+
+          <div class="faq-container" >
+            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">FAQ's</h2>
+            <div class="faq-item">
+              <h3>What is the minimum amount I can split?</h3>
+              <p>The minimum amount is 2000₹.</p>
+            </div>
+            <div class="faq-item">
+              <h3>How is the 5.2% fee divided?</h3>
+              <p>The fee is shared equally among all participants.</p>
+            </div>
+            <div class="faq-item">
+              <h3>Can I choose different number of splits?</h3>
+              <p>Yes — you can select between 2 to 8 splits.</p>
+            </div>
+          </div>
+        </div>
+      `,
+
+      2: `
+        <div style="padding-top: 5rem;">
+          <h2 class="section-title">Buy Limit</h2>
+          <div style="    margin-top: -0.3rem;
+    font-size: 13px;
+    color: var(--text2);
+    position: relative;
+    left: 2px;text-align: center;
+">Limit extender</div>
+          
+          <div class="how-it-works" >
+            <p style="font-weight:700; margin-bottom:1rem;">About Us</p>
+            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
+">
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Buy Limit by BS&MFI Solutions helps to borrow more than the borrow limit with transparent fees. Our service let you borrow when you reaches the limit.</li>
+            </ul>
+          </div>
+
+          <div class="how-it-works" >
+            <p style="font-weight:700; margin-bottom:1rem;">How Buy Limit works?</p>
+            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
+">
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> You can borrow more than your account borrow amount limit.</li>
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Transparent fees with no hidden costs.</li>
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Fast approv process.</li>
+            </ul>
+          </div>
+          
+          <div style="margin: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text2);
+    padding: 0px;
+    text-align: center;">
+           Note: The Buy Limit fee must be paid upfront along with the first 50%. This allows you to Buy Limit and borrow the amount.
+          </div>
+
+          <div class="faq-container" >
+            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">FAQ's</h2>
+            <div class="faq-item">
+              <h3>How many times i can Buy Limit?</h3>
+              <p>Its based on the amount you borrowing.</p>
+            </div>
+          </div>
+        </div>
+      `,
+
+      3: `
+        <div style="padding-top: 5rem;">
+          <h2 class="section-title">Pre-Saver</h2>
+          <div style="    margin-top: -0.3rem;
+    font-size: 13px;
+    color: var(--text2);
+    position: relative;
+    left: 2px;text-align: center;
+">Save on time</div>
+          
+              <div class="how-it-works" >
+            <p style="font-weight:700; margin-bottom:1rem;">About Us</p>
+            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
+">
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> By using Pre-saver you can save the particular upcoming offer (or) amounts on a perticular date.</li>
+            </ul>
+          </div>
+
+
+          <div class="how-it-works" >
+            <p style="font-weight:700; margin-bottom:1rem;">How Pre-Saver works?</p>
+            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
+">
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Pre saves the offers and amounts on the date you want.</li>
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Fast approval process</li>
+            </ul>
+          </div>
+          
+          <div style="margin: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text2);
+    padding: 0px;
+    text-align: center;">
+            Note: The fee will be based on number of slots available.
+          </div>
+
+          <div class="faq-container" >
+            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">For VIP members</h2>
+            <div class="faq-item">
+              <h3>1. Private Offer</h3>
+              <p>VIPs get private offer.</p>
+            </div>
+            <div class="faq-item">
+              <h3>2. Customize Offer</h3>
+              <p>VIPs can custom their offer based on their needs.</p>
+            </div>
+            <div class="faq-item">
+              <h3>3. RLO(Rare Limited Offer)</h3>
+              <p>VIPs can get very rare limited offers for every 2-3 months.</p>
+            </div>
+          </div>
+        </div>
+
+          <div class="faq-container" >
+            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">FAQ's</h2>
+            <div class="faq-item">
+              <h3>Can I pre-save when ever i want?</h3>
+              <p>Yes, if you are VIP then you can use when ever you want.</p>
+            </div>
+            <div class="faq-item">
+              <h3>Where can i find the fee for pre-saver?</h3>
+              <p>The fee for pre-saver is based on the offer or amount you applying(Ask coordinator).</p>
+            </div>
+            <div class="faq-item">
+              <h3>Can I pre-save when ever i want? But i'm not VIP..!</h3>
+              <p>No, but you can apply when ever their will be offer avaiable soon.</p>
+            </div>
+            <div class="faq-item">
+              <h3>Is there any withdrawal fee?</h3>
+              <p>No fee if you withdraw after 30 days. Early withdrawal has 1% fee.</p>
+            </div>
+            <div class="faq-item">
+              <h3>Can I set different rules for different accounts?</h3>
+              <p>Yes, you can create multiple Pre-Saver goals (Travel, Emergency, etc.).</p>
+            </div>
+            <div class="faq-item">
+              <h3>How secure is my saved money?</h3>
+              <p>100% secure with bank-level encryption and insurance up to ₹5 lakh.</p>
+            </div>
+          </div>
+        </div>
+      `,
+
+      4: `
+        <div style="padding-top: 5rem;">
+          <h2 class="section-title">Lendlink - Mid</h2>
+          <div style="    margin-top: -0.3rem;
+    font-size: 13px;
+    color: var(--text2);
+    position: relative;
+    left: 2px;text-align: center;
+">Turn your money into income</div>
+          
+          <div class="how-it-works" >
+            <p style="font-weight:700; margin-bottom:1rem;">About us</p>
+            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
+">
+              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span>Lendlink - Mid from Lendlink hepls you to turn your money into income that mean you can lend your money and earn interest for the amount you lended.</li>
+            </ul>
+          </div>
+          
+          <div style="margin: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text2);
+    padding: 0px;
+    text-align: center;">
+            Note: MID has 2 plans, Before lending you have to select 1 plan to continue the lending process.
+          </div>
+
+          <div class="faq-container" >
+            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">FAQ's</h2>
+            <div class="faq-item">
+              <h3>How much money i can lend?</h3>
+              <p>Their is no limit on the lending limit, It will be based on the borrower.</p>
+            </div>
+          </div>
+        </div>
+      `
+    };
+
+    function switchTab(tabIndex) {
+      currentTab = tabIndex;
+      for (let i = 0; i < 5; i++) {
+        const tabEl = document.getElementById(`tab-${i}`);
+        if (tabEl) tabEl.classList.toggle('tab-active', i === tabIndex);
+      }
+      document.getElementById('main-content').innerHTML = tabContents[tabIndex];
     }
 
-    const lockScreen = document.getElementById('lock-screen');
-    const homeScreen = document.getElementById('home-screen');
+    function showPopup() {
+    const modal = document.getElementById('modal');
+    const titleEl = document.getElementById('modal-title');
+    const contentEl = document.getElementById('modal-content');
+    
+    modal.classList.add('show');
+    const rate = fees[currentTab];
 
-    lockScreen.addEventListener('click', () => {
-      lockScreen.classList.add('unlocking');
-      setTimeout(() => {
-        lockScreen.style.display = 'none';
-        homeScreen.classList.remove('hidden');
-      }, 600);
-    });
+    const formLinks = {
+        0: "https://forms.gle/9URS1LAqd3iB8qDUA",
+        1: "https://forms.gle/ujs36QQpBpMPBRPu6",
+        2: "https://forms.gle/VqJ1Wqtj8HxXa84e9",
+    };
 
-    function openApp(num) {
-      const modal = document.getElementById('app-modal');
-      const iconEl = document.getElementById('modal-icon');
-      const titleEl = document.getElementById('modal-title');
+    if (rate !== null) {
+        titleEl.textContent = tabNames[currentTab];
+        const applyFormUrl = formLinks[currentTab] || "https://forms.gle/9URS1LAqd3iB8qDUA"; 
+        contentEl.innerHTML = `
+          <div style="display:flex; flex-direction:column; gap:1.5rem;">
+            <div>
+              <label style="display:block; font-size:0.75rem; text-align: center; color:var(--text2); margin-bottom:1rem; letter-spacing:1px;">AMOUNT TO PROCESS</label>
+              <div class="amount-box">
+                <span style="font-size: 20px;
+    color: #ffffffba;
+    white-space: nowrap;">$ l ₹</span>
+                <input id="amount-input" type="number" placeholder='Enter amount...'
+                       style="flex: 1;
+    background: transparent;
+    border: none;
+    font-size: 25px;
+    font-weight: 500;
+    outline: none;
+    padding: 0 8px;
+    color: var(--text);">
+              </div>
+            </div>
+           
+            <div class="calc-result" style="display:flex; flex-direction:column; gap:1.25rem; font-size:0.875rem;">
+              <div style="display:none; justify-content:space-between;">
+                <span class="text-secondary">Base amount</span>
+                <span id="base-amount" style="font-weight:500;"></span>
+              </div>
+              <div style="display:flex; justify-content:space-between;">
+                <span class="text-secondary">${tabNames[currentTab]} fee (${rate}%)</span>
+                <span id="fee-amount" style="font-weight: 600; color: #ff6600; font-size: 16px;"></span>
+              </div>
+              <div style="height:1px; background:#333; display: none;"></div>
+              <div style="display:none; justify-content:space-between; font-size:1.25rem; font-weight:600;">
+                <span>Total</span>
+                <span id="total-amount" class="accent"></span>
+              </div>
+            </div>
+            
+           <div class="maiinoptionsatapply">
+    <button onclick="calculateFee()" class="btn-primary">Calculate</button>    
+    <button class="btn-secondary" >
+      <a href="${applyFormUrl}">
+        <?xml version="1.0" encoding="UTF-8"?>
+        <svg  style='width: 20px;
+    height: 20px;
+    margin-bottom: 0px;
+    padding: 0px;    fill: black;
+    border-radius: 0;'xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+          <path d="m6,0C2.686,0,0,2.686,0,6s2.686,6,6,6,6-2.686,6-6S9.314,0,6,0Zm3.692,5.722l-2.712,2.605c-.452.446-1.052.671-1.653.671s-1.204-.225-1.664-.674l-1.132-1.108c-.395-.387-.401-1.02-.015-1.414.386-.395,1.019-.401,1.414-.016l1.132,1.108c.144.142.379.141.522,0l2.723-2.614c.398-.381,1.032-.37,1.414.029.383.398.37,1.031-.029,1.414Zm3.577,9.759c-.813.813-1.27,1.915-1.27,3.065v1.455h1.455c1.15,0,2.252-.457,3.065-1.27l6.807-6.807c.897-.897.897-2.353,0-3.25-.897-.897-2.353-.897-3.25,0l-6.807,6.807Zm7.73,1.598v2.922c0,2.209-1.791,4-4,4H7c-2.209,0-4-1.791-4-4v-6.589c.927.377,1.939.589,3,.589,4.411,0,8-3.589,8-8,0-.339-.028-.672-.069-1h3.069c1.193,0,2.254.536,2.987,1.367-.48.209-.933.5-1.325.892l-6.808,6.808c-1.187,1.188-1.855,2.798-1.855,4.478v1.455c0,1.105.895,2,2,2h1.455c1.679,0,3.29-.667,4.478-1.855l3.067-3.067Z"/>
+        </svg>
+        Apply Now
+      </a>
+    </button>
+    </div>
+    <button onclick="hideModal()" class="btn-close">Close Now</button>    
+          </div>
+        `;
+        calculateFee();
+    } 
+    else if (currentTab === 3) {
+        titleEl.textContent = "Pre-Saver";
+        contentEl.innerHTML = `
+          <div style="text-align:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="M19,3h-6.528c-.154,0-.31-.036-.447-.105l-3.156-1.578c-.415-.207-.878-.316-1.341-.316h-2.528C2.243,1,0,3.243,0,6v12c0,2.757,2.243,5,5,5h1c.552,0,1-.447,1-1s-.448-1-1-1h-1c-1.654,0-3-1.346-3-3V9H22v9c0,1.654-1.346,3-3,3h-1c-.553,0-1,.447-1,1s.447,1,1,1h1c2.757,0,5-2.243,5-5V8c0-2.757-2.243-5-5-5ZM2,6c0-1.654,1.346-3,3-3h2.528c.154,0,.31,.036,.447,.105l3.156,1.578c.415,.207,.878,.316,1.341,.316h6.528c1.302,0,2.402,.839,2.816,2H2v-1Zm13.707,13.105c.391,.391,.391,1.023,0,1.414l-1.613,1.613c-.577,.577-1.335,.865-2.094,.865s-1.516-.288-2.093-.865l-1.614-1.613c-.391-.391-.391-1.023,0-1.414s1.023-.391,1.414,0l1.293,1.293v-7.398c0-.553,.448-1,1-1s1,.447,1,1v7.398l1.293-1.293c.391-.391,1.023-.391,1.414,0Z"/></svg>
+            <h3 style="font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 0.75rem;">Welcome to Pre-Saver</h3>
+            <p style="color:var(--text2);    margin-bottom: 20px;line-height:1.5;">
+              By using Pre-saver you can save the particular upcoming offer (or) amounts on a perticular date..
+            </p>
+            <a href="https://forms.gle/rtcayowFYw48u94PA">
+              <button class="btn-primary">Pre-Save Now</button>
+            </a>
+            
+    <button onclick="hideModal()" class="btn-close">Close Now</button>  
+          </div>
+        `;
+    } 
+    else {
+        titleEl.textContent = "Lendlink - Mid";
+        contentEl.innerHTML = `
+          <div style="text-align:center;">
+            <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+  <path d="m6,0C2.691,0,0,2.691,0,6s2.691,6,6,6,6-2.691,6-6S9.309,0,6,0Zm2.776,8.87c-.445-1.095-1.514-1.87-2.768-1.87h-.016c-1.254,0-2.325.773-2.769,1.868-.751-.728-1.222-1.742-1.222-2.868,0-2.206,1.794-4,4-4s4,1.794,4,4c0,1.127-.472,2.142-1.224,2.87Zm-1.276-4.37c0,.828-.672,1.5-1.5,1.5s-1.5-.672-1.5-1.5.672-1.5,1.5-1.5,1.5.672,1.5,1.5Zm10.5,7.5c-3.309,0-6,2.691-6,6s2.691,6,6,6,6-2.691,6-6-2.691-6-6-6Zm2.776,8.87c-.445-1.095-1.514-1.87-2.768-1.87h-.016c-1.254,0-2.325.773-2.769,1.868-.751-.728-1.222-1.742-1.222-2.868,0-2.206,1.794-4,4-4s4,1.794,4,4c0,1.127-.472,2.142-1.224,2.87Zm-1.276-4.37c0,.828-.672,1.5-1.5,1.5s-1.5-.672-1.5-1.5.672-1.5,1.5-1.5,1.5.672,1.5,1.5Zm-5.5-12.5c0-.552.447-1,1-1h2c2.206,0,4,1.794,4,4v2c0,.552-.447,1-1,1s-1-.448-1-1v-2c0-1.103-.897-2-2-2h-2c-.553,0-1-.448-1-1Zm-4,16c0,.552-.447,1-1,1h-2c-2.206,0-4-1.794-4-4v-2c0-.552.447-1,1-1s1,.448,1,1v2c0,1.103.897,2,2,2h2c.553,0,1,.448,1,1Z"/>
+</svg>
+<h3 style="font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 0.75rem;">By Lendlink</h3>
+            <p style="color:var(--text2); max-width:240px; margin:0 auto;">Turn your money into income.</p>
+            <a href="https://mfi0212.github.io/swan/lndlnk-mid">
+              <button class="btn-primary" style="margin-top:1.5rem;">Explore Now</button>
+            </a>
+            
+    <button onclick="hideModal()" class="btn-close">Close Now</button>  
+          </div>
+        `;
+    }
+}
 
-      const apps = {
-        1: {icon: '💬', title: 'Messages'},
-        2: {icon: '📸', title: 'Camera'},
-        3: {icon: '🎵', title: 'Music'},
-        4: {icon: '🗺️', title: 'Maps'},
-        5: {icon: '🌤️', title: 'Weather'},
-        6: {icon: '📅', title: 'Calendar'},
-        7: {icon: '💰', title: 'Wallet'},
-        8: {icon: '🛒', title: 'Play Store'},
-        9: {icon: '☎️', title: 'Phone'},
-        10: {icon: '💬', title: 'Messages'},
-        11: {icon: '🌐', title: 'Chrome'},
-        12: {icon: '📷', title: 'Photos'}
-      };
-
-      const app = apps[num] || {icon: '⭐', title: 'App'};
-      iconEl.textContent = app.icon;
-      titleEl.textContent = app.title;
-      modal.style.display = 'flex';
-      setTimeout(() => modal.classList.add('show'), 10);
+    function submitApplication() {
+      hideModal();
+      window.open(googleFormUrl, '_blank');
     }
 
-    function closeModal() {
-      const modal = document.getElementById('app-modal');
+    function calculateFee() {
+      const input = document.getElementById('amount-input');
+      if (!input) return;
+      let amount = parseFloat(input.value) || 1000;
+      const rate = fees[currentTab];
+      const fee = (amount * rate / 100);
+      const total = amount + fee;
+
+      document.getElementById('base-amount').textContent = '$' + amount.toFixed(2);
+      document.getElementById('fee-amount').textContent = '$' + fee.toFixed(2);
+      document.getElementById('total-amount').textContent = '$' + total.toFixed(2);
+    }
+
+    function hideModal() {
+      const modal = document.getElementById('modal');
       modal.classList.remove('show');
-      setTimeout(() => modal.style.display = 'none', 300);
+    }
+
+    function toggleTheme() {
+      isDarkMode = !isDarkMode;
+      if (isDarkMode) {
+        document.body.classList.remove('light');
+        document.getElementById('theme-icon').classList.replace('fa-sun', 'fa-moon');
+      } else {
+        document.body.classList.add('light');
+        document.getElementById('theme-icon').classList.replace('fa-moon', 'fa-sun');
+      }
     }
 
     window.onload = () => {
-      updateClock();
-      setInterval(updateClock, 1000);
-    };
+      switchTab(0);
+      console.log('%cBS & MFI — Full pure CSS version (NO Tailwind CDN)', 'color:#0000ff; font-weight:600');
+    };    function goBack() {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        alert(" Back button clicked!\n\n(In a real app this would take you to previous screen or home.)");
+      }
+    }
   </script>
 </body>
 </html>
