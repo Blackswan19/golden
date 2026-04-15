@@ -1,59 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BS&MFI Solution</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BS&MFI | Take Money</title>
     <link rel="icon" href="mfi.logo.png" />
-          <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Balthazar&family=Della+Respira&family=Hahmlet:wght@100..900&family=Niconne&family=Stalemate&display=swap" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
     <style>
-        * { margin:0; padding:0; box-sizing:border-box;font-family: "Red Hat Display", sans-serif;letter-spacing: 0.5px;}
-    :root {
-      --bg: #000000;
-      --header: #121212;
-      --card: #ffffff0f;
-      --text: #ffffff;
-      --text2: #888888;
-      --accent: #0000ff;
-    }
-    .light {
-      --bg: #f8f9fa;
-      --header: #ffffff;
-      --card: #ffffff;
-      --text: #111111;
-      --text2: #666666;
-      --accent: #0000ff;
-    }* {
-            -webkit-tap-highlight-color: transparent;
-        }
-        body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-
+        @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300..900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Red Hat Display", sans-serif;
+            letter-spacing: 0.5px;scrollbar-width: none;
         }
 body {
   --c-glass: #bbbbbc;
   --c-light: #fff;
   --c-dark: #000;
   
-  --c-content: rgb(255, 255, 255);
+  --c-content: #224;
   --c-action: #0052f5;
+  
+  --c-bg: #E8E8E9;
   
   --glass-reflex-dark: 1;
   --glass-reflex-light: 1;
   
   --saturation: 150%;
-  
-  color: var(--c-content);
 }
-
 body:has(input[value="dark"]:checked) {
   --c-glass: #bbbbbc;
   --c-light: #fff;
@@ -64,42 +47,256 @@ body:has(input[value="dark"]:checked) {
   
   --c-bg: #1b1b1d;
 }
-
-body:has(input[value="dim"]:checked) {
-  --c-light: #99deff;
-  --c-dark: #20001b;
-  --c-glass: hsl(335 250% 74% / 1);
-  
-  --c-content: #d5dbe2;
-  --c-action: #ff48a9;
-  
-  --c-bg: #152433;
-
-}
-    * { margin:0; padding:0; box-sizing:border-box; scrollbar-width: none;}
-    
-    body {
-      background-color: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+        body {
+           display: flex;
     justify-content: center;
     align-items: center;
-    }
-    
-    header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 50;
-    padding: 12px 7px;
+    min-height: 100vh;
+    background-color: white;
+    padding: 20px;    overflow: hidden;
+        }
+        .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 63%;
+    animation: float 18s infinite 
+ease-in-out;z-index: -10;
+}.blob1 {
+    width: 300px;
+    height: 300px;
+    background: #0046ff;
+    top: -10%;
+    right: 0%;
+}
+.blob2 {
+    width: 300px;
+    height: 300px;
+    background: #00a6ff;
+    bottom: -10%;
+    left: 0%;
+}
+        #form {
+            width: 91%;
+            max-width: 400px;
+            text-align: center;
+            position: fixed;
+            display: none;
+        }
+        * {
+            -webkit-tap-highlight-color: transparent;
+            scrollbar-width: none;
+        }
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0045ff;
+        }
+        .theme-toggle {
+           position: fixed;
+    cursor: pointer;
+    background: transparent;
+    padding: 5px;
+    border-radius: 13px;
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    background: linear-gradient(180deg, black, transparent);
+    gap: 15px;
+    justify-content: center;
+    align-items: baseline;
+    z-index: 1000;
+    top: 10px;
+    right: 10px;
+    display: none;
+        }
+        .theme-toggle a {
+            color: white;
+            text-decoration: none;
+        }
+        h1 {
+            font-size: 29px;
+            color: #0045ff;
+            margin-bottom: 0px;
+            font-weight: 900;
+        }
+        p.subtitle {
+          color: #000000;
+    margin-bottom: 20px;
+    font-size: 17px;
+    font-family: "Hahmlet", serif;
+    letter-spacing: 0px;
+    font-weight: 500;
+    text-decoration: underline 1px;
+    text-underline-position: from-font;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            display: none;
+        }
+        .form-group.active {
+            display: block;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        input[type="email"] {
+          width: 100%;
+    padding: 13px;
+    border: 1px solid #0000004b;
+    border-radius: 104px;
+    font-size: 16px;
+    outline: none;
+    text-align: center;
+    background: transparent;
+    
+    box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;transition: all 0.3s ease;
     }
+        input:hover{
+              transform: scale(1);
+        }
+        input:active{
+              transform: scale(0.90); 
+        } 
+        input:focus {
+            border: 1px solid #0000000a;
+        }
+        .notice{
+            transition: all 0.3s ease;
+        }
+.notice:hover{
+              transform: scale(1);
+        }
+        .notice:active{
+              transform: scale(0.90); 
+        } 
+
+        input[readonly] {
+            background-color: #f0f0f0;
+            cursor: not-allowed;
+        }
+button.secondary {
+  width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    background: transparent;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+}button.secondary:hover{
+background: transparent;
+}
+       .radio-group label {
+    display: flex;
+    align-items: center;
+    margin: 15px;
+    gap: 10px;
+    justify-content: flex-start;
+    white-space: nowrap;
+}#agree-section input{
+    width: max-content;
+} .calc-btnss { font-weight: 500;
+    color: #00000091;
+    background: none;
+    border: none;
+    padding: 0px;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: none;
+    font-size: 11px;
+    margin: 0px; }.notice {
+transition: all 0.3s ease;
+    } header {
+    position: fixed;
+    top: 10px;
+    z-index: 1000000000;
+    display: flex;
+    align-items: self-start;
+    justify-content: space-between;
+    padding: 0 15px;
+    width: 100%;
+    text-align: center;
+    }
+    .mficolblogo{
+   width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #0021ffbd 34%, #00d0ffcc);
+    position: relative;
+    z-index: 100000;
+    border: none;
+    padding: 5px;
+	filter: saturate(2);
+    border-radius: 100px;
+    backdrop-filter: blur(2px);
+}
+.logo span svg {
+   width: 18px;
+    fill: black;
+}
+.logo span {
+     padding: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+    top: -10px;
+    color: #ffffffbf;
+    box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+    filter: saturate(2);
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    color: black;
+}.logo {
+   display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0px;
+    border-radius: 100px;
+    transition: all 0.3s ease;
+}
+  .logo:hover{
+              transform: scale(1.03); 
+        }
+        .logo:active{
+              transform: scale(0.90); 
+        } 
     header img {
    width: 42px;
     height: 42px;
@@ -116,7 +313,6 @@ body:has(input[value="dim"]:checked) {
  color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
  color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
     border: solid 1px #ffffff00;
-    filter: saturate(2);
     padding: 3px;
     display: flex;
     justify-content: center;
@@ -127,241 +323,7 @@ transition: all 0.3s ease;}
         }
         header img:active{
               transform: scale(0.90); 
-        } 
-    button.btn-primary {
-      box-shadow: inset 0 0 0 1px 
- color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
- color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
- color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
- color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
-    border: solid 1px #ffffff00;
-    filter: saturate(2);
-    padding: 10px;
-    border-radius: 22px;
-    cursor: pointer;
-    letter-spacing: 0.3px;
-    font-size: 17px;
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
-    }
-        button.btn-primary:hover{
-              transform: scale(1.03); 
-        }
-        button.btn-primary:active{
-              transform: scale(0.90); 
-        } 
-        a{
-            text-decoration: none;
-        }
-    button.back-btn{
-box-shadow: inset 0 0 0 1px 
- color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
- color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
- color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
- color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
-    border: solid 1px #ffffff00;
-    filter: saturate(2);
-    backdrop-filter: blur(5px) url(#switcher) saturate(var(--saturation));
-    width: 40px;
-    height: 40px;cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 9999px;
-    background: transparent;
-    color: white;
-    font-size: 18px;
-   transition: all 0.3s ease;}
-        header button:hover{
-              transform: scale(1.03); 
-        }
-        header button:active{
-              transform: scale(0.90); 
-        } 
-    .theme-btn {
-      transition: all 0.3s;
-    }
-button.btn-close {
-   background: red;
-    color: white;
-    width: 100%;
-    padding: 10px;
-    font-weight: 550;
-    border-radius: 100px;
-    margin: -30px 0 15px 0;
-    font-size: 17px;
-    box-shadow: inset 0 0 0 1px 
- color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
- color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
- color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
- color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
-    border: solid 1px #ffffff00;
-    filter: saturate(2);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }div#modal-content svg {
-    width: 95px;
-    height: 95px;
-    margin-bottom: 15px;
-    background: #ffffff1f;
-    border-radius: 30px;
-    padding: 19px;   
-    fill: white;
-}
-        button.btn-close:hover{
-              transform: scale(1.03); 
-        }
-        button.btn-close:active{
-              transform: scale(0.90); 
-        } 
-
-    main {
-    flex: 1;
-    overflow-y: auto;
-    background: #00000012;
-    padding: 40px 5px 147px 5px;max-width: 650px;
-    }
-button.theme-btn {
-   display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    flex-direction: column;
-    transition: all 0.3s ease;
-    box-shadow: none;
-    border: none;
-}
-        button.theme-btn:hover{
-              transform: scale(1.03); 
-        }
-        button.theme-btn:active{
-              transform: scale(0.90); 
-        } 
-        .bottomtop {
-    position: fixed;
-    bottom: 90px;
-    z-index: 40;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-button.theme-btn span{
-font-weight: 600;
-    font-size: 14px;
-    color: #ffffffc7;
-    padding: 5px;
-    width: max-content;
-    box-shadow: inset 0 0 0 1px 
- color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
- color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
- color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
- color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
-    border: solid 1px #ffffff00;
-    filter: saturate(2);
-    border-radius: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: -5px;
-    backdrop-filter: blur(5px);
-}
-h6 svg{
-  width: 20px;
-    height: 20px;
-}
-    .second1icon{
-  box-shadow: inset 0 0 0 1px 
- color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
- color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
- color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
- color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
-    border: solid 1px #ffffff1a;
-    border-radius: 100px;
-    padding: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(5px) url(#switcher) saturate(var(--saturation));
-    width: 65%;
-    opacity: 100%;
-    /* border: none; */
-}
-/* div#tab-4 {
-    width: 50px;
-    height: 50px;
-} */
-.nav-container svg {
-     width: 20px;
-    height: 18px;
-    fill: white;
-}
-.nav {
-width: 100%;
-    padding: 25px 10px;
-    max-width: 650px;
-    position: fixed;
-    bottom: 0px;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    background: linear-gradient(0deg, black, transparent);
-}
-   .nav-container {
-    display: flex;
-    font-size: 10px;
-    font-weight: 500;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    gap: 10px;
-}.mficolblogo{
-   width: 60px;
-    height: 60px;
-    filter: saturate(2);
-    background: linear-gradient(45deg, #0021ffbd 34%, #00d0ffcc);
-    position: relative;
-    z-index: 100000;
-    border: none;
-    padding: 5px;
-    border-radius: 100px;
-    backdrop-filter: blur(2px);
-}
-.tab span{
-  font-size: 11px;
-    font-weight: 100;
-}
-    .first4icons {
+        } .logosection {
    box-shadow: inset 0 0 0 1px 
  color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
  color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
@@ -374,228 +336,364 @@ width: 100%;
  color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
  color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
     border: solid 1px #ffffff00;
-    filter: saturate(2);
-    border-radius: 1000px;
-    backdrop-filter: blur(5px) url(#switcher) saturate(var(--saturation));
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 4px;
-    }
-
-footer {
-    text-align: center;
-    font-size: 10px;
-    position: fixed;
-    bottom: 15px;
-    width: 100%;
-    left: 0;
-    color: #ffffffc9;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-}
-    .tab {
-     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    color: #ffffff;
-    transition: color 0.2s;
-    cursor: pointer;
-    padding: 4px 20px;
-    justify-content: center;
-    width: 100%;
-    /* opacity: 40%; */
-    transition: all 0.3s ease;}
-        .tab:hover{
-              transform: scale(1.03); 
-        }
-        .tab:active{
-              transform: scale(0.90); 
-        } 
-
-    .tab-active {
-      background: #0020ff;
-    filter: none;opacity: 100%;
-    border-radius: 1000px;box-shadow: inset 0 0 0 1px 
- color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
- color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
- color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
- color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
-    border: solid 1px #ffffff00;
-    filter: saturate(2);
-    }
-    .tab i {
-      font-size: 1.75rem;
-    }
-    
-    .apply-btn {
-    background-color: #0020ffcc;
-    color: white;
-    font-weight: 100;
-    font-size: 15px;
-    padding: 9px;
-    border-radius: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    cursor: pointer;
-    transition: all 0.2s;
-    border: none;
-    max-width: 400px;
-    box-shadow: inset 0 0 0 1px 
- color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
- color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
- color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
- color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
-    border: solid 1px #ffffff00;
-    filter: saturate(2);
-    backdrop-filter: blur(1.8px);
-    transition: all 0.3s ease;}
-        .apply-btn:hover{
-              transform: scale(1.03); 
-        }
-        .apply-btn:active{
-              transform: scale(0.90); 
-        } 
-   .maiinoptionsatapply {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}.exclamation {
-       color: rgb(255 255 255);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: inset 0 0 0 1px 
- color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
- color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
- color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
- color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
-    border: solid 1px #ffffff00;
-    filter: saturate(2);
-    backdrop-filter: blur(1.8px);
-   padding: 9px;
     border-radius: 100px;
-    background: rgb(255 0 0 / 69%);
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    font-size: 15px;
-    border: none;
-
+    padding: 4px 25px;
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    flex-direction: column;
+transition: all 0.3s ease;
+    }.mainexordel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
 }
-span svg{
-      width: 18px;
+.mainexordel  a {
+    display: contents;
 }
-.exclamation:hover{
-              transform: scale(1.03); 
+        .logosection:hover{
+              transform: scale(1);
         }
-        .exclamation:active{
+        .logosection:active{
+              transform: scale(0.90); 
+        } .logos { font-size: 15px;
+    font-weight: 800; }
+        button {
+           width: 100%;
+    padding: 10px;
+    background-color: #001eff;
+    color: white;
+    border: none;
+    border-radius: 105px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+        }
+        button:hover{
+              transform: scale(1.01);
+              background-color: rgb(0, 18, 211)
+        }
+        button:active{
+              transform: scale(0.90); 
+        } .radio-group input{
+            width: max-content;
+        }
+        button#cancel-button {
+            margin-top: 20px;transition: all 0.3s ease;display: none;
+        }
+        button#cancel-button:hover{
+              transform: scale(1.01);
+               background-color: transparent;
+        }
+        button#cancel-button:active{
               transform: scale(0.90); 
         } 
-    .card {
-      background-color: var(--card);
-      border-radius: 16px;
-    }
-    
-    .text-secondary {
-      color: var(--text2);
-    }
-    
-    .accent {
-      color: var(--accent);
-    }
-    
-    .modal {
+       
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .info-text {
+  color: #1c1c1ccf;
+    font-size: 14px;
+    bottom: 65px;
+    line-height: 20px;
+    position: fixed;
+    width: 91%;
+    max-width: 400px;
+    font-weight: 600;
+    letter-spacing: 0;
+        }button#cancel-button {
+    background: transparent;
+    color: #000;
+}
+        .error-message {
+           color: #ff0000;
+    font-size: 13px;
+    margin: 5px 0 15px 0;
+    display: none;
+        }
+        input.error {
+            border-color: #ff0000;
+        }
+        .submitting-message {
+            display: none;
+            background-color: rgb(17, 0, 255);
+            color: white;
+            padding: 10px 25px;
+            font-size: 14px;
+            width: 100%;
+            font-weight: 600;
+            position: fixed;
+            bottom: 0%;
+            left: 0px;z-index: 1000000000000;
+        }
+        #sleeping-message {
+            display: none;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: blue;
+            z-index:200000000000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        #sleeping-message img {
+            width: 140px;
+        }
+        #sleeping-message p {
+            font-size: 16px;
+    color: white;
+    font-weight: 400;
+    max-width: 90%;
+    letter-spacing: 0.3px;
+    line-height: 35px;
+        }
+        .rorabot,.upp{
+            display: flex
+        ;
+            animation: bounceDot 5s infinite;
+            justify-content: center;
+        }
+        .upp{
+            animation: bounceDot2 5s infinite;
+            display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+        }
+        @keyframes bounceDot2 {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        @keyframes bounceDot {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        .gamerecom{
+            animation: trygame 5s infinite;
+        }
+        @keyframes trygame {
+            0% {
+                opacity: 0%;
+                transform: translateX(0);
+            }
+            50% {
+                opacity: 100%;
+                transform: translateX(-8px);
+            }
+            100% {
+                opacity: 0%;
+                transform: translateX(-15px);
+            }
+        }
+        #popup {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 105vh;
+            z-index: 1500;
+            text-align: center;
+            padding: 0px;
+        }
+        #popup-content {
+    padding: 20px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 500px;
+        }
+        #popup-content h2 {
+            font-size: 28px;
+    color: #0045ff;
+    font-weight: 900;
+        }
+        #popup-content label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #0005ff;
+            margin-bottom: 10px;
+            display: block;
+        }
+        #popup-content input[type="number"] {
+            margin-bottom: 15px;
+        }
+        #interest-display {
+            font-size: 16px;
+            color: #333;
+            margin: 5px 0 15px 0 ;
+            font-weight: 600;
+            display: none;
+        }
+        #popup-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+        }
+        #popup-cancel {
+            background-color: transparent;
+            color: #333;display: none;
+        }
+        #popup-cancel:hover {
+            background-color: transparent;
+        }
+        #agree-section {
+            margin: 15px 0;
+            font-size: 14px;
+            color: #333;
+            text-align: left;
+        }
+        #agree-section label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        #ineligible-message {
+          display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 30000000000000;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    backdrop-filter: blur(25px);
+        }
+        ::placeholder{
+            color: #0000007a;
+        }
+        #ineligible-message p {
+                font-size: 15px;
+    max-width: 100%;
+    font-weight: 500;
+    color: black;
+    letter-spacing: 0.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    line-height: 25px;
+
+        }
+        #ineligible-message button {
+           margin-top: 20px;
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    width: fit-content;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 4px 13px;
+        }
+    </style>
+</head>
+<body>
+   <style>
+    .calc-btn {
       position: fixed;
-      inset: 0;
-      /* background-color: rgb(0 0 0 / 46%); */
-      display: none;
-      align-items: flex-end;
-      justify-content: center;
-      z-index: 9999;
+    bottom: 10px;
+    border-radius: 30px;
+    background: var(--primary);
+    color: #000000;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+    z-index: 1000000;
+    padding: 10px;
+    width: fit-content;box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;transition: all 0.3s ease;
     }
+.calc-btn:hover{
+              transform: scale(1.01);
+              background-color: transparent;
+        }
+        .calc-btn:active{
+              transform: scale(0.90); 
+        } 
+
+    /* Modal overlay */
+    .modal {
+   position: fixed;
+    inset: 0;
+    background: #000000b0;
+    display: none;
+    align-items: end;
+    justify-content: center;
+    z-index: 10000000000;
+    padding-bottom: 10px;
+    }
+
     .modal.show {
       display: flex;
     }
-    
+
     .modal-content {
-   width: 98%;
-    background: #0000003b;
-    backdrop-filter: blur(20px);
-    max-width: 600px;
-    overflow: hidden;
-    animation: slideUp 0.3s cubic-bezier(0.32, 0.72, 0, 1) forwards;
-    margin-bottom: 5px;
-    box-shadow: inset 0 0 0 1px 
- color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
- color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
- color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
- color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
-    border: solid 1px #ffffff00;
-    filter: saturate(2);
-    border-radius: 75px;
-    corner-shape: superellipse(2);
-}
-    
-    @keyframes slideUp {
-      from { transform: translateY(100%); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-    
-    .modal-header {
-          padding: 20px;
-    border-bottom: 1px solid #ffffff21;
-    display: flex;
-    justify-content: center;
-    align-items: center
-    }
-    
-    .modal-body {
-      padding: 1.5rem;
-    }
-    
-    .section-title {
-      font-size: 35px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
+          width: 96%;
+    max-width: 500px;
+    padding: 30px 25px;
     text-align: center;
-    color: #0000ff;
-    margin: 5px 0 0 0;
-    }
-    .how-it-works:first-child{
-      margin-top: 20px;
-    }
-    .how-it-works {
-       margin: 13px 0px;
-    padding: 1.5rem;
+    background: #ffffff3d;
     box-shadow: inset 0 0 0 1px 
  color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
  color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
@@ -608,140 +706,28 @@ span svg{
  color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
  color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
     border: solid 1px #ffffff00;
-    filter: saturate(2);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     border-radius: 75px;
-    corner-shape: superellipse(2);
-   
-    }
-    
-    /* FAQ STYLING */
-    .faq-container {
-    box-shadow: inset 0 0 0 1px 
- color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
- color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
- color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
- color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
-    border: solid 1px #ffffff00;
-    filter: saturate(2);
-       border-radius: 35px;
-   
-    backdrop-filter: blur(5px); margin: 13px 0px;
-      padding: 1.5rem;
-    }
-    .faq-item {
-      border-bottom: 1px solid #333;
-      padding: 1.25rem 0;
-      transition: all 0.3s;
-    }
-    .faq-item:first-child {
-      border-bottom: none;
-      padding: 0 0 20px 0;
-    }
-    .faq-item:last-child {
-      border-bottom: none;
-      padding: 20px 0 0 0;
-    }
-    .faq-item h3 {
-      font-size: 15px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 0.5rem;
-    }li {
+    corner-shape: squircle;
     line-height: 23px;
-}
-    .faq-item p {
-      color: var(--text2);
-    line-height: 1.6;
-    font-size: 15px;
-    }
-    .amount-box {
-display: flex;
-    align-items: center;
-    background: #82828214;
-    padding: 15px 25px;
-    transition: all 0.3s ease;
-    border-radius: 116px;
-    corner-shape: superellipse(1.6);    
-    box-shadow: inset 0.6px 0.6px 0px 0.1px #ffffff2e, inset -2px -2.5px 0px -1.8px #ffffff2b;
-    /* box-shadow: inset 0.6px 0.6px 0px 0.1px #ffffff45, inset -2px -2.5px 0px -1.8px #ffffff45; */
-    }
-      .amount-box:focus{
-              background: #8282822b;
-        } 
-        .amount-box:active{
-              transform: scale(0.90); 
-        } 
-    .amount-input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      font-size: 2.75rem;
-      font-weight: 300;
-      color: var(--text);
-    }
-    
-    .calc-result {
-    background-color: #82828221;
-    border-radius: 37px;
-    padding: 10px 15px;
-    box-shadow: inset 0.6px 0.6px 0px 0.1px #ffffff2e, inset -2px -2.5px 0px -1.8px #ffffff2b;
-    }
-    
-    .btn-primary {
-     width: 100%;
-    background-color: #0000ff;
+    font-size: 16px;
+    font-weight: 400;
     color: white;
-    font-weight: 300;
-    padding: 10px;
-    border-radius: 34px;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
     }
-    .popup_close {
-        box-shadow: inset 0 0 0 1px 
- color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
- color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
- color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
- color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
-    border: solid 1px #ffffff00;
-    filter: saturate(2);
-    backdrop-filter: blur(5px) url(#switcher) saturate(var(--saturation));
+
+    .close {
+     position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 28px;
+    color: var(--text-light);
+    cursor: pointer;
+    line-height: 1;
+    width: 45px;
+    height: 45px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    border-radius: 9999px;
-    background: #ffffff00;
-    color: white;
-    font-size: 18px;
-    width: 40px;
-    height: 40px;cursor: pointer;
- transition: all 0.3s ease;}
-         .popup_close:hover{
-              transform: scale(1.03); 
-        }
-         .popup_close:active{
-              transform: scale(0.90); 
-        } 
-    
-    .btn-secondary {
-   background: #00ff31cf;
-    cursor: pointer;
-    margin-bottom: 20px;
+    align-items: center;
     box-shadow: inset 0 0 0 1px 
  color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
  color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
@@ -753,577 +739,737 @@ display: flex;
  color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
  color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
  color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+    border-radius: 100px;
+    transition: all 0.3s ease;
+    }
+.close:hover{
+              transform: scale(1.01);
+        }
+        .close:active{
+              transform: scale(0.90); 
+        } 
+
+    .modal-content h2 {
+     font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+    color: black;
+    background: #ffffff69;
+    padding: 9px;
+    border-radius: 38px;
+    letter-spacing: 0.5px;
+    margin-top: -10px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--text-light);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #0000004b;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: all 0.15s;
+    }
+
+    input:focus {
+      border: 1px solid #d5d5d59e;
+    }
+
+    .btn-calc {
+        padding: 10px;
+    color: white;
     border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    letter-spacing: 0.3px;
+    border-radius: 46px;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    margin-top: 10px;
     transition: all 0.3s ease;
     width: 100%;
-    padding: 10px;
-    font-weight: 550;
-    border-radius: 100px;
-    font-size: 17px;
-  }
-        .btn-secondary:hover{
-              transform: scale(1.03); 
+    margin-bottom: -5px;
+    }
+        
+        .btn-calc:hover{
+              transform: scale(1.01);
+               /* background-color: #00000046; */
         }
-        .btn-secondary:active{
+        .btn-calc:active{
               transform: scale(0.90); 
         } 
-    .btn-secondary svg{
-    fill: black;
-    width: 20px;
-    height: 20px;
-    }   
-     .btn-secondary a {
-   text-decoration: none;
-    color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
+.result-line span{
+   color: #0000ff;
+    font-weight: 800;
+    font-size: 15px;
 }
-    
-    .btn-secondary a:hover>.btn-secondary:hover {
-      background-color: #0000ff;
-      color: white;
-        }
+    #result {
+      margin-top: 24px;
+    padding: 22px;
+    background: #0000000d;
+    border-radius: 30px;
+    font-size: 15px;
+    line-height: 20px;
+    min-height: 80px;
+    margin-bottom: -3px;
+    }
+
+    .result-line {
+      display: flex;
+      justify-content: space-between;
+      margin: 8px 0;
+    }
+
+    .result-line strong {
+          font-weight: 600;
+    color: rgb(0, 0, 0);
+    }
+
+    .note {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-top: 12px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
-
- <header>
-    <button onclick="goBack()" class="back-btn">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M640-107.69 267.69-480 640-852.31l42.54 42.54L352.77-480l329.77 329.77L640-107.69Z"/></svg>
-   </button>
-    <button class="theme-btn">
-        <img class="mficolblogo" src="https://github.com/goforbg/telegram-emoji-gifs/blob/master/thunder.gif?raw=true" alt="">
-      <span>BS&MFI Solutions <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m320.23-107.69-42.54-42.54L607.46-480 277.69-809.77l42.54-42.54L692.54-480 320.23-107.69Z"/></svg></span>
+<header>
+      <button class="secondary" onclick="history.back()">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M640-107.69 267.69-480 640-852.31l42.54 42.54L352.77-480l329.77 329.77L640-107.69Z"/></svg>
     </button>
-    <img onclick="alert('Welcome to BS&MFI Solutions from BS&MFI Services')" src="mfi.gif" alt="">
-  </header>
-
-  <main id="main-content"></main>
-
- <div class="bottomtop">
-     <button onclick="showPopup()" class="apply-btn">
-    <i class="fa-regular fa-compass"></i>
-   Click to Explore / Apply Now
-  </button>
-   <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmCSWXieZpqTiUqIVVihwn8vdGl-RyHijMNmovi_Bfc2GRbg/viewform"><p class="exclamation">I've Issue</p></a>
-  
- </div>
-
-  <nav class="nav">
-    <div class="nav-container">
-        <div class="first4icons">
-            <div onclick="switchTab(0)" id="tab-0" class="tab tab-active">
-<svg id="Layer_1" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="m23 18h-3v-3a1 1 0 0 0 -2 0v3h-3a1 1 0 0 0 0 2h3v3a1 1 0 0 0 2 0v-3h3a1 1 0 0 0 0-2z"/><path d="m11 7v4.586l-2.707 2.707a1 1 0 1 0 1.414 1.414l3-3a1 1 0 0 0 .293-.707v-5a1 1 0 0 0 -2 0z"/><path d="m14.728 21.624a9.985 9.985 0 1 1 6.9-6.895 1 1 0 1 0 1.924.542 11.989 11.989 0 1 0 -8.276 8.277 1 1 0 1 0 -.544-1.924z"/></svg>
-<span>Delay</span>
-            </div>
-            <div onclick="switchTab(1)" id="tab-1" class="tab">
-                   <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-  <path d="m23.452,5.325l-2.66,2.66-1.414-1.414,1.57-1.571h-8.948c-3.86,0-7,3.14-7,7,0,1.075.251,2.09.687,3h-2.151c-.335-.941-.536-1.945-.536-3C3,7.038,7.038,3,12,3h8.948l-1.57-1.571L20.792.015l2.659,2.659c.729.731.729,1.92,0,2.65Zm-12.252,1.675v1.2h-.327c-1.198,0-2.173.975-2.173,2.173,0,1.033.734,1.929,1.747,2.131l2.791.559c.268.054.462.291.462.563,0,.316-.258.574-.574.574h-2.126c-.316,0-.585-.211-.671-.5h-1.62c.102,1.175,1.09,2.1,2.291,2.1h.2v1.2h1.6v-1.2h.326c1.199,0,2.174-.975,2.174-2.173,0-1.033-.734-1.929-1.747-2.131l-2.792-.559c-.267-.054-.461-.291-.461-.562,0-.316.257-.574.573-.574h2.127c.316,0,.585.211.671.5h1.62c-.102-1.175-1.09-2.1-2.291-2.1h-.2v-1.2h-1.6Zm7.113,2c.436.91.687,1.925.687,3,0,3.86-3.141,7-7,7H3.052l1.571-1.571-1.414-1.414-2.659,2.659c-.731.731-.731,1.92,0,2.651l2.659,2.659,1.414-1.414-1.571-1.571h8.948c4.963,0,9-4.038,9-9,0-1.055-.2-2.059-.536-3h-2.151Z"/>
-</svg>
-<span>Split</span>
-            </div>
-            <div onclick="switchTab(2)" id="tab-2" class="tab">
-  <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="m23.34,9.481l-3.5-6c-.893-1.53-2.548-2.481-4.319-2.481h-7.069c-1.771,0-3.427.951-4.319,2.481L.632,9.481c-.905,1.553-.905,3.483,0,5.038l3.501,6c.893,1.53,2.547,2.48,4.318,2.48h7.069c1.771,0,3.426-.95,4.319-2.48l3.5-6.001c.905-1.554.905-3.484,0-5.038Zm-1.729,4.031l-3.499,6c-.536.918-1.529,1.488-2.592,1.488h-7.069c-1.062,0-2.056-.57-2.591-1.488l-3.5-5.999c-.544-.933-.544-2.092,0-3.024l3.5-6c.535-.918,1.528-1.489,2.591-1.489h7.069c1.062,0,2.056.57,2.591,1.489l3.5,6c.544.933.544,2.091,0,3.023Zm-4.611-1.512c0,.552-.447,1-1,1h-3v3c0,.553-.447,1-1,1s-1-.447-1-1v-3h-3c-.553,0-1-.448-1-1s.447-1,1-1h3v-3c0-.552.447-1,1-1s1,.448,1,1v3h3c.553,0,1,.448,1,1Z"/></svg>
-<span>Limit</span>
-            </div>
-        </div>
-       <div class="second1icon">
-         <div onclick="switchTab(3)" id="tab-3" class="tab">
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="M19,3h-6.528c-.154,0-.31-.036-.447-.105l-3.156-1.578c-.415-.207-.878-.316-1.341-.316h-2.528C2.243,1,0,3.243,0,6v12c0,2.757,2.243,5,5,5h1c.552,0,1-.447,1-1s-.448-1-1-1h-1c-1.654,0-3-1.346-3-3V9H22v9c0,1.654-1.346,3-3,3h-1c-.553,0-1,.447-1,1s.447,1,1,1h1c2.757,0,5-2.243,5-5V8c0-2.757-2.243-5-5-5ZM2,6c0-1.654,1.346-3,3-3h2.528c.154,0,.31,.036,.447,.105l3.156,1.578c.415,.207,.878,.316,1.341,.316h6.528c1.302,0,2.402,.839,2.816,2H2v-1Zm13.707,13.105c.391,.391,.391,1.023,0,1.414l-1.613,1.613c-.577,.577-1.335,.865-2.094,.865s-1.516-.288-2.093-.865l-1.614-1.613c-.391-.391-.391-1.023,0-1.414s1.023-.391,1.414,0l1.293,1.293v-7.398c0-.553,.448-1,1-1s1,.447,1,1v7.398l1.293-1.293c.391-.391,1.023-.391,1.414,0Z"/></svg>
-<span>Saver</span>
-            </div>
-         <div onclick="switchTab(4)" id="tab-4" class="tab">
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-  <path d="m6,0C2.691,0,0,2.691,0,6s2.691,6,6,6,6-2.691,6-6S9.309,0,6,0Zm2.776,8.87c-.445-1.095-1.514-1.87-2.768-1.87h-.016c-1.254,0-2.325.773-2.769,1.868-.751-.728-1.222-1.742-1.222-2.868,0-2.206,1.794-4,4-4s4,1.794,4,4c0,1.127-.472,2.142-1.224,2.87Zm-1.276-4.37c0,.828-.672,1.5-1.5,1.5s-1.5-.672-1.5-1.5.672-1.5,1.5-1.5,1.5.672,1.5,1.5Zm10.5,7.5c-3.309,0-6,2.691-6,6s2.691,6,6,6,6-2.691,6-6-2.691-6-6-6Zm2.776,8.87c-.445-1.095-1.514-1.87-2.768-1.87h-.016c-1.254,0-2.325.773-2.769,1.868-.751-.728-1.222-1.742-1.222-2.868,0-2.206,1.794-4,4-4s4,1.794,4,4c0,1.127-.472,2.142-1.224,2.87Zm-1.276-4.37c0,.828-.672,1.5-1.5,1.5s-1.5-.672-1.5-1.5.672-1.5,1.5-1.5,1.5.672,1.5,1.5Zm-5.5-12.5c0-.552.447-1,1-1h2c2.206,0,4,1.794,4,4v2c0,.552-.447,1-1,1s-1-.448-1-1v-2c0-1.103-.897-2-2-2h-2c-.553,0-1-.448-1-1Zm-4,16c0,.552-.447,1-1,1h-2c-2.206,0-4-1.794-4-4v-2c0-.552.447-1,1-1s1,.448,1,1v2c0,1.103.897,2,2,2h2c.553,0,1,.448,1,1Z"/>
-</svg>
-<span>Mid</span>
-        </div>
-       </div>
-       
-    </div>
-
-  </nav>
-
-  <!-- MODAL -->
-  <div id="modal" class="modal" onclick="if(event.target.id==='modal') hideModal()">
-    <div onclick="event.stopImmediatePropagation()" class="modal-content">
-      <div class="modal-header">
-        <h2 id="modal-title" style="font-size:1.25rem; font-weight:600;">Calculator</h2>
-        <!-- <p onclick="hideModal()" class="popup_close"><i class="fa-solid fa-xmark"></i></p> -->
+      <div class="logo">
+      <div class="mficolb">
+        <img class="mficolblogo" src="https://github.com/goforbg/telegram-emoji-gifs/blob/master/thunder.gif?raw=true" alt="">
       </div>
-      <div id="modal-content" class="modal-body"></div>
-      <footer>© BS&MFI Solutions. All Rights Reserved.</footer>
+      <span>Take Money<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m320.23-107.69-42.54-42.54L607.46-480 277.69-809.77l42.54-42.54L692.54-480 320.23-107.69Z"/></svg></span>
+    </div>
+      <img onclick="alert('Welcome to Take Money from BS&MFI Services')" src="mfi.gif" alt="">
+</header>
+  <button class="calc-btn" onclick="openCalc()">Fixed interest</button>
+  
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+    <div id="sleeping-message">
+        <div class="rorabot">
+            <span style=" position: absolute;
+    top: -8px;
+    color: #ffffffe8;
+    font-weight: 800;
+    rotate: 7.5deg;
+    right: 35px;
+    font-size: 13px;
+">BS&MFI</span>
+            <img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66ebe91825c953334f391e0f_Clyde.png" alt="Sleeping GIF">
+        </div>
+        <div class="bot" style="background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 10px;
+    gap: 9px;
+    border-radius: 100px;">
+                <img style="    width: 16px;
+    position: relative;
+    left: 3px;" src="https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/2" alt="">
+                <span style='    font-size: 13px;
+    color: white;'>BsRora (<i style='position: relative; right: 0px;' class="fa-solid fa-robot"></i>)</span>
+            </div>
+        <p>Amount providers are not available right now, Visit again at 6 am tomorrow...!<br>or <br> <a style="margin: 40px;
+    background: rgb(255 255 255);
+    padding: 5px 15px;
+    border-radius: 100px;
+    color: black;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 0;
+    position: relative;" href="https://blackswan19.github.io/golden/FM/game2">Try Snake Game</a></p>
+        <div class="gamerecom">
+            <img style="margin-top: -30px;
+            position: absolute;
+            margin-left: -130px;
+            width: 85px;" src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6707965570be866462c0e936_Mask%20group%20(6).webp" alt="">
+        </div>
+    </div>
+    <div id="ineligible-message">
+        <p>We found you have not cleared the previous borrowed amount/amounts, Try to clear the amount/amounts that you have taken first.<br><br> Until that's done, you're not able to take any new amounts..!</p>
+         <div class="upp">
+            <span style=" 
+    margin-top: 40px;   rotate: 6deg;
+    position: relative;
+    left: 12px;
+    top: 9px;color: blue;
+    font-weight: 700;
+">BsRora(Bot)</span>
+            <img width="130px" src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6707a0ea5ddb44cae1dd6b29_clyde_pose_02%201.webp" alt="">
+        </div>
+        <button id="ineligible-close">Okay</button>
+        <a href="https://mfi0212.github.io/swan/offer/solution"><button id="ineligible-close">Buy Limit</button></a>
+    </div>
+     <div id="calcModal" class="modal">
+    <div class="modal-content">
+        <h2>Fixed interest</h2>
+        <span>The fixed interest is available only to specific members who claim the offers or gifts. Eligible members will receive this fixed interest for a certain period of time.</span>
+        <div class="mainexordel">
+            <a href="https://mfi0212.github.io/MFI/fixed-interest"><button class="btn-calc">Explore Now</button></a>
+            <a><button class="btn-calc" style="    background: red;" onclick="closeCalc()">Close Now</button></a>
+        </div>
     </div>
   </div>
 
-  <script>
-    let currentTab = 0;
-    let isDarkMode = true;
-    const tabNames = ["Delay It Calculater", "Split Pay Calculater", "Buy Limit Calculater", "Pre-Saver", "Lendlink - Mid"];
-    const fees = [4.5, 5.0, 5.5, null, null];
-    const googleFormUrl = "https://forms.gle/YOUR_GOOGLE_FORM_LINK_HERE";
-    // document.addEventListener('contextmenu', e => e.preventDefault());
-    const tabContents = {
-      0: `
-        <div style="padding-top: 5rem;">
-          <h2 class="section-title">Delay It</h2>
-          <div style="    margin-top: -0.3rem;
+   <div id="popup">
+        <div id="popup-content">
+             <img style="
+    width: 300px;
+    object-fit: cover;
+    height: 60px;
+    " src="takemoneymfilogo.png" alt="">
+            <p class="subtitle">Interest checker</p>
+            <label>Amount you want to take <span style="color: red;">*</span></label>
+            <input type="number" id="popup-amount" min="1" required />
+            <div class="error-message" id="popup-amount-error">Enter a valid amount</div>
+            <div id="interest-display"></div>
+            <div id="popup-buttons">
+                <button id="popup-cancel">Cancel</button>
+                <button id="popup-apply">Apply Now</button>
+            </div>
+            <div class="notice" style="background-color: #d9d9d900;
+    color: #000000b5;
+    padding: 18px;
     font-size: 13px;
-    color: var(--text2);
-    position: relative;
-    left: 2px;text-align: center;
-">Return date extender</div>
-           <div class="how-it-works" >
-            <p style="font-weight:700; margin-bottom:1rem;">About Us</p>
-            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;">
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Delay It by BS&MFI Solutions helps to extend your payment deadlines with transparent fees. Our service provides the flexibility you need to manage your returns.</li>
-            </ul>
-          </div>
-          <div class="how-it-works" >
-            <p style="font-weight:700; margin-bottom:1rem;">How Delay It works?</p>
-            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
-">
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> You can extend the return date of the amount.</li>
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Transparent fees with no hidden costs.</li>
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Fast extend process.</li>
-            </ul>
-          </div>
-          
-          <div style="margin: 1.5rem;
-    font-size: 0.75rem;
-    color: var(--text2);
-    padding: 0px;
-    text-align: center;;">
-            Note : The Process Fee must be paid before applying for Delay It. If not, we can't provide the extension.
-          </div>
-
-          <div class="faq-container" >
-            <h2 style="font-size:1.125rem; font-weight:600;">FAQ's</h2>
-            <div class="faq-item">
-              <h3>What is the minimum amount I can extend?</h3>
-              <p>The minimum amount is ₹500.</p>
-            </div>
-            <div class="faq-item">
-              <h3>How is the fee calculated?</h3>
-              <p>The fee is 4.5% of the amount multiplied by the number of days you choose.</p>
-            </div>
-            <div class="faq-item">
-              <h3>Can I apply for multiple extensions?</h3>
-              <p>Yes, you can apply multiple times. Each extension is treated separately with its own fee.</p>
-            </div>
-            <div class="faq-item">
-              <h3>If today is my return date, can I still extend?</h3>
-              <p>No, you must apply at least 24 hours before the original return date.</p>
-            </div>
-            <div class="faq-item">
-              <h3>How many days can I extend?</h3>
-              <p>Standard range is 15–30 days. Premium members can go up to 60 days.</p>
-            </div>
-            <div class="faq-item">
-              <h3>Will my credit score be affected?</h3>
-              <p>No. Delay It is a paid service and does not impact your credit report.</p>
-            </div>
-          </div>
-        </div>
-      `,
-
-      1: `
-        <div style="padding-top: 5rem;">
-          <h2 class="section-title">Split Half Pay</h2>
-          <div style="    margin-top: -0.3rem;
-    font-size: 13px;
-    color: var(--text2);
-    position: relative;
-    left: 2px;text-align: center;
-">Flexible Repayment</div>
-          
-          <div class="how-it-works" >
-            <p style="font-weight:700; margin-bottom:1rem;">About Us</p>
-            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
-">
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> With Split half pay, you can pay half of the total amount and extend the remaining half with a flexibility while ensuring smooth repayment.</li>
-            </ul>
-          </div>
-          
-
-           <div class="how-it-works" >
-            <p style="font-weight:700; margin-bottom:1rem;">How Half Split Pay works?</p>
-            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
-">
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Paying 50% of the amount now and split the remaining 50% in instalments.</li>
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Fast approval and simple process.</li>
-            </ul>
-          </div>
-          
-          <div style="margin: 1.5rem;
-    font-size: 0.75rem;
-    color: var(--text2);
-    padding: 0px;
-    text-align: center;">
-            Note: The split fee must be paid upfront along with the first 50%. This allows you to split the remaining amount.
-          </div>
-
-          <div class="faq-container" >
-            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">FAQ's</h2>
-            <div class="faq-item">
-              <h3>What is the minimum amount I can split?</h3>
-              <p>The minimum amount is 2000₹.</p>
-            </div>
-            <div class="faq-item">
-              <h3>How is the 5.2% fee divided?</h3>
-              <p>The fee is shared equally among all participants.</p>
-            </div>
-            <div class="faq-item">
-              <h3>Can I choose different number of splits?</h3>
-              <p>Yes — you can select between 2 to 8 splits.</p>
-            </div>
-          </div>
-        </div>
-      `,
-
-      2: `
-        <div style="padding-top: 5rem;">
-          <h2 class="section-title">Buy Limit</h2>
-          <div style="    margin-top: -0.3rem;
-    font-size: 13px;
-    color: var(--text2);
-    position: relative;
-    left: 2px;text-align: center;
-">Limit extender</div>
-          
-          <div class="how-it-works" >
-            <p style="font-weight:700; margin-bottom:1rem;">About Us</p>
-            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
-">
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Buy Limit by BS&MFI Solutions helps to borrow more than the borrow limit with transparent fees. Our service let you borrow when you reaches the limit.</li>
-            </ul>
-          </div>
-
-          <div class="how-it-works" >
-            <p style="font-weight:700; margin-bottom:1rem;">How Buy Limit works?</p>
-            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
-">
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> You can borrow more than your account borrow amount limit.</li>
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Transparent fees with no hidden costs.</li>
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Fast approv process.</li>
-            </ul>
-          </div>
-          
-          <div style="margin: 1.5rem;
-    font-size: 0.75rem;
-    color: var(--text2);
-    padding: 0px;
-    text-align: center;">
-           Note: The Buy Limit fee must be paid upfront along with the first 50%. This allows you to Buy Limit and borrow the amount.
-          </div>
-
-          <div class="faq-container" >
-            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">FAQ's</h2>
-            <div class="faq-item">
-              <h3>How many times i can Buy Limit?</h3>
-              <p>Its based on the amount you borrowing.</p>
-            </div>
-          </div>
-        </div>
-      `,
-
-      3: `
-        <div style="padding-top: 5rem;">
-          <h2 class="section-title">Pre-Saver</h2>
-          <div style="    margin-top: -0.3rem;
-    font-size: 13px;
-    color: var(--text2);
-    position: relative;
-    left: 2px;text-align: center;
-">Save on time</div>
-          
-              <div class="how-it-works" >
-            <p style="font-weight:700; margin-bottom:1rem;">About Us</p>
-            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
-">
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> By using Pre-saver you can save the particular upcoming offer (or) amounts on a perticular date.</li>
-            </ul>
-          </div>
-
-
-          <div class="how-it-works" >
-            <p style="font-weight:700; margin-bottom:1rem;">How Pre-Saver works?</p>
-            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
-">
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Pre saves the offers and amounts on the date you want.</li>
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Fast approval process</li>
-            </ul>
-          </div>
-          
-          <div style="margin: 1.5rem;
-    font-size: 0.75rem;
-    color: var(--text2);
-    padding: 0px;
-    text-align: center;">
-            Note: The fee will be based on number of slots available.
-          </div>
-
-          <div class="faq-container" >
-            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">For VIP members</h2>
-            <div class="faq-item">
-              <h3>1. Private Offer</h3>
-              <p>VIPs get private offer.</p>
-            </div>
-            <div class="faq-item">
-              <h3>2. Customize Offer</h3>
-              <p>VIPs can custom their offer based on their needs.</p>
-            </div>
-            <div class="faq-item">
-              <h3>3. RLO(Rare Limited Offer)</h3>
-              <p>VIPs can get very rare limited offers for every 2-3 months.</p>
-            </div>
-          </div>
-        </div>
-
-          <div class="faq-container" >
-            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">FAQ's</h2>
-            <div class="faq-item">
-              <h3>Can I pre-save when ever i want?</h3>
-              <p>Yes, if you are VIP then you can use when ever you want.</p>
-            </div>
-            <div class="faq-item">
-              <h3>Where can i find the fee for pre-saver?</h3>
-              <p>The fee for pre-saver is based on the offer or amount you applying(Ask coordinator).</p>
-            </div>
-            <div class="faq-item">
-              <h3>Can I pre-save when ever i want? But i'm not VIP..!</h3>
-              <p>No, but you can apply when ever their will be offer avaiable soon.</p>
-            </div>
-            <div class="faq-item">
-              <h3>Is there any withdrawal fee?</h3>
-              <p>No fee if you withdraw after 30 days. Early withdrawal has 1% fee.</p>
-            </div>
-            <div class="faq-item">
-              <h3>Can I set different rules for different accounts?</h3>
-              <p>Yes, you can create multiple Pre-Saver goals (Travel, Emergency, etc.).</p>
-            </div>
-            <div class="faq-item">
-              <h3>How secure is my saved money?</h3>
-              <p>100% secure with bank-level encryption and insurance up to ₹5 lakh.</p>
-            </div>
-          </div>
-        </div>
-      `,
-
-      4: `
-        <div style="padding-top: 5rem;">
-          <h2 class="section-title">Lendlink - Mid</h2>
-          <div style="    margin-top: -0.3rem;
-    font-size: 13px;
-    color: var(--text2);
-    position: relative;
-    left: 2px;text-align: center;
-">Turn your money into income</div>
-          
-          <div class="how-it-works" >
-            <p style="font-weight:700; margin-bottom:1rem;">About us</p>
-            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
-">
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span>Lendlink - Mid from Lendlink hepls you to turn your money into income that mean you can lend your money and earn interest for the amount you lended.</li>
-            </ul>
-          </div>
-          
-          <div style="margin: 1.5rem;
-    font-size: 0.75rem;
-    color: var(--text2);
-    padding: 0px;
-    text-align: center;">
-            Note: MID has 2 plans, Before lending you have to select 1 plan to continue the lending process.
-          </div>
-
-          <div class="faq-container" >
-            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">FAQ's</h2>
-            <div class="faq-item">
-              <h3>How much money i can lend?</h3>
-              <p>Their is no limit on the lending limit, It will be based on the borrower.</p>
-            </div>
-          </div>
-        </div>
-      `
-    };
-
-    function switchTab(tabIndex) {
-      currentTab = tabIndex;
-      for (let i = 0; i < 5; i++) {
-        const tabEl = document.getElementById(`tab-${i}`);
-        if (tabEl) tabEl.classList.toggle('tab-active', i === tabIndex);
-      }
-      document.getElementById('main-content').innerHTML = tabContents[tabIndex];
-    }
-
-    function showPopup() {
-    const modal = document.getElementById('modal');
-    const titleEl = document.getElementById('modal-title');
-    const contentEl = document.getElementById('modal-content');
-    
-    modal.classList.add('show');
-    const rate = fees[currentTab];
-
-    const formLinks = {
-        0: "https://forms.gle/9URS1LAqd3iB8qDUA",
-        1: "https://forms.gle/ujs36QQpBpMPBRPu6",
-        2: "https://forms.gle/VqJ1Wqtj8HxXa84e9",
-    };
-
-    if (rate !== null) {
-        titleEl.textContent = tabNames[currentTab];
-        const applyFormUrl = formLinks[currentTab] || "https://forms.gle/9URS1LAqd3iB8qDUA"; 
-        contentEl.innerHTML = `
-          <div style="display:flex; flex-direction:column; gap:1.5rem;">
-            <div>
-              <label style="display:block; font-size:0.75rem; text-align: center; color:var(--text2); margin-bottom:1rem; letter-spacing:1px;">AMOUNT TO PROCESS</label>
-              <div class="amount-box">
-                <span style="font-size: 20px;
-    color: #ffffffba;
-    white-space: nowrap;">$ l ₹</span>
-                <input id="amount-input" type="number" placeholder='Enter amount...'
-                       style="flex: 1;
-    background: transparent;
-    border: none;
-    font-size: 25px;
-    font-weight: 500;
-    outline: none;
-    padding: 0 8px;
-    color: var(--text);">
-              </div>
-            </div>
-           
-            <div class="calc-result" style="display:flex; flex-direction:column; gap:1.25rem; font-size:0.875rem;">
-              <div style="display:none; justify-content:space-between;">
-                <span class="text-secondary">Base amount</span>
-                <span id="base-amount" style="font-weight:500;"></span>
-              </div>
-              <div style="display:flex; justify-content:space-between;">
-                <span class="text-secondary">${tabNames[currentTab]} fee (${rate}%)</span>
-                <span id="fee-amount" style="font-weight: 600; color: #ff6600; font-size: 16px;"></span>
-              </div>
-              <div style="height:1px; background:#333; display: none;"></div>
-              <div style="display:none; justify-content:space-between; font-size:1.25rem; font-weight:600;">
-                <span>Total</span>
-                <span id="total-amount" class="accent"></span>
-              </div>
-            </div>
-            
-           <div class="maiinoptionsatapply">
-    <button onclick="calculateFee()" class="btn-primary">Calculate</button>    
-    <button class="btn-secondary" >
-      <a href="${applyFormUrl}">
-        <?xml version="1.0" encoding="UTF-8"?>
-        <svg  style='width: 20px;
-    height: 20px;
-    margin-bottom: 0px;
-    padding: 0px;    fill: black;
-    border-radius: 0;'xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-          <path d="m6,0C2.686,0,0,2.686,0,6s2.686,6,6,6,6-2.686,6-6S9.314,0,6,0Zm3.692,5.722l-2.712,2.605c-.452.446-1.052.671-1.653.671s-1.204-.225-1.664-.674l-1.132-1.108c-.395-.387-.401-1.02-.015-1.414.386-.395,1.019-.401,1.414-.016l1.132,1.108c.144.142.379.141.522,0l2.723-2.614c.398-.381,1.032-.37,1.414.029.383.398.37,1.031-.029,1.414Zm3.577,9.759c-.813.813-1.27,1.915-1.27,3.065v1.455h1.455c1.15,0,2.252-.457,3.065-1.27l6.807-6.807c.897-.897.897-2.353,0-3.25-.897-.897-2.353-.897-3.25,0l-6.807,6.807Zm7.73,1.598v2.922c0,2.209-1.791,4-4,4H7c-2.209,0-4-1.791-4-4v-6.589c.927.377,1.939.589,3,.589,4.411,0,8-3.589,8-8,0-.339-.028-.672-.069-1h3.069c1.193,0,2.254.536,2.987,1.367-.48.209-.933.5-1.325.892l-6.808,6.808c-1.187,1.188-1.855,2.798-1.855,4.478v1.455c0,1.105.895,2,2,2h1.455c1.679,0,3.29-.667,4.478-1.855l3.067-3.067Z"/>
-        </svg>
-        Apply Now
-      </a>
-    </button>
+    font-weight: 600;
+    margin: 20px 0px;
+    border: solid 1px #80808099;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: inset 0 0 0 1px 
+ color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
+ color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
+ color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
+ color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
+ color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
+    border: solid 1px #ffffff00;
+    border-radius: 75px;
+    corner-shape: squircle;
+                ">
+                <div class="bothead" style="background: #151515;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    gap: 5px;
+    border-radius: 100px;
+    margin: -5px 0 -10px 0;">
+                    <img style="    width: 16px;
+    position: relative;" src="https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/2" alt="">
+                    <span style='font-size: 12px;
+    color: white;
+    border-radius: 10px;'>BsRora (<i class="fa-solid fa-robot"></i>)
+                    </span>
+                </div>
+                <br>
+                <span> If you borrow more then the limit you will be not allowed to take any amounts from any services.</span>
+            </div></div>
     </div>
-    <button onclick="hideModal()" class="btn-close">Close Now</button>    
-          </div>
-        `;
-        calculateFee();
-    } 
-    else if (currentTab === 3) {
-        titleEl.textContent = "Pre-Saver";
-        contentEl.innerHTML = `
-          <div style="text-align:center;">
-            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="M19,3h-6.528c-.154,0-.31-.036-.447-.105l-3.156-1.578c-.415-.207-.878-.316-1.341-.316h-2.528C2.243,1,0,3.243,0,6v12c0,2.757,2.243,5,5,5h1c.552,0,1-.447,1-1s-.448-1-1-1h-1c-1.654,0-3-1.346-3-3V9H22v9c0,1.654-1.346,3-3,3h-1c-.553,0-1,.447-1,1s.447,1,1,1h1c2.757,0,5-2.243,5-5V8c0-2.757-2.243-5-5-5ZM2,6c0-1.654,1.346-3,3-3h2.528c.154,0,.31,.036,.447,.105l3.156,1.578c.415,.207,.878,.316,1.341,.316h6.528c1.302,0,2.402,.839,2.816,2H2v-1Zm13.707,13.105c.391,.391,.391,1.023,0,1.414l-1.613,1.613c-.577,.577-1.335,.865-2.094,.865s-1.516-.288-2.093-.865l-1.614-1.613c-.391-.391-.391-1.023,0-1.414s1.023-.391,1.414,0l1.293,1.293v-7.398c0-.553,.448-1,1-1s1,.447,1,1v7.398l1.293-1.293c.391-.391,1.023-.391,1.414,0Z"/></svg>
-            <h3 style="font-size: 22px;
-    font-weight: 800;
-    margin-bottom: 0.75rem;">Welcome to Pre-Saver</h3>
-            <p style="color:var(--text2);    margin-bottom: 20px;line-height:1.5;">
-              By using Pre-saver you can save the particular upcoming offer (or) amounts on a perticular date..
-            </p>
-            <a href="https://forms.gle/rtcayowFYw48u94PA">
-              <button class="btn-primary">Pre-Save Now</button>
-            </a>
-            
-    <button onclick="hideModal()" class="btn-close">Close Now</button>  
-          </div>
-        `;
-    } 
-    else {
-        titleEl.textContent = "Lendlink - Mid";
-        contentEl.innerHTML = `
-          <div style="text-align:center;">
-            <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-  <path d="m6,0C2.691,0,0,2.691,0,6s2.691,6,6,6,6-2.691,6-6S9.309,0,6,0Zm2.776,8.87c-.445-1.095-1.514-1.87-2.768-1.87h-.016c-1.254,0-2.325.773-2.769,1.868-.751-.728-1.222-1.742-1.222-2.868,0-2.206,1.794-4,4-4s4,1.794,4,4c0,1.127-.472,2.142-1.224,2.87Zm-1.276-4.37c0,.828-.672,1.5-1.5,1.5s-1.5-.672-1.5-1.5.672-1.5,1.5-1.5,1.5.672,1.5,1.5Zm10.5,7.5c-3.309,0-6,2.691-6,6s2.691,6,6,6,6-2.691,6-6-2.691-6-6-6Zm2.776,8.87c-.445-1.095-1.514-1.87-2.768-1.87h-.016c-1.254,0-2.325.773-2.769,1.868-.751-.728-1.222-1.742-1.222-2.868,0-2.206,1.794-4,4-4s4,1.794,4,4c0,1.127-.472,2.142-1.224,2.87Zm-1.276-4.37c0,.828-.672,1.5-1.5,1.5s-1.5-.672-1.5-1.5.672-1.5,1.5-1.5,1.5.672,1.5,1.5Zm-5.5-12.5c0-.552.447-1,1-1h2c2.206,0,4,1.794,4,4v2c0,.552-.447,1-1,1s-1-.448-1-1v-2c0-1.103-.897-2-2-2h-2c-.553,0-1-.448-1-1Zm-4,16c0,.552-.447,1-1,1h-2c-2.206,0-4-1.794-4-4v-2c0-.552.447-1,1-1s1,.448,1,1v2c0,1.103.897,2,2,2h2c.553,0,1,.448,1,1Z"/>
-</svg>
-<h3 style="font-size: 22px;
-    font-weight: 800;
-    margin-bottom: 0.75rem;">By Lendlink</h3>
-            <p style="color:var(--text2); max-width:240px; margin:0 auto;">Turn your money into income.</p>
-            <a href="https://mfi0212.github.io/swan/lndlnk-mid">
-              <button class="btn-primary" style="margin-top:1.5rem;">Explore Now</button>
-            </a>
-            
-    <button onclick="hideModal()" class="btn-close">Close Now</button>  
-          </div>
-        `;
+    <form id="form" method="POST">
+        <a href="">
+            <div class="theme-toggle"> <img style="width: 30px;
+    border-radius: 9px;background-color: transparent;" src="" alt=""> </div>
+        </a>
+        <div class="form-group" data-step="1">
+            <img style="
+    width: 300px;
+    object-fit: cover;
+    height: 60px;
+    " src="takemoneymfilogo.png" alt="">
+            <p class="subtitle">Take Money Form</p>
+            <label>Enter your name <span style="color: red;">*</span></label>
+            <input autofocus type="text" autocomplete="off" name="Name" required />
+            <div class="error-message" id="name-error">Try to enter your name</div>
+        </div>
+        <div class="form-group" data-step="2">
+            <img style="
+    width: 300px;
+    object-fit: cover;
+    height: 60px;
+    " src="takemoneymfilogo.png" alt="">
+            <p class="subtitle">Services take money form</p>
+            <label>Enter your password <span style="color: red;">*</span> <strong style="color: #ff6c00;">(Don't use zeros)</strong></label>
+            <input type="text" autocomplete="off" name="Password" required />
+            <div class="error-message" id="password-error">Password cannot contain zeros</div>
+        </div>
+        <div class="form-group" data-step="3">
+            <img style="
+    width: 300px;
+    object-fit: cover;
+    height: 60px;
+    " src="takemoneymfilogo.png" alt="">
+            <p class="subtitle">Services take money form</p>
+            <label>Enter your phone number <span style="color: red;">*</span></label>
+            <input type="number" autocomplete="off" name="PhoneNumber" required />
+            <div class="error-message" id="phone-error">Try to enter a valid 10-digit phone number</div>
+        </div>
+        <div class="form-group" data-step="4">
+            <img style="
+    width: 300px;
+    object-fit: cover;
+    height: 60px;
+    " src="takemoneymfilogo.png" alt="">
+            <script src="changable.js"></script>
+            <p class="subtitle">Services take money form</p>
+            <label>How much amount you like to take? <span style="color: red;">*</span></label>
+            <input type="number" autocomplete="off" name="Amount" required min="1" readonly />
+            <label>Interest amount <span style="color: red;">*</span></label>
+            <input type="number" autocomplete="off" name="Interest" id="interest-input" required readonly />
+            <div class="error-message" id="amount-error">Try to enter a valid amount</div>
+        </div>
+        <div class="form-group" data-step="5">
+            <img style="
+    width: 300px;
+    object-fit: cover;
+    height: 60px;
+    " src="takemoneymfilogo.png" alt="">
+            <p class="subtitle">Services take money form</p>
+            <label>In how many days you will return the amount? <span style="color: red;">*</span></label>
+            <input type="number" autocomplete="off" name="Days" required min="1" />
+            <div class="error-message" id="days-error">Try to enter a valid number of days</div>
+        </div>
+        <div class="form-group" data-step="6">
+            <img style="
+    width: 300px;
+    object-fit: cover;
+    height: 60px;
+    " src="takemoneymfilogo.png" alt="">
+            <p class="subtitle">Select an option</p>
+            <label>Is the amount you're taking an offer? <span style="color: red;">*</span></label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="offerORnot" value="yes" required /> Yes</label>
+                <label>
+                    <input type="radio" name="offerORnot" value="no" /> No</label>
+            </div>
+            <div class="error-message" id="offer-error">Try to select an option</div>
+        </div>
+        <div class="form-group" data-step="7">
+            <img style="
+    width: 300px;
+    object-fit: cover;
+    height: 60px;
+    " src="takemoneymfilogo.png" alt="">
+            <p class="subtitle">Agreement</p>
+            <div id="agree-section">
+                <p>If I don't repay the amount which I'm taking now, You can complaint to the police, Or you can come to my house do whatever you want.</p>
+                <label>Enter your name <span style="color: red;">*</span></label>
+                <input type="text" autocomplete="off" name="AgreementName" id="agreement-name" placeholder="Enter your name.." required />
+                <div class="error-message" id="agreement-name-error">Try to enter your name</div>
+                <label>
+                    <input type="checkbox" id="agree-checkbox" name="Agreed" /> Agreed</label>
+                <div class="error-message" id="agree-error">You must agree to the terms to proceed</div>
+            </div>
+            <br> <span style="background-color: #000000; color: white; border-radius: 30px; padding: 10px 25px; font-size: 12px; font-weight: 600;"> NOTE: Wait few minutes after clicking on SUBMIT. </span> <span class="submitting-message" id="submitting-message">Submitting...</span>            </div>
+        <div class="button-group">
+            <button type="button" id="next-button">Continue</button>
+            <button type="submit" id="submit-button" style="display: none;">Submit</button>
+        </div>
+        <div class="info-text"> To provide the amount, we need to collect the amount first. It takes few hours to arrange the amount, So be patience during this time to get the amount.
+            <button type="button" id="cancel-button">Cancel</button>
+        </div>
+        <input type="hidden" name="InterestPercentage" id="interest-percentage-input" /> </form>
+   <script>
+
+        function calculateInterest(amount, percentage) {
+            return Math.round((amount * percentage) / 100);
+        }
+
+        const form = document.getElementById("form");
+        const steps = form.querySelectorAll('.form-group');
+        const nextButton = document.getElementById("next-button");
+        const submitButton = document.getElementById("submit-button");
+        const cancelButton = document.getElementById("cancel-button");
+        const submittingMessage = document.getElementById("submitting-message");
+        const popup = document.getElementById("popup");
+        const popupAmountInput = document.getElementById("popup-amount");
+        const popupAmountError = document.getElementById("popup-amount-error");
+        const interestDisplay = document.getElementById("interest-display");
+        const popupApply = document.getElementById("popup-apply");
+        const popupCancel = document.getElementById("popup-cancel");
+        const interestInput = document.getElementById("interest-input");
+        const interestPercentageInput = document.getElementById("interest-percentage-input");
+        const agreeCheckbox = document.getElementById("agree-checkbox");
+        const agreementNameInput = document.getElementById("agreement-name");
+        const ineligibleMessage = document.getElementById("ineligible-message");
+        const ineligibleClose = document.getElementById("ineligible-close");
+        let currentStep = 1;
+        let selectedInterest = null;
+        let selectedInterestPercentage = null;
+
+        function showPopup() {
+            popup.style.display = "flex";
+            form.style.display = "none";
+            const themeToggle = document.querySelector(".theme-toggle");
+            themeToggle.style.display = "none";
+            interestDisplay.style.display = "none";
+            popupAmountInput.value = "";
+            interestInput.value = "";
+            interestPercentageInput.value = "";
+            popupApply.textContent = "Apply Now";
+        }
+
+        popupAmountInput.addEventListener('input', () => {
+            const amount = parseFloat(popupAmountInput.value);
+            if (amount > 0) {
+                clearError(popupAmountInput, 'popup-amount-error');
+                form.querySelector('input[name="Amount"]').value = amount;
+                selectedInterestPercentage = getDailyInterestRate();
+                selectedInterest = calculateInterest(amount, selectedInterestPercentage);
+                interestDisplay.textContent = `Interest for the amount : ${selectedInterest} (${selectedInterestPercentage}%)`;
+                interestDisplay.style.display = "none";
+                interestInput.value = selectedInterest;
+                interestPercentageInput.value = selectedInterestPercentage;
+                popupApply.textContent = `${selectedInterest} ₹, Apply now`;
+            } else {
+                interestDisplay.style.display = "none";
+                interestInput.value = "";
+                interestPercentageInput.value = "";
+                popupApply.textContent = "Apply Now";
+            }
+        });
+
+        popupApply.addEventListener('click', () => {
+            const amount = parseFloat(popupAmountInput.value);
+            if (amount <= 0 || isNaN(amount)) {
+                showError(popupAmountInput, 'popup-amount-error', 'Enter a valid amount');
+                return;
+            }
+            popup.style.display = "none";
+            form.style.display = "block";
+            const themeToggle = document.querySelector(".theme-toggle");
+            themeToggle.style.display = "flex";
+            showStep(currentStep);
+        });
+
+        popupCancel.addEventListener('click', () => {
+            window.history.back();
+        });
+
+        function showStep(step) {
+            steps.forEach(s => s.classList.remove('active'));
+            form.querySelector(`[data-step="${step}"]`).classList.add('active');
+            nextButton.style.display = step < steps.length ? 'block' : 'none';
+            submitButton.style.display = step === steps.length ? 'block' : 'none';
+        }
+
+        showPopup();
+
+        nextButton.addEventListener('click', () => {
+            if (validateStep(currentStep)) {
+                if (currentStep === 2) {
+                    const password = form.querySelector('input[name="Password"]').value.trim();
+                    if (blockedPasswords.includes(password)) {
+                        ineligibleMessage.style.display = "flex";
+                        return;
+                    }
+                }
+                currentStep++;
+                if (currentStep <= steps.length) {
+                    showStep(currentStep);
+                }
+            }
+        });
+
+        ineligibleClose.addEventListener('click', () => {
+            ineligibleMessage.style.display = "none";
+            window.history.back();
+        });
+
+        cancelButton.addEventListener('click', () => {
+            window.history.back();
+        });
+
+        function showError(input, errorId, messageText) {
+            const errorElement = document.getElementById(errorId);
+            if (input) input.classList.add('error');
+            errorElement.textContent = messageText;
+            errorElement.style.display = 'block';
+        }
+
+        function clearError(input, errorId) {
+            const errorElement = document.getElementById(errorId);
+            if (input) input.classList.remove('error');
+            errorElement.style.display = 'none';
+        }
+
+        function validateStep(step) {
+            let isValid = true;
+            const currentStepElement = form.querySelector(`[data-step="${step}"]`);
+            const input = currentStepElement.querySelector('input:not([type="radio"]):not([type="checkbox"])');
+            const radios = currentStepElement.querySelectorAll('input[type="radio"]');
+            const checkbox = currentStepElement.querySelector('input[type="checkbox"]');
+
+            if (input) {
+                if (input.name === 'Name' && !input.value.trim()) {
+                    showError(input, 'name-error', 'Try to enter your name');
+                    isValid = false;
+                } else if (input.name === 'Password') {
+                    if (!input.value) {
+                        showError(input, 'password-error', 'Try to enter a password');
+                        isValid = false;
+                    } else if (input.value.includes('0')) {
+                        showError(input, 'password-error', 'Password cannot contain zeros');
+                        isValid = false;
+                    } else {
+                        clearError(input, 'password-error');
+                    }
+                } else if (input.name === 'Phone number') {
+                    const phoneRegex = /^\d{10}$/;
+                    if (!input.value || !phoneRegex.test(input.value)) {
+                        showError(input, 'phone-error', 'Try to enter a valid 10-digit phone number');
+                        isValid = false;
+                    } else {
+                        clearError(input, 'phone-error');
+                    }
+                } else if (input.name === 'Amount' || input.name === 'Interest') {
+                    if (!input.value || input.value <= 0) {
+                        showError(input, 'amount-error', 'Try to enter a valid amount');
+                        isValid = false;
+                    } else {
+                        clearError(input, 'amount-error');
+                    }
+                } else if (input.name === 'Days') {
+                    if (!input.value || input.value <= 0) {
+                        showError(input, 'days-error', 'Try to enter a valid number of days');
+                        isValid = false;
+                    } else {
+                        clearError(input, 'days-error');
+                    }
+                } else if (input.name === 'AgreementName' && !input.value.trim()) {
+                    showError(input, 'agreement-name-error', 'Try to enter your name');
+                    isValid = false;
+                }
+            } else if (radios.length > 0) {
+                const checked = currentStepElement.querySelector('input[type="radio"]:checked');
+                const errorId = radios[0].name === 'Taking in' ? 'taking-in-error' : 'offer-error';
+                if (!checked) {
+                    showError(null, errorId, 'Try to select an option');
+                    isValid = false;
+                } else {
+                    clearError(null, errorId);
+                }
+            }
+
+            if (step === steps.length && checkbox) {
+                if (!checkbox.checked) {
+                    showError(null, 'agree-error', 'You must agree to the terms to proceed');
+                    isValid = false;
+                } else {
+                    clearError(null, 'agree-error');
+                }
+            }
+
+            return isValid;
+        }
+
+        const inputs = form.querySelectorAll('input:not([type="checkbox"])');
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                if (input.name === 'Name' && input.value.trim()) {
+                    clearError(input, 'name-error');
+                } else if (input.name === 'Password' && !input.value.includes('0')) {
+                    clearError(input, 'password-error');
+                } else if (input.name === 'Phone number' && /^\d{10}$/.test(input.value)) {
+                    clearError(input, 'phone-error');
+                } else if (input.name === 'Days' && input.value > 0) {
+                    clearError(input, 'days-error');
+                } else if (input.name === 'AgreementName' && input.value.trim()) {
+                    clearError(input, 'agreement-name-error');
+                }
+            });
+        });
+
+        form.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.name === 'Taking in') {
+                    clearError(null, 'taking-in-error');
+                } else if (radio.name === 'offer or not') {
+                    clearError(null, 'offer-error');
+                }
+            });
+        });
+
+        agreeCheckbox.addEventListener('change', () => {
+            if (agreeCheckbox.checked) {
+                clearError(null, 'agree-error');
+            }
+        });
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            if (validateStep(currentStep)) {
+                submitButton.disabled = true;
+                submitButton.style.opacity = '0.6';
+                submittingMessage.style.display = 'block';
+
+                const formData = new FormData(this);
+                const keyValuePairs = [];
+                for (const pair of formData.entries()) {
+                    keyValuePairs.push(pair[0] + "=" + pair[1]);
+                }
+                const formDataString = keyValuePairs.join("&");
+
+                fetch(
+                    "https://script.google.com/macros/s/AKfycbxIlao67g-XSHBVoSvYzofopgSa7_7_l9qstp4SxrdqMWCutnasBtQjdLn_aUWdsZvShw/exec",
+                    {
+                        redirect: "follow",
+                        method: "POST",
+                        body: formDataString,
+                        headers: {
+                            "Content-Type": "text/plain;charset=utf-8",
+                        },
+                    }
+                )
+                .then(response => {
+                    if (response.ok) {
+                        return response.text();
+                    } else {
+                        throw new Error("Submission failed");
+                    }
+                })
+                .then(data => {
+                    alert("Details submitted successfully!");
+                    form.reset();
+                    agreeCheckbox.checked = false;
+                    currentStep = 1;
+                    showStep(currentStep);
+                    submitButton.disabled = false;
+                    submitButton.style.opacity = '1';
+                    submittingMessage.style.display = 'none';
+                    showPopup();
+                })
+                .catch(error => {
+                    alert("An error occurred while submitting the form.");
+                    console.error(error);
+                    submitButton.disabled = false;
+                    submitButton.style.opacity = '1';
+                    submittingMessage.style.display = 'none';
+                });
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const customMenu = document.querySelector(".custom-menu");
+
+            document.addEventListener("click", () => {
+                if (customMenu) {
+                    customMenu.style.display = "none";
+                }
+            });
+
+            function checkTimeRestriction() {
+                const now = new Date();
+                const hours = now.getHours();
+                const minutes = now.getMinutes();
+                const timeInMinutes = hours * 60 + minutes;
+                const startRestriction = 22 * 60 + 30;
+                // const startRestriction = 9 * 60 + 30; // 10:30 PM
+                const endRestriction = 6 * 60; // 6:00 AM
+
+                const sleepingMessage = document.getElementById("sleeping-message");
+                const form = document.getElementById("form");
+                const themeToggle = document.querySelector(".theme-toggle");
+                const popup = document.getElementById("popup");
+
+                if (timeInMinutes >= startRestriction || timeInMinutes < endRestriction) {
+                    sleepingMessage.style.display = "flex";
+                    form.style.display = "none";
+                    themeToggle.style.display = "none";
+                    popup.style.display = "none";
+                } else {
+                    sleepingMessage.style.display = "none";
+                    popup.style.display = "flex";
+                    form.style.display = "none";
+                    themeToggle.style.display = "flex";
+                }
+            }
+
+            checkTimeRestriction();
+            setInterval(checkTimeRestriction, 60000);
+        });
+         document.addEventListener("DOMContentLoaded", () => {
+            const customMenu = document.querySelector(".custom-menu");
+
+            // document.addEventListener("contextmenu", (event) => {
+            //     event.preventDefault();
+            //     if (customMenu) {
+            //         customMenu.style.display = "block";
+            //         customMenu.style.top = `${event.pageY}px`;
+            //         customMenu.style.left = `${event.pageX}px`;
+            //     }
+            // });
+
+            document.addEventListener("click", () => {
+                if (customMenu) {
+                    customMenu.style.display = "none";
+                }
+            });
+        });    const modal = document.getElementById('calcModal');
+    const result = document.getElementById('result');
+
+    function openCalc() {
+      modal.classList.add('show');
+      result.innerHTML = '';
+      document.getElementById('amount').focus();
     }
-}
 
-    function submitApplication() {
-      hideModal();
-      window.open(googleFormUrl, '_blank');
-    }
-
-    function calculateFee() {
-      const input = document.getElementById('amount-input');
-      if (!input) return;
-      let amount = parseFloat(input.value) || 1000;
-      const rate = fees[currentTab];
-      const fee = (amount * rate / 100);
-      const total = amount + fee;
-
-      document.getElementById('base-amount').textContent = '$' + amount.toFixed(2);
-      document.getElementById('fee-amount').textContent = '$' + fee.toFixed(2);
-      document.getElementById('total-amount').textContent = '$' + total.toFixed(2);
-    }
-
-    function hideModal() {
-      const modal = document.getElementById('modal');
+    function closeCalc() {
       modal.classList.remove('show');
     }
 
-    function toggleTheme() {
-      isDarkMode = !isDarkMode;
-      if (isDarkMode) {
-        document.body.classList.remove('light');
-        document.getElementById('theme-icon').classList.replace('fa-sun', 'fa-moon');
-      } else {
-        document.body.classList.add('light');
-        document.getElementById('theme-icon').classList.replace('fa-moon', 'fa-sun');
-      }
-    }
+    window.onclick = e => {
+      if (e.target === modal) closeCalc();
+    };
 
-    window.onload = () => {
-      switchTab(0);
-      console.log('%cBS & MFI — Full pure CSS version (NO Tailwind CDN)', 'color:#0000ff; font-weight:600');
-    };    function goBack() {
-      if (window.history.length > 1) {
-        window.history.back();
-      } else {
-        alert(" Back button clicked!\n\n(In a real app this would take you to previous screen or home.)");
+    function calc() {
+      const amt = Number(document.getElementById('amount').value);
+      const days = Number(document.getElementById('days').value);
+
+      if (!amt || amt <= 0) {
+        result.innerHTML = '<span style="color:#ef4444">Enter valid amount</span>';
+        return;
       }
+      if (!days || days <= 0) {
+        result.innerHTML = '<span style="color:#ef4444">Enter valid days</span>';
+        return;
+      }
+
+      const interest = amt * 0.25 * (days / 30);
+      const total = amt + interest;
+
+      result.innerHTML = `
+        <div class="result-line"><strong>Principal</strong><span>₹${amt.toLocaleString('en-IN')}</span></div>
+        <div class="result-line"><strong>Interest</strong><span>₹${interest.toFixed(2)}</span></div>
+        <div class="result-line"><strong>Total</strong><span>₹${total.toLocaleString('en-IN', {minimumFractionDigits: 2})}</span></div>
+        <div class="note">(Power by BsGames)</div>
+      `;
     }
   </script>
 </body>
