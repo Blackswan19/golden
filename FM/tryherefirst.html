@@ -696,19 +696,19 @@ body.telegram-dark .close{
         }
 
         .amount-buttons {
- display: flex;
-        gap: 10px;
-        white-space: nowrap;
-        position: sticky;
-        align-items: center;
-        max-width: 645px;
-        width: 105%;
-        padding: 20px 5px;
-        scrollbar-width: none;
-        margin-top: -35px;
-        background: #060606;
-        z-index: 100000;
-        margin-left: -20px;
+  display: flex;
+    gap: 15px;
+    overflow-x: scroll;
+    white-space: nowrap;
+    position: sticky;
+    top: -70px;margin-top: -30px;
+    background-color: transparent;
+    z-index: 1000000;
+    width: 100%;
+    padding: 20px 0px;
+    border-radius: 0px;
+    max-width: 600px;
+    margin-left: -10px;
         }
 
         body.telegram-dark .amount-buttons {
@@ -1699,10 +1699,12 @@ body.curvy .downlog{
         body.curvy .downlog img{border-radius: 7px;}
         @media(max-width:600px) {
             .amount-buttons {
-                   display: flex;
+                
+                     display: flex;
         gap: 10px;
         white-space: nowrap;
         position: sticky;
+        top: -9px;
         align-items: center;
         max-width: 645px;
         width: 105%;
