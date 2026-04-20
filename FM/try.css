@@ -157,9 +157,10 @@ div#audioStatus {
        
         .logo h1 p {
  position: fixed;
-    left: 6px;
+    left: -9px;
     bottom: -5px;
     font-size: 10px;
+    font-weight: 300;
 }
 .bottomtakeoptions{
      text-align: center;
@@ -430,7 +431,7 @@ ol {
     align-items: center;
     gap: 6px;
     position: relative;
-    right: 5px;
+    right: 0;
     top: 3px;
 }
 .dot::before {
@@ -542,11 +543,11 @@ i.fa-brands.fa-sistrix {
             pointer-events: auto;
         }
 .logo h1 {
-  position: relative;
-    left: 15px;
+      position: relative;
+    left: 0px;
     FONT-WEIGHT: 600;
-    font-size: 20px;
-    top: -3px;
+    font-size: 22px;
+
 }
         .theme-popup {
           position: fixed;
@@ -685,15 +686,11 @@ i.fa-brands.fa-sistrix {
     flex-direction: column;
         }
         .sponsers-section {
-       display: flex;
+     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 92%;
-    background: rgb(0 0 0 / 40%);
-    padding: 4px 15px;
-    border-radius: 8px;
-    font-weight: 600;
-
+    width: 100%;
+    border-bottom: solid 0.5px #111920;
         }
 .sponsers-section span{
        font-size: 15px;
