@@ -238,6 +238,11 @@ button.theme-btn {
 }span {
     color: white;
 }
+.modal-header svg {
+    width: 30px;
+    height: 30px;
+    position: relative;
+}
     /* .tab {
       display: flex;
     flex-direction: column;
@@ -459,7 +464,7 @@ button.theme-btn {
     <div onclick="event.stopImmediatePropagation()" class="modal-content">
       <div class="modal-header">
         <h2 id="modal-title" style="font-size:1.25rem; font-weight:600;">Calculator</h2>
-        <i onclick="hideModal()" class="fa-solid fa-xmark text-3xl cursor-pointer"></i>
+        <svg onclick="hideModal()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m322.15-293.08-29.07-29.07L450.92-480 293.08-636.85l29.07-29.07L480-508.08l156.85-157.84 29.07 29.07L508.08-480l157.84 157.85-29.07 29.07L480-450.92 322.15-293.08Z"/></svg>
       </div>
       <div id="modal-content" class="modal-body"></div>
     </div>
