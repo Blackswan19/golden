@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Finance - Personal Loan Manager</title>
+  <title>BS&MFI | One-Time Borrower's</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f8f9fa;
+      background: #ffffff;
       color: #333;
       margin: 0;
       padding: 0px;
@@ -22,14 +22,15 @@
     h1 {
       text-align: center;
       margin: 20px 0 10px;
-      color: #007bff;
+      color: #000aff;
       padding-top: 15px;
     }
     .tagline {
-      text-align: center;
-      color: #666;
-      font-size: 15px;
-      margin-bottom: 20px;
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+    margin-bottom: 0;
+    margin-top: -20px;
     }
 .maincntnt {
     position: sticky;
@@ -47,16 +48,15 @@
 
     /* Apply Button */
     .apply-btn {
-      width: -webkit-fill-available;
-      padding: 14px;
-      background: #28a745;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      margin: 15px;
+     width: -webkit-fill-available;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px;
     }
     .apply-btn:hover { background: #218838; }
 
@@ -88,7 +88,7 @@
     }
 
     .search-container {
-      margin: 15px;
+      margin: 5px;
     }
     .search-bar {
       width: 100%;
@@ -124,19 +124,16 @@
       justify-content: center;
       text-align: center;
     }
-
-    .loan-card {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 15px;
-      margin: 15px;
-    }
+.loan-card {
+    padding: 5px;
+}
     .edit-input {
-      width: 100%;
-      padding: 6px;
-      border: 1px solid #007bff;
-      border-radius: 4px;
-      margin-bottom: 8px;
+     width: -webkit-fill-available;
+    padding: 6px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    text-align: center;
     }
     .info {
       display: flex;
@@ -184,17 +181,14 @@
 
     .logout-btn {
       background: #dc3545;
-      margin: 15px;
+      margin: 15px;width: -webkit-fill-available;
     }
     .logout-btn:hover { background: #c82333; }
 
     /* Info & FAQ Section */
     .info-section {
-      margin: 20px 15px;
-      padding: 15px;
-      background: #f8f9fa;
-      border-radius: 8px;
-      font-size: 14.5px;
+     padding: 5px;
+    font-size: 14.5px;
     }
     .info-section h3 {
       color: #007bff;
@@ -257,7 +251,7 @@
    <div class="maincntnt">
       <h1>BS&MFI</h1>
       <p class="tagline">One-Time Borrower's</p>
-      <button onclick="showApplyModal()" class="apply-btn">+ Apply for New Loan</button>
+      <a href="https://blackswan19.github.io/golden/FM/takemoney"><button class="apply-btn">+ Apply for New Loan</button></a>
    </div>
   <div class="container">
     <div id="passwordCard" class="card">
@@ -341,242 +335,254 @@
   </div>
 
   <script>
-    // ================== Users Data ==================
-    let users = [
-      { password: "rahul123", name: "Rahul Sharma", loans: [
-        { id: 1, title: "Home Renovation", amount: 120000, interest: 18000, takenDate: "2026-02-10", endDate: "2026-08-10", overduePerDay: 550 },
-        { id: 2, title: "Bike Purchase", amount: 65000, interest: 9750, takenDate: "2026-03-05", endDate: "2026-09-05", overduePerDay: 320 }
-      ]},
-      { password: "priya456", name: "Priya Patel", loans: [
-        { id: 1, title: "Education Loan", amount: 150000, interest: 22500, takenDate: "2026-01-15", endDate: "2026-07-15", overduePerDay: 680 }
-      ]},
-      { password: "amit789", name: "Amit Kumar", loans: [
-        { id: 1, title: "Business Loan", amount: 80000, interest: 12000, takenDate: "2026-02-20", endDate: "2026-08-20", overduePerDay: 420 },
-        { id: 2, title: "Personal Loan", amount: 35000, interest: 5250, takenDate: "2026-04-01", endDate: "2026-10-01", overduePerDay: 180 }
-      ]},
-      { password: "neha111", name: "Neha Singh", loans: [
-        { id: 1, title: "Car Loan", amount: 250000, interest: 37500, takenDate: "2026-03-01", endDate: "2026-09-01", overduePerDay: 950 }
-      ]},
-      { password: "suresh222", name: "Suresh Reddy", loans: [
-        { id: 1, title: "Medical Loan", amount: 45000, interest: 6750, takenDate: "2026-04-10", endDate: "2026-07-10", overduePerDay: 250 },
-        { id: 2, title: "Wedding Loan", amount: 180000, interest: 27000, takenDate: "2026-02-15", endDate: "2026-08-15", overduePerDay: 720 }
-      ]}
-    ];
+// ================== Users Data ==================
+let users = [
+  { 
+    password: "Deepak@1", 
+    name: "Deepak", 
+    loans: [
+      { 
+        id: 1, 
+        title: "Amount", 
+        amount: 10000, 
+        interest: 3500, 
+        takenDate: "02-04-2026", 
+        endDate: "02-05-2026", 
+        overduePerDay: 65 
+      },
+    ]
+  }
+];
 
-    let currentUser = null;
-    let nextLoanId = 100;
+let currentUser = null;
+let nextLoanId = 100;
 
-    function loadData() {
-      const saved = localStorage.getItem('financeUsers');
-      if (saved) users = JSON.parse(saved);
-    }
+// Format date from YYYY-MM-DD to DD-MM-YYYY
+function formatDateToIndian(dateStr) {
+  if (!dateStr) return '';
+  if (dateStr.includes('-') && dateStr.split('-')[0].length === 4) {
+    const [year, month, day] = dateStr.split('-');
+    return `${day}-${month}-${year}`;
+  }
+  return dateStr;
+}
 
-    function saveData() {
-      localStorage.setItem('financeUsers', JSON.stringify(users));
-    }
+// Parse DD-MM-YYYY to Date object
+function parseIndianDate(dateStr) {
+  if (!dateStr) return new Date();
+  const [day, month, year] = dateStr.split('-').map(Number);
+  return new Date(year, month - 1, day);
+}
 
-    function calculateDueStatus(endDateStr) {
-      const today = new Date();
-      const endDate = new Date(endDateStr);
-      today.setHours(0,0,0,0);
-      endDate.setHours(0,0,0,0);
+function loadData() {
+  const saved = localStorage.getItem('financeUsers');
+  if (saved) users = JSON.parse(saved);
+}
 
-      const daysDiff = Math.ceil((endDate - today) / 86400000);
+function saveData() {
+  localStorage.setItem('financeUsers', JSON.stringify(users));
+}
 
-      if (daysDiff > 2) return { status: 'On Track', color: '#28a745', overdueDays: 0 };
-      else if (daysDiff > 0) return { status: `Due in ${daysDiff} day${daysDiff > 1 ? 's' : ''}`, color: '#ffc107', overdueDays: 0 };
-      else {
-        const overdueDays = Math.abs(daysDiff);
-        return { 
-          status: `Overdue ${overdueDays} day${overdueDays > 1 ? 's' : ''}`, 
-          color: '#dc3545', 
-          overdueDays: overdueDays 
-        };
-      }
-    }
+function calculateDueStatus(endDateStr) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-    function renderDonutChart(loansToShow) {
-      const container = document.getElementById('donutChart');
-      const totalAmountEl = document.getElementById('totalAmount');
-      const legendContainer = document.getElementById('legend');
+  const endDate = parseIndianDate(endDateStr);
+  endDate.setHours(0, 0, 0, 0);
 
-      const total = loansToShow.reduce((sum, loan) => sum + loan.amount, 0);
-      totalAmountEl.textContent = `₹ ${total.toLocaleString('en-IN')}`;
+  const daysDiff = Math.ceil((endDate - today) / 86400000);
 
-      if (loansToShow.length === 0) {
-        container.style.background = '#e0e0e0';
-        legendContainer.innerHTML = '';
-        return;
-      }
-
-      const colors = ['#007bff', '#28a745', '#ffc107', '#dc3545', '#6f42c1', '#17a2b8'];
-      let gradient = '';
-      let start = 0;
-
-      loansToShow.forEach((loan, index) => {
-        const percentage = total > 0 ? (loan.amount / total) * 100 : 0;
-        const color = colors[index % colors.length];
-        gradient += `${color} ${start}% ${start + percentage}%, `;
-        start += percentage;
-      });
-
-      gradient = gradient.slice(0, -2);
-      container.style.background = `conic-gradient(${gradient})`;
-
-      legendContainer.innerHTML = '';
-      loansToShow.forEach((loan, index) => {
-        const percentage = total > 0 ? Math.round((loan.amount / total) * 100) : 0;
-        const color = colors[index % colors.length];
-        const div = document.createElement('div');
-        div.className = 'legend-item';
-        div.innerHTML = `<div class="legend-color" style="background: ${color};"></div>
-                         <span>${loan.title} <strong>(${percentage}%)</strong></span>`;
-        legendContainer.appendChild(div);
-      });
-    }
-
-    function renderLoans(filteredLoans) {
-      const container = document.getElementById('loansContainer');
-      container.innerHTML = '';
-
-      if (filteredLoans.length === 0) {
-        container.innerHTML = '<div class="no-results">No loans found matching your search.</div>';
-        return;
-      }
-
-      filteredLoans.forEach(loan => {
-        const dueInfo = calculateDueStatus(loan.endDate);
-        const totalDue = loan.amount + loan.interest;
-        const fine = dueInfo.overdueDays * (loan.overduePerDay || 0);
-
-        const html = `
-          <div class="loan-card">
-            <input type="text" class="edit-input" value="${loan.title}" onchange="updateTitle(${loan.id}, this.value)">
-            
-            <div class="info"><span class="label">Principal</span><span class="value">₹ ${loan.amount.toLocaleString('en-IN')}</span></div>
-            <div class="info"><span class="label">Interest</span><span class="value">₹ ${loan.interest.toLocaleString('en-IN')}</span></div>
-            <div class="info"><span class="label">Taken On</span><span class="value">${loan.takenDate}</span></div>
-            
-            <div class="due-date">
-              Due: ${loan.endDate} 
-              <span style="color: ${dueInfo.color};">(${dueInfo.status})</span>
-            </div>
-
-            ${fine > 0 ? `
-            <div class="fine-amount">
-              Fine: ₹ ${fine.toLocaleString('en-IN')} 
-              <small>(₹${loan.overduePerDay}/day × ${dueInfo.overdueDays} days)</small>
-            </div>` : ''}
-
-            <div class="info" style="margin-top:12px; border-top:1px solid #eee; padding-top:10px;">
-              <span class="label">Total Due</span>
-              <span style="font-weight:bold; color:#007bff;">₹ ${(totalDue + fine).toLocaleString('en-IN')}</span>
-            </div>
-          </div>
-        `;
-        container.innerHTML += html;
-      });
-    }
-
-    function filterLoans() {
-      const searchTerm = document.getElementById('searchBar').value.toLowerCase().trim();
-      if (!currentUser) return;
-
-      let filtered = currentUser.loans;
-      if (searchTerm) {
-        filtered = currentUser.loans.filter(loan => loan.title.toLowerCase().includes(searchTerm));
-      }
-
-      renderDonutChart(filtered);
-      renderLoans(filtered);
-    }
-
-    function updateTitle(loanId, newTitle) {
-      if (!currentUser) return;
-      const loan = currentUser.loans.find(l => l.id === loanId);
-      if (loan) {
-        loan.title = newTitle.trim();
-        saveData();
-        filterLoans();
-      }
-    }
-
-    function checkPassword() {
-      const pass = document.getElementById('password').value.trim();
-      currentUser = users.find(u => u.password === pass);
-
-      if (currentUser) {
-        document.getElementById('passwordCard').style.display = 'none';
-        document.getElementById('detailsCard').style.display = 'block';
-        document.getElementById('userName').textContent = currentUser.name;
-        
-        nextLoanId = Math.max(0, ...currentUser.loans.map(l => l.id)) + 1;
-        
-        renderDonutChart(currentUser.loans);
-        renderLoans(currentUser.loans);
-      } else {
-        alert("Incorrect password. Try again.");
-      }
-    }
-
-    function logout() {
-      document.getElementById('passwordCard').style.display = 'block';
-      document.getElementById('detailsCard').style.display = 'none';
-      document.getElementById('password').value = '';
-      document.getElementById('searchBar').value = '';
-    }
-
-    function showApplyModal() {
-      document.getElementById('applyModal').style.display = 'flex';
-      document.getElementById('newTitle').value = '';
-      document.getElementById('newAmount').value = '';
-      document.getElementById('newInterest').value = '';
-      document.getElementById('newEndDate').value = '';
-      document.getElementById('newOverduePerDay').value = '500';
-    }
-
-    function hideApplyModal() {
-      document.getElementById('applyModal').style.display = 'none';
-    }
-
-    function applyNewLoan() {
-      const title = document.getElementById('newTitle').value.trim();
-      const amount = parseFloat(document.getElementById('newAmount').value);
-      const interest = parseFloat(document.getElementById('newInterest').value) || 0;
-      const endDate = document.getElementById('newEndDate').value;
-      const overduePerDay = parseFloat(document.getElementById('newOverduePerDay').value) || 500;
-
-      if (!title || !amount || !endDate) {
-        alert("Please fill Title, Amount, and End Date.");
-        return;
-      }
-
-      const today = new Date().toISOString().split('T')[0];
-
-      const newLoan = {
-        id: nextLoanId++,
-        title: title,
-        amount: amount,
-        interest: interest,
-        takenDate: today,
-        endDate: endDate,
-        overduePerDay: overduePerDay
-      };
-
-      currentUser.loans.push(newLoan);
-      saveData();
-      hideApplyModal();
-      filterLoans();
-      alert("New loan added successfully!");
-    }
-
-    window.onload = () => {
-      loadData();
+  if (daysDiff > 2) {
+    return { status: 'On Track', color: '#28a745', overdueDays: 0 };
+  } else if (daysDiff > 0) {
+    return { 
+      status: `Due in ${daysDiff} day${daysDiff > 1 ? 's' : ''}`, 
+      color: '#ffc107', 
+      overdueDays: 0 
     };
+  } else {
+    const overdueDays = Math.abs(daysDiff);
+    return { 
+      status: `Overdue ${overdueDays} day${overdueDays > 1 ? 's' : ''}`, 
+      color: '#dc3545', 
+      overdueDays: overdueDays 
+    };
+  }
+}
 
-    document.getElementById('password').addEventListener('keypress', e => {
-      if (e.key === 'Enter') checkPassword();
-    });
+function renderDonutChart(loansToShow) {
+  const container = document.getElementById('donutChart');
+  const totalAmountEl = document.getElementById('totalAmount');
+  const legendContainer = document.getElementById('legend');
+
+  const total = loansToShow.reduce((sum, loan) => sum + loan.amount, 0);
+  totalAmountEl.textContent = `₹ ${total.toLocaleString('en-IN')}`;
+
+  if (loansToShow.length === 0) {
+    container.style.background = '#e0e0e0';
+    legendContainer.innerHTML = '';
+    return;
+  }
+
+  const colors = ['#007bff', '#28a745', '#ffc107', '#dc3545', '#6f42c1', '#17a2b8'];
+  let gradient = '';
+  let start = 0;
+
+  loansToShow.forEach((loan, index) => {
+    const percentage = total > 0 ? (loan.amount / total) * 100 : 0;
+    const color = colors[index % colors.length];
+    gradient += `${color} ${start}% ${start + percentage}%, `;
+    start += percentage;
+  });
+
+  gradient = gradient.slice(0, -2);
+  container.style.background = `conic-gradient(${gradient})`;
+
+  legendContainer.innerHTML = '';
+  loansToShow.forEach((loan, index) => {
+    const percentage = total > 0 ? Math.round((loan.amount / total) * 100) : 0;
+    const color = colors[index % colors.length];
+    const div = document.createElement('div');
+    div.className = 'legend-item';
+    div.innerHTML = `<div class="legend-color" style="background: ${color};"></div>
+                     <span>${loan.title} <strong>(${percentage}%)</strong></span>`;
+    legendContainer.appendChild(div);
+  });
+}
+
+function renderLoans(filteredLoans) {
+  const container = document.getElementById('loansContainer');
+  container.innerHTML = '';
+
+  if (filteredLoans.length === 0) {
+    container.innerHTML = '<div class="no-results">No loans found matching your search.</div>';
+    return;
+  }
+
+  filteredLoans.forEach(loan => {
+    const dueInfo = calculateDueStatus(loan.endDate);
+    const totalDue = loan.amount + loan.interest;
+    const fine = dueInfo.overdueDays * (loan.overduePerDay || 0);
+
+    const html = `
+      <div class="loan-card">
+        <input type="text" class="edit-input" value="${loan.title}" onchange="updateTitle(${loan.id}, this.value)">
+        
+        <div class="info"><span class="label">Principal</span><span class="value">₹ ${loan.amount.toLocaleString('en-IN')}</span></div>
+        <div class="info"><span class="label">Interest</span><span class="value">₹ ${loan.interest.toLocaleString('en-IN')}</span></div>
+        <div class="info"><span class="label">Taken On</span><span class="value">${loan.takenDate}</span></div>
+        
+        <div class="due-date">
+          Due: ${loan.endDate} 
+          <span style="color: ${dueInfo.color};">(${dueInfo.status})</span>
+        </div>
+
+        ${fine > 0 ? `
+        <div class="fine-amount">
+          Fine: ₹ ${fine.toLocaleString('en-IN')} 
+          <small>(₹${loan.overduePerDay}/day × ${dueInfo.overdueDays} days)</small>
+        </div>` : ''}
+
+        <div class="info" style="margin-top:12px; border-top:1px solid #eee; padding-top:10px;">
+          <span class="label">Total Due</span>
+          <span style="font-weight:bold; color:#007bff;">₹ ${(totalDue + fine).toLocaleString('en-IN')}</span>
+        </div>
+      </div>
+    `;
+    container.innerHTML += html;
+  });
+}
+
+function filterLoans() {
+  const searchTerm = document.getElementById('searchBar').value.toLowerCase().trim();
+  if (!currentUser) return;
+
+  let filtered = currentUser.loans;
+  if (searchTerm) {
+    filtered = currentUser.loans.filter(loan => loan.title.toLowerCase().includes(searchTerm));
+  }
+
+  renderDonutChart(filtered);
+  renderLoans(filtered);
+}
+
+function updateTitle(loanId, newTitle) {
+  if (!currentUser) return;
+  const loan = currentUser.loans.find(l => l.id === loanId);
+  if (loan) {
+    loan.title = newTitle.trim();
+    saveData();
+    filterLoans();
+  }
+}
+
+function checkPassword() {
+  const pass = document.getElementById('password').value.trim();
+  currentUser = users.find(u => u.password === pass);
+
+  if (currentUser) {
+    document.getElementById('passwordCard').style.display = 'none';
+    document.getElementById('detailsCard').style.display = 'block';
+    document.getElementById('userName').textContent = currentUser.name;
+    
+    nextLoanId = Math.max(0, ...currentUser.loans.map(l => l.id)) + 1;
+    
+    renderDonutChart(currentUser.loans);
+    renderLoans(currentUser.loans);
+  } else {
+    alert("Incorrect password. Try again.");
+  }
+}
+
+function logout() {
+  document.getElementById('passwordCard').style.display = 'block';
+  document.getElementById('detailsCard').style.display = 'none';
+  document.getElementById('password').value = '';
+  document.getElementById('searchBar').value = '';
+}
+
+function hideApplyModal() {
+  document.getElementById('applyModal').style.display = 'none';
+}
+
+function applyNewLoan() {
+  const title = document.getElementById('newTitle').value.trim();
+  const amount = parseFloat(document.getElementById('newAmount').value);
+  const interest = parseFloat(document.getElementById('newInterest').value) || 0;
+  const endDate = document.getElementById('newEndDate').value.trim();
+  const overduePerDay = parseFloat(document.getElementById('newOverduePerDay').value) || 500;
+
+  if (!title || !amount || !endDate) {
+    alert("Please fill Title, Amount, and End Date.");
+    return;
+  }
+
+  const newLoan = {
+    id: nextLoanId++,
+    title: title,
+    amount: amount,
+    interest: interest,
+    takenDate: formatDateToIndian(new Date().toISOString().split('T')[0]), // Today in DD-MM-YYYY
+    endDate: endDate,
+    overduePerDay: overduePerDay
+  };
+
+  currentUser.loans.push(newLoan);
+  saveData();
+  hideApplyModal();
+  filterLoans();
+  alert("New loan added successfully!");
+}
+
+window.onload = () => {
+  loadData();
+};
+
+// Enter key support for password
+document.getElementById('password').addEventListener('keypress', e => {
+  if (e.key === 'Enter') checkPassword();
+});
+</script>
   </script>
 </body>
 </html>
