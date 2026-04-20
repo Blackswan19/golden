@@ -3,41 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Finance</title>
+  <title>Finance - Personal Loan Manager</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: white;
+      background: #f8f9fa;
       color: #333;
       margin: 0;
-      padding: 20px;
+      padding: 0px;
       line-height: 1.6;
     }
     .container {
      max-width: 500px;
     margin: 0 auto;
-    padding: 20px;
-    border-radius: 8px;
+    border-radius: 12px;
+    overflow: hidden;
     }
     h1 {
       text-align: center;
-      margin-bottom: 20px;
+      margin: 20px 0 10px;
       color: #007bff;
+      padding-top: 15px;
     }
+    .tagline {
+      text-align: center;
+      color: #666;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+.maincntnt {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 10000;
+}
     .card {
       background: white;
       border: 1px solid #ddd;
       border-radius: 8px;
       padding: 20px;
-      margin-bottom: 20px;
+      margin: 15px;
     }
-    input[type="password"] {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+
+    /* Apply Button */
+    .apply-btn {
+      width: -webkit-fill-available;
+      padding: 14px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
       font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 15px;
+    }
+    .apply-btn:hover { background: #218838; }
+
+    input[type="password"] {
+     width: -webkit-fill-available;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
     }
     button {
       width: 100%;
@@ -58,9 +87,8 @@
       margin-bottom: 15px;
     }
 
-    /* Search Bar */
     .search-container {
-      margin-bottom: 20px;
+      margin: 15px;
     }
     .search-bar {
       width: 100%;
@@ -70,23 +98,16 @@
       font-size: 16px;
       box-sizing: border-box;
     }
-    .search-bar:focus {
-      outline: none;
-      border-color: #007bff;
-    }
 
-    /* Donut Chart */
     .chart-container {
       display: flex;
       justify-content: center;
       margin: 25px 0;
-      position: relative;
     }
     .donut {
       width: 180px;
       height: 180px;
       border-radius: 50%;
-      background: conic-gradient(#007bff, #28a745, #ffc107, #dc3545, #6f42c1);
       position: relative;
       display: flex;
       align-items: center;
@@ -103,21 +124,12 @@
       justify-content: center;
       text-align: center;
     }
-    .donut-inner span {
-      font-size: 24px;
-      font-weight: bold;
-      color: #333;
-    }
-    .donut-inner small {
-      font-size: 13px;
-      color: #666;
-    }
 
     .loan-card {
       border: 1px solid #ddd;
       border-radius: 8px;
       padding: 15px;
-      margin-bottom: 15px;
+      margin: 15px;
     }
     .edit-input {
       width: 100%;
@@ -136,16 +148,20 @@
     .value { font-weight: 600; }
 
     .due-date {
-      color: #d32f2f;
-      font-weight: 600;
       margin-top: 8px;
+      font-weight: 600;
+    }
+    .fine-amount {
+      color: #d32f2f;
+      font-weight: bold;
+      margin-top: 5px;
     }
 
     .legend {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 15px;
+      margin: 15px;
       font-size: 14px;
     }
     .legend-item {
@@ -168,28 +184,94 @@
 
     .logout-btn {
       background: #dc3545;
+      margin: 15px;
     }
-    .logout-btn:hover {
-      background: #c82333;
+    .logout-btn:hover { background: #c82333; }
+
+    /* Info & FAQ Section */
+    .info-section {
+      margin: 20px 15px;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      font-size: 14.5px;
     }
+    .info-section h3 {
+      color: #007bff;
+      margin-top: 0;
+    }
+    .faq {
+      margin-top: 25px;
+    }
+    .faq h3 {
+      color: #007bff;
+    }
+    .faq-item {
+      margin-bottom: 15px;
+    }
+    .faq-question {
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 420px;
+    }
+    .modal h3 { margin-top: 0; color: #007bff; }
+    .modal input, .modal select, .modal input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 15px;
+    }
+    .modal-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .cancel-btn {
+      background: #6c757d;
+    }
+    .cancel-btn:hover { background: #545b62; }
   </style>
 </head>
 <body>
+   <div class="maincntnt">
+      <h1>BS&MFI</h1>
+      <p class="tagline">One-Time Borrower's</p>
+      <button onclick="showApplyModal()" class="apply-btn">+ Apply for New Loan</button>
+   </div>
   <div class="container">
-    <h1>Finance</h1>
-
-    <!-- Password Screen -->
     <div id="passwordCard" class="card">
       <div class="welcome">Welcome Back</div>
       <input type="password" id="password" placeholder="Enter password" autocomplete="off">
       <button onclick="checkPassword()">Login</button>
     </div>
 
-    <!-- Account Overview -->
+    <!-- Main Dashboard -->
     <div id="detailsCard" style="display: none;">
-      <div style="text-align: center; margin-bottom: 20px;">
+
+      <div style="text-align: center; margin-bottom: 15px;">
         <h2 id="userName"></h2>
-        <p style="color: #666;">Loan Overview</p>
+        <p style="color: #666; margin: 5px 0;">Your Loan Overview</p>
       </div>
 
       <!-- Search Bar -->
@@ -199,7 +281,7 @@
                onkeyup="filterLoans()">
       </div>
 
-      <!-- Round Graph by Amount -->
+      <!-- Donut Chart -->
       <div class="chart-container">
         <div id="donutChart" class="donut">
           <div class="donut-inner">
@@ -212,55 +294,77 @@
       <div class="legend" id="legend"></div>
 
       <div id="loansContainer"></div>
+      <div class="info-section faq">
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        
+        <div class="faq-item">
+          <div class="faq-question">1. How much i can borrow?</div>
+          <div>You can take upto 10000rs</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">2. Can i extand the return date if im late?</div>
+          <div>No.You can't extand the return date if your late.</div>
+        </div>
+      
+        <div class="faq-item">
+          <div class="faq-question">4. How is the fine calculated?</div>
+          <div>When the due date crosses, fine = Overdue Per Day × Number of overdue days.</div>
+        </div>
+        
+      </div>
 
       <button onclick="logout()" class="logout-btn">Logout</button>
     </div>
   </div>
 
+  <!-- Apply New Loan Modal -->
+  <div id="applyModal" class="modal">
+    <div class="modal-content">
+      <h3>Apply for New Loan</h3>
+      
+      <input type="text" id="newTitle" placeholder="Loan Title (e.g. Home Renovation)">
+      <input type="number" id="newAmount" placeholder="Loan Amount (₹)" min="1000">
+      <input type="number" id="newInterest" placeholder="Interest Amount (₹)" min="0">
+      <input type="date" id="newEndDate">
+      <input type="number" id="newOverduePerDay" placeholder="Overdue Fine per Day (₹)" min="0" value="500">
+
+      <div class="modal-buttons">
+        <button onclick="hideApplyModal()" class="cancel-btn">Cancel</button>
+        <button onclick="applyNewLoan()">Submit Application</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:30px; color:#888; font-size:13px;">
+    © STL/BS&MFI.All Rights Reserved<br>
+  </div>
+
   <script>
+    // ================== Users Data ==================
     let users = [
-      {
-        password: "rahul123",
-        name: "Rahul Sharma",
-        loans: [
-          { id: 1, title: "Home Renovation", amount: 120000, interest: 18000, takenDate: "2026-02-10", endDate: "2026-08-10", overduePerDay: 550 },
-          { id: 2, title: "Bike Purchase", amount: 65000, interest: 9750, takenDate: "2026-03-05", endDate: "2026-09-05", overduePerDay: 320 }
-        ]
-      },
-      {
-        password: "priya456",
-        name: "Priya Patel",
-        loans: [
-          { id: 1, title: "Education Loan", amount: 150000, interest: 22500, takenDate: "2026-01-15", endDate: "2026-07-15", overduePerDay: 680 }
-        ]
-      },
-      {
-        password: "amit789",
-        name: "Amit Kumar",
-        loans: [
-          { id: 1, title: "Business Loan", amount: 80000, interest: 12000, takenDate: "2026-02-20", endDate: "2026-08-20", overduePerDay: 420 },
-          { id: 2, title: "Personal Loan", amount: 35000, interest: 5250, takenDate: "2026-04-01", endDate: "2026-10-01", overduePerDay: 180 }
-        ]
-      },
-      {
-        password: "neha111",
-        name: "Neha Singh",
-        loans: [
-          { id: 1, title: "Car Loan", amount: 250000, interest: 37500, takenDate: "2026-03-01", endDate: "2026-09-01", overduePerDay: 950 }
-        ]
-      },
-      {
-        password: "suresh222",
-        name: "Suresh Reddy",
-        loans: [
-          { id: 1, title: "Medical Loan", amount: 45000, interest: 6750, takenDate: "2026-04-10", endDate: "2026-07-10", overduePerDay: 250 },
-          { id: 2, title: "Wedding Loan", amount: 180000, interest: 27000, takenDate: "2026-02-15", endDate: "2026-08-15", overduePerDay: 720 }
-        ]
-      }
+      { password: "rahul123", name: "Rahul Sharma", loans: [
+        { id: 1, title: "Home Renovation", amount: 120000, interest: 18000, takenDate: "2026-02-10", endDate: "2026-08-10", overduePerDay: 550 },
+        { id: 2, title: "Bike Purchase", amount: 65000, interest: 9750, takenDate: "2026-03-05", endDate: "2026-09-05", overduePerDay: 320 }
+      ]},
+      { password: "priya456", name: "Priya Patel", loans: [
+        { id: 1, title: "Education Loan", amount: 150000, interest: 22500, takenDate: "2026-01-15", endDate: "2026-07-15", overduePerDay: 680 }
+      ]},
+      { password: "amit789", name: "Amit Kumar", loans: [
+        { id: 1, title: "Business Loan", amount: 80000, interest: 12000, takenDate: "2026-02-20", endDate: "2026-08-20", overduePerDay: 420 },
+        { id: 2, title: "Personal Loan", amount: 35000, interest: 5250, takenDate: "2026-04-01", endDate: "2026-10-01", overduePerDay: 180 }
+      ]},
+      { password: "neha111", name: "Neha Singh", loans: [
+        { id: 1, title: "Car Loan", amount: 250000, interest: 37500, takenDate: "2026-03-01", endDate: "2026-09-01", overduePerDay: 950 }
+      ]},
+      { password: "suresh222", name: "Suresh Reddy", loans: [
+        { id: 1, title: "Medical Loan", amount: 45000, interest: 6750, takenDate: "2026-04-10", endDate: "2026-07-10", overduePerDay: 250 },
+        { id: 2, title: "Wedding Loan", amount: 180000, interest: 27000, takenDate: "2026-02-15", endDate: "2026-08-15", overduePerDay: 720 }
+      ]}
     ];
 
     let currentUser = null;
-    let allLoans = []; // To keep original list for searching
+    let nextLoanId = 100;
 
     function loadData() {
       const saved = localStorage.getItem('financeUsers');
@@ -276,13 +380,18 @@
       const endDate = new Date(endDateStr);
       today.setHours(0,0,0,0);
       endDate.setHours(0,0,0,0);
+
       const daysDiff = Math.ceil((endDate - today) / 86400000);
 
-      if (daysDiff > 2) return { status: 'On Track', color: '#28a745', days: daysDiff };
-      else if (daysDiff > 0) return { status: `Due in ${daysDiff} day${daysDiff > 1 ? 's' : ''}`, color: '#ffc107', days: daysDiff };
+      if (daysDiff > 2) return { status: 'On Track', color: '#28a745', overdueDays: 0 };
+      else if (daysDiff > 0) return { status: `Due in ${daysDiff} day${daysDiff > 1 ? 's' : ''}`, color: '#ffc107', overdueDays: 0 };
       else {
         const overdueDays = Math.abs(daysDiff);
-        return { status: `Overdue ${overdueDays} days`, color: '#dc3545', days: overdueDays };
+        return { 
+          status: `Overdue ${overdueDays} day${overdueDays > 1 ? 's' : ''}`, 
+          color: '#dc3545', 
+          overdueDays: overdueDays 
+        };
       }
     }
 
@@ -314,18 +423,14 @@
       gradient = gradient.slice(0, -2);
       container.style.background = `conic-gradient(${gradient})`;
 
-      // Legend
       legendContainer.innerHTML = '';
       loansToShow.forEach((loan, index) => {
         const percentage = total > 0 ? Math.round((loan.amount / total) * 100) : 0;
         const color = colors[index % colors.length];
-
         const div = document.createElement('div');
         div.className = 'legend-item';
-        div.innerHTML = `
-          <div class="legend-color" style="background: ${color};"></div>
-          <span>${loan.title} <strong>(${percentage}%)</strong></span>
-        `;
+        div.innerHTML = `<div class="legend-color" style="background: ${color};"></div>
+                         <span>${loan.title} <strong>(${percentage}%)</strong></span>`;
         legendContainer.appendChild(div);
       });
     }
@@ -342,11 +447,11 @@
       filteredLoans.forEach(loan => {
         const dueInfo = calculateDueStatus(loan.endDate);
         const totalDue = loan.amount + loan.interest;
+        const fine = dueInfo.overdueDays * (loan.overduePerDay || 0);
 
         const html = `
           <div class="loan-card">
-            <input type="text" class="edit-input" value="${loan.title}" 
-                   onchange="updateTitle(${loan.id}, this.value)">
+            <input type="text" class="edit-input" value="${loan.title}" onchange="updateTitle(${loan.id}, this.value)">
             
             <div class="info"><span class="label">Principal</span><span class="value">₹ ${loan.amount.toLocaleString('en-IN')}</span></div>
             <div class="info"><span class="label">Interest</span><span class="value">₹ ${loan.interest.toLocaleString('en-IN')}</span></div>
@@ -357,9 +462,15 @@
               <span style="color: ${dueInfo.color};">(${dueInfo.status})</span>
             </div>
 
+            ${fine > 0 ? `
+            <div class="fine-amount">
+              Fine: ₹ ${fine.toLocaleString('en-IN')} 
+              <small>(₹${loan.overduePerDay}/day × ${dueInfo.overdueDays} days)</small>
+            </div>` : ''}
+
             <div class="info" style="margin-top:12px; border-top:1px solid #eee; padding-top:10px;">
               <span class="label">Total Due</span>
-              <span style="font-weight:bold; color:#007bff;">₹ ${totalDue.toLocaleString('en-IN')}</span>
+              <span style="font-weight:bold; color:#007bff;">₹ ${(totalDue + fine).toLocaleString('en-IN')}</span>
             </div>
           </div>
         `;
@@ -369,15 +480,11 @@
 
     function filterLoans() {
       const searchTerm = document.getElementById('searchBar').value.toLowerCase().trim();
-      
       if (!currentUser) return;
 
       let filtered = currentUser.loans;
-
-      if (searchTerm !== '') {
-        filtered = currentUser.loans.filter(loan => 
-          loan.title.toLowerCase().includes(searchTerm)
-        );
+      if (searchTerm) {
+        filtered = currentUser.loans.filter(loan => loan.title.toLowerCase().includes(searchTerm));
       }
 
       renderDonutChart(filtered);
@@ -390,16 +497,7 @@
       if (loan) {
         loan.title = newTitle.trim();
         saveData();
-        
-        // Refresh everything after edit
-        const searchTerm = document.getElementById('searchBar').value.toLowerCase().trim();
-        let filtered = currentUser.loans;
-        if (searchTerm !== '') {
-          filtered = currentUser.loans.filter(l => l.title.toLowerCase().includes(searchTerm));
-        }
-        
-        renderDonutChart(filtered);
-        renderLoans(filtered);
+        filterLoans();
       }
     }
 
@@ -412,7 +510,8 @@
         document.getElementById('detailsCard').style.display = 'block';
         document.getElementById('userName').textContent = currentUser.name;
         
-        // Initial render with all loans
+        nextLoanId = Math.max(0, ...currentUser.loans.map(l => l.id)) + 1;
+        
         renderDonutChart(currentUser.loans);
         renderLoans(currentUser.loans);
       } else {
@@ -424,7 +523,51 @@
       document.getElementById('passwordCard').style.display = 'block';
       document.getElementById('detailsCard').style.display = 'none';
       document.getElementById('password').value = '';
-      document.getElementById('searchBar').value = ''; // Clear search on logout
+      document.getElementById('searchBar').value = '';
+    }
+
+    function showApplyModal() {
+      document.getElementById('applyModal').style.display = 'flex';
+      document.getElementById('newTitle').value = '';
+      document.getElementById('newAmount').value = '';
+      document.getElementById('newInterest').value = '';
+      document.getElementById('newEndDate').value = '';
+      document.getElementById('newOverduePerDay').value = '500';
+    }
+
+    function hideApplyModal() {
+      document.getElementById('applyModal').style.display = 'none';
+    }
+
+    function applyNewLoan() {
+      const title = document.getElementById('newTitle').value.trim();
+      const amount = parseFloat(document.getElementById('newAmount').value);
+      const interest = parseFloat(document.getElementById('newInterest').value) || 0;
+      const endDate = document.getElementById('newEndDate').value;
+      const overduePerDay = parseFloat(document.getElementById('newOverduePerDay').value) || 500;
+
+      if (!title || !amount || !endDate) {
+        alert("Please fill Title, Amount, and End Date.");
+        return;
+      }
+
+      const today = new Date().toISOString().split('T')[0];
+
+      const newLoan = {
+        id: nextLoanId++,
+        title: title,
+        amount: amount,
+        interest: interest,
+        takenDate: today,
+        endDate: endDate,
+        overduePerDay: overduePerDay
+      };
+
+      currentUser.loans.push(newLoan);
+      saveData();
+      hideApplyModal();
+      filterLoans();
+      alert("New loan added successfully!");
     }
 
     window.onload = () => {
