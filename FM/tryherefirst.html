@@ -1,588 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BS&MFI | One-Time Borrower's</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      color: #333;
-      margin: 0;
-      padding: 0px;
-      line-height: 1.6;
-    }
-    .container {
-     max-width: 500px;
-    margin: 0 auto;
-    border-radius: 12px;
-    overflow: hidden;
-    }
-    h1 {
-      text-align: center;
-      margin: 20px 0 10px;
-      color: #000aff;
-      padding-top: 15px;
-    }
-    .tagline {
-    text-align: center;
-    color: #666;
-    font-size: 12px;
-    margin-bottom: 0;
-    margin-top: -20px;
-    }
-.maincntnt {
-    position: sticky;
-    top: 0;
-    background: white;
-    z-index: 10000;
-}
-    .card {
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 15px;
-    }
-
-    /* Apply Button */
-    .apply-btn {
-     width: -webkit-fill-available;
-    background: #28a745;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    margin: 5px;
-    }
-    .apply-btn:hover { background: #218838; }
-
-    input[type="password"] {
-     width: -webkit-fill-available;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    }
-    button {
-      width: 100%;
-      padding: 12px;
-      background: #007bff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      font-size: 16px;
-      cursor: pointer;
-      margin: 10px 0;
-    }
-    button:hover { background: #0056b3; }
-
-    .welcome {
-      text-align: center;
-      font-size: 22px;
-      margin-bottom: 15px;
-    }
-
-    .search-container {
-      margin: 5px;
-    }
-    .search-bar {
-      width: 100%;
-      padding: 12px 16px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-      box-sizing: border-box;
-    }
-
-    .chart-container {
-      display: flex;
-      justify-content: center;
-      margin: 25px 0;
-    }
-    .donut {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .donut-inner {
-      width: 130px;
-      height: 130px;
-      background: white;
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-.loan-card {
-    padding: 5px;
-}
-    .edit-input {
-     width: -webkit-fill-available;
-    padding: 6px;
-    border: 1px solid #000000;
-    border-radius: 4px;
-    margin-bottom: 8px;
-    text-align: center;
-    }
-    .info {
-      display: flex;
-      justify-content: space-between;
-      margin: 8px 0;
-      font-size: 15px;
-    }
-    .label { color: #666; }
-    .value { font-weight: 600; }
-
-    .due-date {
-      margin-top: 8px;
-      font-weight: 600;
-    }
-    .fine-amount {
-      color: #d32f2f;
-      font-weight: bold;
-      margin-top: 5px;
-    }
-
-    .legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 15px;
-      font-size: 14px;
-    }
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .legend-color {
-      width: 14px;
-      height: 14px;
-      border-radius: 3px;
-    }
-
-    .no-results {
-      text-align: center;
-      color: #888;
-      padding: 20px;
-      font-style: italic;
-    }
-
-    .logout-btn {
-      background: #dc3545;
-      margin: 15px;width: -webkit-fill-available;
-    }
-    .logout-btn:hover { background: #c82333; }
-
-    /* Info & FAQ Section */
-    .info-section {
-     padding: 5px;
-    font-size: 14.5px;
-    }
-    .info-section h3 {
-      color: #007bff;
-      margin-top: 0;
-    }
-    .faq {
-      margin-top: 25px;
-    }
-    .faq h3 {
-      color: #007bff;
-    }
-    .faq-item {
-      margin-bottom: 15px;
-    }
-    .faq-question {
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 5px;
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-    .modal-content {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 420px;
-    }
-    .modal h3 { margin-top: 0; color: #007bff; }
-    .modal input, .modal select, .modal input[type="date"] {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 15px;
-    }
-    .modal-buttons {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
-    .cancel-btn {
-      background: #6c757d;
-    }
-    .cancel-btn:hover { background: #545b62; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myootive | MLending</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="mfi.logo.png">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="mfi.logo.png">
+    <link rel="stylesheet" href="myootive.css">
 </head>
+
 <body>
-   <div class="maincntnt">
-      <h1>BS&MFI</h1>
-      <p class="tagline">One-Time Borrower's</p>
-      <a href="https://blackswan19.github.io/golden/FM/takemoney"><button class="apply-btn">+ Apply for New Loan</button></a>
-   </div>
-  <div class="container">
-    <div id="passwordCard" class="card">
-      <div class="welcome">Welcome Back</div>
-      <input type="password" id="password" placeholder="Enter password" autocomplete="off">
-      <button onclick="checkPassword()">Login</button>
+   <div class="loading-overlay" id="loadingOverlay">
+    <div class="servicename" style="position: fixed;
+    top: 10px;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    background: #ffffff24;
+    padding:0px 15px;
+    border-radius: 100px;
+    color: #ffffff;
+    font-weight: 300;">
+            Myootive Service
+        </div>
+        <img src="loadinglogo.png" alt="Loading Doughnut" class="loading-logo">
+        
+        <div class="servicenmae">
+            Welcome to MLending
+        </div>
+
+        <button class="start-btn" id="startAudioBtn">Connect Now</button>
+
+        <div class="audio-controls" id="audioControls">
+            <div class="audio-progress-container">
+                <div class="audio-progress-bar">
+                    <div id="audioProgressFill" class="audio-progress-fill"></div>
+                </div>
+                <div class="audio-status" id="audioStatus">Waiting for you to start...</div>
+            </div>
+        </div>
+ <button class="mute-btn" id="muteToggle" title="Mute / Unmute">
+                <i class="fas fa-volume-high"></i>
+            </button>
+        <audio id="introAudio" preload="auto">
+            <source src="mfi_intro.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
     </div>
 
-    <!-- Main Dashboard -->
-    <div id="detailsCard" style="display: none;">
-
-      <div style="text-align: center; margin-bottom: 15px;">
-        <h2 id="userName"></h2>
-        <p style="color: #666; margin: 5px 0;">Your Loan Overview</p>
-      </div>
-
-      <!-- Search Bar -->
-      <div class="search-container">
-        <input type="text" id="searchBar" class="search-bar" 
-               placeholder="Search by loan title..." 
-               onkeyup="filterLoans()">
-      </div>
-
-      <!-- Donut Chart -->
-      <div class="chart-container">
-        <div id="donutChart" class="donut">
-          <div class="donut-inner">
-            <span id="totalAmount">₹0</span>
-            <small>Total Loans</small>
-          </div>
+    <div class="logo">
+        <h1>MLending<p>By Myootive</p></h1>
+        <div class="rightsideopt">
+            <a href="https://blackswan19.github.io/golden/FM/starpre" style="color: white; text-decoration: none; cursor: pointer;">
+            
+            <button class="applybtn" style="border: none;
+                outline: none;
+                color: white;
+                background-image: linear-gradient(45deg, rgb(255 169 0), rgb(255 0 198), #5b5bff, #56ffcc);
+                cursor: pointer;">
+                        <svg style="width: 20px;
+                height: 20px;" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="#ffffff"><g fill="#ffffff"><path d="M18.483 16.767A8.5 8.5 0 0 1 8.118 7.081a1.27 1.27 0 0 1-.113.097c-.28.213-.63.292-1.33.45l-.635.144c-2.46.557-3.69.835-3.983 1.776c-.292.94.546 1.921 2.223 3.882l.434.507c.476.557.715.836.822 1.18c.107.345.071.717-.001 1.46l-.066.677c-.253 2.617-.38 3.925.386 4.506c.766.582 1.918.052 4.22-1.009l.597-.274c.654-.302.981-.452 1.328-.452c.347 0 .674.15 1.329.452l.595.274c2.303 1.06 3.455 1.59 4.22 1.01c.767-.582.64-1.89.387-4.507l-.048-.487Z"/><path d="m9.153 5.408l-.328.588c-.36.646-.54.969-.82 1.182c.04-.03.077-.062.113-.097a8.5 8.5 0 0 0 10.366 9.686l-.02-.19c-.071-.743-.107-1.115 0-1.46c.107-.344.345-.623.822-1.18l.434-.507c1.677-1.96 2.515-2.941 2.222-3.882c-.292-.941-1.522-1.22-3.982-1.776l-.636-.144c-.699-.158-1.049-.237-1.33-.45c-.28-.213-.46-.536-.82-1.182l-.327-.588C13.58 3.136 12.947 2 12 2c-.947 0-1.58 1.136-2.847 3.408Z" opacity=".5"/></g></svg>
+            </button>
+            </a>
+            <button class="theme-button" id="themeButton">
+                    <svg class="fa-solid fa-xmark" style="display: none;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+                        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                    </svg>
+                    <i class="fa-solid fa-gear"></i>
+            </button>
+       </div>
+        <div class="theme-popup" id="themePopup" style="    backdrop-filter: blur(18px);">
+            <span class="theme-popup-mini">Select theme</span>
+            <button class="theme-option" onclick="setTheme('dark')">Dark</button>
+            <button class="theme-option" onclick="setTheme('telegram-dark')">Classic</button>
+            <span class="theme-popup-mini">Shape</span>
+            <button class="style-button" id="styleButton">S</button>
         </div>
-      </div>
-
-      <div class="legend" id="legend"></div>
-
-      <div id="loansContainer"></div>
-      <div class="info-section faq">
-        <h3>Frequently Asked Questions (FAQ)</h3>
-        
-        <div class="faq-item">
-          <div class="faq-question">1. How much i can borrow?</div>
-          <div>You can take upto 10000rs</div>
-        </div>
-        
-        <div class="faq-item">
-          <div class="faq-question">2. Can i extand the return date if im late?</div>
-          <div>No.You can't extand the return date if your late.</div>
-        </div>
-      
-        <div class="faq-item">
-          <div class="faq-question">4. How is the fine calculated?</div>
-          <div>When the due date crosses, fine = Overdue Per Day × Number of overdue days.</div>
-        </div>
-        
-      </div>
-
-      <button onclick="logout()" class="logout-btn">Logout</button>
     </div>
-  </div>
 
-  <!-- Apply New Loan Modal -->
-  <div id="applyModal" class="modal">
-    <div class="modal-content">
-      <h3>Apply for New Loan</h3>
-      
-      <input type="text" id="newTitle" placeholder="Loan Title (e.g. Home Renovation)">
-      <input type="number" id="newAmount" placeholder="Loan Amount (₹)" min="1000">
-      <input type="number" id="newInterest" placeholder="Interest Amount (₹)" min="0">
-      <input type="date" id="newEndDate">
-      <input type="number" id="newOverduePerDay" placeholder="Overdue Fine per Day (₹)" min="0" value="500">
-
-      <div class="modal-buttons">
-        <button onclick="hideApplyModal()" class="cancel-btn">Cancel</button>
-        <button onclick="applyNewLoan()">Submit Application</button>
-      </div>
+    <div class="about" style="align-items: center; padding: 17px; max-width: 600px;">
+        <h2 class="sponserheading">Sponsored by</h2>
+        <div class="sponserimges">
+                <div class="sponsers-section">
+                    <span>Delay it</span>
+                    <a href="https://blackswan19.github.io/golden/FM/solution">Explore Now</a>
+                </div>
+                <div class="sponsers-section">
+                    <span>Split Half Pay</span>
+                    <a href="https://blackswan19.github.io/golden/FM/solution">Explore Now</a>
+                </div>
+                <div class="sponsers-section">
+                    <span>MLLD-Stars</span>
+                    <a href="https://blackswan19.github.io/golden/FM/starspage">Explore Now</a>
+                </div>
+                <div class="sponsers-section">
+                    <span>BsGames</span>
+                    <a href="https://blackswan19.github.io/golden/Bs%20Games/bsgames">Explore Now</a>
+                </div>
+        </div>
+        <br>
     </div>
-  </div>
+    <div class="about">
+        <h2 style="    margin: 5px;
+">Wait few hours!</h2>
+        <p>To provide the amount, we need to collect the amount first. It takes few hours to arrange the amount, so be patient during this time to get the amount.</p>
+    </div>
+    <div class="about" style="padding: 20px 17px; text-align: center;">
+        <h2 style="margin: 0px;">Check details</h2>
+        <p>Click here to check details like interest and etc...</p>
+        <a href="https://blackswan19.github.io/golden/FM/accverify" class="button">Check my account</a>
+    </div>
 
-  <div style="text-align:center; margin-top:30px; color:#888; font-size:13px;">
-    © STL/BS&MFI.All Rights Reserved<br>
-  </div>
+    <div class="about" style="text-align: left;">
+        <h3 style="padding: 0px 25px;">Follow these steps..!</h3>
+        <ol>
+            <li>Click on "Take money"</li>
+            <li>Fill out the form.</li>
+            <li>Wait a few hours.</li>
+            <li>Get funds from your coordinator.</li>
+            <li>Check details like interest and etc... in "My Account."</li>
+            <li>Repay on time.</li>
+            <li>Are you late to return? Say 2 days before we will extend the date (or) Extra fees apply.</li>
+            <li>Pay on time for future loans.</li>
+        </ol>
+    </div>
 
-  <script>
-// ================== Users Data ==================
-let users = [
-  { 
-    password: "Deepak@1", 
-    name: "Deepak", 
-    loans: [
-      { 
-        id: 1, 
-        title: "Amount", 
-        amount: 10000, 
-        interest: 3500, 
-        takenDate: "02-04-2026", 
-        endDate: "02-05-2026", 
-        overduePerDay: 65 
-      },
-    ]
-  }
-];
-
-let currentUser = null;
-let nextLoanId = 100;
-
-// Format date from YYYY-MM-DD to DD-MM-YYYY
-function formatDateToIndian(dateStr) {
-  if (!dateStr) return '';
-  if (dateStr.includes('-') && dateStr.split('-')[0].length === 4) {
-    const [year, month, day] = dateStr.split('-');
-    return `${day}-${month}-${year}`;
-  }
-  return dateStr;
-}
-
-// Parse DD-MM-YYYY to Date object
-function parseIndianDate(dateStr) {
-  if (!dateStr) return new Date();
-  const [day, month, year] = dateStr.split('-').map(Number);
-  return new Date(year, month - 1, day);
-}
-
-function loadData() {
-  const saved = localStorage.getItem('financeUsers');
-  if (saved) users = JSON.parse(saved);
-}
-
-function saveData() {
-  localStorage.setItem('financeUsers', JSON.stringify(users));
-}
-
-function calculateDueStatus(endDateStr) {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
-  const endDate = parseIndianDate(endDateStr);
-  endDate.setHours(0, 0, 0, 0);
-
-  const daysDiff = Math.ceil((endDate - today) / 86400000);
-
-  if (daysDiff > 2) {
-    return { status: 'On Track', color: '#28a745', overdueDays: 0 };
-  } else if (daysDiff > 0) {
-    return { 
-      status: `Due in ${daysDiff} day${daysDiff > 1 ? 's' : ''}`, 
-      color: '#ffc107', 
-      overdueDays: 0 
-    };
-  } else {
-    const overdueDays = Math.abs(daysDiff);
-    return { 
-      status: `Overdue ${overdueDays} day${overdueDays > 1 ? 's' : ''}`, 
-      color: '#dc3545', 
-      overdueDays: overdueDays 
-    };
-  }
-}
-
-function renderDonutChart(loansToShow) {
-  const container = document.getElementById('donutChart');
-  const totalAmountEl = document.getElementById('totalAmount');
-  const legendContainer = document.getElementById('legend');
-
-  const total = loansToShow.reduce((sum, loan) => sum + loan.amount, 0);
-  totalAmountEl.textContent = `₹ ${total.toLocaleString('en-IN')}`;
-
-  if (loansToShow.length === 0) {
-    container.style.background = '#e0e0e0';
-    legendContainer.innerHTML = '';
-    return;
-  }
-
-  const colors = ['#007bff', '#28a745', '#ffc107', '#dc3545', '#6f42c1', '#17a2b8'];
-  let gradient = '';
-  let start = 0;
-
-  loansToShow.forEach((loan, index) => {
-    const percentage = total > 0 ? (loan.amount / total) * 100 : 0;
-    const color = colors[index % colors.length];
-    gradient += `${color} ${start}% ${start + percentage}%, `;
-    start += percentage;
-  });
-
-  gradient = gradient.slice(0, -2);
-  container.style.background = `conic-gradient(${gradient})`;
-
-  legendContainer.innerHTML = '';
-  loansToShow.forEach((loan, index) => {
-    const percentage = total > 0 ? Math.round((loan.amount / total) * 100) : 0;
-    const color = colors[index % colors.length];
-    const div = document.createElement('div');
-    div.className = 'legend-item';
-    div.innerHTML = `<div class="legend-color" style="background: ${color};"></div>
-                     <span>${loan.title} <strong>(${percentage}%)</strong></span>`;
-    legendContainer.appendChild(div);
-  });
-}
-
-function renderLoans(filteredLoans) {
-  const container = document.getElementById('loansContainer');
-  container.innerHTML = '';
-
-  if (filteredLoans.length === 0) {
-    container.innerHTML = '<div class="no-results">No loans found matching your search.</div>';
-    return;
-  }
-
-  filteredLoans.forEach(loan => {
-    const dueInfo = calculateDueStatus(loan.endDate);
-    const totalDue = loan.amount + loan.interest;
-    const fine = dueInfo.overdueDays * (loan.overduePerDay || 0);
-
-    const html = `
-      <div class="loan-card">
-        <input type="text" class="edit-input" value="${loan.title}" onchange="updateTitle(${loan.id}, this.value)">
-        
-        <div class="info"><span class="label">Principal</span><span class="value">₹ ${loan.amount.toLocaleString('en-IN')}</span></div>
-        <div class="info"><span class="label">Interest</span><span class="value">₹ ${loan.interest.toLocaleString('en-IN')}</span></div>
-        <div class="info"><span class="label">Taken On</span><span class="value">${loan.takenDate}</span></div>
-        
-        <div class="due-date">
-          Due: ${loan.endDate} 
-          <span style="color: ${dueInfo.color};">(${dueInfo.status})</span>
+    <div class="about" style="padding: 20px 17px; text-align: center;">
+        <h2 style="margin: 0px;">Any issue</h2>
+        <p>Click here to submit the issue you are facing....</p>
+        <div class="issuebtn">
+            <a target="_blank" href="https://forms.gle/RzTJ8W9bwmm8DVj2A">
+                <button>I have an issue here.!</button>
+            </a>
         </div>
+    </div>
 
-        ${fine > 0 ? `
-        <div class="fine-amount">
-          Fine: ₹ ${fine.toLocaleString('en-IN')} 
-          <small>(₹${loan.overduePerDay}/day × ${dueInfo.overdueDays} days)</small>
-        </div>` : ''}
+    <div class="about" style="padding: 20px 17px; text-align: center;">
+        <h2 style="margin: 0px;">Borrow limit</h2>
+        <p>Click here to take the amounts below ₹5,000....</p>
+        <a href="https://blackswan19.github.io/golden/FM/mlld" class="button">MLLD site</a>
+    </div>
 
-        <div class="info" style="margin-top:12px; border-top:1px solid #eee; padding-top:10px;">
-          <span class="label">Total Due</span>
-          <span style="font-weight:bold; color:#007bff;">₹ ${(totalDue + fine).toLocaleString('en-IN')}</span>
-        </div>
-      </div>
-    `;
-    container.innerHTML += html;
-  });
-}
-
-function filterLoans() {
-  const searchTerm = document.getElementById('searchBar').value.toLowerCase().trim();
-  if (!currentUser) return;
-
-  let filtered = currentUser.loans;
-  if (searchTerm) {
-    filtered = currentUser.loans.filter(loan => loan.title.toLowerCase().includes(searchTerm));
-  }
-
-  renderDonutChart(filtered);
-  renderLoans(filtered);
-}
-
-function updateTitle(loanId, newTitle) {
-  if (!currentUser) return;
-  const loan = currentUser.loans.find(l => l.id === loanId);
-  if (loan) {
-    loan.title = newTitle.trim();
-    saveData();
-    filterLoans();
-  }
-}
-
-function checkPassword() {
-  const pass = document.getElementById('password').value.trim();
-  currentUser = users.find(u => u.password === pass);
-
-  if (currentUser) {
-    document.getElementById('passwordCard').style.display = 'none';
-    document.getElementById('detailsCard').style.display = 'block';
-    document.getElementById('userName').textContent = currentUser.name;
+    <div class="about curvestyler" style="margin-bottom: 145px;">
+        <h2>I'm late</h2>
+        <p>If you are <span class="highlight">late in returning the amount</span>, the interest will <span class="highlight">automatically increased for every 2,3 days based on the amount</span>.</p>
+        <p>Contact us if you think you'll be late so we can help you.</p>
+    </div>
     
-    nextLoanId = Math.max(0, ...currentUser.loans.map(l => l.id)) + 1;
-    
-    renderDonutChart(currentUser.loans);
-    renderLoans(currentUser.loans);
-  } else {
-    alert("Incorrect password. Try again.");
-  }
-}
+    <div class="bottomtakeoptions">
+        <div class="takemonetbtn">
+            <a style="color: white; text-decoration: none;" onclick="alert('We are redirecting you to taking form.')" href="https://mfi0212.github.io/MFI/applydivert">
+                <svg style="fill: white;
+    width: 20px;
+    height: 20px;
+    margin: -5px;
+    padding: 0px;" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"><path d="m23.018,8.785c-.595-.542-1.356-.82-2.169-.782-.804.037-1.545.386-2.085.981l-3.217,3.535c-.551-.91-1.55-1.519-2.689-1.519H4c-2.206,0-4,1.794-4,4v5c0,2.206,1.794,4,4,4h4.965c2.849,0,5.57-1.22,7.467-3.348l6.804-7.637c1.094-1.226.996-3.123-.218-4.23Zm-1.275,2.899l-6.804,7.638c-1.518,1.701-3.695,2.678-5.974,2.678h-4.965c-1.103,0-2-.897-2-2v-5c0-1.103.897-2,2-2h8.858c.629,0,1.142.513,1.142,1.143,0,.564-.421,1.051-.98,1.13l-5.161.737c-.546.078-.926.585-.848,1.132.078.548.587.928,1.131.849l5.161-.737c1.175-.168,2.129-.987,2.514-2.058l4.427-4.865c.181-.2.43-.316.699-.329.272-.008.529.082.728.262.407.372.44,1.009.072,1.421Zm-7.449-7.391c-.391-.391-.391-1.023,0-1.414l2.293-2.293c.373-.374.914-.586,1.414-.586s1.041.212,1.414.586l2.293,2.293c.391.391.391,1.023,0,1.414-.195.195-.451.293-.707.293s-.512-.098-.707-.293l-1.293-1.293v3c0,.552-.447,1-1,1s-1-.448-1-1v-3l-1.293,1.293c-.391.391-1.023.391-1.414,0Zm-7.543,4.707h3.5c1.517,0,2.75-1.31,2.75-2.919,0-1.665-1.581-3.473-3.138-4.223.164-.164.322-.342.462-.531.405-.55.032-1.326-.651-1.326h-2.347c-.646,0-1.067.73-.695,1.259.151.214.327.415.51.598-1.558.75-3.14,2.559-3.14,4.224,0,1.61,1.233,2.919,2.75,2.919Zm1.75-5.5c.745,0,2.5,1.527,2.5,2.581,0,.507-.336.919-.75.919h-3.5c-.414,0-.75-.413-.75-.919,0-1.054,1.755-2.581,2.5-2.581Z"/></svg>
+            </a> Take money
+        </div>
+         
+         <a href="https://blackswan19.github.io/golden/FM/bsmfi_search"><i class="fa-solid fa-magnifying-glass"></i></a>
+    </div>
 
-function logout() {
-  document.getElementById('passwordCard').style.display = 'block';
-  document.getElementById('detailsCard').style.display = 'none';
-  document.getElementById('password').value = '';
-  document.getElementById('searchBar').value = '';
-}
+    <div class="date-container">
+        <div style="color: white; font-weight: 300;" class="date-slider" id="main-slider">
+            <div class="date-text"></div>
+            <div class="day-text"></div>
+            <div class="date-text"></div>
+            <div class="day-text"></div>
+            <div class="date-text"></div>
+            <div class="day-text"></div>
+            <div class="date-text"></div>
+            <div class="day-text"></div>
+        </div>
+    </div>
 
-function hideApplyModal() {
-  document.getElementById('applyModal').style.display = 'none';
-}
+    <!-- <div class="container">
+        <div id="red_siren" class="sirens"></div>
+        <div id="white_siren" class="sirens"></div>
+        <div id="blue_siren" class="sirens"></div>
+    </div> -->
 
-function applyNewLoan() {
-  const title = document.getElementById('newTitle').value.trim();
-  const amount = parseFloat(document.getElementById('newAmount').value);
-  const interest = parseFloat(document.getElementById('newInterest').value) || 0;
-  const endDate = document.getElementById('newEndDate').value.trim();
-  const overduePerDay = parseFloat(document.getElementById('newOverduePerDay').value) || 500;
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const loadingOverlay = document.getElementById("loadingOverlay");
+            const themeButton = document.getElementById("themeButton");
+            const styleButton = document.getElementById("styleButton");
+            const themePopup = document.getElementById("themePopup");
+            const gearIcon = themeButton.querySelector(".fa-gear");
+            const xIcon = themeButton.querySelector(".fa-xmark");
 
-  if (!title || !amount || !endDate) {
-    alert("Please fill Title, Amount, and End Date.");
-    return;
-  }
+            setTimeout(() => {
+                // loadingOverlay.classList.add("hidden");
+                themeButton.classList.add("visible");
+                styleButton.classList.add("visible");
+            },);
+            themeButton.addEventListener("click", () => {
+                const isOpen = themePopup.classList.contains("open");
+                themePopup.classList.toggle("open");
+                themeButton.classList.toggle("active");
+                gearIcon.style.display = isOpen ? "block" : "none";
+                xIcon.style.display = isOpen ? "none" : "block";
+            });
+			if (!localStorage.getItem("edgeStyle")) {
+			    localStorage.setItem("edgeStyle", "sharp");        
+			}
+			const savedStyle = localStorage.getItem("edgeStyle") || "sharp";
+			if (savedStyle === "curvy") {
+			    document.body.classList.add("curvy");
+			}
+			styleButton.textContent = savedStyle === "curvy" ? "V" : "S";
+			styleButton.addEventListener("click", () => {
+			    const isCurvy = document.body.classList.toggle("curvy");
+			    styleButton.textContent = isCurvy ? "V" : "S";
+			    localStorage.setItem("edgeStyle", isCurvy ? "curvy" : "sharp");
+			});
+            window.setTheme = function(theme) {
+                document.body.classList.remove("dark", "light", "telegram-dark", "my-own");
+                document.body.classList.add(theme);
+                localStorage.setItem("theme", theme);
+                themePopup.classList.remove("open");
+                themeButton.classList.remove("active");
+                gearIcon.style.display = "block";
+                xIcon.style.display = "none";
+            };
+            const savedTheme = localStorage.getItem("theme") || "telegram-dark";
+            if (savedTheme === "my-own") {
+                const accentColor = localStorage.getItem("user-accent") || "#00aaff";
+                document.documentElement.style.setProperty("--user-accent", accentColor);
+            }
+            setTheme(savedTheme);
+            const savedEdgeStyle = localStorage.getItem("edgeStyle") || "curvy";
+            if (savedEdgeStyle === "curvy") {
+                document.body.classList.add("curvy");
+                styleButton.textContent = "V";
+            } else {
+                styleButton.textContent = "S";
+            }
+            const today = new Date();
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const day = days[today.getDay()];
+            const date = `${String(today.getDate()).padStart(2, '0')}-${String(today.getMonth() + 1).padStart(2, '0')}-${today.getFullYear()}`;
 
-  const newLoan = {
-    id: nextLoanId++,
-    title: title,
-    amount: amount,
-    interest: interest,
-    takenDate: formatDateToIndian(new Date().toISOString().split('T')[0]), // Today in DD-MM-YYYY
-    endDate: endDate,
-    overduePerDay: overduePerDay
-  };
+            document.querySelectorAll('.day-text').forEach(el => el.textContent = day);
+            document.querySelectorAll('.date-text').forEach(el => el.textContent = date);
+        });
+		 document.addEventListener("DOMContentLoaded", () => {
+            const customMenu = document.querySelector(".custom-menu");
+            // document.addEventListener("contextmenu", (event) => {
+            //     event.preventDefault();
+            //     if (customMenu) {
+            //         customMenu.style.display = "block";
+            //         customMenu.style.top = `${event.pageY}px`;
+            //         customMenu.style.left = `${event.pageX}px`;
+            //     }
+            // });
+            document.addEventListener("click", () => {
+                if (customMenu) {
+                    customMenu.style.display = "none";
+                }
+            });
+        });
+    </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+const loadingOverlay = document.getElementById("loadingOverlay");
+const startBtn = document.getElementById("startAudioBtn");
+const audioControls = document.getElementById("audioControls");
+const progressFill = document.getElementById("audioProgressFill");
+const audioStatus = document.getElementById("audioStatus");
+const audio = document.getElementById("introAudio");
+const muteToggle = document.getElementById("muteToggle");
+let stopTime = 0;
+let progressInterval;
+muteToggle?.addEventListener("click", () => {
+    audio.muted = !audio.muted;
+    muteToggle.innerHTML = audio.muted
+        ? '<i class="fas fa-volume-xmark"></i>'
+        : '<i class="fas fa-volume-high"></i>';
 
-  currentUser.loans.push(newLoan);
-  saveData();
-  hideApplyModal();
-  filterLoans();
-  alert("New loan added successfully!");
-}
+});
+startBtn?.addEventListener("click", async () => {
+    startBtn.style.display = "none";
+    audioControls.style.display = "flex";
+    try {
+        if (audio.readyState < 1) {
+            await new Promise(resolve => {
+                audio.addEventListener("loadedmetadata", resolve, { once:true });
+            });
+        }
+        const duration = audio.duration;
+        //  const minPlay = 5;
+        // const maxPlay = Math.min(8, duration);
+        const minPlay = 0;
+        const maxPlay = Math.min(0, duration);
+        stopTime = Math.random() * (maxPlay - minPlay) + minPlay;
+        progressFill.style.width = "0%";
+        audioStatus.textContent = "0% • Loading...";
+        await audio.play();
+        progressInterval = setInterval(() => {
+            let percent = (audio.currentTime / stopTime) * 100;
+            if (percent >= 100 || audio.currentTime >= stopTime) {
+                percent = 100;
+                progressFill.style.width = "100%";
+                audioStatus.textContent = "100% • Complete";
+                audio.pause();
+                audio.currentTime = stopTime;
+                clearInterval(progressInterval);
+                setTimeout(() => {
+                    loadingOverlay?.classList.add("hidden");
+                },500);
+                return;
+            }
+            progressFill.style.width = percent + "%";
+            audioStatus.textContent = Math.round(percent) + "% • Loading...";
 
-window.onload = () => {
-  loadData();
-};
-
-// Enter key support for password
-document.getElementById('password').addEventListener('keypress', e => {
-  if (e.key === 'Enter') checkPassword();
+        }, 40);
+    } catch(e) {
+        console.error(e);
+        audioStatus.textContent = "Audio blocked";
+    }
+});
 });
 </script>
-  </script>
 </body>
 </html>
