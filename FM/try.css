@@ -175,7 +175,10 @@ div#audioStatus {
     backdrop-filter: blur(10px);
     padding: 6px 15px 20px 15px;
     border-top: solid 0.5px #323f4e73;
-} 
+} i.fa-regular.fa-circle-user {
+    font-size: 22px;
+    color: #00aaff;
+}
         h1,
         h2,
         h3 {
