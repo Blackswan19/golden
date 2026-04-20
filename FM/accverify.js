@@ -84,24 +84,6 @@ const passwords = {
             { planDate: "29-05-2025", endDate: "29-05-2025", interest: 5600, takenAmount: 25000, takenFrom: "MLending", fineRate: 80 }
         ]
     },
-    "Deepak@1": {
-        name: "Deepak",
-        membershipType: "",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "rgb(255, 0, 0)",
-        stars: 0,
-        coins: 0,
-        tierPoints: 0,
-        showCustomContent: "no",
-        customContent: {
-            type: "image",
-            value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
-        },
-        loans: [
-            { planDate: "02-04-2026", endDate: "02-05-2026", interest: 3500, takenAmount: 10000, takenFrom: "MLendings", fineRate: 55 }
-        ]
-    },
 };
 
 
@@ -862,3 +844,4 @@ function showCoinsCount() {
     const coins = document.getElementById('coinsCount').textContent.trim();
     alert(`BsRora(Bot) : \n\nYou have using ${coins} Duplicate Clone account.`);
 }
+
