@@ -1,24 +1,24 @@
        
 const passwords = {
-    "4211": {
-        name: "Chaitanya Harsha",
-        membershipType: "",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "#ff8b24",
-        stars: 0,
-        coins: 0,
-        tierPoints: 45,
-        showCustomContent: "no",
-        customContent: {
-            type: "text",
-            value: "NOTE: Your amounts has updated to match the offer criteria",
-            url: ""
-        },
-        loans: [
-           { planDate: "24-05-2025", endDate: "-- <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 0, takenAmount: 25000, takenFrom: "MLending", fineRate: 5 },
-           { planDate: "07-04-2025", endDate: "--<p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 0, takenAmount: 15000, takenFrom: "MLLD", fineRate: 4 }
-        ]
-    },
+    // "4211": {
+    //     name: "Chaitanya Harsha",
+    //     membershipType: "",
+    //     membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+    //     profileBackground: "#ff8b24",
+    //     stars: 0,
+    //     coins: 0,
+    //     tierPoints: 45,
+    //     showCustomContent: "no",
+    //     customContent: {
+    //         type: "text",
+    //         value: "NOTE: Your amounts has updated to match the offer criteria",
+    //         url: ""
+    //     },
+    //     loans: [
+    //        { planDate: "24-05-2025", endDate: "-- <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 0, takenAmount: 25000, takenFrom: "MLending", fineRate: 5 },
+    //        { planDate: "07-04-2025", endDate: "--<p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 0, takenAmount: 15000, takenFrom: "MLLD", fineRate: 4 }
+    //     ]
+    // },
    
     "6275": {
         name: "Srikanth Jampana",
