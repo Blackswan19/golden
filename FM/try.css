@@ -135,8 +135,9 @@ div#audioStatus {
     padding: 8px 15px;
 }
         .date-container {
-       position: fixed;
-    top: 12px;
+      position: fixed;
+    top: 10px;
+    right: 10px;
     height: 30px;
     overflow: hidden;
     user-select: none;
@@ -158,40 +159,28 @@ div#audioStatus {
     color: #00aaff;
 }
         .logo h1 p {
-    position: fixed;
-    left: 1px;
-    bottom: -6px;
-    font-size: 10px;
-    font-weight: 300;
+ font-size: 10px;
+    margin: -8px;
 }
 .bottomtakeoptions{
-    text-align: center;
+     text-align: center;
     position: fixed;
-    bottom: 15px;
-    width: 88%;
+    bottom: 0px;
+    width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: #1a242f;
+    background: #111920db;
     font-size: 14px;
+    gap: 100px;
     backdrop-filter: blur(10px);
-    padding: 2px;
-    border-top: solid 1px #323f4e;
-    border-radius: 100px;
-    border-bottom: solid 1px #323f4e;
+    padding: 6px 15px 25px 15px;
+    border-top: solid 0.5px #323f4e73;
 }svg {
     width: 30px;
     height: 30px;
     padding: 0px;
     fill: #0a95ff;
-}
-.bottomtakeoptions svg {
-    width: 100%;
-    padding: 10px;
-    border-radius: 100px;
-}
-.bottomtakeoptions svg:hover{
-    background: #222e3c;
 }
         h1,
         h2,
@@ -221,19 +210,18 @@ div#audioStatus {
         }
 
        .about {
-          padding: 15px 20px;
+            padding: 17px;
     text-align: center;
     max-width: 600px;
     width: 105%;
+    border-radius: 15px;
     position: relative;
-    margin: 8px 0px;
-    border: none;
-    top: 20px;
-    border-bottom: solid 1px #222e3c;
+    margin: 8px 0px; background: #1d2733;
+    border: none;top: 20px;
         }
 
         a {
-            color: #00aaff;display: contents;
+            color: #00aaff;
             text-decoration: none;
         }
 
@@ -376,11 +364,12 @@ ol {
     align-items: center;
     position: sticky;
     top: 0px;
-    padding: 40px 10px 10px 10px;
+    padding: 20px 10px 10px 10px;
     border-radius: 0;
-    background: linear-gradient(0deg, #1d2733, #111920);
+    background: #111920d1;
     border-bottom: solid 0.5px #323f4e;
     backdrop-filter: blur(10px);
+    flex-direction: column;
 }
 
       
@@ -447,7 +436,7 @@ ol {
 .rightsideopt{
         display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 6px;width: 100%;
     position: relative;
     right: 0;
     top: 3px;
@@ -557,7 +546,7 @@ i.fa-brands.fa-sistrix {
     left: 0px;
     FONT-WEIGHT: 600;
     font-size: 22px;
-
+text-align: center;
 }
         .theme-popup {
           position: fixed;
