@@ -44,7 +44,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-             background-color: #191f2d;
+             background-color: #111920;
             color: #ffffff;
             letter-spacing: 0.5px;
         }
@@ -214,7 +214,7 @@ p.borrowLimitMessage {
     margin-top: 15px;
     margin-bottom: 15px;
     line-height: 20px;
-    background: #232b3e;
+    background: #1d2733;
 
 }
 i.fa-solid.fa-arrow-up-right-from-square {
@@ -226,7 +226,9 @@ i.fa-solid.fa-arrow-up-right-from-square {
     right: -3px;
     bottom: 6px;
 }
-p.borrowLimitMessage span {
+p.borrowLimitMessage:hover{
+    background-color: #3a4b5e9e;
+}p.borrowLimitMessage span {
    padding: 4px 8px;
     margin: -5px;
     position: relative;
@@ -236,7 +238,7 @@ p.borrowLimitMessage span {
     color: white;
     text-decoration: none;
     font-weight: 300;
-    background: #3e404f;
+    background: #46515f;
     text-transform: capitalize;
     line-height: 20px;
 }
@@ -323,42 +325,34 @@ body.curvy i.fa-solid.fa-arrow-left{
         }
 
         #userPassword {
-          font-size: 16px;
-    background: #1d1f2b;
+            font-size: 16px;
+             background: #587fb82b;
     color: #ffffff;
-    color: #fff;
-    padding: 7px;
-    text-align: center;
-    width: 90%;
-    border: solid 1px #ffffff1c;
-    outline: none;
-    max-width: 280px;
-    margin: 26px 0 15px 0;
-    border-radius: 9999px;
-    backdrop-filter: blur(5px);
+            color: #fff;
+            padding: 8px 25px;
+            text-align: center;
+            width: 90%;border: none;
+            outline: none;
+            max-width: 280px;
+            margin: 26px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
         }
         #userPassword:focus {
-          background: #3e404c;
+          background: #3a4b5e;
         }
 
       
 
         #submitBtn {
 border: none;
-    background-color: #3f88f7;
-    color: #f8f6fb;
-    font-size: 16px;
+    background-color: var(--telegram-accent);
+    color: #000000;
+    font-size: 15px;
     cursor: pointer;
-    padding: 7px;
+    padding: 7.5px 30px;
     font-weight: 500;
-    border-radius: 9999px;
-    padding: 7px;
-    text-align: center;
-    border: none;
-    outline: none;
-    max-width: 280px;
-    width: 90%;
-    border: solid 1px #ffffff61;
+    border-radius: 12px;
         }
 
 
@@ -382,13 +376,13 @@ border: none;
         }
 
         .modal {
-          display: none;
+         display: none;
     position: fixed;
     top: 0;
     height: 100%;
-    padding: 85px 5px 0px 25px;
+    padding: 85px 10px 0px 30px;
     line-height: 30px;
-    background-color: #191f2d;
+    background-color: #111920;
     overflow-y: scroll;
     z-index: 10000000;
     margin: 0px;
@@ -429,9 +423,9 @@ border: none;
 
 
         .close {
-justify-content: space-between;
+ justify-content: space-between;
     position: fixed;
-    padding: 45px 10px 5px 10px;
+    padding: 45px 10px 5px 0px;
     gap: 100px;
     width: 100%;
     z-index: 10000000;
@@ -439,38 +433,30 @@ justify-content: space-between;
     display: flex;
     max-width: 650px;
     top: 0px;
-    background: linear-gradient(180deg, #191f2dc4 80%, transparent);
+    border-radius: 0;
+    background: #111920d1;
+    border-bottom: solid 0.5px #323f4e;
+    backdrop-filter: blur(10px);
     align-items: center;
     left: 50%;
     transform: translate(-50%, 0);
-    backdrop-filter: blur(5px);
-    border-radius: 0 0 15px 29px;
-    filter: drop-shadow(0px 19px 5px #191f2d);
         }
 
         .close-btn {
-         color: white;
-    font-size: 12px;
+          color: white;
+    font-size: 16px;
     cursor: pointer;
     z-index: 11;
-    border-radius: 99999px;
+    border-radius: 8px;
     outline: none;
+    border: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
-    padding: 5px 8px 5px 5px;
-    background: #1d1f2b;
-    border: solid 1px #ffffff1c;
-    gap: 0px;
-    font-weight: 100;
+    background: transparent;
+    color: #00aaff;
+    padding: 0;
         }
-
-        button.close-btn svg {
-    margin: -4px -8px;
-    width: 35px;
-    height: 35px;
-}
 .close-btn i{
     margin: 0;}
 .red {
@@ -545,36 +531,32 @@ justify-content: space-between;
         }
 
         .amount-buttons {
-display: flex;
-        gap: 10px;
-        white-space: nowrap;
-        position: sticky;
-        top: 5px;
-        align-items: center;
-        max-width: 600px;
-        width: 100%;overflow: scroll;
-        padding: 3px;
-        scrollbar-width: none;
-        margin-left: -10px;
-        background: #1d1f2b;
-        border: solid 1px #ffffff1c;
-        border-radius: 100px;
-        z-index: 100000000;
+  display: flex;
+    gap: 15px;
+    overflow-x: scroll;
+    white-space: nowrap;
+    position: sticky;
+    top: 0px;
+    z-index: 1000000;
+    width: 100%;background: #111920;
+    padding: 20px 0px;
+    border-radius: 0px;
+    max-width: 600px;
+    margin-left: -10px;
         }
 
         .amount-btn {
-   color: lightgray;
+    color: lightgray;
     border: none;
-    padding: 6px 6px 6px 40px;
+    padding: 10px 15px 10px 50px;
     font-size: 12.5px;
     border-radius: 80px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     position: relative;
-    display: flex;
-    background-color: #283445;
-    color: #ffffff;
-    border: none;
+    display: flex; background-color: #283445;
+            color: #ffffff;
+            border: none;
     justify-content: center;
     align-items: center;
     font-weight: 400;
@@ -591,17 +573,16 @@ display: flex;
         }
 
         .amount-btn .amount-id {
-position: absolute;
-    left: 2px;
+            position: absolute;
+    left: 5px;
     font-size: 12px;
     color: #00aeff;
     background-color: rgb(10 10 10);
     border-radius: 50px;
     border: none;
-    padding: 4px;
-    width: 35%;
-    color: var(--telegram-accent);
-    background-color: #000000;
+    padding: 6px;
+    width: 35%; color: var(--telegram-accent);
+            background-color: #000000;
     text-align: center;
         }
 
@@ -613,22 +594,21 @@ position: absolute;
     opacity: 80%;
     color: white;
     display: inline;
-    padding: 6px 15px; background: #3e404f;
+    padding: 6px 15px; background: #46515f;
     border-radius: 60px;
         }
 
         .notice {
-          font-weight: 100;
-    font-size: 11px;
-    line-height: 15px;
-    position: fixed;
-    bottom: 10px;
-    width: 95%;
-    color: #e0e8eb;
-    max-width: 400px;
-    background: #21283a;
-    padding: 10px 6px;
-    border-radius: 24px;
+            font-weight: 200;
+            font-size: 12px;
+            line-height: 20px;
+            position: fixed;
+            bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            width: 90%; color: #a0a9b2;
+            border-color: #9595954d;
+            max-width: 400px;
         }
 
 
@@ -645,12 +625,12 @@ i.fa-solid.fa-list-ul{
     margin: unset;
 } 
         .powered-by {
-           position: fixed;
+               position: fixed;
     top: 11px;
     font-size: 10px;
     color: #ffffff;
     z-index: -1;
-    background: #21283a;
+    background: #2a3545;
     text-align: center;
     padding: 6px 8px;
     display: none;
@@ -792,7 +772,7 @@ color: white;
         }
 
         .amounts-btn {
-            background-color: #232b3e;
+            background-color: #1d2733;
             color: lightgray;
             border: none;
             padding: 5px;
@@ -1002,7 +982,7 @@ img.sponserimg:hover{
            padding: 17px;
     text-align: center;
     max-width: 600px;
-    width: 100%; background: #232b3e;
+    width: 100%; background: #1d2733;
     border-radius: 15px;
     position: relative;
     margin: 8px 0px;
@@ -1225,22 +1205,20 @@ img.sponserimg:hover{
         body.curvy .downlog img{max-width: 35px;border-radius: 10px;}
         @media(max-width:600px) {
             .amount-buttons {
-                  display: flex;
+                    display: flex;
         gap: 10px;
         white-space: nowrap;
         position: sticky;
-        top: 5px;
+        top: -9px;
         align-items: center;
-        max-width: 600px;
-        width: 100%;
-        padding: 3px;
+        max-width: 645px;
+        width: 105%;
+        padding: 20px 5px 15px 5px;
         scrollbar-width: none;
+        margin-top: -10px;
+        background: #111920;
         z-index: 100000;
-        margin-left: -10px;
-        background: #1d1f2b;
-        border: solid 1px #ffffff1c;
-        border-radius: 100px;
-        z-index: 100000000;
+        margin-left: -20px;
             }
             .twoOptions {
             display: flex;
@@ -1448,23 +1426,28 @@ img.sponserimg:hover{
                     </div>
                 </div>
                 <button onclick="closeModal()" class="close-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-267.69 347.69-480 560-692.31 588.31-664l-184 184 184 184L560-267.69Z"/></svg> Back
+                    <svg style="    fill: #00aeff;
+    width: 35px;
+    height: 35px;
+    margin: -5px;
+" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-267.69 347.69-480 560-692.31 588.31-664l-184 184 184 184L560-267.69Z"/></svg> Back
                 </button>
                <a href="https://blackswan19.github.io/golden/FM/starpre" style="color: white; text-decoration: none; cursor: pointer;">
-                        <button class="applybtn" style="border: none;
+                        <button class="applybtn" style="    border: none;
     outline: none;
-    color: white;
-    background-image: linear-gradient(45deg, rgb(255 169 0), rgb(255 0 198), #5b5bff, #56ffcc);
-    cursor: pointer;
-    padding: 4px 6px 4px 4px;
+    color: #ffffffc2;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 100px;">
-                                    <svg style="width: 25px;
-    height: 25px;
+    border-radius: 100px;
+    background: transparent;
+    font-weight: 100;
+    font-size: 15px;
+    gap: 3px;">
+                                    <svg style="width: 20px;
+    height: 20px;
     fill: white;
-    margin: -4px;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m422-232 207-248H469l29-227-185 267h139l-30 208Zm-55.85 107.38 40-275.38h-170l299.23-431.54h18.47L514.62-520h200l-330 395.38h-18.47ZM471-470Z"/></svg>
+    margin: 0;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m422-232 207-248H469l29-227-185 267h139l-30 208Zm-55.85 107.38 40-275.38h-170l299.23-431.54h18.47L514.62-520h200l-330 395.38h-18.47ZM471-470Z"/></svg>
                         Turbo</button>
                     </a>
             </div>
@@ -1638,7 +1621,7 @@ img.sponserimg:hover{
 
     <script src="accverify.js"></script>
 
-    <div class="powered-by" id="poweredBy" style="position: fixed;z-index: 100000;"><a style="color: rgb(0, 191, 255); font-weight: 500;" href="https://blackswan19.github.io/Educate/password">BsPsgenerater</a> </div>
+    <div class="powered-by" id="poweredBy" style="position: fixed;z-index: 100000;"> Powered by <a style="color: rgb(0, 191, 255); font-weight: 500;" href="https://blackswan19.github.io/Educate/password">BsPsgenerater</a> </div>
 
     <button style="display: none;" class="theme-button" id="themeButton">
         <i class="fa-solid fa-gear"></i>
