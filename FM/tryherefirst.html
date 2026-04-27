@@ -214,7 +214,7 @@ p.borrowLimitMessage {
     margin-top: 15px;
     margin-bottom: 15px;
     line-height: 20px;
-    background: #1d2733;
+    background: #232b3e;
 
 }
 i.fa-solid.fa-arrow-up-right-from-square {
@@ -226,9 +226,7 @@ i.fa-solid.fa-arrow-up-right-from-square {
     right: -3px;
     bottom: 6px;
 }
-p.borrowLimitMessage:hover{
-    background-color: #3a4b5e9e;
-}p.borrowLimitMessage span {
+p.borrowLimitMessage span {
    padding: 4px 8px;
     margin: -5px;
     position: relative;
@@ -238,7 +236,7 @@ p.borrowLimitMessage:hover{
     color: white;
     text-decoration: none;
     font-weight: 300;
-    background: #46515f;
+    background: #3e404f;
     text-transform: capitalize;
     line-height: 20px;
 }
@@ -441,11 +439,13 @@ justify-content: space-between;
     display: flex;
     max-width: 650px;
     top: 0px;
-    border-radius: 0;
-    background: linear-gradient(180deg, #191f2d 60%, transparent);
+    background: linear-gradient(180deg, #191f2dc4 80%, transparent);
     align-items: center;
     left: 50%;
     transform: translate(-50%, 0);
+    backdrop-filter: blur(5px);
+    border-radius: 0 0 15px 29px;
+    filter: drop-shadow(0px 19px 5px #191f2d);
         }
 
         .close-btn {
@@ -545,18 +545,21 @@ justify-content: space-between;
         }
 
         .amount-buttons {
-  display: flex;
-    gap: 15px;
-    overflow-x: scroll;
-    white-space: nowrap;
-    position: sticky;
-    top: 0px;
-    z-index: 1000000;
-    width: 100%;background: #111920;
-    padding: 20px 0px;
-    border-radius: 0px;
-    max-width: 600px;
-    margin-left: -10px;
+display: flex;
+        gap: 10px;
+        white-space: nowrap;
+        position: sticky;
+        top: 5px;
+        align-items: center;
+        max-width: 600px;
+        width: 100%;overflow: scroll;
+        padding: 3px;
+        scrollbar-width: none;
+        margin-left: -10px;
+        background: #1d1f2b;
+        border: solid 1px #ffffff1c;
+        border-radius: 100px;
+        z-index: 100000000;
         }
 
         .amount-btn {
@@ -608,7 +611,7 @@ justify-content: space-between;
     opacity: 80%;
     color: white;
     display: inline;
-    padding: 6px 15px; background: #46515f;
+    padding: 6px 15px; background: #3e404f;
     border-radius: 60px;
         }
 
@@ -787,7 +790,7 @@ color: white;
         }
 
         .amounts-btn {
-            background-color: #1d2733;
+            background-color: #232b3e;
             color: lightgray;
             border: none;
             padding: 5px;
@@ -997,7 +1000,7 @@ img.sponserimg:hover{
            padding: 17px;
     text-align: center;
     max-width: 600px;
-    width: 100%; background: #1d2733;
+    width: 100%; background: #232b3e;
     border-radius: 15px;
     position: relative;
     margin: 8px 0px;
@@ -1220,20 +1223,22 @@ img.sponserimg:hover{
         body.curvy .downlog img{max-width: 35px;border-radius: 10px;}
         @media(max-width:600px) {
             .amount-buttons {
-                    display: flex;
+                  display: flex;
         gap: 10px;
         white-space: nowrap;
         position: sticky;
-        top: -9px;
+        top: 5px;
         align-items: center;
-        max-width: 645px;
-        width: 105%;
-        padding: 20px 5px 15px 5px;
+        max-width: 600px;
+        width: 100%;
+        padding: 3px;
         scrollbar-width: none;
-        margin-top: -10px;
-        background: #111920;
         z-index: 100000;
-        margin-left: -20px;
+        margin-left: -10px;
+        background: #1d1f2b;
+        border: solid 1px #ffffff1c;
+        border-radius: 100px;
+        z-index: 100000000;
             }
             .twoOptions {
             display: flex;
