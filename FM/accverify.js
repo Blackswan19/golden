@@ -1,25 +1,6 @@
        
 const passwords = {
-    // "4211": {
-    //     name: "Chaitanya Harsha",
-    //     membershipType: "",
-    //     membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-    //     profileBackground: "#ff8b24",
-    //     stars: 0,
-    //     coins: 0,
-    //     tierPoints: 45,
-    //     showCustomContent: "no",
-    //     customContent: {
-    //         type: "text",
-    //         value: "NOTE: Your amounts has updated to match the offer criteria",
-    //         url: ""
-    //     },
-    //     loans: [
-    //        { planDate: "24-05-2025", endDate: "-- <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 0, takenAmount: 25000, takenFrom: "MLending", fineRate: 5 },
-    //        { planDate: "07-04-2025", endDate: "--<p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 0, takenAmount: 15000, takenFrom: "MLLD", fineRate: 4 }
-    //     ]
-    // },
-   
+
     "6275": {
         name: "Srikanth Jampana",
         membershipType: "",
@@ -42,45 +23,7 @@ const passwords = {
             { planDate: "01-11-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 4850, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 0 },
             { planDate: "06-11-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 4980, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 0 },
             { planDate: "09-11-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 7680, takenAmount: 8000, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "25-11-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 4200, takenAmount: 9500, takenFrom: "MLending Duplicate ", fineRate: 0 }
-        ]
-    },
-    "Cherish@123": {
-        name: "Cherish #1",
-        membershipType: "",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "rgb(255 44 0)",
-        stars: 0,
-        coins: 0,
-        tierPoints: 40,
-        showCustomContent: "no",
-        customContent: {
-            type: "image",
-            value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
-        },
-        loans: [
-            { planDate: "14-10-2025", endDate: "-- <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 0, takenAmount: 6690, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "14-10-2025", endDate: "-- <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 0, takenAmount: 5880, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "14-10-2025", endDate: "-- <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 0, takenAmount: 5560, takenFrom: "MLLD(Offer)", fineRate: 0 }
-        ]
-    },
-    "Cherish@1234": {
-        name: "Cherish #2",
-        membershipType: "",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "rgb(90 135 242)",
-        stars: 0,
-        coins: 0,
-        tierPoints: 0,
-        showCustomContent: "no",
-        customContent: {
-            type: "image",
-            value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
-        },
-        loans: [
-            { planDate: "29-05-2025", endDate: "29-05-2025", interest: 5600, takenAmount: 25000, takenFrom: "MLending", fineRate: 80 }
+            { planDate: "25-11-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 200, takenAmount: 9500, takenFrom: "MLending Duplicate ", fineRate: 0 }
         ]
     },
     "Deepak@1": {
