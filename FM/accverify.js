@@ -35,15 +35,14 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "10-08-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 3890, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "15-08-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 10800, takenAmount: 25000, takenFrom: "MLending", fineRate: 0 },
-            { planDate: "16-08-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 5275, takenAmount: 6500, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "18-08-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 3780, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "18-08-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 3990, takenAmount: 3500, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "01-11-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 3850, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 0 },
+            { planDate: "10-08-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 5890, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "15-08-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 12275, takenAmount: 6500, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "18-08-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 6780, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "18-08-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 4990, takenAmount: 3500, takenFrom: "MLLD", fineRate: 0 },
+            { planDate: "01-11-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 4850, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 0 },
             { planDate: "06-11-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 4980, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 0 },
             { planDate: "09-11-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 7680, takenAmount: 8000, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "25-11-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 5200, takenAmount: 3500, takenFrom: "MLending Duplicate ", fineRate: 0 }
+            { planDate: "25-11-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 4200, takenAmount: 9500, takenFrom: "MLending Duplicate ", fineRate: 0 }
         ]
     },
     "Cherish@123": {
@@ -675,7 +674,7 @@ Return date : ${loan.endDate}</p>
  Full Amount : ${totalReturnAmount} Rupees</p>
             <hr>
             <div class="issuebtn" style="padding-top: 20px;width: 102.5%;">  
-                <a target="_blank" href="https://forms.gle/RzTJ8W9bwmm8DVj2A"><button>I have an issue here.!</button></a>
+                <a target="_blank" href="https://forms.gle/RzTJ8W9bwmm8DVj2A"><button>I have issue with my account.!</button></a>
             </div>
         </div>
     `;
