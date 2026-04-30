@@ -29,14 +29,14 @@
 
     .logo {
       z-index: 100;
-      font-size: 13px;
-      display: flex;
-      max-width: 650px;
-      justify-content: space-between;
-      position: sticky;
-      top: 0px;align-items: end;
-      padding: 40px 10px 0px 10px;
-      background: #111920;
+    font-size: 13px;
+    display: flex;
+    max-width: 650px;
+    position: sticky;
+    top: 0px;
+    padding: 40px 10px 0px 10px;
+    background: #111920;
+    justify-content: center;
     }
 
     .logo h1 {
@@ -77,7 +77,7 @@
       text-align: center;
       border: none;
       border-radius: 12px;
-      background: rgba(255, 255, 255, 0.08);
+     background: #30455d5e;
       color: white;
     }
 
@@ -101,10 +101,8 @@
     }
 
     .site-list {
-background: #30455d5e;
     overflow: hidden;
     }
-
     .site-item {
       display: flex;
       align-items: center;
@@ -113,7 +111,9 @@ background: #30455d5e;
       text-decoration: none;
       transition: all 0.3s;
     }
-
+.site-item:hover{
+  background: #30455d5e;
+}
     .site-item:active {
       background: rgba(255,255,255,0.1);
     }
