@@ -228,38 +228,45 @@ h3 {
   </div>
 
 <script>
-// ================== SITE DATA ==================
-const siteGroups = [
-  { heading: "Return Management", sites: [
-    { name: "BS&MFI Solutions", desc: "Return date extender", url: "https://mfi0212.github.io/swan/offer/solution" },
-    { name: "BsRora - Atdo", desc: "Return date extender", url: "" }
-  ]},
-  { heading: "New in & issue", sites: [
-    { name: "Enterance Form", desc: "New members form", url: "https://mfi0212.github.io/MFI/entrysheet" },
-    { name: "Helper", desc: "I have issue form", url: "https://mfi0212.github.io/MFI/abt.hlp" }
-  ]},
-  { heading: "Offer & Earns", sites: [
-    { name: "Lendlink-Mid", desc: "Turn your money into income", url: "https://mfi0212.github.io/swan/lndlnk-mid" },
-    { name: "BsGames", desc: "Exclusive rewards and benefits for BS&MFI members.", url: "https://blackswan19.github.io/golden/Bs%20Games/bsgames" },
-    { name: "Stars", desc: "Interest reducer.", url: "https://blackswan19.github.io/golden/FM/starspage" }
-  ]},
-  { heading: "For VIPs Only Services", sites: [
-    { name: "BsMansion", desc: "Store offer to use after", url: "https://mfi0212.github.io/MFI/bsmansion" },
-    { name: "Chloennaouii", desc: "Discover Your Discount", url: "https://mfi0212.github.io/MFI/cholennaouii.main" }
-  ]},
-  { heading: "Services", sites: [
-    { name: "All Services", desc: "All service from BS&MFI", url: "https://blackswan19.github.io/BS/bslends" },
-    { name: "BsLends", desc: "A service from BS&MFI", url: "https://mfi0212.github.io/MFI/rate" },
-    { name: "Myootive", desc: "A service from BS&MFI", url: "https://blackswan19.github.io/golden/FM/themain" },
-    { name: "Vintage Lender(VIPs)", desc: "VIPs only site", url: "" },
-    { name: "Short Term Loan", desc: "Quick amounts for 1 to 15 days.", url: "https://mfi0212.github.io/MFI/1.5.days" }
-  ]},
-  { heading: "Collaboration", sites: [
-    { name: "BsPsgenerater", desc: "Password generator", url: "https://blackswan19.github.io/Educate/password" },
-    { name: "BsReminder", desc: "Date wise notes", url: "https://blackswan19.github.io/bscrop/reminder" },
-    { name: "BsBookpad", desc: "Download the notes", url: "https://blackswan19.github.io/Educate/bookpad" },
-    { name: "BsAdstoper", desc: "Ad blocker", url: "https://blackswan19.github.io/Educate/stoper" }
-  ]}
+ const siteGroups = [
+    {
+    heading: "Return Management",
+    sites: [
+      { name: "BS&MFI Solutions",      desc: "Return date extender",       url: "https://blackswan19.github.io/golden/FM/solution",      icon: "fab fa-youtube"       },
+]
+},
+{
+  heading: "New in & issue",
+  sites: [
+    { name: "Enterance Form", desc: "New members form",       url: "https://mfi0212.github.io/MFI/entrysheet", icon: "fas fa-code"         },
+    { name: "Helper",      desc: "I have issue form",           url: "https://mfi0212.github.io/MFI/abt.hlp",      icon: "fas fa-film"          },
+  ]
+},
+{
+  heading: "Offer & Earns",
+  sites: [
+    { name: "BsGames",       desc: "Exclusive rewards and benefits for BS&MFI members.",          url: "https://blackswan19.github.io/golden/Bs%20Games/bsgames",       icon: "fab fa-reddit"        },
+    { name: "Stars",       desc: "Interest reducer.",          url: "https://blackswan19.github.io/golden/FM/starspage",       icon: "fab fa-reddit"        },
+  ]
+},
+  
+  {
+    heading: "Services",
+    sites: [
+      { name: "All Services", desc: "All service from BS&MFI",       url: "https://blackswan19.github.io/BS/bslends", icon: "fas fa-code"         },
+      { name: "BsLends", desc: "A service from BS&MFI",       url: "https://mfi0212.github.io/MFI/rate", icon: "fas fa-code"         },
+      { name: "Myootive", desc: "A service from BS&MFI",       url: "https://blackswan19.github.io/golden/FM/themain", icon: "fas fa-code"         },
+    ]
+  },
+   {
+    heading: "Collaboration",
+    sites: [
+      { name: "BsPsgenerater", desc: "Password generator",       url: "https://blackswan19.github.io/Educate/password", icon: "fas fa-code"         },
+      { name: "BsReminder", desc: "Date wise notes",       url: "https://blackswan19.github.io/bscrop/reminder", icon: "fas fa-code"         },
+      { name: "BsBookpad", desc: "Download the notes",       url: "https://blackswan19.github.io/Educate/bookpad", icon: "fas fa-code"         },
+      { name: "BsAdstoper", desc: "Ad blocker",       url: "https://blackswan19.github.io/Educate/stoper", icon: "fas fa-code"         },
+    ]
+  }
 ];
 
 // Helper Functions
