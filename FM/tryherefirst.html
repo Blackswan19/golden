@@ -9,7 +9,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family: "Red Hat Display", sans-serif; scrollbar-width: none;letter-spacing: 0.5px;}
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+	font-family: 'Poppins', sans-serif;}
+    * { margin:0; padding:0; box-sizing:border-box;scrollbar-width: none;letter-spacing: 0.5px;}
 
     body {
       background: #111920;
@@ -19,15 +23,16 @@
 
     .header {
       position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 600px;
-      z-index: 100;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    z-index: 100;
+    border-bottom: solid 1px #1d29366b;
     }
 h3 {
-    font-weight: 400;
+    font-weight: 400;font-size: 16px;
 }
     .logo {
       z-index: 100;
@@ -43,9 +48,9 @@ h3 {
 
     .logo h1 {
       position: relative;
-      left: 0px;
-      font-weight: 600;
-      font-size: 22px;
+    left: 0px;
+    font-weight: 600;
+    font-size: 22px;
     }
 
     .logo h1 p {
@@ -78,7 +83,7 @@ h3 {
       font-size: 17px;
       text-align: center;
       border: none;
-      border-radius: 12px;
+      border-radius: 102px;
      background: #30455d5e;
       color: white;
     }
@@ -123,14 +128,15 @@ h3 {
 
     .letter-icon {
       width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      margin-right: 12px;
-      flex-shrink: 0;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    margin-right: 12px;
+    flex-shrink: 0;
+    font-size: 28px;
     }
 .rghtsdopt {
     display: flex;
@@ -199,7 +205,7 @@ h3 {
     </div>
     
     <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Search services..." autocomplete="off"/>
+      <input type="text" id="searchInput" placeholder="Enter to search services..." autocomplete="off"/>
     </div>
   </div>
 
