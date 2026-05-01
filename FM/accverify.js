@@ -41,7 +41,7 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "02-04-2026", endDate: "02-05-2026", interest: 3500, takenAmount: 10000, takenFrom: "MLendings", fineRate: 55 }
+            { planDate: "02-04-2026", endDate: "02-05-2026", interest: 3500, takenAmount: 10000, takenFrom: "MLendings", fineRate: 150 }
         ]
     },
 };
@@ -300,7 +300,8 @@ function checkDueReminders(user) {
         // Custom tomorrow message with extension warning
         reminderMessage.innerHTML = 
             `Mr. ${user.name}, <b>Tomorrow (${dueTomorrow.date})</b> your Amount <b>${dueTomorrow.loan.takenAmount}</b> from <b>${dueTomorrow.loan.takenFrom}</b> has to be returned.<br><br>` +
-            `<b>Try to return the amount today or by tomorrow 10 AM.</b><br><br>` +
+            `<b style="color: #ff8c00;
+    font-weight: 300;" >Return the amount before 6 PM today.</b><br><br>` +
             `Note: Do you like to extend? Do so today only. Tomorrow extension will not be provided and additional interest will be added.`;
         reminderModal.style.display = "flex";
     }
