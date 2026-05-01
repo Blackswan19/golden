@@ -16,7 +16,7 @@
     * { margin:0; padding:0; box-sizing:border-box;scrollbar-width: none;letter-spacing: 0.5px;}
 
     body {
-      background: #111920;
+      background: #151e27;
       color: #ffffff;
       min-height: 100vh;
     }
@@ -28,8 +28,8 @@
     transform: translateX(-50%);
     width: 100%;
     max-width: 600px;
-    z-index: 100;
-    border-bottom: solid 1px #1d29366b;
+    z-index: 100;background: #151e27;
+    border-bottom: solid 1px #222e3b;
     }
 h3 {
     font-weight: 400;font-size: 16px;
@@ -42,7 +42,6 @@ h3 {
     position: sticky;
     top: 0px;
     padding: 40px 10px 0px 10px;
-    background: #111920;
     justify-content: space-between;
     }
 
@@ -74,7 +73,7 @@ h3 {
       max-width: 600px;
       padding: 8px;
       z-index: 90;
-      background: #111920;
+    background: #151e27;
     }
 
     #searchInput {
@@ -84,7 +83,7 @@ h3 {
       text-align: center;
       border: none;
       border-radius: 102px;
-     background: #30455d5e;
+    background: #22303f;
       color: white;
     }
 
@@ -120,7 +119,7 @@ h3 {
     opacity: 70%;
     }
 .site-item:hover{
-  background: #30455d5e;
+  background: #283543;
 }
     .site-item:active {
       background: rgba(255,255,255,0.1);
@@ -161,12 +160,12 @@ h3 {
       display: flex;
       justify-content: space-around;
       align-items: center;
-      background: #111920;
+      background: #151e27;
       font-size: 14px;
       gap: 100px;
       backdrop-filter: blur(10px);
       padding: 6px 15px 20px 15px;
-      border-top: solid 1px #1d29366b;
+      border-top: solid 1px #222e3b;
     }
 
     svg {
@@ -196,11 +195,13 @@ h3 {
   <!-- Header -->
   <div class="header">
     <div class="logo">
-      <a href="https://mfi0212.github.io/MFI/imlate" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m352.46-85.39-71.38-120.3-135.54-29.7 13.23-139.53L66.93-480l91.84-105.08-13.23-139.53 135.54-29.7 71.38-120.3L480-820.46l127.54-54.15 71.38 120.3 135.54 29.7-13.23 139.53L893.07-480l-91.84 105.08 13.23 139.53-135.54 29.7-71.38 120.3L480-139.54 352.46-85.39ZM378-162l102-43.23L583.23-162 640-258l110-25.23L740-396l74-84-74-85.23L750-678l-110-24-58-96-102 43.23L376.77-798 320-702l-110 24 10 112.77L146-480l74 84-10 114 110 24 58 96Zm102-318Zm22.92 179.85q9.39-9.39 9.39-22.93T502.92-346q-9.38-9.38-22.92-9.38-13.54 0-22.92 9.38-9.39 9.38-9.39 22.92 0 13.54 9.39 22.93 9.38 9.38 22.92 9.38 13.54 0 22.92-9.38ZM450-436.92h60v-240h-60v240Z"/></svg></a>  
+     
       <h1>MLending</h1>
-     <div class="rghtsdopt">
+      <div class="rghtsdopt">
+      <a href="https://mfi0212.github.io/MFI/imlate" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m352.46-85.39-71.38-120.3-135.54-29.7 13.23-139.53L66.93-480l91.84-105.08-13.23-139.53 135.54-29.7 71.38-120.3L480-820.46l127.54-54.15 71.38 120.3 135.54 29.7-13.23 139.53L893.07-480l-91.84 105.08 13.23 139.53-135.54 29.7-71.38 120.3L480-139.54 352.46-85.39ZM378-162l102-43.23L583.23-162 640-258l110-25.23L740-396l74-84-74-85.23L750-678l-110-24-58-96-102 43.23L376.77-798 320-702l-110 24 10 112.77L146-480l74 84-10 114 110 24 58 96Zm102-318Zm22.92 179.85q9.39-9.39 9.39-22.93T502.92-346q-9.38-9.38-22.92-9.38-13.54 0-22.92 9.38-9.39 9.38-9.39 22.92 0 13.54 9.39 22.93 9.38 9.38 22.92 9.38 13.54 0 22.92-9.38ZM450-436.92h60v-240h-60v240Z"/></svg></a>  
+     
        <a onclick="alert('Wait few hours!\n\nTo provide the amount, we need to collect the amount first. It takes few hours to arrange the amount, so be patient during this time to get the amount.')"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M514-494.31V-651q0-13.5-9.76-23.25T480.97-684q-13.51 0-23.24 9.75Q448-664.5 448-651v167.15q0 9.13 3.23 17.02 3.23 7.88 10.46 14.83l135 135q9.62 9.62 22.27 10.5 12.66.88 24.04-10.5 10.38-10.38 10.88-23.15.5-12.77-9.88-23.16l-130-131ZM480.13-88q-81.31 0-152.89-30.86-71.57-30.86-124.52-83.76-52.95-52.9-83.83-124.42Q88-398.55 88-479.87q0-81.56 30.92-153.37 30.92-71.8 83.92-124.91 53-53.12 124.42-83.48Q398.67-872 479.87-872q81.55 0 153.35 30.34 71.79 30.34 124.92 83.42 53.13 53.08 83.49 124.84Q872-561.64 872-480.05q0 81.59-30.34 152.83-30.34 71.23-83.41 124.28-53.07 53.05-124.81 84Q561.7-88 480.13-88ZM480-480Zm0 326q136 0 231-95t95-231q0-136-95-231t-231-95q-136 0-231 95t-95 231q0 136 95 231t231 95Z"/></svg></a>
-      <a onclick="alert('Follow these steps..!\n\n1. Click on search icon on bottom left\n2. Fill out the form.\n3. Wait a few hours.\n4. Check details like interest and etc... in bottom right icon.\n5. Get funds from your coordinator.\n6. Repay on time for future loans.\n\nNOTE : Are you late to return? Say 2 days before we will extend the date (or) Extra fees apply.\n')"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M427.69-400.19 349.77-78.15q-1.46 6.07-6.33 9.65-4.86 3.58-11.56 3.58-9.26 0-14.88-6.25-5.62-6.25-3.27-14.91l113.39-553.5L306-589.85v109.2q0 7.8-5.42 13.23-5.43 5.42-13.04 5.42-7.62 0-13.04-5.42-5.42-5.43-5.42-13.23v-113.7q0-9.19 5.09-16.84 5.1-7.66 13.68-11.77l154.19-64.42q14.23-6.12 26.54-7.75 12.3-1.64 24 .55 11.3 2.46 20.61 9.29 9.31 6.83 16.66 18.52l27.69 43.39q16.84 26.92 36.79 48.46 19.94 21.54 42.59 37.61 18.62 13.5 39.21 21.87 20.6 8.36 43.49 12.9 7.69.96 12.5 7.02 4.8 6.06 4.8 13.48 0 7.81-5.61 12.79-5.62 4.98-13.04 3.75-58.23-9.81-105.87-43.35-47.63-33.53-82.28-88.92l-37.66 185.46 77.27 81.08q3.96 4.73 6.19 9.94 2.23 5.21 2.23 11.67v226.04q0 7.81-5.42 13.23-5.42 5.43-13.04 5.43-7.61 0-13.04-5.43-5.42-5.42-5.42-13.23v-212.77L427.69-400.19Zm65.14-369.56q-19.29-19.29-19.29-47.17 0-27.89 19.29-47.18 19.29-19.28 47.17-19.28 27.88 0 47.17 19.28 19.29 19.29 19.29 47.18 0 27.88-19.29 47.17-19.29 19.29-47.17 19.29-27.88 0-47.17-19.29Z"/></svg></a>
+      <a onclick="alert('Follow these steps..!\n\n1. Click on the icon on bottom left.\n2. Fill out the form.\n3. Wait a few hours.\n4. Check details like interest and etc... in bottom right icon.\n5. Get funds from your coordinator.\n6. Repay on time for future loans.\n\nNOTE : Are you late to return? Say 2 days before we will extend the date (or) Extra fees apply.\n')"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M434.31-373.85 362-70.08Q358.54-58 349.31-51q-9.23 7-21.54 7-16 0-26.73-11.92-10.73-11.93-7.27-28.7l112.77-544.23-93.16 40v103.08q0 13.54-9.73 23.27t-23.27 9.73q-13.53 0-23.26-9.73-9.74-9.73-9.74-23.27v-116.31q0-13.69 7.85-25.65 7.85-11.96 19.54-17.19l148-63.77q20-8 36.42-11.39 16.43-3.38 32.12-.69Q508-719.08 520.42-710q12.43 9.08 22.66 24.77l27.69 46q17.85 29.92 38.54 51.77 20.69 21.84 44.46 35.92 16.61 11.39 34.46 17.81 17.85 6.42 37.23 10.96 14.31 2.46 23.42 12.58 9.12 10.11 9.12 23.65 0 14.54-9.73 23.77t-23.27 7q-61.08-10.31-107.65-40.35-46.58-30.03-79.12-80.19l-30.54 156 73.39 77.08q6.46 7.23 9.69 15.31 3.23 8.07 3.23 17.54V-77q0 13.54-9.73 23.27T561-44q-13.54 0-23.27-9.73T528-77v-193.62l-93.69-103.23Zm52.15-404.61q-22.15-22.16-22.15-55.54 0-33.38 22.15-55.54 22.16-22.15 55.54-22.15 33.38 0 55.54 22.15 22.15 22.16 22.15 55.54 0 33.38-22.15 55.54-22.16 22.15-55.54 22.15-33.38 0-55.54-22.15Z"/></svg></a>
      </div>
     </div>
     
