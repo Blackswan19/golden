@@ -112,9 +112,8 @@ body:has(input[value="dim"]:checked) {
     flex-direction: column;
 }
     header {
-  position: fixed;
+position: fixed;
     top: 0;
-    left: 0;
     right: 0;
     z-index: 50;
     display: flex;
@@ -125,6 +124,10 @@ body:has(input[value="dim"]:checked) {
     border-bottom: solid 1px #1d2733;
     backdrop-filter: blur(10px);
     flex-direction: column;
+    width: 100%;
+    max-width: 550px;
+    left: 50%;
+    transform: translate(-50%, 0);
     }
     header  svg {
     fill: #00a1ff;
@@ -178,8 +181,10 @@ background: transparent;
     main {
     flex: 1;
     overflow-y: auto;
-    background: #00000012;
+    background: transparent;
     padding: 100px 8px 80px 8px;
+    width: 100%;
+    max-width: 565px;
     }
 button.theme-btn {
   width: fit-content;
