@@ -187,12 +187,126 @@ width: 100%;
       color: #00d0ff;
     }
 
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: #00003b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000000000000;
+    opacity: 1;
+    transition: opacity 0.6s ease;
+}
+
+.loading-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Optional: Better loading logo */
+.loading-logo {
+    width: 180px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+.servicenmae{
+    font-size: 16px;
+    color: #ffffff8f;
+    margin: 170px 0 35px;
+    text-align: center;
+    max-width: 90%;
+    font-weight: 500;
+    letter-spacing: 0;white-space: nowrap;
+    display: flex;
+    gap: 5px;
+} button#startAudioBtn {
+    background: white;
+    border: none;
+    padding: 10px;
+    border-radius: 100px;
+    padding: 8px 15px;
+}
+.audio-controls {
+    margin: 20px 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}.audio-progress-bar {
+    height: 2px;
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 0px;
+    overflow: hidden;
+}.audio-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: white;
+    border-radius: 6px;
+    transition: width 0.45s ease-out;
+    box-shadow: 0 0 16px #00aaff99;
+}
+.audio-progress-container {
+    line-height: 43px;
+    text-align: center;width: 150%;
+}
+div#audioStatus {
+    font-size: 10px;
+    color: #ffffff87;margin-bottom: -30px;
+}button#muteToggle {
+   border-radius: 100px;
+    border: none;
+    padding: 3px 16px;
+    margin: 20px 0 0 0;
+} .loading-logo {
+            width: 300px;
+            height: auto;
+        }
     .nav-item i { font-size: 22px; margin-bottom: 3px; }
   </style>
 </head>
 <body>
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="servicename" style="position: fixed;
+    top: 10px;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    background: #ffffff24;
+    padding:0px 15px;
+    border-radius: 100px;
+    color: #ffffff;
+    font-weight: 300;">
+            Myootive Service
+        </div>
+        <img src="loadinglogo.png" alt="Loading Doughnut" class="loading-logo">
+        
+        <div class="servicenmae">
+            Welcome to MLLD
+        </div>
 
-  <!-- Header -->
+        <button class="start-btn" id="startAudioBtn">Connect Now</button>
+
+        <div class="audio-controls" id="audioControls">
+            <div class="audio-progress-container">
+                <div class="audio-progress-bar">
+                    <div id="audioProgressFill" class="audio-progress-fill"></div>
+                </div>
+                <div class="audio-status" id="audioStatus">Waiting for you to start...</div>
+            </div>
+        </div>
+ <button class="mute-btn" id="muteToggle" title="Mute / Unmute">
+                <i class="fas fa-volume-high"></i>
+            </button>
+        <audio id="introAudio" preload="auto">
+            <source src="mfi_intro.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
   <div class="header">
     <div class="logo">
      
@@ -374,6 +488,78 @@ document.getElementById("searchInput").addEventListener("input", e => {
   renderFiltered(e.target.value);
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const loadingOverlay = document.getElementById("loadingOverlay");
+    const startBtn = document.getElementById("startAudioBtn");
+    const audioControls = document.getElementById("audioControls");
+    const progressFill = document.getElementById("audioProgressFill");
+    const audioStatus = document.getElementById("audioStatus");
+    const audio = document.getElementById("introAudio");
+    const muteToggle = document.getElementById("muteToggle");
 
+    let progressInterval = null;
+
+    // Mute Toggle
+    muteToggle?.addEventListener("click", () => {
+        audio.muted = !audio.muted;
+        muteToggle.innerHTML = audio.muted 
+            ? '<i class="fas fa-volume-xmark"></i>' 
+            : '<i class="fas fa-volume-high"></i>';
+    });
+
+    // Start Button
+    startBtn?.addEventListener("click", async () => {
+        startBtn.style.display = "none";
+        audioControls.style.display = "flex";
+
+        try {
+            // Ensure audio is loaded
+            if (audio.readyState < 1) {
+                await new Promise(resolve => audio.addEventListener("loadedmetadata", resolve, { once: true }));
+            }
+
+            const duration = audio.duration || 8;
+            const stopTime = Math.min(Math.random() * 3 + 5, duration); // 5 to 8 seconds
+
+            progressFill.style.width = "0%";
+            audioStatus.textContent = "0% • Connecting...";
+
+            await audio.play();
+
+            let currentPercent = 0;
+
+            progressInterval = setInterval(() => {
+                currentPercent = Math.min((audio.currentTime / stopTime) * 100, 100);
+
+                progressFill.style.width = currentPercent + "%";
+                audioStatus.textContent = Math.round(currentPercent) + "% • Connecting...";
+
+                if (audio.currentTime >= stopTime || currentPercent >= 100) {
+                    clearInterval(progressInterval);
+                    progressFill.style.width = "100%";
+                    audioStatus.textContent = "100% • Connected!";
+                    audio.pause();
+
+                    // Hide loading screen smoothly
+                    loadingOverlay.style.opacity = "0";
+                    setTimeout(() => {
+                        loadingOverlay.style.display = "none";
+                    }, 600);
+                }
+            }, 40);
+
+        } catch (e) {
+            console.error(e);
+            audioStatus.textContent = "❌ Audio playback blocked";
+            // Still hide after few seconds if audio fails
+            setTimeout(() => {
+                loadingOverlay.style.opacity = "0";
+                setTimeout(() => loadingOverlay.style.display = "none", 600);
+            }, 2000);
+        }
+    });
+});
+</script>
 </body>
 </html>
