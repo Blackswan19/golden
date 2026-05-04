@@ -1,947 +1,562 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BS&MFI Solution</title>
-    <link rel="icon" href="mfi.logo.png" />
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-       <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Balthazar&family=Della+Respira&family=Hahmlet:wght@100..900&family=Niconne&family=Stalemate&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<style>
-       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BS&MFI | Myootive</title>
+  <link rel="icon" href="mfi.logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 * {
-	-webkit-tap-highlight-color: transparent;
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	font-family: 'Poppins', sans-serif;
-	scrollbar-width: none;letter-spacing: 0.5px;
-}
-        * { margin:0; padding:0; box-sizing:border-box; }
-       
-    :root {
-      --bg: #111920;
-      --header: #121212;
-      --card: #ffffff0f;
-      --text: #ffffff;
-      --text2: #ffffff63;
-      --accent: #0000ff;
-    }
-    .light {
-      --bg: #f8f9fa;
-      --header: #ffffff;
-      --card: #ffffff;
-      --text: #111111;
-      --text2: #666666;
-      --accent: #0000ff;
-    }* {
-            -webkit-tap-highlight-color: transparent;
-        }
-        body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-body {
-  --c-glass: #bbbbbc;
-  --c-light: #fff;
-  --c-dark: #000;
-  
-  --c-content: rgb(255, 255, 255);
-  --c-action: #0052f5;
-  
-  --glass-reflex-dark: 1;
-  --glass-reflex-light: 1;
-  
-  --saturation: 150%;
-  
-  color: var(--c-content);
-}
+	font-family: 'Poppins', sans-serif;}
+    * { margin:0; padding:0; box-sizing:border-box;scrollbar-width: none;letter-spacing: 0.5px;}
 
-body:has(input[value="dark"]:checked) {
-  --c-glass: #bbbbbc;
-  --c-light: #fff;
-  --c-dark: #000;
-  
-  --c-content: #e1e1e1;
-  --c-action: #03d5ff;
-  
-  --c-bg: #1b1b1d;
-}
-
-body:has(input[value="dim"]:checked) {
-  --c-light: #99deff;
-  --c-dark: #20001b;
-  --c-glass: hsl(335 250% 74% / 1);
-  
-  --c-content: #d5dbe2;
-  --c-action: #ff48a9;
-  
-  --c-bg: #152433;
-
-}
-    * { margin:0; padding:0; box-sizing:border-box; scrollbar-width: none;}
-    h2 {
-    text-align: center;
-    color: #00aaff;
-}
     body {
-      background-color: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+     background-color: #111920;
+      color: #ffffff;
+      min-height: 100vh;
     }
-    .toplogos {
-  display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    gap: 5px;
-    flex-direction: column;
-}
-    header {
+
+    .header {
 position: fixed;
     top: 0;
-    right: 0;
-    z-index: 50;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 10px 5px 5px;
-    flex-direction: column;
-    width: 100%;
-    max-width: 550px;
     left: 50%;
-    transform: translate(-50%, 0);
-    background: #111920d1;
-    border-bottom: solid 0.5px #1d2936;
-    backdrop-filter: blur(10px);
-    }
-    header  svg {
-    fill: #00a1ff;
-}
-    header span{
-   display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    font-size: 18px;
-    color: white;
-    padding: 10px;
-    font-weight: 600;
-    }
-    header p{
-     color: #ffffff80;
-    font-size: 10px;
-    padding: 0px;
-    font-weight: 100;
-    }
-    button.btn-primary {
-   font-weight: 600;
-    letter-spacing: 0.3px;
-    font-size: 18px;
-    background: transparent;
-}
-    header button {
-background: transparent;
-    color: white;
-    border: none;
-    font-size: 16px;
-    }
-    
-    .theme-btn {
-      transition: all 0.3s;
-    }
-    i.fa-solid.fa-arrow-left {
-    background-color: #46515f;
-    border-radius: 100px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    z-index: 11;
-    outline: none;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-}
-    main {
-    flex: 1;
-    overflow-y: auto;
-    background: transparent;
-    padding: 100px 8px 80px 8px;
+    transform: translateX(-50%);
     width: 100%;
-    max-width: 565px;
-    }
-button.theme-btn {
-  width: fit-content;
-    display: flex;
-    gap: 0px;
-    font-size: 16px;
-    align-items: center;
-    justify-content: center;
-    color: #00aaff;
-}
-   
-.nav-container svg {
-  width: 22px;
-    height: 22px;
-    fill: #00aaff;
-}
-.nav {
-max-width: 550px;
-    text-align: center;
-    position: fixed;
-    bottom: 0px;
-    width: 100%;
-    backdrop-filter: blur(10px);
-    padding: 18px;
-    z-index: 100000000;
-    background: #111920d1;
-    border-top: solid 0.5px #1d2936;
-    backdrop-filter: blur(10px);
-}
-   .nav-container {
-  display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    position: relative;
-    top: -10px;
-}.maintpopt {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-    .first4icons {
-   box-shadow: inset 0 0 0 1px 
- color-mix(in srgb, #ffffff00 calc(var(--glass-reflex-light) * 10%), transparent), inset 2.8px 2px 2px -2px 
- color-mix(in srgb, #ffffff4a calc(var(--glass-reflex-light) * 90%), transparent), inset -2.5px -1px 3px -2px 
- color-mix(in srgb, #ffffff54 calc(var(--glass-reflex-light) * 80%), transparent), inset -4px -7px 6px -7px 
- color-mix(in srgb, #ffffff5e calc(var(--glass-reflex-light) * 60%), transparent), inset -0.3px -1px 4px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 12%), transparent), inset -1.5px 2.5px 0px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 0px 3px 4px -2px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 20%), transparent), inset 2px -6.5px 1px -4px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 1px 5px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent), 0px 6px 16px 0px 
- color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 8%), transparent);
-    border: solid 1px #ffffff00;
-    border-radius: 1000px;
-    backdrop-filter: blur(5px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 4px;
-}footer {
-    text-align: center;
-    font-size: 10px;
-    position: fixed;
-    bottom: 15px;
-    width: 100%;
-    left: 0;
-    color: #ffffffc9;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-}span {
-    color: white;
-}
-.modal-header svg {
-   width: 30px;
-    height: 30px;
-    fill: #00aeff;
-    font-size: 30px;
-    cursor: pointer;
-    font-weight: 100;
-    background: #111920;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    right: -15px;
-    top: -10px;
-}
-    /* .tab {
-      display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    color: black;
-    transition: color 0.2s;
-    cursor: pointer;
-    justify-content: center;
-    width: 100%;
-    }
-    .tab-active {
-   background: #00aaff;
-    filter: none;
-    opacity: 100%;
-    border-radius: 35px;
-    color: black;
-    }
-    .tab i {
-      font-size: 1.75rem;
-    } */
-    
-    .apply-btn svg{
-     width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    fill: #00aaff;
-    }
-   p {
- color: #00aaff;
-    font-weight: 800;
-    font-size: 18px;
-    padding-left: 15px;
-    margin-bottom: 5px;
-}
-    .card {
-      background-color: var(--card);
-      border-radius: 16px;
-    }
-    
-    .text-secondary {
-      color: var(--text2);
-    }
-    
-    .accent {
-      color: var(--accent);
-    }
-    
-    .modal {
-     position: fixed;
-    inset: 0;
-    background-color: #000000bf;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999999999;
-    }
-    .modal.show {
-      display: flex;
-    }
-    
-    .modal-content {
-    width: 95%;
+    padding: 0 5px;
     max-width: 600px;
-    border-radius: 25px;
-    overflow: hidden;
-    animation: 0.3s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+    z-index: 100;
+    border-bottom: solid 1px #222e3b;
+    backdrop-filter: blur(10px);
+    background: #111920d1;
+    }
+h3 {
+    font-weight: 400;font-size: 16px;
+}
+    .logo {
+      z-index: 100;
+    font-size: 13px;
+    display: flex;
+    max-width: 650px;
+    position: sticky;
+    top: 0px;
+    padding: 40px 10px 0px 10px;
+    justify-content: space-between;
+    }
+
+    .logo h1 {
+      position: relative;
+    left: 0px;
+    font-weight: 600;
+    font-size: 22px;
+    }
+
+    .logo h1 p {
+      position: fixed;
+      left: 1px;
+      bottom: -6px;
+      font-size: 10px;
+      font-weight: 300;
+    }
+
+    .mficolblogo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #0021ff, #00d0ff);
+      padding: 4px;
+    }
+
+    .search-container {
+      width: 100%;
+      max-width: 600px;
+      padding: 8px;
+      z-index: 90;
+    }
+
+    #searchInput {
+width: 100%;
+    padding: 7px 15px;
+    font-size: 17px;
+    text-align: start;
+    border: none;
+    border-radius: 102px;
     background: #1d2733;
+    color: white;
+    }
+
+    #searchInput:focus {
+      outline: none;
+      background: #46515f;
+    }
+
+    #sectionsContainer {
+      padding-top: 130px;
+      max-width: 600px;
+      margin: 0 auto;
+      padding-bottom: 60px;
+    }
+
+    .section h2 {
+         font-size: 15px;
+    font-weight: 600;
+    color: #aaaaaa;
+    display: none;
+    }
+
+    .site-list {
+    overflow: hidden;
+    }
+    .site-item {
+      display: flex;
+    align-items: center;
+    padding: 14px 15px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+    opacity: 70%;
+    }
+    .site-item:hover {
+      background: #1d2733;
+    }
+
+    .letter-icon {
+      width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    margin-right: 12px;
+    flex-shrink: 0;
+    font-size: 28px;
+    }
+.rghtsdopt {
+    display: flex;
+    gap: 15px;
+}
+    .bottom-nav {
+          position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: space-around;
+    z-index: 200;
+
+    }
+
+    .bottomtakeoptions {
+text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 14px;
+    gap: 100px;
+    padding: 6px 15px 20px 15px;
+    border-top: solid 1px #222e3b;
+    backdrop-filter: blur(10px);
+    background: #111920d1;
+    }
+
+    svg {
+      width: 30px;
+      height: 30px;
+      fill: #0a95ff;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #aaa;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .nav-item:hover, .nav-item.active {
+      color: #00d0ff;
+    }
+
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: #00003b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000000000000;
+    opacity: 1;
+    transition: opacity 0.6s ease;
 }
 
-    
-    .modal-header {
-     padding: 20px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    }
-    
-    .section-title {
-    font-size: 25px;
-    font-weight: 900;
-    letter-spacing: 0.5px;
-    color: #00aaff;
-    margin: 5px 0px;
-    text-align: center;
+.loading-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
-    
-    .how-it-works {
-   background: #1d2733;
-    border-radius: 25px;
-    padding: 13px;
-    }
-    
-    /* FAQ STYLING */
-    .faq-container {
-     background: #30455d5e;
-    border-radius: 20px;
-    padding: 13px;
-    }
-.faq-item {
-    padding: 5px;
+/* 
+.loading-logo {
+    width: 180px;
+    animation: pulse 2s infinite;
+} */
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
 }
-    .faq-item:last-child {
-      border-bottom: none;
-    }
-    .faq-item h3 {
-      font-size: 15px;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 0.5rem;
-    }li {
-   line-height: 23px;
-    font-weight: 200;
-    font-size: 14px;
-}
-    .faq-item p {
-     color: var(--text2);
-    line-height: 1.6;
-    font-size: 14px;
-    text-align: left;
-    font-weight: 500;
-    }
-.amount-box {
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    background: #ffffff1c;
-    justify-content: center;
-    }
-    .amount-input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      font-size: 2.75rem;
-      font-weight: 300;
-      color: var(--text);
-    }
-    
-    .calc-result {
-         padding: 0px 5px;
-    }
-    
-    .btn-primary {
-   width: 100%;
-    color: #ffffffde;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    border-bottom: solid 5px #00000078;
-    }i.fa-solid.fa-xmark.text-3xl.cursor-pointer {
-    font-size: 20px;
-}
-    
-    .btn-secondary {
-      width: 100%;
-    background: transparent;
-    font-weight: 400;
-    padding: 10px;
-    border-radius: 10px;
+.servicenmae{
     font-size: 16px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: all 0.2s;
+    color: #ffffff8f;
+    margin: 170px 0 35px;
+    text-align: center;
+    max-width: 90%;
+    font-weight: 500;
+    letter-spacing: 0;white-space: nowrap;
+    display: flex;
+    gap: 5px;
+} button#startAudioBtn {
+    background: white;
     border: none;
-    margin-top: 0px;
-    }
-    .btn-secondary a {
-    text-decoration: none;
-    color: #00aaff;
+    padding: 10px;
+    border-radius: 100px;
 }
-    
-    .btn-secondary a:hover>.btn-secondary:hover {
-      background-color: #0000ff;
-      color: white;
-    }
-  
+.audio-controls {
+    margin: 20px 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}.audio-progress-bar {
+    height: 2px;
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 0px;
+    overflow: hidden;
+}.audio-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: white;
+    border-radius: 6px;
+    transition: width 0.45s ease-out;
+    box-shadow: 0 0 16px #00aaff99;
+}
+.audio-progress-container {
+    line-height: 43px;
+    text-align: center;width: 150%;
+}
+div#audioStatus {
+    font-size: 10px;
+    color: #ffffff87;margin-bottom: -30px;
+}button#muteToggle {
+   border-radius: 100px;
+    border: none;
+    padding: 3px 16px;
+    margin: 20px 0 0 0;
+} .loading-logo {
+            width: 300px;
+            height: auto;
+        }
+    .nav-item i { font-size: 22px; margin-bottom: 3px; }
   </style>
 </head>
 <body>
-
- <header>
-    <span>BS&MFI Solutions</span>
-   <div class="maintpopt">
-     <button onclick="goBack()" class="theme-btn">
-          <svg style="    fill: #00aeff;width: 40px;height: 40px;margin: -8px;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-267.69 347.69-480 560-692.31 588.31-664l-184 184 184 184L560-267.69Z"/></svg> Go back
-      </button>
-      <button onclick="showPopup()" class="apply-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M540.85-518 399.31-659.54l28.54-27.54 113 113 227-226 27.53 27.54L540.85-518ZM280-213.85l302.62 88.31 239.53-74q-1.15-18.23-11.03-26.27-9.89-8.04-21.89-8.04H599.54q-25.46 0-46.08-2-20.61-2-42.23-9.53l-87.61-28.7 13.53-39.54 81 29.31q19.31 7.31 43.85 8.77 24.54 1.46 67.23 1.69 0-18.69-6.88-30.23-6.89-11.54-19.73-16.07l-230.16-84.47q-2.31-.76-4.23-1.15-1.92-.38-4.23-.38h-84v192.3ZM120-120v-326.15h243.23q5.46 0 11.31 1.11 5.84 1.12 11.08 3.12l231.15 84.69q21.46 8.15 36.96 29.31 15.5 21.15 15.5 54.07h120q36.15 0 55.39 22.62 19.23 22.61 19.23 57.38v24.62L584.62-83.08 280-171.85V-120H120Zm40-40h80v-246.15h-80V-160Z"/></svg>
-      </button>
-   </div>
-  </header>
-
-  <main id="main-content"></main>
-
-
-  <nav class="nav">
-    <div class="nav-container">
-        <div onclick="switchTab(0)" id="tab-0" class="tab tab-active">
-            <svg id="Layer_1" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="m23 18h-3v-3a1 1 0 0 0 -2 0v3h-3a1 1 0 0 0 0 2h3v3a1 1 0 0 0 2 0v-3h3a1 1 0 0 0 0-2z"/><path d="m11 7v4.586l-2.707 2.707a1 1 0 1 0 1.414 1.414l3-3a1 1 0 0 0 .293-.707v-5a1 1 0 0 0 -2 0z"/><path d="m14.728 21.624a9.985 9.985 0 1 1 6.9-6.895 1 1 0 1 0 1.924.542 11.989 11.989 0 1 0 -8.276 8.277 1 1 0 1 0 -.544-1.924z"/></svg>
-
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="servicename" style="position: fixed;
+    top: 10px;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    background: #ffffff24;
+    padding: 10px;
+    border-radius: 100px;
+    color: #ffffff;
+    font-weight: 300;">
+            Myootive Service
         </div>
-        <div onclick="switchTab(1)" id="tab-1" class="tab">
-              <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                <path d="m23.452,5.325l-2.66,2.66-1.414-1.414,1.57-1.571h-8.948c-3.86,0-7,3.14-7,7,0,1.075.251,2.09.687,3h-2.151c-.335-.941-.536-1.945-.536-3C3,7.038,7.038,3,12,3h8.948l-1.57-1.571L20.792.015l2.659,2.659c.729.731.729,1.92,0,2.65Zm-12.252,1.675v1.2h-.327c-1.198,0-2.173.975-2.173,2.173,0,1.033.734,1.929,1.747,2.131l2.791.559c.268.054.462.291.462.563,0,.316-.258.574-.574.574h-2.126c-.316,0-.585-.211-.671-.5h-1.62c.102,1.175,1.09,2.1,2.291,2.1h.2v1.2h1.6v-1.2h.326c1.199,0,2.174-.975,2.174-2.173,0-1.033-.734-1.929-1.747-2.131l-2.792-.559c-.267-.054-.461-.291-.461-.562,0-.316.257-.574.573-.574h2.127c.316,0,.585.211.671.5h1.62c-.102-1.175-1.09-2.1-2.291-2.1h-.2v-1.2h-1.6Zm7.113,2c.436.91.687,1.925.687,3,0,3.86-3.141,7-7,7H3.052l1.571-1.571-1.414-1.414-2.659,2.659c-.731.731-.731,1.92,0,2.651l2.659,2.659,1.414-1.414-1.571-1.571h8.948c4.963,0,9-4.038,9-9,0-1.055-.2-2.059-.536-3h-2.151Z"/>
-              </svg>
+        <img src="loadinglogo.png" alt="Loading Doughnut" class="loading-logo">
+        
+        <div class="servicenmae">
+            Welcome to Myootive
         </div>
-        <div onclick="switchTab(4)" id="tab-4" class="tab" >
-            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-              <path d="m6,0C2.691,0,0,2.691,0,6s2.691,6,6,6,6-2.691,6-6S9.309,0,6,0Zm2.776,8.87c-.445-1.095-1.514-1.87-2.768-1.87h-.016c-1.254,0-2.325.773-2.769,1.868-.751-.728-1.222-1.742-1.222-2.868,0-2.206,1.794-4,4-4s4,1.794,4,4c0,1.127-.472,2.142-1.224,2.87Zm-1.276-4.37c0,.828-.672,1.5-1.5,1.5s-1.5-.672-1.5-1.5.672-1.5,1.5-1.5,1.5.672,1.5,1.5Zm10.5,7.5c-3.309,0-6,2.691-6,6s2.691,6,6,6,6-2.691,6-6-2.691-6-6-6Zm2.776,8.87c-.445-1.095-1.514-1.87-2.768-1.87h-.016c-1.254,0-2.325.773-2.769,1.868-.751-.728-1.222-1.742-1.222-2.868,0-2.206,1.794-4,4-4s4,1.794,4,4c0,1.127-.472,2.142-1.224,2.87Zm-1.276-4.37c0,.828-.672,1.5-1.5,1.5s-1.5-.672-1.5-1.5.672-1.5,1.5-1.5,1.5.672,1.5,1.5Zm-5.5-12.5c0-.552.447-1,1-1h2c2.206,0,4,1.794,4,4v2c0,.552-.447,1-1,1s-1-.448-1-1v-2c0-1.103-.897-2-2-2h-2c-.553,0-1-.448-1-1Zm-4,16c0,.552-.447,1-1,1h-2c-2.206,0-4-1.794-4-4v-2c0-.552.447-1,1-1s1,.448,1,1v2c0,1.103.897,2,2,2h2c.553,0,1,.448,1,1Z"/>
-            </svg>
+
+        <button class="start-btn" id="startAudioBtn">Connect Now</button>
+
+        <div class="audio-controls" id="audioControls">
+            <div class="audio-progress-container">
+                <div class="audio-progress-bar">
+                    <div id="audioProgressFill" class="audio-progress-fill"></div>
+                </div>
+                <div class="audio-status" id="audioStatus">Waiting for you to start...</div>
+            </div>
         </div>
+ <button class="mute-btn" id="muteToggle" title="Mute / Unmute">
+                <i class="fas fa-volume-high"></i>
+            </button>
+        <audio id="introAudio" preload="auto">
+            <source src="mfi_intro.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
     </div>
-  </nav>
-
-  <!-- MODAL -->
-  <div id="modal" class="modal" onclick="if(event.target.id==='modal') hideModal()">
-    <div onclick="event.stopImmediatePropagation()" class="modal-content">
-      <div class="modal-header">
-        <h2 id="modal-title" style="font-size:1.25rem; font-weight:600;">Calculator</h2>
-        <svg onclick="hideModal()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m322.15-293.08-29.07-29.07L450.92-480 293.08-636.85l29.07-29.07L480-508.08l156.85-157.84 29.07 29.07L508.08-480l157.84 157.85-29.07 29.07L480-450.92 322.15-293.08Z"/></svg>
-      </div>
-      <div id="modal-content" class="modal-body"></div>
+  <div class="header">
+    <div class="logo">
+     
+      <h1> Myootive</h1>
+      <div class="rghtsdopt">
+      <a href="https://mfi0212.github.io/MFI/imlate" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M497.35-308.81q7.27-7.27 7.27-17.34 0-10.08-7.27-17.35-7.27-7.27-17.35-7.27-10.08 0-17.35 7.27-7.27 7.27-7.27 17.35 0 10.07 7.27 17.34t17.35 7.27q10.08 0 17.35-7.27ZM460-433.85h40v-240h-40v240Zm20 350.47L362.75-200H200v-162.75L83.38-480 200-597.25V-760h162.75L480-876.62 597.25-760H760v162.75L876.62-480 760-362.75V-200H597.25L480-83.38Zm0-56.62 100-100h140v-140l100-100-100-100v-140H580L480-820 380-720H240v140L140-480l100 100v140h140l100 100Zm0-340Z"/></svg></a>  
+     
+       <a onclick="alert('Wait few hours!\n\nTo provide the amount, we need to collect the amount first. It takes few hours to arrange the amount, so be patient during this time to get the amount.')"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m625.85-305.85 28.3-28.3L500-488.33V-680h-40v208.31l165.85 165.84ZM480.13-120q-74.67 0-140.41-28.34-65.73-28.34-114.36-76.92-48.63-48.58-76.99-114.26Q120-405.19 120-479.87q0-74.67 28.34-140.41 28.34-65.73 76.92-114.36 48.58-48.63 114.26-76.99Q405.19-840 479.87-840q74.67 0 140.41 28.34 65.73 28.34 114.36 76.92 48.63 48.58 76.99 114.26Q840-554.81 840-480.13q0 74.67-28.34 140.41-28.34 65.73-76.92 114.36-48.58 48.63-114.26 76.99Q554.81-120 480.13-120ZM480-480Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z"/></svg></a>
+      <a onclick="alert('Follow these steps..!\n\n1. Click on the icon on bottom left.\n2. Fill out the form.\n3. Wait a few hours.\n4. Check details like interest and etc... in bottom right icon.\n5. Get funds from your coordinator.\n6. Repay on time for future loans.\n\nNOTE : Are you late to return? Say 2 days before we will extend the date (or) Extra fees apply.\n')"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m306.15-60 117.39-577.85-118.16 48v129.08h-40v-155.69l177.39-75.23q14-6 26.42-7.39 12.43-1.38 24.12 1.31 11.69 2.69 21.11 9.77 9.43 7.08 16.66 18.77l27.69 44q33.69 55.08 79.73 87.08 46.04 32 101.5 36.61v40q-66.92-6.15-119.23-40.54-52.31-34.38-90.54-93.23l-36.54 183L580-321.54V-60h-40v-234.62L428.31-397.85 347.08-60h-40.93Zm185.81-711.96q-19.65-19.66-19.65-48.04t19.65-48.04q19.66-19.65 48.04-19.65t48.04 19.65q19.65 19.66 19.65 48.04t-19.65 48.04q-19.66 19.65-48.04 19.65t-48.04-19.65Z"/></svg></a>
+     </div>
+    </div>
+    
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Enter to search services..." autocomplete="off"/>
     </div>
   </div>
 
-  <script>
-    let currentTab = 0;
-    let isDarkMode = true;
-    const tabNames = ["Delay It Calculater", "Split Pay Calculater", "Buy Limit Calculater", "Pre-Saver", "Lendlink - Mid"];
-    const fees = [6.5, 7.2, 8.2, null, null];
-    const googleFormUrl = "https://forms.gle/YOUR_GOOGLE_FORM_LINK_HERE";
-    // document.addEventListener('contextmenu', e => e.preventDefault());
-    const tabContents = {
-      0: `
-        <div >
-          <div class="toplogos">
-            <h2 class="section-title">Delay It</h2>
-            <div style="    margin-top: -0.3rem;font-size: 10px;color: var(--text2);position: relative;left: 2px;text-align: center;">Return date extender</div>
-          </div>
-           <div class="how-it-works" style="margin-top:1rem;">
-            <p>About Us</p>
-            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;">
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Delay It by BS&MFI Solutions helps to extend your payment deadlines with transparent fees. Our service provides the flexibility you need to manage your returns.</li>
-            </ul>
-          </div>
-          <div class="how-it-works" style="margin-top:1rem;">
-            <p>How Delay It works?</p>
-            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
-">
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> You can extend the return date of the amount.</li>
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Transparent fees with no hidden costs.</li>
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Fast extend process.</li>
-            </ul>
-          </div>
-          
-          <div style="margin: 1.5rem;
-    font-size: 0.75rem;
-    color: var(--text2);
-    padding: 0px;
-    text-align: center;;">
-            Note : The Process Fee must be paid before applying for Delay It. If not, we can't provide the extension.
-          </div>
+  <div id="sectionsContainer"></div>
 
-          <div class="faq-container" style="margin-top:1rem;">
-            <h2 style="font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    text-align: center;
-    color: #00aaff;
-    margin-top: 0.5rem;">FAQ's</h2>
-            <div class="faq-item">
-              <h3>What is the minimum amount I can extend?</h3>
-              <p>The minimum amount is ₹500.</p>
-            </div>
-            <div class="faq-item">
-              <h3>How is the fee calculated?</h3>
-              <p>The fee is 4.5% of the amount multiplied by the number of days you choose.</p>
-            </div>
-            <div class="faq-item">
-              <h3>Can I apply for multiple extensions?</h3>
-              <p>Yes, you can apply multiple times. Each extension is treated separately with its own fee.</p>
-            </div>
-            <div class="faq-item">
-              <h3>If today is my return date, can I still extend?</h3>
-              <p>No, you must apply at least 24 hours before the original return date.</p>
-            </div>
-            <div class="faq-item">
-              <h3>How many days can I extend?</h3>
-              <p>Standard range is 15–30 days. Premium members can go up to 60 days.</p>
-            </div>
-            <div class="faq-item">
-              <h3>Will my credit score be affected?</h3>
-              <p>No. Delay It is a paid service and does not impact your credit report.</p>
-            </div>
-          </div>
-        </div>
-      `,
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <div class="bottomtakeoptions">
+      <a style="color: white; text-decoration: none;" onclick="alert('We are redirecting you to taking form.')" href="https://mfi0212.github.io/MFI/applydivert">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+          <path d="M540.85-518 399.31-659.54l28.54-27.54 113 113 227-226 27.53 27.54L540.85-518ZM280-213.85l302.62 88.31 239.53-74q-1.15-18.23-11.03-26.27-9.89-8.04-21.89-8.04H599.54q-25.46 0-46.08-2-20.61-2-42.23-9.53l-87.61-28.7 13.53-39.54 81 29.31q19.31 7.31 43.85 8.77 24.54 1.46 67.23 1.69 0-18.69-6.88-30.23-6.89-11.54-19.73-16.07l-230.16-84.47q-2.31-.76-4.23-1.15-1.92-.38-4.23-.38h-84v192.3ZM120-120v-326.15h243.23q5.46 0 11.31 1.11 5.84 1.12 11.08 3.12l231.15 84.69q21.46 8.15 36.96 29.31 15.5 21.15 15.5 54.07h120q36.15 0 55.39 22.62 19.23 22.61 19.23 57.38v24.62L584.62-83.08 280-171.85V-120H120Zm40-40h80v-246.15h-80V-160Z"/>
+        </svg>
+      </a>
+      <a href="https://blackswan19.github.io/golden/FM/starpre">
+        <svg style="width: 35px;
+    height: 35px;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+              <path d="m422-232 207-248H469l29-227-185 267h139l-30 208Zm-55.85 107.38 40-275.38h-170l299.23-431.54h18.47L514.62-520h200l-330 395.38h-18.47ZM471-470Z"/>
+            </svg>
+      </a>
+      <a href="https://blackswan19.github.io/golden/FM/accverify">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+          <path d="M247.85-260.62q51-36.69 108.23-58.03Q413.31-340 480-340t123.92 21.35q57.23 21.34 108.23 58.03 39.62-41 63.73-96.84Q800-413.31 800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 66.69 24.12 122.54 24.11 55.84 63.73 96.84Zm146.88-234.11Q360-529.46 360-580t34.73-85.27Q429.46-700 480-700t85.27 34.73Q600-630.54 600-580t-34.73 85.27Q530.54-460 480-460t-85.27-34.73ZM480-120q-75.31 0-141-28.04t-114.31-76.65Q176.08-273.31 148.04-339 120-404.69 120-480t28.04-141q28.04-65.69 76.65-114.31 48.62-48.61 114.31-76.65Q404.69-840 480-840t141 28.04q65.69 28.04 114.31 76.65 48.61 48.62 76.65 114.31Q840-555.31 840-480t-28.04 141q-28.04 65.69-76.65 114.31-48.62 48.61-114.31 76.65Q555.31-120 480-120Zm108.85-59.35q53.53-19.34 92.53-52.96-39-31.31-90.23-49.5Q539.92-300 480-300q-59.92 0-111.54 17.81-51.61 17.81-89.84 49.88 39 33.62 92.53 52.96Q424.69-160 480-160q55.31 0 108.85-19.35Zm-52-343.8Q560-546.31 560-580t-23.15-56.85Q513.69-660 480-660t-56.85 23.15Q400-613.69 400-580t23.15 56.85Q446.31-500 480-500t56.85-23.15ZM480-580Zm0 350Z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
 
-      1: `
-        <div >
-                    <div class="toplogos">
-          <h2 class="section-title">Split Half Pay</h2>
-          <div style="        font-size: 10px;
-    color: var(--text2);
-    position: relative;
-    left: 2px;text-align: center;
-">Flexible Repayment</div>
-          </div>
-          <div class="how-it-works" style="margin-top:1rem;">
-            <p>About Us</p>
-            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
-">
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> With Split half pay, you can pay half of the total amount and extend the remaining half with a flexibility while ensuring smooth repayment.</li>
-            </ul>
-          </div>
-          
+<script>
+ const siteGroups = [
+    {
+    heading: "Return Management",
+    sites: [
+      { name: "BS&MFI Solutions",      desc: "Return date extender",       url: "https://blackswan19.github.io/golden/FM/solution",      icon: "fab fa-youtube"       },
+]
+},
+{
+  heading: "New in & issue",
+  sites: [
+    { name: "Enterance Form", desc: "New members form",       url: "https://mfi0212.github.io/MFI/entrysheet", icon: "fas fa-code"         },
+    { name: "Helper",      desc: "I have issue form",           url: "https://mfi0212.github.io/MFI/abt.hlp",      icon: "fas fa-film"          },
+  ]
+},
+{
+  heading: "Offer & Earns",
+  sites: [
+    { name: "BsGames",       desc: "Exclusive rewards and benefits for BS&MFI members.",          url: "https://blackswan19.github.io/golden/Bs%20Games/bsgames",       icon: "fab fa-reddit"        },
+    { name: "Stars",       desc: "Interest reducer.",          url: "https://blackswan19.github.io/golden/FM/starspage",       icon: "fab fa-reddit"        },
+  ]
+},
+  
+  {
+    heading: "Services",
+    sites: [
+      { name: "All Services", desc: "All service from BS&MFI",       url: "https://blackswan19.github.io/BS/bslends", icon: "fas fa-code"         },
+      { name: "BsLends", desc: "A service from BS&MFI",       url: "https://mfi0212.github.io/MFI/rate", icon: "fas fa-code"         },
+      { name: "Myootive", desc: "A service from BS&MFI",       url: "https://blackswan19.github.io/golden/FM/themain", icon: "fas fa-code"         },
+    ]
+  },
+   {
+    heading: "Collaboration",
+    sites: [
+      { name: "BsPsgenerater", desc: "Password generator",       url: "https://blackswan19.github.io/Educate/password", icon: "fas fa-code"         },
+      { name: "BsReminder", desc: "Date wise notes",       url: "https://blackswan19.github.io/bscrop/reminder", icon: "fas fa-code"         },
+      { name: "BsBookpad", desc: "Download the notes",       url: "https://blackswan19.github.io/Educate/bookpad", icon: "fas fa-code"         },
+      { name: "BsAdstoper", desc: "Ad blocker",       url: "https://blackswan19.github.io/Educate/stoper", icon: "fas fa-code"         },
+    ]
+  }
+];
 
-           <div class="how-it-works" style="margin-top:1rem;">
-            <p>How Half Split Pay works?</p>
-            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
-">
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Paying 50% of the amount now and split the remaining 50% in instalments.</li>
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Fast approval and simple process.</li>
-            </ul>
-          </div>
-          
-          <div style="margin: 1.5rem;
-    font-size: 0.75rem;
-    color: var(--text2);
-    padding: 0px;
-    text-align: center;">
-            Note: The split fee must be paid upfront along with the first 50%. This allows you to split the remaining amount.
-          </div>
-
-          <div class="faq-container" style="margin-top:1rem;">
-            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">FAQ's</h2>
-            <div class="faq-item">
-              <h3>What is the minimum amount I can split?</h3>
-              <p>The minimum amount is 2000₹.</p>
-            </div>
-            <div class="faq-item">
-              <h3>How is the 5.2% fee divided?</h3>
-              <p>The fee is shared equally among all participants.</p>
-            </div>
-            <div class="faq-item">
-              <h3>Can I choose different number of splits?</h3>
-              <p>Yes — you can select between 2 to 8 splits.</p>
-            </div>
-          </div>
-        </div>
-      `,
-
-      2: `
-        <div >
-                    <div class="toplogos">
-          <h2 class="section-title">Buy Limit</h2>
-          <div style="        font-size: 10px;
-    color: var(--text2);
-    position: relative;
-    left: 2px;text-align: center;
-">Limit extender</div>
-          </div>
-          <div class="how-it-works" style="margin-top:1rem;">
-            <p>About Us</p>
-            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
-">
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Buy Limit by BS&MFI Solutions helps to borrow more than the borrow limit with transparent fees. Our service let you borrow when you reaches the limit.</li>
-            </ul>
-          </div>
-
-          <div class="how-it-works" style="margin-top:1rem;">
-            <p>How Buy Limit works?</p>
-            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
-">
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> You can borrow more than your account borrow amount limit.</li>
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Transparent fees with no hidden costs.</li>
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Fast approv process.</li>
-            </ul>
-          </div>
-          
-          <div style="margin: 1.5rem;
-    font-size: 0.75rem;
-    color: var(--text2);
-    padding: 0px;
-    text-align: center;">
-           Note: The Buy Limit fee must be paid upfront along with the first 50%. This allows you to Buy Limit and borrow the amount.
-          </div>
-
-          <div class="faq-container" style="margin-top:1rem;">
-            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">FAQ's</h2>
-            <div class="faq-item">
-              <h3>How many times i can Buy Limit?</h3>
-              <p>Its based on the amount you borrowing.</p>
-            </div>
-          </div>
-        </div>
-      `,
-
-      3: `
-        <div >          <div class="toplogos">
-          <h2 class="section-title">Pre-Saver</h2>
-          <div style="        font-size: 10px;
-    color: var(--text2);
-    position: relative;
-    left: 2px;text-align: center;
-">Save on time</div>
-          </div>
-              <div class="how-it-works" style="margin-top:1rem;">
-            <p>About Us</p>
-            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
-">
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> By using Pre-saver you can save the particular upcoming offer (or) amounts on a perticular date.</li>
-            </ul>
-          </div>
-
-
-          <div class="how-it-works" style="margin-top:1rem;">
-            <p>How Pre-Saver works?</p>
-            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
-">
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Pre saves the offers and amounts on the date you want.</li>
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span> Fast approval process</li>
-            </ul>
-          </div>
-          
-          <div style="margin: 1.5rem;
-    font-size: 0.75rem;
-    color: var(--text2);
-    padding: 0px;
-    text-align: center;">
-            Note: The fee will be based on number of slots available.
-          </div>
-
-          <div class="faq-container" style="margin-top:1rem;">
-            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">For VIP members</h2>
-            <div class="faq-item">
-              <h3>1. Private Offer</h3>
-              <p>VIPs get private offer.</p>
-            </div>
-            <div class="faq-item">
-              <h3>2. Customize Offer</h3>
-              <p>VIPs can custom their offer based on their needs.</p>
-            </div>
-            <div class="faq-item">
-              <h3>3. RLO(Rare Limited Offer)</h3>
-              <p>VIPs can get very rare limited offers for every 2-3 months.</p>
-            </div>
-          </div>
-        </div>
-
-          <div class="faq-container" style="margin-top:1rem;">
-            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">FAQ's</h2>
-            <div class="faq-item">
-              <h3>Can I pre-save when ever i want?</h3>
-              <p>Yes, if you are VIP then you can use when ever you want.</p>
-            </div>
-            <div class="faq-item">
-              <h3>Where can i find the fee for pre-saver?</h3>
-              <p>The fee for pre-saver is based on the offer or amount you applying(Ask coordinator).</p>
-            </div>
-            <div class="faq-item">
-              <h3>Can I pre-save when ever i want? But i'm not VIP..!</h3>
-              <p>No, but you can apply when ever their will be offer avaiable soon.</p>
-            </div>
-            <div class="faq-item">
-              <h3>Is there any withdrawal fee?</h3>
-              <p>No fee if you withdraw after 30 days. Early withdrawal has 1% fee.</p>
-            </div>
-            <div class="faq-item">
-              <h3>Can I set different rules for different accounts?</h3>
-              <p>Yes, you can create multiple Pre-Saver goals (Travel, Emergency, etc.).</p>
-            </div>
-            <div class="faq-item">
-              <h3>How secure is my saved money?</h3>
-              <p>100% secure with bank-level encryption and insurance up to ₹5 lakh.</p>
-            </div>
-          </div>
-        </div>
-      `,
-
-      4: `
-        <div >          <div class="toplogos">
-          <h2 class="section-title">Lendlink - Mid</h2>
-          <div style="        font-size: 10px;
-    color: var(--text2);
-    position: relative;
-    left: 2px;text-align: center;
-">Turn your money into income</div>
-          </div>
-          <div class="how-it-works" style="margin-top:1rem;">
-            <p>About us</p>
-            <ul style="display:flex; flex-direction:column; gap:1rem; font-size:0.875rem;    opacity: 50%;
-">
-              <li style="display:flex; gap:0.75rem;"><span style="color:white; font-weight:700;">-</span>Lendlink - Mid from Lendlink hepls you to turn your money into income that mean you can lend your money and earn interest for the amount you lended.</li>
-            </ul>
-          </div>
-          
-          <div style="margin: 1.5rem;
-    font-size: 0.75rem;
-    color: var(--text2);
-    padding: 0px;
-    text-align: center;">
-            Note: MID has 2 plans, Before lending you have to select 1 plan to continue the lending process.
-          </div>
-
-          <div class="faq-container" style="margin-top:1rem;">
-            <h2 style="font-size:1.125rem; font-weight:600; margin-bottom:1.5rem;">FAQ's</h2>
-            <div class="faq-item">
-              <h3>How much money i can lend?</h3>
-              <p>Their is no limit on the lending limit, It will be based on the borrower.</p>
-            </div>
-          </div>
-        </div>
-      `
-    };
-
-    function switchTab(tabIndex) {
-      currentTab = tabIndex;
-      for (let i = 0; i < 5; i++) {
-        const tabEl = document.getElementById(`tab-${i}`);
-        if (tabEl) tabEl.classList.toggle('tab-active', i === tabIndex);
-      }
-      document.getElementById('main-content').innerHTML = tabContents[tabIndex];
-    }
-
-    function showPopup() {
-    const modal = document.getElementById('modal');
-    const titleEl = document.getElementById('modal-title');
-    const contentEl = document.getElementById('modal-content');
-    
-    modal.classList.add('show');
-    const rate = fees[currentTab];
-
-    const formLinks = {
-        0: "https://forms.gle/9URS1LAqd3iB8qDUA",
-        1: "https://forms.gle/ujs36QQpBpMPBRPu6",
-        2: "https://forms.gle/VqJ1Wqtj8HxXa84e9",
-    };
-
-    if (rate !== null) {
-        titleEl.textContent = tabNames[currentTab];
-        const applyFormUrl = formLinks[currentTab] || "https://forms.gle/9URS1LAqd3iB8qDUA"; 
-        contentEl.innerHTML = `
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <div>
-              <div class="amount-box">
-                <span style="font-size: 30px;
-    color: #888;"></span>
-                <input id="amount-input" type="number" value="1000"
-                       style="flex: 1;
-    background: transparent;
-    border: none;text-align: center;
-    font-size: 25px;
-    font-weight: 500;
-    outline: none;
-    color: var(--text);">
-              </div>
-            </div>
-           
-            <div class="calc-result" style="display:flex; flex-direction:column; gap:1.25rem; font-size:0.875rem;">
-              <div style="display:none; justify-content:space-between;">
-                <span class="text-secondary">Base amount</span>
-                <span id="base-amount" style="font-weight:500;">$1,000.00</span>
-              </div>
-              <div style="display:flex; justify-content:space-between;">
-                <span class="text-secondary">${tabNames[currentTab]} fee (${rate}%)</span>
-                <span id="fee-amount" style="font-weight: 600; color: #ffffff; font-size: 16px;">$45.00</span>
-              </div>
-              <div style="height:1px; background:#333; display: none;"></div>
-              <div style="display:none; justify-content:space-between; font-size:1.25rem; font-weight:600;">
-                <span>Total</span>
-                <span id="total-amount" class="accent">1,045.00</span>
-              </div>
-            </div>
-            
-            <button onclick="calculateFee()" class="btn-primary">Calculate</button>
-            
-            <!-- Dynamic Apply Now button with correct form link -->
-            <button class="btn-secondary">
-              <a href="${applyFormUrl}">
-                Apply Now
-              </a>
-            </button>
-            <footer>© BS&MFI Solutions. All Rights Reserved.</footer>
-          </div>
-          
-        `;
-        calculateFee();
-    } 
-    else if (currentTab === 3) {
-        titleEl.textContent = "Pre-Saver";
-        contentEl.innerHTML = `
-          <div style="text-align:center;">
-            <p style="color:var(--text2);    margin-bottom: 20px;line-height:1.5;">
-              By using Pre-saver you can save the particular upcoming offer (or) amounts on a perticular date..
-            </p>
-            <a href="https://forms.gle/rtcayowFYw48u94PA">
-              <button class="btn-primary">Pre-Save Now</button>
-            </a>
-          </div>
-        `;
-    } 
-    else {
-        titleEl.textContent = "Lendlink - Mid";
-        contentEl.innerHTML = `
-          <div style="text-align:center;">
-            <i class="fa-solid fa-star" style="font-size:4rem; color:#00aaff; margin-bottom:1.5rem;"></i>
-            <h3 style="font-size: 22px;
-    font-weight: 800;
-    margin-bottom: 0.75rem;">Welcome to Lendlink - Mid</h3>
-            <p style="color:var(--text2); max-width:240px; margin:0 auto;">Turn your money into income.</p>
-            <a href="https://mfi0212.github.io/swan/lndlnk-mid">
-              <button class="btn-primary" style="margin-top:3rem;">Explore Now</button>
-            </a>
-          </div>
-        `;
-    }
+// Helper Functions
+function getColor(name) {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const hue = Math.abs(hash) % 360;
+  return `hsl(${hue}, 75%, 58%)`;
 }
 
-    function submitApplication() {
-      hideModal();
-      window.open(googleFormUrl, '_blank');
-    }
+function getInitial(name) {
+  return name.trim()[0]?.toUpperCase() || "?";
+}
 
-    function calculateFee() {
-      const input = document.getElementById('amount-input');
-      if (!input) return;
-      let amount = parseFloat(input.value) || 1000;
-      const rate = fees[currentTab];
-      const fee = (amount * rate / 100);
-      const total = amount + fee;
+// Create Site Item (without pin button)
+function createSiteItem(site) {
+  const a = document.createElement("a");
+  a.href = site.url || "#";
+  a.target = "_parent";
+  a.className = "site-item";
 
-      document.getElementById('base-amount').textContent = '$' + amount.toFixed(2);
-      document.getElementById('fee-amount').textContent = '$' + fee.toFixed(2);
-      document.getElementById('total-amount').textContent = '$' + total.toFixed(2);
-    }
+  const bg = getColor(site.name);
+  const initial = getInitial(site.name);
 
-    function hideModal() {
-      const modal = document.getElementById('modal');
-      modal.classList.remove('show');
-    }
+  a.innerHTML = `
+    <div class="letter-icon" style="background: ${bg};">${initial}</div>
+    <div class="site-info">
+      <h3>${site.name}</h3>
+      <p style="font-size:13px; color:#aaa;">${site.desc}</p>
+    </div>
+  `;
 
-    function toggleTheme() {
-      isDarkMode = !isDarkMode;
-      if (isDarkMode) {
-        document.body.classList.remove('light');
-        document.getElementById('theme-icon').classList.replace('fa-sun', 'fa-moon');
-      } else {
-        document.body.classList.add('light');
-        document.getElementById('theme-icon').classList.replace('fa-moon', 'fa-sun');
-      }
-    }
+  return a;
+}
 
-    window.onload = () => {
-      switchTab(0);
-      console.log('%c✅ BS & MFI — Full pure CSS version (NO Tailwind CDN)', 'color:#0000ff; font-weight:600');
-    };    function goBack() {
-      if (window.history.length > 1) {
-        window.history.back();
-      } else {
-        alert("✅ Back button clicked!\n\n(In a real app this would take you to previous screen or home.)");
-      }
-    }
-  </script>
+// Render All Sections
+function renderAll() {
+  const container = document.getElementById("sectionsContainer");
+  container.innerHTML = "";
+
+  siteGroups.forEach(group => {
+    const section = document.createElement("div");
+    section.className = "section";
+
+    const h2 = document.createElement("h2");
+    h2.textContent = group.heading;
+    section.appendChild(h2);
+
+    const list = document.createElement("div");
+    list.className = "site-list";
+
+    group.sites.forEach(site => {
+      list.appendChild(createSiteItem(site));
+    });
+
+    section.appendChild(list);
+    container.appendChild(section);
+  });
+}
+
+// Search Function
+function renderFiltered(query = "") {
+  const q = query.toLowerCase().trim();
+  if (!q) {
+    renderAll();
+    return;
+  }
+
+  const container = document.getElementById("sectionsContainer");
+  container.innerHTML = "";
+
+  siteGroups.forEach(group => {
+    const matches = group.sites.filter(s =>
+      s.name.toLowerCase().includes(q) || 
+      (s.desc && s.desc.toLowerCase().includes(q))
+    );
+
+    if (!matches.length) return;
+
+    const section = document.createElement("div");
+    section.className = "section";
+    section.innerHTML = `<h2>${group.heading}</h2>`;
+
+    const list = document.createElement("div");
+    list.className = "site-list";
+    matches.forEach(site => list.appendChild(createSiteItem(site)));
+    section.appendChild(list);
+    container.appendChild(section);
+  });
+}
+
+// Initialize
+renderAll();
+
+document.getElementById("searchInput").addEventListener("input", e => {
+  renderFiltered(e.target.value);
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const loadingOverlay = document.getElementById("loadingOverlay");
+    const startBtn = document.getElementById("startAudioBtn");
+    const audioControls = document.getElementById("audioControls");
+    const progressFill = document.getElementById("audioProgressFill");
+    const audioStatus = document.getElementById("audioStatus");
+    const audio = document.getElementById("introAudio");
+    const muteToggle = document.getElementById("muteToggle");
+
+    let progressInterval = null;
+
+    // Mute Toggle
+    muteToggle?.addEventListener("click", () => {
+        audio.muted = !audio.muted;
+        muteToggle.innerHTML = audio.muted 
+            ? '<i class="fas fa-volume-xmark"></i>' 
+            : '<i class="fas fa-volume-high"></i>';
+    });
+
+    // Start Button
+    startBtn?.addEventListener("click", async () => {
+        startBtn.style.display = "none";
+        audioControls.style.display = "flex";
+
+        try {
+            // Ensure audio is loaded
+            if (audio.readyState < 1) {
+                await new Promise(resolve => audio.addEventListener("loadedmetadata", resolve, { once: true }));
+            }
+
+            const duration = audio.duration || 8;
+            const stopTime = Math.min(Math.random() * 3 + 5, duration); // 5 to 8 seconds
+
+            progressFill.style.width = "0%";
+            audioStatus.textContent = "0% • Connecting...";
+
+            await audio.play();
+
+            let currentPercent = 0;
+
+            progressInterval = setInterval(() => {
+                currentPercent = Math.min((audio.currentTime / stopTime) * 100, 100);
+
+                progressFill.style.width = currentPercent + "%";
+                audioStatus.textContent = Math.round(currentPercent) + "% • Connecting...";
+
+                if (audio.currentTime >= stopTime || currentPercent >= 100) {
+                    clearInterval(progressInterval);
+                    progressFill.style.width = "100%";
+                    audioStatus.textContent = "100% • Connected!";
+                    audio.pause();
+
+                    // Hide loading screen smoothly
+                    loadingOverlay.style.opacity = "0";
+                    setTimeout(() => {
+                        loadingOverlay.style.display = "none";
+                    }, 600);
+                }
+            }, 40);
+
+        } catch (e) {
+            console.error(e);
+            audioStatus.textContent = "❌ Audio playback blocked";
+            // Still hide after few seconds if audio fails
+            setTimeout(() => {
+                loadingOverlay.style.opacity = "0";
+                setTimeout(() => loadingOverlay.style.display = "none", 600);
+            }, 2000);
+        }
+    });
+});
+</script>
 </body>
 </html>
