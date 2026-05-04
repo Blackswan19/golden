@@ -1,425 +1,565 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BS&MFI | Turbo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BS&MFI | Myootive</title>
   <link rel="icon" href="mfi.logo.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Balthazar&family=Della+Respira&family=Hahmlet:wght@100..900&family=Niconne&family=Stalemate&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 * {
-	-webkit-tap-highlight-color: transparent;
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	font-family: 'Poppins', sans-serif;
-	scrollbar-width: none;letter-spacing: 0.5px;
-}
-body {
-	--c-glass: #bbbbbc;
-	--c-light: #fff;
-	--c-dark: #000;
-	--c-content: #224;
-	--c-action: #0052f5;
-	--c-bg: #E8E8E9;
-	--glass-reflex-dark: 1;
-	--glass-reflex-light: 1;
-	--saturation: 150%;
-}
+	font-family: 'Poppins', sans-serif;}
+    * { margin:0; padding:0; box-sizing:border-box;scrollbar-width: none;letter-spacing: 0.5px;}
 
-body:has(input[value="dark"]:checked) {
-	--c-glass: #bbbbbc;
-	--c-light: #fff;
-	--c-dark: #000;
-	--c-content: #e1e1e1;
-	--c-action: #03d5ff;
-	--c-bg: #1b1b1d;
-}
+    body {
+      background: #151e27;
+      color: #ffffff;
+      min-height: 100vh;
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #1f2a44;
-            margin: 0;
-            padding: 32px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            letter-spacing: 0.4px;
-        }.blob {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 63%;z-index: -10;
-    animation: float 18s infinite 
-ease-in-out;
-}.blob1 {
-    width: 300px;
-    height: 300px;
-    top: -10%;
-    right: 0%;
-    background: #0046ff;
-    z-index: 1000000000;
+    .header {
+      position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;padding: 0 5px;
+    max-width: 600px;
+    z-index: 100;background: #151e27;
+    border-bottom: solid 1px #222e3b;
+    }
+h3 {
+    font-weight: 400;font-size: 16px;
 }
-.blob2 {
-    width: 300px;
-    height: 300px;
-    background: #00a6ff;
-    bottom: -10%;
-    left: 0%;
-}
-        * {
-            -webkit-tap-highlight-color: transparent;
-        }
-        body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-        .header {
-            text-align: center;
-            margin: 80px 40px 40px 40px;
-        }
-        .header h1 {
-           font-size: 28px;
+    .logo {
+      z-index: 100;
+    font-size: 13px;
+    display: flex;
+    max-width: 650px;
+    position: sticky;
+    top: 0px;
+    padding: 40px 10px 0px 10px;
+    justify-content: space-between;
+    }
+
+    .logo h1 {
+      position: relative;
+    left: 0px;
     font-weight: 600;
-    color: #0021ff;
-    margin: 0;display: flex;
+    font-size: 22px;
+    }
+
+    .logo h1 p {
+      position: fixed;
+      left: 1px;
+      bottom: -6px;
+      font-size: 10px;
+      font-weight: 300;
+    }
+
+    .mficolblogo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #0021ff, #00d0ff);
+      padding: 4px;
+    }
+
+    .search-container {
+      width: 100%;
+      max-width: 600px;
+      padding: 8px;
+      z-index: 90;
+    background: #151e27;
+    }
+
+    #searchInput {
+width: 100%;
+    padding: 7px 15px;
+    font-size: 17px;
+    text-align: start;
+    border: none;
+    border-radius: 102px;
+    background: #22303f;
+    color: white;
+    }
+
+    #searchInput:focus {
+      outline: none;
+      background: rgba(255,255,255,0.15);
+    }
+
+    #sectionsContainer {
+      padding-top: 130px;
+      max-width: 600px;
+      margin: 0 auto;
+      padding-bottom: 60px;
+    }
+
+    .section h2 {
+         font-size: 15px;
+    font-weight: 600;
+    color: #aaaaaa;
+    display: none;
+    }
+
+    .site-list {
+    overflow: hidden;
+    }
+    .site-item {
+      display: flex;
+    align-items: center;
+    padding: 14px 15px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+    opacity: 70%;
+    }
+.site-item:hover{
+  background: #283543;
+}
+    .site-item:active {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .letter-icon {
+      width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    margin-right: 12px;
+    flex-shrink: 0;
+    font-size: 28px;
+    }
+.rghtsdopt {
+    display: flex;
+    gap: 15px;
+}
+    .bottom-nav {
+          position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: space-around;
+    z-index: 200;
+
+    }
+
+    .bottomtakeoptions {
+      text-align: center;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: #151e27;
+      font-size: 14px;
+      gap: 100px;
+      backdrop-filter: blur(10px);
+      padding: 6px 15px 20px 15px;
+      border-top: solid 1px #222e3b;
+    }
+
+    svg {
+      width: 30px;
+      height: 30px;
+      fill: #0a95ff;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #aaa;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .nav-item:hover, .nav-item.active {
+      color: #00d0ff;
+    }
+
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: #00003b;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: "Hahmlet", serif;
-        }
-        .header p {
-                font-size: 16px;
-    color: #000000;
-    margin-top: 0px;
-    max-width: 600px;
-        font-weight: 400;
-        }
-        .container {
-            max-width: 1200px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 16px;
-        }
-        .card {
-               background: transparent;
-    border-radius: 25px;
-    padding: 10px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border: none;
-    max-width: 600px;
-    width: 100%;
-    position: relative;
-    z-index: 100000;
-    border: solid 1.5px #0000001a;
-        }
-    
-        .card img {
-           width: 50px;
-    height: 50px;
-    margin: 0px auto 12px;
-    display: block;
-    border-radius: 15px;
-    background: transparent;
-    padding: 6px;
-    border: solid 1.5px #0000004f;
-        }
-        .card h2 {
-            font-size: 22px;
-            font-weight: 600;
-            color: #0048ff;
-            margin: 0 0 16px;
-            text-align: center;
-            font-family: "Hahmlet", serif;
-        }
-        .card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .card ul li {
-           font-size: 14px;
-    color: #00000094;
-    margin: 8px 0;
-    display: flex;
-    align-items: flex-start;
-    line-height: 1.4;
-    font-weight: 500;
-        }
-        .card ul li::before {
-            content: "•";
-            color: #00aaff;
-            font-size: 16px;
-            margin-right: 8px;
-            line-height: 1.4;
-        }
-        .highlight {
-               font-weight: 600;
-    color: #000000;
-    margin: 0px 5px;
-    display: contents;
-    font-family: "Hahmlet", serif;
-
-        }
-        .badge {
-    display: inline-block;
-    background-color: #0048ff30;
-    color: #003eff;
-    font-size: 15px;
-    font-weight: 500;
-    padding: 4px 6px;
-    border-radius: 10px;
-        }
-        .offer-badge {
-            background-color: #28a745;
-            color: white;
-            font-size: 11px;
-            padding: 3px 8px;
-            border-radius: 8px;
-            margin-right: 5px;
-            display: inline-block;
-        }
-        .discount-text {
-            font-size: 11px;
-            font-weight: bold;
-            color: #0048ff;
-            display: inline-block;
-        }
-        .end-date {
-            position: absolute;
-    top: 23px;
-    right: 10px;
-    font-size: 10px;
-    color: black;
-    background: #ff000036;
-    padding: 3px 10px;
-    border-radius: 6px;
-        }
-        button {
-         padding: 10px;
-    width: 100%;
-    font-size: 15px;
-    border: none;
-    border-radius: 15px;
-    margin: 10px auto 0px;
-    border: none;
-    cursor: pointer;
-    letter-spacing: 0.6px;
-    font-weight: 100;
-        }
-        select, .price-display {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-        .price-display {
-            background: #f0f8ff;
-            text-align: center;
-            font-weight: bold;
-            color: #0048ff;
-        }
-        .strikethrough {
-            text-decoration: line-through;
-            color: #67728a;
-            margin-right: 8px;
-        }
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            .container {
-                grid-template-columns: 1fr;
-                width: 100%;
-            }
-            .header h1 {
-                font-size: 24px;
-            }
-            .header p {
-                font-size: 14px;
-            }
-            .end-date {
-                font-size: 9px;
-                padding: 3px 6px;
-            }
-        }
-        button.theme-btn {
-width: 100%;
-    font-size: 16px;
-    color: blue;
-    display: flex;
-    border-radius: 0;
-    position: fixed;
-    top: -10px;
-    padding: 30px 5px 5px 5px;
-    z-index: 100000000;
-    background: white;
-    border-bottom: solid 1px #00000040;
+    z-index: 1000000000000;
+    opacity: 1;
+    transition: opacity 0.6s ease;
 }
-  
-    </style>
+
+.loading-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Optional: Better loading logo */
+.loading-logo {
+    width: 180px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+.servicenmae{
+    font-size: 16px;
+    color: #ffffff8f;
+    margin: 170px 0 35px;
+    text-align: center;
+    max-width: 90%;
+    font-weight: 500;
+    letter-spacing: 0;white-space: nowrap;
+    display: flex;
+    gap: 5px;
+} button#startAudioBtn {
+    background: white;
+    border: none;
+    padding: 10px;
+    border-radius: 100px;
+    padding: 8px 15px;
+}
+.audio-controls {
+    margin: 20px 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}.audio-progress-bar {
+    height: 2px;
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 0px;
+    overflow: hidden;
+}.audio-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: white;
+    border-radius: 6px;
+    transition: width 0.45s ease-out;
+    box-shadow: 0 0 16px #00aaff99;
+}
+.audio-progress-container {
+    line-height: 43px;
+    text-align: center;width: 150%;
+}
+div#audioStatus {
+    font-size: 10px;
+    color: #ffffff87;margin-bottom: -30px;
+}button#muteToggle {
+   border-radius: 100px;
+    border: none;
+    padding: 3px 16px;
+    margin: 20px 0 0 0;
+} .loading-logo {
+            width: 300px;
+            height: auto;
+        }
+    .nav-item i { font-size: 22px; margin-bottom: 3px; }
+  </style>
 </head>
 <body>
-    <button onclick="goBack()" class="theme-btn">
-          <svg style="    fill: blue;width: 40px;height: 40px;margin: -8px;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-267.69 347.69-480 560-692.31 588.31-664l-184 184 184 184L560-267.69Z"/></svg> Go back
-      </button>
-     <div class="blob blob1"></div>
-  <div class="blob blob2"></div>
-    <div class="header">
-        <h1><svg style="opacity: 100%;
-    width: 35px;
-    height: 35px;
-    fill: #000000;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m435.04-243.96 188.54-237.77H472.85l26.61-225.42-178.54 276.5h147.23l-33.11 186.69ZM384-142.35l48-259.38H271.23L532.5-814.19h7.5l-35.23 303.54h174.65L392-142.35h-8Zm88.5-333.15Z"/></svg>BS&MFI Turbo</h1>
-        <p>Power by BS&MFI</p>
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="servicename" style="position: fixed;
+    top: 10px;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    background: #ffffff24;
+    padding:0px 15px;
+    border-radius: 100px;
+    color: #ffffff;
+    font-weight: 300;">
+            Myootive Service
+        </div>
+        <img src="loadinglogo.png" alt="Loading Doughnut" class="loading-logo">
+        
+        <div class="servicenmae">
+            Welcome to Myootive
+        </div>
+
+        <button class="start-btn" id="startAudioBtn">Connect Now</button>
+
+        <div class="audio-controls" id="audioControls">
+            <div class="audio-progress-container">
+                <div class="audio-progress-bar">
+                    <div id="audioProgressFill" class="audio-progress-fill"></div>
+                </div>
+                <div class="audio-status" id="audioStatus">Waiting for you to start...</div>
+            </div>
+        </div>
+ <button class="mute-btn" id="muteToggle" title="Mute / Unmute">
+                <i class="fas fa-volume-high"></i>
+            </button>
+        <audio id="introAudio" preload="auto">
+            <source src="mfi_intro.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+  <div class="header">
+    <div class="logo">
+     
+      <h1> Myootive</h1>
+      <div class="rghtsdopt">
+      <a href="https://mfi0212.github.io/MFI/imlate" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M497.35-308.81q7.27-7.27 7.27-17.34 0-10.08-7.27-17.35-7.27-7.27-17.35-7.27-10.08 0-17.35 7.27-7.27 7.27-7.27 17.35 0 10.07 7.27 17.34t17.35 7.27q10.08 0 17.35-7.27ZM460-433.85h40v-240h-40v240Zm20 350.47L362.75-200H200v-162.75L83.38-480 200-597.25V-760h162.75L480-876.62 597.25-760H760v162.75L876.62-480 760-362.75V-200H597.25L480-83.38Zm0-56.62 100-100h140v-140l100-100-100-100v-140H580L480-820 380-720H240v140L140-480l100 100v140h140l100 100Zm0-340Z"/></svg></a>  
+     
+       <a onclick="alert('Wait few hours!\n\nTo provide the amount, we need to collect the amount first. It takes few hours to arrange the amount, so be patient during this time to get the amount.')"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m625.85-305.85 28.3-28.3L500-488.33V-680h-40v208.31l165.85 165.84ZM480.13-120q-74.67 0-140.41-28.34-65.73-28.34-114.36-76.92-48.63-48.58-76.99-114.26Q120-405.19 120-479.87q0-74.67 28.34-140.41 28.34-65.73 76.92-114.36 48.58-48.63 114.26-76.99Q405.19-840 479.87-840q74.67 0 140.41 28.34 65.73 28.34 114.36 76.92 48.63 48.58 76.99 114.26Q840-554.81 840-480.13q0 74.67-28.34 140.41-28.34 65.73-76.92 114.36-48.58 48.63-114.26 76.99Q554.81-120 480.13-120ZM480-480Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z"/></svg></a>
+      <a onclick="alert('Follow these steps..!\n\n1. Click on the icon on bottom left.\n2. Fill out the form.\n3. Wait a few hours.\n4. Check details like interest and etc... in bottom right icon.\n5. Get funds from your coordinator.\n6. Repay on time for future loans.\n\nNOTE : Are you late to return? Say 2 days before we will extend the date (or) Extra fees apply.\n')"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m306.15-60 117.39-577.85-118.16 48v129.08h-40v-155.69l177.39-75.23q14-6 26.42-7.39 12.43-1.38 24.12 1.31 11.69 2.69 21.11 9.77 9.43 7.08 16.66 18.77l27.69 44q33.69 55.08 79.73 87.08 46.04 32 101.5 36.61v40q-66.92-6.15-119.23-40.54-52.31-34.38-90.54-93.23l-36.54 183L580-321.54V-60h-40v-234.62L428.31-397.85 347.08-60h-40.93Zm185.81-711.96q-19.65-19.66-19.65-48.04t19.65-48.04q19.66-19.65 48.04-19.65t48.04 19.65q19.65 19.66 19.65 48.04t-19.65 48.04q-19.66 19.65-48.04 19.65t-48.04-19.65Z"/></svg></a>
+     </div>
     </div>
     
-    <div class="container">
-        <div class="card"> 
-            <div class="badge">Norm</div>
-            
-            <!-- <div id="endDateDisplay" class="end-date"></div> -->
-            
-            <img src="https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif" alt="Normal Plan Icon" aria-label="Normal Plan Icon">
-            <h2 style="display: flex; justify-content: center; align-items: baseline; gap: 10px;">
-                Normal <p style="color: green; font-size: 13px; font-weight: 500;">₹0.00/mon</p>
-            </h2>
-            <ul>
-                <li>Borrow upto : <span class="highlight">20,000</span></li>
-                <li>Borrow limit : <span class="highlight">15 days</span></li>
-                <li>Delay it available: <span class="highlight">Yes</span></li>
-                <li>Delay it upto: <span class="highlight">15 days</span></li>
-                <li>Split half pay available: <span class="highlight">No</span></li>
-                <li>Pre-saver available: <span class="highlight">No</span></li>
-                <li>Buy Limit available: <span class="highlight">No</span></li>
-            </ul>
-            <a><button style="background: #0000003b; color: white;cursor: not-allowed;">Current Plan</button></a>
-        
-        </div>
-        <div class="card"> 
-            <div class="badge">Mini</div>
-            
-            <!-- <div id="endDateDisplay" class="end-date"></div> -->
-            <img src="https://files.donationalerts.com/uploads/images/2/tb_5000.gif" alt="Normal Plan Icon" aria-label="Normal Plan Icon">
-            <h2 style="display: flex; justify-content: center; align-items: baseline; gap: 10px;">
-                Premium <p style="color: green; font-size: 13px; font-weight: 500;">₹420.00/mon</p>
-            </h2>
-            <ul>
-                <li>Borrow upto : <span class="highlight">40,000</span></li>
-                <li>Borrow limit : <span class="highlight">30 days</span></li>
-                <li>Delay it available: <span class="highlight">Yes</span></li>
-                <li>Delay it upto: <span class="highlight">30 days</span></li>
-                <li>Split half pay available: <span class="highlight">Yes</span></li>
-                <li>Pre-saver available: <span class="highlight">No</span></li>
-                <li>Buy Limit available: <span class="highlight">No</span></li>
-            </ul>
-            <!-- <div id="offerStatus"></div> -->
-            <!-- <select id="monthsSelect">
-                <option value="1">1 Month</option>
-                <option value="3">3 Months</option>
-                <option value="5">5 Months</option>
-                <option value="8">8 Months</option>
-            </select>
-            <div id="priceDisplay" class="price-display">Select duration to see price</div> -->
-            <a href="https://forms.gle/rQKT3RizYfpT9FjM7"><button style="background-image: linear-gradient(45deg, #5b5bff, #00c2ff); color: white;">Take Premium</button></a>
-        
-        </div>
-        <div class="card"> 
-            <div class="badge">Tele</div>
-            
-            <!-- <div id="endDateDisplay" class="end-date"></div> -->
-            
-            <img src="https://media.tenor.com/cxAQToMOeykAAAAj/twitch-rpx-syria.gif" alt="Normal Plan Icon" aria-label="Normal Plan Icon">
-            <h2 style="display: flex; justify-content: center; align-items: baseline; gap: 10px;">
-                Premium + <p style="color: green; font-size: 13px; font-weight: 500;">₹960.00/mon</p>
-            </h2>
-            <ul>
-                <li>Borrow upto : <span class="highlight">80,000</span></li>
-                <li>Borrow limit : <span class="highlight">60 days</span></li>
-                <li>Delay it available: <span class="highlight">Yes</span></li>
-                <li>Delay it upto: <span class="highlight">60 days</span></li>
-                <li>Split half pay available: <span class="highlight">Yes</span></li>
-                <li>Pre-saver available: <span class="highlight">Yes</span></li>
-                <li>Buy Limit available: <span class="highlight">Yes</span></li>
-            </ul>
-           <a href="https://forms.gle/rQKT3RizYfpT9FjM7"><button style="background-image: linear-gradient(45deg, rgb(255 169 0), rgb(255 0 198), #5b5bff, #00c2ff); color: white;">Take Premium</button></a>
-        
-        </div>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Enter to search services..." autocomplete="off"/>
     </div>
+  </div>
 
-    <script>
-        const startDate = new Date('2025-01-01');
-        const endDate = new Date('2025-12-31');
+  <div id="sectionsContainer"></div>
 
-        const basePrice = 450;
-        const discountedPrices = {
-            1: 285, 3: 770, 5: 1153, 8: 1540
-        };
-        const fullPrices = {};
-        for (let i = 1; i <= 8; i++) {
-            fullPrices[i] = basePrice * i;
-        }
-        const monthsSelect = document.getElementById('monthsSelect');
-        const priceDisplay = document.getElementById('priceDisplay');
-        const offerStatus = document.getElementById('offerStatus');
-        const endDateDisplay = document.getElementById('endDateDisplay');
-        function updatePrice() {
-            const now = new Date();
-            const isOfferActive = now >= startDate && now <= endDate;
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <div class="bottomtakeoptions">
+      <a style="color: white; text-decoration: none;" onclick="alert('We are redirecting you to taking form.')" href="https://mfi0212.github.io/MFI/applydivert">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+          <path d="M540.85-518 399.31-659.54l28.54-27.54 113 113 227-226 27.53 27.54L540.85-518ZM280-213.85l302.62 88.31 239.53-74q-1.15-18.23-11.03-26.27-9.89-8.04-21.89-8.04H599.54q-25.46 0-46.08-2-20.61-2-42.23-9.53l-87.61-28.7 13.53-39.54 81 29.31q19.31 7.31 43.85 8.77 24.54 1.46 67.23 1.69 0-18.69-6.88-30.23-6.89-11.54-19.73-16.07l-230.16-84.47q-2.31-.76-4.23-1.15-1.92-.38-4.23-.38h-84v192.3ZM120-120v-326.15h243.23q5.46 0 11.31 1.11 5.84 1.12 11.08 3.12l231.15 84.69q21.46 8.15 36.96 29.31 15.5 21.15 15.5 54.07h120q36.15 0 55.39 22.62 19.23 22.61 19.23 57.38v24.62L584.62-83.08 280-171.85V-120H120Zm40-40h80v-246.15h-80V-160Z"/>
+        </svg>
+      </a>
+      <a href="https://blackswan19.github.io/golden/FM/starpre">
+        <svg style="width: 35px;
+    height: 35px;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+              <path d="m422-232 207-248H469l29-227-185 267h139l-30 208Zm-55.85 107.38 40-275.38h-170l299.23-431.54h18.47L514.62-520h200l-330 395.38h-18.47ZM471-470Z"/>
+            </svg>
+      </a>
+      <a href="https://blackswan19.github.io/golden/FM/accverify">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+          <path d="M247.85-260.62q51-36.69 108.23-58.03Q413.31-340 480-340t123.92 21.35q57.23 21.34 108.23 58.03 39.62-41 63.73-96.84Q800-413.31 800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 66.69 24.12 122.54 24.11 55.84 63.73 96.84Zm146.88-234.11Q360-529.46 360-580t34.73-85.27Q429.46-700 480-700t85.27 34.73Q600-630.54 600-580t-34.73 85.27Q530.54-460 480-460t-85.27-34.73ZM480-120q-75.31 0-141-28.04t-114.31-76.65Q176.08-273.31 148.04-339 120-404.69 120-480t28.04-141q28.04-65.69 76.65-114.31 48.62-48.61 114.31-76.65Q404.69-840 480-840t141 28.04q65.69 28.04 114.31 76.65 48.61 48.62 76.65 114.31Q840-555.31 840-480t-28.04 141q-28.04 65.69-76.65 114.31-48.62 48.61-114.31 76.65Q555.31-120 480-120Zm108.85-59.35q53.53-19.34 92.53-52.96-39-31.31-90.23-49.5Q539.92-300 480-300q-59.92 0-111.54 17.81-51.61 17.81-89.84 49.88 39 33.62 92.53 52.96Q424.69-160 480-160q55.31 0 108.85-19.35Zm-52-343.8Q560-546.31 560-580t-23.15-56.85Q513.69-660 480-660t-56.85 23.15Q400-613.69 400-580t23.15 56.85Q446.31-500 480-500t56.85-23.15ZM480-580Zm0 350Z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
 
-            if (!isOfferActive) {
-                monthsSelect.style.display = 'none';
-                priceDisplay.style.display = 'none';
-                offerStatus.style.display = 'none';
-                endDateDisplay.style.display = 'none';
-                return;
+<script>
+ const siteGroups = [
+    {
+    heading: "Return Management",
+    sites: [
+      { name: "BS&MFI Solutions",      desc: "Return date extender",       url: "https://blackswan19.github.io/golden/FM/solution",      icon: "fab fa-youtube"       },
+]
+},
+{
+  heading: "New in & issue",
+  sites: [
+    { name: "Enterance Form", desc: "New members form",       url: "https://mfi0212.github.io/MFI/entrysheet", icon: "fas fa-code"         },
+    { name: "Helper",      desc: "I have issue form",           url: "https://mfi0212.github.io/MFI/abt.hlp",      icon: "fas fa-film"          },
+  ]
+},
+{
+  heading: "Offer & Earns",
+  sites: [
+    { name: "BsGames",       desc: "Exclusive rewards and benefits for BS&MFI members.",          url: "https://blackswan19.github.io/golden/Bs%20Games/bsgames",       icon: "fab fa-reddit"        },
+    { name: "Stars",       desc: "Interest reducer.",          url: "https://blackswan19.github.io/golden/FM/starspage",       icon: "fab fa-reddit"        },
+  ]
+},
+  
+  {
+    heading: "Services",
+    sites: [
+      { name: "All Services", desc: "All service from BS&MFI",       url: "https://blackswan19.github.io/BS/bslends", icon: "fas fa-code"         },
+      { name: "BsLends", desc: "A service from BS&MFI",       url: "https://mfi0212.github.io/MFI/rate", icon: "fas fa-code"         },
+      { name: "Myootive", desc: "A service from BS&MFI",       url: "https://blackswan19.github.io/golden/FM/themain", icon: "fas fa-code"         },
+    ]
+  },
+   {
+    heading: "Collaboration",
+    sites: [
+      { name: "BsPsgenerater", desc: "Password generator",       url: "https://blackswan19.github.io/Educate/password", icon: "fas fa-code"         },
+      { name: "BsReminder", desc: "Date wise notes",       url: "https://blackswan19.github.io/bscrop/reminder", icon: "fas fa-code"         },
+      { name: "BsBookpad", desc: "Download the notes",       url: "https://blackswan19.github.io/Educate/bookpad", icon: "fas fa-code"         },
+      { name: "BsAdstoper", desc: "Ad blocker",       url: "https://blackswan19.github.io/Educate/stoper", icon: "fas fa-code"         },
+    ]
+  }
+];
+
+// Helper Functions
+function getColor(name) {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const hue = Math.abs(hash) % 360;
+  return `hsl(${hue}, 75%, 58%)`;
+}
+
+function getInitial(name) {
+  return name.trim()[0]?.toUpperCase() || "?";
+}
+
+// Create Site Item (without pin button)
+function createSiteItem(site) {
+  const a = document.createElement("a");
+  a.href = site.url || "#";
+  a.target = "_parent";
+  a.className = "site-item";
+
+  const bg = getColor(site.name);
+  const initial = getInitial(site.name);
+
+  a.innerHTML = `
+    <div class="letter-icon" style="background: ${bg};">${initial}</div>
+    <div class="site-info">
+      <h3>${site.name}</h3>
+      <p style="font-size:13px; color:#aaa;">${site.desc}</p>
+    </div>
+  `;
+
+  return a;
+}
+
+// Render All Sections
+function renderAll() {
+  const container = document.getElementById("sectionsContainer");
+  container.innerHTML = "";
+
+  siteGroups.forEach(group => {
+    const section = document.createElement("div");
+    section.className = "section";
+
+    const h2 = document.createElement("h2");
+    h2.textContent = group.heading;
+    section.appendChild(h2);
+
+    const list = document.createElement("div");
+    list.className = "site-list";
+
+    group.sites.forEach(site => {
+      list.appendChild(createSiteItem(site));
+    });
+
+    section.appendChild(list);
+    container.appendChild(section);
+  });
+}
+
+// Search Function
+function renderFiltered(query = "") {
+  const q = query.toLowerCase().trim();
+  if (!q) {
+    renderAll();
+    return;
+  }
+
+  const container = document.getElementById("sectionsContainer");
+  container.innerHTML = "";
+
+  siteGroups.forEach(group => {
+    const matches = group.sites.filter(s =>
+      s.name.toLowerCase().includes(q) || 
+      (s.desc && s.desc.toLowerCase().includes(q))
+    );
+
+    if (!matches.length) return;
+
+    const section = document.createElement("div");
+    section.className = "section";
+    section.innerHTML = `<h2>${group.heading}</h2>`;
+
+    const list = document.createElement("div");
+    list.className = "site-list";
+    matches.forEach(site => list.appendChild(createSiteItem(site)));
+    section.appendChild(list);
+    container.appendChild(section);
+  });
+}
+
+// Initialize
+renderAll();
+
+document.getElementById("searchInput").addEventListener("input", e => {
+  renderFiltered(e.target.value);
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const loadingOverlay = document.getElementById("loadingOverlay");
+    const startBtn = document.getElementById("startAudioBtn");
+    const audioControls = document.getElementById("audioControls");
+    const progressFill = document.getElementById("audioProgressFill");
+    const audioStatus = document.getElementById("audioStatus");
+    const audio = document.getElementById("introAudio");
+    const muteToggle = document.getElementById("muteToggle");
+
+    let progressInterval = null;
+
+    // Mute Toggle
+    muteToggle?.addEventListener("click", () => {
+        audio.muted = !audio.muted;
+        muteToggle.innerHTML = audio.muted 
+            ? '<i class="fas fa-volume-xmark"></i>' 
+            : '<i class="fas fa-volume-high"></i>';
+    });
+
+    // Start Button
+    startBtn?.addEventListener("click", async () => {
+        startBtn.style.display = "none";
+        audioControls.style.display = "flex";
+
+        try {
+            // Ensure audio is loaded
+            if (audio.readyState < 1) {
+                await new Promise(resolve => audio.addEventListener("loadedmetadata", resolve, { once: true }));
             }
-            monthsSelect.style.display = 'block';
-            priceDisplay.style.display = 'block';
-            offerStatus.style.display = 'block';
-            endDateDisplay.style.display = 'block';
-            endDateDisplay.textContent = `Ends: ${endDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
-            const months = parseInt(monthsSelect.value);
-            const originalTotal = fullPrices[months];
-            const discountedTotal = discountedPrices[months];
-            const monthly = Math.round(discountedTotal / months);
-            const discountPercent = months <= 6 ? 15 : 25;
-            offerStatus.innerHTML = `<div class="offer-badge">Offer Active!</div><span class="discount-text">${discountPercent}% Off</span>`;
-             priceDisplay.innerHTML = `Total amount: <span class="strikethrough">₹${originalTotal}.00</span>₹${discountedTotal}.00`;
-        }
-        monthsSelect.addEventListener('change', updatePrice);
-        updatePrice();
-        document.addEventListener("DOMContentLoaded", () => {
-            const customMenu = document.querySelector(".custom-menu");
 
-            // document.addEventListener("contextmenu", (event) => {
-            //     event.preventDefault();
-            //     if (customMenu) {
-            //         customMenu.style.display = "block";
-            //         customMenu.style.top = `${event.pageY}px`;
-            //         customMenu.style.left = `${event.pageX}px`;
-            //     }
-            // });
-            document.addEventListener("click", () => {
-                if (customMenu) {
-                    customMenu.style.display = "none";
+            const duration = audio.duration || 8;
+            const stopTime = Math.min(Math.random() * 3 + 5, duration); // 5 to 8 seconds
+
+            progressFill.style.width = "0%";
+            audioStatus.textContent = "0% • Connecting...";
+
+            await audio.play();
+
+            let currentPercent = 0;
+
+            progressInterval = setInterval(() => {
+                currentPercent = Math.min((audio.currentTime / stopTime) * 100, 100);
+
+                progressFill.style.width = currentPercent + "%";
+                audioStatus.textContent = Math.round(currentPercent) + "% • Connecting...";
+
+                if (audio.currentTime >= stopTime || currentPercent >= 100) {
+                    clearInterval(progressInterval);
+                    progressFill.style.width = "100%";
+                    audioStatus.textContent = "100% • Connected!";
+                    audio.pause();
+
+                    // Hide loading screen smoothly
+                    loadingOverlay.style.opacity = "0";
+                    setTimeout(() => {
+                        loadingOverlay.style.display = "none";
+                    }, 600);
                 }
-            });
-        });function goBack() {
-      if (window.history.length > 1) {
-        window.history.back();
-      } else {
-        alert("✅ Back button clicked!\n\n(In a real app this would take you to previous screen or home.)");
-      }
-    }
-    </script>
+            }, 40);
+
+        } catch (e) {
+            console.error(e);
+            audioStatus.textContent = "❌ Audio playback blocked";
+            // Still hide after few seconds if audio fails
+            setTimeout(() => {
+                loadingOverlay.style.opacity = "0";
+                setTimeout(() => loadingOverlay.style.display = "none", 600);
+            }, 2000);
+        }
+    });
+});
+</script>
 </body>
 </html>
