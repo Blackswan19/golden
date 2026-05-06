@@ -54,6 +54,7 @@
             padding: 16px 10px;
             display: flex;
             align-items: center;
+    background: linear-gradient(180deg, black 40%, transparent);
         }
 
         .back-btn {
@@ -213,7 +214,15 @@
             background: var(--accent);
             color: #000;
         }
+.sticktop{
+    text-align: center;
+    position: sticky;
+    top: 22px;
+    z-index: 1000;
+    font-weight: 500;
+    font-size: 20px;
 
+}
         input[type="range"] {
             flex: 1;
     accent-color: var(--accent);
@@ -308,11 +317,8 @@
             <h1>Stars</h1>
             <p>interest reducer</p>
         </div>
-
-        <div class="section" style="background: transparent;
-    padding: 0;">
-            <h2>Stars Calculator</h2>
-            
+        <h2 class="sticktop">Stars Calculator</h2>    
+        <div class="section" style="background: transparent;padding: 0;">
             <div class="stars-slider">
                 <div id="starsCount" class="stars-count">1,000</div>
 
