@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BsGifter</title>
+  <title>BS&MFI | BsGifter</title>
+    <link rel="icon" href="mfi.logo.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   
   <style>
@@ -14,7 +15,15 @@
       padding: 0;
       box-sizing: border-box;
     }
-
+* {
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
     body {
       font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: #f5f5f7;
@@ -315,7 +324,7 @@
     // Generate IDs
     document.getElementById("gift-id-sender").textContent = generateGiftID();
     document.getElementById("gift-id-receiver").textContent = generateGiftID();
-
+document.addEventListener('contextmenu', e => e.preventDefault());
     function switchMode(mode) {
       currentMode = mode;
       
