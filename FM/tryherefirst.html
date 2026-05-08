@@ -3,364 +3,286 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BS&MFI | BsGifter</title>
-    <link rel="icon" href="mfi.logo.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  
+  <title>ClearPay</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap');
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-* {
-            -webkit-tap-highlight-color: transparent;
-        }
-        body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
+
     body {
-      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       background: #f5f5f7;
-      color: #1d1d1f;
       min-height: 100vh;
-      padding-bottom: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .container {
+      width: 100%;
       max-width: 420px;
-      margin: 0 auto;
-      padding: 0 24px;
+      background: white;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
     }
 
     .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 40px 0 30px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-circle {
-      width: 38px;
-      height: 38px;
-      background: #0025ff;
+      background: #000;
       color: white;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      font-weight: 700;
-    }
-
-    /* Mode Toggle */
-    .mode-toggle {
-      background: #ffffff;
-      border-radius: 9999px;
-      padding: 6px;
-      display: flex;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-      margin-bottom: 30px;
-    }
-
-    .mode-btn {
-      flex: 1;
-      padding: 12px 0;
-      border-radius: 9999px;
+      padding: 28px 20px;
       text-align: center;
+    }
+
+    .header h1 {
+      font-size: 26px;
       font-weight: 600;
-      font-size: 15px;
-      cursor: pointer;
-      transition: all 0.3s ease;
     }
 
-    .mode-active {
-      background: #0025ff;
+    .content {
+      padding: 32px 28px;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px 20px;
+      border: 1.5px solid #d2d2d7;
+      border-radius: 16px;
+      font-size: 17px;
+      margin-bottom: 20px;
+      background: #fff;
+      transition: all 0.3s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #0071e3;
+      box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      background: #0071e3;
       color: white;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      border: none;
+      border-radius: 16px;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
     }
 
-    /* Apple Light Card */
-    .apple-card {
-      background: linear-gradient(145deg, #ffffff 0%, #f8f8f8 100%);
-      border-radius: 34px;
-      height: 340px;
-      padding: 32px;
-      position: relative;
-      overflow: hidden;
-      box-shadow:0 4px 15px rgba(0,0,0,0.06);
+    button:hover {
+      background: #0066cc;
+      transform: translateY(-1px);
     }
 
-    .card-top {
-      display: flex;
-      justify-content: space-between;
+    .fee-card {
+      background: #f8f9fa;
+      border-radius: 20px;
+      padding: 24px;
+      margin: 24px 0;
+      text-align: center;
+      border: 1px solid #e5e5e5;
     }
 
-    .gift-icon {
+    .fee-amount {
       font-size: 38px;
-      color: #0025ff;
-    }
-
-    .card-info {
-      text-align: right;
-    }
-
-    .brand {
-      font-size: 13px;
-      letter-spacing: 2px;
-      font-weight: 500;
-    }
-
-    .card-number {
-      font-family: monospace;
-      font-size: 18px;
-      margin-top: 6px;
-      letter-spacing: 3px;
-    }
-
-    .amount-section {
-      text-align: center;
-      margin-top: 55px;
-    }
-
-    .amount {
-      font-size: 56px;
-      font-weight: 700;
-      letter-spacing: -2.5px;
-    }
-
-    .amount-label {
-      font-size: 15px;
-      color: #6e6e73;
-      margin-top: 6px;
-    }
-
-    .card-bottom {
-      position: absolute;
-      bottom: 32px;
-      left: 32px;
-      right: 32px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-
-    /* Gift ID Box */
-    .id-box {
-      background: white;
-      border-radius: 22px;
-      padding: 22px 26px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 30px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-    }
-
-    .gift-id {
-      font-family: 'SF Mono', monospace;
-      font-size: 27px;
-      letter-spacing: 4px;
-      font-weight: 500;
-    }
-
-    .copy-btn {
-      background: #0025ff;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 14px;
       font-weight: 600;
+      color: #000;
+      margin: 8px 0;
+    }
+
+    .history {
+      margin-top: 30px;
+    }
+
+    .history h3 {
+      font-size: 17px;
+      margin-bottom: 15px;
+      color: #555;
+    }
+
+    .history-item {
       display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: #f8f9fa;
+      border-radius: 14px;
+      margin-bottom: 10px;
+      border: 1px solid #e5e5e5;
     }
 
-    .copy-btn:active {
-      transform: scale(0.94);
+    .hidden { 
+      display: none; 
     }
 
-    /* Action Button */
-    .action-btn {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: calc(100% - 48px);
-      max-width: 420px;
-      color: white;
-      border: none;
-      height: 64px;
-      border-radius: 9999px;
-      font-size: 18px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      box-shadow: 0 15px 30px -8px rgba(0, 113, 227, 0.4);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .action-btn:active {
-      transform: translateX(-50%) scale(0.96);
+    .error { 
+      color: #ff3b30; 
+      text-align: center; 
+      margin: 10px 0; 
+      font-size: 15px; 
     }
   </style>
 </head>
 <body>
   <div class="container">
 
-    <div class="header">
-      <div class="logo">
-        <div class="logo-circle">B</div>
-        <span style="font-size: 29px; font-weight: 700; letter-spacing: -1px;">BsGifter</span>
+    <!-- Login Screen -->
+    <div id="loginScreen">
+      <div class="header">
+        <h1>ClearPay</h1>
+      </div>
+      <div class="content">
+        <h2 style="text-align:center; margin-bottom:24px; color:#1d1d1f;">Enter Password</h2>
+        <input type="password" id="passwordInput" placeholder="Password" autocomplete="off">
+        <button onclick="verifyPassword()">Continue</button>
+        <div id="loginError" class="error"></div>
       </div>
     </div>
 
-    <!-- Mode Toggle -->
-    <div class="mode-toggle">
-      <div onclick="switchMode(0)" id="sender-mode" class="mode-btn mode-active">Sender (Giver)</div>
-      <div onclick="switchMode(1)" id="receiver-mode" class="mode-btn">Receiver</div>
-    </div>
-
-    <!-- Sender View -->
-    <div id="sender-view">
-      <div class="apple-card">
-        <div class="card-top">
-          <i class="fa-solid fa-gift gift-icon"></i>
-          <div class="card-info">
-            <div class="brand">BS&MFI House</div>
-            <div class="card-number">•••• •••• ••••</div>
-          </div>
-        </div>
-
-        <div class="amount-section">
-          <div class="amount">Sender</div>
-          <div class="amount-label">Send gifts easily</div>
-        </div>
-
-        <div class="card-bottom">
-          <div>
-            <small style="font-size:12px; opacity:0.7;">Updated</small><br>
-            2026
-          </div>
-          <div style="font-size:38px; opacity:0.3;">BS</div>
-        </div>
-      </div>
-
-      <div class="id-box">
-        <div id="gift-id-sender" class="gift-id">BSG-X7K9P2</div>
-        <button onclick="copyID('sender')" class="copy-btn">
-          <i class="fa-solid fa-copy"></i> Copy
+    <!-- Dashboard -->
+    <div id="dashboard" class="hidden">
+      <div class="header">
+        <h1>ClearPay</h1>
+        <button onclick="logout()" 
+                style="position:absolute; top:24px; right:24px; background:none; color:white; border:none; font-size:16px; cursor:pointer;">
+          Sign Out
         </button>
       </div>
-    </div>
+      <div class="content">
+        <p style="text-align:center; margin-bottom:20px; color:#1d1d1f;">
+          Welcome, <strong id="userName"></strong>
+        </p>
 
-    <!-- Receiver View -->
-    <div id="receiver-view" style="display: none;">
-      <div class="apple-card">
-        <div class="card-top">
-          <i class="fa-solid fa-gift gift-icon"></i>
-          <div class="card-info">
-            <div class="brand">BS&MFI House</div>
-            <div class="card-number">•••• •••• ••••</div>
-          </div>
+        <input type="number" id="amountInput" placeholder="Enter amount" oninput="calculateFee()">
+
+        <div class="fee-card" id="feeResult">
+          <p style="color:#555; font-size:15px;">6% Processing Fee</p>
+          <div class="fee-amount" id="feeAmount">₹0.00</div>
+          <p style="color:#555;" id="totalAmount">Total: ₹0.00</p>
         </div>
 
-        <div class="amount-section">
-          <div class="amount">Receiver</div>
-          <div class="amount-label">Receive gifts easily</div>
-        </div>
+        <button onclick="applyForClearance()">Apply for Clearance</button>
 
-        <div class="card-bottom">
-          <div>
-            <small style="font-size:12px; opacity:0.7;">Updated</small><br>
-            12/29
-          </div>
-          <div style="font-size:38px; opacity:0.3;">BS</div>
+        <div class="history">
+          <h3>Recent Activity</h3>
+          <div id="historyList"></div>
         </div>
       </div>
-
-      <div class="id-box">
-        <div id="gift-id-receiver" class="gift-id">BSG-X7K9P2</div>
-        <button onclick="copyID('receiver')" class="copy-btn">
-          <i class="fa-solid fa-copy"></i> Copy
-        </button>
-      </div>
     </div>
-
   </div>
 
-  <!-- Action Button -->
-  <button onclick="goToForm()" id="action-btn" class="action-btn" style="background: #ff3b30;">
-    SEND NOW <i class="fa-solid fa-arrow-right"></i>
-  </button>
-
   <script>
-    let currentMode = 0; // 0 = Sender, 1 = Receiver
-
-    function generateGiftID() {
-      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-      let id = "BSG-";
-      for (let i = 0; i < 6; i++) {
-        id += chars[Math.floor(Math.random() * chars.length)];
+    // Multiple Users Data
+    const users = {
+      "pass1": { 
+        name: "Rahul Sharma", 
+        history: [
+          { amount: 25000, date: "2026-05-05" },
+          { amount: 18000, date: "2026-04-30" }
+        ]
+      },
+      "pass2": { 
+        name: "Priya Patel", 
+        history: [
+          { amount: 45000, date: "2026-05-03" }
+        ]
+      },
+      "admin123": { 
+        name: "Administrator", 
+        history: [] 
       }
-      return id;
-    }
+    };
 
-    // Generate IDs
-    document.getElementById("gift-id-sender").textContent = generateGiftID();
-    document.getElementById("gift-id-receiver").textContent = generateGiftID();
-document.addEventListener('contextmenu', e => e.preventDefault());
-    function switchMode(mode) {
-      currentMode = mode;
-      
-      document.getElementById('sender-mode').classList.toggle('mode-active', mode === 0);
-      document.getElementById('receiver-mode').classList.toggle('mode-active', mode === 1);
+    let currentUserPassword = null;
 
-      document.getElementById('sender-view').style.display = mode === 0 ? 'block' : 'none';
-      document.getElementById('receiver-view').style.display = mode === 1 ? 'block' : 'none';
+    function verifyPassword() {
+      const password = document.getElementById("passwordInput").value.trim();
+      const errorDiv = document.getElementById("loginError");
 
-      // Update button
-      const btn = document.getElementById('action-btn');
-      if (mode === 0) {
-        btn.innerHTML = `SEND NOW <i class="fa-solid fa-arrow-right"></i>`;
-        btn.style.background = '#ff3b30';
+      if (users[password]) {
+        currentUserPassword = password;
+        document.getElementById("loginScreen").classList.add("hidden");
+        document.getElementById("dashboard").classList.remove("hidden");
+        
+        document.getElementById("userName").textContent = users[password].name;
+        renderHistory();
       } else {
-        btn.innerHTML = `SUBMIT RECEIVER DETAILS <i class="fa-solid fa-arrow-right"></i>`;
-        btn.style.background = '#34c759';
+        errorDiv.textContent = "Incorrect password";
+        setTimeout(() => errorDiv.textContent = "", 2500);
       }
     }
 
-    function copyID(mode) {
-      const idElement = mode === 'sender' 
-        ? document.getElementById('gift-id-sender') 
-        : document.getElementById('gift-id-receiver');
-      
-      navigator.clipboard.writeText(idElement.textContent).then(() => {
-        const btn = event.currentTarget;
-        const original = btn.innerHTML;
-        btn.innerHTML = `<i class="fa-solid fa-check"></i> Copied`;
-        setTimeout(() => btn.innerHTML = original, 2000);
+    function calculateFee() {
+      const amount = parseFloat(document.getElementById("amountInput").value) || 0;
+      const fee = amount * 0.06;
+      const total = amount + fee;
+
+      document.getElementById("feeAmount").textContent = `₹${fee.toFixed(2)}`;
+      document.getElementById("totalAmount").textContent = `Total: ₹${total.toFixed(2)}`;
+    }
+
+    function applyForClearance() {
+      const amount = parseFloat(document.getElementById("amountInput").value);
+      if (!amount || amount <= 0) {
+        alert("Please enter a valid amount");
+        return;
+      }
+
+      const googleFormUrl = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform"; // ← Replace with your link
+
+      if (confirm(`Apply for ₹${amount.toLocaleString('en-IN')} ?`)) {
+        window.open(googleFormUrl, "_blank");
+
+        users[currentUserPassword].history.unshift({
+          amount: amount,
+          date: new Date().toISOString().split('T')[0]
+        });
+
+        renderHistory();
+        document.getElementById("amountInput").value = "";
+        calculateFee();
+      }
+    }
+
+    function renderHistory() {
+      const container = document.getElementById("historyList");
+      container.innerHTML = "";
+
+      const history = users[currentUserPassword].history;
+
+      if (history.length === 0) {
+        container.innerHTML = `<p style="color:#999; text-align:center; padding:30px 0;">No transactions yet</p>`;
+        return;
+      }
+
+      history.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "history-item";
+        div.innerHTML = `
+          <span>₹${item.amount.toLocaleString('en-IN')}</span>
+          <span style="color:#777;">${item.date}</span>
+        `;
+        container.appendChild(div);
       });
     }
 
-    function goToForm() {
-      window.location.href = "https://forms.gle/gxjjh5EHZNFi5254A";
+    function logout() {
+      if (confirm("Sign out?")) {
+        currentUserPassword = null;
+        document.getElementById("dashboard").classList.add("hidden");
+        document.getElementById("loginScreen").classList.remove("hidden");
+        document.getElementById("passwordInput").value = "";
+      }
     }
+
+    // Enter key support
+    document.getElementById("passwordInput").addEventListener("keypress", (e) => {
+      if (e.key === "Enter") verifyPassword();
+    });
   </script>
 </body>
 </html>
