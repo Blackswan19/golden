@@ -75,7 +75,7 @@
       resultElement.innerHTML = '<span style="color: #f87171;">Please enter a valid amount (₹1 or more).</span>';
       return;
     }
-    const normalInterestRate = 0.14 / 30;
+    const normalInterestRate = 0.13 / 30;
     const offerInterestRate = 0.15 / 30;
     const interestRate = isOfferValid ? offerInterestRate : normalInterestRate;
     const interest = (amount * interestRate * days).toFixed(2);
@@ -91,10 +91,9 @@
       <hr>
       Total (Interest + Fee) : <span style="color: #e20090;">₹${total}</span>
     ` : `
-      Interest for <span>₹${amount}</span> for <span>${days} days</span>( for 13% interest)  : <span style="color: #e20090;">₹${interest}</span><br>
-      Our fee: <span style="color: #e20090;">₹${fee}</span><br>
-      <hr>
-      Total (Interest + Fee) : <span style="color: #e20090;">₹${total}</span>
+      <span>₹${amount}</span> for <span>${days} days interest</span>( for 13% interest)  : <span style="color: #e20090;">₹${interest}</span><br>
+       <hr>
+	   Our fee: <span style="color: #e20090;">₹${fee}</span><br>
     `;
   }
 
@@ -149,6 +148,7 @@
                     customMenu.style.left = `${event.pageX}px`;
                 }
             });
+
             document.addEventListener("click", () => {
                 if (customMenu) {
                     customMenu.style.display = "none";
