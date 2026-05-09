@@ -33,10 +33,10 @@
          }
 
          header {
-            background: linear-gradient(180deg, black 10%, #9147ff);
-            color: #ffffff;
-            padding: 3.5rem 1.5rem;
-            text-align: center;
+           background: linear-gradient(180deg, black 10%, #9147ff);
+    color: #ffffff;
+    padding: 20px 10px 10px 10px;
+    text-align: center;
          }
 
          header h1 {
@@ -310,33 +310,49 @@
          }
 
          .topopts {
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin: 35px 0 -25px 0;
-            gap: 10px;
+           width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0 0 0;
+    gap: 10px;
+    padding: 0 10px;
          }
 
          .svg {
-            background: #00000047;
-            border-radius: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            width: 100%;
-            padding: 6px 0;
-            color: #ffffffab;
-            font-size: 12px;
+               background: #00000047;
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 5px 0;
+    color: #ffffffab;
+    font-size: 13px;
          }
+         .one {
+    width: 100%;
+    padding: 20px;
+    margin: 10px 0;
+    text-align: center;
+}
+.one p{
+    font-weight: 400;
+    font-size: 15px;
+    margin: 0px;
+    text-transform: math-auto;
+    letter-spacing: 0.3px;
+}
       </style>
    </head>
    <body>
       <header>
          <h1 style="font-family: 'Inter', sans-serif; text-align: center; font-weight: 900; letter-spacing: 0px;">
             Pay Mine 
-            <h3 style="color: #00e1a4;">We pay for you when you don’t have, Pay back when you have</h3>
+            <div class="sections one">
+            <p>Pay Mine, pay your repayments on time, so you don’t have to worry. Pay back after receiving your amount with a fee.</p>
+         </div>
          </h1>
          <div class="topopts">
             <div class="svg" onclick="openApply()">
@@ -355,10 +371,6 @@
       </header>
 
       <section class="intro">
-         <div class="sections one">
-            <h1>What we do?</h1>
-            <p style="font-weight: 500; font-size: 15px;">We pay your repayments on time, so you don’t have to worry. Pay us back after receiving your amount with a fee.</p>
-         </div>
          <div class="sections two">
             <h1>How can you use us?</h1>
             <p style="font-weight: 500; font-size: 15px;">When you have taken an amount from BS&MFI services, if you don't have the amount at the time, you can use us to clear amounts with repayment period (1-12 months).</p> 
