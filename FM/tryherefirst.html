@@ -32,7 +32,7 @@ body {
 header {
 	background: linear-gradient(180deg, black 10%, #9147ff);
     color: #ffffff;
-    padding: 3.5rem;
+    padding: 3.5rem 1.5rem;
     text-align: center;
 }
 
@@ -45,17 +45,14 @@ header h1 {
 	text-transform: uppercase;
 }
 
-.intro {
-	text-align: center;
-    margin: 15px;
-    padding: 19px;
-    background: #191919;
-    border-radius: 40px;
-}
+
 h1 {
     margin: 0;
     padding: 0;
-    font-size: 20px;
+    font-size: 15px;
+    text-align: left;
+    text-decoration: none;
+    color: #9147ff;
 }
 .intro p {
 	font-size: 1.1rem;
@@ -134,10 +131,10 @@ h1 {
 
 .calculator input {
 width: 100%;
-    padding: 10px;
+    padding: 13px;
     margin: 0.5rem 0;
     border: none;
-    font-size: 18px;
+    font-size: 20px;
     background: #333333;
     color: #e4e4e7;
     outline: none;
@@ -151,25 +148,26 @@ width: 100%;
 }
 
 .calculator button {
-	background: #3d3d43;
-	color: #ffffff;
-	border: none;
-	padding: 10px 20px;
-	cursor: pointer;
-	font-size: 1rem;
-	margin: 1rem 0;
-	transition: background 0.3s ease, transform 0.2s ease;
-	border-radius: 10px;
+	background: #9147ff;
+color: #ffffff;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 1rem 0;
+    transition: background 0.3s ease, transform 0.2s ease;
+    border-radius: 9999px;
+    width: 100%;
 }
 
 .calculator button:hover {
-	background: #9147ff;
+	background: #8534ff;
 }
 
 .calculator p {
-	font-size: 1rem;
-	color: #a1a1aa;
-	margin: 1rem 0;
+	    font-size: 1rem;
+    color: #a1a1aa;
+    margin: 1rem 0;
 }
 
 .calculator p span {
@@ -361,52 +359,66 @@ hr {
 	border: none;
 }
 .topopts {
-    width: 100%;
+  width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: black;
-    padding: 15px;
-    border-radius: 9999px;
+    margin: 35px 0 -25px 0;
+    gap: 10px;
+}
+.svg {
+        background: #00000047;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 6px 0;
+    color: #ffffffab;
+    font-size: 12px;
+}
+.svg svg{
+  width: 25px;
+    height: 25px;
+}.sections {
+    margin: 15px;
+    padding: 19px;
+    background: #191919;
+    border-radius: 40px;
 }
       </style>
    </head>
    <body>
       <header>
-         <h1 style=" font-family: 'Inter', sans-serif; font-weight: 900; letter-spacing: 0px;">
+         <h1 style=" font-family: 'Inter', sans-serif; text-align: center;font-weight: 900; letter-spacing: 0px;">
             Pay Mine 
             <h3 style="color: #00e1a4;">We pay for you when you don’t have, Pay back when you have</h3>
          </h1>
 		 <div class="topopts">
-			<svg onclick="openApply()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M551.04-520.92 398-673.77l40.04-39.04 113 113 227-226 38.84 39.04-265.84 265.85ZM299.19-219.35l288.69 82.16 236.35-73.19q-1.77-14.93-10.5-21.95t-23.15-7.02H597.96q-27.04 0-45.34-2-18.31-2-36.81-8.77l-88.69-28.73 16.96-55.03 81.8 28.15q18.16 6.15 40.97 8.14 22.8 1.98 61.3 2.28h4.04q0-14.84-6.69-26.02-6.69-11.17-17.62-14.94l-229.65-83.61q-1.15-.39-2.12-.58-.96-.19-2.11-.19h-74.81v201.3ZM108.08-108.08v-368.53h265.53q5.93 0 11.85 1.15t11.73 2.96l230.16 84.73q26.11 9.58 43.46 32.58 17.34 23 17.34 59.88h102.43q40.96 0 66.71 25.89 25.75 25.88 25.75 70.88v29.08L590.38-78l-291.19-83.39v53.31H108.08Zm55.96-55.96h79.19v-256.61h-79.19v256.61Z"/></svg>
-			<svg onclick="openPopup()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm146.5-204.5Q340-521 340-580t40.5-99.5Q421-720 480-720t99.5 40.5Q620-639 620-580t-40.5 99.5Q539-440 480-440t-99.5-40.5ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm100-95.5q47-15.5 86-44.5-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160q53 0 100-15.5ZM523-537q17-17 17-43t-17-43q-17-17-43-17t-43 17q-17 17-17 43t17 43q17 17 43 17t43-17Zm-43-43Zm0 360Z"/></svg>
-		</div>
+      <div class="svg">
+        	<svg onclick="openApply()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M551.04-520.92 398-673.77l40.04-39.04 113 113 227-226 38.84 39.04-265.84 265.85ZM299.19-219.35l288.69 82.16 236.35-73.19q-1.77-14.93-10.5-21.95t-23.15-7.02H597.96q-27.04 0-45.34-2-18.31-2-36.81-8.77l-88.69-28.73 16.96-55.03 81.8 28.15q18.16 6.15 40.97 8.14 22.8 1.98 61.3 2.28h4.04q0-14.84-6.69-26.02-6.69-11.17-17.62-14.94l-229.65-83.61q-1.15-.39-2.12-.58-.96-.19-2.11-.19h-74.81v201.3ZM108.08-108.08v-368.53h265.53q5.93 0 11.85 1.15t11.73 2.96l230.16 84.73q26.11 9.58 43.46 32.58 17.34 23 17.34 59.88h102.43q40.96 0 66.71 25.89 25.75 25.88 25.75 70.88v29.08L590.38-78l-291.19-83.39v53.31H108.08Zm55.96-55.96h79.19v-256.61h-79.19v256.61Z"/></svg>
+          Apply
+      </div>
+      <div class="svg">
+          <svg onclick="openPopup()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm146.5-204.5Q340-521 340-580t40.5-99.5Q421-720 480-720t99.5 40.5Q620-639 620-580t-40.5 99.5Q539-440 480-440t-99.5-40.5ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm100-95.5q47-15.5 86-44.5-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160q53 0 100-15.5ZM523-537q17-17 17-43t-17-43q-17-17-43-17t-43 17q-17 17-17 43t17 43q17 17 43 17t43-17Zm-43-43Zm0 360Z"/></svg>
+          Account
+        </div>
+      </div>
       </header>
       <section class="intro">
-         <p> 
-         <h1 style="color:#9147ff; text-decoration: underline;">What we do?</h1>
-         <p style="font-weight: 500; font-size: 15px;">We pay your repayments on time, so you don’t have to worry. Pay us back after receiving your amount with a fee.</p>
-         </p> 
-         <p> 
-         <h1 style="color:#9147ff; text-decoration: underline;">How can you use us?</h1>
-         <p style="font-weight: 500; font-size: 15px;">When you have taken an amount from BS&MFI services, if you don't have the amount at the time, you can use us to clear amounts with repayment period (1-12 months).</p>
-         </p> <span class="offs" id="offerSection" style=" background: linear-gradient(359deg, #be0078, #b600ff); color: white; padding: 20px 10px; border-radius: 15px; display: flex; justify-content: center; align-items: center; gap: 10px; text-align: center; margin: 40px 0px; font-weight: 500; font-size: 14px; flex-direction: column; ">Get 25% off on both Taken amount Interest and PayMine Fee with, Terms applied.<br><br>Valid up to <span style=" padding: 5px 20px; background: #ffffff61; border-radius: 30px; font-weight: 600;" id="offerTimer"></span> </span> 
-         <button style="padding: 10px;
-    width: 100%;
-    font-size: 17px;
-    text-decoration: none;
-    border-radius: 25px;
-    outline: none;
-    border: none;
-    max-width: 600px;
-    font-weight: 600;
-    background: linear-gradient(90deg, #40d6c3, #fbfefd, #40d6c3); ">
-            <a style="color: black;text-decoration: none;" href="https://mfi0212.github.io/swan/offer/programs">
-               BS&MFI Programs <br>
-               <p style="color: #484848; font-size: 12px; font-weight: 500;">Use specialized programs situation specified sites based on what you need.</p>
-            </a>
-         </button>
+        <div class="sections one">
+          <h1>What we do?</h1>
+              <p style="font-weight: 500; font-size: 15px;">We pay your repayments on time, so you don’t have to worry. Pay us back after receiving your amount with a fee.</p>
+        </div>
+        <div class="sections two">
+           <h1>How can you use us?</h1>
+              <p style="font-weight: 500; font-size: 15px;">When you have taken an amount from BS&MFI services, if you don't have the amount at the time, you can use us to clear amounts with repayment period (1-12 months).</p> 
+        </div>
+         
+         <span class="offs" id="offerSection" style=" background: linear-gradient(359deg, #be0078, #b600ff); color: white; padding: 20px 10px; border-radius: 15px; display: flex; justify-content: center; align-items: center; gap: 10px; text-align: center; margin: 40px 0px; font-weight: 500; font-size: 14px; flex-direction: column; ">Get 25% off on both Taken amount Interest and PayMine Fee with, Terms applied.<br><br>Valid up to <span style=" padding: 5px 20px; background: #ffffff61; border-radius: 30px; font-weight: 600;" id="offerTimer"></span> </span> 
       </section>
+
       <section class="calculator">
          <h2>Pay Mine Calculator</h2>
          <input type="number" id="calcAmount" placeholder="Amount you like to take" min="1"> <button onclick="calculateCost()">Calculate</button> 
@@ -418,7 +430,7 @@ hr {
     margin: 0;
     border-radius: 30px;">Note: You have to pay the fee first, Then only we can clear your amount in any BS&MFI services.</p>
       </section>
-      <footer> © Pay Mine by BS/MFI. </footer>
+      <footer> © Pay Mine by BS&MFI Programs. </footer>
       <div class="overlay" id="overlay"></div>
       <div class="popup" id="passwordPopup">
          <label>Enter the password</label> <input type="password" id="passwordInput" placeholder="Enter your password"> <button id="submitButton" onclick="checkPassword()">Verify</button> 
@@ -515,7 +527,7 @@ hr {
     const isOfferValid = currentDate <= offerEndDate;
 
     if (isNaN(amount) || amount < 1) {
-      resultElement.innerHTML = '<span style="color: #f87171;">Please enter a valid amount (₹1 or more).</span>';
+      resultElement.innerHTML = '<span style="color: #f87171;">Enter a valid amount.</span>';
       return;
     }
     const normalInterestRate = 0.13 / 30;
@@ -534,9 +546,9 @@ hr {
       <hr>
       Total (Interest + Fee) : <span style="color: #e20090;">₹${total}</span>
     ` : `
-      <span>₹${amount}</span> for <span>${days} days interest</span>( for 13% interest)  : <span style="color: #e20090;">₹${interest}</span><br>
+      Interest(13%)  : <span style="color: #e20090;">₹${interest}</span><br>
        <hr>
-	   Our fee: <span style="color: #e20090;">₹${fee}</span><br>
+	   Fee: <span style="color: #e20090;">₹${fee}</span><br>
     `;
   }
 
