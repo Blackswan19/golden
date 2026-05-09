@@ -1,1 +1,603 @@
-no test...
+<!DOCTYPE html> 
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>BS&MFI | PayMine</title><link rel="icon" href="https://i.ibb.co/ZpVQQ2Kp/mfi-logo.png" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
+      <style>
+ @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600&display=swap');
+
+* {
+	box-sizing: border-box;            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	-webkit-tap-highlight-color: transparent;	scrollbar-width: none;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #000000;
+	color: #e4e4e7;
+	line-height: 1.6;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	letter-spacing: 0.5px;
+}
+
+header {
+	background: linear-gradient(180deg, black 10%, #9147ff);
+    color: #ffffff;
+    padding: 3.5rem;
+    text-align: center;
+}
+
+header h1 {
+	font-size: 35px;
+	font-style: italic;
+	margin: 0;
+	font-weight: 400;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.intro {
+	text-align: center;
+    margin: 15px;
+    padding: 19px;
+    background: #191919;
+    border-radius: 40px;
+}
+h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+.intro p {
+	font-size: 1.1rem;
+	color: #a1a1aa;
+	font-weight: 300;
+}
+
+.plans {
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	padding: 5px;
+	flex-wrap: wrap;
+}
+
+.plan {
+	background: #1f1f23;
+	border: 1px solid #3f3f46;
+	padding: 2rem;
+	width: 100%;
+	text-align: center;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	max-width: 500px;
+}
+
+.plan:hover {
+	background: #27272c;
+}
+
+.plan h2 {
+	color: #b9a3e3;
+	font-size: 1.6rem;
+	margin-bottom: 0.75rem;
+	font-weight: 600;
+}
+
+.plan p {
+	font-size: 13px;
+	margin: 20px 0;
+}
+
+.plan button {
+	background: #9147ff;
+	color: #ffffff;
+	border: none;
+	padding: 9px 20px;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: 300;
+	transition: background 0.3s ease, transform 0.2s ease;
+	border-radius: 30px;
+}
+
+.plan button:hover {
+	background: #9147ff96;
+}
+
+.calculator {
+	text-align: center;
+    padding: 1rem;
+    background: #191919;
+    max-width: 1035px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    border-radius: 40px;
+}
+
+.calculator h2 {
+	color: #b9a3e3;
+	font-size: 1.6rem;
+	margin-bottom: 1.5rem;
+	font-weight: 600;
+}
+
+.calculator input {
+width: 100%;
+    padding: 10px;
+    margin: 0.5rem 0;
+    border: none;
+    font-size: 18px;
+    background: #333333;
+    color: #e4e4e7;
+    outline: none;
+    text-align: center;
+    transition: border-color 0.3s ease;
+    border-radius: 9999px;
+}
+
+.calculator input:focus {
+	border-color: #9147ff;
+}
+
+.calculator button {
+	background: #3d3d43;
+	color: #ffffff;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+	font-size: 1rem;
+	margin: 1rem 0;
+	transition: background 0.3s ease, transform 0.2s ease;
+	border-radius: 10px;
+}
+
+.calculator button:hover {
+	background: #9147ff;
+}
+
+.calculator p {
+	font-size: 1rem;
+	color: #a1a1aa;
+	margin: 1rem 0;
+}
+
+.calculator p span {
+	color: #00e1a4;
+	font-weight: 600;
+}
+
+footer {
+	text-align: center;
+	padding: 1.5rem;
+	color: white;
+	font-size: 0.9rem;
+	margin-top: 15px;
+}
+
+.popup {
+display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #26262b;
+    border: 1px solid #3f3f46;
+    padding: 25px 0;
+    z-index: 10;
+    max-width: 700px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.3s ease;
+    width: 90%;
+    border-radius: 40px;
+}
+
+.popup h3 {
+	margin: 0 0 1.25rem;
+	color: #b9a3e3;
+	font-size: 1.3rem;
+	font-weight: 600;
+}
+
+.popup input {
+	width: 100%;
+	padding: 0.75rem;
+	margin: 0.75rem 0;
+	border: 1px solid #3f3f46;
+	font-size: 0.95rem;
+	background: #1f1f23;
+	color: #e4e4e7;
+	outline: none;
+	text-align: center;
+	transition: border-color 0.3s ease;
+}
+
+.popup input:focus {
+	border-color: #9147ff;
+}
+
+.popup button {
+	width: 100%;
+	background: #9147ff;
+	color: #ffffff;
+	border: none;
+	padding: 0.75rem;
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: 600;
+	transition: background 0.3s ease;
+	margin: 0.5rem 0;
+}
+
+.popup button:hover {
+	background: #9147ff96;
+}
+
+.popup table {
+	width: 100%;
+	margin-top: 1.5rem;
+	border-collapse: collapse;
+	font-size: 0.9rem;
+}
+
+.popup th,
+.popup td {
+	border: 1px solid #3f3f46;
+	padding: 0.75rem;
+	text-align: left;
+}
+
+h3 {
+	color: #ffffff85;
+	font-size: 15px;
+	font-weight: 600;
+}
+
+.popup th {
+	background: #9147ff;
+	color: #ffffff;
+	font-weight: 600;
+}
+
+.popup td {
+	background: #1f1f23;
+	color: #e4e4e7;
+}
+
+.overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 5;
+	animation: fadeInOverlay 0.3s ease;
+}
+
+#errorMsg {
+	color: #f87171;
+	font-size: 0.85rem;
+	margin-top: 0.5rem;
+	transition: opacity 0.3s ease;
+}
+
+#errorMsg:not(:empty) {
+	opacity: 1;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translate(-50%, -60%);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate(-50%, -50%);
+	}
+}
+
+@keyframes fadeInOverlay {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@media (max-width: 768px) {
+	.intro p {
+		font-size: 1rem;
+	}
+
+	.plans {
+		flex-direction: column;
+		align-items: center;
+		gap: 1.5rem;
+	}
+}
+
+.off {
+	background: linear-gradient(356deg, #be0079, #9d00da);
+	color: white;
+	border-radius: 100px;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	font-size: 12px;
+	padding: 10px;
+	gap: 5px;
+}
+
+.timer {
+	background: #ffffff52;
+	padding: 8px 15px;
+	border-radius: 102px;
+	font-size: 11px;
+	color: #ffffff;
+}
+
+hr {
+	background-color: #4a4a4a;
+	height: 1.5px;
+	width: 100%;
+	outline: none;
+	border: none;
+}
+.topopts {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: black;
+    padding: 15px;
+    border-radius: 9999px;
+}
+      </style>
+   </head>
+   <body>
+      <header>
+         <h1 style=" font-family: 'Inter', sans-serif; font-weight: 900; letter-spacing: 0px;">
+            Pay Mine 
+            <h3 style="color: #00e1a4;">We pay for you when you don’t have, Pay back when you have</h3>
+         </h1>
+		 <div class="topopts">
+			<svg onclick="openApply()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M551.04-520.92 398-673.77l40.04-39.04 113 113 227-226 38.84 39.04-265.84 265.85ZM299.19-219.35l288.69 82.16 236.35-73.19q-1.77-14.93-10.5-21.95t-23.15-7.02H597.96q-27.04 0-45.34-2-18.31-2-36.81-8.77l-88.69-28.73 16.96-55.03 81.8 28.15q18.16 6.15 40.97 8.14 22.8 1.98 61.3 2.28h4.04q0-14.84-6.69-26.02-6.69-11.17-17.62-14.94l-229.65-83.61q-1.15-.39-2.12-.58-.96-.19-2.11-.19h-74.81v201.3ZM108.08-108.08v-368.53h265.53q5.93 0 11.85 1.15t11.73 2.96l230.16 84.73q26.11 9.58 43.46 32.58 17.34 23 17.34 59.88h102.43q40.96 0 66.71 25.89 25.75 25.88 25.75 70.88v29.08L590.38-78l-291.19-83.39v53.31H108.08Zm55.96-55.96h79.19v-256.61h-79.19v256.61Z"/></svg>
+			<svg onclick="openPopup()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm146.5-204.5Q340-521 340-580t40.5-99.5Q421-720 480-720t99.5 40.5Q620-639 620-580t-40.5 99.5Q539-440 480-440t-99.5-40.5ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm100-95.5q47-15.5 86-44.5-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160q53 0 100-15.5ZM523-537q17-17 17-43t-17-43q-17-17-43-17t-43 17q-17 17-17 43t17 43q17 17 43 17t43-17Zm-43-43Zm0 360Z"/></svg>
+		</div>
+      </header>
+      <section class="intro">
+         <p> 
+         <h1 style="color:#9147ff; text-decoration: underline;">What we do?</h1>
+         <p style="font-weight: 500; font-size: 15px;">We pay your repayments on time, so you don’t have to worry. Pay us back after receiving your amount with a fee.</p>
+         </p> 
+         <p> 
+         <h1 style="color:#9147ff; text-decoration: underline;">How can you use us?</h1>
+         <p style="font-weight: 500; font-size: 15px;">When you have taken an amount from BS&MFI services, if you don't have the amount at the time, you can use us to clear amounts with repayment period (1-12 months).</p>
+         </p> <span class="offs" id="offerSection" style=" background: linear-gradient(359deg, #be0078, #b600ff); color: white; padding: 20px 10px; border-radius: 15px; display: flex; justify-content: center; align-items: center; gap: 10px; text-align: center; margin: 40px 0px; font-weight: 500; font-size: 14px; flex-direction: column; ">Get 25% off on both Taken amount Interest and PayMine Fee with, Terms applied.<br><br>Valid up to <span style=" padding: 5px 20px; background: #ffffff61; border-radius: 30px; font-weight: 600;" id="offerTimer"></span> </span> 
+         <button style="padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    text-decoration: none;
+    border-radius: 25px;
+    outline: none;
+    border: none;
+    max-width: 600px;
+    font-weight: 600;
+    background: linear-gradient(90deg, #40d6c3, #fbfefd, #40d6c3); ">
+            <a style="color: black;text-decoration: none;" href="https://mfi0212.github.io/swan/offer/programs">
+               BS&MFI Programs <br>
+               <p style="color: #484848; font-size: 12px; font-weight: 500;">Use specialized programs situation specified sites based on what you need.</p>
+            </a>
+         </button>
+      </section>
+      <section class="calculator">
+         <h2>Pay Mine Calculator</h2>
+         <input type="number" id="calcAmount" placeholder="Amount you like to take" min="1"> <button onclick="calculateCost()">Calculate</button> 
+         <p id="calcResult"></p>
+         <p style="color: #ffffffbd;
+    font-size: 13px;
+    background-color: #9147ff5e;
+    padding: 15px;
+    margin: 0;
+    border-radius: 30px;">Note: You have to pay the fee first, Then only we can clear your amount in any BS&MFI services.</p>
+      </section>
+      <footer> © Pay Mine by BS/MFI. </footer>
+      <div class="overlay" id="overlay"></div>
+      <div class="popup" id="passwordPopup">
+         <label>Enter the password</label> <input type="password" id="passwordInput" placeholder="Enter your password"> <button id="submitButton" onclick="checkPassword()">Verify</button> 
+         <p id="errorMsg"></p>
+         <div id="accountsTable" style="display: none;">
+            <h3 id="accountHeader">Account</h3>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Taken</th>
+                     <th>Months</th>
+                     <th>Interest per month</th>
+                     <th>Fee</th>
+                     <th>Monthly pay</th>
+                     <th>Fee Paid</th>
+                  </tr>
+               </thead>
+               <tbody id="accountsTableBody">
+               </tbody>
+            </table>
+         </div>
+      </div>
+<script>
+  const accountsData = {
+    "0212#P": [
+      { name: "Mahesh888*", amount: 50000, days: 6, interest: 6500, type: "T-A-P", reason: "14850₹", feePaid: "Yes" },
+    ],
+  };
+
+  const OFFER_END_DATE = '2025-09-14T23:59:59';
+
+  function openApply() {
+    window.open("https://forms.gle/4RoNEpifyyWGkxYq6");
+  }
+
+  function openPopup() {
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("passwordPopup").style.display = "block";
+    document.getElementById("passwordInput").style.display = "block";
+    document.getElementById("submitButton").style.display = "block";
+    document.getElementById("accountsTable").style.display = "none";
+    document.getElementById("passwordInput").value = "";
+    document.getElementById("errorMsg").innerText = "";
+  }
+
+  function closePopup() {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("passwordPopup").style.display = "none";
+    document.getElementById("passwordInput").style.display = "block";
+    document.getElementById("submitButton").style.display = "block";
+    document.getElementById("accountsTable").style.display = "none";
+    document.getElementById("passwordInput").value = "";
+    document.getElementById("errorMsg").innerText = "";
+  }
+
+  function checkPassword() {
+    const entered = document.getElementById("passwordInput").value;
+    const tableBody = document.getElementById("accountsTableBody");
+    tableBody.innerHTML = "";
+    const currentDate = new Date();
+    const offerEndDate = new Date(OFFER_END_DATE);
+    const isOfferValid = currentDate <= offerEndDate;
+    const feeRate = isOfferValid ? 0.0400 : 0.0500;
+    if (accountsData[entered]) {
+      document.getElementById("accountHeader").innerText = `${entered} Account`;
+      accountsData[entered].forEach(entry => {
+        const fee = (entry.amount * feeRate).toFixed(2);
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>₹${entry.amount.toFixed(2)}</td>
+          <td>${entry.days}</td>
+          <td>₹${entry.interest.toFixed(2)}</td>
+          <td>₹${fee}</td>
+          <td>${entry.reason}</td>
+          <td>${entry.feePaid}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+      document.getElementById("passwordInput").style.display = "none";
+      document.getElementById("submitButton").style.display = "none";
+      document.getElementById("errorMsg").innerText = "";
+      document.getElementById("accountsTable").style.display = "block";
+    } else {
+      document.getElementById("errorMsg").innerText = "Incorrect password";
+    }
+  }
+
+  function calculateCost() {
+    const amount = parseFloat(document.getElementById("calcAmount").value);
+    const days = 30;
+    const resultElement = document.getElementById("calcResult");
+    const currentDate = new Date();
+    const offerEndDate = new Date(OFFER_END_DATE);
+    const isOfferValid = currentDate <= offerEndDate;
+
+    if (isNaN(amount) || amount < 1) {
+      resultElement.innerHTML = '<span style="color: #f87171;">Please enter a valid amount (₹1 or more).</span>';
+      return;
+    }
+    const normalInterestRate = 0.13 / 30;
+    const offerInterestRate = 0.15 / 30;
+    const interestRate = isOfferValid ? offerInterestRate : normalInterestRate;
+    const interest = (amount * interestRate * days).toFixed(2);
+    const feeRate = isOfferValid ? 0.0400 : 0.0500;
+    const fee = (amount * feeRate).toFixed(2);
+    const total = (parseFloat(interest) + amount + parseFloat(fee)).toFixed(2);
+
+    resultElement.innerHTML = isOfferValid ? `
+      If you take <span>₹${amount}</span> for <span>${days} days</span><br><br>
+      <span class="off" style='color:white'><img style="width: 15px" src="https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_d614c3b26af4457d9d5c240261da7d8e/default/dark/3.0" alt=""> You getting 25% off <span class='timer' style="color:white" id="calcOfferTimer"></span></span></span><br>
+      Our fee(<span>25% off</span>): <span style="color: #e20090;">₹${fee}</span><br>
+      <br> Interest (<span>25% off</span>) for <span>₹${amount}</span> : <span style="color: #e20090;">₹${interest}</span>
+      <hr>
+      Total (Interest + Fee) : <span style="color: #e20090;">₹${total}</span>
+    ` : `
+      <span>₹${amount}</span> for <span>${days} days interest</span>( for 13% interest)  : <span style="color: #e20090;">₹${interest}</span><br>
+       <hr>
+	   Our fee: <span style="color: #e20090;">₹${fee}</span><br>
+    `;
+  }
+
+  function updateOfferTimer() {
+    const currentDate = new Date();
+    const offerEndDate = new Date(OFFER_END_DATE);
+    const offerSection = document.getElementById("offerSection");
+    const offerTimer = document.getElementById("offerTimer");
+    const calcOfferTimer = document.getElementById("calcOfferTimer");
+
+    if (currentDate > offerEndDate) {
+      offerSection.style.display = "none";
+      return;
+    }
+
+    const timeDiff = offerEndDate - currentDate;
+    const hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
+    const minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    const secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
+    
+    const timeString = `${hoursLeft}h ${minutesLeft}m ${secondsLeft}s left`;
+    if (offerTimer) offerTimer.innerText = timeString;
+    if (calcOfferTimer) calcOfferTimer.innerText = `${timeString}`;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    updateOfferTimer();
+    setInterval(updateOfferTimer, 1000);
+
+    const customMenu = document.querySelector(".custom-menu");
+    document.addEventListener("click", () => {
+      if (customMenu) {
+        customMenu.style.display = "none";
+      }
+    });
+  });
+
+  document.getElementById("overlay").addEventListener("click", closePopup);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closePopup();
+  });
+
+    document.addEventListener("DOMContentLoaded", () => {
+            const customMenu = document.querySelector(".custom-menu");
+
+            // document.addEventListener("contextmenu", (event) => {
+            //     event.preventDefault();
+            //     if (customMenu) {
+            //         customMenu.style.display = "block";
+            //         customMenu.style.top = `${event.pageY}px`;
+            //         customMenu.style.left = `${event.pageX}px`;
+            //     }
+            // });
+
+            document.addEventListener("click", () => {
+                if (customMenu) {
+                    customMenu.style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
