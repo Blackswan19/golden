@@ -117,7 +117,7 @@
             const dayNews = newsData[dateStr];
 
             if (dayNews && dayNews.length > 0) {
-                document.getElementById('news-count').textContent = `${dayNews.length} headlines`;
+                document.getElementById('news-count').textContent = `${dayNews.length} news`;
                 emptyState.classList.add('hidden');
 
                 dayNews.forEach(news => {
