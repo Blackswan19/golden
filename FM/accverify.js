@@ -471,7 +471,7 @@ function displayLoanDetails(loan, index) {
             <p style="
     text-align: center;
     position: sticky;
-    top: 70px;
+    top: 80px;
     margin-top: 30px;
     right: 5px;
     float: right;
