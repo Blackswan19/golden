@@ -332,7 +332,10 @@ body.my-own .header h2 {
 	line-height: 15px;
 	position: fixed;
 }
-
+#passwordContainer svg{
+	width: 50px;
+    height: 90px;
+}
 #userPassword {
 	font-size: 16px;
 	background: #161616;
@@ -811,7 +814,6 @@ span#userName {
     justify-content: center;
     width: 45%;
     align-items: center;
-    gap: 3px;
 }
 
 button.amounts-btn {
@@ -822,8 +824,8 @@ button.amounts-btn {
 
 .amounts-btn svg {
 	fill: lightgray;
-	width: 20px;
-	height: 20px;
+	width: 25px;
+	height: 25px;
 }
 
 body.curvy .amounts-btn {
@@ -1454,7 +1456,7 @@ ex {
     top: 0px;
     object-fit: cover;    z-index: -1;" src="https://i.ibb.co/pvVBN7cr/tread.png" alt="">
         </div>
-        <center><img style="width: 40px; margin: 15px;z-index: -4;position: relative;" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/refs/heads/main/Objects/Old%20Key.webp" alt=""></center>
+        <center><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M255.85-121.15q-22.21 0-38.51-16.31-16.3-16.3-16.3-38.5v-365.62q0-22.8 16.3-38.8 16.3-16 38.51-16h69.57v-87.32q0-64.69 45.02-109.63t109.75-44.94q64.73 0 109.56 44.96t44.83 109.84v87.09h69.57q22.21 0 38.51 16 16.3 16 16.3 38.8v365.62q0 22.2-16.3 38.5-16.3 16.31-38.51 16.31h-448.3Zm0-30.2h448.3q10.77 0 17.7-6.92 6.92-6.92 6.92-17.69v-365.62q0-10.77-6.92-17.69-6.93-6.92-17.7-6.92h-448.3q-10.77 0-17.7 6.92-6.92 6.92-6.92 17.69v365.62q0 10.77 6.92 17.69 6.93 6.92 17.7 6.92Zm265.34-166.11q17-16.89 17-40.7 0-22.87-17.02-40.84-17.02-17.96-41.19-17.96-24.17 0-41.17 17.81-17 17.82-17 41.19 0 23.38 17.02 40.38 17.02 17 41.19 17 24.17 0 41.17-16.88ZM355.62-596.38h248.76v-87.64q0-51.98-35.91-88.02-35.92-36.04-88.23-36.04-52.32 0-88.47 36.03-36.15 36.04-36.15 88.28v87.39ZM231.23-151.35V-566.19-151.35Z"/></svg></center>
         <h2 style="font-weight: 400; font-size: 20px;z-index: -3;">Verify my account</h2>
         <input type="text" id="userPassword" placeholder="Enter password" autocomplete="current-password">
         <button id="submitBtn">Verify</button>
@@ -1499,8 +1501,12 @@ ex {
                     <svg style="fill: #00aeff;
     width: 40px;
     height: 40px;
-    margin: 0px -5px 0px -15px;
-" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-267.69 347.69-480 560-692.31 588.31-664l-184 184 184 184L560-267.69Z"/></svg> Password
+    margin: 0px -10px 0px -15px;
+" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-267.69 347.69-480 560-692.31 588.31-664l-184 184 184 184L560-267.69Z"/></svg> 
+<svg style="fill: #00aeff;
+    width: 25px;
+    height: 20px;
+    margin: -2px 0 0 -5px;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M255.85-121.15q-22.21 0-38.51-16.31-16.3-16.3-16.3-38.5v-365.62q0-22.8 16.3-38.8 16.3-16 38.51-16h69.57v-87.32q0-64.69 45.02-109.63t109.75-44.94q64.73 0 109.56 44.96t44.83 109.84v87.09h69.57q22.21 0 38.51 16 16.3 16 16.3 38.8v365.62q0 22.2-16.3 38.5-16.3 16.31-38.51 16.31h-448.3Zm0-30.2h448.3q10.77 0 17.7-6.92 6.92-6.92 6.92-17.69v-365.62q0-10.77-6.92-17.69-6.93-6.92-17.7-6.92h-448.3q-10.77 0-17.7 6.92-6.92 6.92-6.92 17.69v365.62q0 10.77 6.92 17.69 6.93 6.92 17.7 6.92Zm265.34-166.11q17-16.89 17-40.7 0-22.87-17.02-40.84-17.02-17.96-41.19-17.96-24.17 0-41.17 17.81-17 17.82-17 41.19 0 23.38 17.02 40.38 17.02 17 41.19 17 24.17 0 41.17-16.88ZM355.62-596.38h248.76v-87.64q0-51.98-35.91-88.02-35.92-36.04-88.23-36.04-52.32 0-88.47 36.03-36.15 36.04-36.15 88.28v87.39ZM231.23-151.35V-566.19-151.35Z"/></svg> 
                 </button>
                My Account
             </div>
@@ -1596,13 +1602,13 @@ ex {
     </div>
 
        <div class="about" style="align-items: center;
-    padding: 17px 0;
+    padding: 10px 0 0 0;
     margin-top: -35px;
     max-width: 625px;
     width: 103%;
     margin-left: -15.5px;
     margin-bottom: 35px;">
-        <h2 class="sponserheading">Sponsored by</h2>
+        <h2 class="sponserheading">Our service are partered by</h2>
         <div class="sponserimges">
                 <div class="sponsers-section">
                     <span>Delay it</span>
