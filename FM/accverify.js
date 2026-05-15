@@ -1,5 +1,4 @@
- document.addEventListener('contextmenu', e => e.preventDefault());  
-       
+    document.addEventListener('contextmenu', e => e.preventDefault());   
 const passwords = {
 
     "6275": {
@@ -472,7 +471,7 @@ function displayLoanDetails(loan, index) {
             <p style="
     text-align: center;
     position: sticky;
-    top: 70px;
+    top: 80px;
     margin-top: 30px;
     right: 5px;
     float: right;
@@ -619,7 +618,7 @@ Return date : ${loan.endDate}</p>
  Full Amount : ${totalReturnAmount} Rupees</p>
             <hr>
             <div class="issuebtn" style="padding-top: 20px;width: 102.5%;">  
-                <a target="_blank" href="https://forms.gle/RzTJ8W9bwmm8DVj2A"><button>I have issue with my account.!</button></a>
+                <a target="_blank" href="https://forms.gle/RzTJ8W9bwmm8DVj2A"><button>I have issue with my account...!</button></a>
             </div>
         </div>
     `;
@@ -806,6 +805,7 @@ function showCoinsCount() {
     const coins = document.getElementById('coinsCount').textContent.trim();
     alert(`BsRora(Bot) : \n\nYou have using ${coins} Duplicate Clone account.`);
 }
+
 
 
 
