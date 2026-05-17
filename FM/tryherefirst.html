@@ -40,6 +40,7 @@
     font-family: 'Anton', sans-serif;
     font-size: 75px;
     margin: 0;
+    filter: drop-shadow(0px 0px 3px #0000001a);
     }
     .swan-emoji {
       font-size: 60px;
@@ -67,7 +68,7 @@
 width: 55px;
     height: 55px;
     font-size: 15px;
-    font-weight: 100;
+    font-weight: 500;
     border: none;
     border-radius: 15px;
     background: #ffffffad;
@@ -83,7 +84,7 @@ border: none;
     width: 85px;
     text-align: center;
     font-size: 28px;
-    font-weight: 200;
+    font-weight: 500;
     padding: 10px;
     border-radius: 12px;
     background: #00000042;
@@ -91,7 +92,7 @@ border: none;
     }
     .total {
 font-size: 17px;
-    font-weight: 100;
+    font-weight: 500;
     color: black;
     margin: 25px 0 0 0;
     min-height: 50px;
@@ -108,7 +109,7 @@ font-size: 17px;
     font-size: 18px;
     border-radius: 50px;
     margin-top: 20px;
-    width: 100%;
+    width: 100%;font-weight: 500;
     }
   </style>
 </head>
@@ -166,7 +167,7 @@ font-size: 17px;
       
       alert(`🎉 Thank you for your purchase!\n\nYou bought ${qty} swans for ${price}\n\n🦢 May your swans bring you joy!`);
     }
-document.addEventListener('contextmenu', e => e.preventDefault());
+// document.addEventListener('contextmenu', e => e.preventDefault());
     window.onload = calculatePrice;
   </script>
 </body>
