@@ -134,7 +134,7 @@ font-size: 17px;
       Total Price: <span class="total-price" id="totalPrice">₹5.00</span>
     </div>
 
-    <button class="buy-btn" onclick="buySwans()">Buy Swan Now</button>
+    <button class="buy-btn" onclick="window.open('https://forms.gle/VrUvPmh2maqGjBbJ7','_parent')">Buy Swan Now</button>
     
     <p style="margin-top: 25px; font-size: 0.9em; color: #777;">
       © BS&MFI. All rights reserved.
@@ -161,13 +161,7 @@ font-size: 17px;
       calculatePrice();
     }
 
-    function buySwans() {
-      let qty = document.getElementById('quantity').value;
-      let price = document.getElementById('totalPrice').textContent;
-      
-      alert(`🎉 Thank you for your purchase!\n\nYou bought ${qty} swans for ${price}\n\n🦢 May your swans bring you joy!`);
-    }
-// document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('contextmenu', e => e.preventDefault());
     window.onload = calculatePrice;
   </script>
 </body>
