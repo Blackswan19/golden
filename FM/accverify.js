@@ -16,14 +16,14 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "10-08-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 9890, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "15-08-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 14275, takenAmount: 6500, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "18-08-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 8780, takenAmount: 5000, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "18-08-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 6990, takenAmount: 3500, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "01-11-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 8850, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 0 },
-            { planDate: "06-11-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 8980, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 0 },
-            { planDate: "09-11-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 7680, takenAmount: 8000, takenFrom: "MLLD", fineRate: 0 },
-            { planDate: "25-11-2025", endDate: "10-03-2026 <p style='color: #ffa836;'>(Extend to 30days )</p>", interest: 6000, takenAmount: 9500, takenFrom: "MLending Duplicate ", fineRate: 0 }
+            { planDate: "10-08-2025", endDate: "10-09-2025", interest: 1800, takenAmount: 5000, takenFrom: "MLLD", fineRate: 60 },
+            { planDate: "15-08-2025", endDate: "15-09-2025", interest: 1950, takenAmount: 6500, takenFrom: "MLLD", fineRate: 70 },
+            { planDate: "18-08-2025", endDate: "18-09-2025", interest: 1800, takenAmount: 5000, takenFrom: "MLLD", fineRate: 60 },
+            { planDate: "18-08-2025", endDate: "18-09-2025", interest: 1350, takenAmount: 3500, takenFrom: "MLLD", fineRate: 45 },
+            { planDate: "01-11-2025", endDate: "01-12-2025", interest: 1500, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 60 },
+            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3500, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "09-11-2025", endDate: "09-12-2025", interest: 2800, takenAmount: 8000, takenFrom: "MLLD", fineRate: 80 },
+            { planDate: "25-11-2025", endDate: "25-12-2025", interest: 3050, takenAmount: 9500, takenFrom: "MLending Duplicate ", fineRate: 95 }
         ]
     },
     "Deepak@1": {
