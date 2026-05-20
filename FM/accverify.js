@@ -43,6 +43,30 @@ const passwords = {
         loans: [
         ]
     },
+    "0212": {
+        name: "Tony Montana",
+        membershipType: "",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+        profileBackground: "blue",
+        stars: 0,
+        coins: 0,
+        tierPoints: 0,
+        showCustomContent: "no",
+        customContent: {
+            type: "image",
+            value: "programXoffer.png",
+            url: "https://mfi0212.github.io/swan/offer/programx"
+        },
+        loans: [
+            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 17000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "09-11-2025", endDate: "09-12-2025", interest: 3000, takenAmount: 8000, takenFrom: "MLLD", fineRate: 80 },
+            { planDate: "25-11-2025", endDate: "25-12-2025", interest: 3450, takenAmount: 500, takenFrom: "MLending Duplicate ", fineRate: 95 },
+            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3500, takenAmount: 1000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "09-11-2025", endDate: "09-12-2025", interest: 2800, takenAmount: 8700, takenFrom: "MLLD", fineRate: 80 },
+            { planDate: "25-11-2025", endDate: "20-05-2026", interest: 2300, takenAmount: 9900, takenFrom: "MLending Duplicate ", fineRate: 95 }
+        
+        ]
+    },
 };
 
 
@@ -804,8 +828,3 @@ function showCoinsCount() {
     const coins = document.getElementById('coinsCount').textContent.trim();
     alert(`BsRora(Bot) : \n\nYou have using ${coins} Duplicate Clone account.`);
 }
-
-
-
-
-
