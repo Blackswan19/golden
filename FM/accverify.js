@@ -89,15 +89,35 @@ function showTierPopup(html) {
 
     const modal = document.createElement("div");
     modal.id = "tierPopupModal";
-    modal.style.cssText = `
-        position:fixed; inset:0; background:rgba(0,0,0,0.75); 
-        display:flex; align-items:center; justify-content:center; z-index:9999;
+    modal.style.cssText = `    position: fixed;
+    inset: 0px;
+    background: rgb(0 0 0 / 73%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999999;
     `;
     modal.innerHTML = `
-        <div style="background:#111; color:#fff; padding:20px; border-radius:12px; max-width:320px; text-align:center; font-family:sans-serif;">
+        <div style="background: #282828;
+    color: #ffffffab;
+    padding: 15px;
+    border-radius: 16px;
+    max-width: 280px;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: 200;">
             <p style="margin:0 0 16px; line-height:1.5;">${html}</p>
             <button onclick="this.closest('#tierPopupModal').remove()" 
-                    style="background:#00ff9d; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:600;">
+                    style="background: #008bd1;
+    border: none;
+    padding: 6px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 400;
+    width: 100%;
+    color: white;
+    font-size: 15px;">
                 OK
             </button>
         </div>
@@ -828,3 +848,8 @@ function showCoinsCount() {
     const coins = document.getElementById('coinsCount').textContent.trim();
     alert(`BsRora(Bot) : \n\nYou have using ${coins} Duplicate Clone account.`);
 }
+
+
+
+
+
