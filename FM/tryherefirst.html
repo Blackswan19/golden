@@ -16,7 +16,7 @@
     * { margin:0; padding:0; box-sizing:border-box;scrollbar-width: none;letter-spacing: 0.5px;}
 
     body {
-     background-color: black;
+     background-color: #000000;
       color: #ffffff;
       min-height: 100vh;
     }
@@ -31,13 +31,12 @@ position: fixed;
     max-width: 600px;
     z-index: 100;
     backdrop-filter: blur(10px);
-    background: rgba(0, 0, 0, 0.6);
+    background: #000000e8;
     border-radius: 0 0 45px 45px;
     }
 h3 {
     font-weight: 500;
     font-size: 18px;
-    color: white;
 }
     .logo {
 z-index: 100;
@@ -170,7 +169,7 @@ display: flex;
   display: contents;
 }
 .bottomoptions {
-    background: linear-gradient(0deg, #000000 30%, transparent);
+    background: linear-gradient(0deg, #111111 30%, transparent);
     position: fixed;
     bottom: 0px;
     left: 50%;
@@ -206,18 +205,18 @@ display: flex;
     align-items: center;
     flex-direction: column;
     text-decoration: none;
-    color: #ffffff8a;
+    color: #0a95ff;
     width: 100%;
     border-radius: 999px;
     padding: 3px;
 }
 .bottomtakeoptions a:hover{
-  background: #ffffff1a;
+  background: #0a95ff1c;
 }
     svg {
 width: 28px;
     height: 28px;
-      fill: white;
+      fill: #0a95ff;
     }
 .site-info {
     border-bottom: solid 1.5px #ffffff38;
@@ -384,7 +383,7 @@ div#audioStatus {
       
         <div class="rightsideopt">
             <a href="https://mfi0212.github.io/MFI/imlate" style="text-decoration: none;
-    color: white;">
+    color: #0a95ff;">
               I'm late  
             </a>
         </div>
@@ -489,9 +488,8 @@ function createSiteItem(site) {
     <div class="letter-icon" style="background: ${bg};">${initial}</div>
     <div class="site-info">
       <h3>${site.name}</h3>
-      <p style="font-size: 12px;
-    color: #ffffff8a;
-    font-weight: 300;">${site.desc}</p>
+      <p style="    font-size: 12px;
+    color: #ffffff4f;">${site.desc}</p>
     </div>
   `;
 
