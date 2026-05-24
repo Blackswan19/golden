@@ -1,1797 +1,640 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verify my account</title>
-    <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/736x/68/3d/8f/683d8f58c98a715130b1251a9d59d1b9.jpg">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BS&MFI | Myootive</title>
+  <link rel="icon" href="mfi.logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-:root {
-	--user-accent: #00aaff;
-	--telegram-accent: #00aeff;
-}
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 * {
-	-webkit-tap-highlight-color: transparent;
-	font-family: 'Poppins', sans-serif;
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	scrollbar-width: none;
-}
-
-* {
-	scroll-behavior: smooth;
-}
-
-*::-webkit-scrollbar {
-	background: transparent;
-}
-
-::-webkit-scrollbar-track,
-::-webkit-meter-bar {
-	width: 0px;
-}
-
-body {
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-	background-color: #000000;
-	color: #ffffff;
-	letter-spacing: 0.5px;
-}
-
-/* LIGHT THEME */
-body.light {
-	background-color: #fafafa;
-	color: #212121;
-}
-
-body.light .header {
-	background-color: #ffffff;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-body.light .header h2 {
-	color: #0066cc;
-}
-
-body.light #userPassword {
-	background: #ffffff;
-	color: #212121;
-}
-
-body.light #submitBtn {
-	background-color: #0066cc;
-	color: #ffffff;
-}
-
-body.light a {
-	color: #0066cc;
-}
-
-body.light .notice {
-	color: gray;
-}
-
-body.light .modal {
-	background-color: #ffffff;
-}
-
-body.light .modal h2 {
-	color: #212121;
-}
-
-body.light .modal h3 {
-	color: #0066cc;
-}
-
-body.light .modal p {
-	color: #424242;
-}
-
-body.light .close-btn {
-	background: rgba(0, 0, 0, 0.07);
-	color: #212121;
-}
-
-body.light .close-btn svg {
-	fill: #212121;
-}
-
-body.light .amount-buttons {
-	border-color: rgba(0, 0, 0, 0.12);
-}
-
-body.light .amount-btn {
-	background-color: #ffffff;
-	color: #212121;
-	border: 1px solid #e0e0e0;
-}
-
-body.light .amount-btn:hover {
-	background-color: #f0f0f0;
-}
-
-body.light .amount-btn.active {
-	background-color: #0066cc;
-	color: #ffffff;
-}
-
-body.light .amount-btn .amount-id {
-	background-color: #f5f5f5;
-	color: #0066cc;
-}
-
-body.light .logout-btn {
-	background-color: #f0f0f0;
-	color: #212121;
-	border: 1.4px solid #0066cc;
-}
-
-body.light .logout-btn:hover {
-	background-color: #e0e0e0;
-}
-
-body.light .logout-btn a {
-	color: #0066cc;
-}
-
-body.light .amounts-modal-content {
-	background-color: #ffffff;
-	color: #212121;
-}
-
-body.light .amounts-close-btn {
-	background: rgba(0, 0, 0, 0.07);
-	color: #212121;
-}
-
-body.light .reminder-modal-content {
-	background-color: #ffffff;
-	color: #212121;
-}
-
-body.light .reminder-modal-content h3 {
-	color: #0066cc;
-}
-
-body.light .reminder-modal-content p {
-	color: #424242;
-}
-
-body.light .reminder-close-btn {
-	background: #0066cc;
-}
-
-body.light .profile-picture {
-	background-color: #e0e0e0;
-	color: #212121;
-}
-
-body.light .theme-popup {
-	background-color: #ffffff;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-body.light .theme-option {
-	color: #212121;
-}
-
-body.light .theme-option:hover {
-	background-color: #f0f0f0;
-}
-
-.borrowLimitMessage {
-	margin-bottom: 10px;
-	width: 103%;
-	max-width: 400px;
-	background: #ffffff1f;
-	color: #ffffff8d;
-	z-index: 1000;
-	position: relative;
-	left: -15px;
-	line-height: 16px;
-	letter-spacing: 0.1px;
-	border-radius: 25px;
-	padding: 10px 13px;
-}
-
-p.borrowLimitMessage {
-font-size: 13px;
-    font-weight: 300;
-    max-width: 615px;
-    letter-spacing: 0.3px;
-    padding: 20px 17px 25px 11px;
-    margin-top: 20px;
-    margin-bottom: 15px;
-    line-height: 20px;
-    background: #161616;
-}
-
-i.fa-solid.fa-arrow-up-right-from-square {
-    background: #1e2d39;
-    padding: 10px;
-    border-radius: 50%;
-    position: absolute;
-    right: 0px;
-    bottom: 7px;
-}
-
-p.borrowLimitMessage span {
-padding: 4px 8px;
-    margin: 0px;
-    position: relative;
-    top: -10px;
-    border-radius: 40px;
-    font-size: 13px;
-    color: #00aaec;
-    text-decoration: none;
-    font-weight: 300;
-    background: #1e2d39;
-    text-transform: capitalize;
-    line-height: 25px;
-}
-
-body.curvy p.borrowLimitMessage span {
-	border-radius: 25px;
-}
-
-body.curvy .borrowLimitMessage {
-	border-radius: 25px;
-}
-
-a.exploreadds {
-	position: absolute;
-	right: 5px;
-	bottom: 13px;
-	font-size: 12px;
-	color: #ffffffa6;
-}
-
-i.fa-solid.fa-arrow-left {
-	color: white;
-	background: transparent;
-	border-radius: 15px;
-}
-
-body.curvy i.fa-solid.fa-arrow-left {
-	border-radius: 50px;
-}
-
-.exploreadds {
-	border-radius: 15px;
-}
-
-body.curvy .exploreadds {
-	border-radius: 25px;
-}
-
-body.light .borrowLimitMessage {
-	background: #00000012;
-	color: #4c4c4cde;
-}
-
-body.light .applybtn {
-	background: #0066cc;
-	color: #ffffff;
-}
-
-body.light .applybtn:hover {
-	background: #004c99;
-}
-
-body.my-own {
-	background-color: rgb(10 10 10);
-	color: #e0e0e0;
-}
-
-.header {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	padding: 10px 15px;
-	display: flex;
-	align-items: center;
-	background-color: #111111e8;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-	z-index: 10;
-}
-
-.header h2 {
-	font-size: 18px;
-	font-weight: 500;
-	margin-left: 10px;
-	color: #00aaff;
-}
-
-body.my-own .header h2 {
-	color: var(--user-accent);
-}
-
-#passwordContainer {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	min-height: 100vh;
-	width: 100%;
-	text-align: center;
-	line-height: 15px;
-	position: fixed;
-}
-#passwordContainer svg{
-	width: 50px;
-    height: 90px;
-}
-#userPassword {
-	font-size: 18px;
-    background: #161616;
-    color: #ffffff;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-    border: none;
-    outline: none;
-    max-width: 280px;
-    margin: 30px 0px;
-    border-radius: 9999px;
-}
-
-#userPassword:focus {
-	background: #323232;
-}
-
-#submitBtn {
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    padding: 8px 30px;
-    font-weight: 500;
-    border-radius: 16px;
-    background: #008bd154;
-    color: #00c6ff;
-}
-
-a {
-	color: #848484;
-	display: contents;
-	text-decoration: none;
-}
-
-body.light a {
-	color: #0066cc;
-}
-
-body.my-own a {
-	color: var(--user-accent);
-}
-
-#error-message {
-	color: #ff1c1c;
-	font-size: 12px;
-	margin-top: 10px;
-}
-
-.modal {
-display: none;
-    position: fixed;
-    top: 0;
-    height: 100%;
-    padding: 85px 0px 0px 20px;
-    line-height: 30px;
-    background-color: #000000;
-    overflow-y: scroll;
-    z-index: 10000000;
-    margin: 0px;
-    width: 100%;
-    max-width: 650px;
-}
-
-.modal h3 {
-	color: #00aeff;
-	font-size: 16px;
-	font-weight: 600;
-	margin: 25px 0;
-}
-
-.loan-entry p {
-	color: #a0a0a0;
-	font-size: 15px;
-	font-weight: 400;
-	margin: 10px 0;
-	transition: color 0.3s ease;
-	display: flex;
-	justify-content: left;
-	align-items: center;
-	gap: 10px;
-}
-
-.downlog svg {
-	fill: #00aaff;
-	width: 30px;
-	height: 30px;
-	margin: -5px;
-}
-
-.close {
+	font-family: 'Poppins', sans-serif;}
+    * { margin:0; padding:0; box-sizing:border-box;scrollbar-width: none;letter-spacing: 0.5px;}
+
+    body {
+     background-color: #000000;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    .header {
 position: fixed;
-    padding: 20px 10px 10px 10px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%;
-    z-index: 10000000;
-    font-size: 25px;
+    padding: 0 10px;
+    max-width: 600px;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    background: #000000e8;
+    border-radius: 0 0 45px 45px;
+    }
+h3 {
+    font-weight: 500;
+    font-size: 18px;
+}
+    .logo {
+z-index: 100;
     display: flex;
     max-width: 650px;
-    top: 0px;
-    border-radius: 0;
-    align-items: center;
-    left: 50%;
-    font-weight: 900;
-    transform: translate(-50%, 0);
-    text-align: center;
-    justify-content: space-between;
-    gap: 5px;
-    background: linear-gradient(180deg, #000000 50%, transparent);
-}
-
-.close-btn {
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    z-index: 11;
-    outline: none;
-    border: none;
-    display: flex;    backdrop-filter: blur(5px);
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    color: #00aaff;
-    background: #ffffff17;
-    padding: 8px 13px;
-    border-radius: 999px;
-    box-shadow: inset 1px 1px 0px 0px #ffffff2e, inset -1px -1px 0px 0px #ffffff2e;
-    height: 45px;
-
-}
-
-.close-btn i {
-	margin: 0;
-}
-
-.red {
-	color: red;
-	font-weight: 500;
-}
-
-body.curvy .close-btn {
-	border-radius: 50px;
-}
-
-body.my-own .close-btn {
-	background: #1d1d1d;
-	color: #e0e0e0;
-	border: solid 1.4px var(--user-accent);
-}
-
-i {
-	margin-right: 8px;
-}
-
-.logo {
-	position: fixed;
-	top: 10px;
-	right: 10px;
-	z-index: 11;
-}
-
-.logo img {
-	width: 40px;
-	border-radius: 50%;
-}
-
-body.curvy .logo img {
-	border-radius: 50%;
-}
-
-.logout-btn {
-	position: fixed;
-	top: 55px;
-	right: 5px;
-	background-color: #2a3545;
-	color: #ffffff;
-	border: none;
-	padding: 5px 12px;
-	font-size: 12px;
-	border-radius: 15px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-	z-index: 11;
-}
-
-.logout-btn a {
-	color: #e0e0e0;
-	text-decoration: none;
-}
-
-.logout-btn:hover {
-	background-color: #3a4b5e;
-}
-
-.loan-entry {
-	padding: 10px;
-	margin-bottom: 80px;
-	border-bottom: none;
-	width: 98%;
-	padding-bottom: 0px;
-	max-width: 600px;
-	margin-left: -10px;
-	margin-top: -20px;
-}
-
-::-webkit-scrollbar {
-	width: 10px;
-}
-
-.amount-buttons {
-	    display: flex;
-    gap: 15px;
-    overflow-x: scroll;
-    white-space: nowrap;
     position: sticky;
-    top: -15px;
-    z-index: 1000000;
-    width: 100%;
-    padding: 20px;
-    max-width: 600px;
-    margin-left: -10px;
-    border-radius: 30px;
-    box-shadow: inset 1px 1px 0px 0px #ffffff2e, inset -1px -1px 0px 0px #ffffff2e;
-    backdrop-filter: blur(3px);    margin-top: 10px;
-    background: #ffffff17;
-}
-
-.amount-btn {
-	color: lightgray;
-    border: none;
-    padding: 10px 11px 10px 50px;
-    font-size: 15px;
-    border-radius: 80px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    position: relative;
-    display: flex;
-    background-color: #283445;
-    color: #ffffff;
-    border: none;
-    justify-content: center;
+    top: 0px;
+    padding: 20px 0 0 0;
+    justify-content: space-between;
     align-items: center;
-    font-weight: 400;
-    width: 100%;
-}
-
-.amount-btn:hover {
-	background-color: #425975;
-}
-
-.amount-btn.active {
-	background-color: var(--telegram-accent);
-}
-
-.amount-btn .amount-id {
-	position: absolute;
-	left: 5px;
-	font-size: 12px;
-	color: #00aeff;
-	background-color: rgb(10 10 10);
-	border-radius: 50px;
-	border: none;
-	padding: 6px;
-	width: 35%;
-	color: var(--telegram-accent);
-	background-color: #000000;
-	text-align: center;
-}
-
-.sponserheading {
-	text-align: center;
-	font-size: 13px;
-	display: inline;
-	padding: 6px;
-	border-radius: 60px;
-	text-decoration: none;
-	font-weight: 300;
-    color: #00aaec;
-    background: #1e2d39;
-
-}
-
-.notice {
-	font-weight: 200;
-	font-size: 12px;
-	line-height: 20px;
-	position: fixed;
-	bottom: 10px;
-	padding: 10px;
-	border-radius: 8px;
-	width: 90%;
-	color: #a0a9b2;
-	border-color: #9595954d;
-	max-width: 400px;
-}
-
-body.my-own .notice {
-	color: #ffffffd4;
-	border: solid 1.4px var(--user-accent);
-}
-
-i.fa-solid.fa-list-ul {
-	color: #ffffff;
-	padding: 8px;
-	background: #46515f;
-	border-radius: 8px;
-	font-size: 14px;
-	backdrop-filter: blur(3px);
-	margin: unset;
-}
-
-.powered-by {
-	position: fixed;
-    top: 20px;
-    font-size: 11px;
-    color: #ffffff;
-    z-index: -1;
-    background: #161616;
-    text-align: center;
-    padding: 7px 12px;
-    display: none;
-    border-radius: 9999px;
-}
-
-.membership-type {
-	color: #00aeff;
-	font-size: 14px;
-	font-weight: 400;
-	margin: 10px 0;
-	display: flex;
-	align-items: center;
-	gap: 6px;
-}
-
-.membership-icon {
-	width: 18px;
-	height: 18px;
-}
-
-p#membershipType {
-	font-size: 14px;
-	color: #ff66f9;
-	padding: 5px;
-	font-weight: 600;
-	margin: -10px 0px 35px -15px;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	background: #037e75;
-	border-radius: 15px;
-	z-index: 0;
-	position: relative;
-	display: none;
-}
-
-p#membershipType a {
-	text-decoration: none;
-	color: #25212f;
-}
-
-body.curvy p#membershipType {
-	border-radius: 100px;
-}
-
-.profile-container {
-	max-width: 620px;
-    width: 100%;
-    padding-top: 20px;
-    position: relative;
-    z-index: 10000;
-}
-
-.profile-picture {
-width: 90px;
-    height: 90px;
-    border-radius: 25px;
-    display: flex;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    font-size: 50px;
-    font-weight: 700;
-    color: #ffffff;
-    background-size: cover;
-    background-position: center;
-    margin: 0px auto;
-    position: relative;
-    left: -10px;
-}
-
-body.curvy .profile-picture {
-	border-radius: 25%;
-}
-
-.profile-picture:hover {
-	box-shadow: inset 0px 0px 20px #00000000, inset -35px 20px 30px #00000000;
-	animation: profile-container infinite 5s ease-in-out;
-	border: none;
-}
-
-@keyframes profile-container {
-	from {
-		box-shadow: inset 0px 0px 20px #00000000, inset -35px -40px 30px #00000000;
-	}
-
-	20% {
-		box-shadow: inset -30px -10px 20px #000000, inset -65px 20px 30px #000000;
-	}
-
-	40% {
-		box-shadow: inset -30px -10px 20px #000000, inset -35px 40px 30px #000000;
-	}
-
-	60% {
-		box-shadow: inset -30px -10px 20px #000000, inset -20px 20px 30px #000000;
-	}
-
-	80% {
-		box-shadow: inset 0px 0px 20px #000000, inset -135px 40px 30px #000000;
-	}
-
-	to {
-		box-shadow: inset 0px 0px 20px #00000000, inset -35px -40px 30px #00000000;
-	}
-}
-
-.user-icon {
-width: 35px;
-    height: 35px;
-    padding: 5px;
-    background: #ffffff2b;
-    border-radius: 13px;
-}
-
-p#userNameContainer {
-font-size: 22px;
-    gap: 5px;
-    margin: 20px;
-    border-radius: 15px;
-    padding: 0px 3px 0px 15px;
-    cursor: pointer;
-    width: max-content;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    left: 50%;
-    position: relative;
-    transform: translate(-50%, 0%);
-    margin-left: -10px;
+    }
+* {
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    .logo h1 {
+position: relative;
+    left: 0px;
     font-weight: 600;
-}
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
 
-span#userName {
-	color: #ffffff9e;
+    .logo h1 p {
+      position: fixed;
+      left: 1px;
+      bottom: -6px;
+      font-size: 10px;
+      font-weight: 300;
+    }
+
+    .mficolblogo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #0021ff, #00d0ff);
+      padding: 4px;
+    }
+
+    .search-container {
+width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 999px;
+    background: #242424;
+    padding: 10px;
+    color: white;
+    gap: 10px;
+    font-size: 20px;
+    margin-top: 5px;
+    }
+
+    #searchInput {
+width: 100%;
+    text-align: start;
+    border: none;
+    color: white;
+    background: transparent;
+    font-size: 19px;
+    }
+.search-container svg {
+    fill: white;
 }
-.twoOptions {
+    #searchInput:focus {
+      outline: none;
+      background: #242424;
+    }
+
+    #sectionsContainer {
+padding-top: 170px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 78px;
+    width: 97%;
+    }
+
+    .section h2 {
+         font-size: 15px;
+    font-weight: 600;
+    color: #aaaaaa;
+    display: none;
+    }
+
+    .site-list {
+    overflow: hidden;
+    }
+    .site-item {
+display: flex;
+    align-items: center;
+    padding: 10px 5px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+    opacity: 70%;
+    border-radius: 20px;
+    }
+    .site-item:hover {
+      background: #242424;
+    }
+
+    .letter-icon {
+         width: 50px;
+    height: 50px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 510;
+    margin-right: 10px;
+    flex-shrink: 0;
+    font-size: 26px;
+    background: linear-gradient(45deg, #382c50, #605d6e);
+    }
+.rghtsdopt {
+display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.rghtsdopt a{
+  display: contents;
+}
+.bottomoptions {
+    background: linear-gradient(0deg, #111111 30%, transparent);
+    position: fixed;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    .bottom-nav {
+width: 80%;
+    max-width: 600px;
+    padding: 20px 0;
+    }
+
+    .bottomtakeoptions {
+text-align: center;
+    width: 100%;
     display: flex;
     justify-content: space-around;
-    margin-left: -20px;
-    gap: 5px;
-}
-
-.amounts-btn {
-background-color: transparent;
-    color: lightgray;
-    border: none;
+    align-items: center;
+    font-size: 12px;
+    backdrop-filter: blur(3px);
+    background: #111111ba;
+    box-shadow: inset 1px 1px 0px 0px #ffffff2e, inset -1px -1px 0px 0px #ffffff2e;
+    border-radius: 9999px;
     padding: 5px;
-    font-size: 11px;
-    cursor: pointer;
+    gap: 3px;
+    }
+.bottomtakeoptions a {
+display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+    color: #0a95ff;
+    width: 100%;
+    border-radius: 999px;
+    padding: 3px;
+}
+.bottomtakeoptions a:hover{
+  background: #ffffff1a;
+}
+    svg {
+width: 28px;
+    height: 28px;
+      fill: #0a95ff;
+    }
+.site-info {
+    border-bottom: solid 1.5px #ffffff38;
+    width: 80%;
+    padding: 10px 0;
+}
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #aaa;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .nav-item:hover, .nav-item.active {
+      color: #00d0ff;
+    }
+
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: #00003b;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 3px;
     align-items: center;
-}
-
-
-.amounts-btn svg {
-	fill: lightgray;
-	width: 25px;
-	height: 25px;
-}
-
-body.curvy .amounts-btn {
-	border-radius: 18px;
-}
-
-body.light .amounts-btn {
-	background-color: #81818124;
-	color: #323232;
-	border: solid 1px #ffffff65;
-}
-
-img.sponserimg {
-	width: 100%;
-	padding: 0px;
-	max-width: 400px;
-	margin-bottom: -9px;
-	margin-top: 10px;
-	border-radius: 10px;
-}
-
-.sponserimges {
-	display: flex;
-	gap: 10px;
-	margin-bottom: -20px;
-	margin-top: 18px;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-}
-
-.sponsers-section {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 90%;
-	border-bottom: solid 0.5px #252525;
-}
-
-body.curvy .sponsers-section {
-	border-radius: 120px;
-}
-
-.sponsers-section span {
-	font-size: 15px;
-	color: white;
-	font-weight: 500;
-}
-
-.sponsers-section a {
-	font-weight: 500;
-	font-size: 12px;
-	color: #00aaff;
-}
-
-.sponsers-section a:hover {
-	text-decoration: underline;
-	color: white;
-}
-
-img.sponserimg {
-	opacity: 80%;
-}
-
-img.sponserimg:hover {
-	opacity: 100%;
-}
-.amounts-modal {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: #000000c9;
-	z-index: 10000001;
-	display: flex;
-	justify-content: center;
-	align-items: end;
-	user-select: none;
-}
-
-.amounts-modal-content {
-padding: 25px 20px;
-    border-radius: 40px 40px 0 0;
-    width: 100%;
-    background-color: #161616;
-    color: #ffffff;
-    max-width: 400px;
-    position: relative;
-    line-height: 40px;
-}
-
-.amounts-close-btn {
-	width: 45px;
-    height: 45px;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    color: #00aeff;
-    font-size: 30px;
-    cursor: pointer;
-    font-weight: 100;
-    background: #1e2d39;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
-}
-
-span {
-	color: #00c6ff;
-}
-
-.reminder-modal {
-	    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000000c9;
-    z-index: 10000002;
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    user-select: none;
-}
-
-.reminder-modal-content {
-background-color: #161616;
-    padding: 25px;
-    border-radius: 40px 40px 0 0;
-    width: 100%;
-    max-width: 400px;
-    color: #e0e0e0;
-    position: relative;
-    line-height: 29px;
-    text-align: center;
-}
-
-.reminder-close-btn {
-    cursor: pointer;
-    background: #008bd154;
-    padding: 8px;
-    display: block;
-    font-size: 18px;
-}
-
-.downsingle {
-	margin-top: 15px;
-}
-
-.reminder-modal-content p {
-	color: #a8a8a8;
-	margin: 15px 0;
-	font-size: 14px;
-	font-weight: 400;
-}
-
-.reminder-modal-content h3 {
-font-size: 25px;
-    font-weight: 800;
-    margin: 20px;
-}
-
-.stars-display {
-	position: fixed;
-	top: 15px;
-	right: 15px;
-	color: #e0e0e0;
-	font-weight: 500;
-	display: flex;
-	align-items: center;
-	gap: 0px;
-	z-index: 11;
-	justify-content: center;
-	font-weight: 600;
-}
-
-hr {
-	background: linear-gradient(to right, transparent, #a4a4a461, transparent);
-	width: 96%;
-	height: 1.5px;
-	border: none;
-	max-width: 400px;
-	outline: none;
-}
-
-.about {
-	padding: 17px;
-	text-align: center;
-	max-width: 600px;
-	width: 100%;
-	background: #161616;
-	border-radius: 20px;
-	position: relative;
-	margin: 8px 0px;
-	border: none;
-	top: 20px;display: none;
-}
-
-.applybtn {
-	border: none;
-	border-radius: 9999px;
-	font-weight: 400;
-	border: none;
-}
-
-.topdec {
-	display: none;
-}
-
-.applybtn:hover {
-	text-decoration: none;
-}
-
-.loading-overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: black;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	z-index: 1000;
-	opacity: 1;
-	transition: opacity 0.5s ease;
+    z-index: 1000000000000;
+    opacity: 1;
+    transition: opacity 0.6s ease;
 }
 
 .loading-overlay.hidden {
-	opacity: 0;
-	pointer-events: none;
+    opacity: 0;
+    pointer-events: none;
 }
 
-.loading-logo {
-	width: 200px;
-	height: auto;
-	border-radius: 100px;
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
 }
-
-.loading-dots {
-	display: flex;
-	position: fixed;
-	bottom: 100px;
-	align-items: center;
-	justify-content: center;
-}
-
-.nameHead {
-	margin: 0px -6px;
-	font-weight: 900;
-	font-size: 12px;
-	text-align: center;
-	text-transform: uppercase;
-	width: 100%;
-	max-width: 0%;
-	position: relative;
-	z-index: 100000;
-	position: sticky;
-	top: -14px;
-	white-space: nowrap;
-	backdrop-filter: blur(1px);
-}
-
-.dot {
-	width: 10px;
-	height: 10px;
-	background-color: #006aff;
-	border-radius: 50%;
-	margin: 0 5px;
-	animation: bounceDot 1s ease-in-out infinite;
-}
-
-.dot:nth-child(2) {
-	animation-delay: 0.2s;
-}
-
-.dot:nth-child(3) {
-	animation-delay: 0.4s;
-}
-
-@keyframes bounceDot {
-	0% {
-		transform: translateY(0);
-	}
-
-	50% {
-		transform: translateY(-15px);
-	}
-
-	100% {
-		transform: translateY(0);
-	}
-}
-
-.theme-popup {
-	position: fixed;
-	bottom: 145px;
-	right: 20px;
-	background-color: #4f4f4f;
-	border-radius: 15px;
-	padding: 7px 8px;
-	display: none;
-	flex-direction: column;
-	z-index: 999;
-	transform: translateY(20px);
-	opacity: 0;
-	transition: transform 0.3s ease, opacity 0.3s ease;
-	backdrop-filter: blur(5px);
-}
-
-body.curvy .theme-popup {
-	border-radius: 18px;
-}
-
-.theme-popup.open {
-	display: flex;
-	transform: translateY(0);
-	opacity: 1;
-}
-
-.theme-option {
-	background-color: transparent;
-	color: #fff;
-	border: none;
-	padding: 6px 15px;
-	cursor: pointer;
-	font-size: 14px;
-	transition: background-color 0.3s ease;
-}
-
-.color-picker {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-}
-
-.color-picker input[type="color"] {
-	width: 30px;
-	height: 30px;
-	border: none;
-	padding: 0;
-	background: transparent;
-	cursor: pointer;
-}
-
-.style-button {
-	position: fixed;
-	bottom: 104px;
-	right: 30px;
-	background-color: #696969;
-	color: #fff;
-	border: none;
-	border-radius: 50%;
-	width: 25px;
-	height: 25px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-	font-size: 10px;
-	z-index: 998;
-	font-weight: 400;
-	transition: transform 0.3s ease, background-color 0.3s ease;
-	opacity: 0;
-	pointer-events: none;
-}
-
-.style-button.visible {
-	opacity: 1;
-	pointer-events: auto;
-}
-
-.issuebtn button {
-width: 100%;
-    position: relative;
-    left: 0px;
-    padding: 10px;
-    background: red;
-    color: white;
-    border: none;
-    font-size: 18px;
-    border-radius: 9999px;
-    cursor: pointer;
-}
-
-body.curvy .issuebtn button {
-	border-radius: 16px;
-}
-
-.downlog {
-	right: 0;
-    text-align: center;
-    position: fixed;
-    bottom: 0px;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 14px;
-    gap: 100px;
-    z-index: 100000000;
-    padding: 20px;
-    background: linear-gradient(0deg, #111111 30%, transparent);
-}
-
-.downlog img {
-	max-width: 30px;
-	border-radius: 8px;
-}
-
-#loanDetails svg {
-	width: 16px;
-	height: 16px;
-	fill: rgb(255 255 255 / 57%);
-}
-
-body.curvy .downlog img {
-	max-width: 35px;
-	border-radius: 10px;
-}
-
-@media(max-width:600px) {
-	.amount-buttons {
-display: flex;
-        gap: 10px;
-        white-space: nowrap;
-        position: sticky;
-        align-items: center;
-        max-width: 645px;
-        width: 100%;
-        padding: 20px;
-        scrollbar-width: none;
-        z-index: 100000;
-        margin-left: -10px;
-        border-radius: 29px;
-	}
-
-	.modal {
-		width: 100%;
-	}
-}
-
-.date-container {
-	height: 30px;
-	overflow: hidden;
-	user-select: none;
-	z-index: 1000;
-	background: #000000;
-	border-radius: 60px;
-	position: fixed;
-	top: 10px;
-	left: 50%;
-	transform: translate(-50%, 0);
-}
-
-.date-slider {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-	animation: scroll-up 7s linear infinite;
-}
-
-.date-text,
-.day-text {
-	font-size: 13px;
-	font-weight: 500;
-	line-height: 30px;
-	text-align: right;
-	white-space: nowrap;
-	width: 100px;
-	text-align: center;
-}
-
-@keyframes scroll-up {
-	0% {
-		transform: translateY(0);
-	}
-
-	100% {
-		transform: translateY(-120px);
-	}
-}
-
-.amounts-modal-content p {
-padding: 5px;
-    color: #a0a0a0;
+.servicenmae{
     font-size: 16px;
-    font-weight: 400;
-    transition: color 0.3s ease;
+    color: #ffffff8f;
+    margin: 170px 0 35px;
+    text-align: center;
+    max-width: 90%;
+    font-weight: 500;
+    letter-spacing: 0;white-space: nowrap;
     display: flex;
-    justify-content: left;
+    gap: 5px;
+} button#startAudioBtn {
+    background: white;
+    border: none;
+    padding: 10px;
+    border-radius: 100px;
+}
+.audio-controls {
+    margin: 20px 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}.audio-progress-bar {
+    height: 2px;
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 0px;
+    overflow: hidden;
+}.audio-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: white;
+    border-radius: 6px;
+    transition: width 0.45s ease-out;
+    box-shadow: 0 0 16px #00aaff99;
+}
+.audio-progress-container {
+    line-height: 43px;
+    text-align: center;width: 150%;
+}
+div#audioStatus {
+    font-size: 10px;
+    color: #ffffff87;margin-bottom: -30px;
+}button#muteToggle {
+   border-radius: 100px;
+    border: none;
+    padding: 3px 16px;
+    margin: 20px 0 0 0;
+} .loading-logo {
+            width: 300px;
+    height: auto;
+    position: relative;
+    top: -50px;
+        }
+    .nav-item i { font-size: 22px; margin-bottom: 3px; }
+    .rightsideopt {
+   display: flex;
+    justify-content: center;
     align-items: center;
     gap: 10px;
-}
-
-.amounts-modal-content svg {
-	fill: #e0e0e0c4;
-	width: 16px;
-}
-
-#specialContent {
-	width: 105%;
-	margin: 15px 0px 25px -19px;
-	text-align: center;
-	padding: 0px 10px;
-}
-
-#specialContent img {
-	max-width: 100%;
-	border-radius: 15px;
-	padding: 0px;
-	margin: -5px 0px 0px 0px;
-}
-
-.tiergraphbar {
-	flex: 1;
-	height: 6px;
-	background: #83838348;
-	border-radius: 15px;
-	overflow: hidden;
-}
-
-body.curvy .tiergraphbar {
-	border-radius: 3px;
-}
-
-#tierProgress {
-	margin: -10px 0px 10px 0px;
-	font-size: 13px;
-	color: #ddd;
-	position: relative;
-	left: -10px;display: none;
-	padding: 0px 0px;
-}
-
-body.curvy #specialContent img {
-	border-radius: 18px;
-}
-
-#specialContent h3 {
-	margin: 0 0 5px 0;
-	font-size: 16px;
-	padding: 5px;
-}
-
-#specialContent p {
-	margin: 0;
-	font-size: 13px;
-	color: red;
-	padding: 0px 0px 10px 0px;
-}
-
-.modal {
-	display: none;
-}
-
-#specialContent a {
-	text-decoration: none;
-	display: block;
-}
-
-#specialContent a:hover {
-	opacity: 0.8;
-}
-
-#specialContent a:hover h3,
-#specialContent a:hover p {
-	text-decoration: underline;
-}
-
-#specialContent a:hover img.applybtn {
-	cursor: pointer;
-	border: 2px solid #00aeff;
-}
-
-span#totalTaken,
-#totalInterest,
-#totalReturn {
-	margin: 0px -8px 0px 0px;
-}
-
-
-.amounts-close-btn svg {
-	width: 30px;
-	height: 30px;
-	fill: #04c6ff;
-}
-.notepad {
-  color: #a8a8a8;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    margin: 15px 0 0 0;
-    background: #ffffff1a;
-    padding: 15px;
-    border-radius: 25px;
-    width: 100%;
-    text-align: center;
-
-}b {
-    color: #00c6ff;
-    font-weight: 600;
-}
-.stylecircle{      display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 3px;
-    height: 50px;
-    background: #ffffff21;
-    border-radius: 9999px;
-    width: 85px;
-
-    } 
-    .stylecircle:hover{
-         background: #ffffff40;
-    } 
-    
-    button.downloadbtn {
-    width: 45px;
-    height: 45px;
-    color: #00aeff;
-    font-size: 30px;
-    cursor: pointer;
-    font-weight: 100;
-    background: #ffffff38;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    position: absolute;
-    top: 15px;
-    left: 15px;
-}           
-</style>
-</head>
-
-<body>
-
-    <div id="passwordContainer">
-        <div class="decoration topdec" style="width: 100%;
-    position: fixed;
-    display: contents;">
-            <img class="topdec" style="width: 450px;
-    position: fixed;
-    top: 0px;
-    object-fit: cover;    z-index: -1;" src="https://i.ibb.co/pvVBN7cr/tread.png" alt="">
-        </div>
-        <center><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M246.78-62.48q-43.72 0-74.86-31.14-31.14-31.13-31.14-74.86v-386.43q0-43.73 31.14-74.87 31.14-31.13 74.86-31.13h24.74v-63.61q0-87.52 60.76-148.85T480-934.7q86.96 0 147.72 61.33 60.76 61.33 60.76 148.85v63.61h24.74q43.72 0 74.86 31.13 31.14 31.14 31.14 74.87v386.43q0 43.73-31.14 74.86-31.14 31.14-74.86 31.14H246.78Zm0-106h466.44v-386.43H246.78v386.43ZM536.5-305.2q23.5-23.5 23.5-56.5t-23.5-56.5Q513-441.7 480-441.7t-56.5 23.5Q400-394.7 400-361.7t23.5 56.5q23.5 23.5 56.5 23.5t56.5-23.5ZM377.52-660.91h204.96v-63.61q0-43.41-29.63-73.79Q523.22-828.7 480-828.7t-72.85 30.39q-29.63 30.38-29.63 73.79v63.61ZM246.78-168.48v-386.43 386.43Z"/></svg>
-</center>
-        <h2 style="font-weight: 400; font-size: 20px;z-index: -3;">Verify my account</h2>
-        <input type="text" id="userPassword" placeholder="Enter password" autocomplete="current-password">
-        <button id="submitBtn">Verify</button>
-        <br><div class="treee" style="width: 100%;
-    position: fixed;
-    bottom: 10%;
-    left: 47.8%;
-    transform: translate(-50%, 0%);">
-            <img class="topdec" style="width: 85px;" src="https://media.tenor.com/Mreg30jYSooAAAAi/christmas-tree-christmas-lights.gif" alt="">
-        </div>
-       <p id="error-message"></p>
-        <div class="notice"> You should return the money before the due date, If not additional interest will be charged. </div>
-    </div>
-
-    <div id="userInfoModal" class="modal">
-        <div class="downlog">
-          <a href="https://blackswan19.github.io/golden/FM/starpre" style="color: white; text-decoration: none; cursor: pointer;">
-                        <button class="applybtn" style="border: none;
-    outline: none;
-    color: #ffffffc2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 100;
-    font-size: 15px;
-    gap: 3px;
+    background: #ffffff17;
+    padding: 8px;height: 45px;
+    border-radius: 999px;
+    box-shadow: inset 1px 1px 0px 0px #ffffff2e, inset -1px -1px 0px 0px #ffffff2e;
+}.leftsideopt {
     background: #ffffff17;
     padding: 8px;
-    height: 45px;    backdrop-filter: blur(5px);
     border-radius: 999px;
-    box-shadow: inset 1px 1px 0px 0px #ffffff2e, inset -1px -1px 0px 0px #ffffff2e;">
-                                    <svg style="width: 20px;
-    height: 20px;
-    fill: white;
-    margin: 0;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m422-232 207-248H469l29-227-185 267h139l-30 208Zm-55.85 107.38 40-275.38h-170l299.23-431.54h18.47L514.62-520h200l-330 395.38h-18.47ZM471-470Z"/></svg>
-                        Go to Turbo</button>
-                    </a>
-        </div>
-
-        <div class="topoption">
-            
-            <div class="close">
-				
-                <button onclick="closeModal()" class="close-btn">
-                    <svg style="    fill: #00aeff;
+    box-shadow: inset 1px 1px 0px 0px #ffffff2e, inset -1px -1px 0px 0px #ffffff2e;
     width: 45px;
-    height: 25px;
-    margin: 0px -10px 0px -15px;
-" xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m386.38-481 300.31 300.31q14.92 14.92 15.12 37.07.19 22.16-14.73 37.08Q672.15-91.62 650-91.62t-37.08-14.92L308.08-411.77q-14.85-14.85-21.58-32.81-6.73-17.96-6.73-36.42t6.73-36.42q6.73-17.96 21.58-32.81l304.84-304.85q14.93-14.92 36.89-15.11 21.96-.19 36.88 14.73 14.92 14.92 14.92 37.08 0 22.15-14.92 37.07L386.38-481Z"/></svg>
-<svg style="width: 30px;
-    height: 21px;
-    border-radius: 999px;
-    padding: 2px;
-    margin: -3px;
-    fill: #00c6ff;
-    text-decoration: none;
-    font-weight: 300;
-    background: #008bd154;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M246.78-62.48q-43.72 0-74.86-31.14-31.14-31.13-31.14-74.86v-386.43q0-43.73 31.14-74.87 31.14-31.13 74.86-31.13h24.74v-63.61q0-87.52 60.76-148.85T480-934.7q86.96 0 147.72 61.33 60.76 61.33 60.76 148.85v63.61h24.74q43.72 0 74.86 31.13 31.14 31.14 31.14 74.87v386.43q0 43.73-31.14 74.86-31.14 31.14-74.86 31.14H246.78Zm0-106h466.44v-386.43H246.78v386.43ZM536.5-305.2q23.5-23.5 23.5-56.5t-23.5-56.5Q513-441.7 480-441.7t-56.5 23.5Q400-394.7 400-361.7t23.5 56.5q23.5 23.5 56.5 23.5t56.5-23.5ZM377.52-660.91h204.96v-63.61q0-43.41-29.63-73.79Q523.22-828.7 480-828.7t-72.85 30.39q-29.63 30.38-29.63 73.79v63.61ZM246.78-168.48v-386.43 386.43Z"/></svg>
-</button>
-               My Account
-            </div>
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  </style>
+</head>
+<body>
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="servicename" style="position: fixed;
+    top: 10px;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    background: #ffffff24;
+    padding: 10px;
+    border-radius: 100px;
+    color: #ffffff;
+    font-weight: 300;">
+            Myootive Service
         </div>
-        <a href="https://blackswan19.github.io/golden/FM/starspage"> </a>
-
-        <div class="profile-container"><div class="profile-picture" id="profilePicture"></div>
-			<div class="maincontent">
-            	<p id="userNameContainer"> <span style="color: white;" id="userName"></span></p>
-			</div>
-            <div class="mainbtmproopt">
-                <div class="twoOptions">
-                    <button class="amounts-btn" onclick="showAmountsModal()">
-                        <div class="stylecircle">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-160q-66 0-113-47T80-320v-320q0-66 47-113t113-47h480q66 0 113 47t47 113v320q0 66-47 113t-113 47H240Zm0-480h480q22 0 42 5t38 16v-21q0-33-23.5-56.5T720-720H240q-33 0-56.5 23.5T160-640v21q18-11 38-16t42-5Zm-74 130 445 108q9 2 18 0t17-8l139-116q-11-15-28-24.5t-37-9.5H240q-26 0-45.5 13.5T166-510Z"/></svg>
-                        </div>
-                        Wallet 
-                    </button>
-                    <button class="amounts-btn" onclick="showStarCount()">
-                        <div class="stylecircle">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143Zm126 18L314-169q-11 7-23 6t-21-8q-9-7-14-17.5t-2-23.5l44-189-147-127q-10-9-12.5-20.5T140-571q4-11 12-18t22-9l194-17 75-178q5-12 15.5-18t21.5-6q11 0 21.5 6t15.5 18l75 178 194 17q14 2 22 9t12 18q4 11 1.5 22.5T809-528L662-401l44 189q3 13-2 23.5T690-171q-9 7-21 8t-23-6L480-269Zm290-458-60 35q-6 3-11.5-.5T695-703l16-66-53-44q-5-5-3-10.5t9-6.5l70-6 27-63q2-6 9-6t9 6l27 63 70 6q7 1 9 6.5t-3 10.5l-53 44 16 66q2 7-3.5 10.5t-11.5.5l-60-35ZM480-481Z"/></svg>
-                            <span style="    font-size: 15px; font-weight: 600; position: relative; top: 0.5px;" id="starCount"></span>
-                        </div> Stars
-                    </button>
-                    <button class="amounts-btn" onclick="showCoinsCount()">
-                        <div class="stylecircle">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-520q0-17 11.5-28.5T160-720q17 0 28.5 11.5T200-680v520h400q17 0 28.5 11.5T640-120q0 17-11.5 28.5T600-80H200Zm160-240v-480 480Z"/></svg>
-                            <span style="    font-size: 15px; font-weight: 600; position: relative; top: 0.5px;" id="coinsCount"></span>
-                        </div> 
-                        Clone
-                    </button>
-                </div>
-                <div id="specialContent" class="about"></div>
-                <p id="membershipType" class="membership-type"></p>
-            </div>
-            <div class="topdec">
-            </div>
-            <img style="position: fixed;
-    bottom: -1px;
-    width: 100%;
-    rotate: 180deg;
-    left: 0px;" class="topdec" src="https://www.animatedimages.org/data/media/333/animated-christmas-tree-decorations-image-0062.gif" alt="">
-                
-        <img class="topdec" style="position: fixed;
-    bottom: 0px;
-    width: 100%;
-    filter: drop-shadow(2px 4px 6px #00000057);
-    left: 15px;" src="https://www.animatedimages.org/data/media/1081/animated-christmas-line-image-0129.gif" alt="">
-    </div>
-
-       <div class="about" style="align-items: center;
-    padding: 10px 0 0 0;
-    margin-top: -35px;
-    max-width: 625px;
-    width: 103%;
-    margin-left: -15.5px;
-    margin-bottom: 35px;">
-        <h2 class="sponserheading">Our service are partnered by</h2>
-        <div class="sponserimges">
-                <div class="sponsers-section">
-                    <span>Delay it</span>
-                    <a href="https://blackswan19.github.io/golden/FM/solution">Explore Now</a>
-                </div>
-                <div class="sponsers-section">
-                    <span>Split Half Pay</span>
-                    <a href="https://blackswan19.github.io/golden/FM/solution">Explore Now</a>
-                </div>
-                <div class="sponsers-section">
-                    <span>MLLD-Stars</span>
-                    <a href="https://blackswan19.github.io/golden/FM/starspage">Explore Now</a>
-                </div>
-                <div class="sponsers-section">
-                    <span>BsGames</span>
-                    <a href="https://blackswan19.github.io/golden/Bs%20Games/bsgames">Explore Now</a>
-                </div>
-        </div>
-        <br>
-        </div>
-        <div class="amount-buttons" id="amountButtons"></div>
-        <div id="loanDetails"></div>
-    </div>
-
-    <!-- Amounts Modal -->
-    <div id="amountsModal" class="amounts-modal" style="display: none;">
-        <div class="amounts-modal-content">
-            <button class="downloadbtn" onclick="downloadAllLoans()">
-                <svg style="    width: 35px;
-    fill: white;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M320-120q-33 0-56.5-23.5T240-200v-80h-80q-33 0-56.5-23.5T80-360v-160q0-51 35-85.5t85-34.5h560q51 0 85.5 34.5T880-520v160q0 33-23.5 56.5T800-280h-80v80q0 33-23.5 56.5T640-120H320ZM160-360h80q0-33 23.5-56.5T320-440h320q33 0 56.5 23.5T720-360h80v-160q0-17-11.5-28.5T760-560H200q-17 0-28.5 11.5T160-520v160Zm480-280v-120H320v120h-80v-120q0-33 23.5-56.5T320-840h320q33 0 56.5 23.5T720-760v120h-80Zm80 180q17 0 28.5-11.5T760-500q0-17-11.5-28.5T720-540q-17 0-28.5 11.5T680-500q0 17 11.5 28.5T720-460Zm-80 260v-160H320v160h320ZM160-560h640-640Z"/></svg>
-            </button>
-            <span class="amounts-close-btn" onclick="closeAmountsModal()">
-				<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-427 285.5-232.5q-11 11-26.5 10.75T232.5-233q-10.5-11-10.25-26.25T233-285l194-195-194-195q-10.5-10.5-10.5-25.75T233-727q10.5-11 26-11.25t26.5 10.75L480-533l194.5-194.5q11-11 26.5-10.75T727.5-727q10.5 11 10.25 26.25T727-675L533-480l194 195q10.5 10.5 10.5 25.75T727-233q-10.5 11-26 11.25t-26.5-10.75L480-427Z"/></svg>
-			</span>
-            <h3 style="margin-top: 50px;
-    font-weight: 800;
-    font-size: 25px;
-    margin-bottom: 10px;">
-				Wallet</h3>
-            <link rel="stylesheet" href="lightning.css">
-            <p><svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-  <path d="m23.018,8.785c-.595-.542-1.356-.82-2.169-.782-.804.037-1.545.386-2.085.981l-3.217,3.535c-.551-.91-1.55-1.519-2.689-1.519H4c-2.206,0-4,1.794-4,4v5c0,2.206,1.794,4,4,4h4.965c2.849,0,5.57-1.22,7.467-3.348l6.804-7.637c1.094-1.226.996-3.123-.218-4.23Zm-1.275,2.899l-6.804,7.638c-1.518,1.701-3.695,2.678-5.974,2.678h-4.965c-1.103,0-2-.897-2-2v-5c0-1.103.897-2,2-2h8.858c.629,0,1.142.513,1.142,1.143,0,.564-.421,1.051-.98,1.13l-5.161.737c-.546.078-.926.585-.848,1.132.078.548.587.928,1.131.849l5.161-.737c1.175-.168,2.129-.987,2.514-2.058l4.427-4.865c.181-.2.43-.316.699-.329.272-.008.529.082.728.262.407.372.44,1.009.072,1.421Zm-7.449-7.391c-.391-.391-.391-1.023,0-1.414l2.293-2.293c.373-.374.914-.586,1.414-.586s1.041.212,1.414.586l2.293,2.293c.391.391.391,1.023,0,1.414-.195.195-.451.293-.707.293s-.512-.098-.707-.293l-1.293-1.293v3c0,.552-.447,1-1,1s-1-.448-1-1v-3l-1.293,1.293c-.391.391-1.023.391-1.414,0Zm-7.543,4.707h3.5c1.517,0,2.75-1.31,2.75-2.919,0-1.665-1.581-3.473-3.138-4.223.164-.164.322-.342.462-.531.405-.55.032-1.326-.651-1.326h-2.347c-.646,0-1.067.73-.695,1.259.151.214.327.415.51.598-1.558.75-3.14,2.559-3.14,4.224,0,1.61,1.233,2.919,2.75,2.919Zm1.75-5.5c.745,0,2.5,1.527,2.5,2.581,0,.507-.336.919-.75.919h-3.5c-.414,0-.75-.413-.75-.919,0-1.054,1.755-2.581,2.5-2.581Z"/>
-</svg> Total Taken Amount : <span id="totalTaken"></span>₹</p>
-            <p><?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-  <path d="m14,1.5c0-.828.672-1.5,1.5-1.5s1.5.672,1.5,1.5-.672,1.5-1.5,1.5-1.5-.672-1.5-1.5Zm8.5,3.5c-.828,0-1.5.672-1.5,1.5s.672,1.5,1.5,1.5,1.5-.672,1.5-1.5-.672-1.5-1.5-1.5Zm-4.667,3L22.5,0h-2.333l-4.667,8h2.333Zm5.167,4.5v8c0,1.995-2.58,3.5-6,3.5-2.151,0-3.968-.596-5.022-1.534-1.217,1.01-3.353,1.534-5.478,1.534-3.23,0-6.5-1.202-6.5-3.5V4.5C0,2.202,3.27,1,6.5,1s6.5,1.202,6.5,3.5v5.353c1.047-.534,2.433-.853,4-.853,3.42,0,6,1.505,6,3.5ZM2,4.5c0,.436,1.577,1.5,4.5,1.5s4.5-1.064,4.5-1.5-1.577-1.5-4.5-1.5-4.5,1.064-4.5,1.5Zm0,4c0,.436,1.577,1.5,4.5,1.5s4.5-1.064,4.5-1.5v-1.409c-1.226.601-2.867.909-4.5.909s-3.274-.308-4.5-.909v1.409Zm0,4c0,.436,1.577,1.5,4.5,1.5s4.5-1.064,4.5-1.5v-1.409c-1.226.601-2.867.909-4.5.909s-3.274-.308-4.5-.909v1.409Zm0,4c0,.436,1.577,1.5,4.5,1.5s4.5-1.064,4.5-1.5v-1.409c-1.226.601-2.867.909-4.5.909s-3.274-.308-4.5-.909v1.409Zm9,4v-1.409c-1.226.601-2.867.909-4.5.909s-3.274-.308-4.5-.909v1.409c0,.436,1.577,1.5,4.5,1.5s4.5-1.064,4.5-1.5Zm10,0v-1.353c-1.047.534-2.433.853-4,.853s-2.953-.319-4-.853v1.353c0,.529,1.519,1.5,4,1.5s4-.971,4-1.5Zm0-4v-1.353c-1.047.534-2.433.853-4,.853s-2.953-.319-4-.853v1.353c0,.529,1.519,1.5,4,1.5s4-.971,4-1.5Zm0-4c0-.529-1.519-1.5-4-1.5s-4,.971-4,1.5,1.519,1.5,4,1.5,4-.971,4-1.5Z"/>
-</svg> Total Interest : <span id="totalInterest"></span>₹</p>
-            <hr>
-            <p><?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-  <path d="m19,18c-1.379,0-2.5-1.121-2.5-2.5s1.121-2.5,2.5-2.5,2.5,1.121,2.5,2.5-1.121,2.5-2.5,2.5Zm2-14H5c-.856,0-1.653-.381-2.216-1.004.549-.607,1.335-.996,2.216-.996h18c.552,0,1-.448,1-1s-.448-1-1-1H5C2.239,0,0,2.239,0,5v10c0,2.761,2.239,5,5,5h8c.552,0,1-.448,1-1s-.448-1-1-1H5c-1.657,0-3-1.343-3-3V5s.002-.001.005-.002c.853.638,1.901,1.002,2.995,1.002h16c.552,0,1,.448,1,1v5c0,.552.448,1,1,1s1-.448,1-1v-5c0-1.657-1.343-3-3-3Zm-2,15c-2.333,0-4.375,1.538-4.966,3.741-.143.533.173,1.082.707,1.225.534.143,1.081-.173,1.225-.707.357-1.33,1.605-2.259,3.034-2.259s2.677.929,3.034,2.259c.12.447.524.741.965.741.085,0,.173-.011.26-.035.533-.143.85-.692.707-1.225-.591-2.203-2.633-3.741-4.966-3.741Z"/>
-</svg> Total to Return : <span id="totalReturn"></span>₹</p>
- <div class="notepad">
-            If you exceed your plan’s <a href="https://blackswan19.github.io/golden/FM/starpre" style="font-weight: 900;color: rgb(255, 255, 255);">borrow limit</a> from Next Borrow or extend beyond it, an extra charge will be applied.
-        </div>
-        </div>
-    </div>
-	
-
-    <!-- Reminder Modal -->
-    <div id="reminderModal" class="reminder-modal" style="display: none;">
-        <div class="reminder-modal-content">
-            <div class="bot" style="display : flex; justify-content: center; align-items: baseline;">
-                <img style="width: 16px; position: relative; top: -2px; left: 3px;" src="https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/2" alt="">
-                <span style='font-size: 13px; color: white; padding: 5px 8px; border-radius: 15px; position: relative; top: -5px;'>BsRora (<i style='position: relative; right: -4px;' class="fa-solid fa-robot"></i>)</span>
-            </div>
-            <h3>Amount Reminder!</h3>
-            <p id="reminderMessage"></p>
-            <span class="reminder-close-btn applybtn" onclick="closeReminderModal()">Okay</span>
-        </div>
-    </div>
-
-    <!-- Duplicate Account Modal -->
-    <!-- <div id="duplicateAccountModal" class="reminder-modal" style="display: none;">
-        <div class="reminder-modal-content">
-            <h3>Apply for Duplicate Account</h3>
-            <p>If your account is lost or blocked, apply for a duplicate.</p>
-            <button class="applybtn reminder-close-btn" style="background: #0088cc; margin-top: 10px;width: 100%;padding: 8px;" onclick="openDuplicateForm()">Apply Now</button>
-            <button class="applybtn reminder-close-btn" style="background: #8080806e; margin-top: 10px;width: 100%;padding: 8px;" onclick="closeDuplicateModal()">Cancel</button>
-        </div>
-    </div> -->
-
-    <script src="accverify.js"></script>
-
-    <div class="powered-by" id="poweredBy" style="position: fixed;z-index: 100000;"> Powered by <a style="color: rgb(0, 191, 255); font-weight: 500;" href="https://blackswan19.github.io/Educate/password">BsPsgenerater</a> </div>
-
-    <button style="display: none;" class="theme-button" id="themeButton">
-        <i class="fa-solid fa-gear"></i>
-        <i class="fa-solid fa-xmark" style="display: none;"></i>
-    </button>
-
-    <button class="style-button" id="styleButton" style="display: none;">S</button>
-
-    <div class="theme-popup" id="themePopup">
-        <span style="color: #229af0; font-weight: 500; background: #000000; padding: 0px 15px; border-radius: 15px; text-align: center; font-size: 14px; font-weight: 600;">Select theme</span>
-        <button class="theme-option" onclick="setTheme('dark')">Dark</button>
-        <button class="theme-option" onclick="setTheme('light')">Light</button>
-        <button class="theme-option" onclick="setTheme('telegram-dark')">Classic</button>
-    </div>
-
-    <script>
+        <img src="loadinglogo.png" alt="Loading Doughnut" class="loading-logo">
         
-        //  document.addEventListener('contextmenu', e => e.preventDefault());
-        function openDuplicateForm() {
-            window.open("https://forms.gle/yT6xhHtrxHELfS447", "_blank");
-            closeDuplicateModal();
-        }
+        <div class="servicenmae">
+            Welcome to Myootive
+        </div>
 
-        function closeDuplicateModal() {
-            document.getElementById("duplicateAccountModal").style.display = "none";
-        }
+        <button class="start-btn" id="startAudioBtn">Connect Now</button>
 
-        document.getElementById("userNameContainer").addEventListener("click", () => {
-            document.getElementById("duplicateAccountModal").style.display = "flex";
-        });
+        <div class="audio-controls" id="audioControls">
+            <div class="audio-progress-container">
+                <div class="audio-progress-bar">
+                    <div id="audioProgressFill" class="audio-progress-fill"></div>
+                </div>
+                <div class="audio-status" id="audioStatus">Waiting for you to start...</div>
+            </div>
+        </div>
+ <button class="mute-btn" id="muteToggle" title="Mute / Unmute">
+                <i class="fas fa-volume-high"></i>
+            </button>
+        <audio id="introAudio" preload="auto">
+            <source src="mfi_intro.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+  <div class="header">
+    <div class="logo">  
+      <div class="rghtsdopt">
+        <div class="leftsideopt">
+         <a onclick="alert('Follow these steps..!\n\n1. Click on the icon on bottom left.\n2. Fill out the form.\n3. Wait a few hours.\n4. Check details like interest and etc... in bottom right icon.\n5. Get funds from your coordinator.\n6. Repay on time for future loans.\n\nNOTE : Are you late to return? Say 2 days before we will extend the date (or) Extra fees apply.\n')">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M432.15-380.92 361-73.54Q358.77-63 350.15-56.5q-8.61 6.5-19.77 6.5-14.99 0-24.11-10.96t-5.88-25.35l107.38-534.61-95.08 38v102.54q0 12.76-8.61 21.38-8.62 8.61-21.39 8.61-12.77 0-21.38-8.61-8.62-8.62-8.62-21.38v-118.16q0-10.84 5.93-19.57 5.92-8.74 15.77-13.35l167.99-71.39q14-6 27.97-7.19 13.96-1.19 26.8 2.66 12.85 3.84 23.81 11.88 10.96 8.04 18.58 20.89l33.84 53.99q14.93 23.47 33.77 43.39 18.85 19.92 41.23 34.46 16.31 10.69 35.23 18.16 18.93 7.46 38.62 11.23 12.15 2.23 19.96 11.03 7.81 8.81 7.81 21.58 0 12.77-9.12 20.88-9.11 8.12-21.88 6.5-57.54-9.15-103.58-39.42-46.04-30.27-79.81-76.35l-30.76 153.01 74.69 74.54q5.23 5.61 7.84 12.15 2.62 6.54 2.62 13.77V-80q0 12.77-8.62 21.38Q572.77-50 560-50t-21.38-8.62Q530-67.23 530-80v-217.31l-97.85-83.61Zm55.58-386.81q-21.58-21.58-21.58-52.27 0-30.69 21.58-52.27 21.58-21.58 52.27-21.58 30.69 0 52.27 21.58 21.58 21.58 21.58 52.27 0 30.69-21.58 52.27-21.58 21.58-52.27 21.58-30.69 0-52.27-21.58Z"/></svg>
+            </a>
+        </div>
+        <img style="    width: 60px;
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, 0);" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/refs/heads/main/Animals%20and%20Nature/Lobster.webp" alt="">
+      
+        <div class="rightsideopt">
+            <a href="https://mfi0212.github.io/MFI/imlate" style="text-decoration: none;
+    color: #0a95ff;">
+              I'm late  
+            </a>
+        </div>
+     </div>
+    </div>
+    <h1>Myootive</h1>
+    <div class="search-container">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M380-320q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l224 224q11 11 11 28t-11 28q-11 11-28 11t-28-11L532-372q-30 24-69 38t-83 14Zm0-80q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+      <input type="text" id="searchInput" placeholder="Search" autocomplete="off"/>
+    </div>
+  </div>
 
+  <div id="sectionsContainer"></div>
 
-        const startDate = new Date('2025-10-31T20:00:00');
-        const endDate = new Date('2025-11-01T08:00:00');
+  
+ <div class="bottomoptions">
+   <div class="bottom-nav">
+    <div class="bottomtakeoptions">
+      <a onclick="alert('We are redirecting you to taking form.')" href="https://mfi0212.github.io/MFI/applydivert">
+       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m548.92-602.54 206.31-205.3q8.31-8.31 20.38-8.43 12.08-.11 21 8.81 8.31 8.31 8.31 20.88 0 12.58-8.31 20.89L574.23-543.31q-10.85 10.85-25.31 10.85-14.46 0-25.31-10.85L414.23-652.69q-8.92-8.92-8.81-21.08.12-12.15 9.43-21.07 8.92-8.31 21.07-8.43 12.16-.11 21.08 8.81l91.92 91.92Zm37.93 466.62q1.92.77 3.46.77t3.46-.77l235.31-72.85q-3.08-13.61-12.77-20.88-9.7-7.27-21.7-7.27H598.77q-26.23 0-44.54-2t-37.62-8.77l-62.76-20.54q-12.16-3.85-17.43-15.38-5.27-11.54-1.42-23.7 3.85-11.77 14.88-17.34 11.04-5.58 23.2-1.73l52 18.23q18.15 5.77 40.61 8.19t58.31 3.04h10.61q0-14.85-6.69-25.62-6.69-10.77-17.61-14.54l-232.08-85.23q-1.15-.38-2.12-.57-.96-.2-2.11-.2h-74v206.16l286.85 81Zm-15.62 58.77L300-154.92q-6.85 24.84-27.85 39.88-21 15.04-44.46 15.04h-55.38q-29.92 0-51.12-21.19Q100-142.39 100-172.31v-238.46q0-29.92 21.19-51.11 21.2-21.19 51.12-21.19h201.3q6.24 0 12.66 1.3 6.42 1.31 12.04 3.31l233.07 85.85q27.23 10.07 45.23 35.65 18 25.58 18 60.04h100q43.08 0 70.2 27.81 27.11 27.8 27.11 72.19 0 17-9 27.38-9 10.39-27.23 16.46L613-77.77q-9.85 3.23-20.69 3.42-10.85.2-21.08-2.8ZM160-172.31q0 5.39 3.46 8.85t8.85 3.46h55.38q5.39 0 8.85-2.88 3.46-2.89 3.46-9.43v-250.77h-67.69q-5.39 0-8.85 3.47-3.46 3.46-3.46 8.84v238.46Z"/></svg>
+        Apply
+      </a>
+      <a href="https://blackswan19.github.io/golden/FM/starpre">
+       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m422-232 207-248H469l29-227-185 267h139l-30 208Zm-38.92-148H261.39q-20.16 0-29.54-17.85-9.39-17.84 2.31-34.38L496.23-810.3q8.08-11.31 20.62-15.47 12.53-4.15 26.07.7 13.54 4.84 19.81 16.57t4.65 25.27L537.31-540h149.23q21.38 0 30.15 19.16 8.77 19.15-5.15 35.69L421.77-138.08q-8.69 10.31-21.23 13.35-12.54 3.03-24.46-2.43-11.92-5.46-18.5-16.69t-4.96-24.77L383.08-380ZM471-470Z"/></svg>
+            Turbo
+      </a>
+      <a href="https://blackswan19.github.io/golden/FM/accverify">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240.92-268.31q51-37.84 111.12-59.77Q412.15-350 480-350t127.96 21.92q60.12 21.93 111.12 59.77 37.3-41 59.11-94.92Q800-417.15 800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 62.85 21.81 116.77 21.81 53.92 59.11 94.92Zm146.7-219.31Q350-525.23 350-580q0-54.77 37.62-92.38Q425.23-710 480-710q54.77 0 92.38 37.62Q610-634.77 610-580q0 54.77-37.62 92.38Q534.77-450 480-450q-54.77 0-92.38-37.62ZM480-100q-79.15 0-148.5-29.77t-120.65-81.08q-51.31-51.3-81.08-120.65Q100-400.85 100-480t29.77-148.5q29.77-69.35 81.08-120.65 51.3-51.31 120.65-81.08Q400.85-860 480-860t148.5 29.77q69.35 29.77 120.65 81.08 51.31 51.3 81.08 120.65Q860-559.15 860-480t-29.77 148.5q-29.77 69.35-81.08 120.65-51.3 51.31-120.65 81.08Q559.15-100 480-100Zm104.42-77.42q50.27-17.43 89.27-48.73-39-30.16-88.11-47Q536.46-290 480-290t-105.77 16.65q-49.31 16.66-87.92 47.2 39 31.3 89.27 48.73Q425.85-160 480-160t104.42-17.42Zm-54.5-352.66Q550-550.15 550-580t-20.08-49.92Q509.85-650 480-650t-49.92 20.08Q410-609.85 410-580t20.08 49.92Q450.15-510 480-510t49.92-20.08ZM480-580Zm0 355Z"/></svg>
+        Account
+      </a>
+    </div>
+  </div>
+ </div>
 
-        document.getElementById("submitBtn").addEventListener("click", () => {
-            const userInput = document.getElementById("userPassword").value.trim();
-            const errorMessage = document.getElementById("error-message");
-            const user = passwords[userInput];
+<script>
+ const siteGroups = [
+    {
+    heading: "Return Management",
+    sites: [
+      { name: "BS&MFI Solutions",      desc: "Return date extender",       url: "https://blackswan19.github.io/golden/FM/solution",      icon: "fab fa-youtube"       },
+]
+},
+{
+  heading: "New in & issue",
+  sites: [
+    { name: "Enterance Form", desc: "New members form",       url: "https://mfi0212.github.io/MFI/entrysheet", icon: "fas fa-code"         },
+    { name: "Helper",      desc: "I have issue form",           url: "https://mfi0212.github.io/MFI/abt.hlp",      icon: "fas fa-film"          },
+  ]
+},
+{
+  heading: "Offer & Earns",
+  sites: [
+    { name: "BsGames",       desc: "Exclusive rewards and benefits for BS&MFI members.",          url: "https://blackswan19.github.io/golden/Bs%20Games/bsgames",       icon: "fab fa-reddit"        },
+    { name: "Stars",       desc: "Interest reducer.",          url: "https://blackswan19.github.io/golden/FM/starspage",       icon: "fab fa-reddit"        },
+  ]
+},
+  
+  {
+    heading: "Services",
+    sites: [
+      { name: "All Services", desc: "All service from BS&MFI",       url: "https://blackswan19.github.io/BS/bslends", icon: "fas fa-code"         },
+      { name: "BsLends", desc: "A service from BS&MFI",       url: "https://mfi0212.github.io/MFI/rate", icon: "fas fa-code"         },
+      { name: "Myootive", desc: "A service from BS&MFI",       url: "https://blackswan19.github.io/golden/FM/themain", icon: "fas fa-code"         },
+    ]
+  },
+   {
+    heading: "Collaboration",
+    sites: [
+      { name: "BsPsgenerater", desc: "Password generator",       url: "https://blackswan19.github.io/Educate/password", icon: "fas fa-code"         },
+      { name: "BsReminder", desc: "Date wise notes",       url: "https://blackswan19.github.io/bscrop/reminder", icon: "fas fa-code"         },
+      { name: "BsBookpad", desc: "Download the notes",       url: "https://blackswan19.github.io/Educate/bookpad", icon: "fas fa-code"         },
+      { name: "BsAdstoper", desc: "Ad blocker",       url: "https://blackswan19.github.io/Educate/stoper", icon: "fas fa-code"         },
+    ]
+  }
+];
 
-            if (!userInput) {
-                errorMessage.textContent = "Enter a password.";
-                return;
+// document.addEventListener('contextmenu', e => e.preventDefault());
+function getColor(name) {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const hue = Math.abs(hash) % 360;
+  // return `hsl(${hue}, 75%, 58%)`;
+}
+
+function getInitial(name) {
+  return name.trim()[0]?.toUpperCase() || "?";
+}
+
+// Create Site Item (without pin button)
+function createSiteItem(site) {
+  const a = document.createElement("a");
+  a.href = site.url || "#";
+  a.target = "_parent";
+  a.className = "site-item";
+
+  const bg = getColor(site.name);
+  const initial = getInitial(site.name);
+
+  a.innerHTML = `
+    <div class="letter-icon" style="background: ${bg};">${initial}</div>
+    <div class="site-info">
+      <h3>${site.name}</h3>
+      <p style="    font-size: 12px;
+    color: #ffffff4f;">${site.desc}</p>
+    </div>
+  `;
+
+  return a;
+}
+
+// Render All Sections
+function renderAll() {
+  const container = document.getElementById("sectionsContainer");
+  container.innerHTML = "";
+
+  siteGroups.forEach(group => {
+    const section = document.createElement("div");
+    section.className = "section";
+
+    const h2 = document.createElement("h2");
+    h2.textContent = group.heading;
+    section.appendChild(h2);
+
+    const list = document.createElement("div");
+    list.className = "site-list";
+
+    group.sites.forEach(site => {
+      list.appendChild(createSiteItem(site));
+    });
+
+    section.appendChild(list);
+    container.appendChild(section);
+  });
+}
+
+// Search Function
+function renderFiltered(query = "") {
+  const q = query.toLowerCase().trim();
+  if (!q) {
+    renderAll();
+    return;
+  }
+
+  const container = document.getElementById("sectionsContainer");
+  container.innerHTML = "";
+
+  siteGroups.forEach(group => {
+    const matches = group.sites.filter(s =>
+      s.name.toLowerCase().includes(q) || 
+      (s.desc && s.desc.toLowerCase().includes(q))
+    );
+
+    if (!matches.length) return;
+
+    const section = document.createElement("div");
+    section.className = "section";
+    section.innerHTML = `<h2>${group.heading}</h2>`;
+
+    const list = document.createElement("div");
+    list.className = "site-list";
+    matches.forEach(site => list.appendChild(createSiteItem(site)));
+    section.appendChild(list);
+    container.appendChild(section);
+  });
+}
+
+// Initialize
+renderAll();
+
+document.getElementById("searchInput").addEventListener("input", e => {
+  renderFiltered(e.target.value);
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const loadingOverlay = document.getElementById("loadingOverlay");
+    const startBtn = document.getElementById("startAudioBtn");
+    const audioControls = document.getElementById("audioControls");
+    const progressFill = document.getElementById("audioProgressFill");
+    const audioStatus = document.getElementById("audioStatus");
+    const audio = document.getElementById("introAudio");
+    const muteToggle = document.getElementById("muteToggle");
+
+    let progressInterval = null;
+
+    // Mute Toggle
+    muteToggle?.addEventListener("click", () => {
+        audio.muted = !audio.muted;
+        muteToggle.innerHTML = audio.muted 
+            ? '<i class="fas fa-volume-xmark"></i>' 
+            : '<i class="fas fa-volume-high"></i>';
+    });
+
+    // Start Button
+    startBtn?.addEventListener("click", async () => {
+        startBtn.style.display = "none";
+        audioControls.style.display = "flex";
+
+        try {
+            if (audio.readyState < 1) {
+                await new Promise(resolve => audio.addEventListener("loadedmetadata", resolve, { once: true }));
             }
 
-            if (user) {
-                localStorage.setItem("userPassword", userInput);
-                document.getElementById("userName").textContent = user.name;
-                document.getElementById("starCount").textContent = user.stars;
-                const membershipTypeContainer = document.getElementById("membershipType");
-                membershipTypeContainer.innerHTML = `
-                    <a href="https://blackswan19.github.io/golden/FM/duplicatelite">${user.membershipType}</a>
-                `;
+            // const duration = audio.duration || 8;
+            // const stopTime = Math.min(Math.random() * 3 + 5, duration);
+ const duration = audio.duration || 0;
+            const stopTime = Math.min(Math.random() * 0 + 0, duration);
 
-                const userNameContainer = document.getElementById("userNameContainer");
-                userNameContainer.innerHTML = `
-                    <span id="userName">${user.name}</span>
-                    <img src="${user.membershipIcon}" alt="${user.membershipType} Icon" class="user-icon">
-                `;
+            
+            progressFill.style.width = "0%";
+            audioStatus.textContent = "0% • Connecting...";
 
-                const profilePicture = document.getElementById("profilePicture");
-                profilePicture.style.backgroundColor = user.profileBackground;
-                const nameParts = user.name.trim().split(/\s+/).slice(0, 2);
-                const iconText = nameParts.map(part => part.charAt(0)).join("").toUpperCase();
-                profilePicture.style.backgroundImage = "none";
-                profilePicture.textContent = iconText;
+            await audio.play();
 
-                const amountButtons = document.getElementById("amountButtons");
-                amountButtons.innerHTML = "";
+            let currentPercent = 0;
 
-                user.loans.forEach((loan, index) => {
-                    const btn = document.createElement("button");
-                    btn.className = "amount-btn";
-                    btn.innerHTML = `<a style="display: flex; justify-content: center; align-items: center;color: white;" href="#scrotamts"> ₹${loan.takenAmount}<span class="amount-id" > ${index + 1}</span></a>`;
-                    btn.onclick = () => displayLoanDetails(loan, index);
-                    amountButtons.appendChild(btn);
-                });
+            progressInterval = setInterval(() => {
+                currentPercent = Math.min((audio.currentTime / stopTime) * 100, 100);
 
-                const specialContentDiv = document.getElementById("specialContent");
-                const currentDate = new Date();
+                progressFill.style.width = currentPercent + "%";
+                audioStatus.textContent = Math.round(currentPercent) + "% • Connecting...";
 
-                if (
-                    user.showCustomContent === "yes" &&
-                    user.customContent &&
-                    user.customContent.value &&
-                    currentDate >= startDate &&
-                    currentDate <= endDate
-                ) {
-                    if (user.customContent.type === "text") {
-                        specialContentDiv.innerHTML = `
-                            <h3 style="color: white; font-size: 16px;">Special Offer</h3>
-                            <p style="color: #00aeff; font-size: 14px;">${user.customContent.value}</p>
-                        `;
-                    } else if (user.customContent.type === "image") {
-                        specialContentDiv.innerHTML = `
-                            <h3 style="color: white; font-size: 16px;"></h3>
-                            <img src="${user.customContent.value}" alt="Special Offer" onerror="this.src='';">
-                        `;
-                    }
-                } else {
-                    specialContentDiv.innerHTML = "";
+                if (audio.currentTime >= stopTime || currentPercent >= 100) {
+                    clearInterval(progressInterval);
+                    progressFill.style.width = "100%";
+                    audioStatus.textContent = "100% • Connected!";
+                    audio.pause();
+                    loadingOverlay.style.opacity = "0";
+                    setTimeout(() => {
+                        loadingOverlay.style.display = "none";
+                    }, 600);
                 }
+            }, 40);
 
-                if (user.loans.length > 0) {
-                    displayLoanDetails(user.loans[0], 0);
-                    checkDueToday(user);
-                } else {
-                    errorMessage.textContent = "No active loans found.";
-                }
-
-                document.getElementById("userInfoModal").style.display = "block";
-                document.getElementById("passwordContainer").style.display = "none";
-                errorMessage.textContent = "";
-            } else {
-                errorMessage.textContent = "Invalid password (or) amount cleared.";
-            }
-        });
- 
-
-    </script>
+        } catch (e) {
+            console.error(e);
+            audioStatus.textContent = "❌ Audio playback blocked";
+            // Still hide after few seconds if audio fails
+            setTimeout(() => {
+                loadingOverlay.style.opacity = "0";
+                setTimeout(() => loadingOverlay.style.display = "none", 600);
+            }, 2000);
+        }
+    });
+});
+</script>
 </body>
 </html>
