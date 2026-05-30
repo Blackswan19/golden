@@ -41,7 +41,7 @@ span {
    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 25px;
-    padding: 20px 20px 210px 20px;
+    padding: 20px;
 }
 
 .card {
@@ -76,10 +76,8 @@ span {
 
 /* Bottom Bar */
 .bottom-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+position: sticky;
+    bottom: 20px;
     background: #00000087;
     color: white;
     padding: 15px 20px;
