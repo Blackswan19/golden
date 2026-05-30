@@ -1,385 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BorrowTrack</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #1e1e1e;
-      color: #e0e0e0;
-      height: 100vh;
-      overflow: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> BS&MFI House | Quantam</title>
 
-    /* Login Screen */
-    #login-screen {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #252525;
-    }
-    .login-box {
-      background-color: #2d2d2d;
-      padding: 40px 30px;
-      width: 340px;
-      border: 1px solid #444;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-      text-align: center;
-    }
-    .login-box h2 {
-      color: #4a9eff;
-      font-size: 28px;
-      margin-bottom: 25px;
-    }
-    input {
-      width: 100%;
-      padding: 12px;
-      margin: 12px 0;
-      background-color: #3a3a3a;
-      border: 1px solid #555;
-      color: #eee;
-      border-radius: 4px;
-      font-size: 15px;
-    }
-    input:focus {
-      outline: none;
-      border-color: #4a9eff;
-    }
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: #0066cc;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-      margin-top: 10px;
-    }
-    button:hover {
-      background-color: #0055aa;
-    }
+<link rel="icon" href="onlyvipsitelogo.png" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-    /* Main App */
-    #main-app {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    .topbar {
-      background-color: #252525;
-      padding: 14px 25px;
-      border-bottom: 2px solid #3a3a3a;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .topbar h1 {
-      color: #4a9eff;
-      font-size: 26px;
-      font-weight: bold;
-    }
-    .nav-links a {
-      color: #ccc;
-      text-decoration: none;
-      margin: 0 18px;
-      font-size: 15px;
-      padding: 6px 0;
-    }
-    .nav-links a:hover {
-      color: #4a9eff;
-      border-bottom: 2px solid #4a9eff;
-    }
-    .user-info {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #ffffff;
+  color: #1a1a1a;
+}
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
-    .content {
-      flex: 1;
-      padding: 25px;
-      overflow: auto;
-      background-color: #1e1e1e;
-    }
+header {
+  text-align: center;
+  padding: 30px 10px 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+}
+span {
+    font-size: 10px;
+    font-family: 'Inter', sans-serif;
+    display: block;
+}
 
-    h2 {
-      color: #ffffff;
-      margin-bottom: 20px;
-      font-size: 22px;
-    }
+.container {
+   display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 25px;
+    padding: 20px 20px 210px 20px;
+}
 
-    /* Cards & Tables */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background-color: #2d2d2d;
-      border-radius: 6px;
-      overflow: hidden;
-    }
-    th, td {
-      padding: 14px 16px;
-      text-align: left;
-      border-bottom: 1px solid #444;
-    }
-    th {
-      background-color: #353535;
-      color: #bbb;
-      font-weight: normal;
-    }
-    tr:hover {
-      background-color: #383838;
-    }
+.card {
+    text-align: center;
+    border-radius: 20px;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #fff;
+}
 
-    .card {
-      background-color: #2d2d2d;
-      border: 1px solid #444;
-      border-radius: 6px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
+.card.selected {
+    background: #0000000f;
+    transform: scale(1.05);
+}
 
-    /* Buttons */
-    .btn {
-      padding: 10px 18px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 15px;
-    }
-    .btn-success {
-      background-color: #008833;
-      color: white;
-    }
-    .btn-danger {
-      background-color: #cc3333;
-      color: white;
-    }
+.card img {
+   width: 70%;
+}
 
-    .hidden {
-      display: none !important;
-    }
+.card h3 {
+  margin: 12px 0 6px;
+  font-weight: 500;
+  font-size: 15px;
+}
 
-    .red { color: #ff6666; }
-    .orange { color: #ffaa44; }
-    .green { color: #66cc66; }
-  </style>
+.price {
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Bottom Bar */
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #00000087;
+    color: white;
+    padding: 15px 20px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    margin: 15px;
+    border-radius: 30px;
+}
+
+.bottom-bar.show {
+    display: flex;
+}
+
+.selected-info {
+    font-size: 14px;
+    font-weight: 100;
+    letter-spacing: 0.4px;
+}
+
+#selectedIds {
+    background: black;
+    padding: 7px 10px;
+    border-radius: 999px;
+    overflow: scroll;
+    white-space: nowrap;
+    font-size: 12px;
+    scrollbar-width: none;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 500;
+    transition: 0.2s;
+    letter-spacing: 0.4px;
+}
+
+button.copy {
+    background: #ffffff;
+    color: #000;
+}
+
+button.copy:hover {
+    background: #f0f0f0;
+}
+
+button.buy {
+    background: #000;
+    color: #fff;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+</style>
 </head>
 <body>
 
-  <!-- Login Screen -->
-  <div id="login-screen">
-    <div class="login-box">
-      <h2>BorrowTrack</h2>
-      <input type="text" id="username" placeholder="Username" />
-      <input type="password" id="password" placeholder="Password" />
-      <button onclick="login()">Login</button>
-      <p style="margin-top:20px; font-size:13px; color:#888; line-height:1.5;">
-        Demo Accounts:<br>
-        alice / 1234<br>
-        bob / 5678<br>
-        raj / 9999
-      </p>
-    </div>
+<div class="helperbtm" style="position: fixed; top: 0; right: 0; background: #111111; color: white; padding: 5px 10px; z-index: 1001;">
+  <a onclick="alert('Helper:\n\nBuy a gift by sending the amount to your coordinator...')">Help</a>
+</div>
+
+<header>Quantam
+  <br><span>BS&MFI House</span>
+</header>
+
+<div class="container" id="giftContainer"></div>
+
+<!-- Bottom Bar -->
+<div class="bottom-bar" id="bottomBar">
+  <div class="selected-info">
+    Selected: <span id="selectedIds">None</span>
   </div>
-
-  <!-- Main Application -->
-  <div id="main-app" class="hidden">
-
-    <!-- Top Menu Bar -->
-    <div class="topbar">
-      <h1>BorrowTrack</h1>
-      <div class="nav-links">
-        <a href="#" onclick="showPage('dashboard')">Dashboard</a>
-        <a href="#" onclick="showPage('history')">History</a>
-        <a href="#" onclick="showPage('payments')">Payments</a>
-      </div>
-      <div class="user-info">
-        <span id="user-display" style="color:#ccc;"></span>
-        <button onclick="logout()" class="btn btn-danger">Logout</button>
-      </div>
-    </div>
-
-    <!-- Dashboard -->
-    <div id="dashboard" class="content">
-      <h2>My Active Borrowings</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Amount</th>
-            <th>Purpose</th>
-            <th>Due Date</th>
-            <th>Late Fee</th>
-            <th>Total Due</th>
-          </tr>
-        </thead>
-        <tbody id="dashboard-body"></tbody>
-      </table>
-    </div>
-
-    <!-- History -->
-    <div id="history" class="content hidden">
-      <h2>Borrow History</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Amount</th>
-            <th>Purpose</th>
-            <th>Due Date</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody id="history-body"></tbody>
-      </table>
-    </div>
-
-    <!-- Payments -->
-    <div id="payments" class="content hidden">
-      <h2>Make Payment</h2>
-      <div class="card" style="max-width:450px;">
-        <select id="borrow-select" style="width:100%; padding:12px; margin-bottom:15px; background:#3a3a3a; color:#eee; border:1px solid #555; border-radius:4px;">
-        </select>
-        <input type="number" id="payment-amount" placeholder="Enter Payment Amount" 
-               style="width:100%; padding:12px; margin-bottom:15px; background:#3a3a3a; color:#eee; border:1px solid #555; border-radius:4px;"/>
-        <button onclick="addPayment()" class="btn btn-success" style="width:100%; padding:13px;">Submit Payment</button>
-      </div>
-    </div>
-
+  <div class="total">
+    Total Stars: ★<span id="totalAmount">0</span>
   </div>
+  
+  <div class="buttons">
+    <button class="copy" onclick="copySelection()"> Copy</button>
+    <button class="buy" onclick="buySelected()">Buy Now</button>
+  </div>
+</div>
 
-  <script>
-    let currentUser = null;
+<script>
+const formLink = "https://forms.gle/nwhjN54BzxjXqzo48";
 
-    const users = {
-      "alice": {
-        password: "1234",
-        name: "Alice Sharma",
-        borrowings: [
-          { id: 1, amount: 45000, purpose: "Personal Loan", dueDate: "2026-06-15", lateFeePerDay: 100, status: "Active" },
-          { id: 2, amount: 12000, purpose: "Medical Expense", dueDate: "2026-05-10", lateFeePerDay: 50, status: "Active" }
-        ]
-      },
-      "bob": {
-        password: "5678",
-        name: "Bob Patel",
-        borrowings: [
-          { id: 1, amount: 28000, purpose: "Business", dueDate: "2026-07-01", lateFeePerDay: 100, status: "Active" }
-        ]
-      },
-      "raj": {
-        password: "9999",
-        name: "Raj Kumar",
-        borrowings: [
-          { id: 1, amount: 35000, purpose: "Education", dueDate: "2026-04-20", lateFeePerDay: 80, status: "Active" },
-          { id: 2, amount: 8000, purpose: "Emergency", dueDate: "2026-06-05", lateFeePerDay: 50, status: "Active" }
-        ]
-      }
-    };
+const gifts = [
+  {id: 'EDG#10', price: 120, gif: 'https://raw.githubusercontent.com/goforbg/telegram-emoji-gifs/refs/heads/master/full-moon.gif'},
+  {id: 'EDG#6',  price: 180, gif: 'https://raw.githubusercontent.com/goforbg/telegram-emoji-gifs/refs/heads/master/more-moon.gif'},
+  {id: 'EDG#6',  price: 280, gif: 'https://raw.githubusercontent.com/goforbg/telegram-emoji-gifs/refs/heads/master/1-2-moon.gif'},
+  {id: 'EDG#6',  price: 220, gif: 'https://raw.githubusercontent.com/goforbg/telegram-emoji-gifs/refs/heads/master/1-4-moon.gif'},
+  {id: 'EDG#6',  price: 260, gif: 'https://raw.githubusercontent.com/goforbg/telegram-emoji-gifs/refs/heads/master/1-4-moon-rev.gif'},
+  {id: 'EDG#6',  price: 140, gif: 'https://raw.githubusercontent.com/goforbg/telegram-emoji-gifs/refs/heads/master/0-moon.gif'},
+  {id: 'EDG#6',  price: 380, gif: 'https://raw.githubusercontent.com/goforbg/telegram-emoji-gifs/refs/heads/master/3-4-moon.gif'},
+];
 
-    function login() {
-      const username = document.getElementById('username').value.toLowerCase().trim();
-      const password = document.getElementById('password').value;
+let selectedGifts = [];
 
-      if (users[username] && users[username].password === password) {
-        currentUser = { username, ...users[username] };
-        document.getElementById('login-screen').classList.add('hidden');
-        document.getElementById('main-app').classList.remove('hidden');
-        document.getElementById('user-display').textContent = currentUser.name;
-        loadDashboard();
-        loadPaymentsSelect();
-        showPage('dashboard');
-      } else {
-        alert("Invalid credentials!\n\nTry:\nalice / 1234\nbob / 5678\nraj / 9999");
-      }
-    }
+function renderGifts() {
+  const container = document.getElementById('giftContainer');
+  container.innerHTML = '';
 
-    function logout() {
-      currentUser = null;
-      document.getElementById('main-app').classList.add('hidden');
-      document.getElementById('login-screen').classList.remove('hidden');
-    }
+  gifts.forEach((gift, index) => {
+    const div = document.createElement('div');
+    div.className = 'card';
+    div.dataset.index = index;
 
-    function calculateLateFee(borrow) {
-      const due = new Date(borrow.dueDate);
-      const today = new Date();
-      const diff = Math.ceil((today - due) / (1000 * 60 * 60 * 24));
-      return diff > 0 ? diff * borrow.lateFeePerDay : 0;
-    }
+    div.innerHTML = `
+      <img src="${gift.gif}">
+      <h3>ID - ${gift.id}</h3>
+      <div class="price">★${gift.price}</div>
+    `;
 
-    function loadDashboard() {
-      const tbody = document.getElementById('dashboard-body');
-      tbody.innerHTML = '';
+    div.addEventListener('click', () => toggleSelect(gift, index, div));
+    container.appendChild(div);
+  });
+}
 
-      currentUser.borrowings.forEach(borrow => {
-        const lateFee = calculateLateFee(borrow);
-        const total = borrow.amount + lateFee;
+function toggleSelect(gift, index, cardElement) {
+  const isSelected = selectedGifts.some(item => item.index === index);
 
-        tbody.innerHTML += `
-          <tr>
-            <td>₹${borrow.amount}</td>
-            <td>${borrow.purpose}</td>
-            <td>${new Date(borrow.dueDate).toLocaleDateString('en-IN')}</td>
-            <td class="red">₹${lateFee}</td>
-            <td class="orange">₹${total}</td>
-          </tr>`;
-      });
-    }
+  if (isSelected) {
+    selectedGifts = selectedGifts.filter(item => item.index !== index);
+    cardElement.classList.remove('selected');
+  } else {
+    selectedGifts.push({...gift, index});
+    cardElement.classList.add('selected');
+  }
 
-    function loadPaymentsSelect() {
-      const select = document.getElementById('borrow-select');
-      select.innerHTML = '<option value="">Select Borrowing</option>';
-      currentUser.borrowings.forEach(borrow => {
-        const option = document.createElement('option');
-        option.value = borrow.id;
-        option.textContent = `${borrow.purpose} (₹${borrow.amount})`;
-        select.appendChild(option);
-      });
-    }
+  updateBottomBar();
+}
 
-    function showPage(page) {
-      document.querySelectorAll('.content').forEach(el => el.classList.add('hidden'));
-      document.getElementById(page).classList.remove('hidden');
+function updateBottomBar() {
+  const bottomBar = document.getElementById('bottomBar');
+  const selectedIdsEl = document.getElementById('selectedIds');
+  const totalAmountEl = document.getElementById('totalAmount');
 
-      if (page === 'history') {
-        const tbody = document.getElementById('history-body');
-        tbody.innerHTML = '';
-        currentUser.borrowings.forEach(borrow => {
-          tbody.innerHTML += `
-            <tr>
-              <td>2025-12-01</td>
-              <td>₹${borrow.amount}</td>
-              <td>${borrow.purpose}</td>
-              <td>${new Date(borrow.dueDate).toLocaleDateString('en-IN')}</td>
-              <td class="green">${borrow.status}</td>
-            </tr>`;
-        });
-      }
-    }
+  if (selectedGifts.length > 0) {
+    bottomBar.classList.add('show');
 
-    function addPayment() {
-      const amount = document.getElementById('payment-amount').value;
-      if (amount && parseInt(amount) > 0) {
-        alert(`₹${amount} payment has been recorded successfully!`);
-        document.getElementById('payment-amount').value = '';
-      } else {
-        alert("Please enter a valid amount");
-      }
-    }
+    const ids = selectedGifts.map(g => g.id).join(', ');
+    selectedIdsEl.textContent = ids;
 
-    // Enter key login
-    document.getElementById('password').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') login();
-    });
-  </script>
+    const total = selectedGifts.reduce((sum, gift) => sum + gift.price, 0);
+    totalAmountEl.textContent = total;
+  } else {
+    bottomBar.classList.remove('show');
+  }
+}
+
+function copySelection() {
+  if (selectedGifts.length === 0) return;
+
+  const ids = selectedGifts.map(g => g.id).join(', ');
+  const total = selectedGifts.reduce((sum, g) => sum + g.price, 0);
+
+  const textToCopy = `Selected Gifts:\n${ids}\nTotal: ★${total} Stars`;
+
+  navigator.clipboard.writeText(textToCopy).then(() => {
+    const originalText = document.querySelector('.copy').textContent;
+    const copyBtn = document.querySelector('.copy');
+    
+    copyBtn.textContent = '✅ Copied!';
+    setTimeout(() => {
+      copyBtn.textContent = originalText;
+    }, 2000);
+  }).catch(err => {
+    alert('Failed to copy: ' + err);
+  });
+}
+
+function buySelected() {
+  if (selectedGifts.length === 0) return;
+  
+  const totalStars = selectedGifts.reduce((sum, g) => sum + g.price, 0);
+  
+  alert(`You are buying ${selectedGifts.length} gift(s):\n\n${selectedGifts.map(g => g.id).join(', ')}\nTotal: ★${totalStars} Stars\n\nRedirecting to form...`);
+  
+  window.open(formLink);
+}
+
+renderGifts();
+</script>
+
 </body>
 </html>
