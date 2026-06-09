@@ -124,7 +124,7 @@ width: 100%;
         /* Search Suggestions */
         .suggestions {
 position: absolute;
-    top: 100%;
+    bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
     width: 92%;
@@ -139,13 +139,14 @@ position: absolute;
     z-index: 0;
     display: none;
     border: 0.5px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 8px;
         }
 
         .toolbar.bottom .suggestions {
-            top: auto;
-            bottom: 100%;
-            margin-top: 0;
-            margin-bottom: 8px;
+                bottom: auto;
+    top: 100%;
+    margin-top: 8px;
+    margin-bottom: 8px;
         }
 
         .suggestion-item {
@@ -342,7 +343,7 @@ position: fixed;
         /* Settings Menu */
         .settings-menu {
     position: fixed;
-    top: 55px;
+        bottom: 65px;
     right: 16px;
     backdrop-filter: blur(30px);
     border-radius: 27px;
@@ -356,8 +357,8 @@ position: fixed;
         }
 
         .toolbar.bottom ~ .settings-menu {
-            top: auto;
-            bottom: 55px;
+            bottom: auto;
+            top: 65px;
         }
 
         .menu-item {
