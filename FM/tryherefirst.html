@@ -1,1865 +1,524 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSearchin • Safari</title>
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/1bgTMY6/logosercin.png">
-    <title>BSearchin</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
-* {
-	-webkit-tap-highlight-color: transparent;
-	margin: 0;
-	padding: 0;
-	font-family: 'Poppins', sans-serif;
-}
-
-body {
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	background-color: #000000;
-	color: #ffffff;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	min-height: 100vh;
-	overflow: hidden;
-}
-
-#logo {
-	font-size: 45px;
-}
-
-#logo img {
-	width: 100px;
-	height: auto;
-}
-
-#browser-container {
-	width: 40%;
-    text-align: center;
-    display: flex;
-    padding: 20px;
-}
-
-#url-bar {
-width: 100%;
-    padding: 10px 40px;
-    font-size: 20px;
-    color: #ffffff;
-    background-color: #ffffff1c;
-    border-radius: 139px;
-    outline: none;
-    position: relative;
-    backdrop-filter: blur(5px);
-    border: none;
-}
-
-::-webkit-scrollbar {
-	height: 5px;
-	background-color: #3a3b3e00;
-}
-
-#url-bar:focus {
-backdrop-filter: blur(10px);
-    background-color: #ffffff40;
-}
-
-#url-bar::placeholder {
-	color: #ffffff;
-}
-
-#go-button {
-	position: relative;
-    background: #ffffff00;
-    border: none;
-    outline: none;
-    border-radius: 33px;
-    color: #ffffffeb;
-    text-align: center;
-    cursor: pointer;
-    width: 80px;
-    height: 38px;transition: background-color 0.3s;
-}
-
-#go-button:hover {
-	background-color: #ffffff;
-	color: black;
-}
-
-.search-wrapper {
-	display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    width: 95%;
-}
-
-.options-container {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	margin-top: 25px;
-	gap: 10px;
-}
-
-.option {
-	display: flex;
-	align-items: center;
-	padding: 5px 10px;
-	color: #ffffff;
-	border-radius: 10px;
-	font-size: 14px;
-	cursor: pointer;
-	transition: background-color 0.3s;
-	justify-content: space-between;
-	position: fixed;
-	top: 16px;
-	right: 125px;
-}
-
-.option:hover {
-	background: #f0f0f060;
-	padding: 5px 10px;
-}
-
-.url-input {
-	display: none;
-	background-color: #8d8d8d30;
-	color: #ffffff;
-	border: none;
-	border-radius: 5px;
-	padding: 5px;
-	font-size: 14px;
-	width: 100%;
-	margin-top: 5px;
-	outline: none;
-}
-
-#background-pattern {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: -1;
-	background: url('https://www.transparenttextures.com/patterns/debut-light.png');
-	opacity: 10%;
-}
-
-#saved-websites {
-position: fixed;
-    top: 0px;
-    right: 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 10px;
-    background: #ffffff1c;
-    backdrop-filter: blur(15px);
-    gap: 5px;
-    margin: 10px;
-    border-radius: 19px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 80%;
-}
-span.option-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#saved-websites.bottom {
-top: auto;
-    bottom: 0px;
-}
-
-div#websites-list {
-display: flex;
-    gap: 15px;
-    overflow-x: scroll;
-    white-space: nowrap;
-    text-transform: capitalize;
-    display: flex;
-    overflow-y: hidden;
-    align-items: center;
-    padding: 5px 0;
-    scrollbar-width: none;
-}
-
-.option.settings-option {
-position: fixed;
-    top: 30px;
-    right: 25px;
-    color: white;
-    width: fit-content;
-    height: 10px;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #ffffff29;
-    border-radius: 9999px;
-    z-index: 1000000000000;
-}
-
-.website-item {
-	display: flex;
-    padding: 6px 16px 6px 10px;
-    font-size: 12px;
-    justify-content: flex-start;
-    transition: all 0.3s ease;
-    cursor: grab;transition: all 0.3s;
-    border-radius: 130px;
-    background: #00000070;
-}
-
-.website-item:hover {
-	border-radius: 30px;
-    transform: scale(0.98);
-    object-fit: fill;
-    background-color: #f0f0f04a;
-}
-
-.website-item:focus {
-	cursor: grabbing;
-}
-
-.website-item.dragging {
-	/* opacity: 0.5; */
-	transform: scale(1.05);
-	background-color: #ffffff;
-}
-
-.suggestion-item.active {
-	cursor: pointer;
-	background-color: #d1d1d1;
-	color: rgb(0, 0, 0);
-}
-
-.website-item img {
-	width: 15px;
-	height: 15px;
-	margin-right: 5px;
-    border-radius: 100px;
-}
-
-.color-picker {
-	position: fixed;
-	top: 15px;
-	right: 0px;
-}
-
-input#colorPicker {
-	padding: 14px 13px;
-	width: 5%;
-	background: #ffffff24;
-	border: solid 1px #ffffff24;
-	outline: none;
-}
-
-.delete-btn {
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-weight: 100;
-    font-size: 13px;
-    background: rgb(255 255 255 / 32%);
-    padding: 0px 14px;
-    border-radius: 22px;
-    right: -10px;
-    position: relative;
-}
-
-.delete-btn:hover {
-	background: red;
-    color: white;
-    transform: scale(1.3);
-    right: -7px;
-    position: relative;
-    filter: drop-shadow(0px 0px 2px black);
-}
-
-.delete-btn:focus {
-	background: #ce0000;
-}
-
-.visitsave,.newsitesadd {
-    display: flex;
-}
-
-a {
-	text-decoration: none;
-	color: rgba(255, 255, 255, 0.801);
-}
-
-.frombs {
-position: fixed;
-    gap: 20px;
-    display: flex;
-    font-size: 13px;
-    width: 100%;
-    height: 50px;
-    align-items: center;
-    left: 0px;
-    padding: 8px 30px;
-    bottom: 0px;
-}
-
-.frombs.top {
-	bottom: auto;
-	top: 0px;
-	border-top: none;
-}
-
-.website-item a {
-	display: flex;
-    justify-content: left;
-    align-items: center;
-    color: #ffffffcf;
-    font-size: 11px;
-    letter-spacing: 0.5px;
-    
-}
-
-.frombs a:hover {
-	text-decoration: underline 1.5px;
-	text-underline-position: under;
-	transition: 1s;
-}
-
-.footer {
-	color: #e8eaed;
-	position: fixed;
-	font-size: 15px;
-	right: 90px;
-}
-
-.more {
-	display: none;
-	background: #0000001f;
-	width: 100%;
-	text-align: center;
-	padding: 20px;
-	bottom: 0px;
-	position: fixed;
-	font-size: 12px;
-	gap: 10px;
-	display: grid;
-}
-svg{
-    fill: white;
-}
-.more.top {
-	bottom: auto;
-	top: 0px;
-}
-
-#clear-input {
-	position: absolute;
-	cursor: pointer;
-	color: #ffffff;
-	font-size: 30px;
-	display: none;
-	top: 2.5px;
-	font-weight: 100;
-	right: -10px;transition: background-color 0.3s;
-}
-
-#clear-input:hover {
-	color: rgb(0 0 0 / 80%);
-    background: #ffffff;
-}
-
-.suggestions {
-backdrop-filter: blur(10px);
-    z-index: 1000;
-    border-radius: 35px;
-    color: #ffffff;
-    font-weight: 500;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    display: none;
-    position: absolute;
-    width: 38%;
-    text-align: left;
-    max-height: 280px;
-    top: 53%;
-    margin-top: 15px;
-    background: #ffffff1c;
-}
-
-.suggestions::-webkit-scrollbar-track {
-	background: transparent;
-	margin-top: 30px;
-	margin-bottom: 30px;
-}
-
-.suggestions::-webkit-scrollbar-thumb {
-	background: #ffffff30;
-	border-radius: 100px;
-}
-
-.suggestions::-webkit-scrollbar-thumb:hover {
-	background: #ffffffc8;
-}
-
-.suggestions::-webkit-scrollbar {
-	height: 115px;
-	width: 6px;
-}
-
-.optionss {
-display: flex;
-    gap: 5px;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: 35px;
-    border-radius: 30px;
-    padding: 1px;
-    backdrop-filter: blur(5px);
-    background-color: #ffffff29;
-}
-span#clear-input {
-	position: relative;
-    background: transparent;
-    outline: none;
-    color: white;
-    text-align: center;
-    font-size: 15px;
-    padding: 7px 20px;
-    border-radius: 33px;
-    font-weight: 400;
-    top: 0px;
-    right: 0px;
-}
-
-.suggestion-item {
-	padding: 10px 30px;
-	cursor: pointer;
-	text-align: left;
-}
-.suggestion-item:first-child:hover{
-    border-radius: 10px 10px 0 0;
-}
-.suggestion-item:last-child:hover{
-    border-radius: 0 0 10px 10px;
-}
-.suggestion-item:hover {
-	background: #ffffff2e;
-	transition: all 0.5s ease-out;
-}
-
-span {
-	overflow: hidden;
-	font-size: 15px;
-}
-
-.background-container {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	image-rendering: -webkit-optimize-contrast;
-	image-rendering: crisp-edges;
-	z-index: -1;
-	filter: brightness(0.5);
-}
-
-.blur-background {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	filter: blur(5px);
-	opacity: 0.3;
-	filter: brightness(0.5);
-	z-index: -100000;
-}
-
-.custom-menu {
-	position: absolute;
-	background-color: #ffffff1b;
-	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-	z-index: 1000;
-	border-radius: 25px;
-	padding: 9px;
-    backdrop-filter: blur(15px);
-}
-
-.menu-item {
-	padding: 8px 20px;
-	cursor: pointer;
-	font-size: 14px;border-radius: 108px;
-	text-align: center;transition: background-color 0.3s;
-}
-
-.menu-item:hover {
-	background-color: #f0f0f060;
-	
-}
-
-.settings-menu {
-	    position: absolute;
-    background-color: #ffffff1c;
-    box-shadow: none;
-    z-index: 1000;
-    border-radius: 30px;
-    padding: 10px;
-    top: 70px;
-    right: 10px;
-    transition: background-color 0.3s;
-    backdrop-filter: blur(15px);
-}
-/* .settings-menu:hover{
-    background-color: #f0f0f024;
-} */
-.recommended-bg-popup {
-	position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50px;
-    padding: 65px;
-    z-index: 3000;
-    width: 85%;
-    color: #ffffff;
-    box-shadow: 10px 10px 10px 1000px #00000065;
-    backdrop-filter: blur(10px);
-    border: solid 1.5px #ffffff38;
-    display: none;
-    max-width: 800px;
-}
-
-.recommended-bg-item {
-	cursor: pointer;
-	width: -webkit-fill-available;
-	height: 80px;
-	object-fit: cover;
-	border-radius: 8px;
-}
-
-.recommended-bg-header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 15px;
-}
-
-.recommended-bg-close {
-	cursor: pointer;
-    color: #ffffffa2;
-    font-size: 26px;
-    font-weight: 100;
-    position: fixed;
-    top: 21px;
-    right: 30px;
-}
-
-.recommended-bg-close:hover {
-	color: #ffffff;
-}
-
-.recommended-bg-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-	gap: 15px;
-	height: 300px;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	padding: 15px;
-    scrollbar-width: thin;
-    scrollbar-color: #ffffff8a transparent;
-}
-
-.recommended-bg-item {
-	cursor: pointer;
-	width: 100%;
-	height: 110px;
-	object-fit: cover;
-	border-radius: 18px;
-	border: solid 3px #ffffff00;
-	filter: brightness(0.5);
-}
-
-.recommended-bg-item:hover {
-	border: solid 3px #adadad;
-	filter: none;
-}
-
-.recommended-bg-actions {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-top: 10px;
-}
-
-.recommended-bg-download {
-	cursor: pointer;
-	color: #ffffff;
-	font-size: 14px;
-	padding: 8px 15px;
-	background: #ffffff24;
-	border-radius: 8px;
-}
-
-.recommended-bg-download:hover {
-	background: #ffffff40;
-}
-
-.popup-container {
-	position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 40px;
-    padding: 25px;
-    z-index: 3000;
-    display: none;
-    max-width: 400px;
-    width: 83%;
-    color: #ffffff;
-    box-shadow: 10px 10px 10px 1000px #00000065;
-    backdrop-filter: blur(10px);
-   
-}
-.frombs {
-    position: fixed;
-    gap: 20px;
-    display: flex;
-    font-size: 13px;
-    width: 100%;
-    height: 50px;
-    align-items: center;
-    left: 0px;
-    bottom: 15px;
-    justify-content: center;
-}
-.popup-header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 15px;
-}
-
-.popup-close {
-	cursor: pointer;
-	color: #ffffff8c;
-	font-size: 25px;
-	font-weight: 100;
-	position: absolute;
-	    top: 12px;
-    right: 25px;
-}
-
-.popup-close:hover {
-	color: #ffffff;
-}
-
-.popup-input {
-	width: -webkit-fill-available;
-    padding: 11px;
-    margin-bottom: 15px;
-    background-color: #ffffff77;
-    border: none;
-    border-radius: 13px;
-    color: black;
-    font-size: 15px;
-    text-align: center;
-    outline: none;
-}
-::placeholder{
-    color: white;
-}
-
-
-.popup-buttons {
-	display: flex;
-	justify-content: center;
-	gap: 10px;
-	top: 15px;
-	position: relative;
-}
-
-.popup-button {
-	padding: 11px 30px;
-    background: #ffffff3b;
-    border-radius: 32px;
-    cursor: pointer;
-    color: #ffffff;
-    border: none;
-    margin: -10px 0px 10px 0px;;
-}
-
-.popup-button:hover {
-	background: #ffffff6a;
-}
-i.fa-solid.fa-toggle-on {
-    position: relative;
-    top: 1.5px;
-}
-.popup-message {
-	font-size: 14px;
-    text-align: center;
-    margin-bottom: 15px;
-    overflow: hidden;
-    width: 100%;
-    text-overflow: ellipsis;
-    white-space: pre-line;
-}
-
-.more {
-	display: none;
-}
-
-.cropper-popup {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-color: #00000052;
-	border-radius: 40px;
-	padding: 40px;
-	z-index: 3000;
-	display: none;
-	max-width: 600px;
-	width: 90%;
-	color: #ffffff;
-	box-shadow: 10px 10px 10px 1000px #000000a1;
-	backdrop-filter: blur(15px);
-	border: solid 1px #ffffff40;
-}
-
-.cropper-container {
-	max-height: 400px;
-	overflow: hidden;
-	margin-bottom: 15px;
-}
-
-.cropper-container img {
-	max-width: 100%;
-	height: auto;
-}
-.fronbssites {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #ffffff1c;
-    backdrop-filter: blur(10px);
-    gap: 15px;
-    margin: 10px;
-    border-radius: 42px;
-    box-shadow: 0px 0px 3px #0000003d;
-    padding: 10px;
-}
-.showinmob {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-@media(max-width:480px) {
-	body {
-		position: fixed;
-		width: 100%;
-	}
-.optionss{
-    top: 65px;
-}
-	.suggestion-item:hover {
-		border-radius: 10px;
-	}
-
-	#saved-websites {
-		        padding: 0px;
-        backdrop-filter: blur(8px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 95%;
-        background: #ffffff29;
-        margin: 10px 0;
-	}
-
-	#saved-websites.bottom {
-		top: auto;
-		bottom: 0px;
-		border-bottom: none;
-	}
-
-	.more {
-		width: 90%;
-        bottom: 10px;
-        position: fixed;
-        font-size: 12px;
-        display: flex;
-        backdrop-filter: blur(5px);
-        background: #ffffff29;
-        border-radius: 9999px;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-        gap: 11px;
-	}
-
-	.more.top {
-		top: auto;
-		bottom: 0px;
-		border-bottom: none;
-		border-top: transparent;
-	}
-
-	input#colorPicker {
-		position: fixed;
-		right: 80px;
-		padding: 12px 11px;
-		border-radius: 8px;
-	}
-
-	input#url-bar {
-		position: absolute;
-		width: 85%;
-		left: -10px;
-		padding: 10px 35px;
-		font-size: 15px;
-	}
-
-	.suggestion-item {
-		padding: 8px 25px;
-		cursor: pointer;
-		font-size: 15px;
-	}
-
-	.suggestions {
-		display: none;
-		position: absolute;
-		width: 95%;
-		left: -7px;
-		text-align: left;
-		max-height: 280px;
-		padding: 15px;
-		top: 185%;
-		margin-top: 10px;
-	}
-
-	#clear-input {
-		position: absolute;
-		right: -5px;
-		cursor: pointer;
-		color: #ffffff;
-		font-size: 28px;
-		display: none;
-		top: 3px;
-		font-weight: 100;
-	}
-
-	.recommended-bg-item {
-		cursor: pointer;
-		width: 100%;
-		height: 143px;
-		object-fit: cover;
-		border-radius: 18px;
-		border: solid 3px #ffffff00;
-	}
-
-	.option {
-		position: fixed;
-		top: 15px;
-		right: 8px;
-	}
-
-	.option.settings-option {
-		position: fixed;
-		top: 80px;
-		right: 10px;
-	}
-
-	.frombs {
-		display: none;
-	}
-
-	.frombs.top {
-		display: none;
-	}
-
-	.settings-menu {
-		position: fixed;
-		top: 125px;
-		right: 10px;
-	}
-
-	#go-button {
-		position: relative;
-		padding: 5px 25px;
-	}
-
-	#logo {
-		font-size: 25px;
-		position: fixed;
-		top: 80px;
-		left: 18px;
-	}
-
-	#browser-container {
-		width: 80%;
-		position: fixed;
-		top: 120px;
-	}
-
-	div#websites-list {
-		display: flex;
-		position: relative;
-		gap: 10px;
-		overflow-x: scroll;
-		width: 73%;
-		white-space: nowrap;
-		padding: 13px 0px;
-	}
-
-	.website-item {
-		left: 5px;
-		position: relative;
-		padding: 6px 17px;
-	}
-
-	.more.top {
-		        bottom: auto;
-        top: 10px;
-	}
-
-	span#clear-input {
-		position: relative;
-		background: #00000000;
-		outline: none;
-		color: white;
-		text-align: center;
-		font-size: 15px;
-	}
-
-	.delete-btn:hover {
-		background-color: red;
-	}
-
-	.recommended-bg-popup {
-		padding: 40px 10px;
-		width: 90%;
-	}
-
-	.more {
-		display: block;
-        padding: 10px;
-	}
-
-	.cropper-popup {
-		padding: 40px 12px;
-	}
-
-	.cropper-container {
-		max-height: 300px;
-	}
-}
+        @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600&display=swap');
+
+        :root {
+            --safari-blue: #0071e3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            background: #000;
+            color: #fff;
+            height: 100vh;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .background-container {
+            position: fixed;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+            transition: background 0.4s ease;
+        }
+
+        .blur-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgb(0 0 0 / 32%);
+        }
+
+        /* Toolbar */
+        .toolbar {
+            position: fixed;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: rgba(30, 30, 30, 0.92);
+            backdrop-filter: blur(30px);
+            border-bottom: 0.5px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        .toolbar.bottom {
+            top: auto;
+            bottom: 0;
+            border-bottom: none;
+            border-top: 0.5px solid rgba(255,255,255,0.1);
+        }
+
+        .address-bar-container {
+            flex: 1;
+            max-width: 680px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #url-bar {
+            width: 100%;
+            height: 42px;
+            background: rgba(60, 60, 60, 0.9);
+            border: 0.5px solid rgba(255,255,255,0.2);
+            border-radius: 9999px;
+            padding: 0 50px 0 20px;
+            color: #fff;
+            font-size: 15.5px;
+            outline: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        #url-bar:focus {
+            background: rgba(70, 70, 70, 0.95);
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.4);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+        }
+
+        /* Favorites */
+        .main-content {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 38px;
+            font-weight: 600;
+            letter-spacing: -1.2px;
+            margin-bottom: 50px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+            gap: 24px;
+            width: 100%;
+            max-width: 620px;
+        }
+
+        .favorite-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .fav-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        .fav-icon img {
+            width: 46px;
+            height: 46px;
+            border-radius: 10px;
+        }
+
+        .fav-title {
+            font-size: 13.5px;
+            color: #ddd;
+            text-align: center;
+            max-width: 88px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .delete-fav {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: #ff3b30;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.2s;
+        }
+
+        .favorite-item:hover .delete-fav {
+            opacity: 1;
+        }
+
+        /* Bottom Links */
+        .bottom-links {
+            position: fixed;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(40,40,40,0.85);
+            backdrop-filter: blur(30px);
+            border-radius: 9999px;
+            padding: 6px 14px;
+            display: flex;
+            gap: 12px;
+            font-size: 13px;
+            z-index: 900;
+        }
+
+        .bottom-link {
+            color: #ccc;
+            padding: 6px 12px;
+            border-radius: 9999px;
+            transition: 0.2s;
+        }
+
+        .bottom-link:hover {
+            background: rgba(255,255,255,0.12);
+            color: white;
+        }
+
+        /* Settings Menu */
+        .settings-menu {
+            position: fixed;
+            top: 70px;
+            right: 16px;
+            background: rgba(32,32,32,0.97);
+            backdrop-filter: blur(30px);
+            border-radius: 14px;
+            padding: 8px 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            border: 0.5px solid rgba(255,255,255,0.1);
+            z-index: 2000;
+            min-width: 210px;
+            display: none;
+        }
+
+        .menu-item {
+            padding: 12px 20px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Popups */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(28,28,28,0.98);
+            backdrop-filter: blur(30px);
+            border-radius: 18px;
+            padding: 24px;
+            width: 92%;
+            max-width: 380px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+            z-index: 3000;
+            display: none;
+            border: 0.5px solid rgba(255,255,255,0.15);
+        }
     </style>
 </head>
-
 <body>
-    <div id="saved-websites">
-        <div class="visitsave"> 
-            <a href="savedsite.html"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M174-168q-36.03 0-61.02-24.98Q88-217.97 88-254v-447.38q0-36.04 27.29-63.33T178.62-792H320q18.35 0 35.46 7.32 17.12 7.32 29.54 19.83L463.85-686h368.23q13.54 0 23.27 9.73t9.73 23.27q0 13.54-9.73 23.27T832.08-620H436.77l-106-106H178.62q-10.77 0-17.7 6.92-6.92 6.93-6.92 17.7V-247q0-10.77 4.23-8.08 4.23 2.7 11.15 6.54l60.7-210.84q8.46-28.62 32.89-46.93 24.44-18.31 54.49-18.31h486.92q45.59 0 72.72 35.97 27.13 35.96 13.67 80.03l-45.85 158.24q-12.69 46.07-38.8 64.23Q780-168 725.15-168H174Zm60.08-66h519q8.46 0 15-4.62 6.54-4.61 8.84-13.07l50.31-175.39q3.85-12.3-3.85-21.92-7.69-9.62-20-9.62H317.46q-8.46 0-15 4.62-6.54 4.62-8.84 13.08L234.08-234ZM154-457.15V-726v268.85ZM234.08-234l59.54-206.92q2.3-8.46 3.84-13.08l1.54-4.62-2.69 9.62q-2.69 9.62-6.54 21.92l-50.31 175.39q-2.31 8.46-3.84 13.07l-1.54 4.62Z"/></svg></a>
-        </div>
-            <div id="websites-list"></div>
-        <div class="newsitesadd"> 
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M663.08-289.92h-86.93q-12.77 0-22.38-9.75-9.62-9.75-9.62-23.25 0-13.77 9.25-23.39 9.25-9.61 23.75-9.61h85.93v-85.93q0-13.5 9.75-23.25 9.76-9.75 23.27-9.75 13.52 0 23.25 9.75t9.73 23.25v85.93H815q13.5 0 23.25 9.75 9.75 9.76 9.75 23.27 0 13.52-9.75 23.25T815-289.92h-85.92V-204q0 13.5-9.76 23.25T696.05-171q-13.51 0-23.24-9.75-9.73-9.75-9.73-23.25v-85.92Zm-263.46-1H277.08q-78.68 0-133.88-55.19Q88-401.3 88-479.96t55.2-133.89q55.2-55.23 133.88-55.23h122.54q12.76 0 22.88 10.12 10.12 10.11 10.12 23.27 0 14.15-10.12 23.38-10.12 9.23-22.88 9.23H276.99q-50.68 0-86.84 36.16Q154-530.77 154-480t36.15 86.92q36.16 36.16 86.84 36.16h122.63q12.76 0 22.88 10.11 10.12 10.12 10.12 23.27 0 14.16-10.12 23.39t-22.88 9.23ZM355-448q-13.5 0-23.25-9.76T322-481.03q0-13.51 9.75-23.24Q341.5-514 355-514h212q13.5 0 23.25 9.76t9.75 23.27q0 13.51-9.75 23.24Q580.5-448 567-448H355Zm517-32h-66q0-50.77-36.15-86.92-36.16-36.16-86.83-36.16h-97.64q-12.76 0-22.38-9.25t-9.62-23.75q0-12.77 9.25-22.88 9.25-10.12 23.75-10.12h96.54q78.68 0 133.88 55.2Q872-558.68 872-480Z"/></svg>
-        </div>
-    </div>
-    <div id="logo">BSearchin</div>
-    <script src="noright.js"></script>
-    <div id="browser-container">
-        <div class="search-wrapper">
-            <input type="text" id="url-bar" placeholder="Enter your query here..." autocomplete="off">
-            <div class="suggestions" id="suggestions-list"></div>
-            <div class="optionss">
-                <button id="go-button" disabled><i class="fa-solid fa-magnifying-glass"></i></button> <span id="clear-input">Clear</span> </div>
-        </div>
-    </div>
-    <div class="custom-menu" style="display: none;">
-        <div class="menu-item" data-action="copy">Copy</div>
-        <div class="menu-item" data-action="paste">Paste</div>
-        <div class="menu-item" data-action="new-tab">New Tab</div>
-    </div>
-    <div class="options-container">
-        <div class="option settings-option"> 
-            <span class="option-text">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M201-354q-13.5 0-23.25-9.76T168-387.03q0-13.51 9.75-23.24Q187.5-420 201-420h558q13.5 0 23.25 9.76t9.75 23.27q0 13.51-9.75 23.24Q772.5-354 759-354H201Zm0-186q-13.5 0-23.25-9.76T168-573.03q0-13.51 9.75-23.24Q187.5-606 201-606h558q13.5 0 23.25 9.76t9.75 23.27q0 13.51-9.75 23.24Q772.5-540 759-540H201Z"/></svg>
-            Menu</span>
-        </div>
-    </div>
-    <div class="settings-menu" style="display: none;">
-        <div class="menu-item" data-action="color-picker">Color Palette</div>
-        <div class="menu-item" data-action="change-bg">Upload</div>
-        <div class="menu-item" data-action="crop-bg">BsImgcroper</div>
-        <div class="menu-item" data-action="delete-bg">Delete</div>
-        <div class="menu-item" data-action="toggle-bottom-bar">Bottom Bar <i class="fa-solid fa-toggle-off"></i></div>
-        <hr style="background: linear-gradient(45deg, transparent, #ffffff4a, transparent); outline: none; border: none; height: 1.5px; margin: 5px 0px;">
-        <div class="menu-item" data-action="recommended-bg">Recommends</div>
-    </div>
-    <div class="recommended-bg-actions" style="display: none;"> <span class="recommended-bg-download" id="downloadBgBtn"></span> </div>
-    <div class="recommended-bg-popup" id="recommendedBgPopup">
-        <div class="recommended-bg-header"> <span style="font-size: 16px; font-weight: 600; position: relative; top: -12px;">Choose a Background</span> <span class="recommended-bg-close" onclick="document.getElementById('recommendedBgPopup').style.display='none'">×</span> </div>
-        <div class="recommended-bg-grid" id="recommendedBgGrid"> 
-            <img class="recommended-bg-item" src="backgrounds/10.jpg" alt="BG 10">
-            <img class="recommended-bg-item" src="backgrounds/11.jpg" alt="BG 11">
-            <img class="recommended-bg-item" src="backgrounds/12.jpg" alt="BG 12">
-            <img class="recommended-bg-item" src="backgrounds/13.jpg" alt="BG 13">
-            <img class="recommended-bg-item" src="backgrounds/14.jpg" alt="BG 14">
-            <img class="recommended-bg-item" src="backgrounds/9.jpg" alt="BG 9">
-            <img class="recommended-bg-item" src="backgrounds/0.jpg" alt="BG 1"> 
-            <img class="recommended-bg-item" src="backgrounds/1.jpg" alt="BG 2"> 
-            <img class="recommended-bg-item" src="backgrounds/2.jpg"alt="BG 3"> 
-            <img class="recommended-bg-item" src="backgrounds/3.jpg" alt="BG 4">
-            <img class="recommended-bg-item" src="backgrounds/10.avif" alt="BG 10">
-            <img class="recommended-bg-item" src="backgrounds/4.jpg" alt="BG 5"> 
-            <img class="recommended-bg-item" src="backgrounds/5.jpg"alt="BG 6"> 
-            <img class="recommended-bg-item" src="backgrounds/6.jpg" alt="BG 8">
-            <img class="recommended-bg-item" src="backgrounds/8.jpg" alt="BG 0">
-            <img class="recommended-bg-item" src="backgrounds/15.jpg" alt="BG 0">
-            <img class="recommended-bg-item" src="backgrounds/16.jpg" alt="BG 0">
-            <img class="recommended-bg-item" src="backgrounds/17.jpg" alt="BG 0">
-        </div>
-        <p style="    padding: 10px;
-    text-align: center;
-    font-size: 12px;
-    margin-bottom: -40px;
-    margin-top: 20px;
-    color: #ffffff85;
-    font-weight: 300;"> You can set your own wallpaper by using Upload & BsImgcroper option </p>
-    </div>
-    <!-- Popup for Adding Website -->
-    <div class="popup-container" id="addWebsitePopup">
-        <div class="popup-header"> <span style="font-size: 20px;
-    font-weight: 600;
-    position: relative;
-    top: -2px;
-    text-decoration: underline;filter: drop-shadow(0px 0px 9px black);">Add Website</span> <span class="popup-close" onclick="document.getElementById('addWebsitePopup').style.display='none'">×</span> </div>
-        <input type="text" id="websiteTitleInput"
-        class="popup-input" placeholder="URL Title">
-        <input type="text" id="websiteUrlInput" class="popup-input" placeholder="Website URL">
-        <div class="popup-buttons">
-            <button class="popup-button" onclick="submitWebsite()">Add Now</button>
-        </div>
-    </div>
-    <!-- Popup for Website Title Error -->
-    <div class="popup-container" id="titleErrorPopup">
-        <div class="popup-header"> <span style="font-size: 16px; font-weight: 600;">Error</span> <span class="popup-close" onclick="document.getElementById('titleErrorPopup').style.display='none'">×</span> </div>
-        <div class="popup-message">Website title cannot be empty!</div>
-        <div class="popup-buttons">
-            <button class="popup-button" onclick="document.getElementById('titleErrorPopup').style.display='none'; document.getElementById('addWebsitePopup').style.display='block'">OK</button>
-        </div>
-    </div>
-    <!-- Popup for Delete Website Confirmation -->
-    <div class="popup-container" id="deleteWebsitePopup">
-        <div class="popup-header"> <span style="font-size: 20px;
-    font-weight: 600;
-    margin-top: -15px;
-    color: white;">Confirmation</span> <span class="popup-close" onclick="document.getElementById('deleteWebsitePopup').style.display='none'">×</span> </div>
-        <div class="popup-message" id="deleteWebsiteMessage"></div>
-        <div class="popup-buttons">
-            <button class="popup-button" id="confirmDeleteBtn" style="background: red;">Delete Now</button>
-        </div>
-    </div>
-    <!-- Popup for Image Too Large Error -->
-    <div class="popup-container" id="imageTooLargePopup">
-        <div class="popup-header"> <span style="font-size: 16px; font-weight: 600;">Error</span> <span class="popup-close" onclick="document.getElementById('imageTooLargePopup').style.display='none'">×</span> </div>
-        <div class="popup-message">Image too large to store. Try a smaller file.</div>
-        <div class="popup-buttons">
-            <button class="popup-button" onclick="document.getElementById('imageTooLargePopup').style.display='none'">OK</button>
-        </div>
-    </div>
-    <!-- Popup for Failed Image URL -->
-    <div class="popup-container" id="imageUrlErrorPopup">
-        <div class="popup-header"> <span style="font-size: 16px; font-weight: 600;">Error</span> <span class="popup-close" onclick="document.getElementById('imageUrlErrorPopup').style.display='none'">×</span> </div>
-        <div class="popup-message">Failed to load image from the provided URL.</div>
-        <div class="popup-buttons">
-            <button class="popup-button" onclick="document.getElementById('imageUrlErrorPopup').style.display='none'">OK</button>
-        </div>
-    </div>
-    <!-- Popup for Copy Success -->
-    <div class="popup-container" id="copySuccessPopup">
-        <div class="popup-header"> <span style="font-size: 16px; font-weight: 600;">Success</span> <span class="popup-close" onclick="document.getElementById('copySuccessPopup').style.display='none'">×</span> </div>
-        <div class="popup-message">Text copied!</div>
-        <div class="popup-buttons">
-            <button class="popup-button" onclick="document.getElementById('copySuccessPopup').style.display='none'">OK</button>
-        </div>
-    </div>
-    <!-- Popup for Copy Failure -->
-    <div class="popup-container" id="copyFailurePopup">
-        <div class="popup-header"> <span style="font-size: 16px; font-weight: 600;">Error</span> <span class="popup-close" onclick="document.getElementById('copyFailurePopup').style.display='none'">×</span> </div>
-        <div class="popup-message">Failed to copy.</div>
-        <div class="popup-buttons">
-            <button class="popup-button" onclick="document.getElementById('copyFailurePopup').style.display='none'">OK</button>
-        </div>
-    </div>
-    <!-- Popup for Nothing to Copy -->
-    <div class="popup-container" id="nothingToCopyPopup">
-        <div class="popup-header"> <span style="font-size: 16px; font-weight: 600;">Error</span> <span class="popup-close" onclick="document.getElementById('nothingToCopyPopup').style.display='none'">×</span> </div>
-        <div class="popup-message">Nothing to copy.</div>
-        <div class="popup-buttons">
-            <button class="popup-button" onclick="document.getElementById('nothingToCopyPopup').style.display='none'">OK</button>
-        </div>
-    </div>
-    <!-- Popup for Paste Failure -->
-    <div class="popup-container" id="pasteFailurePopup">
-        <div class="popup-header"> <span style="font-size: 16px; font-weight: 600;">Error</span> <span class="popup-close" onclick="document.getElementById('pasteFailurePopup').style.display='none'">×</span> </div>
-        <div class="popup-message">Failed to paste.</div>
-        <div class="popup-buttons">
-            <button class="popup-button" onclick="document.getElementById('pasteFailurePopup').style.display='none'">OK</button>
-        </div>
-    </div>
-    <!-- Popup for Crop Background -->
-    <div class="cropper-popup" id="cropperPopup">
-        <div class="popup-header"> <span style="font-size: 16px; font-weight: 600; position: relative; top: -12px;" id="cropperTitle">Crop Background</span> <span class="popup-close" onclick="document.getElementById('cropperPopup').style.display='none'">×</span> </div>
-        <div class="cropper-container">
-        <img id="cropperImage" src="" alt="Image to crop"> </div>
-        <div class="popup-buttons">
-            <button class="popup-button" onclick="cropAndSetBackground()">Apply Crop</button>
-        </div>
-    </div>
-    <div class="frombs">
-         <div class="fronbssites">
-            <a href="https://blackswan19.github.io/Educate/songsearcher">BSongsearch</a> 
-            <a href="https://blackswan19.github.io/bscrop/bsweb">BsWebs</a> 
-            <a href="https://blackswan19.github.io/bscrop/M.clofind">Clofind</a> 
-            <a href="https://blackswan19.github.io/bscrop/formbs">Bs-Rora</a>
-             <div class="mobfooter" style="
-    position: relative;
-    background-color: #ffffff38;
-    border-radius: 100px;
-    font-size: 13px;"> 
-                <a style="justify-content: center;
-    align-items: center;
-    display: flex;
-    padding: 6px 15px;
-    gap: 3px;text-decoration: none;" href="https://blackswan19.github.io/bscrop/reminder.html"><svg style="font-size: 16px;width: 20px;height: 20px;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/></svg>
-                BsReminder </a>
-            </div>
-         </div>
-    </div>
-    <div class="more"> 
-        <div class="showinmob">
-            <div class="moblbsdivrt">
-                <a href="https://blackswan19.github.io/bscrop/formbs">More FromBs</a>
-            </div>
-            <div class="mobfooter" style="
-    position: relative;
-    background-color: #ffffff38;
-    border-radius: 100px;
-    font-size: 12px;"> 
-                <a style="justify-content: center;
-    align-items: center;
-    display: flex;
-    padding: 5px 15px;
-    gap: 3px;" href="https://blackswan19.github.io/bscrop/reminder.html"><svg style="font-size: 16px;width: 20px;height: 20px;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/></svg>
-                BsReminder </a>
-            </div>
-        </div>
-    </div>
-    <div class="blur-background" id="blurBg"></div>
     <div class="background-container" id="bgContainer"></div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
-<script>
-    let cropper = null;
+    <div class="blur-overlay"></div>
 
-    function compressImage(file, callback) {
-        const img = new Image();
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            img.src = e.target.result;
-            img.onload = function() {
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                const maxWidth = 1920;
-                const maxHeight = 1080;
-                let width = img.width;
-                let height = img.height;
+    <!-- Toolbar -->
+    <div class="toolbar" id="toolbar">
+        <div class="address-bar-container">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="url-bar" placeholder="Search or enter website" autocomplete="off">
+        </div>
+        <div onclick="toggleSettings()" style="padding: 8px 10px; cursor: pointer;">
+            <i class="fa-solid fa-ellipsis-h"></i>
+        </div>
+    </div>
 
-                if (width > height) {
-                    if (width > maxWidth) {
-                        height *= maxWidth / width;
-                        width = maxWidth;
-                    }
-                } else {
-                    if (height > maxHeight) {
-                        width *= maxHeight / height;
-                        height = maxHeight;
-                    }
-                }
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="logo">BSearchin</div>
+        <div id="favorites-grid" class="favorites-grid"></div>
+    </div>
 
-                canvas.width = width;
-                canvas.height = height;
-                ctx.drawImage(img, 0, 0, width, height);
+    <!-- Bottom Links -->
+    <div class="bottom-links">
+        <a href="https://blackswan19.github.io/Educate/songsearcher" class="bottom-link">BSongsearch</a>
+        <a href="https://blackswan19.github.io/bscrop/bsweb" class="bottom-link">BsWebs</a>
+    </div>
 
-                let quality = 0.9;
-                let compressedDataUrl;
+    <!-- Settings Menu -->
+    <div class="settings-menu" id="settingsMenu">
+        <div class="menu-item" onclick="toggleToolbarPosition()"><i class="fa-solid fa-arrows-up-down"></i> Move Search Bar</div>
+        <div class="menu-item" onclick="uploadBackground()"><i class="fa-solid fa-upload"></i> Upload Wallpaper</div>
+        <div class="menu-item" onclick="pickColorBackground()"><i class="fa-solid fa-palette"></i> Solid Color Background</div>
+        <div class="menu-item" onclick="showRecommendedBGs()"><i class="fa-solid fa-images"></i> Recommended Wallpapers</div>
+        <div class="menu-item" onclick="removeBackground()"><i class="fa-solid fa-trash"></i> Reset Background</div>
+        <div class="menu-item" onclick="addNewSite()"><i class="fa-solid fa-plus"></i> Add Favorite</div>
+    </div>
 
-                do {
-                    compressedDataUrl = canvas.toDataURL('image/webp', quality);
-                    quality -= 0.1;
-                } while (compressedDataUrl.length > 5 * 1024 * 1024 && quality > 0.1);
+    <!-- Add Favorite Popup -->
+    <div class="popup" id="addSitePopup">
+        <div style="font-size:18px; font-weight:600; text-align:center; margin-bottom:16px;">Add New Favorite</div>
+        <input type="text" id="siteTitle" class="popup-input" placeholder="Title" style="margin-bottom:12px;">
+        <input type="text" id="siteURL" class="popup-input" placeholder="https://example.com">
+        <div style="display:flex; gap:10px; margin-top:20px;">
+            <button onclick="hideAddPopup()" style="flex:1; padding:12px; border-radius:10px; background:rgba(255,255,255,0.1); color:white; border:none;">Cancel</button>
+            <button onclick="saveNewSite()" style="flex:1; padding:12px; border-radius:10px; background:#0071e3; color:white; border:none;">Add</button>
+        </div>
+    </div>
 
-                if (compressedDataUrl.length > 5 * 1024 * 1024) {
-                    document.getElementById('imageTooLargePopup').style.display = 'block';
-                    return;
-                }
+    <!-- Recommended BG Popup -->
+    <div class="popup" id="bgPopup" style="width:92%; max-width:680px;">
+        <div style="font-size:18px; font-weight:600; text-align:center; margin-bottom:16px;">Choose Wallpaper</div>
+        <div id="bgGrid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px,1fr)); gap:12px; max-height:420px; overflow-y:auto; padding:8px 0;"></div>
+        <button onclick="hideBGPpopup()" style="margin-top:16px; width:100%; padding:12px; border-radius:10px; background:rgba(255,255,255,0.1); color:white; border:none;">Close</button>
+    </div>
 
-                callback(compressedDataUrl);
-            };
-        };
-        reader.readAsDataURL(file);
-    }
+    <script>
+        // Background Management
+        let currentBg = localStorage.getItem('bsBackground') || '';
+        let currentColor = localStorage.getItem('bsBackgroundColor') || '#0a0f1c';
 
-    function updateBackground(imageSrc) {
-        const bgContainer = document.getElementById('bgContainer');
-        const blurBg = document.getElementById('blurBg');
-        document.body.style.backgroundColor = "black";
-        bgContainer.style.backgroundImage = `url('${imageSrc}')`;
-        blurBg.style.backgroundImage = `url('${imageSrc}')`;
-    }
-
-    function changeBackgroundColor(event) {
-        const selectedColor = event.target.value;
-        document.body.style.backgroundColor = selectedColor;
-        localStorage.setItem('bgColor', selectedColor);
-    }
-
-    function downloadImage(imageSrc) {
-        const link = document.createElement('a');
-        link.href = imageSrc;
-        link.download = '#BsWallper';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-
-    function toggleBottomBar() {
-        const savedWebsites = document.getElementById('saved-websites');
-        const frombs = document.querySelector('.frombs');
-        const more = document.querySelector('.more');
-        const isBottomBarOn = localStorage.getItem('bottomBar') === 'true';
-        const bottomBarMenuItem = document.querySelector('[data-action="toggle-bottom-bar"]');
-
-        if (isBottomBarOn) {
-            savedWebsites.classList.remove('bottom');
-            frombs.classList.remove('top');
-            more.classList.remove('top');
-            localStorage.setItem('bottomBar', 'false');
-            bottomBarMenuItem.innerHTML = 'Bottom Bar <i class="fa-solid fa-toggle-off"></i>';
-        } else {
-            savedWebsites.classList.add('bottom');
-            frombs.classList.add('top');
-            more.classList.add('top');
-            localStorage.setItem('bottomBar', 'true');
-            bottomBarMenuItem.innerHTML = 'Bottom Bar <i class="fa-solid fa-toggle-on"></i>';
-        }
-    }
-
-    function cropAndSetBackground() {
-        if (cropper) {
-            const isMobile = window.innerWidth <= 480;
-            const canvas = cropper.getCroppedCanvas({
-                width: isMobile ? 1080 : 1920,
-                height: isMobile ? 1920 : 1080
-            });
-            const croppedDataUrl = canvas.toDataURL('image/webp', 0.9);
-            if (croppedDataUrl.length > 5 * 1024 * 1024) {
-                document.getElementById('imageTooLargePopup').style.display = 'block';
-                document.getElementById('cropperPopup').style.display = 'none';
-                cropper.destroy();
-                cropper = null;
-                return;
-            }
-            updateBackground(croppedDataUrl);
-            localStorage.setItem('backgroundImage', croppedDataUrl);
-            document.getElementById('cropperPopup').style.display = 'none';
-            cropper.destroy();
-            cropper = null;
-        }
-    }
-
-    async function saveWebsite(url, title) {
-        if (!url.startsWith('http://') && !url.startsWith('https://')) {
-            url = 'https://' + url;
-        }
-
-        const savedWebsites = JSON.parse(localStorage.getItem('websites') || '[]');
-        savedWebsites.push({ url, title });
-        localStorage.setItem('websites', JSON.stringify(savedWebsites));
-        loadWebsites();
-        document.getElementById('addWebsitePopup').style.display = 'none';
-    }
-
-    // UPDATED: Strict validation — requires title AND valid URL (no random text)
-    function submitWebsite() {
-        const urlInput = document.getElementById('websiteUrlInput');
-        const titleInput = document.getElementById('websiteTitleInput');
-        
-        let url = urlInput.value.trim();
-        const title = titleInput.value.trim();
-
-        // 1. Require title
-        if (!title) {
-            alert('Please enter a title for the website. A title is required to save.');
-            titleInput.focus();
-            return;
-        }
-
-        // 2. Require URL input
-        if (!url) {
-            alert('Please enter a website URL.');
-            urlInput.focus();
-            return;
-        }
-
-        // 3. Basic sanity checks: must have a dot, no spaces, reasonable length
-        if (!url.includes('.')) {
-            alert('Invalid URL: It must contain a dot (e.g., example.com).');
-            urlInput.focus();
-            return;
-        }
-
-        if (url.includes(' ')) {
-            alert('Website URLs cannot contain spaces.');
-            urlInput.focus();
-            return;
-        }
-
-        if (url.length < 4) {
-            alert('The URL is too short. Please enter a valid website address.');
-            urlInput.focus();
-            return;
-        }
-
-        // 4. Final validation using URL constructor
-        const testUrl = url.startsWith('http://') || url.startsWith('https://') ? url : 'https://' + url;
-        let validUrl;
-        try {
-            validUrl = new URL(testUrl);
-        } catch (e) {
-            alert('Please enter a valid website URL (e.g., google.com or https://youtube.com).');
-            urlInput.focus();
-            return;
-        }
-
-        // All checks passed → save and clear
-        saveWebsite(validUrl.href, title);
-
-        urlInput.value = '';
-        titleInput.value = '';
-    }
-
-    async function loadWebsites() {
-        const websitesList = document.getElementById('websites-list');
-        websitesList.innerHTML = '';
-
-        const savedWebsites = JSON.parse(localStorage.getItem('websites') || '[]');
-
-        for (const [index, website] of savedWebsites.entries()) {
-            const websiteItem = document.createElement('div');
-            websiteItem.classList.add('website-item');
-            websiteItem.setAttribute('draggable', 'true');
-            websiteItem.dataset.index = index;
-
-            const link = document.createElement('a');
-            link.href = website.url;
-            link.target = '_self';
-
-            const favicon = document.createElement('img');
-            const domain = getDomain(website.url);
-            favicon.src = `https://www.google.com/s2/favicons?domain=${domain}`;
-            favicon.onerror = function () {
-                favicon.src = 'https://i.ibb.co/kxgjrZG/sitesaved-BS.png';
-            };
-            favicon.alt = '';
-
-            const title = website.title || domain;
-
-            const deleteBtn = document.createElement('button');
-            deleteBtn.classList.add('delete-btn');
-            deleteBtn.innerText = '×';
-            deleteBtn.onclick = function (e) {
-                e.preventDefault();
-                document.getElementById('deleteWebsiteMessage').innerText = `Are you sure you want to delete '${title}'?`;
-                document.getElementById('deleteWebsitePopup').style.display = 'block';
-                document.getElementById('confirmDeleteBtn').onclick = function() {
-                    deleteWebsite(index);
-                    document.getElementById('deleteWebsitePopup').style.display = 'none';
-                };
-            };
-
-            link.appendChild(favicon);
-            link.appendChild(document.createTextNode(title));
-            websiteItem.appendChild(link);
-            websiteItem.appendChild(deleteBtn);
-            websitesList.appendChild(websiteItem);
-
-            websiteItem.addEventListener('dragstart', handleDragStart);
-            websiteItem.addEventListener('dragover', handleDragOver);
-            websiteItem.addEventListener('drop', handleDrop);
-            websiteItem.addEventListener('dragend', handleDragEnd);
-        }
-    }
-
-    let draggedItem = null;
-
-    function handleDragStart(e) {
-        draggedItem = this;
-        this.classList.add('dragging');
-        e.dataTransfer.effectAllowed = 'move';
-        e.dataTransfer.setData('text/plain', this.dataset.index);
-    }
-
-    function handleDragOver(e) {
-        e.preventDefault();
-        e.dataTransfer.dropEffect = 'move';
-    }
-
-    function handleDrop(e) {
-        e.preventDefault();
-        if (draggedItem !== this) {
-            const allItems = [...document.querySelectorAll('.website-item')];
-            const draggedIndex = parseInt(draggedItem.dataset.index);
-            const droppedIndex = parseInt(this.dataset.index);
-            const savedWebsites = JSON.parse(localStorage.getItem('websites') || '[]');
-
-            const [draggedWebsite] = savedWebsites.splice(draggedIndex, 1);
-            savedWebsites.splice(droppedIndex, 0, draggedWebsite);
-
-            localStorage.setItem('websites', JSON.stringify(savedWebsites));
-            loadWebsites();
-        }
-    }
-
-    function handleDragEnd() {
-        this.classList.remove('dragging');
-        draggedItem = null;
-    }
-
-    function deleteWebsite(index) {
-        const savedWebsites = JSON.parse(localStorage.getItem('websites') || '[]');
-        savedWebsites.splice(index, 1);
-        localStorage.setItem('websites', JSON.stringify(savedWebsites));
-        loadWebsites();
-    }
-
-    function getDomain(url) {
-        try {
-            return new URL(url).hostname;
-        } catch (e) {
-            return url;
-        }
-    }
-
-    function showSuggestions(value, storedInputs, suggestionsList) {
-        suggestionsList.innerHTML = '';
-        let activeIndex = -1;
-
-        const storedInputsKey = 'storedInputs';
-
-        const suggestions = value === ''
-            ? storedInputs
-            : storedInputs.filter(input =>
-                input.toLowerCase().includes(value.toLowerCase())
-            );
-
-        if (suggestions.length === 0) {
-            suggestionsList.style.display = 'none';
-        } else {
-            suggestionsList.style.display = 'block';
-            suggestions.forEach((suggestion, index) => {
-                const item = document.createElement('div');
-                item.classList.add('suggestion-item');
-                item.style.display = 'flex';
-                item.style.justifyContent = 'space-between';
-                item.style.alignItems = 'center';
-
-                const suggestionText = document.createElement('span');
-                suggestionText.textContent = suggestion;
-                suggestionText.style.flex = '1';
-
-                const deleteBtn = document.createElement('span');
-                deleteBtn.textContent = '×';
-                deleteBtn.style.color = '#ffffff60';
-                deleteBtn.style.cursor = 'pointer';
-                deleteBtn.style.fontSize = '23px';
-                deleteBtn.style.fontWeight = '100';
-
-                deleteBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    storedInputs.splice(index, 1);
-                    localStorage.setItem(storedInputsKey, JSON.stringify(storedInputs));
-                    showSuggestions(value, storedInputs, suggestionsList);
-                });
-
-                suggestionText.addEventListener('click', () => {
-                    const urlBar = document.getElementById('url-bar');
-                    urlBar.value = suggestion;
-                    document.getElementById('go-button').disabled = false;
-                    document.getElementById('clear-input').style.display = 'block';
-                    suggestionsList.style.display = 'none';
-                    const suggestionIndex = storedInputs.indexOf(suggestion);
-                    if (suggestionIndex > -1) {
-                        storedInputs.splice(suggestionIndex, 1);
-                        storedInputs.unshift(suggestion);
-                        localStorage.setItem(storedInputsKey, JSON.stringify(storedInputs));
-                    }
-                });
-
-                item.appendChild(suggestionText);
-                item.appendChild(deleteBtn);
-                suggestionsList.appendChild(item);
-            });
-        }
-
-        return activeIndex;
-    }
-
-    function navigateToUrl(value) {
-        let url = value;
-        if (!url.startsWith('http://') && !url.startsWith('https://')) {
-            url = 'https://www.google.com/search?q=' + encodeURIComponent(value);
-        }
-        window.open(url, '_self');
-    }
-
-    function updateActiveSuggestion(suggestionItems, activeIndex, urlBar, goButton) {
-        suggestionItems.forEach(item => item.classList.remove('active'));
-        if (activeIndex >= 0) {
-            const activeItem = suggestionItems[activeIndex];
-            activeItem.classList.add('active');
-            urlBar.value = activeItem.querySelector('span').textContent;
-            goButton.disabled = false;
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-        const urlBar = document.getElementById("url-bar");
-        const goButton = document.getElementById('go-button');
-        const clearInput = document.getElementById('clear-input');
-        const suggestionsList = document.getElementById('suggestions-list');
-        const customMenu = document.querySelector(".custom-menu");
-        const settingsOption = document.querySelector('.settings-option');
-        const settingsMenu = document.querySelector('.settings-menu');
-        const recommendedBgPopup = document.getElementById('recommendedBgPopup');
-        const recommendedBgGrid = document.getElementById('recommendedBgGrid');
-        const downloadBgBtn = document.getElementById('downloadBgBtn');
-        const addWebsiteBtn = document.querySelector('.newsitesadd:not(.settings-option)');
-        const cropperPopup = document.getElementById('cropperPopup');
-        const cropperImage = document.getElementById('cropperImage');
-        const cropperTitle = document.getElementById('cropperTitle');
-
-        const storedInputsKey = 'storedInputs';
-        let storedInputs = JSON.parse(localStorage.getItem(storedInputsKey)) || [];
-        let activeIndex = -1;
-        let selectedBgSrc = '';
-
-        // Load bottom bar state
-        const isBottomBarOn = localStorage.getItem('bottomBar') === 'true';
-        const bottomBarMenuItem = document.querySelector('[data-action="toggle-bottom-bar"]');
-        if (isBottomBarOn) {
-            document.getElementById('saved-websites').classList.add('bottom');
-            document.querySelector('.frombs').classList.add('top');
-            document.querySelector('.more').classList.add('top');
-            bottomBarMenuItem.innerHTML = 'Bottom Bar <i class="fa-solid fa-toggle-on"></i>';
-        } else {
-            document.getElementById('saved-websites').classList.remove('bottom');
-            document.querySelector('.frombs').classList.remove('top');
-            document.querySelector('.more').classList.remove('top');
-            bottomBarMenuItem.innerHTML = 'Bottom Bar <i class="fa-solid fa-toggle-off"></i>';
-        }
-
-        urlBar.focus();
-
-        loadWebsites();
-        const storedImage = localStorage.getItem('backgroundImage');
-        if (storedImage) {
-            updateBackground(storedImage);
-        }
-        const savedColor = localStorage.getItem('bgColor');
-        if (savedColor) {
-            document.body.style.backgroundColor = savedColor;
-        }
-
-        settingsOption.addEventListener('click', function() {
-            settingsMenu.style.display = settingsMenu.style.display === 'block' ? 'none' : 'block';
-        });
-
-        settingsMenu.addEventListener('click', function(event) {
-            const action = event.target.dataset.action;
-            if (action) {
-                switch (action) {
-                    case 'change-bg':
-                        const input = document.createElement('input');
-                        input.type = 'file';
-                        input.accept = 'image/*';
-                        input.onchange = function(event) {
-                            const file = event.target.files[0];
-                            if (file) {
-                                compressImage(file, function(compressedData) {
-                                    try {
-                                        updateBackground(compressedData);
-                                        localStorage.setItem('backgroundImage', compressedData);
-                                    } catch (error) {
-                                        console.error('Failed to store image:', error);
-                                        document.getElementById('imageTooLargePopup').style.display = 'block';
-                                    }
-                                });
-                            }
-                        };
-                        input.click();
-                        break;
-                    case 'crop-bg':
-                        const cropInput = document.createElement('input');
-                        cropInput.type = 'file';
-                        cropInput.accept = 'image/*';
-                        cropInput.onchange = function(event) {
-                            const file = event.target.files[0];
-                            if (file) {
-                                const reader = new FileReader();
-                                reader.onload = function(e) {
-                                    cropperImage.src = e.target.result;
-                                    cropperPopup.style.display = 'block';
-                                    const isMobile = window.innerWidth <= 480;
-                                    cropperTitle.textContent = `Crop Background (${isMobile ? '9:16' : '16:9'})`;
-                                    if (cropper) {
-                                        cropper.destroy();
-                                    }
-                                    cropper = new Cropper(cropperImage, {
-                                        aspectRatio: isMobile ? 9 / 16 : 16 / 9,
-                                        viewMode: 1,
-                                        autoCropArea: 0.8,
-                                        movable: true,
-                                        zoomable: true,
-                                        scalable: true,
-                                        cropBoxResizable: true
-                                    });
-                                };
-                                reader.readAsDataURL(file);
-                            }
-                        };
-                        cropInput.click();
-                        break;
-                    case 'delete-bg':
-                        document.getElementById('bgContainer').style.backgroundImage = '';
-                        document.getElementById('blurBg').style.backgroundImage = '';
-                        document.body.style.backgroundColor = "black";
-                        localStorage.removeItem('backgroundImage');
-                        break;
-                    case 'color-picker':
-                        const colorInput = document.createElement('input');
-                        colorInput.type = 'color';
-                        colorInput.value = localStorage.getItem('bgColor') || '#001252';
-                        colorInput.onchange = function(event) {
-                            changeBackgroundColor(event);
-                        };
-                        colorInput.click();
-                        break;
-                    case 'recommended-bg':
-                        recommendedBgPopup.style.display = 'block';
-                        break;
-                    case 'toggle-bottom-bar':
-                        toggleBottomBar();
-                        break;
-                }
-                settingsMenu.style.display = 'none';
-            }
-        });
-
-        recommendedBgGrid.addEventListener('click', function(event) {
-            if (event.target.classList.contains('recommended-bg-item')) {
-                selectedBgSrc = event.target.src;
-                updateBackground(selectedBgSrc);
-                localStorage.setItem('backgroundImage', selectedBgSrc);
-                recommendedBgPopup.style.display = 'none';
-            }
-        });
-
-        downloadBgBtn.addEventListener('click', function() {
-            if (selectedBgSrc) {
-                downloadImage(selectedBgSrc);
+        function applyBackground() {
+            const bgContainer = document.getElementById('bgContainer');
+            if (currentBg) {
+                bgContainer.style.backgroundImage = `url('${currentBg}')`;
+                bgContainer.style.backgroundColor = '';
             } else {
-                alert('No background selected to download.');
+                bgContainer.style.backgroundImage = '';
+                bgContainer.style.backgroundColor = currentColor;
             }
-        });
+        }
 
-        document.addEventListener('click', function(event) {
-            if (!settingsOption.contains(event.target) && !settingsMenu.contains(event.target)) {
-                settingsMenu.style.display = 'none';
+        function updateImageBackground(src) {
+            currentBg = src;
+            localStorage.setItem('bsBackground', src);
+            localStorage.removeItem('bsBackgroundColor');
+            applyBackground();
+        }
+
+        function updateColorBackground(color) {
+            currentColor = color;
+            currentBg = '';
+            localStorage.setItem('bsBackgroundColor', color);
+            localStorage.removeItem('bsBackground');
+            applyBackground();
+        }
+
+        function removeBackground() {
+            if (confirm("Reset to default background?")) {
+                currentBg = '';
+                currentColor = '#0a0f1c';
+                localStorage.removeItem('bsBackground');
+                localStorage.removeItem('bsBackgroundColor');
+                applyBackground();
             }
-            if (!recommendedBgPopup.contains(event.target) && event.target.dataset.action !== 'recommended-bg') {
-                recommendedBgPopup.style.display = 'none';
+        }
+
+        // Color Picker
+        function pickColorBackground() {
+            const input = document.createElement('input');
+            input.type = 'color';
+            input.value = currentColor;
+            input.onchange = (e) => {
+                updateColorBackground(e.target.value);
+            };
+            input.click();
+            document.getElementById('settingsMenu').style.display = 'none';
+        }
+
+        // Toolbar Position
+        function loadToolbarPosition() {
+            const isBottom = localStorage.getItem('toolbarBottom') === 'true';
+            if (isBottom) document.getElementById('toolbar').classList.add('bottom');
+        }
+
+        function toggleToolbarPosition() {
+            const toolbar = document.getElementById('toolbar');
+            const isBottom = toolbar.classList.toggle('bottom');
+            localStorage.setItem('toolbarBottom', isBottom);
+            document.getElementById('settingsMenu').style.display = 'none';
+        }
+
+        // Favorites
+        let favorites = JSON.parse(localStorage.getItem('bsFavorites')) || [];
+
+        function renderFavorites() {
+            const grid = document.getElementById('favorites-grid');
+            grid.innerHTML = favorites.length === 0 
+                ? `<div style="color:#777; text-align:center; grid-column:1/-1; padding:60px 20px; font-size:15px;">No favorites yet.<br>Use menu → Add Favorite</div>`
+                : '';
+
+            favorites.forEach((fav, index) => {
+                const div = document.createElement('div');
+                div.className = 'favorite-item';
+                div.innerHTML = `
+                    <div class="fav-icon">
+                        <img src="${fav.icon}" onerror="this.src='https://i.ibb.co/kxgjrZG/sitesaved-BS.png'">
+                    </div>
+                    <div class="fav-title">${fav.title}</div>
+                    <div class="delete-fav" onclick="event.stopImmediatePropagation(); deleteFavorite(${index});">×</div>
+                `;
+                div.onclick = () => window.open(fav.url, '_self');
+                grid.appendChild(div);
+            });
+        }
+
+        function deleteFavorite(index) {
+            if (confirm("Delete this favorite?")) {
+                favorites.splice(index, 1);
+                localStorage.setItem('bsFavorites', JSON.stringify(favorites));
+                renderFavorites();
             }
-            if (!cropperPopup.contains(event.target) && event.target.dataset.action !== 'crop-bg') {
-                cropperPopup.style.display = 'none';
-                if (cropper) {
-                    cropper.destroy();
-                    cropper = null;
+        }
+
+        function addNewSite() {
+            document.getElementById('addSitePopup').style.display = 'block';
+            document.getElementById('settingsMenu').style.display = 'none';
+        }
+
+        function hideAddPopup() {
+            document.getElementById('addSitePopup').style.display = 'none';
+        }
+
+        function saveNewSite() {
+            const title = document.getElementById('siteTitle').value.trim();
+            let url = document.getElementById('siteURL').value.trim();
+            if (!title || !url) return alert("Title and URL are required");
+            if (!url.startsWith('http')) url = 'https://' + url;
+
+            favorites.unshift({
+                title,
+                url,
+                icon: `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`
+            });
+
+            localStorage.setItem('bsFavorites', JSON.stringify(favorites));
+            renderFavorites();
+            hideAddPopup();
+        }
+
+        function toggleSettings() {
+            const menu = document.getElementById('settingsMenu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function uploadBackground() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = e => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = ev => updateImageBackground(ev.target.result);
+                    reader.readAsDataURL(file);
                 }
-            }
-        });
+            };
+            input.click();
+            document.getElementById('settingsMenu').style.display = 'none';
+        }
 
-        addWebsiteBtn.addEventListener('click', async function () {
-            document.getElementById('addWebsitePopup').style.display = 'block';
-        });
+        // Recommended Backgrounds
+        const recommendedBGs = [
+            "https://picsum.photos/id/1015/1920/1080",
+            "https://picsum.photos/id/133/1920/1080",
+            "https://picsum.photos/id/201/1920/1080",
+            "https://picsum.photos/id/251/1920/1080",
+            "https://picsum.photos/id/1016/1920/1080",
+            "https://picsum.photos/id/870/1920/1080"
+        ];
 
-        urlBar.addEventListener('input', function () {
-            const value = urlBar.value.trim();
-            goButton.disabled = value === '';
-            clearInput.style.display = value ? 'block' : 'none';
-            activeIndex = showSuggestions(value, storedInputs, suggestionsList);
-        });
+        function showRecommendedBGs() {
+            const grid = document.getElementById('bgGrid');
+            grid.innerHTML = '';
+            recommendedBGs.forEach(src => {
+                const div = document.createElement('div');
+                div.style.height = '118px';
+                div.style.borderRadius = '12px';
+                div.style.background = `url('${src}') center/cover`;
+                div.style.cursor = 'pointer';
+                div.onclick = () => {
+                    updateImageBackground(src);
+                    hideBGPpopup();
+                };
+                grid.appendChild(div);
+            });
+            document.getElementById('bgPopup').style.display = 'block';
+            document.getElementById('settingsMenu').style.display = 'none';
+        }
 
-        urlBar.addEventListener('focus', function () {
-            const value = urlBar.value.trim();
-            activeIndex = showSuggestions(value || '', storedInputs, suggestionsList);
-        });
+        function hideBGPpopup() {
+            document.getElementById('bgPopup').style.display = 'none';
+        }
 
-        clearInput.addEventListener('click', function () {
-            urlBar.value = '';
-            goButton.disabled = true;
-            clearInput.style.display = 'none';
-            suggestionsList.innerHTML = '';
-            suggestionsList.style.display = 'none';
-        });
-
-        goButton.addEventListener('click', function () {
-            const value = urlBar.value.trim();
-            if (value) {
-                if (!storedInputs.includes(value)) {
-                    storedInputs.unshift(value);
-                } else {
-                    const index = storedInputs.indexOf(value);
-                    storedInputs.splice(index, 1);
-                    storedInputs.unshift(value);
-                }
-                localStorage.setItem(storedInputsKey, JSON.stringify(storedInputs));
-                navigateToUrl(value);
-            }
-        });
-
-        urlBar.addEventListener('keydown', function (e) {
-            const suggestionItems = document.querySelectorAll('.suggestion-item');
+        // Search
+        document.getElementById('url-bar').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
-                if (activeIndex >= 0 && suggestionItems[activeIndex]) {
-                    const selectedText = suggestionItems[activeIndex].querySelector('span').textContent;
-                    urlBar.value = selectedText;
-                    goButton.disabled = false;
-                    clearInput.style.display = 'block';
-                    suggestionsList.style.display = 'none';
-                    const suggestionIndex = storedInputs.indexOf(selectedText);
-                    if (suggestionIndex > -1) {
-                        storedInputs.splice(suggestionIndex, 1);
-                        storedInputs.unshift(selectedText);
-                        localStorage.setItem(storedInputsKey, JSON.stringify(storedInputs));
-                    }
-                    goButton.click();
+                let q = this.value.trim();
+                if (!q) return;
+                if (q.includes('.') && !q.includes(' ')) {
+                    window.location.href = q.startsWith('http') ? q : 'https://' + q;
                 } else {
-                    goButton.click();
-                }
-            } else if (e.key === 'ArrowDown') {
-                e.preventDefault();
-                if (activeIndex < suggestionItems.length - 1) {
-                    activeIndex++;
-                    updateActiveSuggestion(suggestionItems, activeIndex, urlBar, goButton);
-                }
-            } else if (e.key === 'ArrowUp') {
-                e.preventDefault();
-                if (activeIndex > 0) {
-                    activeIndex--;
-                    updateActiveSuggestion(suggestionItems, activeIndex, urlBar, goButton);
+                    window.location.href = `https://www.google.com/search?q=${encodeURIComponent(q)}`;
                 }
             }
         });
 
-        document.addEventListener("click", (event) => {
-            if (!document.querySelector('.search-wrapper').contains(event.target)) {
-                suggestionsList.style.display = 'none';
-            }
-            customMenu.style.display = "none";
-        });
-
-        customMenu.addEventListener("click", (event) => {
-            const action = event.target.dataset.action;
-            if (action) {
-                switch (action) {
-                    case "copy":
-                        if (urlBar.value) {
-                            navigator.clipboard.writeText(urlBar.value)
-                                .then(() => {
-                                    document.getElementById('copySuccessPopup').style.display = 'block';
-                                })
-                                .catch(() => {
-                                    document.getElementById('copyFailurePopup').style.display = 'block';
-                                });
-                        } else {
-                            document.getElementById('nothingToCopyPopup').style.display = 'block';
-                        }
-                        break;
-                    case "paste":
-                        urlBar.focus();
-                        navigator.clipboard.readText()
-                            .then((text) => {
-                                urlBar.value = text;
-                                goButton.disabled = text.trim() === '';
-                                clearInput.style.display = text ? 'block' : 'none';
-                                activeIndex = showSuggestions(text, storedInputs, suggestionsList);
-                            })
-                            .catch((err) => {
-                                console.error("Failed to read clipboard:", err);
-                                document.getElementById('pasteFailurePopup').style.display = 'block';
-                            });
-                        break;
-                    case "new-tab":
-                        window.open("https://blackswan19.github.io/bscrop/bsearchin", "_blank");
-                        break;
-                }
-                customMenu.style.display = "none";
+        document.addEventListener('click', e => {
+            if (!e.target.closest('#settingsMenu') && !e.target.closest('.fa-ellipsis-h')) {
+                document.getElementById('settingsMenu').style.display = 'none';
             }
         });
-    });
 
-    document.addEventListener("DOMContentLoaded", () => {
-            const customMenu = document.querySelector(".custom-menu");
-
-            document.addEventListener("contextmenu", (event) => {
-                event.preventDefault();
-                if (customMenu) {
-                    customMenu.style.display = "block";
-                    customMenu.style.top = `${event.pageY}px`;
-                    customMenu.style.left = `${event.pageX}px`;
-                }
-            });
-
-            document.addEventListener("click", () => {
-                if (customMenu) {
-                    customMenu.style.display = "none";
-                }
-            });
-        });
-</script>
+        // Initialize
+        window.onload = () => {
+            applyBackground();
+            loadToolbarPosition();
+            renderFavorites();
+            setTimeout(() => document.getElementById('url-bar').focus(), 400);
+        };
+    </script>
 </body>
 </html>
