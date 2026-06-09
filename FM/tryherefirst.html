@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BSearchin • Safari</title>
-       <title>BSearchin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
     <style>
@@ -56,20 +55,21 @@
 
         /* Toolbar */
         .toolbar {
-          position: fixed;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    z-index: 1000;
-    transition: all 0.4s ease;
-    top: 10px;
+            position: fixed;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.4s ease;
+            top: 10px;
+            margin: 0 0 0 10px;
         }
 
         .toolbar.bottom {
             top: auto;
-    bottom: 10px;
-    border-bottom: none;
+            bottom: 10px;
+            border-bottom: none;
         }
 
         .address-bar-container {
@@ -80,23 +80,23 @@
         }
 
         #url-bar {
-width: 100%;
-    height: 45px;
-    border: 0.5px solid rgba(255, 255, 255, 0.2);
-    border-radius: 9999px;
-    padding: 0 30px;
-    color: #fff;
-    font-size: 18px;
-    outline: none;
-    transition: background 0.4s ease;
-    box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
-    background: transparent;
-    backdrop-filter: blur(30px);
-    font-weight: 200;
+            width: 100%;
+            height: 45px;
+            border: 0.5px solid rgba(255, 255, 255, 0.2);
+            border-radius: 9999px;
+            padding: 0 30px;
+            color: #fff;
+            font-size: 18px;
+            outline: none;
+            transition: background 0.4s ease;
+            box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
+            background: transparent;
+            backdrop-filter: blur(30px);
+            font-weight: 200;
         }
-#url-bar::placeholder{
-    color: rgba(255, 255, 255, 0.648);
-}
+        #url-bar::placeholder{
+            color: rgba(255, 255, 255, 0.648);
+        }
         #url-bar:hover {
            background: rgb(255 255 255 / 10%);
         }
@@ -111,22 +111,29 @@ width: 100%;
 
         /* Search Suggestions */
         .suggestions {
-position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 92%;
-    max-width: 680px;
-    background: transparent;
-    backdrop-filter: blur(30px);
-    border-radius: 14px;
-    margin-top: 8px;
-    box-shadow: 0 10px 30px rgb(0 0 0 / 53%);
-    max-height: 320px;
-    overflow-y: auto;
-    z-index: 1100;
-    display: none;
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 680px;
+            background: transparent;
+            backdrop-filter: blur(30px);
+            border-radius: 10px;
+            margin-top: 8px;
+            box-shadow: 0 10px 30px rgb(0 0 0 / 53%);
+            max-height: 320px;
+            overflow-y: auto;
+            z-index: 1100;
+            display: none;
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .toolbar.bottom .suggestions {
+            top: auto;
+            bottom: 100%;
+            margin-top: 0;
+            margin-bottom: 8px;
         }
 
         .suggestion-item {
@@ -134,7 +141,8 @@ position: absolute;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            cursor: pointer;transition: background 0.4s ease;
+            cursor: pointer;
+            transition: background 0.4s ease;
             border-bottom: 0.5px solid rgba(255,255,255,0.08);
         }
 
@@ -152,34 +160,36 @@ position: absolute;
         }
 
         .delete-suggestion {
-color: #000000;
-    font-size: 20px;
-    font-weight: 100;
-    background: red;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
+            color: #000000;
+            font-size: 20px;
+            font-weight: 100;
+            background: red;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
         }
-i.fa-solid.fa-ellipsis-h {
-width: 45px;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    margin: 0 13px;
-    transition: background 0.4s ease;
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
-    backdrop-filter: blur(30px);
-    background: transparent;
-}
-i.fa-solid.fa-ellipsis-h:hover{
-    background: #ffffff24;
-}
+
+        i.fa-solid.fa-ellipsis-h {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            margin: 0 13px;
+            transition: background 0.4s ease;
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
+            backdrop-filter: blur(30px);
+            background: transparent;
+        }
+        i.fa-solid.fa-ellipsis-h:hover{
+            background: #ffffff24;
+        }
+
         .main-content {
             height: 100vh;
             display: flex;
@@ -192,81 +202,81 @@ i.fa-solid.fa-ellipsis-h:hover{
 
         .logo {
            font-size: 40px;
-    font-weight: 500;
+           font-weight: 500;
         }
 
         .favorites-grid {
-    gap: 10px;
-    width: 100%;
-    max-width: 820px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    padding: 15px 0;
-    scrollbar-color: #ffffff63 transparent;
+            gap: 10px;
+            width: 100%;
+            max-width: 820px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            padding: 15px 0;
+            scrollbar-color: #ffffff63 transparent;
         }
 
         .favorite-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    cursor: pointer;
-    position: relative;
-    padding: 5px;transition: background 0.4s ease;
-    border-radius: 17px;
-    color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            position: relative;
+            padding: 5px;
+            transition: background 0.4s ease;
+            border-radius: 17px;
+            color: white;
         }
         .favorite-item:hover{
             background: #ffffff30;
         }
         .fav-icon {
-width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: rgb(255 255 255 / 10%);
-    border-radius: 12px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: rgb(255 255 255 / 10%);
+            border-radius: 12px;
         }
 
         .fav-icon img {
-    width: 25px;
-    height: 25px;
-
+            width: 25px;
+            height: 25px;
         }
 
         .fav-title {
-font-size: 11px;
-    color: #ddd;
-    text-align: center;
-    max-width: 90px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-weight: 300;
+            font-size: 11px;
+            color: #ddd;
+            text-align: center;
+            max-width: 90px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 300;
         }
 
         .delete-fav {
             position: absolute;
-    top: -5px;
-    right: -5px;
-    background: #ff0e00;
-    color: #000000;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 25px;
-    cursor: pointer;
-    opacity: 0;
-    transition: all 0.2s;
-    font-weight: 100;
+            top: -5px;
+            right: -5px;
+            background: #ff0e00;
+            color: #000000;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.2s;
+            font-weight: 100;
         }
 
         .favorite-item:hover .delete-fav {
@@ -275,28 +285,33 @@ font-size: 11px;
 
         /* Bottom Links */
         .bottom-links {
-position: fixed;
-    bottom: 70px;
-    left: 50%;
-    transition: background 0.4s ease;
-    transform: translateX(-50%);
-    background: rgb(255 255 255 / 10%);
-    backdrop-filter: blur(30px);
-    border-radius: 9999px;
-    padding: 5px;
-    display: flex;
-    gap: 10px;
-    font-size: 13px;
-    z-index: 900;
-    width: max-content;
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transition: all 0.4s ease;
+            transform: translateX(-50%);
+            background: rgb(255 255 255 / 10%);
+            backdrop-filter: blur(30px);
+            border-radius: 9999px;
+            padding: 5px;
+            display: flex;
+            gap: 10px;
+            font-size: 13px;
+            z-index: 900;
+            width: max-content;
+        }
+
+        .toolbar.bottom + .bottom-links {
+            bottom: auto;
+            top: 10px;
         }
 
         .bottom-link {
            color: #ccc;
-    padding: 3px 10px;
-    border-radius: 9999px;
-    transition: 0.2s;
-    text-decoration: none;
+           padding: 3px 10px;
+           border-radius: 9999px;
+           transition: 0.2s;
+           text-decoration: none;
         }
 
         .bottom-link:hover {
@@ -306,29 +321,35 @@ position: fixed;
 
         /* Settings Menu */
         .settings-menu {
-position: fixed;
-    top: 70px;
-    right: 16px;
-    backdrop-filter: blur(30px);
-    border-radius: 27px;
-    z-index: 2000;
-    display: none;
-    background: transparent;
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
-    line-height: 20px;
-    padding: 10px;
-    box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
+            position: fixed;
+            top: 70px;
+            right: 16px;
+            backdrop-filter: blur(30px);
+            border-radius: 27px;
+            z-index: 2000;
+            display: none;
+            background: transparent;
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+            line-height: 20px;
+            padding: 10px;
+            box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
+        }
+
+        .toolbar.bottom ~ .settings-menu {
+            top: auto;
+            bottom: 70px;
         }
 
         .menu-item {
-padding: 3px 10px;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    justify-content: center;
-    border-radius: 9999px;
-    margin: 2px;transition: background 0.4s ease;
+            padding: 3px 10px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            justify-content: center;
+            border-radius: 9999px;
+            margin: 2px;
+            transition: background 0.4s ease;
         }
 
         .menu-item:hover {
@@ -377,12 +398,11 @@ padding: 3px 10px;
     </div>
 
     <!-- Bottom Links -->
-    <div class="bottom-links">
+    <div class="bottom-links" id="bottomLinks">
         <a href="https://blackswan19.github.io/Educate/songsearcher" class="bottom-link">BSongsearch</a>
          <a href="https://blackswan19.github.io/bscrop/bsweb" class="bottom-link">BsWebs</a> 
          <a href="https://blackswan19.github.io/bscrop/M.clofind" class="bottom-link">Clofind</a>
           <a href="https://blackswan19.github.io/bscrop/formbs" class="bottom-link">Bs-Rora</a>
-        
     </div>
 
     <!-- Settings Menu -->
@@ -468,9 +488,11 @@ padding: 3px 10px;
 
         // Toolbar Position
         function loadToolbarPosition() {
+            const toolbar = document.getElementById('toolbar');
             if (localStorage.getItem('toolbarBottom') === 'true') {
-                document.getElementById('toolbar').classList.add('bottom');
+                toolbar.classList.add('bottom');
             }
+            updateBottomLinksPosition();
         }
 
         function toggleToolbarPosition() {
@@ -478,6 +500,19 @@ padding: 3px 10px;
             const isBottom = toolbar.classList.toggle('bottom');
             localStorage.setItem('toolbarBottom', isBottom);
             document.getElementById('settingsMenu').style.display = 'none';
+            updateBottomLinksPosition();
+        }
+
+        function updateBottomLinksPosition() {
+            const bottomLinks = document.getElementById('bottomLinks');
+            const toolbar = document.getElementById('toolbar');
+            if (toolbar.classList.contains('bottom')) {
+                bottomLinks.style.top = '10px';
+                bottomLinks.style.bottom = 'auto';
+            } else {
+                bottomLinks.style.top = 'auto';
+                bottomLinks.style.bottom = '10px';
+            }
         }
 
         // Favorites (Compatible with old 'websites')
@@ -599,7 +634,8 @@ padding: 3px 10px;
         // Settings
         function toggleSettings() {
             const menu = document.getElementById('settingsMenu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            const isVisible = menu.style.display === 'block';
+            menu.style.display = isVisible ? 'none' : 'block';
         }
 
         function uploadBackground() {
