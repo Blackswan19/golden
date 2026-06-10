@@ -6,6 +6,7 @@
     <title>BSearchin • Safari</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
@@ -439,17 +440,29 @@ padding: 6px 10px;
           <a href="https://blackswan19.github.io/bscrop/formbs" class="bottom-link">BsRora</a>
     </div>
 
-    <!-- Settings Menu -->
-    <div class="settings-menu" id="settingsMenu">
-        <div class="menu-item" onclick="toggleToolbarPosition()"> Move Bar</div>
-        <div class="menu-item" onclick="uploadBackground()">Upload</div>
-        <div class="menu-item" onclick="pickColorBackground()">Color Palette</div>
-        <div class="menu-item" onclick="showRecommendedBGs()">Recommendeds</div>
-        <div class="menu-item" onclick="removeBackground()">Delete</div>
-        <div class="menu-item" onclick="addNewSite()">Add Site</div>
+   <!-- Settings Menu -->
+<div class="settings-menu" id="settingsMenu">
+    <div class="menu-item" onclick="toggleToolbarPosition()">Move Bar</div>
+    <div class="menu-item" onclick="uploadBackground()">Upload Background</div>
+    <div class="menu-item" onclick="openImageCropper()">BsImagcrop</div>
+    <div class="menu-item" onclick="pickColorBackground()">Color Palette</div>
+    <div class="menu-item" onclick="showRecommendedBGs()">Recommendeds</div>
+    <div class="menu-item" onclick="removeBackground()">Delete</div>
+    <div class="menu-item" onclick="addNewSite()">Add Site</div>
+</div>
+<!-- Image Cropper Popup -->
+<div class="popup" id="cropperPopup" style="max-width: 92%; width: 92%; max-height: 92vh; display: none; flex-direction: column;">
+    <div style="font-size:18px; font-weight:600; text-align:center; margin-bottom:12px;">BsImagcrop • Crop Background</div>
+    
+    <div style="position:relative; max-height:65vh; overflow:hidden; border-radius:12px; background:#111;">
+        <img id="cropperImage" style="max-width:100%; max-height:65vh; display:block; margin:auto;">
     </div>
 
-    <!-- Add Favorite Popup -->
+    <div style="display:flex; gap:10px; margin-top:16px;">
+        <button onclick="cancelCrop()" style="flex:1; padding:12px; border-radius:14px; background:rgb(0 0 0 / 60%); color:white; border:none;">Cancel</button>
+        <button onclick="applyCroppedBackground()" style="flex:1; padding:12px; border-radius:14px; background:#0071e3; color:white; border:none;">Set as Background</button>
+    </div>
+</div>
     <div class="popup" id="addSitePopup">
         <div style="font-size:25px; font-weight:600; text-align:center; margin-bottom:16px;">Add Site</div>
         <input type="text" id="siteTitle" class="popup-input" placeholder="Title" style="margin-bottom:12px;">
@@ -698,20 +711,79 @@ padding: 6px 10px;
         }
 
         function uploadBackground() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*';
-            input.onchange = e => {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = ev => updateImageBackground(ev.target.result);
-                    reader.readAsDataURL(file);
-                }
-            };
-            input.click();
-            document.getElementById('settingsMenu').style.display = 'none';
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    
+    input.onchange = e => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        // File size limit (max ~4MB after compression)
+        if (file.size > 15 * 1024 * 1024) {
+            alert("Image is too large. Please choose an image under 15MB.");
+            return;
         }
+
+        document.getElementById('settingsMenu').style.display = 'none';
+
+        // Show loading feedback
+        const originalPlaceholder = document.getElementById('url-bar').placeholder;
+        document.getElementById('url-bar').placeholder = "Processing image...";
+        
+        const reader = new FileReader();
+        
+        reader.onload = function(ev) {
+            const img = new Image();
+            img.onload = function() {
+                // Optional: Compress image before saving
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                
+                // Resize if image is very large
+                let width = img.width;
+                let height = img.height;
+                const maxDim = 1920;
+                
+                if (width > maxDim || height > maxDim) {
+                    if (width > height) {
+                        height = Math.round(height * maxDim / width);
+                        width = maxDim;
+                    } else {
+                        width = Math.round(width * maxDim / height);
+                        height = maxDim;
+                    }
+                }
+                
+                canvas.width = width;
+                canvas.height = height;
+                ctx.drawImage(img, 0, 0, width, height);
+                
+                // Convert to JPEG with quality optimization
+                const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.85);
+                
+                updateImageBackground(compressedDataUrl);
+                document.getElementById('url-bar').placeholder = originalPlaceholder;
+            };
+            
+            img.onerror = () => {
+                alert("Failed to load image.");
+                document.getElementById('url-bar').placeholder = originalPlaceholder;
+            };
+            
+            img.src = ev.target.result;
+        };
+        
+        reader.onerror = () => {
+            alert("Error reading file.");
+            document.getElementById('url-bar').placeholder = originalPlaceholder;
+        };
+        
+        reader.readAsDataURL(file);
+    };
+    
+    input.click();
+}
 
         const recommendedBGs = [
             "backgrounds/10.jpg",
@@ -796,7 +868,120 @@ padding: 6px 10px;
             loadToolbarPosition();
             renderFavorites();
             setTimeout(() => urlBar.focus(), 300);
+        };// === Clear Button in Input Bar ===
+function addClearButton() {
+    const urlBar = document.getElementById('url-bar');
+    
+    // Create clear button
+    const clearBtn = document.createElement('span');
+    clearBtn.innerHTML = '×';
+    clearBtn.style.position = 'absolute';
+    clearBtn.style.right = '15px';
+    clearBtn.style.top = '50%';
+    clearBtn.style.transform = 'translateY(-50%)';
+    clearBtn.style.fontSize = '25px';
+    clearBtn.style.color = 'rgba(255,255,255,0.7)';
+    clearBtn.style.cursor = 'pointer';
+    clearBtn.style.display = 'none';
+    clearBtn.style.fontWeight = '100';
+    clearBtn.id = 'clearBtn';
+    
+    urlBar.parentElement.style.position = 'relative';
+    urlBar.parentElement.appendChild(clearBtn);
+
+    clearBtn.addEventListener('click', () => {
+        urlBar.value = '';
+        urlBar.focus();
+    });
+
+    // Show/hide clear button
+    urlBar.addEventListener('input', () => {
+        clearBtn.style.display = urlBar.value.trim() ? 'block' : 'none';
+    });
+}
+
+// === BsImagcrop Feature ===
+let cropperInstance = null;
+
+function openImageCropper() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    
+    input.onchange = e => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        if (file.size > 20 * 1024 * 1024) {
+            alert("Please select an image smaller than 20MB");
+            return;
+        }
+
+        document.getElementById('settingsMenu').style.display = 'none';
+
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+            const img = document.getElementById('cropperImage');
+            img.src = ev.target.result;
+            
+            document.getElementById('cropperPopup').style.display = 'flex';
+
+            // Destroy previous cropper if exists
+            if (cropperInstance) cropperInstance.destroy();
+
+            // Initialize Cropper
+            cropperInstance = new Cropper(img, {
+                aspectRatio: NaN,           // Free ratio
+                viewMode: 1,
+                autoCropArea: 0.8,
+                movable: true,
+                zoomable: true,
+                rotatable: true,
+                scalable: true,
+                background: false,
+                center: true,
+            });
         };
+        reader.readAsDataURL(file);
+    };
+    input.click();
+}
+
+function applyCroppedBackground() {
+    if (!cropperInstance) return;
+
+    const croppedCanvas = cropperInstance.getCroppedCanvas({
+        maxWidth: 1920,
+        maxHeight: 1080,
+        imageSmoothingQuality: 'high'
+    });
+
+    const croppedDataUrl = croppedCanvas.toDataURL('image/jpeg', 0.88);
+    
+    updateImageBackground(croppedDataUrl);
+    cancelCrop();
+}
+
+function cancelCrop() {
+    const popup = document.getElementById('cropperPopup');
+    popup.style.display = 'none';
+    
+    if (cropperInstance) {
+        cropperInstance.destroy();
+        cropperInstance = null;
+    }
+}
+
+// Initialize Clear Button
+window.onload = () => {
+    applyBackground();
+    loadToolbarPosition();
+    renderFavorites();
+    addClearButton();           // ← New
+    setTimeout(() => {
+        document.getElementById('url-bar').focus();
+    }, 300);
+};
     </script>
 </body>
 </html>
