@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BSearchin • Safari</title>
+    <title>BSearchin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
@@ -409,6 +409,21 @@ padding: 6px 10px;
     border-radius: 10px;
     background: rgb(255 255 255 / 65%);
 }
+
+i.fa-solid.fa-grip-lines {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 0 13px;
+    transition: background 0.4s ease;
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
+    backdrop-filter: blur(30px);
+    background: rgb(255 255 255 / 10%);
+}
     </style>
 </head>
 <body>
@@ -423,7 +438,7 @@ padding: 6px 10px;
             <div class="suggestions" id="suggestions"></div>
         </div>
         <div onclick="toggleSettings()" style="cursor: pointer;">
-            <i class="fa-solid fa-ellipsis-h"></i>
+            <i class="fa-solid fa-grip-lines"></i>
         </div>
     </div>
 
@@ -858,7 +873,7 @@ padding: 6px 10px;
             if (!e.target.closest('.address-bar-container')) {
                 suggestionsEl.style.display = 'none';
             }
-            if (!e.target.closest('#settingsMenu') && !e.target.closest('.fa-ellipsis-h')) {
+            if (!e.target.closest('#settingsMenu') && !e.target.closest('.fa-grip-lines')) {
                 document.getElementById('settingsMenu').style.display = 'none';
             }
         });
