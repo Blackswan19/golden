@@ -203,7 +203,13 @@ width: 45px;
         i.fa-solid.fa-ellipsis-h:hover{
             background: #ffffff24;
         }
-
+.cntntcnter{
+    transition: all 0.4s ease;
+    opacity: 0%;    height: 100vh;
+}
+.cntntcnter:hover{
+    opacity: 100%;
+}
         .main-content {
 height: 100vh;
     background: #0000005e;
@@ -445,8 +451,10 @@ i.fa-solid.fa-grip-lines {
 
     <!-- Main Content -->
     <div class="main-content">
-        <div class="logo">BSearchin</div>
-        <div id="favorites-grid" class="favorites-grid"></div>
+        <div class="cntntcnter">
+            <div class="logo">BSearchin</div>
+            <div id="favorites-grid" class="favorites-grid"></div>
+        </div>
     </div>
 
     <!-- Bottom Links -->
