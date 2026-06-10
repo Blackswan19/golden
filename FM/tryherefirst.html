@@ -1,1 +1,318 @@
-no test...
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gorilla Gang - Loan Manager</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #1e1f23;
+            color: #d4d4d4;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* PyCharm-like Top Bar */
+        .top-bar {
+            background-color: #2b2d30;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #3c3f41;
+    font-size: 13px;
+    height: 40px;
+        }
+        
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .logo {
+            color: #4fc3f7;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        
+        .menu-item {
+            padding: 4px 10px;
+            cursor: pointer;
+        }
+        
+        .menu-item:hover {
+            background-color: #3c3f41;
+        }
+        
+        .gorilla-btn {
+            background-color: #f44336;
+            color: white;
+            padding: 6px 14px;
+            border: none;
+            border-radius: 3px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        
+        .gorilla-btn:hover {
+            background-color: #d32f2f;
+        }
+        
+        /* Main Container */
+        .main {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        /* Left Sidebar (Project Tree) */
+        .sidebar {
+            width: 240px;
+            background-color: #25272b;
+            border-right: 1px solid #3c3f41;
+            padding: 12px 0;
+            overflow-y: auto;
+            font-size: 13px;
+        }
+        
+        .sidebar-header {
+            padding: 8px 16px;
+            color: #9e9e9e;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        
+        .file-item {
+            padding: 4px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        
+        .file-item:hover {
+            background-color: #3c3f41;
+        }
+        
+        /* Main Content */
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 12px;
+            overflow: auto;
+        }
+        
+        .tab-bar {
+            background-color: #2b2d30;
+            padding: 4px 8px;
+            display: flex;
+            gap: 4px;
+            border-bottom: 1px solid #3c3f41;
+            margin-bottom: 12px;
+        }
+        
+        .tab {
+            padding: 6px 16px;
+            background-color: #1e1f23;
+            border: 1px solid #3c3f41;
+            border-bottom: none;
+            color: #d4d4d4;
+            font-size: 13px;
+        }
+        
+        .tab.active {
+            background-color: #1e1f23;
+            border-color: #4fc3f7;
+            color: #4fc3f7;
+        }
+        
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #25272b;
+            font-size: 14px;
+        }
+        
+        th, td {
+            padding: 10px 12px;
+            text-align: left;white-space: nowrap;
+            border-bottom: 1px solid #3c3f41;
+        }
+        
+        th {
+            background-color: #2b2d30;
+            color: #9e9e9e;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        tr:hover {
+            background-color: #2f3136;
+        }
+        
+        .status-paid {
+            color: #81c784;
+        }
+        
+        .status-pending {
+            color: #ffcc5c;
+        }
+        
+        /* Footer Status Bar */
+        .status-bar {
+background-color: #2b2d30;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: #9e9e9e;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #3c3f41;
+    flex-direction: column;
+    align-items: center;
+    line-height: 25px;
+        }
+        
+        .add-btn {
+position: fixed;
+    bottom: 120px;
+    right: 20px;
+    background-color: #4fc3f7;
+    color: black;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    font-weight: 100;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <button class="gorilla-btn" onclick="contactGorilla()">CONTACT GORILLA GANG</button>
+    </div>
+
+    <div class="main">
+        <div class="content">
+            <h2 style="margin-bottom: 12px; color: #d4d4d4;">LendTracker</h2>
+            <h2 style="margin-top: 30px;
+    font-weight: 100;
+    font-size: 13px;
+    color: #0097ff;
+    margin-bottom: 10px;">Active Borrowers</h2>
+            <table id="borrowersTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>Amount (₹)</th>
+                        <th>Interest (%)</th>
+                        <th>Return Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Sample Data -->
+                    <tr>
+                        <td>Hando Anti</td>
+                        <td>+1 ---- ----</td>
+                        <td>45,000</td>
+                        <td>12</td>
+                        <td>25 Jun 2026</td>
+                        <td class="status-pending">Pending</td>
+                    </tr>
+                    <tr>
+                        <td>Kenzo Balla</td>
+                        <td>+1 ---- ----</td>
+                        <td>28,000</td>
+                        <td>15</td>
+                        <td>12 Jun 2026</td>
+                        <td class="status-paid">Paid</td>
+                    </tr>
+                    <tr>
+                        <td>Benjamin James</td>
+                        <td>+1 ---- ----</td>
+                        <td>65,000</td>
+                        <td>10</td>
+                        <td>05 Jul 2026</td>
+                        <td class="status-pending">Pending</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <div style="width: 100%;
+    text-align: center;
+    background: black;
+    font-size: 20px;
+    padding: 10px;">Total Outstanding: ₹1,38,000</div>
+        <div>BS&MFI / Lenlink -Mid Services</div>
+    </div>
+
+    <!-- Floating Add Button -->
+    <div class="add-btn" onclick="addNewBorrower()" title="Add New Borrower">+</div>
+
+    <script>
+        function contactGorilla() {
+            alert("🦍 Contacting Gorilla Gang HQ...\n\nCall: +91 99999 88888\nTelegram: @gorillagangboss");
+        }
+        
+        function addNewBorrower() {
+            const name = prompt("Enter Name:");
+            if (!name) return;
+            
+            const phone = prompt("Enter Phone Number:");
+            if (!phone) return;
+            
+            const amount = prompt("Enter Amount (₹):");
+            if (!amount) return;
+            
+            const interest = prompt("Enter Interest (%):");
+            if (!interest) return;
+            
+            const date = prompt("Enter Return Date (DD MMM YYYY):");
+            if (!date) return;
+            
+            const table = document.getElementById('borrowersTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+            
+            newRow.innerHTML = `
+                <td>${name}</td>
+                <td>${phone}</td>
+                <td>${amount}</td>
+                <td>${interest}</td>
+                <td>${date}</td>
+                <td class="status-pending">Pending</td>
+            `;
+            
+            alert("✅ New borrower added successfully!");
+        }
+        
+        // Keyboard shortcut hint
+        console.log("%cPyCharm-like Loan Manager loaded. Press Ctrl+K for quick search (demo)", "color: #4fc3f7; font-family: monospace");
+    </script>
+</body>
+</html>
