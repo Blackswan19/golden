@@ -243,7 +243,13 @@
       font-weight: 600;
     }
     .country-list li:hover { color: #fff; }
-    .popup h2 { margin-top: 0; }
+    .popup h2 {margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    flex-direction: column;
+  }
     .country-list { list-style: none; padding: 0; }
     .popup button {
     padding: 10px;
@@ -358,7 +364,7 @@
     .fab {
      position: fixed;
     top: 0;
-    background: #0000ff;
+    background: #3d3d3d;
     color: white;
     width: 40px;
     height: 40px;
@@ -372,6 +378,9 @@
     }strong {
     color: #ff9300;
     text-decoration: underline;
+}
+.fab:hover{
+  background: blue;
 }
     .fab i { color: white; }
         #once-image {
@@ -476,12 +485,33 @@
       <button onclick="closePrivacyPopup()" style="margin-top: 15px;">Got it!</button>
     </div>
   </div>
+
 <script src="noright.js"></script>
   <div class="fab" onclick="openPrivacyPopup()">
    <i class="fas fa-shield-halved"></i>
   </div>
 
+    <div class="fab" onclick="BusinessPopup()" style="left: 0;
+    border-radius: 0 0 20px 0;">
+   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440.5-360.81V-440h79.19v79.19H440.5ZM400.81-700h158.38v-63.65q0-4.62-3.84-8.46-3.85-3.85-8.47-3.85H413.12q-4.62 0-8.47 3.85-3.84 3.84-3.84 8.46V-700ZM176.26-148.08q-28.35 0-48.27-19.91-19.91-19.92-19.91-48.29v-156.14h276.46v33.34q0 14.35 9.85 24.29 9.84 9.94 24.19 9.94h122.84q14.35 0 24.29-9.94t9.94-24.29v-33.34h276.27v156.14q0 28.37-19.91 48.29-19.92 19.91-48.27 19.91H176.26Zm-68.18-280.3v-203.35q0-28.44 19.91-48.35Q147.91-700 176.35-700h168.5v-63.7q0-28.45 19.91-48.34 19.92-19.88 48.28-19.88h133.92q28.36 0 48.28 19.92 19.91 19.91 19.91 48.35V-700h168.5q28.44 0 48.36 19.92 19.91 19.91 19.91 48.35v203.35H575.65v-33.64q0-14.08-9.94-24.01-9.94-9.93-24.29-9.93H418.58q-14.35 0-24.19 9.93-9.85 9.93-9.85 24.01v33.64H108.08Z"/></svg>
+  </div>
 
+  <div class="popup-container" id="businessPopup">
+    <div class="popup privacy-popup">
+      <h2><img style="    width: 55px;
+    border-radius: 25%;
+    border: solid 2px #ffffff33;
+    margin-bottom: 0px;
+" src="https://i.ibb.co/27GXWVgg/BS.png" alt=""> Black Swan</h2>
+     <p style="color: #ccc;
+    line-height: 1.6;
+    font-size: 15px;
+    margin: 0;">
+        <strong>Black Swan</strong> is a private data storage center with data bots, integrated with <strong>25+ trusted companies</strong>.<br><br>
+      </p>
+      <button onclick="closeBusinessPopup() ">Got it!</button>
+    </div>
+  </div>
 
   <h1><img src="https://i.ibb.co/27GXWVgg/BS.png" alt="" width="15%"></h1>
 
@@ -1185,9 +1215,18 @@ width: 100%;
       const popup = document.getElementById('privacyPopup');
       if (popup) popup.classList.add('visible');
     }
-
     function closePrivacyPopup() {
       const popup = document.getElementById('privacyPopup');
+      if (popup) popup.classList.remove('visible');
+    }
+
+    function BusinessPopup() {
+      const popup = document.getElementById('businessPopup');
+      if (popup) popup.classList.add('visible');
+    }
+
+    function closeBusinessPopup() {
+      const popup = document.getElementById('businessPopup');
       if (popup) popup.classList.remove('visible');
     }
 </script>
