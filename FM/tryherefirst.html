@@ -368,7 +368,7 @@
     color: white;
     width: 40px;
     height: 40px;
-    border-radius: 0 0 0 20px;
+    border-radius: 0 0 0 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -382,7 +382,8 @@
 .fab:hover{
   background: blue;
 }
-    .fab i { color: white; }
+    .fab svg { color: white; width: 27px;
+    height: 27px;}
         #once-image {
             position: fixed;
             bottom: -15px;
@@ -472,12 +473,12 @@
     <div class="popup privacy-popup">
       <h2><i class="fa-solid fa-lock"></i> Privacy First</h2>
       <p style="color: #ccc; line-height: 1.6; font-size: 15px;">
-        At <strong>Black Swan</strong>, we <strong>don't track</strong>, we don't need any data, and we don't use cookies for analytics.<br><br>
-        All the data <strong>generated from using our site</strong> including notes, search history, saved links, and etc.. are <strong>stored locally on your device only.</strong>
+        At <strong>Black Swan</strong>, we <strong>don't track</strong>, we <strong>don't need</strong> any data of yours.<br><br>
+        These are the side projects of us, All the <strong>data generated</strong> from using <strong>FromBs sites </strong> including notes, search history, saved links, and etc.. are <strong>stored locally</strong> on your device only.
       </p>
       <p style="color: #ccc; font-size: 14px;">
         <em>MEAN :</em><br>
-        No servers, no cloud, no third-party access<br>
+        No servers, no cloud<br>
       </p>
       <div style="margin-top: 20px; padding: 10px; background: #1a1a1a; border-radius: 10px; font-size: 13px; color: rgb(0, 255, 251);">
         Use <code>Ctrl+Shift+Delete</code> to Clear data from local store.
@@ -488,21 +489,25 @@
 
 <script src="noright.js"></script>
   <div class="fab" onclick="openPrivacyPopup()">
-   <i class="fas fa-shield-halved"></i>
+   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M500.17-308.44q8.21-8.21 8.21-19.87v-173.88q0-11.46-8.21-19.68-8.21-8.21-19.77-8.21-11.55 0-19.76 8.21-8.22 8.22-8.22 19.68v173.88q0 11.66 8.22 19.87 8.21 8.21 19.76 8.21 11.56 0 19.77-8.21Zm1.64-298.72q8.88-8.78 8.88-21.81t-8.78-21.91q-8.78-8.89-21.8-8.89-13.03 0-21.92 8.78-8.88 8.78-8.88 21.81t8.78 21.91q8.78 8.89 21.8 8.89 13.03 0 21.92-8.78Zm-33.45 492.93q-5.64-1-10.9-3-124.31-44.5-197.25-156.5t-72.94-242.5v-177.19q0-21.37 12.37-38.71t31.9-25.02L456-841.34q12.1-4.43 24-4.43t24.19 4.43l224.46 84.19q19.34 7.68 31.71 25.02 12.37 17.34 12.37 38.71v177.19q0 130.5-72.94 242.5t-197.06 156.5q-5.45 2-11.09 3t-11.64 1q-6 0-11.64-1Z"/></svg>
   </div>
 
     <div class="fab" onclick="BusinessPopup()" style="left: 0;
-    border-radius: 0 0 20px 0;">
+    border-radius: 0 0 15px 0;">
    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440.5-360.81V-440h79.19v79.19H440.5ZM400.81-700h158.38v-63.65q0-4.62-3.84-8.46-3.85-3.85-8.47-3.85H413.12q-4.62 0-8.47 3.85-3.84 3.84-3.84 8.46V-700ZM176.26-148.08q-28.35 0-48.27-19.91-19.91-19.92-19.91-48.29v-156.14h276.46v33.34q0 14.35 9.85 24.29 9.84 9.94 24.19 9.94h122.84q14.35 0 24.29-9.94t9.94-24.29v-33.34h276.27v156.14q0 28.37-19.91 48.29-19.92 19.91-48.27 19.91H176.26Zm-68.18-280.3v-203.35q0-28.44 19.91-48.35Q147.91-700 176.35-700h168.5v-63.7q0-28.45 19.91-48.34 19.92-19.88 48.28-19.88h133.92q28.36 0 48.28 19.92 19.91 19.91 19.91 48.35V-700h168.5q28.44 0 48.36 19.92 19.91 19.91 19.91 48.35v203.35H575.65v-33.64q0-14.08-9.94-24.01-9.94-9.93-24.29-9.93H418.58q-14.35 0-24.19 9.93-9.85 9.93-9.85 24.01v33.64H108.08Z"/></svg>
   </div>
 
   <div class="popup-container" id="businessPopup">
     <div class="popup privacy-popup">
-      <h2><img style="    width: 55px;
+      <h2 style="margin: 0;"><img style="    width: 55px;
     border-radius: 25%;
     border: solid 2px #ffffff33;
-    margin-bottom: 0px;
+    margin-bottom: 0px;margin: 0;
 " src="https://i.ibb.co/27GXWVgg/BS.png" alt=""> Black Swan</h2>
+<p style="margin-top: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: gray;">Business</p>
      <p style="color: #ccc;
     line-height: 1.6;
     font-size: 15px;
