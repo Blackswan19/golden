@@ -9,8 +9,8 @@
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Orbitron:wght@400..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Strait&display=swap");
 
-    * { -webkit-tap-highlight-color: transparent; }
-    body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+    * { -webkit-tap-highlight-color: transparent;}
+    body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;overflow: hidden;}
     img { width: 18%; margin-bottom: -10px; opacity: 80%; }
     * {font-family: "Red Hat Display", sans-serif; letter-spacing: 0.5px; box-sizing: border-box; }
     ::-webkit-scrollbar { background: none; }
@@ -73,10 +73,10 @@
 
     /* Options */
     .options {
-       overflow-x: scroll;
-    scrollbar-width: thin;
+      overflow-x: scroll;
+    scrollbar-width: none;
     scrollbar-color: #ffffff3b transparent;
-    width: 100%;
+    width: 105%;
     max-width: 700px;
     }
     .option {
@@ -227,13 +227,13 @@
   transform: scale(1);
 }
     .popup {
-     background-color: transparent;
+    background-color: #00000000;
     max-width: 400px;
     padding: 20px;
     border-radius: 40px;
     border: 1.5px solid #a2a2a247;
     width: 95%;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(15px);
     }
     .country-list li {
       cursor: pointer;
@@ -752,18 +752,19 @@ width: 100%;
 }
     .settings-panel {
     position: fixed;
-    top: 10px;
-    right: 5px;
-    background: transparent;
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 40px;
-    padding: 10px;
-    display: none;
-    max-width: 400px;
-    z-index: 1000000;
-    width: 70%;
-    scrollbar-width: none;
+        top: 0;
+        right: 0;
+        background: transparent;
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 35px;
+        padding: 10px;
+        display: none;
+        max-width: 400px;
+        z-index: 1000000;
+        width: fit-content;
+        scrollbar-width: none;
+        margin: 5px;
     }
   }
   </style>
