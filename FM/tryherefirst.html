@@ -1,810 +1,1190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BsLinksaver</title>
-    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/0DBHQHG/linksave.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Swan | BsRora</title>
+  <link rel="icon" type="image/x-icon" href="https://i.ibb.co/27GXWVgg/BS.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Orbitron:wght@400..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Strait&display=swap");
 
-* {
-	-webkit-tap-highlight-color: transparent;
-	margin: 0;
-	padding: 0;
-	font-family: 'Poppins', sans-serif;
-    scrollbar-color: rgba(255, 255, 255, 0.648) transparent;
-}
-        :root {
-            --bg: #000000;
-            --card: #1c1c1e;
-            --accent: #0000ff;
-        }
+    * { -webkit-tap-highlight-color: transparent; }
+    body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+    img { width: 18%; margin-bottom: -10px; opacity: 80%; }
+    * {font-family: "Red Hat Display", sans-serif; letter-spacing: 0.5px; box-sizing: border-box; }
+    ::-webkit-scrollbar { background: none; }
+    a { text-decoration: none; display: contents;}
+    body { background-color: #000000; color: #ffffff; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 90vh; text-align: center;overflow: hidden; }
+    h1 { margin-bottom: -25px; color: #b1b1b1; }
 
-        body {
-            background-color: var(--bg);
-    color: #f5f5f7;
-    min-height: 100vh;
-    display: flex;overflow: hidden;
-    justify-content: center;
-    align-items: center;
-    line-height: 1.5;
-    user-select: none;
-    height: 100vh;
-        }
+    .search-input-container {
+      display: grid;
+      max-width: 40rem;
+      width: 100%;
+      border-radius: 104px;
+      background-color: #282828;
+      align-items: center;
+      position: relative;
+      padding: 13px;
+    }
 
-        .container {
-           padding: 15px;
-    max-width: 920px;
+    .search-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 580px;
+      margin-bottom: 20px;
+    }
+
+    /* Input Styling */
+    input[type="text"] {
+      width: 450px;
+      padding: 0px 117px;
+      font-size: 18px;
+      background-color: #1d1d1d00;
+      color: #d7d7d7;
+      border: none;
+      outline: none;
+      text-align: justify;
+      display: block;
+      margin-top: 0px;
+      position: absolute;
+      left: -15px;
+      z-index: 90;
+    }
+
+    /* Icons */
+    .clear-icon, .submit-icon {
+      position: absolute;
+      font-size: 30px;
+      cursor: pointer;
+      color: #cdcdcd;
+      transition: color 0.3s ease;
+    }
+    .clear-icon { font-weight: 100; right: 20px; visibility: hidden; }
+    .submit-icon { left: 15px; }
+
+    input[type="text"]:focus + .clear-icon,
+    input[type="text"]:not(:placeholder-shown) + .clear-icon {
+      visibility: visible;
+    }
+
+    /* Options */
+    .options {
+       overflow-x: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff3b transparent;
     width: 100%;
-    height: 100vh;
-    display: flex;
-    overflow: hidden;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-        }
-
-.search-section h1 {
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: -0.8px;
-    color: #fff;
-    text-align: center;
-}
-
-        .search-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin: 10PX 0;
-        }
-
-        input[type="text"], input[type="url"], input[type="search"], select {
-              transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    flex: 1;
-    min-width: 260px;
-    border: none;
-    outline: none;
-    width: 100%;
-    text-align: center;
-    font-size: 15px;
-    color: rgb(0, 0, 0);
-    border-radius: 10px;
-    background: rgb(255 255 255 / 65%);
-    padding: 10px 0;
-        }
-input#searchInput {
-text-align: justify;
-    padding: 5px 10px;
-    min-width: 100px;
-    border-radius: 999px;
-    background: #1f1f1f;
-    color: #ffffffcf;
-}
-        button {
-            padding: 12px 24px;
-            background-color: #2c2c2e;
-            border: none;
-            color: #f5f5f7;
-            cursor: pointer;
-            font-weight: 600;
-            border-radius: 9999px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 15px;
-        }
-
-        button:hover {
-            background-color: #3a3a3c;
-        }
-
-        .create-btn {
-                background-color: var(--accent);
+    max-width: 700px;
+    }
+    .option {
+       border-radius: 40px;
+    cursor: pointer;
     color: white;
+    font-weight: 600;
+    border: none;
+    padding: 10px;
+    background: #ffffff3d;
+    white-space: nowrap;
+    }.allsites {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+    .option:hover {
+     border-radius: 100px;
+    background: blue;
+    }
+
+    .search-buttons {
+      display: flex;
+      position: relative;
+      justify-content: space-between;
+      padding: 8px 45px;
+      z-index: 10;
+      background: #282828;
+    }
+    .search-buttons button {
+      font-size: 17px;
+      color: #8d8d8d;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .search-buttons button:hover { color: white; }
+
+    .extra-options {
+      display: none;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      width: 55%;
+    }
+
+    .incognito-toggle {
+     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    z-index: 1;
+    width: 50%;
+    margin-top: -20px;
+    }
+
+    .ticker-container {
+      overflow: hidden;
+      width: 1000px;
+      height: 28px;
+      font-size: 13px;
+      color: #ffffff;
+      bottom: 10px;
+      position: fixed;
+      left: 10px;
+    }
+    .ticker-texts {
+      position: absolute;
+      top: 0;
+      animation: scrollUp 6s infinite;
+    }
+    .ticker-item {
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .ticker-label {
+      position: fixed;
+    bottom: 34px;
+    color: #bdbdbd;
+    background: black;
+    padding: 2px 0;
+    }
+
+    /* Replaced translateY with top-based animation */
+    @keyframes scrollUp {
+      0%   { top: 0; }
+      33.33% { top: -30px; }
+      66.66% { top: -60px; }
+      100% { top: 0; }
+    }
+    .time-icon {
+    color: white;
+    font-size: 15px;
+    bottom: 15px;
+    position: fixed;
+    z-index: 100;
+    right: 10px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background: #3c3c3c;
+    padding: 10px 15px;
+    border-radius: 100px;
+    justify-content: center;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    }
+    .time-icon svg{ cursor: pointer;}
+.popup-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0.7) translateY(-40px);
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s;
+  z-index: 300;
+}
+
+.popup-container.visible {
+  visibility: visible;
+  opacity: 1;
+  /* POP-UP ENTERS */
+  transform: scale(1) translateY(0);
+}
+
+/* Optional: smoother entrance for the inner popup box */
+.popup {
+  transform: scale(0.95);
+  transition: transform 0.25s ease;
+}
+.popup-container.visible .popup {
+  transform: scale(1);
+}
+    .popup {
+     background-color: transparent;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 40px;
+    border: 1.5px solid #a2a2a247;
+    width: 95%;
+    backdrop-filter: blur(5px);
+    }
+    .country-list li {
+      cursor: pointer;
+      padding: 5px;
+      transition: background 0.2s;
+      color: #ffffff42;
+      font-weight: 600;
+    }
+    .country-list li:hover { color: #fff; }
+    .popup h2 { margin-top: 0; }
+    .country-list { list-style: none; padding: 0; }
+    .popup button {
+    padding: 10px;
+    background-color: #002aff;
+    color: #fff;
+    border: none;
+    border-radius: 53px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 15px;
+    }
+    .popup button:hover { background-color: #002bb5; }
+    .popup-container.visible {
+      visibility: visible;
+      opacity: 1;
+      justify-content: center;
+      z-index: 30000000;
+    }
+    .time-display { margin-top: 15px; font-weight: bold; white-space: nowrap;}
+
+    /* Search History */
+    .search-history {
+      position: absolute;
+      top: 35px;
+      left: 0; right: 0;
+      background-color: #282828;
+      overflow-y: auto;
+      display: none;
+      padding: 40px 20px 20px 20px;
+      border-radius: 0 0 30px 30px;
+      z-index: 3;
+      max-height: 300px;
+    }
+    .history-item {
+      padding: 10px 40px;
+      color: #c5c5c5;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 34px;
+      margin-top: 10px;
+      border: solid 1px #8080804f;
+    }
+    .history-item:hover {
+      background-color: #444;
+      color: white;
+    }
+    .history-item span { color: #ffffff; font-size: 16.5px; }
+    span.delete-icon { font-size: 24px; margin: -3px; }
+    .delete-icon:hover { color: gray; }
+    .no-history { padding: 8px 15px; color: #888; text-align: center; }
+
+    .search-input-container:hover .search-history,
+    input[type="text"]:focus ~ .search-history {
+      display: block;
+    }
+
+    .custom-menu {
+      display: none;
+      position: fixed;
+      background-color: #262626;
+      border: 1px solid #242424;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      padding: 5px;
+      border-radius: 18px;
+    }
+    .custom-menu button {
+      display: block;
+      width: 100%;
+      border: none;
+      background: none;
+      text-align: left;
+      padding: 10px;
+      font-size: 16px;
+      color: #ffffff;
+    }
+
+    .music {
+      position: fixed;
+      top: 10px;
+      background: linear-gradient(85deg, #0536ff, #00b6b9);
+      padding: 2px 10px;
+      border-radius: 10px;
+      transition: all 0.5s ease-in-out;
+      cursor: pointer;
+      color: white;
+      outline: none;
+      border: none;
+      font-weight: 600;
+      font-size: 12px;
+    }
+    .music:hover {
+          padding: 35px 25px;
+    border-radius: 25px;
+      background: linear-gradient(85deg, #ff0000, #ffeaea);
+      animation: hi 3s infinite;
+      font-size: 20px;
+      gap: 8px;
+      display: flex;
+      font-weight: 800;
+      justify-content: center;
+      align-items: baseline;
+    }
+    @keyframes hi {
+      0% { background: linear-gradient(25deg, #ff6f00, #0048ff,#00b6b9); }
+      50% { background: linear-gradient(46deg,#ffdf11, #ff4d00, #ff008c); }
+      100% { background: linear-gradient(120deg, #ae00ff,#00ccff,#ff00ee); }
+    }
+
+    .fab {
+     position: fixed;
+    top: 0;
+    background: #0000ff;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 0 0 0 20px;
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 5px;
-    font-weight: 600;
-    gap: 2px;
-        }
-
-        .create-btn:hover {
-            background-color: var(--accent);
-        }
-
-        /* Filter Section */
-        .filter-section {
-display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    padding: 12px 0;
-    scrollbar-width: none;
-    width: 110%;
-    justify-content: start;
-    align-items: center;
-        }
-
-        .filter-section::-webkit-scrollbar {
+    justify-content: center;
+    cursor: pointer;
+    z-index: 150;
+    right: 0;
+    }strong {
+    color: #ff9300;
+    text-decoration: underline;
+}
+    .fab i { color: white; }
+        #once-image {
+            position: fixed;
+            bottom: -15px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            padding: 0;
+            max-width: 100%;
+            z-index: 9999;
             display: none;
         }
+ #special-image-container {
+            position: fixed;
+            bottom: -15px;
+            left: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+          #special-image-container.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        #special-image {
+            margin: 0;
+            padding: 0;
+            max-width: 100%;
+            height: auto;
+        }
+         @media (max-width: 768px) {
+          body{
+            height: 85vh;
+          }
+      h1 { font-size: 1.5rem; margin-bottom: 15px; }
+      .search-container { max-width: 100%; }
+      input[type="text"] { font-size: 14px; width: -webkit-fill-available; left: -60px; }
+      img { width: 35%; margin-bottom: -40px; }
+      #special-image{
+        width: 50%;
+      }
+      .clear-icon { font-size: 30px; }
+      .search-buttons { padding: 5px 10px; }
+      .search-buttons button { font-size: 16px; }
+      .options { gap: 8px; }
+      .extra-options { width: 100%; gap: 8px; }
+    }
+</style>
+</head>
+<body>
 
-        .filter-btn {
-           padding: 5px 10px;
-    background-color: #1f1f1f;
-    border: none;
-    color: #b4b4b4;
-    cursor: pointer;
-    border-radius: 9999px;
+
+
+  <div class="custom-menu">
+    <button id="option2">Welcome to Black swan</button>
+  </div>
+
+
+
+  <script src="noright.js"></script>
+
+  <div class="time-icon">
+    <a href="https://blackswan19.github.io/bscrop/bsearchin"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M377.77-313.39q-112.46 0-190.54-78.07-78.07-78.08-78.07-190.54t78.07-190.54q78.08-78.07 190.54-78.07t190.54 78.07q78.07 78.08 78.07 190.54 0 43.85-12.88 84.85-12.89 41-36.89 71.84l224.16 224.16q12.31 12.3 12.5 29.88.19 17.58-12.5 30.27-12.69 12.69-30.08 12.69-17.38 0-30.07-12.69L537.46-364.16q-30 23.77-73.5 37.27-43.5 13.5-86.19 13.5Zm0-85.99q77.31 0 129.96-52.66 52.66-52.65 52.66-129.96t-52.66-129.96q-52.65-52.66-129.96-52.66t-129.96 52.66Q195.15-659.31 195.15-582t52.66 129.96q52.65 52.66 129.96 52.66Z"/></svg></a>
+    <a style="color: #d2d2d2;" href="https://blackswan19.github.io/bscrop/M.clofind">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M148.08-194.62v-553.8q0-26.27 18.61-44.89 18.62-18.61 45.18-18.61h28.62q20.2 0 36.39 11.21 16.2 11.21 23.23 29.94L480.5-294.34l178.08-473.51q7.54-20.42 25.06-32.24 17.52-11.83 39.21-11.83h20.86q28.37 0 48.29 20.02 19.92 20.03 19.92 48.4v548.96q0 19.27-13.51 32.86-13.51 13.6-32.96 13.6-19.45 0-32.93-13.57-13.48-13.58-13.48-32.97v-465.19L531.46-173.35q-4.25 11.21-14.11 18.24-9.85 7.03-22.03 7.03h-30.87q-12.19 0-22.01-6.95-9.83-6.95-14.09-18.32L240.96-656.73v462.11q0 19.39-13.51 32.97-13.51 13.57-32.96 13.57-19.45 0-32.93-13.57-13.48-13.58-13.48-32.97Z"/></svg>
+    </a>
+    <svg onclick="openPopup()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M411.62-20q-19.85 0-35.46-11.85-15.62-11.84-21.7-31.69l-39.15-133.77q-7.62-24.46-21.15-47.96-13.54-23.5-38.39-55.04-31.31-35.69-48.54-81.81Q190-428.23 190-480q0-49.77 17.23-95.38 17.23-45.62 48.54-84.31 26.85-35.54 39.39-58.23 12.53-22.69 20.15-44.77l39.15-133.77q6.08-19.85 22.2-31.69Q392.77-940 412.62-940h134.76q19.85 0 35.96 11.85 16.12 11.84 22.2 31.69l39.15 133.77q7.62 24.46 21.15 47.96 13.54 23.5 38.39 55.04 31.31 35.69 48.54 81.81Q770-531.77 770-480q0 49.77-17.23 95.38-17.23 45.62-48.54 84.31-26.85 35.54-39.39 58.23-12.53 22.69-20.15 44.77L605.54-63.54q-6.08 19.85-22.2 31.69Q567.23-20 547.38-20H411.62ZM624.5-335.5Q684-395 684-480t-59.5-144.5Q565-684 480-684t-144.5 59.5Q276-565 276-480t59.5 144.5Q395-276 480-276t144.5-59.5Z"/></svg>
+    <a href="https://blackswan19.github.io/bscrop/TV/main"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m231-190-13.85 35.07q-2.71 7.36-9.51 12.26-6.79 4.9-15 4.9h-7.69q-10.26 0-17.95-7.5-7.69-7.5-7.69-18.5V-196l7 6q-41.83 0-70.07-28.24Q68-246.48 68-288.31v-423.38q0-41.83 28.24-70.07Q124.48-810 166.31-810h627.38q41.83 0 70.07 28.24Q892-753.52 892-711.69v423.38q0 41.85-28.24 70.11-28.24 28.25-70.07 28.25l7-6v34.18q0 10.1-6.95 17.05-6.94 6.95-17.05 6.95h-10.23q-8.77 0-15.11-4.45-6.35-4.46-8.89-12.09L730.38-190H231Zm-64.69-86h627.38q5.39 0 8.85-3.46t3.46-8.85v-423.38q0-5.39-3.46-8.85t-8.85-3.46H166.31q-5.39 0-8.85 3.46t-3.46 8.85v423.38q0 5.39 3.46 8.85t8.85 3.46ZM480-500Z"/></svg></a>
+  </div>
+
+  <!-- Country/Time Popup -->
+  <div class="popup-container" id="popupContainer">
+    <div class="popup">
+      <h2>Countries</h2>
+      <ul class="country-list" id="countryList"></ul>
+      <div class="time-display" id="timeDisplay"></div>
+      <button onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
+  <!-- Privacy Popup -->
+  <div class="popup-container" id="privacyPopup">
+    <div class="popup privacy-popup">
+      <h2><i class="fa-solid fa-lock"></i> Privacy First</h2>
+      <p style="color: #ccc; line-height: 1.6; font-size: 15px;">
+        At <strong>Black Swan</strong>, we <strong>don't track</strong>, we don't need any data, and we don't use cookies for analytics.<br><br>
+        All the data <strong>generated from using our site</strong> including notes, search history, saved links, and etc.. are <strong>stored locally on your device only.</strong>
+      </p>
+      <p style="color: #ccc; font-size: 14px;">
+        <em>MEAN :</em><br>
+        No servers, no cloud, no third-party access<br>
+      </p>
+      <div style="margin-top: 20px; padding: 10px; background: #1a1a1a; border-radius: 10px; font-size: 13px; color: rgb(0, 255, 251);">
+        Use <code>Ctrl+Shift+Delete</code> to Clear data from local store.
+      </div>
+      <button onclick="closePrivacyPopup()" style="margin-top: 15px;">Got it!</button>
+    </div>
+  </div>
+<script src="noright.js"></script>
+  <div class="fab" onclick="openPrivacyPopup()">
+   <i class="fas fa-shield-halved"></i>
+  </div>
+
+
+
+  <h1><img src="https://i.ibb.co/27GXWVgg/BS.png" alt="" width="15%"></h1>
+
+  <!-- <div class="search-input-container">
+    <input type="text" id="search-input" placeholder="Search here..." onkeydown="handleEnter(event)" autocomplete="off" oninput="filterAndDisplayHistory()">
+    <div class="search-buttons">
+      <span class="clear-icon" onclick="clearSearchInput()" id="clearIcon">×</span>
+      <button onclick="googleSearch()"><i style="color: #ffffff52;" class="fa-solid fa-magnifying-glass"></i></button>
+      <button onclick="imFeelingLucky()"><i class="fa-brands fa-slack"></i> Rora</button>
+    </div>
+    <div class="search-history" id="searchHistory" style="display: block;"></div>
+  </div> -->
+
+  <div class="incognito-toggle">
+    <label for="incognitoToggle">More FromBs</label>
+  </div>
+
+  <div class="options">
+    <div class="allsites">
+       <button class="option" onclick="openLink(20)">BsBlackroom</button>
+    <button class="option" onclick="openLink(1)">BsNote</button>
+    <button class="option" onclick="openLink(2)">BsWebs</button>
+    <button class="option" onclick="openLink(10)">BsFilexplorer</button>
+    <button class="option" onclick="openLink(19)" style="    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;"><i class="fa-solid fa-cloud-arrow-down"></i>BsBookpad
+      <button class="option" onclick="openLink(5)">BsLinksaver</button>
+      <button class="option" onclick="openLink(6)">BsAudtrim</button>
+      <button class="option" onclick="openLink(14)">Mini Festa</button>
+      <button class="option" onclick="openLink(15)">BsImgediter</button>
+      <!-- <button class="option" onclick="openLink(17)">BsFesta</button> -->
+      <button class="option" onclick="openLink(7)">BsAdstoper</button>
+      <button class="option" onclick="openLink(8)">BsMediastorage</button>
+      <button class="option" onclick="openLink(9)">BsBookpad</button>
+      <button class="option" onclick="openLink(11)">BsVideosaver</button>
+      <!-- <button class="option" onclick="openLink(10)">BsFilexplorer</button> -->
+      <button class="option" onclick="openLink(12)">BsPsgenerater</button>
+    </div>
+  </div>
+
+  <!-- <div class="ticker-container">
+    <div class="ticker-label">Recently update :</div>
+    <div class="ticker-texts">
+      <div class="ticker-item">BSearchin</div>
+      <div class="ticker-item">BsRora</div>
+      <div class="ticker-item">BsFesta</div>
+    </div>
+  </div> -->
+
+  <style>
+   
+    .top-bar {
+     position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 15px;
-    font-weight: 500;
-    white-space: nowrap;
-    transition: all 0.3s ease;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-        }
-
-        .filter-btn.active {
-            background-color: var(--accent);
-            color: white;
-        }
-
-        .add-category-btn {
-            height: 37px;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 25px;
-    border-radius: 0 30px 30px 0;
-    position: sticky;
-    left: 0;
-        }
-
-        /* Link List */
-        .link-list {
-background-color: #191919;
-    border-radius: 30px;
     padding: 5px;
-    overflow-y: auto;
-    scrollbar-width: none;
-    scrollbar-color: gray transparent;
-    height: fit-content;
-    margin: 10px 0px;
-    width: 100%;
-    max-height: 100vh;
-        }
-
-        .link-list::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .link-list::-webkit-scrollbar-thumb {
-            background: #48484a;
-            border-radius: 20px;
-        }
-
-        .table-header {
-padding: 10px;
-    font-size: 12px;
     font-weight: 600;
-    color: #8e8e93;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    position: sticky;
-    top: 0;
-    background-color: #000000;
-    border-radius: 9999px;
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    z-index: 100000000;
-        }
-
-        .link-item {
-    padding: 2px 5px;
-    border-radius: 0px;
-    transition: all 0.3s ease;
-    justify-content: space-between;
-    display: flex;
-    align-items: center;
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
-    opacity: 60%;
-        }
-.title-container a {
-color: rgb(255, 255, 255);
-    text-decoration: none;
-    font-size: 13px;
-}
-        .link-item:hover{
-            opacity: 100%;
-            background-color: rgb(255 255 255 / 35%);
-        }
-
-        .title-container {
+    background: blue;
+    border-radius: 60px;
+    cursor: pointer;
+    z-index: 1000;
     display: flex;
     align-items: center;
     gap: 5px;
-        }
-        .view-title-btn {
-background: none;
-    border: none;
+    }
+.top-bar i{
+  color: white;
+}img.fa-clock {
+    width: 100%;
+    margin: 0;
+    opacity: 100%;
+}.settings-icon {
+position: fixed;
+    top: 10px;
+    right: 10px;
     cursor: pointer;
-    padding: 5px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000000;
+    background: #ffffff2e;
     border-radius: 50%;
-    transition: all 0.2s;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-        }
-
-        .view-title-btn:hover {
-            background-color: #000000;
-            color: #fff;
-        }
-        .link-item:last-child{
-            border-bottom: 0.5px solid rgba(255, 255, 255, 0);
-        }
-        .link-item div:last-child {
-font-size: 10px;
-    text-align: right;
-        }
-
-        /* Modals */
-        .modal, .create-modal, .edit-modal, .category-modal, .title-modal, .edit-category-modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(0 0 0 / 51%);
-    justify-content: center;
-    align-items: center;
-        }
-
-        .modal-content, .create-modal-content, .edit-modal-content, 
-        .category-modal-content, .title-modal-content, .edit-category-modal-content {
-padding: 20px;
-    border-radius: 40px;
-    width: 80%;
-    max-width: 450px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 15px;
-    transition: background 0.4s ease;
-    box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
-    background: rgb(37 37 37);
-    backdrop-filter: blur(30px);
-    font-weight: 200;
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
-        }
-p#titleModalMessage {
-    font-size: 15px;
 }
-.title-modal-content h2 {
-    font-weight: 600;
-    font-size: 20px;
-}
-        .modal-content h2, .create-modal-content h2, .edit-modal-content h2 {
-            font-size: 22px;
-            font-weight: 600;
-            text-align: center;
-        }.form-group {
-    width: 100%;
-}
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 500;
-            color: #a1a1a6;
-        }
+    .fullscreen {
+      position: fixed;
+      inset: 0;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;background: black;
+      transition: background 0.6s;
+    }
+    .fullscreen.show { display: flex; }
 
-        .wtd-options {
-            display: flex;
-    gap: 12px;
-    width: 100%;
-        }
+    .main-content {
+         text-align: center;
+    backdrop-filter: blur(20px);
+    border-radius: 55px;
+    padding: 20px;
+    width: 96%;
+    max-width: 800px;
+    }
 
-        .close-btn, .save-btn {
-padding: 10px;
-    border-radius: 9999px;
-    font-weight: 500;
-    font-size: 17px;
-    flex: 1;
-    width: 100%;
-        }
-
-        .save-btn {
-            background-color: var(--accent);
-            color: white;
-        }
-
-        .close-btn {
-            background-color: #3a3a3c;
-        }
-
-.fa-solid, .fas {
-    font-weight: 900;
-    font-size: 12px;
-}
-        .context-menu, .category-context-menu {
-display: none;
-    position: absolute;
-    background-color: #444444;
-    border-radius: 15px;
-    box-shadow: 0 0 14px rgb(0 0 0);
-    z-index: 100000001;
-    min-width: fit-content;
-    padding: 2px;
-        }
-
-        .context-menu-item, .category-context-menu-item {
-    padding: 5px 10px;
-    color: #f5f5f7;
+    .time-display {
+      font-size: 11em;
+    font-weight: 300;
+    letter-spacing: -0.06em;
+    margin-bottom: 12px;
     cursor: pointer;
-    border-radius: 14px;
+    }
+
+    .date-display {
+      font-size: 2.7vw;
+      opacity: 0.85;
+    }
+
+    .timer-display {
+      font-size: 12vw;
+      font-weight: 300;
+      letter-spacing: -0.04em;
+    }
+
+    /* Note Slider */
+    .note-slider {
+     margin-top: 40px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(15px);
+    border-radius: 35px;
+    padding: 20px;
+    }
+input#minutesInput {
+    outline: none;
+    border-radius: 12px;
+    border: none;
+    padding: 10px;
+}
+    .note-text {
+      font-size: 17px;
+    min-height: 80px;
+    padding: 12px;
+    background: rgb(0 0 0 / 57%);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    text-align: center;
+    outline: none;
+    max-height: 140px;
+    overflow-y: scroll;
+    scrollbar-color: white transparent;
+    scrollbar-width: thin;
+    }
+
+    .note-controls {
+      display: flex;align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    /* Controls */
+    .controls {
+      margin-top: 45px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .control-btn {
+         background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: none;
+    padding: 10px;
+    border-radius: 50px;
+    cursor: pointer;
     display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s;
+    }
+
+    .control-btn:hover {
+      background: rgba(255, 255, 255, 0.397);
+    }
+
+    /* Settings Panel */
+    .settings-panel {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    background: #f9f9f90f;
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 10px;
+    display: none;
+    max-width: 350px;
+    z-index: 1000000;
+    border: solid 1.5px #ffffff12;
+    }
+    .inneroptions {
+    height: 500px;
+    overflow-y: scroll;
+    scrollbar-color: rgba(255, 255, 255, 0.71) transparent;
+    scrollbar-width: thin;
+    overflow-x: hidden;
+    padding: 10px;
+}
+    .settings-panel.show { display: block; }
+
+  label {
+    display: block;
+    margin: 14px 0 -6px 0;
+    font-size: 14.5px;
+}
+
+    select, input[type="color"], input[type="range"] {
+      padding: 12px;
+      background: rgba(0, 0, 0, 0);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      color: white;    margin: 20px 0 0 0;
+    }
+
+    .close-btn {
+width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 9999px;
+    color: black;
+    cursor: pointer;
+    font-weight: 500;
+    background: rgb(109, 109, 109);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
     align-items: center;
     gap: 10px;
-    font-size: 15px;
-    justify-content: space-between;
+    position: sticky;
+    bottom: 0px;
+    }
+
+    .main-content, .note-slider, .top-bar, .settings-panel, .control-btn, label, span {
+      color: inherit;
+    }
+    #smallTime{
+      color: white;
+    } @media (max-width: 768px) {.time-display{
+      font-size: 5em;
+    }.note-text{
+          scrollbar-width: none;
+
+    }.inneroptions {
+    height: 500px;
+    overflow-y: scroll;
+    scrollbar-color: rgba(255, 255, 255, 0.71) transparent;
+    scrollbar-width: thin;
+    overflow-x: hidden;
+    padding: 10px;
+    scrollbar-width: none;
+}
+    .settings-panel {
+    position: fixed;
+    top: 10px;
+    right: 5px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 40px;
+    padding: 10px;
+    display: none;
+    max-width: 400px;
+    z-index: 1000000;
+    width: 70%;
+    scrollbar-width: none;
+    }
+  }
+  </style>
+
+  <div class="top-bar" id="topTime">
+    <span id="smallTime" style="color: white;">12:34:56</span>
+  </div>
+
+
+  <!-- Settings Panel -->
+  <div class="settings-panel" id="settingsPanel">
+    <div class="inneroptions">
+      <h3><i class="fa-solid fa-sliders"></i> Settings</h3>
+
+    <!-- <label>Font Family</label> -->
+    <select id="fontFamily">
+      <option value="system-ui">Font Family</option>
+      <option value="'Inter', sans-serif">Inter</option>
+      <option value="'Roboto', sans-serif">Roboto</option>
+      <option value="'Poppins', sans-serif">Poppins</option>
+      <option value="'Montserrat', sans-serif">Montserrat</option>
+      <option value="'Manrope', sans-serif">Manrope</option>
+      <option value="'DM Sans', sans-serif">DM Sans</option>
+      <option value="'Outfit', sans-serif">Outfit</option>
+      <option value="'Figtree', sans-serif">Figtree</option>
+      <option value="'Instrument Sans', sans-serif">Instrument Sans</option>
+      <option value="'Space Grotesk', sans-serif">Space Grotesk</option>
+      <option value="'Segoe UI', sans-serif">Segoe UI</option>
+      <option value="'Helvetica Neue', sans-serif">Helvetica Neue</option>
+      <option value="'Arial', sans-serif">Arial</option>
+      <option value="'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif">SF Pro Display</option>
+      <option value="'Playfair Display', serif">Playfair Display (Elegant Serif)</option>
+      <option value="'Georgia', serif">Georgia</option>
+      <option value="'Times New Roman', serif">Times New Roman</option>
+      <option value="'Cinzel', serif">Cinzel (Luxury)</option>
+      <option value="'EB Garamond', serif">EB Garamond</option>
+      <option value="'Merriweather', serif">Merriweather</option>
+      <option value="'Space Mono', monospace">Space Mono</option>
+      <option value="'JetBrains Mono', monospace">JetBrains Mono</option>
+      <option value="'Fira Code', monospace">Fira Code</option>
+      <option value="'Comic Neue', cursive">Comic Neue (Fun)</option>
+      <option value="'Dancing Script', cursive">Dancing Script (Handwriting)</option>
+      <option value="'Pacifico', cursive">Pacifico (Brush)</option>
+    </select>
+
+    <!-- <label>Font Weight</label> -->
+    <select id="fontWeight">
+      <option value="system-ui">Font Weight</option>
+      <option value="200">Thin</option>
+      <option value="300" selected>Light</option>
+      <option value="400">Regular</option>
+      <option value="500">Medium</option>
+      <option value="600">Semi Bold</option>
+      <option value="700">Bold</option>
+    </select>
+
+    <!-- <label>Font Style</label> -->
+    <select id="fontStyle">
+      <option value="">Font Style</option>
+      <option value="normal">Normal</option>
+      <option value="italic">Italic</option>
+    </select>
+
+    <!-- <label>Time Format</label> -->
+    <select id="timeFormat">
+      <option value="">Time Format</option>
+      <option value="24">24 Hour</option>
+      <option value="12">12 Hour</option>
+    </select>
+
+    <!-- <label>Show Seconds</label> -->
+    <select id="showSeconds">
+      <option value="">Show Seconds</option>
+      <option value="true">Yes</option>
+      <option value="false">No</option>
+    </select>
+
+    <label>Background Color</label>
+    <input type="color" id="bgColor" value="#0a0a1f">
+
+    <label>Font Color</label>
+    <input type="color" id="fontColor" value="#ffffff">
+
+    <label>Glass Opacity <span id="opacityValue">0.07</span></label>
+    <input type="range" id="glassOpacity" min="0.02" max="0.25" step="0.01" value="0.07">
+
+    <button class="close-btn" onclick="closeSettings()" style="color: #000000;">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m382-353.38 344.54-344.54q12.92-12.93 30.38-13.12 17.46-.19 30.77 13.12Q801-684.61 801-667.54q0 17.08-13.31 30.39l-371.38 371q-14.85 14.84-34.31 14.84t-34.31-14.84l-173-173q-12.92-12.93-12.8-30.2.11-17.26 13.42-30.57 13.31-13.31 30.38-13.31 17.08 0 30.39 13.31L382-353.38Z"/></svg>
+       Save & Close
+    </button>
+    </div>
+  </div>
+
+  <!-- Fullscreen -->
+  <div class="fullscreen" id="fullscreen">
+      <div class="settings-icon" id="settingsIcon">
+       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M411.69-68q-19.46 0-34.8-13.29-15.33-13.28-18.66-32.71l-10.77-82.85q-10.07-4.38-23.24-11.53-13.16-7.15-22.91-15.31L223-191.23q-18.85 8.31-37.88 1.61-19.04-6.69-28.58-24.3L87.46-338.08q-9.54-17.61-6.07-36.27 3.46-18.65 19.46-30.42l64.92-50q-.38-6.85-.96-13.92-.58-7.08-.58-13.93 0-5.94.58-12.34.58-6.4.96-14.27l-63.92-48q-16-11.77-19.27-31.12-3.27-19.34 6.27-36.96l68.69-120q9.54-17.23 28.08-23.61 18.53-6.39 37.38.92l73.92 30.08q11.47-8.46 25.39-15.96t25.77-13.27L358.23-848q2.23-19.85 18.12-32.92Q392.23-894 411.69-894h136.62q19.46 0 35.34 13.08 15.89 13.07 18.12 32.92l9.77 82.23q13 6.54 25.57 13.27 12.58 6.73 24.43 15.58L736.39-768q18.56-8.31 37.32-1.42 18.75 6.88 29.13 24.11l68.7 120.39q9.54 17.61 6.07 36.77-3.46 19.15-19.46 30.92l-67.46 51.15q1.15 6.69 1.35 13.62.19 6.92.19 12.46 0 5.15-.39 12.08-.38 6.92-.76 14.77l64.3 48.38q16 11.77 20.16 30.92 4.15 19.16-5.39 36.77l-68.31 122.77q-9.53 17.62-29.1 24.31-19.56 6.69-38.74-1.62l-77.46-32.46q-10.85 7.85-21.81 14.46-10.96 6.62-22.19 11.39L601.77-114q-3.33 19.43-18.66 32.71Q567.77-68 548.31-68H411.69ZM439-154h79.46L533-262.15q31.62-8 58.37-23.32 26.76-15.32 51.48-39.3L740.23-284l40.39-68-84.77-65.38q5-15.54 7.3-31.7 2.31-16.15 2.31-32.65 0-16.89-1.81-31.42-1.8-14.54-6.8-32.7L781.38-610 743-678l-99.54 40.38q-20.08-22.46-50.01-39.71-29.93-17.26-60.83-24.52L521-808h-82.38l-11.24 104.77q-34.61 8.23-62.53 24.65-27.93 16.43-51.47 40.96L217-678l-40.38 68L260-545.62q-5 18.24-7 33.62-2 15.38-2 29.81 0 13.19 2 29.19t6.62 36.62l-83 64.38L217-284l97-41q26.77 25.38 54.19 40.81 27.43 15.42 58.81 23.42L439-154Zm38.46-180q61.52 0 104.76-43.04T625.46-482q0-61.92-43.24-104.96Q538.98-630 477.46-630q-61.54 0-104.77 43.04T329.46-482q0 61.92 43.23 104.96Q415.92-334 477.46-334ZM479-481Z"/></svg>
+     </div>
+    <div class="main-content">
+      <div id="clockMode">
+        <div class="time-display" id="bigTime">12:34:56</div>
+        <div class="date-display" id="date">Wednesday, 8 April 2026</div>
+      </div>
+
+      <!-- Timer -->
+      <div class="timer-section" id="timerMode" style="display:none;">
+        <div class="timer-display" id="timerDisplay">25:00</div>
+        <div style="margin:35px 0; display:flex; gap:12px; justify-content:center;">
+          <input type="number" id="minutesInput" value="25" style="width:110px;">
+          <button class="control-btn" onclick="startTimer()"><i class="fa-solid fa-play"></i></button>
+          <button class="control-btn" onclick="pauseTimer()"><i class="fa-solid fa-pause"></i></button>
+          <button class="control-btn" onclick="resetTimer()"><i class="fa-solid fa-rotate-right"></i></button>
+        </div>
+      </div>
+
+      <!-- Note Slider -->
+      <div class="note-slider">
+        <div class="note-container" id="noteContainer">
+          <div class="note-text" id="currentNote" contenteditable="true" onblur="saveCurrentNote()">Write your note here...</div>
+        </div>
+        <div class="note-controls">
+          <button onclick="prevNote()" class="control-btn" style="padding:8px 16px;font-size:14px;"><i class="fa-solid fa-chevron-left"></i></button>
+          <span id="noteCounter">1 / 1</span>
+          <button onclick="nextNote()" class="control-btn" style="padding:8px 16px;font-size:14px;"><i class="fa-solid fa-chevron-right"></i></button>
+          <button onclick="addNewNote()" class="control-btn" style="padding:8px 16px;font-size:14px;"><i class="fa-solid fa-plus"></i></button>
+          <button onclick="deleteCurrentNote()" class="control-btn" style="    padding: 8px 16px;
+    font-size: 14px;
+    color: white;
+    background: rgb(116 0 0);
+    border: none;"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Controls -->
+    <div class="controls">
+      <button class="control-btn" onclick="toggleMode()" id="modeBtn">
+        <i class="fa-solid fa-hourglass"></i> Timer
+      </button>
+      <button class="control-btn" onclick="document.getElementById('fullscreen').classList.remove('show')">
+        <i class="fa-solid fa-xmark"></i> Close
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let isTimerMode = false;
+    let timerInterval, timeLeft = 25*60, isRunning = false;
+    let notes = [];
+    let currentNoteIndex = 0;
+    let showSeconds = true;
+    let use24Hour = true;
+    function loadAllData() {
+      document.getElementById('fontFamily').value = localStorage.getItem('fontFamily') || 'system-ui';
+      document.getElementById('fontWeight').value = localStorage.getItem('fontWeight') || '300';
+      document.getElementById('fontStyle').value = localStorage.getItem('fontStyle') || 'normal';
+      document.getElementById('timeFormat').value = localStorage.getItem('timeFormat') || '24';
+      document.getElementById('showSeconds').value = localStorage.getItem('showSeconds') || 'true';
+      document.getElementById('bgColor').value = localStorage.getItem('bgColor') || '#0a0a1f';
+      document.getElementById('fontColor').value = localStorage.getItem('fontColor') || '#ffffff';
+      document.getElementById('glassOpacity').value = localStorage.getItem('glassOpacity') || '0.07';
+
+      use24Hour = document.getElementById('timeFormat').value === '24';
+      showSeconds = document.getElementById('showSeconds').value === 'true';
+
+      const savedNotes = localStorage.getItem('notes');
+      notes = savedNotes ? JSON.parse(savedNotes) : [{ text: "Welcome! You can write quick notes here." }];
+      currentNoteIndex = 0;
+
+      applyPreferences();
+      renderCurrentNote();
+    }
+
+    function applyPreferences() {
+      const family = document.getElementById('fontFamily').value;
+      const weight = document.getElementById('fontWeight').value;
+      const style = document.getElementById('fontStyle').value;
+      const bg = document.getElementById('bgColor').value;
+      const color = document.getElementById('fontColor').value;
+      const opacity = document.getElementById('glassOpacity').value;
+      document.getElementById('fullscreen').style.background = bg;
+      document.querySelector('.main-content').style.background = `rgba(255,255,255,${opacity})`;
+      document.querySelector('.note-slider').style.background = `rgba(255,255,255,${opacity * 0.85})`;
+      const allTextElements = document.querySelectorAll(
+        '.time-display, .timer-display, .date-display, .note-text, .note-controls, .control-btn, label, span, .top-bar, .settings-panel, h3, .close-btn'
+      );
+      allTextElements.forEach(el => el.style.color = color);
+      const deleteBtn = document.querySelector('button[onclick="deleteCurrentNote()"]');
+      if (deleteBtn) deleteBtn.style.color = '#ff6666';
+      document.querySelectorAll('.time-display, .timer-display, .date-display').forEach(el => {
+        el.style.fontFamily = family;
+        el.style.fontWeight = weight;
+        el.style.fontStyle = style;
+      });
+      document.getElementById('date').style.fontFamily = family;
+      localStorage.setItem('fontFamily', family);
+      localStorage.setItem('fontWeight', weight);
+      localStorage.setItem('fontStyle', style);
+      localStorage.setItem('timeFormat', use24Hour ? '24' : '12');
+      localStorage.setItem('showSeconds', showSeconds);
+      localStorage.setItem('bgColor', bg);
+      localStorage.setItem('fontColor', color);
+      localStorage.setItem('glassOpacity', opacity);
+    }
+
+    function updateSmallTime() {
+      const now = new Date();
+      const options = { hour12: !use24Hour, hour: '2-digit', minute: '2-digit' };
+      if (showSeconds) options.second = '2-digit';
+      document.getElementById('smallTime').textContent = now.toLocaleTimeString('en-US', options);
+    }
+
+    function updateBigClock() {
+      const now = new Date();
+      const options = { hour12: !use24Hour, hour: '2-digit', minute: '2-digit' };
+      if (showSeconds) options.second = '2-digit';
+      document.getElementById('bigTime').textContent = now.toLocaleTimeString('en-US', options);
+
+      document.getElementById('date').textContent = now.toLocaleDateString('en-US', {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+      });
+    }
+
+    function updateTimerDisplay() {
+      const m = Math.floor(timeLeft / 60);
+      const s = timeLeft % 60;
+      document.getElementById('timerDisplay').textContent = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+    }
+
+    function startTimer() {
+      if (isRunning) return;
+      if (timeLeft === 0) timeLeft = parseInt(document.getElementById('minutesInput').value || 25) * 60;
+      isRunning = true;
+      timerInterval = setInterval(() => {
+        if (timeLeft > 0) {
+          timeLeft--;
+          updateTimerDisplay();
+        } else {
+          clearInterval(timerInterval);
+          isRunning = false;
+          alert("🎉 Time's Up!");
         }
+      }, 1000);
+    }
 
-        .context-menu-item:hover, .category-context-menu-item:hover {
-            background-color: #777777;
-        }
+    function pauseTimer() { 
+      clearInterval(timerInterval); 
+      isRunning = false; 
+    }
 
-        .context-menu-item.delete:hover {
-            color: #ff3b30;
-        }
+    function resetTimer() {
+      clearInterval(timerInterval);
+      isRunning = false;
+      timeLeft = parseInt(document.getElementById('minutesInput').value || 25) * 60;
+      updateTimerDisplay();
+    }
 
-        @media (max-width: 480px) {
-            h1 { font-size: 24px; }
-          }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="search-section">
-            <h1>BsLinksaver</h1>
-            <button class="create-btn" onclick="openCreateModal()">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M663.08-289.92h-86.93q-12.77 0-22.38-9.75-9.62-9.75-9.62-23.25 0-13.77 9.25-23.39 9.25-9.61 23.75-9.61h85.93v-85.93q0-13.5 9.75-23.25 9.76-9.75 23.27-9.75 13.52 0 23.25 9.75t9.73 23.25v85.93H815q13.5 0 23.25 9.75 9.75 9.76 9.75 23.27 0 13.52-9.75 23.25T815-289.92h-85.92V-204q0 13.5-9.76 23.25T696.05-171q-13.51 0-23.24-9.75-9.73-9.75-9.73-23.25v-85.92Zm-263.46-1H277.08q-78.68 0-133.88-55.19Q88-401.3 88-479.96t55.2-133.89q55.2-55.23 133.88-55.23h122.54q12.76 0 22.88 10.12 10.12 10.11 10.12 23.27 0 14.15-10.12 23.38-10.12 9.23-22.88 9.23H276.99q-50.68 0-86.84 36.16Q154-530.77 154-480t36.15 86.92q36.16 36.16 86.84 36.16h122.63q12.76 0 22.88 10.11 10.12 10.12 10.12 23.27 0 14.16-10.12 23.39t-22.88 9.23ZM355-448q-13.5 0-23.25-9.76T322-481.03q0-13.51 9.75-23.24Q341.5-514 355-514h212q13.5 0 23.25 9.76t9.75 23.27q0 13.51-9.75 23.24Q580.5-448 567-448H355Zm517-32h-66q0-50.77-36.15-86.92-36.16-36.16-86.83-36.16h-97.64q-12.76 0-22.38-9.25t-9.62-23.75q0-12.77 9.25-22.88 9.25-10.12 23.75-10.12h96.54q78.68 0 133.88 55.2Q872-558.68 872-480Z"/></svg>
-            </button>
-        </div>
+    function toggleMode() {
+      isTimerMode = !isTimerMode;
+      document.getElementById('clockMode').style.display = isTimerMode ? 'none' : 'block';
+      document.getElementById('timerMode').style.display = isTimerMode ? 'block' : 'none';
+      document.getElementById('modeBtn').innerHTML = isTimerMode 
+        ? '<i class="fa-solid fa-clock"></i> Clock' 
+        : '<i class="fa-solid fa-hourglass"></i> Timer';
+    }
 
-        <div class="filter-section" id="filterSection">
-            <button class="filter-btn add-category-btn" onclick="openCategoryModal()">
-                <i class="fa-solid fa-plus"></i>
-            </button>
-            <button type="button" class="filter-btn active" data-filter="all">All</button>
-        </div>
+    function renderCurrentNote() {
+      document.getElementById('currentNote').textContent = notes[currentNoteIndex].text || '';
+      document.getElementById('noteCounter').textContent = `${currentNoteIndex + 1} / ${notes.length}`;
+    }
 
-        <div class="link-list" id="linkList">
-            <div class="table-header">
-                <div>Title</div>
-                <input type="search" id="searchInput" placeholder="Search" oninput="searchLinks()">
-                <div>Date Added</div>
-            </div>
-            <div id="allLinks"></div>
-        </div>
-    </div>
+    function saveCurrentNote() {
+      notes[currentNoteIndex].text = document.getElementById('currentNote').textContent.trim();
+      localStorage.setItem('notes', JSON.stringify(notes));
+    }
 
-    <!-- Modals -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <p id="modalMessage"></p>
-            <button class="close-btn" onclick="closeModal()">OK</button>
-        </div>
-    </div>
+    function addNewNote() {
+      notes.push({ text: "New note..." });
+      currentNoteIndex = notes.length - 1;
+      renderCurrentNote();
+      localStorage.setItem('notes', JSON.stringify(notes));
+    }
 
-    <div id="createModal" class="create-modal">
-        <div class="create-modal-content">
-            <h2>New Link</h2>
-            <div class="form-group">
-                <input type="text" id="createTitleInput" placeholder="Enter title">
-            </div>
-            <div class="form-group">
-                <input type="url" id="createUrlInput" placeholder="Paste URL">
-            </div>
-            <div class="form-group">
-                <select id="createCategoryInput"></select>
-            </div>
-            <div class="wtd-options">
-                <button class="save-btn" onclick="saveLink()">Save</button>
-                <button class="close-btn" onclick="closeCreateModal()">Cancel</button>
-            </div>
-        </div>
-    </div>
+    function deleteCurrentNote() {
+      if (notes.length <= 1) return alert("Cannot delete the last note.");
+      notes.splice(currentNoteIndex, 1);
+      if (currentNoteIndex >= notes.length) currentNoteIndex = notes.length - 1;
+      renderCurrentNote();
+      localStorage.setItem('notes', JSON.stringify(notes));
+    }
 
-    <div id="editModal" class="edit-modal">
-        <div class="edit-modal-content">
-            <h2>Edit Link</h2>
-            <div class="form-group">
-                <label for="editTitleInput">Title</label>
-                <input type="text" id="editTitleInput">
-            </div>
-            <div class="form-group">
-                <label for="editUrlInput">Link</label>
-                <input type="url" id="editUrlInput">
-            </div>
-            <div class="form-group">
-                <label for="editCategoryInput">Category</label>
-                <select id="editCategoryInput"></select>
-            </div>
-            <div class="wtd-options">
-                <button class="save-btn" onclick="saveEditedLink()">Save</button>
-                <button class="close-btn" onclick="closeEditModal()">Cancel</button>
-            </div>
-        </div>
-    </div>
+    function prevNote() {
+      currentNoteIndex = (currentNoteIndex - 1 + notes.length) % notes.length;
+      renderCurrentNote();
+    }
 
-    <div id="categoryModal" class="category-modal">
-        <div class="category-modal-content">
-            <h2>New Category</h2>
-            <div class="form-group">
-                <input type="text" id="categoryInput" placeholder="Category Name">
-            </div>
-            <div class="wtd-options">
-                <button class="save-btn" onclick="saveCategory()">Add</button>
-                <button class="close-btn" onclick="closeCategoryModal()">Cancel</button>
-            </div>
-        </div>
-    </div>
+    function nextNote() {
+      currentNoteIndex = (currentNoteIndex + 1) % notes.length;
+      renderCurrentNote();
+    }
 
-    <div id="editCategoryModal" class="edit-category-modal">
-        <div class="edit-category-modal-content">
-            <h2>Edit Category</h2>
-            <div class="form-group">
-                <label for="editCategoryInput">New Name</label>
-                <input type="text" id="editCategoryInput">
-            </div>
-            <div class="wtd-options">
-                <button class="save-btn" onclick="saveEditedCategory()">Save</button>
-                <button class="close-btn" onclick="closeEditCategoryModal()">Cancel</button>
-            </div>
-        </div>
-    </div>
+    function openSettings() {
+      document.getElementById('settingsPanel').classList.add('show');
+    }
 
-    <div id="titleModal" class="title-modal">
-        <div class="title-modal-content">
-            <h2>Full Title</h2>
-            <p id="titleModalMessage"></p>
-            <button class="close-btn" onclick="closeTitleModal()">OK</button>
-        </div>
-    </div>
+    function closeSettings() {
+      use24Hour = document.getElementById('timeFormat').value === '24';
+      showSeconds = document.getElementById('showSeconds').value === 'true';
+      applyPreferences();
+      document.getElementById('settingsPanel').classList.remove('show');
+    }
+    document.getElementById('topTime').addEventListener('click', () => {
+      document.getElementById('fullscreen').classList.add('show');
+      if (isTimerMode) toggleMode();
+    });
 
-    <!-- Context Menus -->
-    <div id="contextMenu" class="context-menu">
-        <div class="context-menu-item" onclick="copyLinkFromContext()"><i class="fa-solid fa-copy"></i> Copy Link</div>
-        <div class="context-menu-item" onclick="openEditModalFromContext()"><i class="fa-solid fa-pen"></i> Edit</div>
-        <div class="context-menu-item delete" onclick="deleteLinkFromContext()"><i class="fa-solid fa-trash"></i> Delete</div>
-    </div>
+    document.getElementById('bigTime').addEventListener('click', () => {
+      document.getElementById('fullscreen').classList.remove('show');
+    });
 
-    <div id="categoryContextMenu" class="category-context-menu">
-        <div class="category-context-menu-item" onclick="openEditCategoryModalFromContext()"><i class="fa-solid fa-pen"></i> Rename</div>
-        <div class="category-context-menu-item delete" onclick="deleteCategoryFromContext()"><i class="fa-solid fa-trash"></i> Delete</div>
-    </div>
+    document.getElementById('settingsIcon').addEventListener('click', openSettings);
+    document.querySelectorAll('#fontFamily, #fontWeight, #fontStyle, #timeFormat, #showSeconds, #bgColor, #fontColor, #glassOpacity').forEach(el => {
+      el.addEventListener('change', applyPreferences);
+      if (el.type === 'color' || el.type === 'range') {
+        el.addEventListener('input', applyPreferences);
+      }
+    });
 
-    <script>
-        // === ALL ORIGINAL JAVASCRIPT (unchanged) ===
-        let activeFilter = 'all';
-        let categories = ['all'];
-        let editIndex = -1;
-        let contextIndex = -1;
-        let categoryContextIndex = -1;
-        const TITLE_MAX_LENGTH = 20;
+    document.addEventListener('keydown', e => {
+      if (e.key === "Escape") {
+        document.getElementById('fullscreen').classList.remove('show');
+        document.getElementById('settingsPanel').classList.remove('show');
+      }
+    });
+    function init() {
+      loadAllData();
+      updateSmallTime();
+      updateBigClock();
+      updateTimerDisplay();
 
-        window.onload = function() {
-            loadCategories();
-            loadLinks();
-            setupFilterButtons();
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.link-item') && !e.target.closest('.context-menu')) hideContextMenu();
-                if (!e.target.closest('.filter-btn') && !e.target.closest('.category-context-menu')) hideCategoryContextMenu();
-            });
+      setInterval(() => {
+        updateSmallTime();
+        if (!isTimerMode) updateBigClock();
+      }, 1000);
+    }
+
+    window.onload = init;
+    const links = {
+      6: "https://blackswan19.github.io/bscrop/bsaducut",
+      5: "https://blackswan19.github.io/Educate/savelink",
+      3: "https://blackswan19.github.io/bscrop/imgconver",
+      4: "https://blackswan19.github.io/bscrop/watchin/main",
+      2: "https://blackswan19.github.io/bscrop/bsweb",
+      7: "https://blackswan19.github.io/Educate/stoper",
+      8: "https://blackswan19.github.io/Educate/hider",
+      9: "https://blackswan19.github.io/Educate/bookpad",
+      10: "https://blackswan19.github.io/Educate/filexplorer",
+      11: "https://blackswan19.github.io/bscrop/watchin/mylist",
+      1: "https://blackswan19.github.io/Educate/savenotes",
+      14: "https://blackswan19.github.io/bsfesta/minifesta",
+      12: "https://blackswan19.github.io/Educate/password",
+      15: "https://blackswan19.github.io/bscrop/imgediter",
+      16: "https://blackswan19.github.io/Educate/room",
+      17: "https://blackswan19.github.io/bsfesta/music",
+      18: "https://blackswan19.github.io/Educate/texter",
+      19: "https://blackswan19.github.io/Educate/bpdownload",
+      20: "https://blackswan19.github.io/Educate/room",
+    };
+
+    function openLink(num) {
+      if (links[num]) {
+        window.open(links[num], "_self");
+      }
+    }
+
+    const countryTimeZones = {
+      'India': 'Asia/Kolkata',
+      'Korea': 'Asia/Seoul',
+      'Japan': 'Asia/Tokyo',
+      'China': 'Asia/Shanghai',
+      'USA': 'America/New_York',
+      'Australia': 'Australia/Sydney',
+      'France': 'Europe/Paris',
+      'Germany': 'Europe/Berlin'
+    };
+
+    function openPopup() {
+      const container = document.getElementById('popupContainer');
+      const list = document.getElementById('countryList');
+      if (!list || !container) return;
+
+      list.innerHTML = '';
+      for (const c in countryTimeZones) {
+        const li = document.createElement('li');
+        li.textContent = c;
+        li.onclick = () => {
+          const time = new Intl.DateTimeFormat('en-US', {
+            timeZone: countryTimeZones[c],
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true
+          }).format(new Date());
+          li.textContent = `${c} time now: ${time}`;
+          li.style.cursor = 'default';
+          li.onclick = null;
         };
+        list.appendChild(li);
+      }
+      container.classList.add('visible');
+    }
 
-        function setupFilterButtons() {
-            const buttons = document.querySelectorAll('.filter-btn:not(.add-category-btn):not(.category-ellipsis)');
-            buttons.forEach(button => {
-                button.onclick = () => {
-                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                    button.classList.add('active');
-                    activeFilter = button.dataset.filter;
-                    loadLinks();
-                };
-            });
-        }
+    function closePopup() {
+      const container = document.getElementById('popupContainer');
+      if (container) container.classList.remove('visible');
+    }
 
-        function updateFilterButtons() {
-            const filterSection = document.getElementById('filterSection');
-            filterSection.innerHTML = `
-                <button class="filter-btn add-category-btn" onclick="openCategoryModal()"><i class="fa-solid fa-plus"></i></button>
-                ${categories.map((cat, idx) => `
-                    <button type="button" class="filter-btn${cat === activeFilter ? ' active' : ''}" data-filter="${cat}">
-                        ${cat.charAt(0).toUpperCase() + cat.slice(1)}
-                        ${cat !== 'all' ? `<i class="fa-solid fa-ellipsis-vertical category-ellipsis" onclick="showCategoryContextMenu(event, ${idx})"></i>` : ''}
-                    </button>
-                `).join('')}
-            `;
-            setupFilterButtons();
-        }
+    function openPrivacyPopup() {
+      const popup = document.getElementById('privacyPopup');
+      if (popup) popup.classList.add('visible');
+    }
 
-        function showCategoryContextMenu(event, index) {
-            event.stopPropagation();
-            hideCategoryContextMenu();
-            const menu = document.getElementById('categoryContextMenu');
-            categoryContextIndex = index;
-            menu.style.display = 'block';
-            menu.style.left = `${event.pageX}px`;
-            menu.style.top = `${event.pageY}px`;
-        }
-
-        function hideCategoryContextMenu() {
-            document.getElementById('categoryContextMenu').style.display = 'none';
-            categoryContextIndex = -1;
-        }
-
-        function openEditCategoryModalFromContext() {
-            if (categoryContextIndex === -1) return;
-            const cat = categories[categoryContextIndex];
-            document.getElementById('editCategoryInput').value = cat;
-            document.getElementById('editCategoryModal').style.display = 'flex';
-            hideCategoryContextMenu();
-        }
-
-        function closeEditCategoryModal() {
-            document.getElementById('editCategoryModal').style.display = 'none';
-        }
-
-        function saveEditedCategory() {
-            const oldCat = categories[categoryContextIndex];
-            const newCat = document.getElementById('editCategoryInput').value.trim().toLowerCase();
-            if (!newCat || newCat === 'all' || categories.includes(newCat)) {
-                showModal('Invalid or duplicate category name.');
-                return;
-            }
-            categories[categoryContextIndex] = newCat;
-            localStorage.setItem('linkCategories', JSON.stringify(categories));
-            const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
-            links.forEach(link => {
-                if (link.category === oldCat) link.category = newCat;
-            });
-            localStorage.setItem('youtubeLinks', JSON.stringify(links));
-            updateFilterButtons();
-            loadLinks();
-            closeEditCategoryModal();
-            showModal('Category updated!');
-        }
-
-        function deleteCategoryFromContext() {
-            if (categoryContextIndex === -1 || categories[categoryContextIndex] === 'all') return;
-            const cat = categories[categoryContextIndex];
-            if (confirm(`Delete category "${cat}"? Links will be moved to "All".`)) {
-                const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
-                links.forEach(link => {
-                    if (link.category === cat) link.category = 'all';
-                });
-                localStorage.setItem('youtubeLinks', JSON.stringify(links));
-                categories.splice(categoryContextIndex, 1);
-                localStorage.setItem('linkCategories', JSON.stringify(categories));
-                updateFilterButtons();
-                loadLinks();
-                showModal('Category deleted.');
-            }
-            hideCategoryContextMenu();
-        }
-
-        function openCreateModal() {
-            const select = document.getElementById('createCategoryInput');
-            select.innerHTML = categories.map(cat => `<option value="${cat}">${cat.charAt(0).toUpperCase() + cat.slice(1)}</option>`).join('');
-            document.getElementById('createModal').style.display = 'flex';
-            document.getElementById('createTitleInput').value = '';
-            document.getElementById('createUrlInput').value = '';
-            document.getElementById('createCategoryInput').value = 'all';
-        }
-
-        function closeCreateModal() { document.getElementById('createModal').style.display = 'none'; }
-
-        function openEditModal(index) {
-            const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
-            const link = links[index];
-            const select = document.getElementById('editCategoryInput');
-            select.innerHTML = categories.map(cat => `<option value="${cat}">${cat.charAt(0).toUpperCase() + cat.slice(1)}</option>`).join('');
-            document.getElementById('editTitleInput').value = link.title;
-            document.getElementById('editUrlInput').value = link.url;
-            document.getElementById('editCategoryInput').value = link.category;
-            editIndex = index;
-            document.getElementById('editModal').style.display = 'flex';
-        }
-
-        function openEditModalFromContext() {
-            if (contextIndex !== -1) openEditModal(contextIndex);
-            hideContextMenu();
-        }
-
-        function closeEditModal() { 
-            document.getElementById('editModal').style.display = 'none'; 
-            editIndex = -1; 
-        }
-
-        function openCategoryModal() {
-            document.getElementById('categoryModal').style.display = 'flex';
-            document.getElementById('categoryInput').value = '';
-        }
-
-        function closeCategoryModal() { document.getElementById('categoryModal').style.display = 'none'; }
-
-        function openTitleModal(title) {
-            document.getElementById('titleModalMessage').innerText = title;
-            document.getElementById('titleModal').style.display = 'flex';
-        }
-
-        function closeTitleModal() { document.getElementById('titleModal').style.display = 'none'; }
-
-        function showModal(message) {
-            document.getElementById('modalMessage').innerText = message;
-            document.getElementById('modal').style.display = 'flex';
-        }
-
-        function closeModal() { document.getElementById('modal').style.display = 'none'; }
-
-        function saveCategory() {
-            const category = document.getElementById('categoryInput').value.toLowerCase().trim();
-            if (category && !categories.includes(category) && category !== 'all') {
-                categories.push(category);
-                localStorage.setItem('linkCategories', JSON.stringify(categories));
-                updateFilterButtons();
-                closeCategoryModal();
-                showModal('Category added!');
-            } else {
-                showModal('Enter a unique category name.');
-            }
-        }
-
-        function saveLink() {
-            const title = document.getElementById('createTitleInput').value.trim();
-            const url = document.getElementById('createUrlInput').value.trim();
-            const category = document.getElementById('createCategoryInput').value;
-            if (title && url) {
-                const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
-                links.unshift({ title, url, category, dateAdded: new Date().toISOString() });
-                localStorage.setItem('youtubeLinks', JSON.stringify(links));
-                loadLinks();
-                closeCreateModal();
-                showModal('Link added!');
-            } else {
-                showModal('Enter both title and link.');
-            }
-        }
-
-        function saveEditedLink() {
-            const title = document.getElementById('editTitleInput').value.trim();
-            const url = document.getElementById('editUrlInput').value.trim();
-            const category = document.getElementById('editCategoryInput').value;
-            if (title && url && editIndex !== -1) {
-                const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
-                links[editIndex] = { title, url, category, dateAdded: links[editIndex].dateAdded };
-                localStorage.setItem('youtubeLinks', JSON.stringify(links));
-                loadLinks();
-                closeEditModal();
-                showModal('Link updated!');
-            } else {
-                showModal('Fill all fields.');
-            }
-        }
-
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            const now = new Date();
-            const diff = Math.abs(now - date) / 1000;
-            if (diff < 86400) return 'Today';
-            if (diff < 172800) return 'Yesterday';
-            if (diff < 604800) return `${Math.floor(diff / 86400)} days ago`;
-            return date.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
-        }
-
-        function truncateTitle(title) {
-            return title.length > TITLE_MAX_LENGTH ? title.substring(0, TITLE_MAX_LENGTH - 3) + '...' : title;
-        }
-
-        function displayLink(link, index) {
-            const container = document.getElementById('allLinks');
-            const linkItem = document.createElement('div');
-            linkItem.className = 'link-item';
-            linkItem.dataset.index = index;
-            linkItem.oncontextmenu = e => { e.preventDefault(); showContextMenu(e, index); };
-            const truncated = truncateTitle(link.title);
-            linkItem.innerHTML = `
-                <div class="title-container">
-                    <button class="view-title-btn" onclick="openTitleModal('${link.title.replace(/'/g, "\\'")}')"><i class="fa-solid fa-eye"></i></button>
-                    <a href="${link.url}" target="_blank">${truncated} <span style=" font-size:13px;">(${link.category})</span></a>
-                </div>
-                <div>${formatDate(link.dateAdded)}</div>
-            `;
-            container.appendChild(linkItem);
-        }
-
-        function showContextMenu(e, index) {
-            hideContextMenu();
-            const menu = document.getElementById('contextMenu');
-            contextIndex = index;
-            menu.style.display = 'block';
-            menu.style.left = `${e.pageX}px`;
-            menu.style.top = `${e.pageY}px`;
-        }
-
-        function hideContextMenu() {
-            document.getElementById('contextMenu').style.display = 'none';
-            contextIndex = -1;
-        }
-
-        function copyLinkFromContext() {
-            if (contextIndex === -1) return;
-            const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
-            navigator.clipboard.writeText(links[contextIndex].url).then(() => {
-                showModal('Link copied!');
-                hideContextMenu();
-            });
-        }
-
-        function deleteLinkFromContext() {
-            if (contextIndex === -1) return;
-            const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
-            links.splice(contextIndex, 1);
-            localStorage.setItem('youtubeLinks', JSON.stringify(links));
-            loadLinks();
-            showModal('Link deleted.');
-            hideContextMenu();
-        }
-
-        function loadCategories() {
-            const stored = localStorage.getItem('linkCategories');
-            if (stored) {
-                categories = JSON.parse(stored);
-                if (!categories.includes('all')) categories.unshift('all');
-            } else {
-                categories = ['all'];
-            }
-            updateFilterButtons();
-        }
-
-        function loadLinks() {
-            const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
-            const container = document.getElementById('allLinks');
-            container.innerHTML = '';
-            const filtered = activeFilter === 'all' ? links : links.filter(l => l.category === activeFilter);
-            filtered.forEach((link, i) => {
-                const globalIndex = links.indexOf(link);
-                displayLink(link, globalIndex);
-            });
-        }
-
-        function searchLinks() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
-            const container = document.getElementById('allLinks');
-            container.innerHTML = '';
-            const filtered = links.filter(l =>
-                l.title.toLowerCase().includes(query) &&
-                (activeFilter === 'all' || l.category === activeFilter)
-            );
-            filtered.forEach((link, i) => {
-                const globalIndex = links.indexOf(link);
-                displayLink(link, globalIndex);
-            });
-        }
-    </script>
+    function closePrivacyPopup() {
+      const popup = document.getElementById('privacyPopup');
+      if (popup) popup.classList.remove('visible');
+    }
+</script>
 </body>
 </html>
