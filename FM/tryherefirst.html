@@ -1,1 +1,805 @@
-no test...
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BsLinksaver</title>
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/0DBHQHG/linksave.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+	-webkit-tap-highlight-color: transparent;
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins', sans-serif;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.648) transparent;
+}
+        :root {
+            --bg: #000000;
+            --card: #1c1c1e;
+            --accent: #003cff;
+        }
+
+        body {
+            background-color: var(--bg);
+    color: #f5f5f7;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.5;
+    user-select: none;
+    height: 100vh;
+    overflow: hidden;
+        }
+
+        .container {
+           padding: 15px;
+    max-width: 920px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+        }
+
+.search-section h1 {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.8px;
+    color: #fff;
+    text-align: center;
+}
+
+        .search-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10PX 0;
+        }
+
+        input[type="text"], input[type="url"], input[type="search"], select {
+              transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex: 1;
+    min-width: 260px;
+    border: none;
+    outline: none;
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    background: rgb(255 255 255 / 65%);
+    padding: 10px 0;
+        }
+input#searchInput {
+text-align: justify;
+    padding: 5px 10px;
+    min-width: 100px;
+    border-radius: 999px;
+    background: #1f1f1f;
+    color: #ffffffcf;
+}
+        button {
+            padding: 12px 24px;
+            background-color: #2c2c2e;
+            border: none;
+            color: #f5f5f7;
+            cursor: pointer;
+            font-weight: 600;
+            border-radius: 9999px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 15px;
+        }
+
+        button:hover {
+            background-color: #3a3a3c;
+        }
+
+        .create-btn {
+                background-color: var(--accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px;
+    font-weight: 600;
+    gap: 2px;
+        }
+
+        .create-btn:hover {
+            background-color: var(--accent);
+        }
+
+        /* Filter Section */
+        .filter-section {
+display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 12px 0;
+    scrollbar-width: none;
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+        }
+
+        .filter-section::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-btn {
+           padding: 5px 10px;
+    background-color: #1f1f1f;
+    border: none;
+    color: #b4b4b4;
+    cursor: pointer;
+    border-radius: 9999px;
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+        }
+
+        .filter-btn.active {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .add-category-btn {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        /* Link List */
+        .link-list {
+background-color: #191919;
+    border-radius: 30px;
+    padding: 5px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    scrollbar-color: gray transparent;
+    height: fit-content;
+    margin: 10px 0px;
+    width: 100%;
+    max-height: 100vh;
+        }
+
+        .link-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .link-list::-webkit-scrollbar-thumb {
+            background: #48484a;
+            border-radius: 20px;
+        }
+
+        .table-header {
+padding: 10px 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #8e8e93;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    background-color: #000000;
+    border-radius: 999px;
+    display: flex;gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+        }
+
+        .link-item {
+padding: 5px 10px;
+    border-radius: 10px;
+    margin: 10px;
+    transition: all 0.3s ease;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+        }
+
+        .link-item:hover {
+            background-color: #2c2c2e;
+        }
+
+        .title-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+        }
+
+        .view-title-btn {
+            background: none;
+            border: none;
+            color: #8e8e93;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        .view-title-btn:hover {
+            background-color: #3a3a3c;
+            color: #fff;
+        }
+
+        a {
+            color: #f5f5f7;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15.5px;
+            transition: color 0.2s;
+        }
+
+        .link-item div:last-child {
+            color: #8e8e93;
+            font-size: 14px;
+            text-align: right;
+        }
+
+        /* Modals */
+        .modal, .create-modal, .edit-modal, .category-modal, .title-modal, .edit-category-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 51%);
+    justify-content: center;
+    align-items: center;
+        }
+
+        .modal-content, .create-modal-content, .edit-modal-content, 
+        .category-modal-content, .title-modal-content, .edit-category-modal-content {
+padding: 20px;
+    border-radius: 40px;
+    width: 80%;
+    max-width: 620px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    transition: background 0.4s ease;
+    box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
+    background: rgb(255 255 255 / 10%);
+    backdrop-filter: blur(30px);
+    font-weight: 200;
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+p#titleModalMessage {
+    font-size: 15px;
+}
+.title-modal-content h2 {
+    font-weight: 600;
+    font-size: 20px;
+}
+        .modal-content h2, .create-modal-content h2, .edit-modal-content h2 {
+            font-size: 22px;
+            font-weight: 600;
+            text-align: center;
+        }.form-group {
+    width: 100%;
+}
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: #a1a1a6;
+        }
+
+        .wtd-options {
+            display: flex;
+    gap: 12px;
+    width: 100%;
+        }
+
+        .close-btn, .save-btn {
+padding: 10px;
+    border-radius: 9999px;
+    font-weight: 500;
+    font-size: 17px;
+    flex: 1;
+    width: 100%;
+        }
+
+        .save-btn {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .close-btn {
+            background-color: #3a3a3c;
+        }
+
+        .save-btn:hover { background-color: #000dff; }
+        .close-btn:hover { background-color: #48484a; }
+
+        /* Context Menus */
+        .context-menu, .category-context-menu {
+            display: none;
+            position: absolute;
+            background-color: #2c2c2e;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            padding: 6px;
+            z-index: 1001;
+            min-width: 180px;
+        }
+
+        .context-menu-item, .category-context-menu-item {
+            padding: 12px 20px;
+            color: #f5f5f7;
+            cursor: pointer;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+        }
+
+        .context-menu-item:hover, .category-context-menu-item:hover {
+            background-color: #3a3a3c;
+        }
+
+        .context-menu-item.delete:hover {
+            color: #ff3b30;
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 24px; }
+          }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search-section">
+            <h1>BsLinksaver</h1>
+            <button class="create-btn" onclick="openCreateModal()">
+                <i class="fa-solid fa-plus"></i> Add Link
+            </button>
+        </div>
+
+        <div class="filter-section" id="filterSection">
+            <button class="filter-btn add-category-btn" onclick="openCategoryModal()">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+            <button type="button" class="filter-btn active" data-filter="all">All</button>
+        </div>
+
+        <div class="link-list" id="linkList">
+            <div class="table-header">
+                <div>Title</div>
+                <input type="search" id="searchInput" placeholder="Search" oninput="searchLinks()">
+                <div>Date Added</div>
+            </div>
+            <div id="allLinks"></div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <p id="modalMessage"></p>
+            <button class="close-btn" onclick="closeModal()">OK</button>
+        </div>
+    </div>
+
+    <div id="createModal" class="create-modal">
+        <div class="create-modal-content">
+            <h2>New Link</h2>
+            <div class="form-group">
+                <input type="text" id="createTitleInput" placeholder="Enter title">
+            </div>
+            <div class="form-group">
+                <input type="url" id="createUrlInput" placeholder="Paste URL">
+            </div>
+            <div class="form-group">
+                <select id="createCategoryInput"></select>
+            </div>
+            <div class="wtd-options">
+                <button class="save-btn" onclick="saveLink()">Save</button>
+                <button class="close-btn" onclick="closeCreateModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="editModal" class="edit-modal">
+        <div class="edit-modal-content">
+            <h2>Edit Link</h2>
+            <div class="form-group">
+                <label for="editTitleInput">Title</label>
+                <input type="text" id="editTitleInput">
+            </div>
+            <div class="form-group">
+                <label for="editUrlInput">Link</label>
+                <input type="url" id="editUrlInput">
+            </div>
+            <div class="form-group">
+                <label for="editCategoryInput">Category</label>
+                <select id="editCategoryInput"></select>
+            </div>
+            <div class="wtd-options">
+                <button class="save-btn" onclick="saveEditedLink()">Save</button>
+                <button class="close-btn" onclick="closeEditModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="categoryModal" class="category-modal">
+        <div class="category-modal-content">
+            <h2>New Category</h2>
+            <div class="form-group">
+                <label for="categoryInput">Category Name</label>
+                <input type="text" id="categoryInput" placeholder="e.g. Design, Research">
+            </div>
+            <div class="wtd-options">
+                <button class="save-btn" onclick="saveCategory()">Add</button>
+                <button class="close-btn" onclick="closeCategoryModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="editCategoryModal" class="edit-category-modal">
+        <div class="edit-category-modal-content">
+            <h2>Edit Category</h2>
+            <div class="form-group">
+                <label for="editCategoryInput">New Name</label>
+                <input type="text" id="editCategoryInput">
+            </div>
+            <div class="wtd-options">
+                <button class="save-btn" onclick="saveEditedCategory()">Save</button>
+                <button class="close-btn" onclick="closeEditCategoryModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="titleModal" class="title-modal">
+        <div class="title-modal-content">
+            <h2>Full Title</h2>
+            <p id="titleModalMessage"></p>
+            <button class="close-btn" onclick="closeTitleModal()">OK</button>
+        </div>
+    </div>
+
+    <!-- Context Menus -->
+    <div id="contextMenu" class="context-menu">
+        <div class="context-menu-item" onclick="copyLinkFromContext()"><i class="fa-solid fa-copy"></i> Copy Link</div>
+        <div class="context-menu-item" onclick="openEditModalFromContext()"><i class="fa-solid fa-pen"></i> Edit</div>
+        <div class="context-menu-item delete" onclick="deleteLinkFromContext()"><i class="fa-solid fa-trash"></i> Delete</div>
+    </div>
+
+    <div id="categoryContextMenu" class="category-context-menu">
+        <div class="category-context-menu-item" onclick="openEditCategoryModalFromContext()"><i class="fa-solid fa-pen"></i> Rename</div>
+        <div class="category-context-menu-item delete" onclick="deleteCategoryFromContext()"><i class="fa-solid fa-trash"></i> Delete</div>
+    </div>
+
+    <script>
+        // === ALL ORIGINAL JAVASCRIPT (unchanged) ===
+        let activeFilter = 'all';
+        let categories = ['all'];
+        let editIndex = -1;
+        let contextIndex = -1;
+        let categoryContextIndex = -1;
+        const TITLE_MAX_LENGTH = 20;
+
+        window.onload = function() {
+            loadCategories();
+            loadLinks();
+            setupFilterButtons();
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.link-item') && !e.target.closest('.context-menu')) hideContextMenu();
+                if (!e.target.closest('.filter-btn') && !e.target.closest('.category-context-menu')) hideCategoryContextMenu();
+            });
+        };
+
+        function setupFilterButtons() {
+            const buttons = document.querySelectorAll('.filter-btn:not(.add-category-btn):not(.category-ellipsis)');
+            buttons.forEach(button => {
+                button.onclick = () => {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    button.classList.add('active');
+                    activeFilter = button.dataset.filter;
+                    loadLinks();
+                };
+            });
+        }
+
+        function updateFilterButtons() {
+            const filterSection = document.getElementById('filterSection');
+            filterSection.innerHTML = `
+                <button class="filter-btn add-category-btn" onclick="openCategoryModal()"><i class="fa-solid fa-plus"></i></button>
+                ${categories.map((cat, idx) => `
+                    <button type="button" class="filter-btn${cat === activeFilter ? ' active' : ''}" data-filter="${cat}">
+                        ${cat.charAt(0).toUpperCase() + cat.slice(1)}
+                        ${cat !== 'all' ? `<i class="fa-solid fa-ellipsis-vertical category-ellipsis" onclick="showCategoryContextMenu(event, ${idx})"></i>` : ''}
+                    </button>
+                `).join('')}
+            `;
+            setupFilterButtons();
+        }
+
+        function showCategoryContextMenu(event, index) {
+            event.stopPropagation();
+            hideCategoryContextMenu();
+            const menu = document.getElementById('categoryContextMenu');
+            categoryContextIndex = index;
+            menu.style.display = 'block';
+            menu.style.left = `${event.pageX}px`;
+            menu.style.top = `${event.pageY}px`;
+        }
+
+        function hideCategoryContextMenu() {
+            document.getElementById('categoryContextMenu').style.display = 'none';
+            categoryContextIndex = -1;
+        }
+
+        function openEditCategoryModalFromContext() {
+            if (categoryContextIndex === -1) return;
+            const cat = categories[categoryContextIndex];
+            document.getElementById('editCategoryInput').value = cat;
+            document.getElementById('editCategoryModal').style.display = 'flex';
+            hideCategoryContextMenu();
+        }
+
+        function closeEditCategoryModal() {
+            document.getElementById('editCategoryModal').style.display = 'none';
+        }
+
+        function saveEditedCategory() {
+            const oldCat = categories[categoryContextIndex];
+            const newCat = document.getElementById('editCategoryInput').value.trim().toLowerCase();
+            if (!newCat || newCat === 'all' || categories.includes(newCat)) {
+                showModal('Invalid or duplicate category name.');
+                return;
+            }
+            categories[categoryContextIndex] = newCat;
+            localStorage.setItem('linkCategories', JSON.stringify(categories));
+            const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
+            links.forEach(link => {
+                if (link.category === oldCat) link.category = newCat;
+            });
+            localStorage.setItem('youtubeLinks', JSON.stringify(links));
+            updateFilterButtons();
+            loadLinks();
+            closeEditCategoryModal();
+            showModal('Category updated!');
+        }
+
+        function deleteCategoryFromContext() {
+            if (categoryContextIndex === -1 || categories[categoryContextIndex] === 'all') return;
+            const cat = categories[categoryContextIndex];
+            if (confirm(`Delete category "${cat}"? Links will be moved to "All".`)) {
+                const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
+                links.forEach(link => {
+                    if (link.category === cat) link.category = 'all';
+                });
+                localStorage.setItem('youtubeLinks', JSON.stringify(links));
+                categories.splice(categoryContextIndex, 1);
+                localStorage.setItem('linkCategories', JSON.stringify(categories));
+                updateFilterButtons();
+                loadLinks();
+                showModal('Category deleted.');
+            }
+            hideCategoryContextMenu();
+        }
+
+        function openCreateModal() {
+            const select = document.getElementById('createCategoryInput');
+            select.innerHTML = categories.map(cat => `<option value="${cat}">${cat.charAt(0).toUpperCase() + cat.slice(1)}</option>`).join('');
+            document.getElementById('createModal').style.display = 'flex';
+            document.getElementById('createTitleInput').value = '';
+            document.getElementById('createUrlInput').value = '';
+            document.getElementById('createCategoryInput').value = 'all';
+        }
+
+        function closeCreateModal() { document.getElementById('createModal').style.display = 'none'; }
+
+        function openEditModal(index) {
+            const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
+            const link = links[index];
+            const select = document.getElementById('editCategoryInput');
+            select.innerHTML = categories.map(cat => `<option value="${cat}">${cat.charAt(0).toUpperCase() + cat.slice(1)}</option>`).join('');
+            document.getElementById('editTitleInput').value = link.title;
+            document.getElementById('editUrlInput').value = link.url;
+            document.getElementById('editCategoryInput').value = link.category;
+            editIndex = index;
+            document.getElementById('editModal').style.display = 'flex';
+        }
+
+        function openEditModalFromContext() {
+            if (contextIndex !== -1) openEditModal(contextIndex);
+            hideContextMenu();
+        }
+
+        function closeEditModal() { 
+            document.getElementById('editModal').style.display = 'none'; 
+            editIndex = -1; 
+        }
+
+        function openCategoryModal() {
+            document.getElementById('categoryModal').style.display = 'flex';
+            document.getElementById('categoryInput').value = '';
+        }
+
+        function closeCategoryModal() { document.getElementById('categoryModal').style.display = 'none'; }
+
+        function openTitleModal(title) {
+            document.getElementById('titleModalMessage').innerText = title;
+            document.getElementById('titleModal').style.display = 'flex';
+        }
+
+        function closeTitleModal() { document.getElementById('titleModal').style.display = 'none'; }
+
+        function showModal(message) {
+            document.getElementById('modalMessage').innerText = message;
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() { document.getElementById('modal').style.display = 'none'; }
+
+        function saveCategory() {
+            const category = document.getElementById('categoryInput').value.toLowerCase().trim();
+            if (category && !categories.includes(category) && category !== 'all') {
+                categories.push(category);
+                localStorage.setItem('linkCategories', JSON.stringify(categories));
+                updateFilterButtons();
+                closeCategoryModal();
+                showModal('Category added!');
+            } else {
+                showModal('Enter a unique category name.');
+            }
+        }
+
+        function saveLink() {
+            const title = document.getElementById('createTitleInput').value.trim();
+            const url = document.getElementById('createUrlInput').value.trim();
+            const category = document.getElementById('createCategoryInput').value;
+            if (title && url) {
+                const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
+                links.unshift({ title, url, category, dateAdded: new Date().toISOString() });
+                localStorage.setItem('youtubeLinks', JSON.stringify(links));
+                loadLinks();
+                closeCreateModal();
+                showModal('Link added!');
+            } else {
+                showModal('Enter both title and link.');
+            }
+        }
+
+        function saveEditedLink() {
+            const title = document.getElementById('editTitleInput').value.trim();
+            const url = document.getElementById('editUrlInput').value.trim();
+            const category = document.getElementById('editCategoryInput').value;
+            if (title && url && editIndex !== -1) {
+                const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
+                links[editIndex] = { title, url, category, dateAdded: links[editIndex].dateAdded };
+                localStorage.setItem('youtubeLinks', JSON.stringify(links));
+                loadLinks();
+                closeEditModal();
+                showModal('Link updated!');
+            } else {
+                showModal('Fill all fields.');
+            }
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const diff = Math.abs(now - date) / 1000;
+            if (diff < 86400) return 'Today';
+            if (diff < 172800) return 'Yesterday';
+            if (diff < 604800) return `${Math.floor(diff / 86400)} days ago`;
+            return date.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+        }
+
+        function truncateTitle(title) {
+            return title.length > TITLE_MAX_LENGTH ? title.substring(0, TITLE_MAX_LENGTH - 3) + '...' : title;
+        }
+
+        function displayLink(link, index) {
+            const container = document.getElementById('allLinks');
+            const linkItem = document.createElement('div');
+            linkItem.className = 'link-item';
+            linkItem.dataset.index = index;
+            linkItem.oncontextmenu = e => { e.preventDefault(); showContextMenu(e, index); };
+            const truncated = truncateTitle(link.title);
+            linkItem.innerHTML = `
+                <div class="title-container">
+                    <button class="view-title-btn" onclick="openTitleModal('${link.title.replace(/'/g, "\\'")}')"><i class="fa-solid fa-eye"></i></button>
+                    <a href="${link.url}" target="_blank">${truncated} <span style="color:#8e8e93; font-size:13px;">(${link.category})</span></a>
+                </div>
+                <div>${formatDate(link.dateAdded)}</div>
+            `;
+            container.appendChild(linkItem);
+        }
+
+        function showContextMenu(e, index) {
+            hideContextMenu();
+            const menu = document.getElementById('contextMenu');
+            contextIndex = index;
+            menu.style.display = 'block';
+            menu.style.left = `${e.pageX}px`;
+            menu.style.top = `${e.pageY}px`;
+        }
+
+        function hideContextMenu() {
+            document.getElementById('contextMenu').style.display = 'none';
+            contextIndex = -1;
+        }
+
+        function copyLinkFromContext() {
+            if (contextIndex === -1) return;
+            const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
+            navigator.clipboard.writeText(links[contextIndex].url).then(() => {
+                showModal('Link copied!');
+                hideContextMenu();
+            });
+        }
+
+        function deleteLinkFromContext() {
+            if (contextIndex === -1) return;
+            const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
+            links.splice(contextIndex, 1);
+            localStorage.setItem('youtubeLinks', JSON.stringify(links));
+            loadLinks();
+            showModal('Link deleted.');
+            hideContextMenu();
+        }
+
+        function loadCategories() {
+            const stored = localStorage.getItem('linkCategories');
+            if (stored) {
+                categories = JSON.parse(stored);
+                if (!categories.includes('all')) categories.unshift('all');
+            } else {
+                categories = ['all'];
+            }
+            updateFilterButtons();
+        }
+
+        function loadLinks() {
+            const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
+            const container = document.getElementById('allLinks');
+            container.innerHTML = '';
+            const filtered = activeFilter === 'all' ? links : links.filter(l => l.category === activeFilter);
+            filtered.forEach((link, i) => {
+                const globalIndex = links.indexOf(link);
+                displayLink(link, globalIndex);
+            });
+        }
+
+        function searchLinks() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const links = JSON.parse(localStorage.getItem('youtubeLinks')) || [];
+            const container = document.getElementById('allLinks');
+            container.innerHTML = '';
+            const filtered = links.filter(l =>
+                l.title.toLowerCase().includes(query) &&
+                (activeFilter === 'all' || l.category === activeFilter)
+            );
+            filtered.forEach((link, i) => {
+                const globalIndex = links.indexOf(link);
+                displayLink(link, globalIndex);
+            });
+        }
+    </script>
+</body>
+</html>
