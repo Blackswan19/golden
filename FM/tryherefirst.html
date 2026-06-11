@@ -16,14 +16,6 @@
             user-select: none;overflow: hidden;
             scrollbar-width: none;
             scrollbar-color: gray transparent;
-        }* {
-            -webkit-tap-highlight-color: transparent;
-        }
-        body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
         }
 
         .header {
@@ -272,273 +264,293 @@
     </div>
 
     <script>
-        const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-        
-        let today = new Date();
-        let currentYear = today.getFullYear();
-document.addEventListener('contextmenu', e => e.preventDefault());
-        let oneTimeNotes = JSON.parse(localStorage.getItem('oneTimeNotes') || '{}');
-        let pinnedNotes  = JSON.parse(localStorage.getItem('pinnedNotes') || '{}');
+    const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    
+    let today = new Date();
+    let currentYear = today.getFullYear();
 
-        let selectedDate = "";
-        let selectedDay = 0;
+    let oneTimeNotes = JSON.parse(localStorage.getItem('oneTimeNotes') || '{}');
+    let pinnedNotes  = JSON.parse(localStorage.getItem('pinnedNotes') || '{}');
 
-        function saveToStorage() {
-            localStorage.setItem('oneTimeNotes', JSON.stringify(oneTimeNotes));
-            localStorage.setItem('pinnedNotes', JSON.stringify(pinnedNotes));
-        }
+    let selectedDate = "";
+    let selectedDay = 0;
 
-        function createMonthElement(year, month) {
-            const section = document.createElement('div');
-            section.className = 'month-section';
+    function saveToStorage() {
+        localStorage.setItem('oneTimeNotes', JSON.stringify(oneTimeNotes));
+        localStorage.setItem('pinnedNotes', JSON.stringify(pinnedNotes));
+    }
 
-            const header = document.createElement('div');
-            header.className = 'month-header';
-            header.textContent = `${months[month]} ${year}`;
-            section.appendChild(header);
-
-            const grid = document.createElement('div');
-            grid.className = 'calendar-grid';
-
-            // Week headers
-            ['S','M','T','W','T','F','S'].forEach(d => {
-                const el = document.createElement('div');
-                el.className = 'day-header';
-                el.textContent = d;
-                grid.appendChild(el);
-            });
-
-            const firstDay = new Date(year, month, 1).getDay();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-            const prevDays = new Date(year, month, 0).getDate();
-
-            let cellCount = 0;
-
-            // Previous month
-            for (let i = 0; i < firstDay; i++) {
-                const el = document.createElement('div');
-                el.className = 'day other-month';
-                el.textContent = prevDays - firstDay + i + 1;
-                grid.appendChild(el);
-                cellCount++;
+    // Migrate old full-date pinned notes to day-based if needed
+    function migratePinnedNotes() {
+        Object.keys(pinnedNotes).forEach(key => {
+            if (key.includes('-')) { // old full date format
+                const day = parseInt(key.split('-')[2]);
+                pinnedNotes[day] = pinnedNotes[key];
+                delete pinnedNotes[key];
             }
-
-            // Current month
-            for (let day = 1; day <= daysInMonth; day++) {
-                const fullDate = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-                
-                const cell = document.createElement('div');
-                cell.className = 'day';
-                cell.dataset.date = fullDate;
-                cell.dataset.day = day;
-
-                if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
-                    cell.classList.add('today');
-                }
-
-                const num = document.createElement('div');
-                num.className = 'day-number';
-                num.textContent = day;
-                cell.appendChild(num);
-
-                if (pinnedNotes[day]) {
-                    cell.classList.add('pinned');
-                    const p = document.createElement('div');
-                    p.className = 'note-preview';
-                    p.textContent = pinnedNotes[day].title;
-                    cell.appendChild(p);
-                }
-
-                if (oneTimeNotes[fullDate]) {
-                    cell.classList.add('goal');
-                    const p = document.createElement('div');
-                    p.className = 'note-preview';
-                    p.textContent = oneTimeNotes[fullDate].substring(0, 15) + "…";
-                    cell.appendChild(p);
-                }
-
-                cell.addEventListener('click', () => handleDayClick(fullDate, day));
-                grid.appendChild(cell);
-                cellCount++;
-            }
-
-            // Next month padding
-            for (let i = 1; i <= 42 - cellCount; i++) {
-                const el = document.createElement('div');
-                el.className = 'day other-month';
-                el.textContent = i;
-                grid.appendChild(el);
-            }
-
-            section.appendChild(grid);
-            return section;
-        }
-
-        function handleDayClick(fullDate, day) {
-            selectedDate = fullDate;
-            selectedDay = day;
-
-            const pinned = pinnedNotes[day];
-            const oneTime = oneTimeNotes[fullDate];
-
-            if (pinned || oneTime) {
-                document.getElementById("viewTitle").textContent = pinned ? pinned.title : "New Note";
-                document.getElementById("viewText").textContent = pinned ? pinned.note : oneTime;
-                document.getElementById("viewModal").style.display = "flex";
-            } else {
-                openNoteModal(fullDate, day);
-            }
-        }
-
-        function openNoteModal(fullDate, day) {
-            selectedDate = fullDate;
-            selectedDay = day;
-
-            document.getElementById("modalDate").textContent = fullDate;
-            const isPinned = !!pinnedNotes[day];
-
-            document.getElementById("pinForever").checked = isPinned;
-            document.getElementById("titleField").style.display = isPinned ? "block" : "none";
-
-            document.getElementById("noteTitle").value = isPinned ? pinnedNotes[day].title : "";
-            document.getElementById("noteText").value = isPinned ? pinnedNotes[day].note : (oneTimeNotes[fullDate] || "");
-
-            document.getElementById("noteModal").style.display = "flex";
-        }
-
-        function saveNote() {
-            const text = document.getElementById("noteText").value.trim();
-            const title = document.getElementById("noteTitle").value.trim();
-            const forever = document.getElementById("pinForever").checked;
-
-            if (!text) {
-                alert("Please write a note");
-                return;
-            }
-
-            if (forever) {
-                if (!title) {
-                    alert("Title is required for pinned notes");
-                    return;
-                }
-                pinnedNotes[selectedDay] = { title, note: text };
-                delete oneTimeNotes[selectedDate];
-            } else {
-                oneTimeNotes[selectedDate] = text;
-                delete pinnedNotes[selectedDay];
-            }
-
-            // Save to localStorage
-            saveToStorage();
-
-            closeModal();
-            refreshCalendar();
-            refreshNotesList();
-        }
-
-        function editNote() {
-            closeModal();
-            openNoteModal(selectedDate, selectedDay);
-        }
-
-        function closeModal() {
-            document.querySelectorAll('.modal').forEach(m => m.style.display = "none");
-        }
-
-        function refreshCalendar() {
-            const container = document.getElementById("calendarContainer");
-            container.innerHTML = "";
-            
-            const startYear = currentYear - 2;
-            for (let y = startYear; y <= currentYear + 1; y++) {
-                for (let m = 0; m < 12; m++) {
-                    container.appendChild(createMonthElement(y, m));
-                }
-            }
-        }
-
-        function toggleNotesList() {
-            document.getElementById("notesListModal").style.display = "block";
-            refreshNotesList();
-        }
-
-        function closeNotesList() {
-            document.getElementById("notesListModal").style.display = "none";
-        }
-
-        function refreshNotesList() {
-            const container = document.getElementById("notesList");
-            container.innerHTML = "";
-
-            let notesArray = [];
-
-            // Pinned
-            Object.keys(pinnedNotes).forEach(day => {
-                notesArray.push({
-                    type: "pinned",
-                    dateStr: `Every ${day}th`,
-                    title: pinnedNotes[day].title,
-                    text: pinnedNotes[day].note,
-                    day: parseInt(day)
-                });
-            });
-
-            // One-time
-            Object.keys(oneTimeNotes).sort().forEach(date => {
-                notesArray.push({
-                    type: "onetime",
-                    dateStr: date,
-                    title: "Note",
-                    text: oneTimeNotes[date]
-                });
-            });
-
-            if (notesArray.length === 0) {
-                container.innerHTML = `<div class="empty-state">No notes yet.<br>Tap any date on the calendar.</div>`;
-                return;
-            }
-
-            notesArray.forEach(note => {
-                const div = document.createElement('div');
-                div.className = 'note-item';
-                div.innerHTML = `
-                    <div style="color:#0049ff; font-size:15px;">${note.dateStr}</div>
-                    ${note.type === "pinned" ? `<div style="font-weight:600; margin:6px 0;">⭐ ${note.title}</div>` : ''}
-                    <div style="font-size:15px; line-height:1.4;">${note.text}</div>
-                `;
-                div.onclick = () => {
-                    closeNotesList();
-                    if (note.type === "pinned") {
-                        selectedDay = note.day;
-                        document.getElementById("viewTitle").textContent = note.title;
-                        document.getElementById("viewText").textContent = note.text;
-                        document.getElementById("viewModal").style.display = "flex";
-                    } else {
-                        selectedDate = note.dateStr;
-                        selectedDay = parseInt(note.dateStr.split('-')[2]);
-                        openNoteModal(selectedDate, selectedDay);
-                    }
-                };
-                container.appendChild(div);
-            });
-        }
-
-        window.onclick = e => {
-            if (e.target.id === "notesListModal") closeNotesList();
-            if (e.target.classList.contains('modal')) closeModal();
-        };
-
-        // Initialize
-        document.addEventListener("DOMContentLoaded", () => {
-            refreshCalendar();
-            
-            setTimeout(() => {
-                const current = Array.from(document.querySelectorAll('.month-header'))
-                    .find(h => h.textContent.includes(months[today.getMonth()]) && 
-                               h.textContent.includes(today.getFullYear().toString()));
-                if (current) current.scrollIntoView({ behavior: "smooth" });
-            }, 1);
         });
-    </script>
+        saveToStorage();
+    }
+
+    function createMonthElement(year, month) {
+        const section = document.createElement('div');
+        section.className = 'month-section';
+
+        const header = document.createElement('div');
+        header.className = 'month-header';
+        header.textContent = `${months[month]} ${year}`;
+        section.appendChild(header);
+
+        const grid = document.createElement('div');
+        grid.className = 'calendar-grid';
+
+        ['S','M','T','W','T','F','S'].forEach(d => {
+            const el = document.createElement('div');
+            el.className = 'day-header';
+            el.textContent = d;
+            grid.appendChild(el);
+        });
+
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const prevDays = new Date(year, month, 0).getDate();
+
+        let cellCount = 0;
+
+        // Previous month
+        for (let i = 0; i < firstDay; i++) {
+            const el = document.createElement('div');
+            el.className = 'day other-month';
+            el.textContent = prevDays - firstDay + i + 1;
+            grid.appendChild(el);
+            cellCount++;
+        }
+
+        // Current month days
+        for (let day = 1; day <= daysInMonth; day++) {
+            const fullDate = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+            
+            const cell = document.createElement('div');
+            cell.className = 'day';
+            cell.dataset.date = fullDate;
+            cell.dataset.day = day;
+
+            if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                cell.classList.add('today');
+            }
+
+            const num = document.createElement('div');
+            num.className = 'day-number';
+            num.textContent = day;
+            cell.appendChild(num);
+
+            // Check for pinned note (recurring)
+            const pinned = pinnedNotes[day];
+            if (pinned) {
+                cell.classList.add('pinned');
+                const p = document.createElement('div');
+                p.className = 'note-preview';
+                p.textContent = pinned.title ? pinned.title : pinned.note.substring(0, 18) + "…";
+                cell.appendChild(p);
+            }
+
+            // One-time note
+            if (oneTimeNotes[fullDate]) {
+                cell.classList.add('goal');
+                const p = document.createElement('div');
+                p.className = 'note-preview';
+                p.textContent = oneTimeNotes[fullDate].substring(0, 15) + "…";
+                cell.appendChild(p);
+            }
+
+            cell.addEventListener('click', () => handleDayClick(fullDate, day));
+            grid.appendChild(cell);
+            cellCount++;
+        }
+
+        // Next month padding
+        for (let i = 1; i <= 42 - cellCount; i++) {
+            const el = document.createElement('div');
+            el.className = 'day other-month';
+            el.textContent = i;
+            grid.appendChild(el);
+        }
+
+        section.appendChild(grid);
+        return section;
+    }
+
+    function handleDayClick(fullDate, day) {
+        selectedDate = fullDate;
+        selectedDay = day;
+
+        const pinned = pinnedNotes[day];
+        const oneTime = oneTimeNotes[fullDate];
+
+        if (pinned || oneTime) {
+            document.getElementById("viewTitle").textContent = pinned ? (pinned.title || "Pinned Note") : "New Note";
+            document.getElementById("viewText").textContent = pinned ? pinned.note : oneTime;
+            document.getElementById("viewModal").style.display = "flex";
+        } else {
+            openNoteModal(fullDate, day);
+        }
+    }
+
+    function openNoteModal(fullDate, day) {
+        selectedDate = fullDate;
+        selectedDay = day;
+
+        document.getElementById("modalDate").textContent = fullDate;
+        const isPinned = !!pinnedNotes[day];
+
+        document.getElementById("pinForever").checked = isPinned;
+        document.getElementById("titleField").style.display = isPinned ? "block" : "none";
+
+        document.getElementById("noteTitle").value = isPinned ? (pinnedNotes[day].title || "") : "";
+        document.getElementById("noteText").value = isPinned ? pinnedNotes[day].note : (oneTimeNotes[fullDate] || "");
+
+        document.getElementById("noteModal").style.display = "flex";
+    }
+
+    function saveNote() {
+        const text = document.getElementById("noteText").value.trim();
+        const title = document.getElementById("noteTitle").value.trim();
+        const forever = document.getElementById("pinForever").checked;
+
+        if (!text) {
+            alert("Please write a note");
+            return;
+        }
+
+        if (forever) {
+            pinnedNotes[selectedDay] = { 
+                title: title || "", 
+                note: text 
+            };
+            delete oneTimeNotes[selectedDate];
+        } else {
+            oneTimeNotes[selectedDate] = text;
+            delete pinnedNotes[selectedDay];
+        }
+
+        saveToStorage();
+        closeModal();
+        refreshCalendar();
+        refreshNotesList();
+    }
+
+    function editNote() {
+        closeModal();
+        openNoteModal(selectedDate, selectedDay);
+    }
+
+    function closeModal() {
+        document.querySelectorAll('.modal').forEach(m => m.style.display = "none");
+    }
+
+    function refreshCalendar() {
+        const container = document.getElementById("calendarContainer");
+        container.innerHTML = "";
+        
+        const startYear = currentYear - 2;
+        for (let y = startYear; y <= currentYear + 1; y++) {
+            for (let m = 0; m < 12; m++) {
+                container.appendChild(createMonthElement(y, m));
+            }
+        }
+    }
+
+    function toggleNotesList() {
+        document.getElementById("notesListModal").style.display = "block";
+        refreshNotesList();
+    }
+
+    function closeNotesList() {
+        document.getElementById("notesListModal").style.display = "none";
+    }
+
+    function refreshNotesList() {
+        const container = document.getElementById("notesList");
+        container.innerHTML = "";
+
+        let notesArray = [];
+
+        // Pinned (recurring)
+        Object.keys(pinnedNotes).forEach(day => {
+            const pinned = pinnedNotes[day];
+            notesArray.push({
+                type: "pinned",
+                dateStr: `Every ${day}${getOrdinal(day)}`,
+                title: pinned.title || "",
+                text: pinned.note,
+                day: parseInt(day)
+            });
+        });
+
+        // One-time
+        Object.keys(oneTimeNotes).sort().forEach(date => {
+            notesArray.push({
+                type: "onetime",
+                dateStr: date,
+                title: "",
+                text: oneTimeNotes[date]
+            });
+        });
+
+        if (notesArray.length === 0) {
+            container.innerHTML = `<div class="empty-state">No notes yet.<br>Tap any date on the calendar.</div>`;
+            return;
+        }
+
+        notesArray.forEach(note => {
+            const div = document.createElement('div');
+            div.className = 'note-item';
+            div.innerHTML = `
+                <div style="color:#0049ff; font-size:15px;">${note.dateStr}</div>
+                ${note.type === "pinned" ? `<div style="font-weight:600; margin:6px 0;">⭐ ${note.title || "Pinned Note"}</div>` : ''}
+                <div style="font-size:15px; line-height:1.4;">${note.text}</div>
+            `;
+            div.onclick = () => {
+                closeNotesList();
+                if (note.type === "pinned") {
+                    selectedDay = note.day;
+                    selectedDate = `${currentYear}-01-${String(note.day).padStart(2,'0')}`; // dummy date for modal
+                    document.getElementById("viewTitle").textContent = note.title || "Pinned Note";
+                    document.getElementById("viewText").textContent = note.text;
+                    document.getElementById("viewModal").style.display = "flex";
+                } else {
+                    selectedDate = note.dateStr;
+                    selectedDay = parseInt(note.dateStr.split('-')[2]);
+                    openNoteModal(selectedDate, selectedDay);
+                }
+            };
+            container.appendChild(div);
+        });
+    }
+
+    function getOrdinal(n) {
+        const s = ["th","st","nd","rd"];
+        const v = n % 100;
+        return s[(v-20)%10] || s[v] || s[0];
+    }
+
+    window.onclick = e => {
+        if (e.target.id === "notesListModal") closeNotesList();
+        if (e.target.classList.contains('modal')) closeModal();
+    };
+
+    // Initialize
+    document.addEventListener("DOMContentLoaded", () => {
+        migratePinnedNotes();   // Fix old data
+        refreshCalendar();
+        
+        setTimeout(() => {
+            const current = Array.from(document.querySelectorAll('.month-header'))
+                .find(h => h.textContent.includes(months[today.getMonth()]) && 
+                           h.textContent.includes(today.getFullYear().toString()));
+            if (current) current.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+    });
+</script>
 </body>
 </html>
