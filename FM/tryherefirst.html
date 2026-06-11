@@ -19,7 +19,7 @@
         :root {
             --bg: #000000;
             --card: #1c1c1e;
-            --accent: #003cff;
+            --accent: #0000ff;
         }
 
         body {
@@ -40,6 +40,7 @@
     width: 100%;
     height: 100vh;
     display: flex;
+    overflow: hidden;
     align-items: center;
     flex-direction: column;
     gap: 10px;
@@ -155,7 +156,7 @@ display: flex;
         .add-category-btn {
             width: 40px;
             height: 40px;
-            padding: 0;
+            padding: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -164,11 +165,11 @@ display: flex;
 
         /* Link List */
         .link-list {
-    background-color: #191919;
-    border-radius: 30px;
-    padding: 5px;
+        background-color: #191919;
+    border-radius: 10px;
+    padding: 3px;
     overflow-y: auto;
-    scrollbar-width: none;
+    scrollbar-width: thin;
     scrollbar-color: gray transparent;
     height: fit-content;
     margin: 10px 0px;
@@ -186,7 +187,7 @@ display: flex;
         }
 
         .table-header {
-padding: 10px 20px;
+padding: 10px;
     font-size: 12px;
     font-weight: 600;
     color: #8e8e93;
@@ -195,24 +196,32 @@ padding: 10px 20px;
     position: sticky;
     top: 0;
     background-color: #000000;
-    border-radius: 999px;
-    display: flex;gap: 20px;
-    justify-content: space-between;
+    border-radius: 8px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
     align-items: center;
+    z-index: 100000000;
         }
 
         .link-item {
-padding: 5px 10px;
-    border-radius: 10px;
-    margin: 10px;
+    padding: 2px 5px;
+    border-radius: 0px;
     transition: all 0.3s ease;
     justify-content: space-between;
     display: flex;
     align-items: center;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
+    opacity: 60%;
         }
-
-        .link-item:hover {
-            background-color: #2c2c2e;
+.title-container a {
+color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 13px;
+}
+        .link-item:hover{
+            opacity: 100%;
+            background-color: rgb(255 255 255 / 35%);
         }
 
         .title-container {
@@ -220,34 +229,30 @@ padding: 5px 10px;
     align-items: center;
     gap: 5px;
         }
-
         .view-title-btn {
-            background: none;
-            border: none;
-            color: #8e8e93;
-            cursor: pointer;
-            padding: 4px;
-            border-radius: 50%;
-            transition: all 0.2s;
+background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.2s;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
         }
 
         .view-title-btn:hover {
-            background-color: #3a3a3c;
+            background-color: #000000;
             color: #fff;
         }
-
-        a {
-            color: #f5f5f7;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15.5px;
-            transition: color 0.2s;
+        .link-item:last-child{
+            border-bottom: 0.5px solid rgba(255, 255, 255, 0);
         }
-
         .link-item div:last-child {
-            color: #8e8e93;
-            font-size: 14px;
-            text-align: right;
+font-size: 10px;
+    text-align: right;
         }
 
         /* Modals */
@@ -269,7 +274,7 @@ padding: 5px 10px;
 padding: 20px;
     border-radius: 40px;
     width: 80%;
-    max-width: 620px;
+    max-width: 450px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -371,7 +376,7 @@ padding: 10px;
         <div class="search-section">
             <h1>BsLinksaver</h1>
             <button class="create-btn" onclick="openCreateModal()">
-                <i class="fa-solid fa-plus"></i> Add Link
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M663.08-289.92h-86.93q-12.77 0-22.38-9.75-9.62-9.75-9.62-23.25 0-13.77 9.25-23.39 9.25-9.61 23.75-9.61h85.93v-85.93q0-13.5 9.75-23.25 9.76-9.75 23.27-9.75 13.52 0 23.25 9.75t9.73 23.25v85.93H815q13.5 0 23.25 9.75 9.75 9.76 9.75 23.27 0 13.52-9.75 23.25T815-289.92h-85.92V-204q0 13.5-9.76 23.25T696.05-171q-13.51 0-23.24-9.75-9.73-9.75-9.73-23.25v-85.92Zm-263.46-1H277.08q-78.68 0-133.88-55.19Q88-401.3 88-479.96t55.2-133.89q55.2-55.23 133.88-55.23h122.54q12.76 0 22.88 10.12 10.12 10.11 10.12 23.27 0 14.15-10.12 23.38-10.12 9.23-22.88 9.23H276.99q-50.68 0-86.84 36.16Q154-530.77 154-480t36.15 86.92q36.16 36.16 86.84 36.16h122.63q12.76 0 22.88 10.11 10.12 10.12 10.12 23.27 0 14.16-10.12 23.39t-22.88 9.23ZM355-448q-13.5 0-23.25-9.76T322-481.03q0-13.51 9.75-23.24Q341.5-514 355-514h212q13.5 0 23.25 9.76t9.75 23.27q0 13.51-9.75 23.24Q580.5-448 567-448H355Zm517-32h-66q0-50.77-36.15-86.92-36.16-36.16-86.83-36.16h-97.64q-12.76 0-22.38-9.25t-9.62-23.75q0-12.77 9.25-22.88 9.25-10.12 23.75-10.12h96.54q78.68 0 133.88 55.2Q872-558.68 872-480Z"/></svg>
             </button>
         </div>
 
@@ -722,7 +727,7 @@ padding: 10px;
             linkItem.innerHTML = `
                 <div class="title-container">
                     <button class="view-title-btn" onclick="openTitleModal('${link.title.replace(/'/g, "\\'")}')"><i class="fa-solid fa-eye"></i></button>
-                    <a href="${link.url}" target="_blank">${truncated} <span style="color:#8e8e93; font-size:13px;">(${link.category})</span></a>
+                    <a href="${link.url}" target="_blank">${truncated} <span style=" font-size:13px;">(${link.category})</span></a>
                 </div>
                 <div>${formatDate(link.dateAdded)}</div>
             `;
