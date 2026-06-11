@@ -78,8 +78,8 @@
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 2px;
-            background: #222;
-            border-radius: 14px;
+            background: #000000;
+            border-radius: 15px;
             overflow: hidden;
         }
 
@@ -92,18 +92,18 @@
         }
 
         .day {
-            background: #1c1c1e;
             aspect-ratio: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            padding: 6px 2px;
-            font-size: 15px;
-            cursor: pointer;
-            transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 6px 2px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #111111;
         }
-        .day:hover { background: #2c2c2e; }
+        .day:hover { background: #313131; }
 
         .day.today .day-number {
             background: #0040ff;
@@ -280,10 +280,9 @@
         localStorage.setItem('pinnedNotes', JSON.stringify(pinnedNotes));
     }
 
-    // Migrate old full-date pinned notes to day-based if needed
     function migratePinnedNotes() {
         Object.keys(pinnedNotes).forEach(key => {
-            if (key.includes('-')) { // old full date format
+            if (key.includes('-')) {
                 const day = parseInt(key.split('-')[2]);
                 pinnedNotes[day] = pinnedNotes[key];
                 delete pinnedNotes[key];
@@ -304,6 +303,7 @@
         const grid = document.createElement('div');
         grid.className = 'calendar-grid';
 
+        // Week headers
         ['S','M','T','W','T','F','S'].forEach(d => {
             const el = document.createElement('div');
             el.className = 'day-header';
@@ -313,20 +313,16 @@
 
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
-        const prevDays = new Date(year, month, 0).getDate();
 
-        let cellCount = 0;
-
-        // Previous month
+        // Empty cells before first day (to keep alignment)
         for (let i = 0; i < firstDay; i++) {
-            const el = document.createElement('div');
-            el.className = 'day other-month';
-            el.textContent = prevDays - firstDay + i + 1;
-            grid.appendChild(el);
-            cellCount++;
+            const empty = document.createElement('div');
+            empty.className = 'day';
+            empty.style.visibility = 'hidden';
+            grid.appendChild(empty);
         }
 
-        // Current month days
+        // Only current month days
         for (let day = 1; day <= daysInMonth; day++) {
             const fullDate = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
             
@@ -344,9 +340,9 @@
             num.textContent = day;
             cell.appendChild(num);
 
-            // Check for pinned note (recurring)
+            // Pinned recurring
             const pinned = pinnedNotes[day];
-            if (pinned) {
+            if (pinned && pinned.note && pinned.note.trim() !== "") {
                 cell.classList.add('pinned');
                 const p = document.createElement('div');
                 p.className = 'note-preview';
@@ -354,8 +350,8 @@
                 cell.appendChild(p);
             }
 
-            // One-time note
-            if (oneTimeNotes[fullDate]) {
+            // One-time
+            if (oneTimeNotes[fullDate] && oneTimeNotes[fullDate].trim() !== "") {
                 cell.classList.add('goal');
                 const p = document.createElement('div');
                 p.className = 'note-preview';
@@ -365,15 +361,6 @@
 
             cell.addEventListener('click', () => handleDayClick(fullDate, day));
             grid.appendChild(cell);
-            cellCount++;
-        }
-
-        // Next month padding
-        for (let i = 1; i <= 42 - cellCount; i++) {
-            const el = document.createElement('div');
-            el.className = 'day other-month';
-            el.textContent = i;
-            grid.appendChild(el);
         }
 
         section.appendChild(grid);
@@ -387,9 +374,12 @@
         const pinned = pinnedNotes[day];
         const oneTime = oneTimeNotes[fullDate];
 
-        if (pinned || oneTime) {
-            document.getElementById("viewTitle").textContent = pinned ? (pinned.title || "Pinned Note") : "New Note";
-            document.getElementById("viewText").textContent = pinned ? pinned.note : oneTime;
+        const hasPinned = pinned && pinned.note && pinned.note.trim() !== "";
+        const hasOneTime = oneTime && oneTime.trim() !== "";
+
+        if (hasPinned || hasOneTime) {
+            document.getElementById("viewTitle").textContent = hasPinned ? (pinned.title || "Pinned Note") : "New Note";
+            document.getElementById("viewText").textContent = hasPinned ? pinned.note : oneTime;
             document.getElementById("viewModal").style.display = "flex";
         } else {
             openNoteModal(fullDate, day);
@@ -401,7 +391,7 @@
         selectedDay = day;
 
         document.getElementById("modalDate").textContent = fullDate;
-        const isPinned = !!pinnedNotes[day];
+        const isPinned = !!(pinnedNotes[day] && pinnedNotes[day].note && pinnedNotes[day].note.trim() !== "");
 
         document.getElementById("pinForever").checked = isPinned;
         document.getElementById("titleField").style.display = isPinned ? "block" : "none";
@@ -413,20 +403,22 @@
     }
 
     function saveNote() {
-        const text = document.getElementById("noteText").value.trim();
+        let text = document.getElementById("noteText").value.trim();
         const title = document.getElementById("noteTitle").value.trim();
         const forever = document.getElementById("pinForever").checked;
 
         if (!text) {
-            alert("Please write a note");
+            if (forever) delete pinnedNotes[selectedDay];
+            else delete oneTimeNotes[selectedDate];
+            saveToStorage();
+            closeModal();
+            refreshCalendar();
+            refreshNotesList();
             return;
         }
 
         if (forever) {
-            pinnedNotes[selectedDay] = { 
-                title: title || "", 
-                note: text 
-            };
+            pinnedNotes[selectedDay] = { title: title || "", note: text };
             delete oneTimeNotes[selectedDate];
         } else {
             oneTimeNotes[selectedDate] = text;
@@ -475,26 +467,29 @@
 
         let notesArray = [];
 
-        // Pinned (recurring)
         Object.keys(pinnedNotes).forEach(day => {
             const pinned = pinnedNotes[day];
-            notesArray.push({
-                type: "pinned",
-                dateStr: `Every ${day}${getOrdinal(day)}`,
-                title: pinned.title || "",
-                text: pinned.note,
-                day: parseInt(day)
-            });
+            if (pinned && pinned.note && pinned.note.trim() !== "") {
+                notesArray.push({
+                    type: "pinned",
+                    dateStr: `Every ${day}${getOrdinal(day)}`,
+                    title: pinned.title || "",
+                    text: pinned.note,
+                    day: parseInt(day)
+                });
+            }
         });
 
-        // One-time
         Object.keys(oneTimeNotes).sort().forEach(date => {
-            notesArray.push({
-                type: "onetime",
-                dateStr: date,
-                title: "",
-                text: oneTimeNotes[date]
-            });
+            const text = oneTimeNotes[date];
+            if (text && text.trim() !== "") {
+                notesArray.push({
+                    type: "onetime",
+                    dateStr: date,
+                    title: "",
+                    text: text
+                });
+            }
         });
 
         if (notesArray.length === 0) {
@@ -514,7 +509,7 @@
                 closeNotesList();
                 if (note.type === "pinned") {
                     selectedDay = note.day;
-                    selectedDate = `${currentYear}-01-${String(note.day).padStart(2,'0')}`; // dummy date for modal
+                    selectedDate = `${currentYear}-01-${String(note.day).padStart(2,'0')}`;
                     document.getElementById("viewTitle").textContent = note.title || "Pinned Note";
                     document.getElementById("viewText").textContent = note.text;
                     document.getElementById("viewModal").style.display = "flex";
@@ -539,9 +534,8 @@
         if (e.target.classList.contains('modal')) closeModal();
     };
 
-    // Initialize
     document.addEventListener("DOMContentLoaded", () => {
-        migratePinnedNotes();   // Fix old data
+        migratePinnedNotes();
         refreshCalendar();
         
         setTimeout(() => {
