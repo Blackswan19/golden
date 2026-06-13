@@ -219,10 +219,12 @@
     font-size: 18px;
     outline: none;
     padding: 10px;
-    color: #ffffffc9;height: 45px;
+    color: #ffffffc9;
+    height: 45px;
     transition: background 0.4s ease;
     box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
     border: 0.5px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
     }
 
     #noteInput::placeholder { color: #555; }
@@ -230,16 +232,19 @@
     .btn {
           width: 45px;
     height: 45px;
-
-      border-radius: 50%;
-      background: var(--accent);
-      border: none;
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      transition: all 0.2s;
+    border-radius: 50%;
+    background: var(--accent);
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    display: grid;
+    place-items: center;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     }
 .btn svg{
       width: 30px;
