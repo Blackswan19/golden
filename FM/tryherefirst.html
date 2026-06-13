@@ -1,1 +1,756 @@
-no test...
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BsNote</title>
+  <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/originals/22/fb/32/22fb32654195b989444117ae2f1a479b.gif" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Orbitron:wght@400..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Strait&display=swap');
+
+    * {
+      color: rgb(219, 219, 219);
+      font-family: "Red Hat Display", sans-serif;
+    }
+
+    :root {
+      --bg: #000000;
+      --text: #e8e8e8;
+      --text-dim: #777777;
+      --accent: #002aff;
+      --accent-dim: #0040ff;
+      --line: rgba(40,40,40,0.9);
+      --star: #ffcc00;
+    }
+
+    * {
+      -webkit-tap-highlight-color: transparent;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      color: var(--text);
+      letter-spacing: 0.3px;
+      user-select: none;
+    }
+.BsTasks {
+       position: absolute;
+    right: 0;
+    top: 0;
+    background: #ffffff2e;
+    padding: 6px 10px;
+    z-index: 10000000;
+    border-radius: 0 0 0 15px;
+    font-size: 14px;
+}
+    html, body { 
+      height: 100%; 
+      background: var(--bg); 
+      overflow: hidden; 
+    }
+    body { display: flex;
+    flex-direction: column;
+    align-items: center; }
+
+    header {
+     font-size: 15px;
+    font-weight: 500;
+    color: white;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 40px 0 0 0;
+    }
+
+    .folders-container {
+         background: var(--bg);
+    flex-shrink: 0;
+    max-width: 650px;
+    width: 100%;
+    }
+
+    .folders {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .folders::-webkit-scrollbar { display: none; }
+
+    .add-folder-fixed {
+      flex-shrink: 0;
+      padding: 10px 16px;
+      background: linear-gradient(269deg, #002aff, #000000);
+      color: #ffffff;
+      border-radius: 0px 100px 100px 0px;
+      font-size: 15px;
+      cursor: pointer;
+      white-space: nowrap;
+      position: sticky;
+      left: -20px;
+      border: none;
+      backdrop-filter: blur(11px);
+      filter: drop-shadow(10px 0px 5px black);
+    }
+
+    .folder-btn {
+      flex-shrink: 0;
+    padding: 7px 9px;
+    border-radius: 999px;
+    background: #1a1a1a;
+    border: none;
+    color: var(--text-dim);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+    white-space: nowrap;
+    }
+
+    .folder-btn.active,
+    .folder-btn:hover {
+      border-color: #ffffff00;
+      color: white;
+      background: var(--accent);
+    }
+
+    .notes-container {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 24px 5px;
+    }
+
+    .note {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      position: relative;
+      word-break: break-word;
+      padding: 12px 20px 12px 30px;
+      border-radius: 25px;
+      background: rgb(255 255 255 / 8%);
+      transition: background 0.2s;width: 100%;
+    max-width: 650px;
+    }
+
+    .note:hover { background: rgba(255, 255, 255, 0.151); }
+
+    .note:last-child { margin-bottom: 5px; }
+
+    .note .star {
+      position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 25px;
+    cursor: pointer;
+    color: #ffffff91;
+    transition: color 0.2s;
+    background: #ffffff26;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    backdrop-filter: blur(5px);
+    }
+.note div {
+   padding-right: 30px;
+    font-size: 18px;
+}
+    .note.important .star {
+      color: #ffffff;
+      background: #002aff;
+    }
+
+    .note img {
+      max-width: 50%;
+      border-radius: 15px;
+      margin: 0 0 0 -18px;
+      display: block;
+      cursor: pointer;
+      opacity: 60%;
+    }
+
+    .empty-state {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dim);
+      font-size: 17px;
+      text-align: center;
+      padding: 0 40px;
+    }
+
+    .input-area {
+     padding: 0px 2px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 20000000;
+    flex-shrink: 0;
+    justify-content: space-between;
+    position: relative;
+    bottom: 0;
+    outline: none;
+    width: 100%;
+    max-width: 650px;
+    background: black;
+    padding: 5px 10px 15px 10px;
+    }
+
+    #noteInput {
+    flex: 1;
+    background: rgb(26 26 26);
+    border-radius: 9999px;
+    font-size: 18px;
+    outline: none;
+    padding: 10px;
+    color: #ffffffc9;height: 45px;
+    transition: background 0.4s ease;
+    box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    }
+
+    #noteInput::placeholder { color: #555; }
+
+    .btn {
+          width: 45px;
+    height: 45px;
+
+      border-radius: 50%;
+      background: var(--accent);
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all 0.2s;
+    }
+.btn svg{
+      width: 30px;
+    height: 30px;
+    fill: white;
+}
+    .btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .attach-label {
+      font-size: 24px;
+      color: var(--text-dim);
+      cursor: pointer;
+      padding: 12px;
+    }
+
+    /* ────────────── Context Menus ────────────── */
+    #noteContextMenu, #folderContextMenu {
+      position: fixed;
+      background: rgb(255 255 255 / 17%);
+      border-radius: 25px;
+      padding: 6px 8px;
+      min-width: 120px;
+      z-index: 100;
+      backdrop-filter: blur(5px);
+      list-style: none;
+      text-align: center;
+    }a {
+    text-decoration: none;
+}
+
+    #noteContextMenu li, #folderContextMenu li {
+      padding: 7px 12px;
+      font-size: 15px;
+      cursor: pointer;
+      border-radius: 999px;
+    }
+
+    #noteContextMenu li:hover, #folderContextMenu li:hover {
+      background: rgb(255 255 255 / 22%);
+    }
+
+    #popup {
+      position: fixed;
+      inset: 0;
+      backdrop-filter: blur(5px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      cursor: pointer;
+    }
+
+    .popup-box {
+      background: #282828;
+      border-radius: 40px;
+      padding: 24px;
+      width: 90%;
+      max-width: 300px;
+      text-align: center;
+      position: relative;
+    }
+
+    .popup-image {
+      max-width: 100%;
+      max-height: 65vh;
+      border-radius: 16px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 16px auto;
+    }
+
+    .popup-msg {
+      font-size: 17px;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .popup-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .popup-btn {
+      padding: 8px 24px;
+      border-radius: 999px;
+      border: none;
+      font-size: 15px;
+      cursor: pointer;
+      min-width: 100px;
+    }
+
+    .cancel  { background: #4c4c4c; color: #ffffffb5; }
+    .danger  { background: #ff0d00; color: white; }
+    .confirm { background: var(--accent); color: white; }
+    .download-btn {
+      background: var(--accent);
+      color: white;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-thumb { background: #222; border-radius: 4px; }
+
+    @media (min-width: 768px) {
+      header { font-size: 40px; padding-top: 60px; }
+    }
+  </style>
+</head>
+<body>
+<div class="BsTasks">
+  <a href="https://blackswan19.github.io/Educate/bstasks">BsTasks</a>
+</div>
+  <header id="header">BsNote</header>
+
+  <div class="folders-container">
+    <div class="folders" id="folders"></div>
+  </div>
+
+  <div class="notes-container" id="notes">
+    <div class="empty-state">Select a folder to view or add notes</div>
+  </div>
+
+  <div class="input-area" id="inputArea">
+    <label  class="btn" class="attach-label" for="imageInput">
+      <svg id="clipIcon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M474.21-100q-97.44 0-165.44-68.4-68-68.39-68-165.83v-359.62q0-69.23 48.08-117.69Q336.92-860 406.15-860q69.23 0 117.31 48.46t48.08 117.69V-430q0 12.75-8.63 21.38-8.63 8.62-21.38 8.62-12.76 0-21.38-8.62-8.61-8.63-8.61-21.38v-264.23q-.62-44.31-30.85-75.04Q450.46-800 406.19-800q-44.28 0-74.85 30.92-30.57 30.93-30.57 75.23v359.62q-.62 72.54 50.15 123.38Q401.69-160 474.23-160q17 0 32.77-3.5 15.77-3.5 30.15-8.88 11.77-4.47 23.31.3t16 16.54q4.46 11.77-.5 23.31t-16.73 16q-19.85 8-41.19 12.11-21.35 4.12-43.83 4.12Zm181.33-48.63q-8.62-8.62-8.62-21.37v-82.31h-82.3q-12.75 0-21.38-8.63-8.62-8.63-8.62-21.38 0-12.76 8.62-21.37 8.63-8.62 21.38-8.62h82.3v-82.3q0-12.75 8.63-21.38 8.63-8.62 21.39-8.62 12.75 0 21.37 8.62 8.61 8.63 8.61 21.38v82.3h82.31q12.75 0 21.37 8.63 8.63 8.63 8.63 21.39 0 12.75-8.63 21.37-8.62 8.61-21.37 8.61h-82.31V-170q0 12.75-8.63 21.37-8.63 8.63-21.38 8.63-12.76 0-21.37-8.63Zm-270.77-142.3q-8.61-8.63-8.61-21.38v-362.3q0-12.75 8.62-21.38 8.63-8.62 21.39-8.62 12.75 0 21.37 8.62 8.61 8.63 8.61 21.38v362.3q0 12.75-8.63 21.38-8.62 8.62-21.38 8.62-12.75 0-21.37-8.62Zm270.77-230q-8.62-8.63-8.62-21.38v-132.3q0-12.75 8.63-21.38 8.63-8.62 21.39-8.62 12.75 0 21.37 8.62 8.61 8.63 8.61 21.38v132.3q0 12.75-8.63 21.38-8.63 8.62-21.38 8.62-12.76 0-21.37-8.62Z"/></svg>
+    </label>
+    <input type="file" id="imageInput" accept="image/*" style="display:none" />
+    
+    <input type="text" id="noteInput" placeholder="Enter note here…" disabled />
+    
+    <button class="btn" id="sendBtn" disabled>
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m382-339.38 345.54-345.54q8.92-8.93 20.88-9.12 11.96-.19 21.27 9.12 9.31 9.31 9.31 21.38 0 12.08-9.31 21.39l-362.38 363q-10.85 10.84-25.31 10.84-14.46 0-25.31-10.84l-167-167q-8.92-8.93-8.8-21.2.11-12.26 9.42-21.57t21.38-9.31q12.08 0 21.39 9.31L382-339.38Z"/></svg>
+    </button>
+  </div>
+
+  <ul id="noteContextMenu" style="display:none">
+    <li id="editNote">Edit</li>
+    <li id="copyNote">Copy</li>
+    <li id="deleteNote">Delete</li>
+  </ul>
+
+  <ul id="folderContextMenu" style="display:none">
+    <li id="deleteFolder">Delete folder</li>
+  </ul>
+
+  <div id="popup">
+    <div class="popup-box">
+      <p class="popup-msg" id="popupMsg"></p>
+      <div id="popupExtra"></div>
+      <div class="popup-buttons" id="popupButtons"></div>
+    </div>
+  </div>
+
+<script>
+const folders = JSON.parse(localStorage.getItem('bsnote_minimal_v2')) || {};
+let current = null;
+let ctxNote = null;    
+let ctxFolder = null;   
+// document.addEventListener('contextmenu', e => e.preventDefault());
+
+const foldersEl    = document.getElementById('folders');
+const notesEl      = document.getElementById('notes');
+const headerEl     = document.getElementById('header');
+const input        = document.getElementById('noteInput');
+const sendBtn      = document.getElementById('sendBtn');
+const popup        = document.getElementById('popup');
+const popupMsg     = document.getElementById('popupMsg');
+const popupExtra   = document.getElementById('popupExtra');
+const popupButtons = document.getElementById('popupButtons');
+
+function save() {
+  localStorage.setItem('bsnote_minimal_v2', JSON.stringify(folders));
+}
+
+function closePopup() {
+  popup.style.display = 'none';
+  popupExtra.innerHTML = '';
+  popupButtons.innerHTML = '';
+}
+
+function showPopup(message = '', extraHTML = '', buttons = []) {
+  popupMsg.textContent = message;
+  popupExtra.innerHTML = extraHTML;
+  popupButtons.innerHTML = '';
+  buttons.forEach(b => {
+    const btn = document.createElement('button');
+    btn.className = `popup-btn ${b.class || 'confirm'}`;
+    btn.textContent = b.text;
+    btn.onclick = () => { b.action(); closePopup(); };
+    popupButtons.appendChild(btn);
+  });
+  popup.style.display = 'flex';
+}
+
+function showImagePopup(src) {
+  const filename = 'bsnote-image-' + Date.now() + '.png';
+  const extra = `<img src="${src}" class="popup-image" alt="Note image">`;
+  const buttons = [
+    { text: 'Download', class: 'download-btn', action: () => {
+      const link = document.createElement('a');
+      link.href = src;
+      link.download = filename;
+      link.click();
+    }},
+    { text: 'Close', class: 'cancel', action: closePopup }
+  ];
+  showPopup('', extra, buttons);
+}
+
+function getImportantNotes() {
+  const important = [];
+  Object.entries(folders).forEach(([folderName, notes]) => {
+    notes.forEach((note, idx) => {
+      if (note.important) important.push({ folder: folderName, index: idx, note });
+    });
+  });
+  return important;
+}
+
+function renderFolders() {
+  foldersEl.innerHTML = '';
+
+  const addBtn = document.createElement('button');
+  addBtn.className = 'add-folder-fixed';
+  addBtn.innerHTML = '<i class="fa-solid fa-plus"></i>';
+  addBtn.onclick = addFolder;
+  foldersEl.appendChild(addBtn);
+
+  const impBtn = document.createElement('button');
+  impBtn.className = `folder-btn ${current === 'important' ? 'active' : ''}`;
+  impBtn.innerHTML = '<i class="fas fa-star"></i> Important';
+  impBtn.onclick = () => select('important');
+  foldersEl.appendChild(impBtn);
+
+  Object.keys(folders).sort().forEach(name => {
+    const b = document.createElement('button');
+    b.className = `folder-btn ${name === current ? 'active' : ''}`;
+    b.textContent = name;
+    b.dataset.folder = name;
+
+    b.onclick = () => select(name);
+
+    let pressTimer;
+    b.onpointerdown = () => {
+      pressTimer = setTimeout(() => {
+        ctxFolder = name;
+        showFolderContext({ pageX: window.innerWidth/2, pageY: window.innerHeight/2 });
+      }, 600);
+    };
+    b.onpointerup = () => clearTimeout(pressTimer);
+    b.onpointercancel = () => clearTimeout(pressTimer);
+    b.onpointerleave = () => clearTimeout(pressTimer);
+
+    b.oncontextmenu = e => {
+      e.preventDefault();
+      ctxFolder = name;
+      showFolderContext(e);
+    };
+
+    foldersEl.appendChild(b);
+  });
+}
+
+function select(name) {
+  current = name;
+  headerEl.textContent = name === 'important' ? 'Important Notes' : (name || 'BsNote');
+
+  const canWrite = name && name !== 'important' && folders[name] !== undefined;
+  input.disabled = sendBtn.disabled = !canWrite;
+
+  renderFolders();
+
+  if (name === 'important') {
+    renderImportantNotes();
+  } else if (name && folders[name]) {
+    renderNotes(name);
+  } else {
+    notesEl.innerHTML = '<div class="empty-state">Welcome to BsNote</div>';
+  }
+}
+
+function renderNotes(folderName) {
+  notesEl.innerHTML = '';
+  const notes = folders[folderName] || [];
+
+  if (notes.length === 0) {
+    notesEl.innerHTML = '<div class="empty-state">This section is empty<br>Start typing to add notes</div>';
+    return;
+  }
+
+  notes.forEach((note, i) => createNoteElement(note, i, folderName));
+}
+
+function renderImportantNotes() {
+  notesEl.innerHTML = '';
+  const important = getImportantNotes();
+
+  if (important.length === 0) {
+    notesEl.innerHTML = '<div class="empty-state">No important notes<br>Click ★ to pin notes</div>';
+    return;
+  }
+
+  important.forEach(({folder, index, note}) => {
+    const el = createNoteElement(note, index, folder, true);
+    const badge = document.createElement('div');
+    badge.style.cssText = 'font-size:11px; color:#888; margin-top:6px; opacity:0.7;';
+    badge.textContent = `from ${folder}`;
+    el.appendChild(badge);
+  });
+}
+
+function createNoteElement(note, index, folderName, isImportantView = false) {
+  const div = document.createElement('div');
+  div.className = `note ${note.important ? 'important' : ''}`;
+  div.dataset.folder = folderName;
+  div.dataset.index = index;
+
+  const star = document.createElement('span');
+  star.className = 'star';
+  star.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-269 314-169q-11 7-23 6t-21-8q-9-7-14-17.5t-2-23.5l44-189-147-127q-10-9-12.5-20.5T140-571q4-11 12-18t22-9l194-17 75-178q5-12 15.5-18t21.5-6q11 0 21.5 6t15.5 18l75 178 194 17q14 2 22 9t12 18q4 11 1.5 22.5T809-528L662-401l44 189q3 13-2 23.5T690-171q-9 7-21 8t-23-6L480-269Z"/></svg>';
+  star.onclick = e => {
+    e.stopPropagation();
+    toggleImportant(folderName, index);
+  };
+  div.appendChild(star);
+
+  if (note.type === 'image') {
+    const img = document.createElement('img');
+    img.src = note.content;
+    img.onclick = () => showImagePopup(note.content);
+    div.appendChild(img);
+  } else {
+    const textDiv = document.createElement('div');
+    textDiv.textContent = note.content;
+    div.appendChild(textDiv);
+  }
+
+  // Note context menu
+  let pressTimer;
+  div.onpointerdown = () => {
+    pressTimer = setTimeout(() => {
+      ctxNote = { folder: folderName, index };
+      showNoteContext({ pageX: window.innerWidth/2, pageY: window.innerHeight/2 });
+    }, 500);
+  };
+  div.onpointerup = div.onpointercancel = div.onpointerleave = () => clearTimeout(pressTimer);
+
+  div.oncontextmenu = e => {
+    e.preventDefault();
+    ctxNote = { folder: folderName, index };
+    showNoteContext(e);
+  };
+
+  notesEl.appendChild(div);
+  return div;
+}
+
+function toggleImportant(folderName, index) {
+  if (!folders[folderName]?.[index]) return;
+  folders[folderName][index].important = !folders[folderName][index].important;
+  save();
+  if (current === 'important') renderImportantNotes();
+  else if (current === folderName) renderNotes(folderName);
+}
+
+function addFolder() {
+  showPopup("Create folder", `
+    <input type="text" id="folderNameInput" placeholder="Folder name..." style="outline: none;width:95%;padding:10px;background:#4c4c4c;border:none;border-radius:30px;font-size:16px;color:white;text-align:center;">
+  `, [
+    { text: 'Cancel', class: 'cancel', action: closePopup },
+    { text: 'Create', class: 'confirm', action: () => {
+      const name = document.getElementById('folderNameInput').value.trim();
+      if (!name) return;
+      if (folders[name] || name.toLowerCase() === 'important') {
+        alert("Folder name already exists or is not allowed.");
+        return;
+      }
+      folders[name] = [];
+      save();
+      renderFolders();
+      select(name);
+    }}
+  ]);
+}
+
+function deleteFolder(folderName) {
+  showPopup(`Delete folder "${folderName}"?`, 
+    folders[folderName]?.length > 0 
+      ? '<p style="color:#ff9800;">This folder contains notes!<br>They will be permanently deleted.</p>'
+      : '',
+    [
+      { text: 'Cancel', class: 'cancel', action: closePopup },
+      { text: 'Delete', class: 'danger', action: () => {
+        delete folders[folderName];
+        save();
+        if (current === folderName) select(null);
+        else renderFolders();
+      }}
+    ]
+  );
+}
+
+function addNote() {
+  const txt = input.value.trim();
+  if (!txt || !current || current === 'important') return;
+  folders[current].push({ type: 'text', content: txt, important: false });
+  input.value = '';
+  save();
+  renderNotes(current);
+}
+
+function attach(e) {
+  const file = e.target.files[0];
+  if (!file || !current || current === 'important') return;
+  const r = new FileReader();
+  r.onload = ev => {
+    folders[current].push({ type: 'image', content: ev.target.result, important: false });
+    save();
+    renderNotes(current);
+  };
+  r.readAsDataURL(file);
+}
+
+function showNoteContext(e) {
+  const m = document.getElementById('noteContextMenu');
+  m.style.left = Math.min(e.pageX, window.innerWidth - 160) + 'px';
+  m.style.top  = Math.min(e.pageY, window.innerHeight - 140) + 'px';
+  m.style.display = 'block';
+}
+
+function showFolderContext(e) {
+  const m = document.getElementById('folderContextMenu');
+  m.style.left = Math.min(e.pageX, window.innerWidth - 180) + 'px';
+  m.style.top  = Math.min(e.pageY, window.innerHeight - 100) + 'px';
+  m.style.display = 'block';
+}
+
+function hideAllContext() {
+  document.getElementById('noteContextMenu').style.display = 'none';
+  document.getElementById('folderContextMenu').style.display = 'none';
+}
+document.getElementById('editNote').onclick = () => {
+  hideAllContext();
+  if (!ctxNote) return;
+  const {folder, index} = ctxNote;
+  const note = folders[folder]?.[index];
+  if (!note || note.type === 'image') return alert("Can't edit images");
+
+  showPopup("Edit note", `
+    <textarea id="editInput" style="width:100%;min-height:140px;padding:14px;background:#1a1a1a;border:1px solid #333;border-radius:10px;font-size:17px;color:white;resize:vertical;">${note.content}</textarea>
+  `, [
+    { text: 'Cancel', class: 'cancel', action: closePopup },
+    { text: 'Save', class: 'confirm', action: () => {
+      const newText = document.getElementById('editInput').value.trim();
+      if (newText) {
+        note.content = newText;
+        save();
+        if (current === 'important') renderImportantNotes();
+        else if (current === folder) renderNotes(folder);
+      }
+    }}
+  ]);
+};
+
+document.getElementById('deleteNote').onclick = () => {
+  hideAllContext();
+  if (!ctxNote) return;
+  showPopup("Delete this note permanently?", '', [
+    { text: 'Cancel', class: 'cancel', action: closePopup },
+    { text: 'Delete', class: 'danger', action: () => {
+      const {folder, index} = ctxNote;
+      if (folders[folder]) {
+        folders[folder].splice(index, 1);
+        save();
+        if (current === 'important') renderImportantNotes();
+        else if (current === folder) renderNotes(folder);
+      }
+    }}
+  ]);
+};
+
+document.getElementById('copyNote').onclick = () => {
+  hideAllContext();
+  if (!ctxNote) return;
+  const note = folders[ctxNote.folder]?.[ctxNote.index];
+  if (!note || note.type === 'image') return alert("Can't copy image");
+  navigator.clipboard.writeText(note.content)
+    .then(() => alert("Copied!"))
+    .catch(() => alert("Copy failed"));
+};
+
+document.getElementById('deleteFolder').onclick = () => {
+  hideAllContext();
+  if (!ctxFolder) return;
+  deleteFolder(ctxFolder);
+};
+sendBtn.onclick = addNote;
+input.onkeypress = e => { if (e.key === 'Enter') { e.preventDefault(); addNote(); } };
+document.getElementById('imageInput').onchange = attach;
+
+document.body.onclick = e => {
+  if (!e.target.closest('#noteContextMenu') && 
+      !e.target.closest('#folderContextMenu') && 
+      !e.target.closest('.popup-box')) {
+    hideAllContext();
+  }
+};
+
+popup.onclick = e => { if (e.target === popup) closePopup(); };
+
+renderFolders();
+select(null);
+</script>
+</body>
+</html>
