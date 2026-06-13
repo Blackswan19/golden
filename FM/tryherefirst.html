@@ -8,13 +8,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Orbitron:wght@400..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Strait&display=swap');
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-    * {
-      color: rgb(219, 219, 219);
-      font-family: "Red Hat Display", sans-serif;
-    }
-
+* {
+	-webkit-tap-highlight-color: transparent;
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins', sans-serif;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.648) transparent;
+}
     :root {
       --bg: #000000;
       --text: #e8e8e8;
@@ -54,12 +57,14 @@
     align-items: center; }
 
     header {
-     font-size: 15px;
+     font-size: 18px;
     font-weight: 500;
     color: white;
     text-overflow: ellipsis;
     white-space: nowrap;
-    padding: 40px 0 0 0;
+    padding: 40px 20px 0px 20px;
+    width: 100%;
+    text-align: justify;
     }
 
     .folders-container {
@@ -105,7 +110,7 @@
     border: none;
     color: var(--text-dim);
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 400;
     cursor: pointer;
     transition: all 0.18s;
     white-space: nowrap;
@@ -163,6 +168,7 @@
 .note div {
    padding-right: 30px;
     font-size: 18px;
+        color: #ffffff7a;
 }
     .note.important .star {
       color: #ffffff;
