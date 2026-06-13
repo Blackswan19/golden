@@ -267,15 +267,15 @@
 
     /* ────────────── Context Menus ────────────── */
     #noteContextMenu, #folderContextMenu {
-      position: fixed;
-      background: rgb(255 255 255 / 17%);
-      border-radius: 25px;
-      padding: 6px 8px;
-      min-width: 120px;
-      z-index: 100;
-      backdrop-filter: blur(5px);
-      list-style: none;
-      text-align: center;
+     position: fixed;
+    background: rgb(46 46 46);
+    border-radius: 25px;
+    padding: 6px 8px;
+    min-width: 120px;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+    list-style: none;
+    text-align: center;
     }a {
     text-decoration: none;
 }
@@ -302,8 +302,8 @@
     }
 
     .popup-box {
-        background: #1c1c1e;
-    border-radius: 35px;
+       background: #1c1c1e;
+    border-radius: 30px;
     padding: 15px;
     width: 90%;
     max-width: 300px;
@@ -336,7 +336,7 @@
 
     .popup-btn {
           padding: 10px;
-    border-radius: 999px;
+    border-radius: 14px;
     border: none;
     width: 100%;
     font-size: 15px;
@@ -620,12 +620,12 @@ function toggleImportant(folderName, index) {
 
 function addFolder() {
   showPopup("Create Section", `
-    <input type="text" id="folderNameInput" placeholder="Enter here..." style="    outline: none;
+    <input type="text" id="folderNameInput" placeholder="Enter here..." style=" outline: none;
     width: 100%;
     padding: 10px;
-    background: #4c4c4c;
+    background: white;
     border: none;
-    border-radius: 30px;
+    border-radius: 10px;
     font-size: 16px;
     color: white;
     text-align: center;">
