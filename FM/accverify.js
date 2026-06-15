@@ -528,13 +528,13 @@ function displayLoanDetails(loan, index) {
     justify-content: center;
     align-items: center;
     margin-top: 0px;
-    font-weight: 400;
-    letter-spacing: 0.2px;
+    font-weight: 300;
     backdrop-filter: blur(1.5px);
     gap: 5px;
-    box-shadow: inset 1px 1px 0px 0px #ffffff1a, inset -1px -1px 0px 0px #ffffff1a;
-    background: #ffffff17;
-    border-radius: 9999px;" onclick="downloadSingleLoan(${index})">
+    background: #2535488f;
+    border-radius: 9999px;
+    border-top: solid 1px #ffffff30;
+    border-bottom: solid 0.1px #ffffff24;" onclick="downloadSingleLoan(${index})">
                     <svg style="width: 14px;
     height: 20px;" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512"><path d="M19,6V4a4,4,0,0,0-4-4H9A4,4,0,0,0,5,4V6a5.006,5.006,0,0,0-5,5v5a5.006,5.006,0,0,0,5,5,3,3,0,0,0,3,3h8a3,3,0,0,0,3-3,5.006,5.006,0,0,0,5-5V11A5.006,5.006,0,0,0,19,6ZM7,4A2,2,0,0,1,9,2h6a2,2,0,0,1,2,2V6H7ZM17,21a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V17a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1Zm5-5a3,3,0,0,1-3,3V17a3,3,0,0,0-3-3H8a3,3,0,0,0-3,3v2a3,3,0,0,1-3-3V11A3,3,0,0,1,5,8H19a3,3,0,0,1,3,3Z"/><path d="M18,10H16a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z"/></svg>
 
