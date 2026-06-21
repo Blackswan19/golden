@@ -1,4 +1,4 @@
-    document.addEventListener('contextmenu', e => e.preventDefault());   
+    // document.addEventListener('contextmenu', e => e.preventDefault());   
 const passwords = {
 
     "6275": {
@@ -663,9 +663,6 @@ Return date : ${loan.endDate}</p>
 </svg>
  Full Amount : ${totalReturnAmount} Rupees</p>
             <hr>
-            <div class="issuebtn" style="padding-top: 20px;width: 102.5%;">  
-                <a target="_blank" href="https://forms.gle/RzTJ8W9bwmm8DVj2A"><button>I have issue with my account...!</button></a>
-            </div>
         </div>
     `;
 }
