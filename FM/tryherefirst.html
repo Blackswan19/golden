@@ -156,27 +156,27 @@ width: 100%;
     gap: 10px;
          } 
          .color-picker-label { 
-            font-size: 13px; 
-            color: #c6c6c6;
-                    white-space: nowrap; 
+            font-size: 18px;
+    color: #c6c6c6;
+    white-space: nowrap;
+    font-weight: 600;
          } 
          .color-picker { 
-            border: none;
+               width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
     background: transparent;
-    cursor: pointer;
-    padding: 4px;
-    width: 35px;
-    height: 35px;
          } 
          .color-picker-container div {
     display: flex;
     justify-content: center;
     align-items: center;
     background: black;
-    padding: 2px 15px;
+    padding: 2px 10px;
     border-radius: 100px;
     gap: 0px;
-    
+    height: 40px;
 }
          .font-size-container { 
           position: fixed;
@@ -435,7 +435,6 @@ select#fontWeightSelect {
          @media (max-width: 768px) {
             .icon-buttons i { font-size: 0.9rem; padding: 8px 16px; } 
             .message { font-size: 1rem; }
-            .color-picker { width: 30px; height: 30px; } 
             .font-size-container { bottom: 80px; left: 5px; width: 40%; } 
             .font-weight-container { bottom: 170px; right: 20px; } 
             .font-size-label, .font-weight-label { font-size: 12px; } 
@@ -449,8 +448,7 @@ select#fontWeightSelect {
         overflow: scroll;
         scrollbar-width: none;} 
             .message { font-size: 13px; } 
-            .logo {font-size: 20px; } 
-            .color-picker { width: 25px; height: 25px; } 
+            .logo {font-size: 20px; }
             .font-size-container {         bottom: 80px;
         padding: 10px;
         left: 15px;
@@ -515,11 +513,11 @@ select#fontWeightSelect {
                     </select>
                     <div class="color-picker-container">
                         <div>
-                            <span class="color-picker-label">Background:</span><br>
+                            <span class="color-picker-label">B</span><br>
                             <input type="color" id="imageBackgroundColor" class="color-picker" value="#1b1b1b" title="Background Color">
                         </div>
                         <div>
-                            <span class="color-picker-label">Text color:</span><br>
+                            <span class="color-picker-label">T</span><br>
                             <input type="color" id="imageTextColor" class="color-picker" value="#c6c6c6" title="Text Color">
                         </div>
                     </div>
