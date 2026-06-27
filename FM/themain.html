@@ -39,6 +39,9 @@
       { name: "BsReminder", desc: "Date wise notes",       url: "https://blackswan19.github.io/bscrop/reminder", icon: "fas fa-code"         },
       { name: "BsBookpad", desc: "Download the notes",       url: "https://blackswan19.github.io/Educate/bookpad", icon: "fas fa-code"         },
       { name: "BsAdstoper", desc: "Ad blocker",       url: "https://blackswan19.github.io/Educate/stoper", icon: "fas fa-code"         },
+    { name: "BsFilexplorer", desc: "Store privacy files in folders",       url: "https://blackswan19.github.io/Educate/filexplorer", icon: "fas fa-code"         },
+      { name: "BsMediastorage", desc: "Store files with privacy",       url: "https://blackswan19.github.io/Educate/hider", icon: "fas fa-code"         },
+    
     ]
   }
 ];
@@ -154,15 +157,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let progressInterval = null;
 
-    // Mute Toggle
     muteToggle?.addEventListener("click", () => {
         audio.muted = !audio.muted;
         muteToggle.innerHTML = audio.muted 
             ? '<i class="fas fa-volume-xmark"></i>' 
             : '<i class="fas fa-volume-high"></i>';
     });
-
-    // Start Button
     startBtn?.addEventListener("click", async () => {
         startBtn.style.display = "none";
         audioControls.style.display = "flex";
@@ -203,7 +203,6 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (e) {
             console.error(e);
             audioStatus.textContent = "❌ Audio playback blocked";
-            // Still hide after few seconds if audio fails
             setTimeout(() => {
                 loadingOverlay.style.opacity = "0";
                 setTimeout(() => loadingOverlay.style.display = "none", 600);
