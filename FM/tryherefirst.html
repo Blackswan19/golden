@@ -276,7 +276,6 @@ position: absolute;
     gap: 5px;
     box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
     background: rgb(255 255 255 / 10%);
-    backdrop-filter: blur(30px);
     font-weight: 200;
     border: 0.5px solid rgba(255, 255, 255, 0);
         }
@@ -289,10 +288,13 @@ border: none;
     border-radius: 51px;
     color: white;
     font-size: 16px;
-    background: #0019f8;
+    background: transparent;
     cursor: pointer;
     transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s;
     border: 0.5px solid rgb(255 255 255 / 0%);
+        }
+        button:hover{
+            background: #0019f8;
         }
         .logo img {
             width: 15%;
@@ -326,7 +328,7 @@ position: fixed;
         }
         .topmain{
            position: fixed;
-    width: 100%;
+    width: 95%;
     left: 0;
     font-size: 35px;
     font-weight: 800;
@@ -334,6 +336,9 @@ position: fixed;
     top: 0;
     padding: 30px 10px 10px 10px;
     background: linear-gradient(180deg, black, transparent);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
         }
         @media screen and (max-width: 480px) {
             .logo img {
@@ -374,7 +379,20 @@ position: fixed;
 </head>
 <body>
      <div class="topmain">
-        BsFilestore
+        <div class="logo">
+            BsFilestore
+        </div>
+        <div style="font-size: 13px;
+    font-weight: 400;
+    padding: 5px 10px;
+    border-radius: 999px;
+    box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
+    background: rgb(255 255 255 / 10%);
+    backdrop-filter: blur(30px);
+    font-weight: 200;
+    border: 0.5px solid rgba(255, 255, 255, 0.1);" onclick="window.open('https://blackswan19.github.io/bscrop/formbs','_self')" class="frombs">
+            FromBS
+        </div>
     </div>
     <div id="mediaContainer"></div>
     <div id="previewModal" class="modal">
