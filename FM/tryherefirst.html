@@ -131,7 +131,7 @@ position: absolute;
     overflow: hidden;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
-    background: #00000082;
+    background: #000000ba;
         }
         .modal.show {
             display: flex;
@@ -185,6 +185,20 @@ position: absolute;
     align-items: baseline;
     padding: 10px 0px;
 }
+.rigthsideopt {
+    box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
+    background: rgb(255 255 255 / 10%);
+    backdrop-filter: blur(30px);
+    font-weight: 200;
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    padding: 2px;
+}
         .modal-icon-container a, .modal-icon-container button {
             background-color: transparent;
     border: none;
@@ -237,7 +251,7 @@ position: absolute;
         .mainoptions {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
     align-items: center;
     box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
     background: rgb(255 255 255 / 10%);
@@ -290,9 +304,10 @@ position: fixed;
     gap: 15px;
     align-items: center;
     padding: 10px 10px 30px 10px;
-    background: #000000c9;
+    background: linear-gradient(0deg, black, transparent);
     left: 0;
-    width: 100%;
+    justify-content: space-between;
+    right: 0;
         }
         .media-item button {
             background: transparent;
@@ -318,7 +333,7 @@ position: fixed;
     z-index: 1;
     top: 0;
     padding: 30px 10px 10px 10px;
-    background: #000000c9;
+    background: linear-gradient(180deg, black, transparent);
         }
         @media screen and (max-width: 480px) {
             .logo img {
@@ -375,8 +390,11 @@ position: fixed;
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-160q-33 0-56.5-23.5T160-240v-80q0-17 11.5-28.5T200-360q17 0 28.5 11.5T240-320v80h480v-80q0-17 11.5-28.5T760-360q17 0 28.5 11.5T800-320v80q0 33-23.5 56.5T720-160H240Zm200-486-75 75q-12 12-28.5 11.5T308-572q-11-12-11.5-28t11.5-28l144-144q6-6 13-8.5t15-2.5q8 0 15 2.5t13 8.5l144 144q12 12 11.5 28T652-572q-12 12-28.5 12.5T595-571l-75-75v286q0 17-11.5 28.5T480-320q-17 0-28.5-11.5T440-360v-286Z"/></svg> Upload
             </label>
             <input type="file" id="fileInput" accept="image/*,video/*" multiple style="display: none;">
-            <button onclick="saveMedia()">Save Media</button>
-        </div>    
+            <button onclick="saveMedia()">Save</button>
+        </div> 
+        <div class="rigthsideopt">
+            <a href="https://blackswan19.github.io/Educate/filexplorer"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M172.31-180Q142-180 121-201q-21-21-21-51.31v-455.38Q100-738 121-759q21-21 51.31-21H362q14.46 0 27.81 5.62 13.34 5.61 23.19 15.46L471.92-700h315.77Q818-700 839-679q21 21 21 51.31v375.38Q860-222 839-201q-21 21-51.31 21H172.31Zm0-60h615.38q5.39 0 8.85-3.46t3.46-8.85v-375.38q0-5.39-3.46-8.85t-8.85-3.46H447.38l-76.53-76.54q-1.93-1.92-4.04-2.69-2.12-.77-4.43-.77H172.31q-5.39 0-8.85 3.46t-3.46 8.85v455.38q0 5.39 3.46 8.85t8.85 3.46ZM160-240v-480 480Z"/></svg></a>
+        </div>  
     </div>
     <script>
         let currentMediaIndex = -1;
