@@ -41,7 +41,7 @@
         .media-grid {
             display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
+    gap: 10px 0;
     margin-bottom: 80px;
         }
         .date-section {
@@ -163,6 +163,7 @@ position: absolute;
     cursor: pointer;
     font-weight: 200;
     transition: color 0.2s ease-in-out;
+    backdrop-filter: blur(30px);
     width: 40px;
     height: 40px;
     display: flex;
@@ -174,16 +175,19 @@ position: absolute;
             color: #ffffff;
         }
         .modal-icon-container {
-         position: absolute;
+        position: absolute;
     border-radius: 42px;
     bottom: 15px;
     width: 100px;
-    background: rgb(255 255 255 / 19%);
-    backdrop-filter: blur(30px);
     display: flex;
     justify-content: space-around;
     align-items: baseline;
     padding: 10px 0px;
+    box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
+    background: rgb(57 57 57);
+    backdrop-filter: blur(30px);
+    font-weight: 200;
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
 }
 .rigthsideopt {
     box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
