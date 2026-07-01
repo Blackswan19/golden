@@ -50,12 +50,12 @@
     }
 
     header {
-      font-size: 18px;
-      font-weight: 500;
-      color: white;
-      padding: 40px 20px 10px 20px;
-      width: 100%;
-      text-align: center;
+     font-size: 16px;
+    font-weight: 600;
+    color: #002aff;
+    padding: 10px;
+    width: 100%;
+    text-align: justify;
     }
 
     .folders-container {
@@ -68,10 +68,11 @@
 .folders {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     overflow-x: auto;
     scrollbar-width: none;
     justify-content: flex-start;
+    width: 100%;
     }
 
     .folders::-webkit-scrollbar { display: none; }
@@ -96,14 +97,18 @@ flex-shrink: 0;
 
     .folder-btn {
       flex-shrink: 0;
-      padding: 7px 9px;
-      border-radius: 999px;
-      background: #1a1a1a;
-      border: none;
-      color: var(--text-dim);
-      font-size: 15px;
-      cursor: pointer;
-      transition: all 0.18s;
+    padding: 7px 9px;
+    border-radius: 999px;
+    background: #1a1a1a;
+    border: none;
+    color: var(--text-dim);
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.18s;
+    text-overflow: ellipsis;
+    max-width: 400px;
+    overflow: hidden;
+    white-space: nowrap;
     }
 
     .folder-btn.active,
@@ -312,7 +317,7 @@ padding: 4px;
 </head>
 <body>
 <div class="BsTasks">
-  <a href="https://blackswan19.github.io/Educate/bstasks">BsTasks</a>
+  <a href="https://blackswan19.github.io/Educate/bstasks"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m423.23-394.15-92.92-92.93q-8.31-8.3-20.89-8.5-12.57-.19-21.27 8.5-8.69 8.7-8.69 21.08 0 12.38 8.69 21.08l109.77 109.77q10.85 10.84 25.31 10.84 14.46 0 25.31-10.84l222.54-222.54q8.3-8.31 8.5-20.89.19-12.57-8.5-21.27-8.7-8.69-21.08-8.69-12.38 0-21.08 8.69l-205.69 205.7ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Zm-.07-60q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg></a>
 </div>
 
   <header id="header">BsNote</header>
