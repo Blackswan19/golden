@@ -16,7 +16,15 @@
       box-sizing: border-box;
       color: #ffffffd4;
     }
-
+* {
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
     body {
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -105,8 +113,7 @@
     }
 
     ul li.checked {
-        color: rgba(255, 255, 255, 0.5);
-        text-decoration: line-through;
+            opacity: 40%;
     }
 
     ul li span {
@@ -285,6 +292,7 @@
                 }
             }
         });
+        document.addEventListener('contextmenu', e => e.preventDefault());
 
         function saveData(){
             localStorage.setItem("data", listcontainer.innerHTML);
