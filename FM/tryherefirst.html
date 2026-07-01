@@ -16,25 +16,19 @@
       box-sizing: border-box;
       color: #ffffffd4;
     }
-* {
-            -webkit-tap-highlight-color: transparent;
-        }
-        body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
     body {
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      width: 100%;
-      background-color: #000000;
-      padding: 10px;
-      margin: 0;
-      overflow-x: hidden;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        width: 100%;
+        background-color: #000000;
+        padding: 10px;
+        margin: 0;
+        overflow-x: hidden;
     }
 
     .container {
@@ -44,10 +38,10 @@
     }
     .container h1{
        text-align: center;
-    position: relative;
-    font-weight: 500;
-    font-size: 20px;
-    color: white;
+       position: relative;
+       font-weight: 500;
+       font-size: 20px;
+       color: white;
     }
 
     .todo {
@@ -65,24 +59,25 @@
     }
 
     .todo h1 {
-            display: flex;
-    align-items: center;
+        display: flex;
+        align-items: center;
     justify-content: center;
+    margin-bottom: 10px;
     }
 
     ul#list-container {
       position: relative;
-    top: 50px;
-    overflow: scroll;
-    height: 540px;
-    overflow-x: hidden;
-    padding-bottom: 10px;
-    scrollbar-width: thin;
-    scrollbar-color: #292929 transparent;
+      top: 50px;
+      overflow: scroll;
+      height: 540px;
+      overflow-x: hidden;
+      padding-bottom: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: #292929 transparent;
     }
 
     ul li {
-        font-size: 15px;
+       font-size: 15px;
     padding: 10px 0 9px 45px;
     user-select: none;
     position: relative;
@@ -91,8 +86,8 @@
     width: 100%;
     text-transform: capitalize;
     display: flex;
-    justify-content: flex-start;
     align-items: center;
+    gap: 0px;
     }
 
     /* Unchecked SVG Icon */
@@ -114,25 +109,18 @@
 
     ul li.checked {
         opacity: 30%;
-    border-bottom: 1px solid #ffffff61;
+        border-bottom: 1px solid #ffffff61;
     }
-.modal-content h2 {
-    font-size: 17px;
-    font-weight: 200;
-    padding: 0 0 15px 0;
-}
-    ul li span {
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 30px;
-        color: #ffffff;
-        cursor: pointer;
+
+    .modal-content h2 {
+        font-size: 17px;
+        font-weight: 200;
+        padding: 0 0 15px 0;
     }
 
     .delete-btn {
         position: absolute;
+        right: 10px;
         top: 50%;
         transform: translateY(-50%);
         cursor: pointer;
@@ -144,48 +132,73 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: 10;
     }
 
     .delete-btn:hover {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: #470000;
     }
-
-    /* Rest of your styles remain the same */
+span.delete-btn svg {
+    fill: red;
+}
+    .link {
+        color: #ffffffab;
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 10px;
+    padding: 0px 3px;
+    border-radius: 999px;
+    box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
+    background: rgb(255 255 255 / 10%);
+    backdrop-filter: blur(30px);
+    font-weight: 200;transition: background 0.2s ease-in;
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    }
+.link:hover{
+    background: rgba(255, 255, 255, 0.201);
+}
     .search { display: grid; }
     input {
-        border: none;
-        outline: none;
-        background: none;
-        padding: 16px;
-        font-size: 1rem;
-        text-align: center;
+       border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: #00000087;
+    border-radius: 999px;
     }
     button {
        background: #0022ff;
-       border-radius: 9999px;
-       border: none;
-       color: white;
-       text-align: center;
-       cursor: pointer;
-       font-size: 18px;
-       padding: 10px;
-       font-weight: 300;
+    border-radius: 9999px;
+    border: none;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px;
+    font-weight: 300;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
     }
     button:hover {
         transition: 0.5s;
-        background-color: rgba(0, 4, 255, 0.687);
+        background-color: #0022ffd4;
     }
 
     .modal {
-display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000000d4;
-    justify-content: center;
-    align-items: center;
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000000d4;
+        justify-content: center;
+        align-items: center;
     }
     .modal-content {
        background-color: #282828;
@@ -209,15 +222,8 @@ display: none;
     }
 
     @media screen and (max-width: 480px) {
-        .container{
-            left: 0px;
-            width: 100%;
-        }
-        video{
-            width: 20%;
-            position: fixed;
-            left: 5%;
-        }
+        .container{ left: 0px; width: 100%; }
+        video{ width: 20%; position: fixed; left: 5%; }
         .todo {
            width: 97%;
            position: fixed;
@@ -240,70 +246,113 @@ display: none;
             <h1>BsTasks</h1>
         </div>
         <ul id="list-container"></ul>
+
         <div class="todo">
             <h1>BsTasks</h1>
             <div class="search">
-                <input type="text" id="search-bar" placeholder="Enter your task here.....">
-                <button onclick="addTask()">Add task now</button>
+                <input type="text" id="search-bar" placeholder="Enter your task here...">
+                <input type="url" id="link-bar" class="link-input" placeholder="Paste your link here..." style="display: none;">
+
+                <div style="display: flex; gap: 10px; justify-content: space-between; width: 100%;">
+                    <button class="add-link-btn" id="add-link-btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M451.5-131.5Q440-143 440-160v-280H160q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h280v-280q0-17 11.5-28.5T480-840q17 0 28.5 11.5T520-800v280h280q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H520v280q0 17-11.5 28.5T480-120q-17 0-28.5-11.5Z"/></svg> Link</button>
+                    <button id="add-task-btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M451.5-131.5Q440-143 440-160v-280H160q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h280v-280q0-17 11.5-28.5T480-840q17 0 28.5 11.5T520-800v280h280q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H520v280q0 17-11.5 28.5T480-120q-17 0-28.5-11.5Z"/></svg> Task</button>
+                </div>
             </div>
         </div>
     </div>
 
     <div id="modal" class="modal">
         <div class="modal-content">
-            <h2>You didn't enter any task to add..!</h2>
+            <h2>You didn't enter any task..!</h2>
             <button onclick="closeModal()">Close</button>
         </div>
     </div>
 
     <script>
         const searchBar = document.getElementById("search-bar");
+        const linkBar = document.getElementById("link-bar");
+        const addLinkBtn = document.getElementById("add-link-btn");
         const listcontainer = document.getElementById("list-container");
         const modal = document.getElementById("modal");
+        const addTaskBtn = document.getElementById("add-task-btn");
 
-        function addTask(){
-            if(searchBar.value === ''){
-                openModal();
+        let linkMode = false;
+
+        addLinkBtn.addEventListener("click", () => {
+            linkMode = !linkMode;
+            if (linkMode) {
+                linkBar.style.display = "block";
+                addLinkBtn.textContent = "− Cancel Link";
             } else {
-                let li = document.createElement("li");
-                li.innerHTML = searchBar.value;
-                listcontainer.appendChild(li);
-
-                let span = document.createElement("span");
-                span.className = "delete-btn"; 
-                span.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                        <path d="M480-437.85 277.08-234.92q-8.31 8.3-20.89 8.5-12.57.19-21.27-8.5-8.69-8.7-8.69-21.08 0-12.38 8.69-21.08L437.85-480 234.92-682.92q-8.3-8.31-8.5-20.89-.19-12.57 8.5-21.27 8.7-8.69 21.08-8.69 12.38 0 21.08 8.69L480-522.15l202.92-202.93q8.31-8.3 20.89-8.5 12.57-.19 21.27 8.5 8.69 8.7 8.69 21.08 0 12.38-8.69 21.08L522.15-480l202.93 202.92q8.3 8.31 8.5 20.89.19 12.57-8.5 21.27-8.7 8.69-21.08 8.69-12.38 0-21.08-8.69L480-437.85Z"/>
-                    </svg>
-                `;
-                li.appendChild(span);
+                linkBar.style.display = "none";
+                linkBar.value = "";
+                addLinkBtn.textContent = "+ Add Link";
             }
+        });
+
+        function addTask() {
+            if (searchBar.value.trim() === '') {
+                openModal();
+                return;
+            }
+
+            const taskText = searchBar.value.trim();
+            const link = linkBar.value.trim();
+
+            let li = document.createElement("li");
             
+            li.innerHTML = `
+                <span class="task-text">${taskText}</span>
+                ${link ? `<a href="${link}" target="_blank" class="link">🔗Link</a>` : ''}
+            `;
+
+            // Delete Button with SVG
+            let deleteBtn = document.createElement("span");
+            deleteBtn.className = "delete-btn";
+            deleteBtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                    <path d="M480-437.85 277.08-234.92q-8.31 8.3-20.89 8.5-12.57.19-21.27-8.5-8.69-8.7-8.69-21.08 0-12.38 8.69-21.08L437.85-480 234.92-682.92q-8.3-8.31-8.5-20.89-.19-12.57 8.5-21.27 8.7-8.69 21.08-8.69 12.38 0 21.08 8.69L480-522.15l202.92-202.93q8.31-8.3 20.89-8.5 12.57-.19 21.27 8.5 8.69 8.7 8.69 21.08 0 12.38-8.69 21.08L522.15-480l202.93 202.92q8.3 8.31 8.5 20.89.19 12.57-8.5 21.27-8.7 8.69-21.08 8.69-12.38 0-21.08-8.69L480-437.85Z"/>
+                </svg>
+            `;
+            li.appendChild(deleteBtn);
+
+            listcontainer.appendChild(li);
+
+            // Reset
             searchBar.value = "";
+            linkBar.value = "";
+            if (linkMode) {
+                linkMode = false;
+                linkBar.style.display = "none";
+                addLinkBtn.textContent = "+ Add Link";
+            }
+
             saveData();
         }
 
-        listcontainer.addEventListener("click", function(e){
-            if(e.target.tagName === "LI"){
-                e.target.classList.toggle("checked");
+        // Click handler (Fixed for links + delete)
+        listcontainer.addEventListener("click", function(e) {
+            const deleteBtn = e.target.closest(".delete-btn");
+            
+            if (deleteBtn) {
+                deleteBtn.parentElement.remove();
                 saveData();
-            } 
-            else if(e.target.tagName === "SPAN" || e.target.closest("span")){
-                const span = e.target.closest("span");
-                if(span) {
-                    span.parentElement.remove();
-                    saveData();
-                }
+                return;
+            }
+
+            // Toggle check
+            if (e.target.tagName === "LI" || e.target.classList.contains("task-text")) {
+                e.target.closest("li").classList.toggle("checked");
+                saveData();
             }
         });
-        document.addEventListener('contextmenu', e => e.preventDefault());
 
-        function saveData(){
+        function saveData() {
             localStorage.setItem("data", listcontainer.innerHTML);
         }
 
-        function showTask(){
-            listcontainer.innerHTML = localStorage.getItem("data");
+        function showTask() {
+            listcontainer.innerHTML = localStorage.getItem("data") || "";
         }
 
         function openModal() {
@@ -312,6 +361,11 @@ display: none;
         function closeModal() {
             modal.style.display = "none";
         }
+
+        // Event Listeners
+        addTaskBtn.addEventListener("click", addTask);
+        searchBar.addEventListener("keypress", (e) => { if (e.key === "Enter") addTask(); });
+        linkBar.addEventListener("keypress", (e) => { if (e.key === "Enter") addTask(); });
 
         showTask();
     </script>
