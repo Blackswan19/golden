@@ -264,8 +264,8 @@ color: white;
                 <input type="url" id="link-bar" class="link-input" placeholder="Paste your link here..." style="display: none;">
 
                 <div style="display: flex; gap: 10px; justify-content: space-between; width: 100%;">
-                    <button class="add-link-btn" id="add-link-btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M451.5-131.5Q440-143 440-160v-280H160q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h280v-280q0-17 11.5-28.5T480-840q17 0 28.5 11.5T520-800v280h280q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H520v280q0 17-11.5 28.5T480-120q-17 0-28.5-11.5Z"/></svg> Link</button>
-                    <button id="add-task-btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M451.5-131.5Q440-143 440-160v-280H160q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h280v-280q0-17 11.5-28.5T480-840q17 0 28.5 11.5T520-800v280h280q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H520v280q0 17-11.5 28.5T480-120q-17 0-28.5-11.5Z"/></svg> Task</button>
+                    <button class="add-link-btn" id="add-link-btn">+ Link</button>
+                    <button id="add-task-btn">+ Task</button>
                 </div>
             </div>
         </div>
@@ -292,11 +292,11 @@ color: white;
             linkMode = !linkMode;
             if (linkMode) {
                 linkBar.style.display = "block";
-                addLinkBtn.textContent = "− Cancel Link";
+                addLinkBtn.textContent = "− Link";
             } else {
                 linkBar.style.display = "none";
                 linkBar.value = "";
-                addLinkBtn.textContent = "+ Add Link";
+                addLinkBtn.textContent = "+ Link";
             }
         });
 
