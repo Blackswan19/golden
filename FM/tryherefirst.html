@@ -67,7 +67,7 @@
 
     ul#list-container {
       position: relative;
-      top: 50px;
+      top: 0px;
       overflow: scroll;
       height: 540px;
       overflow-x: hidden;
@@ -224,16 +224,18 @@ color: white;
        border-radius: 39px;
        cursor: pointer;
     }
-
+.titlogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
     video{
-        width: 6%;
-        position: fixed;
-        left: 34%;
+      width: 15%;
     }
 
     @media screen and (max-width: 480px) {
         .container{ left: 0px; width: 100%; }
-        video{ width: 20%; position: fixed; left: 5%; }
         .todo {
            width: 97%;
            position: fixed;
@@ -252,7 +254,7 @@ color: white;
 <body>
     <div class="container">
         <div class="titlogo">
-            <video src="https://v1.pinimg.com/videos/iht/720p/3a/0e/d0/3a0ed08132b15629e5d1971ca513dc20.mp4" muted autoplay></video>
+            <video src="https://v1.pinimg.com/videos/iht/720p/3a/0e/d0/3a0ed08132b15629e5d1971ca513dc20.mp4" muted autoplay loop></video>
             <h1>BsTasks</h1>
         </div>
         <ul id="list-container"></ul>
