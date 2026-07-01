@@ -1,1 +1,307 @@
-no test...
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BsTasks</title>
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/j5cg3w3/note.png">
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+    * {
+      font-family: 'Poppins', sans-serif;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      color: #ffffffd4;
+    }
+
+    body {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      width: 100%;
+      background-color: #000000;
+      padding: 10px;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    .container {
+        position: relative;
+        left: 30%;
+        width: 40%;
+    }
+    .container h1{
+       text-align: center;
+    position: relative;
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
+    }
+
+    .todo {
+      width: 40%;
+      padding: 15px;
+      border-radius: 35px;
+      position: fixed;
+      bottom: 10px;
+      left: 30%;
+      box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
+      background: rgb(255 255 255 / 10%);
+      backdrop-filter: blur(30px);
+      font-weight: 200;
+      border: 0.5px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .todo h1 {
+            display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+    ul#list-container {
+      position: relative;
+    top: 50px;
+    overflow: scroll;
+    height: 540px;
+    overflow-x: hidden;
+    padding-bottom: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #292929 transparent;
+    }
+
+    ul li {
+        font-size: 15px;
+    padding: 10px 0 9px 45px;
+    user-select: none;
+    position: relative;
+    cursor: pointer;
+    border-bottom: 1px solid #ffffff1f;
+    width: 100%;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    }
+
+    /* Unchecked SVG Icon */
+    ul li::before {
+        content: '';
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        left: 15px;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E") no-repeat center;
+        background-size: contain;
+    }
+
+    /* Checked SVG Icon */
+    ul li.checked::before {
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300ff88' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E") no-repeat center;
+        background-size: contain;
+    }
+
+    ul li.checked {
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: line-through;
+    }
+
+    ul li span {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 30px;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    .delete-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 50%;
+        transition: 0.3s;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .delete-btn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Rest of your styles remain the same */
+    .search { display: grid; }
+    input {
+        border: none;
+        outline: none;
+        background: none;
+        padding: 16px;
+        font-size: 1rem;
+        text-align: center;
+    }
+    button {
+       background: #0022ff;
+       border-radius: 9999px;
+       border: none;
+       color: white;
+       text-align: center;
+       cursor: pointer;
+       font-size: 18px;
+       padding: 10px;
+       font-weight: 300;
+    }
+    button:hover {
+        transition: 0.5s;
+        background-color: rgba(0, 4, 255, 0.687);
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(5px);
+    }
+    .modal-content {
+       background-color: #282828;
+       padding: 20px;
+       border-radius: 30px;
+       text-align: center;
+    }
+    .modal-content button {
+       background-color: rgb(0, 45, 255);
+       padding: 6px 17px;
+       color: white;
+       border: none;
+       border-radius: 39px;
+       cursor: pointer;
+    }
+
+    video{
+        width: 6%;
+        position: fixed;
+        left: 34%;
+    }
+
+    @media screen and (max-width: 480px) {
+        .container{
+            left: 0px;
+            width: 100%;
+        }
+        video{
+            width: 20%;
+            position: fixed;
+            left: 5%;
+        }
+        .todo {
+           width: 97%;
+           position: fixed;
+           bottom: 0px;
+           left: 0px;
+           margin: 5px;
+        }
+        ul#list-container {
+            height: 500px;
+            padding-bottom: 25px;
+            scrollbar-width: none;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="titlogo">
+            <video src="https://v1.pinimg.com/videos/iht/720p/3a/0e/d0/3a0ed08132b15629e5d1971ca513dc20.mp4" muted autoplay></video>
+            <h1>BsTasks</h1>
+        </div>
+        <ul id="list-container"></ul>
+        <div class="todo">
+            <h1>BsTasks</h1>
+            <div class="search">
+                <input type="text" id="search-bar" placeholder="Enter your task here.....">
+                <button onclick="addTask()">Add task now</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2>You didn't enter any task to add..!</h2>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const searchBar = document.getElementById("search-bar");
+        const listcontainer = document.getElementById("list-container");
+        const modal = document.getElementById("modal");
+
+        function addTask(){
+            if(searchBar.value === ''){
+                openModal();
+            } else {
+                let li = document.createElement("li");
+                li.innerHTML = searchBar.value;
+                listcontainer.appendChild(li);
+
+                let span = document.createElement("span");
+                span.className = "delete-btn"; 
+                span.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path d="M480-437.85 277.08-234.92q-8.31 8.3-20.89 8.5-12.57.19-21.27-8.5-8.69-8.7-8.69-21.08 0-12.38 8.69-21.08L437.85-480 234.92-682.92q-8.3-8.31-8.5-20.89-.19-12.57 8.5-21.27 8.7-8.69 21.08-8.69 12.38 0 21.08 8.69L480-522.15l202.92-202.93q8.31-8.3 20.89-8.5 12.57-.19 21.27 8.5 8.69 8.7 8.69 21.08 0 12.38-8.69 21.08L522.15-480l202.93 202.92q8.3 8.31 8.5 20.89.19 12.57-8.5 21.27-8.7 8.69-21.08 8.69-12.38 0-21.08-8.69L480-437.85Z"/>
+                    </svg>
+                `;
+                li.appendChild(span);
+            }
+            
+            searchBar.value = "";
+            saveData();
+        }
+
+        listcontainer.addEventListener("click", function(e){
+            if(e.target.tagName === "LI"){
+                e.target.classList.toggle("checked");
+                saveData();
+            } 
+            else if(e.target.tagName === "SPAN" || e.target.closest("span")){
+                const span = e.target.closest("span");
+                if(span) {
+                    span.parentElement.remove();
+                    saveData();
+                }
+            }
+        });
+
+        function saveData(){
+            localStorage.setItem("data", listcontainer.innerHTML);
+        }
+
+        function showTask(){
+            listcontainer.innerHTML = localStorage.getItem("data");
+        }
+
+        function openModal() {
+            modal.style.display = "flex";
+        }
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        showTask();
+    </script>
+</body>
+</html>
