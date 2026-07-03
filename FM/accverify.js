@@ -1,4 +1,4 @@
-    document.addEventListener('contextmenu', e => e.preventDefault());   
+document.addEventListener('contextmenu', e => e.preventDefault());   
 const passwords = {
 
     "6275": {
@@ -489,7 +489,7 @@ function displayLoanDetails(loan, index) {
             <p style="text-align: center;
     position: sticky;
     top: 143px;
-    margin-top: 8px;
+    margin-top: 25px;
     right: 5px;
     float: right;
     z-index: 1000000;">
