@@ -833,11 +833,10 @@ width: 35px;
 p#userNameContainer {
 font-size: 22px;
     gap: 5px;
-    margin: 20px;
+    margin: 10px;
     border-radius: 15px;
-    padding: 0px 3px 0px 15px;
     cursor: pointer;
-    width: max-content;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -852,9 +851,8 @@ span#userName {
 	color: #ffffff9e;
 }
 .twoOptions {
-display: flex;
-    justify-content: space-evenly;
-    margin-left: -10px;
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     gap: 5px;
 }
@@ -903,12 +901,12 @@ img.sponserimg {
 }
 
 .sponserimges {
-display: flex;
+    display: flex;
     gap: 10px;
-    margin-bottom: -20px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 0px 0 10px 0;
 }
 
 .sponsers-section {
@@ -1078,9 +1076,8 @@ hr {
     background: #1e2b39;
     border-radius: 20px;
     position: relative;
-    margin: -30px 0 35px -10px;
     border: none;
-    top: 20px;
+    top: 0px;
 }
 
 .applybtn {
@@ -1390,10 +1387,9 @@ padding: 2px;
 }
 
 #specialContent {
-    width: 100%;
+width: 100%;
     text-align: center;
     padding: 0px 10px;
-    margin: -5px 0 70px -10px;
     border-radius: 30px;
 }
 
@@ -1429,7 +1425,15 @@ body.curvy .tiergraphbar {
 body.curvy #specialContent img {
 	border-radius: 18px;
 }
-
+.mainbtmproopt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: -10px;
+    width: 100%;
+}
 #specialContent h3 {
 	margin: 0 0 5px 0;
 	font-size: 16px;
@@ -1541,7 +1545,6 @@ display: flex;
     bottom: 10%;
     left: 47.8%;
     transform: translate(-50%, 0%);">
-            <img class="topdec" style="width: 85px;" src="https://media.tenor.com/Mreg30jYSooAAAAi/christmas-tree-christmas-lights.gif" alt="">
         </div>
        <p id="error-message"></p>
         <div class="notice"> You should return the money before the due date, If not additional interest will be charged. </div>
@@ -1594,32 +1597,11 @@ display: flex;
                 </div>
                 <div id="specialContent" class="about"></div>
                 <p id="membershipType" class="membership-type"></p>
-            </div>
-            <div class="availablecntnt">
-                <span>Borrowed Amounts</span>           
-            </div>
-            <div class="topdec">
-            </div>
-            <img style="position: fixed;
-    bottom: -1px;
-    width: 100%;
-    rotate: 180deg;
-    left: 0px;" class="topdec" src="https://www.animatedimages.org/data/media/333/animated-christmas-tree-decorations-image-0062.gif" alt="">
-                
-        <img class="topdec" style="position: fixed;
-    bottom: 0px;
-    width: 100%;
-    filter: drop-shadow(2px 4px 6px #00000057);
-    left: 15px;" src="https://www.animatedimages.org/data/media/1081/animated-christmas-line-image-0129.gif" alt="">
-    </div>
-
-       <div class="about" style="align-items: center;
+                <div class="about" style="    align-items: center;
     padding: 10px 0 0 0;
-    margin-top: -55px;
     max-width: 625px;
     width: 100%;
-    margin-left: -10px;
-    margin-bottom: 35px;">
+">
         <h2 class="sponserheading">Our service are partnered by</h2>
         <div class="sponserimges">
                 <div class="sponsers-section">
@@ -1639,7 +1621,13 @@ display: flex;
                     <a href="https://mfi0212.github.io/MFI/quantam/quantam.main.page">Explore Now</a>
                 </div>
         </div>
-        <br>
+            </div>
+            <div class="availablecntnt">
+                <span>Borrowed Amounts</span>           
+            </div>
+            
+           
+
         </div>
         <div class="amount-buttons" id="amountButtons"></div>
         <div id="loanDetails"></div>
@@ -1706,7 +1694,10 @@ display: flex;
         </div>
     </div>
 	
-    <div class="powered-by" id="poweredBy" style="position: fixed;z-index: 100000;"> Powered by <a style="color: rgb(0, 191, 255); font-weight: 500;" href="https://blackswan19.github.io/Educate/password">BsPsgenerater</a> </div>
+    <div class="powered-by" id="poweredBy" style="    position: fixed;
+    z-index: 100000;
+    display: block;
+    top: -50px;"> Powered by <a style="color: rgb(0, 191, 255); font-weight: 500;" href="https://blackswan19.github.io/Educate/password">BsPsgenerater</a> </div>
 
     <button style="display: none;" class="theme-button" id="themeButton">
         <i class="fa-solid fa-gear"></i>
