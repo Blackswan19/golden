@@ -26,6 +26,7 @@ const passwords = {
             { planDate: "25-11-2025", endDate: "25-12-2025", interest: 3050, takenAmount: 9500, takenFrom: "MLending Duplicate ", fineRate: 95 }
         ]
     },
+    
     "0212": {
         name: "Tony Montana",
         membershipType: "",
@@ -34,7 +35,7 @@ const passwords = {
         stars: 10000,
         coins: 0,
         tierPoints: 0,
-        showCustomContent: "no",
+        showCustomContent: "yes",
         customContent: {
             type: "image",
             value: "programXoffer.png",
