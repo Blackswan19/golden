@@ -43,11 +43,6 @@ const passwords = {
         loans: [
             { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 17000, takenFrom: "P2P lend", fineRate: 150 },
             { planDate: "09-11-2025", endDate: "09-12-2025", interest: 3000, takenAmount: 8000, takenFrom: "MLLD", fineRate: 80 },
-            { planDate: "25-11-2025", endDate: "25-12-2025", interest: 3450, takenAmount: 5000, takenFrom: "MLending Duplicate ", fineRate: 95 },
-            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3500, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
-            { planDate: "09-11-2025", endDate: "09-12-2025", interest: 2800, takenAmount: 8700, takenFrom: "MLLD", fineRate: 80 },
-            { planDate: "25-11-2025", endDate: "23-05-2026", interest: 2300, takenAmount: 9900, takenFrom: "MLending Duplicate ", fineRate: 95 }
-        
         ]
     },
 };
@@ -151,7 +146,6 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         profilePicture.style.backgroundImage = "none";
         profilePicture.textContent = iconText;
 
-        // === TIER PROGRESS ===
         const tierInfo = getTierInfo(user.tierPoints);
         const percent = tierInfo.tier === 2 ? 100 : (user.tierPoints / 100) * 100;
 
@@ -229,12 +223,10 @@ document.getElementById("submitBtn").addEventListener("click", () => {
     </p>
     </div>
     `;
-    //    Explore ${ad.name}
         const userInfoModal = document.getElementById("userInfoModal");
         const profilePictureContainer = profilePicture.parentElement;
         userInfoModal.insertBefore(borrowLimitMessage, profilePictureContainer);
 
-        // === AMOUNT BUTTONS ===
         const amountButtons = document.getElementById("amountButtons");
         amountButtons.innerHTML = "";
         user.loans.forEach((loan, index) => {
@@ -244,11 +236,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
             btn.onclick = () => displayLoanDetails(loan, index);
             amountButtons.appendChild(btn);
         });
-
-        // Apply initial status colors (non-active)
         updateAllButtonColors(user);
-
-        // === SPECIAL CONTENT ===
         const specialContentDiv = document.getElementById("specialContent");
         try {
             if (user.showCustomContent === "yes" && user.customContent && user.customContent.value) {
@@ -271,7 +259,6 @@ document.getElementById("submitBtn").addEventListener("click", () => {
             errorMessage.textContent = "Error loading special content.";
         }
 
-        // === SHOW FIRST LOAN & REMINDER ===
         if (user.loans.length > 0) {
             displayLoanDetails(user.loans[0], 0);
             checkDueReminders(user);
@@ -286,9 +273,6 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         errorMessage.textContent = "Invalid password.";
     }
 });
-// ===============================================
-// REMINDER: DUE TODAY + 1 DAY BEFORE (UPDATED)
-// ===============================================
 function checkDueReminders(user) {
     const today = new Date();
     const tomorrow = new Date(today);
@@ -323,7 +307,6 @@ function checkDueReminders(user) {
         reminderModal.style.display = "flex";
     } 
     else if (dueTomorrow) {
-        // Custom tomorrow message with extension warning
         reminderMessage.innerHTML = 
             `Mr. ${user.name}, <b>Tomorrow (${dueTomorrow.date})</b> your Amount <b>${dueTomorrow.loan.takenAmount}</b> from <b>${dueTomorrow.loan.takenFrom}</b> has to be returned.<br><br>` +
             `<b style="color: #ff8c00;
@@ -336,9 +319,6 @@ function closeReminderModal() {
     document.getElementById("reminderModal").style.display = "none";
 }
 
-// ===============================================
-// OVERDUE & DUE TODAY CALCULATION
-// ===============================================
 function calculateDaysBetween(startDate, endDate) {
     try {
         const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
@@ -360,29 +340,22 @@ let sessionReferenceTime = null;
 
 function calculateOverdueFine(endDateString, loan, user = {}) {
     try {
-        // Clean any extra text: "(overdue)", HTML, etc.
         const clean = endDateString.split('(')[0].split('<')[0].trim();
-
-        // Match DD-MM-YYYY strictly
         const match = clean.match(/^(\d{2})-(\d{2})-(\d{4})$/);
         if (!match) return { overdue: false, fine: 0, daysOverdue: 0, hoursOverdue: 0 };
 
         const [, day, month, year] = match;
         const endDate = new Date(`${year}-${month}-${day}`);
-        
-        // Fine starts the NEXT day → so we consider end of endDate as deadline
         endDate.setHours(23, 59, 59, 999);
 
-        const now = new Date(); // Real current time
+        const now = new Date();
 
         if (now <= endDate) {
             return { overdue: false, fine: 0, daysOverdue: 0, hoursOverdue: 0 };
         }
-
-        // Calculate exact days overdue (starts from the day after endDate)
         const diffMs = now - endDate;
         const hoursOverdue = Math.floor(diffMs / (1000 * 60 * 60));
-        const daysOverdue = Math.ceil(diffMs / (1000 * 60 * 60 * 24)); // This is key!
+        const daysOverdue = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
 
         const fineRate = loan?.fineRate ?? user?.fineRate ?? 0;
         const fine = daysOverdue * fineRate;
@@ -415,10 +388,6 @@ function isDueToday(endDate) {
     const endDateStr = `${match[1]}-${match[2]}-${match[3]}`;
     return endDateStr === todayStr;
 }
-
-// ===============================================
-// UPDATE NON-ACTIVE BUTTONS (STATUS COLORS)
-// ===============================================
 function updateAllButtonColors(user) {
     const buttons = document.querySelectorAll("#amountButtons .amount-btn");
     buttons.forEach((btn, idx) => {
@@ -427,14 +396,12 @@ function updateAllButtonColors(user) {
 
         const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
         const dueToday = isDueToday(loan.endDate);
-
-        // Only apply status color if NOT active
         if (!btn.classList.contains("active")) {
             if (overdueInfo.overdue) {
-                btn.style.background = "rgb(195 86 0)"; // darkred
+                btn.style.background = "rgb(195 86 0)";
                 btn.style.color = "white";
             } else if (dueToday) {
-                btn.style.background = "#ff9900ff"; // orange
+                btn.style.background = "#ff9900ff";
                 btn.style.color = "white";
             } else {
                 btn.style.background = "";
@@ -444,10 +411,6 @@ function updateAllButtonColors(user) {
         }
     });
 }
-
-// ===============================================
-// DISPLAY LOAN DETAILS + ACTIVE BUTTON LOGIC
-// ===============================================
 function displayLoanDetails(loan, index) {
     const loanDetails = document.getElementById("loanDetails");
     const userInput = document.getElementById("userPassword").value.trim();
@@ -458,19 +421,12 @@ function displayLoanDetails(loan, index) {
     const totalReturnAmount = (loan.takenAmount + loan.interest + fine).toFixed(2);
     const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
     const daysBetween = calculateDaysBetween(loan.planDate, cleanEndDate);
-
-    // === REMOVE ACTIVE FROM ALL ===
     document.querySelectorAll(".amount-btn").forEach(btn => {
         btn.classList.remove("active");
-        // Reset non-active buttons to status color
         updateAllButtonColors(user);
     });
-
-    // === ADD ACTIVE TO CURRENT ===
     const activeBtn = document.getElementById("amountButtons").children[index];
     activeBtn.classList.add("active");
-
-    // === APPLY ACTIVE STYLE (OVERRIDES STATUS) ===
     activeBtn.style.background = "#0066cc";
     activeBtn.style.color = "black";
 
@@ -536,9 +492,6 @@ function displayLoanDetails(loan, index) {
     `;
 }
 
-// ===============================================
-// MODALS & UTILITIES
-// ===============================================
 function showAmountsModal() {
     const userInput = document.getElementById("userPassword").value.trim();
     const user = passwords[userInput];
@@ -575,9 +528,6 @@ function closeModal() {
     sessionReferenceTime = null;
 }
 
-// ===============================================
-// RECEIPT GENERATION
-// ===============================================
 function generateStyledReceipt(textLines, filename) {
     const canvas = document.createElement('canvas');
     const lineHeight = 38;
@@ -717,8 +667,3 @@ function showCoinsCount() {
     const coins = document.getElementById('coinsCount').textContent.trim();
     alert(`BsRora(Bot) : \n\nYou have using ${coins} Duplicate Clone account.`);
 }
-
-
-
-
-
