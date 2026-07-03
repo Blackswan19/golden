@@ -26,14 +26,14 @@ const passwords = {
             { planDate: "25-11-2025", endDate: "25-12-2025", interest: 3050, takenAmount: 9500, takenFrom: "MLending Duplicate ", fineRate: 95 }
         ]
     },
-    "Deepak@1": {
-        name: "Deepak",
+    "Mahesh888*": {
+        name: "Mahesh Muthinti",
         membershipType: "",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "rgb(255, 0, 0)",
+        membershipIcon: "https://files.donationalerts.com/uploads/images/2/tb_5000.gif",
+        profileBackground: "#005f56",
         stars: 0,
-        coins: 0,
-        tierPoints: 0,
+        coins: 1,
+        tierPoints: 5,
         showCustomContent: "no",
         customContent: {
             type: "image",
@@ -41,6 +41,7 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
+            { planDate: "11-05-2026", endDate: "10-08-2026", interest: 5800, takenAmount: 23200, takenFrom: "Golden", fineRate: 130 },
         ]
     },
     "0212": {
