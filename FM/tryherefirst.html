@@ -391,7 +391,7 @@ display: none;
     position: fixed;
     top: 0;
     height: 100%;
-    padding: 85px 0px 0px 20px;
+    padding: 10px;
     line-height: 30px;
     background-color: #151e27;
     overflow-y: scroll;
@@ -429,7 +429,7 @@ color: #00aeff;
 
 .close {
 position: fixed;
-    padding: 20px 10px 10px 10px;
+    padding:10px 5px;
     width: 100%;
     z-index: 10000000;
     font-size: 25px;
@@ -545,14 +545,11 @@ body.curvy .logo img {
 }
 
 .loan-entry {
-	padding: 10px;
-	margin-bottom: 80px;
-	border-bottom: none;
-	width: 98%;
-	padding-bottom: 0px;
-	max-width: 600px;
-	margin-left: -10px;
-	margin-top: -20px;
+margin-bottom: 50px;
+    border-bottom: none;
+    width: 100%;
+    max-width: 600px;
+    margin-top: -20px;
 }
 
 ::-webkit-scrollbar {
@@ -570,7 +567,6 @@ body.curvy .logo img {
     width: 100%;
     padding: 20px;
     max-width: 700px;
-    margin-left: -15px;
     border-radius: 30px;
     border-top: solid 1px #ffffff30;
     border-bottom: solid 0.1px #ffffff24;
@@ -740,7 +736,7 @@ body.curvy p#membershipType {
 .profile-container {
 max-width: 620px;
     width: 100%;
-    padding-top: 10px;
+    padding-top: 60px;
     position: relative;
     z-index: 10000;
 }
@@ -782,8 +778,6 @@ width: 100px;
     background-size: cover;
     background-position: center;
     margin: 0px auto;
-    position: relative;
-    left: -10px;
 }
 
 body.curvy .profile-picture {
@@ -843,7 +837,6 @@ font-size: 22px;
     left: 50%;
     position: relative;
     transform: translate(-50%, 0%);
-    margin-left: -10px;
     font-weight: 600;
 }
 
@@ -1317,7 +1310,6 @@ display: flex;
         width: 100%;
         scrollbar-width: none;
         z-index: 100000;
-        margin-left: -10px;
         padding: 15px;
         border-radius: 25px;
         
@@ -1417,8 +1409,7 @@ body.curvy .tiergraphbar {
 	margin: -10px 0px 10px 0px;
 	font-size: 13px;
 	color: #ddd;
-	position: relative;
-	left: -10px;display: none;
+	display: none;
 	padding: 0px 0px;
 }
 
@@ -1431,7 +1422,6 @@ body.curvy #specialContent img {
     align-items: center;
     flex-direction: column;
     gap: 10px;
-    margin-left: -10px;
     width: 100%;
 }
 #specialContent h3 {
@@ -1571,7 +1561,8 @@ display: flex;
             </div>
         </div>
 
-        <div class="profile-container"><div class="profile-picture" id="profilePicture"></div>
+        <div class="profile-container">
+            <div class="profile-picture" id="profilePicture"></div>
 			<div class="maincontent">
             	<p id="userNameContainer"> <span style="color: white;" id="userName"></span></p>
 			</div>
@@ -1595,7 +1586,7 @@ display: flex;
                             <span style="    display: none; font-size: 14px; font-weight: 600; position: relative; top: 0.5px;" id="coinsCount"></span> </div> 
                             Clone </button>
                 </div>
-                <div id="specialContent" class="about"></div>
+                 <div id="specialContent" class="about"></div>
                 <p id="membershipType" class="membership-type"></p>
                 <div class="about" style="    align-items: center;
     padding: 10px 0 0 0;
