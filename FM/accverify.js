@@ -506,7 +506,7 @@ function displayLoanDetails(loan, index) {
         <div class="loan-entry">
             <p style="text-align: center;
     position: sticky;
-    top: 135px;
+    top: 143px;
     margin-top: 8px;
     right: 5px;
     float: right;
@@ -735,3 +735,8 @@ function showCoinsCount() {
     const coins = document.getElementById('coinsCount').textContent.trim();
     alert(`BsRora(Bot) : \n\nYou have using ${coins} Duplicate Clone account.`);
 }
+
+
+
+
+
