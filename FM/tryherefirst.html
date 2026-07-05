@@ -145,7 +145,7 @@ display: flex;
         background-color: #283543;
     }
     .letter-icon {
-width: 50px;
+    width: 50px;
     height: 50px;
     border-radius: 50%;
     display: flex;
@@ -154,10 +154,11 @@ width: 50px;
     font-weight: 600;
     margin-right: 10px;
     flex-shrink: 0;
-    font-size: 26px;
+    font-size: 20px;
     background: #8774e1;
-    color: #000000;
-    filter: hue-rotate(45deg);
+    color: white;
+    filter: saturate(0.5);
+
     }
 .rghtsdopt {
 display: flex;
@@ -552,7 +553,7 @@ function createSiteItem(site) {
     <div class="letter-icon" style="background: ${bg};">${initial}</div>
     <div class="site-info">
       <h3>${site.name}</h3>
-      <p style="    font-size: 12px;
+      <p style="font-size: 12px;
     color: #ffffff4f;">${site.desc}</p>
     </div>
   `;
