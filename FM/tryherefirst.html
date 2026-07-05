@@ -145,7 +145,7 @@ display: flex;
         background-color: #283543;
     }
     .letter-icon {
-    width: 50px;
+ width: 50px;
     height: 50px;
     border-radius: 50%;
     display: flex;
@@ -154,11 +154,9 @@ display: flex;
     font-weight: 600;
     margin-right: 10px;
     flex-shrink: 0;
-    font-size: 20px;
+    font-size: 26px;
     background: #8774e1;
-    color: white;
-    filter: saturate(0.5);
-
+    color: #ffffff;
     }
 .rghtsdopt {
 display: flex;
@@ -181,7 +179,7 @@ display: flex;
     align-items: center;
 }
     .bottom-nav {
-width: 70%;
+width: 80%;
     max-width: 600px;
     padding: 20px 0;
     display: flex;
@@ -196,10 +194,10 @@ text-align: center;
     justify-content: space-between;
     align-items: center;
     font-size: 12px;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(5px);
     border-radius: 9999px;
     gap: 0;
-    background: #2535488f;
+    background: #1c283591;
     border-top: solid 1px #ffffff30;
     border-bottom: solid 0.1px #ffffff24;
     max-width: 350px;
@@ -369,14 +367,15 @@ border-radius: 50%;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    background: #2f42579c;
+    background: #1c283591;
     height: 45px;
     border-radius: 999px;
     border-top: solid 1px #ffffff30;
     border-bottom: solid 0.1px #ffffff24;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(5px);
     width: 45px;
-}.leftsideopt {
+}
+.leftsideopt {
     background: #2f42579c;
     padding: 8px;
     border-radius: 999px;
@@ -470,6 +469,10 @@ border-bottom: solid 0.1px #ffffff24;">
        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m422-232 207-248H469l29-227-185 267h139l-30 208Zm-38.92-148H261.39q-20.16 0-29.54-17.85-9.39-17.84 2.31-34.38L496.23-810.3q8.08-11.31 20.62-15.47 12.53-4.15 26.07.7 13.54 4.84 19.81 16.57t4.65 25.27L537.31-540h149.23q21.38 0 30.15 19.16 8.77 19.15-5.15 35.69L421.77-138.08q-8.69 10.31-21.23 13.35-12.54 3.03-24.46-2.43-11.92-5.46-18.5-16.69t-4.96-24.77L383.08-380ZM471-470Z"/></svg>
             Turbo
       </a>
+      <a href="https://blackswan19.github.io/golden/FM/service_search.html">
+       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M380-320q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l224 224q11 11 11 28t-11 28q-11 11-28 11t-28-11L532-372q-30 24-69 38t-83 14Zm0-80q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+       Search
+      </a>
       <a href="https://blackswan19.github.io/golden/FM/accverify">
         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240.92-268.31q51-37.84 111.12-59.77Q412.15-350 480-350t127.96 21.92q60.12 21.93 111.12 59.77 37.3-41 59.11-94.92Q800-417.15 800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 62.85 21.81 116.77 21.81 53.92 59.11 94.92Zm146.7-219.31Q350-525.23 350-580q0-54.77 37.62-92.38Q425.23-710 480-710q54.77 0 92.38 37.62Q610-634.77 610-580q0 54.77-37.62 92.38Q534.77-450 480-450q-54.77 0-92.38-37.62ZM480-100q-79.15 0-148.5-29.77t-120.65-81.08q-51.31-51.3-81.08-120.65Q100-400.85 100-480t29.77-148.5q29.77-69.35 81.08-120.65 51.3-51.31 120.65-81.08Q400.85-860 480-860t148.5 29.77q69.35 29.77 120.65 81.08 51.31 51.3 81.08 120.65Q860-559.15 860-480t-29.77 148.5q-29.77 69.35-81.08 120.65-51.3 51.31-120.65 81.08Q559.15-100 480-100Zm104.42-77.42q50.27-17.43 89.27-48.73-39-30.16-88.11-47Q536.46-290 480-290t-105.77 16.65q-49.31 16.66-87.92 47.2 39 31.3 89.27 48.73Q425.85-160 480-160t104.42-17.42Zm-54.5-352.66Q550-550.15 550-580t-20.08-49.92Q509.85-650 480-650t-49.92 20.08Q410-609.85 410-580t20.08 49.92Q450.15-510 480-510t49.92-20.08ZM480-580Zm0 355Z"/></svg>
         Account
@@ -532,7 +535,7 @@ function getColor(name) {
     hash = name.charCodeAt(i) + ((hash << 5) - hash);
   }
   const hue = Math.abs(hash) % 360;
-  return `hsl(${hue}, 75%, 58%)`;
+  // return `hsl(${hue}, 75%, 58%)`;
 }
 
 function getInitial(name) {
@@ -553,7 +556,7 @@ function createSiteItem(site) {
     <div class="letter-icon" style="background: ${bg};">${initial}</div>
     <div class="site-info">
       <h3>${site.name}</h3>
-      <p style="font-size: 12px;
+      <p style="    font-size: 12px;
     color: #ffffff4f;">${site.desc}</p>
     </div>
   `;
