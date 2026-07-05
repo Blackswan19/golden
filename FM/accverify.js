@@ -1,4 +1,4 @@
-document.addEventListener('contextmenu', e => e.preventDefault());   
+    document.addEventListener('contextmenu', e => e.preventDefault());   
 const passwords = {
 
     "6275": {
@@ -41,7 +41,7 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "11-05-2026", endDate: "10-08-2026", interest: 5800, takenAmount: 23200, takenFrom: "Golden", fineRate: 130 },
+            { planDate: "11-05-2026", endDate: "10-08-2026", interest: 5800, takenAmount: 23475, takenFrom: "Golden", fineRate: 130 },
         ]
     },
     "0212": {
