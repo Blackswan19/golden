@@ -319,14 +319,14 @@
                 font-size: 28px;
             }
 #main-video{
-    height: 98vh;
-        max-height: 100vh;
+    /* height: 98vh;
+        max-height: 100vh; */
         border-radius: 30px;
     }
-.ui-hidden #main-video {
+/* .ui-hidden #main-video {
    max-width: 100%;
         height: 100vh;
-}
+} */
 .progress-wrapper{
     display: none;
 }
@@ -425,7 +425,7 @@
         const mainVideo = document.getElementById('main-video');
         const bgVideo = document.getElementById('bg-video');
         const container = document.getElementById('main-container');
-        document.addEventListener('contextmenu', e => e.preventDefault());
+        // document.addEventListener('contextmenu', e => e.preventDefault());
         const playPauseBtn = document.getElementById('play-pause');
         const progressContainer = document.getElementById('progress-container');
         const progressBar = document.getElementById('progress');
