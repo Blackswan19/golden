@@ -175,13 +175,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 await new Promise(resolve => audio.addEventListener("loadedmetadata", resolve, { once: true }));
             }
 
-            // const duration = audio.duration || 8;
-            // const stopTime = Math.min(Math.random() * 3 + 5, duration);
-
-
-             const duration = audio.duration || 0;
-            const stopTime = Math.min(Math.random() * 0 + 0, duration);
-
+            const duration = audio.duration || 8;
+            const stopTime = Math.min(Math.random() * 3 + 5, duration);
             progressFill.style.width = "0%";
             audioStatus.textContent = "0% • Connecting...";
 
