@@ -476,7 +476,7 @@ function displayLoanDetails(loan, index) {
     align-items: center;
     margin-top: 0px;
     font-weight: 300;
-    backdrop-filter: blur(1.5px);
+    backdrop-filter: blur(3px);
     gap: 5px;
     background: #2535488f;
     border-radius: 9999px;
