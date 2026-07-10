@@ -391,7 +391,7 @@ display: none;
     position: fixed;
     top: 0;
     height: 100%;
-    /* padding: 10px; */
+    padding: 10px;
     line-height: 30px;
     background-color: #151e27;
     overflow-y: scroll;
@@ -429,7 +429,7 @@ color: #00aeff;
 
 .close {
 position: fixed;
-    padding:20px 5px;
+    padding:20px 10px;
     width: 100%;
     z-index: 10000000;
     font-size: 25px;
@@ -445,16 +445,6 @@ position: fixed;
     justify-content: space-between;
     gap: 5px;
     background: linear-gradient(180deg, #151e27 30%, transparent);
-}
-div#profilePicturess {
-display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-    padding: 5px;
-    border-radius: 20px;
-    margin-bottom: 10px;
 }
 .close span {
     background: #2535488f;
@@ -573,7 +563,7 @@ margin-bottom: 50px;
     overflow-x: scroll;
     white-space: nowrap;
     position: sticky;
-    top: 75px;
+    top: 65px;
     z-index: 1000000;
     width: 100%;
     padding: 15px;
@@ -746,9 +736,9 @@ body.curvy p#membershipType {
 .profile-container {
 max-width: 620px;
     width: 100%;
+    padding-top: 75px;
     position: relative;
     z-index: 10000;
-    padding: 75px 10px 10px 10px;
 }
 .rightsideoption {
    color: white;
@@ -831,13 +821,14 @@ body.curvy .profile-picture {
 width: 35px;
     height: 35px;
     padding: 5px;
-    background: #ffffff85;
+    background: #283543;
     border-radius: 13px;
 }
 
 p#userNameContainer {
 font-size: 22px;
     gap: 5px;
+    margin: 15px 0;
     border-radius: 15px;
     cursor: pointer;
     width: 100%;
@@ -851,7 +842,7 @@ font-size: 22px;
 }
 
 span#userName {
-    color: white;
+	color: #ffffff9e;
 }
 .twoOptions {
     display: flex;
@@ -861,11 +852,11 @@ span#userName {
 }
 
 .amounts-btn {
-background-color: #ffffff42;
+    background-color: #283543;
     color: lightgray;
     border: none;
     font-size: 13px;
-    border-radius: 15px;
+    border-radius: 18px;
     cursor: pointer;
     margin-top: auto;
     display: flex;
@@ -1372,17 +1363,17 @@ padding: 2px;
 	width: 16px;
 }
 
-#specialContent {
+
+#profilePicturess {
 width: 100%;
     text-align: center;
     padding: 0px 10px;
-    border-radius: 20px;
-    background: #ffffff42;
+    border-radius: 30px;
 }
 
 #specialContent img {
 	max-width: 100%;
-	border-radius: 10px;
+	border-radius: 20px;
 	padding: 0px;
 	margin: -5px 0px 0px 0px;
     background-color: #000000;
@@ -1440,11 +1431,6 @@ body.curvy #specialContent img {
 	text-decoration: none;
 	display: block;
 }
-
-#specialContent a:hover {
-	opacity: 0.8;
-}
-
 
 span#totalTaken,
 #totalInterest,
@@ -1548,7 +1534,6 @@ display: flex;
         </div>
 
         <div class="profile-container">
-            <div class="maincontntsection" id="profilePicturess">
             <div class="profile-picture" id="profilePicture"></div>
 			<div class="maincontent">
             	<p id="userNameContainer"><span style="color: white;" id="userName"></span></p>
@@ -1573,13 +1558,9 @@ display: flex;
                             <span style="    display: none; font-size: 14px; font-weight: 600; position: relative; top: 0.5px;" id="coinsCount"></span> </div> 
                             Clone </button>
                 </div>
-</div>
-                 <div id="specialContent" class="about"></div>
-
-                             </div>
+                 <div id="profilePicturess" class="about">
+                 <div id="specialContent"></div></div>
                 <p id="membershipType" class="membership-type"></p>
-
-                
                 <div class="about" style="    align-items: center;
     padding: 10px 0 0 0;
     max-width: 625px;
@@ -1604,6 +1585,7 @@ display: flex;
                     <a href="https://mfi0212.github.io/MFI/quantam/quantam.main.page">Explore Now</a>
                 </div>
         </div>
+            </div>
             <div class="availablecntnt">
                 <span>Borrowed Amounts</span>           
             </div>
