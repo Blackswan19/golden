@@ -1,1 +1,478 @@
-no  test...
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BS&MFI Services</title>
+    <link rel="icon" href="mfi.logo.png" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Balthazar&family=Della+Respira&family=Hahmlet:wght@100..900&family=Niconne&family=Stalemate&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Roboto:ital,wght@0,100..900;1,100..900&family=Six+Caps&family=Stalemate&display=swap" rel="stylesheet">
+  <style>
+* {
+	font-family: "Roboto", sans-serif;margin:0; padding:0; box-sizing:border-box;scrollbar-width: none;letter-spacing: 0.5px;}
+     
+        :root {
+            --tg-bg: #0f0f0f;
+            --tg-sidebar: #1f1f1f;
+            --tg-accent: #806cdf;
+        }
+        * {
+	-webkit-tap-highlight-color: transparent;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	scrollbar-width: none;
+        letter-spacing: 0.5px;
+}
+    :root {
+      --bg-primary: #000000;
+      --bg-secondary: #17171c;
+      --bg-message: #1c1c24;
+      --text-primary: #e0e0e8;
+      --text-secondary: #a0a0b0;
+      --accent: #0021ff;
+      --accent-dark: #0021ff;
+      --border: #2a2a35;
+    }
+* {
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    body {
+      
+      background: #151e27;
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding:10px;
+    }
+  h1 {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400;padding: 5px;
+}
+    .container {
+      max-width: 600px;
+    margin: 5px auto;
+    position: sticky;
+    top: 15px;
+    z-index: 10000;
+    }
+div#sectionsContainer {
+  margin-top: 15px;
+    width: 100%;
+    max-width: 600px;
+    left: 50%;
+    position: relative;
+    transform: translate(-50%, 0);
+}
+    .header {
+padding: 10px 0 10px 0;
+    text-align: center;
+    display: flex;display: none;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+    }
+        .header span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2535488f;
+    padding: 8px;
+    height: 45px;
+    border-radius: 999px;
+    width: 100%;
+    backdrop-filter: blur(5px);
+    border-top: solid 1px #ffffff30;
+    border-bottom: solid 0.1px #ffffff24;
+    font-size: 17px;
+    font-weight: 600;
+        }
+    .header h1 {
+      font-weight: 100;
+    color: #ffffffb0;
+    font-size: 15px;
+    }
+
+    .search-box {
+display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    backdrop-filter: blur(5px);
+    border-radius: 9999px;
+    gap: 5px;
+    }
+
+    #searchInput {
+padding: 10px;
+    font-size: 18px;
+    border-radius: 999px;
+    background: #22303fbd;
+    border: none;
+    color: var(--text-primary);
+    outline: none;
+    transition: all 0.2s;
+        backdrop-filter: blur(5px);
+    border-top: solid 1px #ffffff30;
+    border-bottom: solid 0.1px #ffffff24;
+    width: 80%;
+    }
+    #searchInput:focus {
+      background: #1e2b39;
+    }
+    #searchInput svg {
+    fill: white;
+    width: 27px;
+    height: 27px;
+}
+.fixtopsectiob {
+position: sticky;
+    top: -5px;
+    z-index: 1000;
+    background: linear-gradient(180deg, #151e27 30%, transparent);
+    padding: 20px 0 0 0;
+}
+    .search-icon {
+display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+        backdrop-filter: blur(5px);
+    background: #22303fbd;
+    border-top: solid 1px #ffffff30;
+    border-bottom: solid 0.1px #ffffff24;
+    border-radius: 50%;
+    padding: 5px;
+    fill: #0f9eff;
+    }
+
+  .section {
+        margin-bottom: 15px;
+    position: relative;
+    background: #1c2834;
+    border-radius: 20px;
+    }
+
+    .section h2 {
+     font-size: 16px;
+    font-weight: 600;
+    color: #00aaff;
+    padding: 15px 15px 0 15px;
+    }
+a.site-item:hover{
+  background-color: #22303f;
+}
+a.site-item:last-child{
+  border-radius: 0 0 20px 20px;
+}
+   .site-item {
+   display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    color: var(--text-primary);
+    transition: background 0.18s;
+    text-decoration: none;
+}
+
+    .letter-icon {
+width: 35px;
+    height: 35px;
+    margin-right: 15px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 1.35rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    background: #8774e1;
+    }
+
+    .site-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .site-info h3 {
+     font-size: 15px;
+    font-weight: 400;
+    margin: 0;
+    }
+
+    .site-info p {
+          font-size: 12px;
+    color: #ffffff5c;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 300;
+    width: 75%;
+    }
+.section:first-child {
+    border: none;
+}
+
+    .no-results {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      display: none;
+    }
+footer{
+  text-align: center;
+    font-size: 12px;
+    color: #ffffff85;
+    background: #141e27;
+    position: sticky;
+    bottom: 0px;
+    padding: 5px 0px;
+      }
+.close-btn {
+    cursor: pointer;
+    z-index: 11;
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #00aaff;
+    margin: 0;
+    background: #2535488f;
+    border-radius: 50%;
+    border-top: solid 1px #ffffff30;
+    border-bottom: solid 0.1px #ffffff24;
+    height: 45px;
+    width: 45px;
+    padding: 11px;
+    backdrop-filter: blur(5px);
+        }
+
+  </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="search-box">
+      <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M380.77-335.39q-102.46 0-173.54-71.07-71.07-71.08-71.07-173.54t71.07-173.54q71.08-71.07 173.54-71.07t173.54 71.07q71.07 71.08 71.07 173.54 0 42.85-14.38 81.85-14.39 39-38.39 67.84l230.16 230.16q8.31 8.3 8.5 20.88.19 12.58-8.5 21.27t-21.08 8.69q-12.38 0-21.07-8.69L530.46-388.16q-30 24.77-69 38.77-39 14-80.69 14Zm0-59.99q77.31 0 130.96-53.66 53.66-53.65 53.66-130.96t-53.66-130.96q-53.65-53.66-130.96-53.66t-130.96 53.66Q196.15-657.31 196.15-580t53.66 130.96q53.65 53.66 130.96 53.66Z"/></svg>
+      <input type="text" id="searchInput" placeholder="Search here..." autocomplete="off"/>
+      <svg onclick="goBack()" class="search-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-437.85 277.08-234.92q-8.31 8.3-20.89 8.5-12.57.19-21.27-8.5-8.69-8.7-8.69-21.08 0-12.38 8.69-21.08L437.85-480 234.92-682.92q-8.3-8.31-8.5-20.89-.19-12.57 8.5-21.27 8.7-8.69 21.08-8.69 12.38 0 21.08 8.69L480-522.15l202.92-202.93q8.31-8.3 20.89-8.5 12.57-.19 21.27 8.5 8.69 8.7 8.69 21.08 0 12.38-8.69 21.08L522.15-480l202.93 202.92q8.3 8.31 8.5 20.89.19 12.57-8.5 21.27-8.7 8.69-21.08 8.69-12.38 0-21.08-8.69L480-437.85Z"/></svg>         
+    </div>
+  </div>
+
+  <div id="sectionsContainer"></div>
+
+  <div class="no-results" id="noResults">
+    Nothing found
+  </div>
+  <footer>
+    © BS&MFI. All rights reserved.
+  </footer>
+</div>
+
+<script>
+const siteGroups = [
+    {
+    heading: "Return Management",
+    sites: [
+      { name: "BS&MFI Solutions",desc: "Helps to return the amount with different solutions",url: "https://blackswan19.github.io/golden/FM/solution",icon: "fab fa-youtube"},   
+    { name: "BsRora", desc: "Let the bot do", url: "https://mfi0212.github.io/MFI/BsRora/bsora.main.page" },
+    ]
+},
+{
+  heading: "New in & issue",
+  sites: [
+    { name: "Turbo", desc: "Subcription plans", url: "https://blackswan19.github.io/golden/FM/starpre" },
+    { name: "Enterance Form", desc: "New members form",       url: "https://mfi0212.github.io/MFI/entrysheet", icon: "fas fa-code"         },
+    { name: "Helper",      desc: "I have issue form",           url: "https://mfi0212.github.io/MFI/abt.hlp",      icon: "fas fa-film"          },
+  ]
+},
+{
+  heading: "Offer & Earns",
+  sites: [
+    { name: "BsGifter",    desc: "Gifts exchanger",        url: "https://blackswan19.github.io/golden/FM/bsgifter",    icon: "fas fa-book-open"     },
+    { name: "Lendlink-Mid",    desc: "Turn your money into income",        url: "https://mfi0212.github.io/swan/lndlnk-mid",    icon: "fas fa-book-open"     },
+    // { name: "BsGames",       desc: "Exclusive rewards and benefits for BS&MFI members.",          url: "https://blackswan19.github.io/golden/Bs%20Games/bsgames",       icon: "fab fa-reddit"        },
+    { name: "Stars",       desc: "Interest reducer.",          url: "https://blackswan19.github.io/golden/FM/starspage",       icon: "fab fa-reddit"        },
+  ]
+},
+{
+  heading: "VIPs & Premium+ Services",
+  sites: [
+      { name: "BsMansion",      desc: "Store offer to use after",              url: "https://mfi0212.github.io/MFI/bsmansion",  icon: "fas fa-robot"         },
+      { name: "Chloennaouii",    desc: "Discover Your Discount",                  url: "https://mfi0212.github.io/MFI/cholennaouii.main",    icon: "fab fa-instagram"     },
+      { name: "BYSWN",    desc: "Discover Your Discount",                  url: "https://mfi0212.github.io/MFI/BYSWN",    icon: "fab fa-instagram"     },
+      { name: "Quantam",    desc: "GIFs & Stickers",                  url: "https://mfi0212.github.io/MFI/quantam/quantam.main.page",    icon: "fab fa-instagram"     },
+    ]
+  },  
+  {
+    heading: "Services",
+    sites: [
+      { name: "All Services", desc: "All service from BS&MFI",       url: "https://blackswan19.github.io/BS/bslends", icon: "fas fa-code"         },
+      { name: "BsLends", desc: "A service from BS&MFI",       url: "https://mfi0212.github.io/MFI/rate", icon: "fas fa-code"         },
+      { name: "MLendings", desc: "A service from BS&MFI",       url: "https://blackswan19.github.io/golden/FM/themain", icon: "fas fa-code"         },
+      { name: "Vintage Lender(VIPs)", desc: "VIPs only site",       url: "", icon: "fas fa-code"         },
+      { name: "Short Term Loan",            desc: "Quick amounts for 1 to 15 days.",        url: "https://mfi0212.github.io/MFI/1.5.days",            icon: "fab fa-x-twitter"     },
+    ]
+  },
+   {
+    heading: "Collaboration",
+    sites: [
+      { name: "BsPsgenerater", desc: "Password generator",       url: "https://blackswan19.github.io/Educate/password", icon: "fas fa-code"         },
+      { name: "BsReminder", desc: "Date wise notes",       url: "https://blackswan19.github.io/bscrop/reminder", icon: "fas fa-code"         },
+      { name: "BsBookpad", desc: "Download the notes",       url: "https://blackswan19.github.io/Educate/bookpad", icon: "fas fa-code"         },
+      { name: "BsAdstoper", desc: "Ad blocker",       url: "https://blackswan19.github.io/Educate/stoper", icon: "fas fa-code"         },
+      { name: "BsFilexplorer", desc: "Store privacy files in folders",       url: "https://blackswan19.github.io/Educate/filexplorer", icon: "fas fa-code"         },
+      { name: "BsMediastorage", desc: "Store files with privacy",       url: "https://blackswan19.github.io/Educate/hider", icon: "fas fa-code"         },
+    ]
+  }
+];
+// document.addEventListener('contextmenu', e => e.preventDefault());
+function getColor(name) {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const hue = Math.abs(hash) % 360;
+  // return `hsl(${hue}, 75%, 58%)`;
+}
+
+function getInitial(name) {
+  return name.trim()[0]?.toUpperCase() || "?";
+}
+
+function renderAll() {
+  const container = document.getElementById("sectionsContainer");
+  container.innerHTML = "";
+
+  siteGroups.forEach(group => {
+    const section = document.createElement("div");
+    section.className = "section";
+
+    const h2 = document.createElement("h2");
+    h2.textContent = group.heading;
+    section.appendChild(h2);
+
+    const list = document.createElement("div");
+    list.className = "site-list";
+
+    group.sites.forEach(site => {
+      const a = document.createElement("a");
+      a.href = site.url;
+      a.target = "_parent";
+      a.className = "site-item";
+
+      const bg = getColor(site.name);
+      const initial = getInitial(site.name);
+
+      a.innerHTML = `
+        <div class="letter-icon" style="background: ${bg};">${initial}</div>
+        <div class="site-info">
+          <h3>${site.name}</h3>
+          <p>${site.desc}</p>
+        </div>
+      `;
+
+      list.appendChild(a);
+    });
+
+    section.appendChild(list);
+    container.appendChild(section);
+  });
+}
+
+function renderFiltered(query = "") {
+  const q = query.toLowerCase().trim();
+  const container = document.getElementById("sectionsContainer");
+  const noResults = document.getElementById("noResults");
+
+  container.innerHTML = "";
+
+  if (!q) {
+    renderAll();
+    noResults.style.display = "none";
+    return;
+  }
+
+  let found = false;
+
+  siteGroups.forEach(group => {
+    const matches = group.sites.filter(s =>
+      s.name.toLowerCase().includes(q) ||
+      s.desc.toLowerCase().includes(q) ||
+      s.url.toLowerCase().includes(q)
+    );
+
+    if (!matches.length) return;
+
+    found = true;
+
+    const section = document.createElement("div");
+    section.className = "section";
+
+    const h2 = document.createElement("h2");
+    h2.textContent = group.heading;
+    section.appendChild(h2);
+
+    const list = document.createElement("div");
+    list.className = "site-list";
+
+    matches.forEach(site => {
+      const a = document.createElement("a");
+      a.href = site.url;
+      a.target = "_parent";
+      a.className = "site-item";
+
+      const bg = getColor(site.name);
+      const initial = getInitial(site.name);
+
+      a.innerHTML = `
+        <div class="letter-icon" style="background: ${bg};">${initial}</div>
+        <div class="site-info">
+          <h3>${site.name}</h3>
+          <p>${site.desc}</p>
+        </div>
+      `;
+
+      list.appendChild(a);
+    });
+
+    section.appendChild(list);
+    container.appendChild(section);
+  });
+
+  noResults.style.display = found ? "none" : "block";
+}
+function goBack() {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        alert("✅ Back button clicked!\n\n(In a real app this would take you to previous screen or home.)");
+      }
+    }
+renderAll();
+
+document.getElementById("searchInput").addEventListener("input", e => {
+  renderFiltered(e.target.value);
+});
+</script>
+
+</body>
+</html>
