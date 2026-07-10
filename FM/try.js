@@ -138,7 +138,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
             if (user.showCustomContent === "yes" && user.customContent && user.customContent.value) {
                 const contentUrl = user.customContent.url && /^https?:\/\//.test(user.customContent.url) ? user.customContent.url : null;
                 const contentHtml = user.customContent.type === "text"
-                    ? `<h3 style="color:white;font-size:16px;">Special Offer</h3><p style="color:#00aeff;font-size:14px;">${user.customContent.value}</p>`
+                    ? `<h3 style="font-size:16px;">Special Offer</h3><p style="color:#00aeff;font-size:14px;">${user.customContent.value}</p>`
                     : `<h3 style="color:white;font-size:16px;">Special Offer</h3><img class="applybtn" src="${user.customContent.value}" alt="Special Offer" style="cursor:pointer;" onerror="this.src='';">`;
                 if (contentUrl) {
                     specialContentDiv.innerHTML = `<a href="${contentUrl}" style="text-decoration:none;display:block;" aria-label="Special offer">${contentHtml}</a>`;
