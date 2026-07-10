@@ -1,14 +1,12 @@
-    document.addEventListener('contextmenu', e => e.preventDefault());   
+document.addEventListener('contextmenu', e => e.preventDefault());   
 const passwords = {
-
     "6275": {
         name: "Srikanth Jampana",
-        membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#ff4500",
         stars: 0,
         coins: 1,
-        tierPoints: 5,
+        verified: true,
         showCustomContent: "no",
         customContent: {
             type: "image",
@@ -28,12 +26,11 @@ const passwords = {
     },
     "Mahesh888*": {
         name: "Mahesh Muthinti",
-        membershipType: "",
         membershipIcon: "https://files.donationalerts.com/uploads/images/2/tb_5000.gif",
         profileBackground: "#005f56",
         stars: 0,
         coins: 0,
-        tierPoints: 0,
+        verified: true,
         showCustomContent: "no",
         customContent: {
             type: "image",
@@ -46,12 +43,11 @@ const passwords = {
     },
     "0212": {
         name: "Tony Montana",
-        membershipType: "",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "blue",
         stars: 10000,
         coins: 0,
-        tierPoints: 0,
+        verified: true,
         showCustomContent: "yes",
         customContent: {
             type: "image",
@@ -64,62 +60,6 @@ const passwords = {
         ]
     },
 };
-
-
-const TIER_THRESHOLDS = [
-    { tier: 1, points: 0,   interestRate: "Standard" },
-    { tier: 2, points: 100, interestRate: "2% lower" }
-];
-
-function getTierInfo(points) {
-    if (points >= 100) {
-        return { tier: 2, points, needed: 0, nextRate: null };
-    } else {
-        return { tier: 1, points, needed: 100 - points, nextRate: "2% lower" };
-    }
-}
-
-function showTierPopup(html) {
-    const old = document.getElementById("tierPopupModal");
-    if (old) old.remove();
-
-    const modal = document.createElement("div");
-    modal.id = "tierPopupModal";
-    modal.style.cssText = `    position: fixed;
-    inset: 0px;
-    background: rgb(0 0 0 / 73%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999999;
-    `;
-    modal.innerHTML = `
-        <div style="background: #282828;
-    color: #ffffffab;
-    padding: 15px;
-    border-radius: 16px;
-    max-width: 280px;
-    text-align: center;
-    font-family: sans-serif;
-    font-size: 13px;
-    font-weight: 200;">
-            <p style="margin:0 0 16px; line-height:1.5;">${html}</p>
-            <button onclick="this.closest('#tierPopupModal').remove()" 
-                    style="background: #008bd1;
-    border: none;
-    padding: 6px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: 400;
-    width: 100%;
-    color: white;
-    font-size: 15px;">
-                OK
-            </button>
-        </div>
-    `;
-    document.body.appendChild(modal);
-}
 
 document.addEventListener("DOMContentLoaded", () => {
     const savedPassword = localStorage.getItem("userPassword");
@@ -146,15 +86,25 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         document.getElementById("starCount").textContent = user.stars;
         document.getElementById("coinsCount").textContent = user.coins;
 
-        const membershipTypeContainer = document.getElementById("membershipType");
-        membershipTypeContainer.innerHTML = `
-            <a href="https://blackswan19.github.io/golden/FM/duplicatelite">${user.membershipType}</a>
-        `;
-
         const userNameContainer = document.getElementById("userNameContainer");
+
+        // Verified Icon - Only show if verified: true
+        let verifiedHTML = '';
+        if (user.verified === true) {
+            verifiedHTML = `
+                <img 
+                    style="width: 25px;" 
+                    src="verified_icon.png" 
+                    alt="Verified"
+                    onerror="this.style.display='none'" 
+                >
+            `;
+        }
+
         userNameContainer.innerHTML = `
             <span id="userName">${user.name}</span>
-            <img src="${user.membershipIcon}" alt="${user.membershipType} Icon" class="user-icon">
+            ${verifiedHTML}
+            <img src="${user.membershipIcon}" alt="Membership Icon" class="user-icon">
         `;
 
         const profilePicture = document.getElementById("profilePicture");
@@ -164,86 +114,10 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         profilePicture.style.backgroundImage = "none";
         profilePicture.textContent = iconText;
 
-        const tierInfo = getTierInfo(user.tierPoints);
-        const percent = tierInfo.tier === 2 ? 100 : (user.tierPoints / 100) * 100;
+        // Remove Tier Progress
+        document.getElementById("tierProgress")?.remove();
 
-        let barColor = user.profileBackground;
-        if (barColor.startsWith("rgb")) {
-            const rgb = barColor.match(/\d+/g);
-            if (rgb) barColor = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 0.9)`;
-        } else if (barColor.startsWith("#")) {
-            barColor = barColor + "cc";
-        }
-
-        const tierProgressHTML = `
-            <div id="tierProgress">
-                <div style="display: flex; align-items: center; gap: 6px; cursor: pointer;" id="tierClickTrigger">
-                    <span style="color: #ffd700; font-weight: 600;">Tier ${tierInfo.tier}</span>
-                    <div class='tiergraphbar'>
-                        <div style="width: ${percent}%; height: 100%; background: ${barColor}; transition: width 0.4s ease;"></div>
-                    </div>
-                    <span style="color: #aaa; font-size: 12px;">${user.tierPoints} pts</span>
-                </div>
-            </div>
-        `;
-
-        const existingTier = document.getElementById("tierProgress");
-        if (existingTier) existingTier.remove();
-        userNameContainer.insertAdjacentHTML("afterend", tierProgressHTML);
-
-        document.getElementById("tierClickTrigger").addEventListener("click", () => {
-            const msg = tierInfo.tier === 2
-                ? `You have <b>Tier 2</b> (${user.tierPoints} points).<br>You unlocked <b>2% lower interest rate</b>!`
-                : `You have <b>Tier 1</b> (${user.tierPoints} points).<br>You need <b>${tierInfo.needed}</b> more points to reach <b>Tier 2</b> and get <b>2% lower interest</b>.`;
-            showTierPopup(msg);
-        });
-
-        const borrowLimitMessage = document.createElement("div");
-        borrowLimitMessage.id = "borrowLimitMessage";
-
-        const ads = [
-            {
-                name: "LendLink - Mid",
-                headline: "LendLink - Mid",
-                link: "",
-                desc: "A servive from lendlink by which you can turn your money into income.</red>",
-                icon: "https://cdn.example.com/paymine-16.png",
-            },
-            {
-                name: "Split half it",
-                headline: "Split half it ",
-                desc: "With Split half pay, you can pay half of the total amount and extend the remaining half with a flexibility while ensuring smooth repayment.",
-                link: "https://blackswan19.github.io/golden/FM/solution",
-                icon: "https://cdn.example.com/split-16.png"
-            },
-            {
-                name: "Delay it",
-                headline: "Delay it",
-                desc: "It was a program by which you can Extend the returning date of your amounts.",
-                link: "https://blackswan19.github.io/golden/FM/solution",
-                icon: "https://cdn.example.com/delay-16.png"
-            }
-        ];
-
-        const ad = ads[Math.floor(Math.random() * ads.length)];
-
-        borrowLimitMessage.innerHTML = `
-            <div class="bot">
-                <p class="borrowLimitMessage">
-                    <span>
-                        <strong>${ad.headline}</strong> (Ad)
-                    </span>  <br>
-                    ${ad.desc}
-                    <br><a class="exploreadds" href="${ad.link}" 
-                       >
-            <i  class="fa-solid fa-arrow-up-right-from-square"></i>
-    </a>
-    </p>
-    </div>
-    `;
-        const userInfoModal = document.getElementById("userInfoModal");
-        const profilePictureContainer = profilePicture.parentElement;
-        userInfoModal.insertBefore(borrowLimitMessage, profilePictureContainer);
+        // === ADS SECTION COMPLETELY REMOVED ===
 
         const amountButtons = document.getElementById("amountButtons");
         amountButtons.innerHTML = "";
@@ -255,6 +129,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
             amountButtons.appendChild(btn);
         });
         updateAllButtonColors(user);
+
         const specialContentDiv = document.getElementById("specialContent");
         try {
             if (user.showCustomContent === "yes" && user.customContent && user.customContent.value) {
@@ -291,6 +166,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         errorMessage.textContent = "Invalid password.";
     }
 });
+
 function checkDueReminders(user) {
     const today = new Date();
     const tomorrow = new Date(today);
@@ -327,12 +203,12 @@ function checkDueReminders(user) {
     else if (dueTomorrow) {
         reminderMessage.innerHTML = 
             `Mr. ${user.name}, <b>Tomorrow (${dueTomorrow.date})</b> your Amount <b>${dueTomorrow.loan.takenAmount}</b> from <b>${dueTomorrow.loan.takenFrom}</b> has to be returned.<br><br>` +
-            `<b style="color: #ff8c00;
-    font-weight: 300;" >Return the amount before 6 PM today.</b><br><br>` +
+            `<b style="color: #ff8c00;font-weight: 300;">Return the amount before 6 PM today.</b><br><br>` +
             `Note: Do you like to extend? Do so today only. Tomorrow extension will not be provided and additional interest will be added.`;
         reminderModal.style.display = "flex";
     }
 }
+
 function closeReminderModal() {
     document.getElementById("reminderModal").style.display = "none";
 }
@@ -406,6 +282,7 @@ function isDueToday(endDate) {
     const endDateStr = `${match[1]}-${match[2]}-${match[3]}`;
     return endDateStr === todayStr;
 }
+
 function updateAllButtonColors(user) {
     const buttons = document.querySelectorAll("#amountButtons .amount-btn");
     buttons.forEach((btn, idx) => {
@@ -429,6 +306,7 @@ function updateAllButtonColors(user) {
         }
     });
 }
+
 function displayLoanDetails(loan, index) {
     const loanDetails = document.getElementById("loanDetails");
     const userInput = document.getElementById("userPassword").value.trim();
@@ -439,10 +317,12 @@ function displayLoanDetails(loan, index) {
     const totalReturnAmount = (loan.takenAmount + loan.interest + fine).toFixed(2);
     const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
     const daysBetween = calculateDaysBetween(loan.planDate, cleanEndDate);
+
     document.querySelectorAll(".amount-btn").forEach(btn => {
         btn.classList.remove("active");
         updateAllButtonColors(user);
     });
+
     const activeBtn = document.getElementById("amountButtons").children[index];
     activeBtn.classList.add("active");
     activeBtn.style.background = "#0066cc";
@@ -460,32 +340,10 @@ function displayLoanDetails(loan, index) {
     loanDetails.innerHTML = `
         <p id="scrotamts"></p>
         <div class="loan-entry">
-            <p style="text-align: center;
-    position: sticky;
-    top: 143px;
-    margin-top: 25px;
-    right: 5px;
-    float: right;
-    z-index: 1000000;">
-                <button class="amounts-btn downsingle" style="width: 100%;
-    font-size: 9px;
-    padding: 2px 9px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0px;
-    font-weight: 300;
-    backdrop-filter: blur(3px);
-    gap: 5px;
-    background: #2535488f;
-    border-radius: 9999px;
-    border-top: solid 1px #ffffff30;
-    border-bottom: solid 0.1px #ffffff24;" onclick="downloadSingleLoan(${index})">
-                    <svg style="width: 14px;
-    height: 20px;" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512"><path d="M19,6V4a4,4,0,0,0-4-4H9A4,4,0,0,0,5,4V6a5.006,5.006,0,0,0-5,5v5a5.006,5.006,0,0,0,5,5,3,3,0,0,0,3,3h8a3,3,0,0,0,3-3,5.006,5.006,0,0,0,5-5V11A5.006,5.006,0,0,0,19,6ZM7,4A2,2,0,0,1,9,2h6a2,2,0,0,1,2,2V6H7ZM17,21a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V17a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1Zm5-5a3,3,0,0,1-3,3V17a3,3,0,0,0-3-3H8a3,3,0,0,0-3,3v2a3,3,0,0,1-3-3V11A3,3,0,0,1,5,8H19a3,3,0,0,1,3,3Z"/><path d="M18,10H16a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z"/></svg>
-
-                        Download This Receipt
+            <p style="text-align: center; position: sticky; top: 143px; margin-top: 25px; right: 5px; float: right; z-index: 1000000;">
+                <button class="amounts-btn downsingle" style="width: 100%; font-size: 9px; padding: 2px 9px; display: flex; flex-direction: row; justify-content: center; align-items: center; margin-top: 0px; font-weight: 300; backdrop-filter: blur(3px); gap: 5px; background: #2535488f; border-radius: 9999px; border-top: solid 1px #ffffff30; border-bottom: solid 0.1px #ffffff24;" onclick="downloadSingleLoan(${index})">
+                    <svg style="width: 14px; height: 20px;" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512"><path d="M19,6V4a4,4,0,0,0-4-4H9A4,4,0,0,0,5,4V6a5.006,5.006,0,0,0-5,5v5a5.006,5.006,0,0,0,5,5,3,3,0,0,0,3,3h8a3,3,0,0,0,3-3,5.006,5.006,0,0,0,5-5V11A5.006,5.006,0,0,0,19,6ZM7,4A2,2,0,0,1,9,2h6a2,2,0,0,1,2,2V6H7ZM17,21a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V17a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1Zm5-5a3,3,0,0,1-3,3V17a3,3,0,0,0-3-3H8a3,3,0,0,0-3,3v2a3,3,0,0,1-3-3V11A3,3,0,0,1,5,8H19a3,3,0,0,1,3,3Z"/><path d="M18,10H16a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z"/></svg>
+                    Download This Receipt
                 </button>
             </p>
             <h3>Service</h3>
@@ -505,7 +363,6 @@ function displayLoanDetails(loan, index) {
             <h3>Total to Return</h3>
             <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-400 40-640l440-240 440 240-440 240Zm0 160L63-467l84-46 333 182 333-182 84 46-417 227Zm0 160L63-307l84-46 333 182 333-182 84 46L480-80Zm0-411 273-149-273-149-273 149 273 149Zm0-149Z"/></svg>Full Amount : ${totalReturnAmount} Rupees</p>
             <hr>
-            
         </div>
     `;
 }
