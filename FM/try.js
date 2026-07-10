@@ -8,7 +8,7 @@ const passwords = {
         stars: 0,
         coins: 1,
         verified: true,
-        showCustomContent: "no",
+        showCustomContent: "yes",
         customContent: {
             type: "image",
             value: "programXoffer.png",
@@ -32,7 +32,7 @@ const passwords = {
         stars: 0,
         coins: 0,
         verified: true,
-        showCustomContent: "no",
+        showCustomContent: "yes",
         customContent: {
             type: "image",
             value: "programXoffer.png",
