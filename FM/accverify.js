@@ -1,4 +1,5 @@
 document.addEventListener('contextmenu', e => e.preventDefault());   
+
 const passwords = {
     "6275": {
         name: "Srikanth Jampana",
@@ -122,12 +123,12 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         const amountButtons = document.getElementById("amountButtons");
         amountButtons.innerHTML = "";
         user.loans.forEach((loan, index) => {
-            const btn = document.createElement("button");
-            btn.className = "amount-btn";
-            btn.innerHTML = `₹${loan.takenAmount}<span class="amount-id"> ${index + 1}</span>`;
-            btn.onclick = () => displayLoanDetails(loan, index);
-            amountButtons.appendChild(btn);
-        });
+                    const btn = document.createElement("button");
+                    btn.className = "amount-btn";
+                    btn.innerHTML = `<a style="display: flex; justify-content: center; align-items: center;color: white;" href="#scrotamts"> ₹${loan.takenAmount}<span class="amount-id" > ${index + 1}</span></a>`;
+                    btn.onclick = () => displayLoanDetails(loan, index);
+                    amountButtons.appendChild(btn);
+                });
         updateAllButtonColors(user);
 
         const specialContentDiv = document.getElementById("specialContent");
