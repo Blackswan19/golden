@@ -124,7 +124,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         user.loans.forEach((loan, index) => {
             const btn = document.createElement("button");
             btn.className = "amount-btn";
-            btn.innerHTML = `₹${loan.takenAmount}<span class="amount-id"> Amount ${index + 1}</span>`;
+            btn.innerHTML = `₹${loan.takenAmount}<span class="amount-id"> ${index + 1}</span>`;
             btn.onclick = () => displayLoanDetails(loan, index);
             amountButtons.appendChild(btn);
         });
