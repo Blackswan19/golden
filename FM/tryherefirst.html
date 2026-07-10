@@ -391,7 +391,7 @@ display: none;
     position: fixed;
     top: 0;
     height: 100%;
-    padding: 10px;
+    padding: 0px;
     line-height: 30px;
     background-color: #151e27;
     overflow-y: scroll;
@@ -409,10 +409,10 @@ color: #00aeff;
 }
 
 .loan-entry p {
-    color: #a0a0a0;
+color: #a0a0a0;
     font-size: 16px;
     font-weight: 400;
-    margin: 10px 0;
+    margin: 0;
     transition: color 0.3s ease;
     display: flex;
     justify-content: left;
@@ -429,7 +429,7 @@ color: #00aeff;
 
 .close {
 position: fixed;
-    padding:20px 10px;
+    padding: 15px 5px 5px 5px;
     width: 100%;
     z-index: 10000000;
     font-size: 25px;
@@ -549,8 +549,10 @@ margin-bottom: 50px;
     border-bottom: none;
     width: 100%;
     max-width: 600px;
-    margin-top: -20px;
-    padding: 10px;
+    background: #1c2834;
+    border-radius: 20px;
+    padding: 15px;
+    line-height: 50px;
 }
 
 ::-webkit-scrollbar {
@@ -558,21 +560,20 @@ margin-bottom: 50px;
 }
 
 .amount-buttons {
-    display: flex;
-    gap: 8px;
+display: flex;
+    gap: 5px;
     overflow-x: scroll;
     white-space: nowrap;
     position: sticky;
-    top: 65px;
+    top: 70px;
     z-index: 1000000;
-    width: 100%;
-    padding: 15px;
+    width: 103%;
+    padding: 10px;
     max-width: 700px;
-    border-radius: 25px;
+    border-radius: 20px;
     border-top: solid 1px #ffffff30;
     border-bottom: solid 0.1px #ffffff24;
     backdrop-filter: blur(5px);
-    margin-top: 15px;
     background: #2535488f;
 }
 
@@ -732,11 +733,18 @@ p#membershipType a {
 body.curvy p#membershipType {
 	border-radius: 100px;
 }
-
+.secondmaincntent {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
 .profile-container {
 max-width: 620px;
     width: 100%;
-    padding-top: 75px;
+    padding-top: 0px;
     position: relative;
     z-index: 10000;
 }
@@ -763,6 +771,13 @@ max-width: 620px;
     background: transparent;
 }.rightsideoption svg {
     fill: #00aeff;
+}
+.maincontentsection {
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .profile-picture {
 width: 130px;
@@ -818,18 +833,17 @@ body.curvy .profile-picture {
 }
 
 .user-icon {
-width: 35px;
+    width: 35px;
     height: 35px;
     padding: 5px;
-    background: #283543;
+    background: #00000091;
     border-radius: 13px;
+
 }
 
 p#userNameContainer {
 font-size: 22px;
     gap: 5px;
-    margin: 15px 0;
-    border-radius: 15px;
     cursor: pointer;
     width: 100%;
     display: flex;
@@ -852,11 +866,11 @@ span#userName {
 }
 
 .amounts-btn {
-    background-color: #283543;
-    color: lightgray;
+    background-color: #0000005e;
+    color: white;
     border: none;
     font-size: 13px;
-    border-radius: 18px;
+    border-radius: 15px;
     cursor: pointer;
     margin-top: auto;
     display: flex;
@@ -866,11 +880,12 @@ span#userName {
     width: 100%;
     padding: 5px;
     gap: 3px;
+
 }
 
 
 .amounts-btn svg {
-    fill: lightgray;
+fill: white;
     width: 23px;
     height: 23px;
 }
@@ -1063,17 +1078,19 @@ hr {
 }
 
 .about {
-	padding: 0;
-    text-align: center;
+text-align: center;
     max-width: 600px;
     width: 100%;
     background: #1c2834;
-    border-radius: 20px;
+    border-radius: 30px;
     position: relative;
     border: none;
     top: 0px;
+    padding: 0 10px;
 }
-
+div#specialContent {
+    background: #0000005e;
+}
 .applybtn {
 	border: none;
 	border-radius: 9999px;
@@ -1363,12 +1380,11 @@ padding: 2px;
 	width: 16px;
 }
 
-
 #profilePicturess {
-width: 100%;
-    text-align: center;
-    padding: 0px 10px;
-    border-radius: 30px;
+    width: 100%;
+text-align: center;
+    padding: 80px 5px 5px 5px;
+    border-radius: 0px;
 }
 
 #specialContent img {
@@ -1407,7 +1423,6 @@ body.curvy #specialContent img {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 10px;
     width: 100%;
 }
 #specialContent h3 {
@@ -1431,6 +1446,8 @@ body.curvy #specialContent img {
 	text-decoration: none;
 	display: block;
 }
+
+
 
 span#totalTaken,
 #totalInterest,
@@ -1534,11 +1551,11 @@ display: flex;
         </div>
 
         <div class="profile-container">
-            <div class="profile-picture" id="profilePicture"></div>
+            <div class="maincontentsection" id="profilePicturess">
+                <div class="profile-picture" id="profilePicture"></div>
 			<div class="maincontent">
             	<p id="userNameContainer"><span style="color: white;" id="userName"></span></p>
 			</div>
-            <div class="mainbtmproopt">
                 <div class="twoOptions">
                     <button class="amounts-btn" onclick="showAmountsModal()">
                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M200-240v40-560 520Zm12.31 100q-29.92 0-51.12-21.19Q140-182.39 140-212.31v-535.38q0-29.92 21.19-51.12Q182.39-820 212.31-820h535.38q29.92 0 51.12 21.19Q820-777.61 820-747.69v108.85h-60v-108.85q0-5.39-3.46-8.85t-8.85-3.46H212.31q-5.39 0-8.85 3.46t-3.46 8.85v535.38q0 5.39 3.46 8.85t8.85 3.46h535.38q5.39 0 8.85-3.46t3.46-8.85v-108.85h60v108.85q0 29.92-21.19 51.12Q777.61-140 747.69-140H212.31Zm320-160q-29.92 0-51.12-21.19Q460-342.39 460-372.31v-215.38q0-29.92 21.19-51.12Q502.39-660 532.31-660h255.38q29.92 0 51.12 21.19Q860-617.61 860-587.69v215.38q0 29.92-21.19 51.12Q817.61-300 787.69-300H532.31Zm255.38-60q5.39 0 8.85-3.46t3.46-8.85v-215.38q0-5.39-3.46-8.85t-8.85-3.46H532.31q-5.39 0-8.85 3.46t-3.46 8.85v215.38q0 5.39 3.46 8.85t8.85 3.46h255.38ZM682.5-437.5Q700-455 700-480t-17.5-42.5Q665-540 640-540t-42.5 17.5Q580-505 580-480t17.5 42.5Q615-420 640-420t42.5-17.5Z"/></svg>
@@ -1558,16 +1575,17 @@ display: flex;
                             <span style="    display: none; font-size: 14px; font-weight: 600; position: relative; top: 0.5px;" id="coinsCount"></span> </div> 
                             Clone </button>
                 </div>
-                 <div id="profilePicturess" class="about">
-                 <div id="specialContent"></div></div>
+                 <div id="specialContent" class="about"></div>
+        </div>
                 <p id="membershipType" class="membership-type"></p>
+                        <div class="secondmaincntent">
                 <div class="about" style="    align-items: center;
-    padding: 10px 0 0 0;
-    max-width: 625px;
-    width: 100%;
-">
-        <h2 class="sponserheading">Our service are partnered by</h2>
-        <div class="sponserimges">
+                        padding: 10px 0 0 0;
+                        max-width: 625px;
+                        width: 100%;
+                    ">
+            <h2 class="sponserheading">Our service are partnered by</h2>
+            <div class="sponserimges">
                 <div class="sponsers-section">
                     <span>BsMansion</span>
                     <a href="https://mfi0212.github.io/MFI/bsmansion">Explore Now</a>
@@ -1586,15 +1604,9 @@ display: flex;
                 </div>
         </div>
             </div>
-            <div class="availablecntnt">
-                <span>Borrowed Amounts</span>           
-            </div>
-            
-           
-
-        </div>
         <div class="amount-buttons" id="amountButtons"></div>
         <div id="loanDetails"></div>
+        </div>
     </div>
 
     <!-- Amounts Modal -->
