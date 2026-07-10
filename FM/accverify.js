@@ -4,7 +4,7 @@ const passwords = {
     "6275": {
         name: "Srikanth Jampana",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "#ff4500",
+        profileBackground: "rgb(197 74 0)",
         stars: 0,
         coins: 1,
         verified: true,
@@ -45,7 +45,7 @@ const passwords = {
     "0212": {
         name: "Tony Montana",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "blue",
+        profileBackground: "#0000ff",
         stars: 10000,
         coins: 0,
         verified: true,
@@ -110,9 +110,11 @@ document.getElementById("submitBtn").addEventListener("click", () => {
 
         const profilePicture = document.getElementById("profilePicture");
         profilePicture.style.backgroundColor = user.profileBackground;
+        profilePicturess.style.backgroundColor = user.profileBackground;
         const nameParts = user.name.trim().split(/\s+/).slice(0, 2);
         const iconText = nameParts.map(part => part.charAt(0)).join("").toUpperCase();
         profilePicture.style.backgroundImage = "none";
+        profilePicturess.style.backgroundImage = "none";
         profilePicture.textContent = iconText;
 
         // Remove Tier Progress
@@ -136,7 +138,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
             if (user.showCustomContent === "yes" && user.customContent && user.customContent.value) {
                 const contentUrl = user.customContent.url && /^https?:\/\//.test(user.customContent.url) ? user.customContent.url : null;
                 const contentHtml = user.customContent.type === "text"
-                    ? `<h3 style="color:white;font-size:16px;">Special Offer</h3><p style="color:#00aeff;font-size:14px;">${user.customContent.value}</p>`
+                    ? `<h3 style="font-size:16px;">Special Offer</h3><p style="color:#00aeff;font-size:14px;">${user.customContent.value}</p>`
                     : `<h3 style="color:white;font-size:16px;">Special Offer</h3><img class="applybtn" src="${user.customContent.value}" alt="Special Offer" style="cursor:pointer;" onerror="this.src='';">`;
                 if (contentUrl) {
                     specialContentDiv.innerHTML = `<a href="${contentUrl}" style="text-decoration:none;display:block;" aria-label="Special offer">${contentHtml}</a>`;
@@ -341,7 +343,11 @@ function displayLoanDetails(loan, index) {
     loanDetails.innerHTML = `
         <p id="scrotamts"></p>
         <div class="loan-entry">
-            <p style="text-align: center; position: sticky; top: 143px; margin-top: 25px; right: 5px; float: right; z-index: 1000000;">
+            <p style="text-align: center;
+    position: sticky;
+    top: 140px;
+    float: right;
+    z-index: 1000000;">
                 <button class="amounts-btn downsingle" style="width: 100%; font-size: 9px; padding: 2px 9px; display: flex; flex-direction: row; justify-content: center; align-items: center; margin-top: 0px; font-weight: 300; backdrop-filter: blur(3px); gap: 5px; background: #2535488f; border-radius: 9999px; border-top: solid 1px #ffffff30; border-bottom: solid 0.1px #ffffff24;" onclick="downloadSingleLoan(${index})">
                     <svg style="width: 14px; height: 20px;" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512"><path d="M19,6V4a4,4,0,0,0-4-4H9A4,4,0,0,0,5,4V6a5.006,5.006,0,0,0-5,5v5a5.006,5.006,0,0,0,5,5,3,3,0,0,0,3,3h8a3,3,0,0,0,3-3,5.006,5.006,0,0,0,5-5V11A5.006,5.006,0,0,0,19,6ZM7,4A2,2,0,0,1,9,2h6a2,2,0,0,1,2,2V6H7ZM17,21a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V17a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1Zm5-5a3,3,0,0,1-3,3V17a3,3,0,0,0-3-3H8a3,3,0,0,0-3,3v2a3,3,0,0,1-3-3V11A3,3,0,0,1,5,8H19a3,3,0,0,1,3,3Z"/><path d="M18,10H16a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z"/></svg>
                     Download This Receipt
