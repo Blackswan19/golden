@@ -45,7 +45,7 @@ const passwords = {
     "0212": {
         name: "Tony Montana",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "#00007e",
+        profileBackground: "#0000ff",
         stars: 10000,
         coins: 0,
         verified: true,
@@ -345,7 +345,7 @@ function displayLoanDetails(loan, index) {
         <div class="loan-entry">
             <p style="text-align: center;
     position: sticky;
-    top: 150px;
+    top: 140px;
     float: right;
     z-index: 1000000;">
                 <button class="amounts-btn downsingle" style="width: 100%; font-size: 9px; padding: 2px 9px; display: flex; flex-direction: row; justify-content: center; align-items: center; margin-top: 0px; font-weight: 300; backdrop-filter: blur(3px); gap: 5px; background: #2535488f; border-radius: 9999px; border-top: solid 1px #ffffff30; border-bottom: solid 0.1px #ffffff24;" onclick="downloadSingleLoan(${index})">
