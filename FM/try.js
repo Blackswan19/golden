@@ -4,7 +4,7 @@ const passwords = {
     "6275": {
         name: "Srikanth Jampana",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "#ff4500",
+        profileBackground: "rgb(197 74 0)",
         stars: 0,
         coins: 1,
         verified: true,
@@ -45,7 +45,7 @@ const passwords = {
     "0212": {
         name: "Tony Montana",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "blue",
+        profileBackground: "#00007e",
         stars: 10000,
         coins: 0,
         verified: true,
