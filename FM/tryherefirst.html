@@ -74,7 +74,7 @@ button{
     bottom: 0px;
     width: 100%;
     gap: 0;
-    padding: 0 10px 10px;
+    padding: 0 10px 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,7 +111,7 @@ button{
 }
         .toolbar.bottom {
               bottom: auto;
-    top: 10px;
+    top: 15px;
     border-bottom: none;
     display: flex;
     justify-content: center;
@@ -694,9 +694,9 @@ position: absolute;
             const toolbar = document.getElementById('toolbar');
             if (toolbar.classList.contains('bottom')) {
                 bottomLinks.style.top = 'auto';
-                bottomLinks.style.bottom = '10px';
+                bottomLinks.style.bottom = '15px';
             } else {
-                bottomLinks.style.top = '10px';
+                bottomLinks.style.top = '15px';
                 bottomLinks.style.bottom = 'auto';
             }
         }
