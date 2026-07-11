@@ -94,16 +94,32 @@ button{
     background: rgb(255 255 255 / 10%);
 }
         .toolbar.bottom {
-            bottom: auto;
-            top: 10px;
-            border-bottom: none;
+                bottom: auto;
+    top: 10px;
+    border-bottom: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
         }
 
         .address-bar-container {
-            flex: 1;
-            max-width: 680px;
-            margin: 0 auto;
-            position: relative;
+           flex: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    background: rgb(255 255 255 / 10%);
+    backdrop-filter: blur(30px);
+    font-weight: 200;
+    border-top: 1px solid rgb(255 255 255 / 35%);
+    border-bottom: 1px solid rgb(255 255 255 / 35%);
+    background: rgb(255 255 255 / 10%);
+    backdrop-filter: blur(10px);
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
         }
 
         #url-bar {
@@ -115,11 +131,9 @@ width: 100%;
     font-size: 18px;
     outline: none;
     transition: background 0.4s ease;
-    box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
-    background: rgb(255 255 255 / 10%);
-    backdrop-filter: blur(30px);
     font-weight: 200;
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    border: none;
+    background: transparent;
         }
         #url-bar::placeholder{
             color: rgba(255, 255, 255, 0.648);
@@ -129,42 +143,41 @@ width: 100%;
         }
 
         .search-icon {
-            position: absolute;
+position: absolute;
     left: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: black;
+    color: white;
     z-index: 1000;
     width: 35px;
     height: 35px;
-    display: flex;cursor: pointer;
+    display: flex;
+    cursor: pointer;
     justify-content: center;
     align-items: center;
-    background: white;
-    border-radius: 50%;
+    background: transparent;
         }
 .search-icon:hover{
     background: rgba(255, 255, 255, 0.765);
 }
         /* Search Suggestions */
         .suggestions {
-position: absolute;
+scrollbar-width: auto;
+    position: absolute;
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
+    width: 97%;
     max-width: 680px;
-    background: rgb(255 255 255 / 10%);
-    backdrop-filter: blur(30px);
-    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
     margin-top: 8px;
-    box-shadow: 0 0px 10px rgb(0 0 0 / 53%);
     max-height: 400px;
     overflow-y: auto;
     z-index: 0;
     display: none;
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 8px;
+    scrollbar-width: none;
+    border-top: 1px solid rgb(255 255 255 / 35%);
+    border-bottom: 1px solid rgb(255 255 255 / 35%);
+    background: rgb(255 255 255 / 10%);
         }
 
         .toolbar.bottom .suggestions {
@@ -175,13 +188,13 @@ position: absolute;
         }
 
         .suggestion-item {
-            padding: 5px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            transition: background 0.4s ease;
-            border-bottom: 0.5px solid rgba(255,255,255,0.08);
+padding: 8px 12px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background 0.4s ease;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
         }
 
         .suggestion-item:last-child {
@@ -438,7 +451,7 @@ padding: 6px 10px;
     max-width: 380px;
     z-index: 3000;
     display: none;
-    backdrop-filter: blur(30px);
+    backdrop-filter:blur(10px);
     box-shadow: 0px 0px 8px 10000px rgb(0 0 0 / 60%);
     background: rgb(255 255 255 / 10%);
     border-radius: 30px;
@@ -463,17 +476,17 @@ div#bgGrid div:hover{
 }
 
 i.fa-solid.fa-grip-lines {
-width: 45px;
-    height: 45px;
+position: absolute;
+    right: 5px;
+    color: white;
+    z-index: 1000;
+    width: 35px;
+    height: 35px;
     display: flex;
+    cursor: pointer;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
-    transition: background 0.4s ease;
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
-    backdrop-filter: blur(30px);
-    background: rgb(255 255 255 / 10%);
+    background: transparent;
 }
     </style>
 </head>
@@ -483,20 +496,26 @@ width: 45px;
 
     <!-- Toolbar -->
     <div class="toolbar" id="toolbar">
+        <div class="logo">BSearchin</div>
         <div class="address-bar-container">
-             <i class="fa-solid fa-magnifying-glass search-icon" id="searchIcon"></i>
+            <i class="fa-solid fa-magnifying-glass search-icon" id="searchIcon"></i>
             <input type="text" id="url-bar" placeholder="Enter your query here..." autocomplete="off">
-            <div class="suggestions" id="suggestions"></div>
+            <i onclick="toggleSettings()" class="fa-solid fa-grip-lines"></i>
         </div>
-        <div onclick="toggleSettings()" style="cursor: pointer;">
-            <i class="fa-solid fa-grip-lines"></i>
-        </div>
+        <div class="suggestions" id="suggestions"></div>
     </div>
-
+<div class="settings-menu" id="settingsMenu">
+    <div class="menu-item" onclick="toggleToolbarPosition()">Move Bar</div>
+    <div class="menu-item" onclick="uploadBackground()">Upload BG</div>
+    <div class="menu-item" onclick="openImageCropper()">BsImagcrop</div>
+    <div class="menu-item" onclick="pickColorBackground()">Color Palette</div>
+    <div class="menu-item" onclick="showRecommendedBGs()">BG Recommends</div>
+    <div class="menu-item" onclick="removeBackground()">Delete BG</div>
+    <!-- <div class="menu-item" onclick="addNewSite()">Add Site</div> -->
+</div>
     <!-- Main Content -->
-    <div class="main-content">
+    <div class="main-content" style="display: none;">
         <div class="cntntcnter">
-            <div class="logo">BSearchin</div>
             <div id="favorites-grid" class="favorites-grid"></div>
         </div>
     </div>
@@ -511,18 +530,6 @@ width: 45px;
     border-radius: 7px;" src="https://i.ibb.co/27GXWVgg/BS.png" alt=""></a>
           <a href="savedsite.html"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M170-180q-29.15 0-49.58-20.42Q100-220.85 100-250v-457.69q0-29.15 21.58-50.73T172.31-780H362q14.46 0 27.81 5.62 13.34 5.61 23.19 15.46L471.92-700h354.62q12.77 0 21.38 8.62 8.62 8.61 8.62 21.38t-8.62 21.38q-8.61 8.62-21.38 8.62H447.38l-80-80H172.31q-5.39 0-8.85 3.46t-3.46 8.85V-240q0-5.39 2.12-4.04 2.11 1.35 5.57 3.27l77.85-259.92q7.23-23.31 26.61-37.46 19.39-14.16 43.08-14.16h514.46q36.77 0 58.35 29.23 21.57 29.23 11.34 63.77l-68.92 229.62q-6.85 22.53-25.65 36.11Q786-180 763.08-180H170Zm60.54-60h531q4.23 0 7.5-2.31 3.27-2.31 4.42-6.54l68.16-227.69q1.92-6.15-1.93-10.96-3.84-4.81-10-4.81H315.23q-4.23 0-7.5 2.31-3.27 2.31-4.42 6.54L230.54-240ZM160-500.08V-720-500.08ZM230.54-240l72.77-243.46q1.15-4.23 1.92-6.54l.77-2.31-1.35 4.81q-1.34 4.81-3.27 10.96l-68.15 227.69q-1.15 4.23-1.92 6.54l-.77 2.31Z"/></svg></a> 
     </div>
-
-   <!-- Settings Menu -->
-<div class="settings-menu" id="settingsMenu">
-    <div class="menu-item" onclick="toggleToolbarPosition()">Move Bar</div>
-    <div class="menu-item" onclick="uploadBackground()">Upload BG</div>
-    <div class="menu-item" onclick="openImageCropper()">BsImagcrop</div>
-    <div class="menu-item" onclick="pickColorBackground()">Color Palette</div>
-    <div class="menu-item" onclick="showRecommendedBGs()">BG Recommends</div>
-    <div class="menu-item" onclick="removeBackground()">Delete BG</div>
-    <!-- <div class="menu-item" onclick="addNewSite()">Add Site</div> -->
-</div>
-<!-- Image Cropper Popup -->
 <div class="popup" id="cropperPopup" style="max-width: 92%; width: 92%; max-height: 92vh; display: none; flex-direction: column;">
     <div style="font-size:18px; font-weight:600; text-align:center; margin-bottom:12px;">BsImagcrop • Crop Background</div>
     
