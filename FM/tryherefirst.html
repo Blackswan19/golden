@@ -67,7 +67,7 @@ button{
 
         /* Toolbar */
         .toolbar {
-           position: fixed;
+        position: fixed;
     left: 0;
     right: 0;
     display: flex;
@@ -77,8 +77,12 @@ button{
     bottom: 10px;
     justify-content: space-between;
     width: 100%;
-    gap: 5px;
+    gap: 0;
     padding: 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
         }
 .visitsave {
     width: 45px;
@@ -945,7 +949,7 @@ function addClearButton() {
     const clearBtn = document.createElement('span');
     clearBtn.innerHTML = '×';
     clearBtn.style.position = 'absolute';
-    clearBtn.style.right = '15px';
+    clearBtn.style.right = '40px';
     clearBtn.style.top = '50%';
     clearBtn.style.transform = 'translateY(-50%)';
     clearBtn.style.fontSize = '25px';
