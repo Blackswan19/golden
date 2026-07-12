@@ -63,12 +63,13 @@ font-size: 14px;
     font-weight: 400;
     color: #ffffff;
     padding: 10px;
-    text-align: left;
+    text-align: center;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    width: 100%;
-    background: #002aff;
+    width: 80%;
+    background: #464646;
+    border-radius: 999px;
     }
 
     .folders-container {
@@ -91,9 +92,9 @@ font-size: 14px;
     .folders::-webkit-scrollbar { display: none; }
 
     .add-folder-fixed {
-    flex-shrink: 0;
+   flex-shrink: 0;
     padding: 10px 10px 10px 30px;
-    background: linear-gradient(269deg, #ffffff54, #000000);
+    background: linear-gradient(269deg, #4f4f4f, #000000);
     color: #ffffff;
     border-radius: 0 100px 100px 0;
     font-size: 15px;
@@ -334,7 +335,7 @@ display: flex;
     border: 0.5px solid rgba(255, 255, 255, 0.1);
     background: #1a1a1a;
     border-radius: 25px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
     .cancel { background: #323232; color: #ffffffb5; }
     .danger  { background: #ff0d00; color: white; }
@@ -342,8 +343,7 @@ display: flex;
   </style>
 </head>
 <body>
-  <header id="header">BsNote</header>
-
+<div class="folders" id="folders"></div>
   <div class="folders-container">
   </div>
 
@@ -352,7 +352,7 @@ display: flex;
   </div>
 
   <div class="input-area" id="inputArea">
-    <div class="folders" id="folders"></div>
+      <header id="header">BsNote</header>
     <div class="inputsection">
         <label class="btn" for="imageInput">
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M212.31-140Q182-140 161-161q-21-21-21-51.31v-535.38Q140-778 161-799q21-21 51.31-21h535.38Q778-820 799-799q21 21 21 51.31v535.38Q820-182 799-161q-21 21-51.31 21H212.31Zm0-60h535.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46v-535.38q0-4.62-3.85-8.46-3.84-3.85-8.46-3.85H212.31q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v535.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85ZM200-200v-560 560Zm106.16-90h350.76q10.85 0 16.08-9.85 5.23-9.84-1.62-19.07L576-446.69q-5.62-7.23-14.46-7.23-8.85 0-14.46 7.23l-97.85 127.46-65.54-84q-5.61-6.85-14.27-6.85-8.65 0-14.27 7.24l-63.07 83.92q-7.23 9.23-2 19.07 5.23 9.85 16.08 9.85Z"/></svg>
