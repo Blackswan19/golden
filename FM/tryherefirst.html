@@ -184,27 +184,37 @@ width: 100%;
   border-radius: 30px;
   border: 0.5px solid rgba(255, 255, 255, 0.1);
 }
-
-.dialog h3 {
-  font-size: 15px;
-  font-weight: 500;
-  color: #ffffffd4;
-  text-align: center;
-  margin-top: -15px;
-  padding: 10px;
+.savfiltitlendsearchopt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+    margin-bottom: 10px;
 }
-
+.dialog h3 {
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffffffd4;
+    text-align: center;
+    margin: -15px 0 15px;
+    padding: 10px;
+    border-bottom: solid 1px #ffffff63;
+}
+.savfileinputndupldoptns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 input[type="file"] {
-  border: none;
-  color: #f0f0f5;
-  font-size: 16px;
-  padding: 15px 0;
-  cursor: pointer;
-  text-align: center;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+ border: none;
+    color: #f0f0f5;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 input[type="text"] {
@@ -227,15 +237,15 @@ input[type="text"] {
 
 .btn {
   flex: 1;
-  transition: background 0.3s;
-  padding: 10px;
-  border-radius: 14px;
-  border: none;
-  width: 100%;
-  font-size: 15px;
-  cursor: pointer;
-  min-width: 100px;
-  font-weight: 400;
+    transition: background 0.3s;
+    padding: 10px;
+    border-radius: 9999px;
+    border: none;
+    width: 100%;
+    font-size: 15px;
+    cursor: pointer;
+    min-width: 100px;
+    font-weight: 400;
 }
 
 .btn-primary {
@@ -249,15 +259,20 @@ input[type="text"] {
 }
 
 .close-btn {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: none;
-  border: none;
-  color: #88889a;
-  font-size: 28px;
-  cursor: pointer;
-  z-index: 1000000000;
+    border: none;
+    color: #88889a;
+    font-size: 28px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff24;
+    border-radius: 50%;
+    position: relative;
+    top: -5px;
+    left: -5px;
 }
 
 .uploaded-files {
@@ -322,10 +337,10 @@ input[type="text"] {
 }
 
 .no-results {
-  text-align: center;
-  color: #707080;
-  padding: 30px 10px;
-  font-size: 15px;
+     text-align: center;
+    color: #ffffff9e;
+    padding: 30px 10px;
+    font-size: 15px;
 }
 
 /* Media Queries */
@@ -369,22 +384,33 @@ input[type="text"] {
     <button class="close-btn" id="close-upload-modal-btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-437.85 277.08-234.92q-8.31 8.3-20.89 8.5-12.57.19-21.27-8.5-8.69-8.7-8.69-21.08 0-12.38 8.69-21.08L437.85-480 234.92-682.92q-8.3-8.31-8.5-20.89-.19-12.57 8.5-21.27 8.7-8.69 21.08-8.69 12.38 0 21.08 8.69L480-522.15l202.92-202.93q8.31-8.3 20.89-8.5 12.57-.19 21.27 8.5 8.69 8.7 8.69 21.08 0 12.38-8.69 21.08L522.15-480l202.93 202.92q8.3 8.31 8.5 20.89.19 12.57-8.5 21.27-8.7 8.69-21.08 8.69-12.38 0-21.08-8.69L480-437.85Z"/></svg></button>
     <h3>Uploading in <span id="current-folder-name"></span></h3>
     
-    <input type="file" id="file-input" multiple accept=".pdf,.jpg,.jpeg,.png,.gif,.txt,.docx,.zip"/>
-    <span style="text-align: center; font-size: 12px; position: relative; color: #ffffff85; display: block; margin-top: 8px;">
-      NOTE : The file have to be below 1MB. For larger files use <a style="color: white;" href="https://blackswan19.github.io/Educate/hider">BsFilestore</a>.
+    <div class="savfileinputndupldoptns">
+        <input type="file" id="file-input" multiple accept=".pdf,.jpg,.jpeg,.png,.gif,.txt,.docx,.zip"/>
+        <button class="btn btn-primary" id="upload-files-btn">Upload</button>
+    </div>
+    <span style="    text-align: center;
+    font-size: 12px;
+    position: relative;
+    color: #ffffff85;
+    display: block;
+    margin: 15px 0;
+    background: #000000;
+    font-weight: 400;
+    border-radius: 15px;
+    width: 100%;
+    padding: 9px 0;">
+      NOTE : The file have to be below 1MB. For larger files use <a style="color: rgba(255, 255, 255, 0.744);" href="https://blackswan19.github.io/Educate/hider">BsFilestore</a>.
     </span>
-  
-    <button class="btn btn-primary" id="upload-files-btn" style="width:100%; margin: 15px 0 10px 0">Upload files Now</button>
-    
-    <h3 style="margin: 15px 0 8px 0;">Saved files</h3>
-    <input type="text" id="file-search-input" placeholder="Search file..." style="    width: 100%;
+    <div class="savfiltitlendsearchopt">
+        <h3 style="margin: 0;">Saved files</h3>
+        <input style="width: fit-content;
     padding: 10px 0;
-    background: #2c2c2e;
+    background: #ffffff26;
     border: none;
     border-radius: 999px;
     color: white;
-    margin-bottom: 10px;
-    font-size: 14px;"/>
+    font-size: 14px;" type="text" id="file-search-input" placeholder="Search file..."/>
+    </div>
     <div class="uploaded-files" id="uploaded-files-list"></div>
   </div>
 </div>
