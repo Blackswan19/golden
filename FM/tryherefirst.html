@@ -101,7 +101,7 @@ display: flex;
     .folders::-webkit-scrollbar { display: none; }
 
     .add-folder-fixed {
-   flex-shrink: 0;
+flex-shrink: 0;
     padding: 10px 10px 10px 30px;
     background: linear-gradient(269deg, #4f4f4f, #000000);
     color: #ffffff;
@@ -116,6 +116,7 @@ display: flex;
     align-items: center;
     position: sticky;
     left: -25px;
+    z-index: 1000;
     }
 
 .folder-btn {
@@ -136,6 +137,10 @@ flex-shrink: 0;
     justify-content: flex-start;
     align-items: center;
     font-weight: 300;
+    box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
+    background: rgb(255 255 255 / 10%);
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(30px);
     }
 
     .folder-btn.active,
