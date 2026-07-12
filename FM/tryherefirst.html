@@ -102,14 +102,18 @@ padding: 10px;
         }
 
         .create-btn {
-                background-color: var(--accent);
+        background-color: var(--accent);
     color: white;
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 5px;
-    font-weight: 600;
+    padding: 10px;
+    font-weight: 300;
     gap: 2px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
         }
 
         .create-btn:hover {
@@ -287,8 +291,8 @@ font-size: 12px;
         .category-modal-content, .title-modal-content, .edit-category-modal-content {
 padding: 15px;
     border-radius: 30px;
-    width: 80%;
-    max-width: 450px;
+    width: 85%;
+    max-width: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -302,7 +306,13 @@ padding: 15px;
     border: 0.5px solid rgba(255, 255, 255, 0.1);
         }
 p#titleModalMessage {
-    font-size: 15px;
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    padding: 10px;
 }
 .title-modal-content h2 {
     font-weight: 600;
@@ -362,30 +372,30 @@ display: none;
     position: absolute;
     background-color: #444444;
     border-radius: 15px;
-    box-shadow: 0 0 14px rgb(0 0 0);
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.669);
     z-index: 100000001;
     min-width: fit-content;
     padding: 2px;
         }
 
-        .context-menu-item, .category-context-menu-item {
-    padding: 5px 10px;
-    color: #f5f5f7;
+        .context-menu-item, .category-context-menu-item{
+padding: 5px 10px;
+    color: #ffffffd4;
     cursor: pointer;
     border-radius: 14px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;font-weight: 300;
     font-size: 15px;
-    justify-content: center;
+    justify-content: flex-start;
         }
 
         .context-menu-item:hover, .category-context-menu-item:hover {
-            background-color: #777777;
+            background-color: rgb(126, 126, 126);
         }
 
-        .context-menu-item.delete:hover {
-            color: #ff3b30;
+        .context-menu-item.delete:hover, .category-context-menu-item.delete:hover{
+            background-color: rgb(105, 0, 0);
         }
 
         @media (max-width: 480px) {
@@ -399,6 +409,7 @@ display: none;
             <h1>BsLinksaver</h1>
             <button class="create-btn" onclick="openCreateModal()">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M663.08-289.92h-86.93q-12.77 0-22.38-9.75-9.62-9.75-9.62-23.25 0-13.77 9.25-23.39 9.25-9.61 23.75-9.61h85.93v-85.93q0-13.5 9.75-23.25 9.76-9.75 23.27-9.75 13.52 0 23.25 9.75t9.73 23.25v85.93H815q13.5 0 23.25 9.75 9.75 9.76 9.75 23.27 0 13.52-9.75 23.25T815-289.92h-85.92V-204q0 13.5-9.76 23.25T696.05-171q-13.51 0-23.24-9.75-9.73-9.75-9.73-23.25v-85.92Zm-263.46-1H277.08q-78.68 0-133.88-55.19Q88-401.3 88-479.96t55.2-133.89q55.2-55.23 133.88-55.23h122.54q12.76 0 22.88 10.12 10.12 10.11 10.12 23.27 0 14.15-10.12 23.38-10.12 9.23-22.88 9.23H276.99q-50.68 0-86.84 36.16Q154-530.77 154-480t36.15 86.92q36.16 36.16 86.84 36.16h122.63q12.76 0 22.88 10.11 10.12 10.12 10.12 23.27 0 14.16-10.12 23.39t-22.88 9.23ZM355-448q-13.5 0-23.25-9.76T322-481.03q0-13.51 9.75-23.24Q341.5-514 355-514h212q13.5 0 23.25 9.76t9.75 23.27q0 13.51-9.75 23.24Q580.5-448 567-448H355Zm517-32h-66q0-50.77-36.15-86.92-36.16-36.16-86.83-36.16h-97.64q-12.76 0-22.38-9.25t-9.62-23.75q0-12.77 9.25-22.88 9.25-10.12 23.75-10.12h96.54q78.68 0 133.88 55.2Q872-558.68 872-480Z"/></svg>
+                Add link
             </button>
         </div>
          <div class="filter-section" id="filterSection">
@@ -482,7 +493,6 @@ display: none;
         <div class="edit-category-modal-content">
             <h2>Edit Category</h2>
             <div class="form-group">
-                <label for="editCategoryInput">New Name</label>
                 <input type="text" id="editCategoryInput">
             </div>
             <div class="wtd-options">
@@ -502,14 +512,14 @@ display: none;
 
     <!-- Context Menus -->
     <div id="contextMenu" class="context-menu">
-        <div class="context-menu-item" onclick="copyLinkFromContext()"><i class="fa-solid fa-copy"></i> Copy Link</div>
-        <div class="context-menu-item" onclick="openEditModalFromContext()"><i class="fa-solid fa-pen"></i> Edit</div>
-        <div class="context-menu-item delete" onclick="deleteLinkFromContext()"><i class="fa-solid fa-trash"></i> Delete</div>
+        <div class="context-menu-item" onclick="copyLinkFromContext()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M362.31-260Q332-260 311-281q-21-21-21-51.31v-455.38Q290-818 311-839q21-21 51.31-21h335.38Q728-860 749-839q21 21 21 51.31v455.38Q770-302 749-281q-21 21-51.31 21H362.31Zm0-60h335.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46v-455.38q0-4.62-3.85-8.46-3.84-3.85-8.46-3.85H362.31q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v455.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85Zm-140 200Q192-120 171-141q-21-21-21-51.31v-485.38q0-12.77 8.62-21.39 8.61-8.61 21.38-8.61t21.39 8.61q8.61 8.62 8.61 21.39v485.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85h365.38q12.77 0 21.39 8.61 8.61 8.62 8.61 21.39 0 12.77-8.61 21.38-8.62 8.62-21.39 8.62H222.31ZM350-320v-480 480Z"/></svg> Copy Link</div>
+        <div class="context-menu-item" onclick="openEditModalFromContext()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M200-200h50.46l409.46-409.46-50.46-50.46L200-250.46V-200Zm-23.84 60q-15.37 0-25.76-10.4-10.4-10.39-10.4-25.76v-69.3q0-14.63 5.62-27.89 5.61-13.26 15.46-23.11l506.54-506.31q9.07-8.24 20.03-12.73 10.97-4.5 23-4.5t23.3 4.27q11.28 4.27 19.97 13.58l48.85 49.46q9.31 8.69 13.27 20 3.96 11.31 3.96 22.62 0 12.07-4.12 23.03-4.12 10.97-13.11 20.04L296.46-161.08q-9.85 9.85-23.11 15.46-13.26 5.62-27.89 5.62h-69.3Zm584.22-570.15-50.23-50.23 50.23 50.23Zm-126.13 75.9-24.79-25.67 50.46 50.46-25.67-24.79Z"/></svg> Edit Now</div>
+        <div class="context-menu-item delete" onclick="deleteLinkFromContext()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M292.31-140q-29.83 0-51.07-21.24Q220-182.48 220-212.31V-720h-10q-12.75 0-21.37-8.63-8.63-8.63-8.63-21.38 0-12.76 8.63-21.37Q197.25-780 210-780h150q0-14.69 10.35-25.04 10.34-10.34 25.03-10.34h169.24q14.69 0 25.03 10.34Q600-794.69 600-780h150q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.37Q762.75-720 750-720h-10v507.69q0 29.83-21.24 51.07Q697.52-140 667.69-140H292.31ZM680-720H280v507.69q0 5.39 3.46 8.85t8.85 3.46h375.38q5.39 0 8.85-3.46t3.46-8.85V-720ZM427.54-288.62q8.61-8.63 8.61-21.38v-300q0-12.75-8.63-21.38-8.62-8.62-21.38-8.62-12.75 0-21.37 8.62-8.61 8.63-8.61 21.38v300q0 12.75 8.62 21.38 8.63 8.62 21.39 8.62 12.75 0 21.37-8.62Zm147.69 0q8.61-8.63 8.61-21.38v-300q0-12.75-8.62-21.38-8.63-8.62-21.39-8.62-12.75 0-21.37 8.62-8.61 8.63-8.61 21.38v300q0 12.75 8.63 21.38 8.62 8.62 21.38 8.62 12.75 0 21.37-8.62ZM280-720v520-520Z"/></svg> Delete Now</div>
     </div>
 
     <div id="categoryContextMenu" class="category-context-menu">
-        <div class="category-context-menu-item" onclick="openEditCategoryModalFromContext()"><i class="fa-solid fa-pen"></i> Rename</div>
-        <div class="category-context-menu-item delete" onclick="deleteCategoryFromContext()"><i class="fa-solid fa-trash"></i> Delete</div>
+        <div class="category-context-menu-item" onclick="openEditCategoryModalFromContext()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M200-200h50.46l409.46-409.46-50.46-50.46L200-250.46V-200Zm-23.84 60q-15.37 0-25.76-10.4-10.4-10.39-10.4-25.76v-69.3q0-14.63 5.62-27.89 5.61-13.26 15.46-23.11l506.54-506.31q9.07-8.24 20.03-12.73 10.97-4.5 23-4.5t23.3 4.27q11.28 4.27 19.97 13.58l48.85 49.46q9.31 8.69 13.27 20 3.96 11.31 3.96 22.62 0 12.07-4.12 23.03-4.12 10.97-13.11 20.04L296.46-161.08q-9.85 9.85-23.11 15.46-13.26 5.62-27.89 5.62h-69.3Zm584.22-570.15-50.23-50.23 50.23 50.23Zm-126.13 75.9-24.79-25.67 50.46 50.46-25.67-24.79Z"/></svg> Edit Now</div>
+        <div class="category-context-menu-item delete" onclick="deleteCategoryFromContext()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M292.31-140q-29.83 0-51.07-21.24Q220-182.48 220-212.31V-720h-10q-12.75 0-21.37-8.63-8.63-8.63-8.63-21.38 0-12.76 8.63-21.37Q197.25-780 210-780h150q0-14.69 10.35-25.04 10.34-10.34 25.03-10.34h169.24q14.69 0 25.03 10.34Q600-794.69 600-780h150q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.37Q762.75-720 750-720h-10v507.69q0 29.83-21.24 51.07Q697.52-140 667.69-140H292.31ZM680-720H280v507.69q0 5.39 3.46 8.85t8.85 3.46h375.38q5.39 0 8.85-3.46t3.46-8.85V-720ZM427.54-288.62q8.61-8.63 8.61-21.38v-300q0-12.75-8.63-21.38-8.62-8.62-21.38-8.62-12.75 0-21.37 8.62-8.61 8.63-8.61 21.38v300q0 12.75 8.62 21.38 8.63 8.62 21.39 8.62 12.75 0 21.37-8.62Zm147.69 0q8.61-8.63 8.61-21.38v-300q0-12.75-8.62-21.38-8.63-8.62-21.39-8.62-12.75 0-21.37 8.62-8.61 8.63-8.61 21.38v300q0 12.75 8.63 21.38 8.62 8.62 21.38 8.62 12.75 0 21.37-8.62ZM280-720v520-520Z"/></svg>  Delete Now</div>
     </div>
 
     <script>
@@ -744,7 +754,8 @@ display: none;
             linkItem.innerHTML = `
                 <div class="title-container">
                     <button class="view-title-btn" onclick="openTitleModal('${link.title.replace(/'/g, "\\'")}')"><i class="fa-solid fa-eye"></i></button>
-                    <a href="${link.url}" target="_blank">${truncated} <span style=" font-size:13px;">(${link.category})</span></a>
+                    <a href="${link.url}" target="_self">${truncated} <span style=" font-size:13px;color: #00eaff;
+    font-weight: 500;">(${link.category})</span></a>
                 </div>
                 <div>${formatDate(link.dateAdded)}</div>
             `;
