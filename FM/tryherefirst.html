@@ -66,10 +66,11 @@ font-size: 14px;
     text-align: center;
     white-space: nowrap;
     overflow: scroll;
-    width: 80%;
+    width: fit-content;
     background: #464646;
     border-radius: 999px;
     scrollbar-width: none;
+    max-width: 320px;
     }
 
     .folders-container {
@@ -80,13 +81,14 @@ font-size: 14px;
     }
 
 .folders {
-    display: flex;
+display: flex;
     align-items: center;
     gap: 10px;
     overflow-x: auto;
     scrollbar-width: none;
     justify-content: flex-start;
     width: 100%;
+    padding: 10px 0 5px 0;
     }
 
     .folders::-webkit-scrollbar { display: none; }
@@ -109,14 +111,14 @@ font-size: 14px;
     left: -25px;
     }
 
-    .folder-btn {
-      flex-shrink: 0;
-    padding: 7px 9px;
+.folder-btn {
+    flex-shrink: 0;
+    padding: 5px 10px;
     border-radius: 999px;
     background: #1a1a1a;
     border: none;
     color: var(--text-dim);
-    font-size: 15px;
+    font-size: 17px;
     cursor: pointer;
     transition: all 0.18s;
     text-overflow: ellipsis;
