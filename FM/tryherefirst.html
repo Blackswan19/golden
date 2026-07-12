@@ -229,11 +229,11 @@ display: flex;
     max-width: 650px;
     z-index: 20000000;
     flex-direction: column;
-    padding: 0 10px;
+    padding: 10px;
     justify-content: center;
     position: fixed;
     bottom: 0px;
-    background: linear-gradient(0deg, black, transparent);
+    background: linear-gradient(0deg, black 30%, transparent);
     }
 
     #noteInput {
@@ -615,7 +615,7 @@ function toggleImportant(folderName, index) {
 
 function addFolder() {
   showPopup("Create Section", `
-    <input type="text" id="folderNameInput" placeholder="Enter folder name..." style="outline:none;width:100%;padding:12px;background:#fff;border:none;border-radius:10px;color:black;font-size:16px;text-align:center;">
+    <input type="text" id="folderNameInput" placeholder="Folder name..." style="outline:none;width:100%;padding:12px;background:#fff;border:none;border-radius:10px;color:black;font-size:16px;text-align:center;">
   `, [
     { text: 'Cancel', class: 'cancel', action: closePopup },
     { text: 'Create', class: 'confirm', action: () => {
