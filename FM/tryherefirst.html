@@ -116,13 +116,14 @@ display: flex;
     align-items: center;
     position: sticky;
     left: -25px;
+    z-index: 10;
     }
 
 .folder-btn {
 flex-shrink: 0;
     padding: 6px 10px;
     border-radius: 999px;
-    background: #373737;
+    background: #ffffff33;
     border: none;
     color: white;
     font-size: 17px;
@@ -136,6 +137,7 @@ flex-shrink: 0;
     justify-content: flex-start;
     align-items: center;
     font-weight: 300;
+    backdrop-filter: blur(20px);
     }
 
     .folder-btn.active,
