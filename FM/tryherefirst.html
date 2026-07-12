@@ -88,27 +88,22 @@ font-size: 15px;
     }
 
 .folders {
-    display: flex;
+display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
     overflow-x: auto;
     scrollbar-width: none;
     justify-content: flex-start;
-    width: 90%;
-    box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
-    background: rgb(255 255 255 / 10%);
-    backdrop-filter: blur(30px);
-    font-weight: 200;
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
-    border-radius: 999px;
+    width: 100%;
+    padding: 5px 0 0 0;
     }
 
     .folders::-webkit-scrollbar { display: none; }
 
     .add-folder-fixed {
-flex-shrink: 0;
-    padding: 10px;
-    background: black;
+   flex-shrink: 0;
+    padding: 10px 10px 10px 30px;
+    background: linear-gradient(269deg, #4f4f4f, #000000);
     color: #ffffff;
     border-radius: 0 100px 100px 0;
     font-size: 15px;
@@ -120,14 +115,14 @@ flex-shrink: 0;
     justify-content: center;
     align-items: center;
     position: sticky;
-    left: 0;
+    left: -25px;
     }
 
 .folder-btn {
 flex-shrink: 0;
     padding: 6px 10px;
     border-radius: 999px;
-    background: transparent;
+    background: #373737;
     border: none;
     color: white;
     font-size: 17px;
@@ -145,7 +140,7 @@ flex-shrink: 0;
 
     .folder-btn.active,
     .folder-btn:hover {
-      background: #002aff;
+      background: blue;
     }
 
     .notes-container {
@@ -159,16 +154,18 @@ overflow-y: auto;
 
     .note {
      font-size: 16px;
-    line-height: 1.7;
+    line-height: 1.4;
     margin-bottom: 15px;
     padding: 10px 40px 10px 20px;
     border-radius: 25px;
-    background: rgb(255 255 255 / 6%);
+    background: rgb(255 255 255 / 8%);
     position: relative;
     transition: background 0.2s;
     word-break: break-word;
     font-weight: 300;
     }
+
+    .note:hover { background: rgba(255, 255, 255, 0.12); }
 
     .note .star {
       position: absolute;
@@ -227,11 +224,11 @@ display: flex;
     max-width: 650px;
     z-index: 20000000;
     flex-direction: column;
-    padding: 10px;
+    padding: 0px;
     justify-content: center;
     position: fixed;
     bottom: 0px;
-    background: linear-gradient(0deg, black 30%, transparent);
+    background: linear-gradient(0deg, black 50%, transparent);
     }
 
     #noteInput {
@@ -346,14 +343,11 @@ p#popupMsg {
 display: flex;
     justify-content: center;
     align-items: end;
-    width: 100%;
-    border-radius: 25px;
-    margin-bottom: 5px;
-    box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
-    background: rgb(255 255 255 / 10%);
-    backdrop-filter: blur(30px);
-    font-weight: 200;
+    width: 95%;
     border: 0.5px solid rgba(255, 255, 255, 0.1);
+    background: #1a1a1a;
+    border-radius: 25px;
+    margin-bottom: 10px;
 }
     .cancel { background: #323232; color: #ffffffb5; }
     .danger  { background: #ff0d00; color: white; }
@@ -613,7 +607,7 @@ function toggleImportant(folderName, index) {
 
 function addFolder() {
   showPopup("Create Section", `
-    <input type="text" id="folderNameInput" placeholder="Folder name..." style="outline:none;width:100%;padding:12px;background:#fff;border:none;border-radius:10px;color:black;font-size:16px;text-align:center;">
+    <input type="text" id="folderNameInput" placeholder="Enter folder name..." style="outline:none;width:100%;padding:12px;background:#fff;border:none;border-radius:10px;color:black;font-size:16px;text-align:center;">
   `, [
     { text: 'Cancel', class: 'cancel', action: closePopup },
     { text: 'Create', class: 'confirm', action: () => {
