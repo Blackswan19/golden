@@ -294,10 +294,11 @@ position: fixed;
     .popup-box {
           background: #1c1c1e;
     border-radius: 30px;
-    padding: 20px;
+    padding: 15px;
     width: 95%;
     max-width: 420px;
     text-align: center;
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
     }
 p#popupMsg {
     padding-bottom: 15px;
@@ -592,7 +593,7 @@ function toggleImportant(folderName, index) {
 
 function addFolder() {
   showPopup("Create Section", `
-    <input type="text" id="folderNameInput" placeholder="Enter folder name..." style="width:100%;padding:12px;background:#fff;border:none;border-radius:10px;color:black;font-size:16px;text-align:center;">
+    <input type="text" id="folderNameInput" placeholder="Enter folder name..." style="outline:none;width:100%;padding:12px;background:#fff;border:none;border-radius:10px;color:black;font-size:16px;text-align:center;">
   `, [
     { text: 'Cancel', class: 'cancel', action: closePopup },
     { text: 'Create', class: 'confirm', action: () => {
@@ -678,15 +679,19 @@ document.getElementById('editNote').onclick = () => {
     <textarea id="editInput" style="width: 100%;
     min-height: 140px;
     padding: 14px;
-    background: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
     font-size: 17px;
     color: white;
     resize: vertical;
-    scrollbar-width: thin;
-    scrollbar-color: #454545 transparent;
-    overflow-y: auto;">${note.content}</textarea>
+    scrollbar-width: none;
+    overflow-y: scroll;
+    outline: none;
+    border-width: medium;
+    border-style: none;
+    border-color: currentcolor;
+    border-image: none;
+    height: 242px;
+    border-radius: 14px;">${note.content}</textarea>
   `, [
     { text: 'Cancel', class: 'cancel', action: closePopup },
     { text: 'Save', class: 'confirm', action: () => {
