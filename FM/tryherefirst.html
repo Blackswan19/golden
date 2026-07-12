@@ -35,7 +35,7 @@
         }
 
         .container {
-              padding: 15px;
+                padding: 10px;
     max-width: 920px;
     width: 100%;
     height: 100vh;
@@ -78,12 +78,12 @@ transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-align: center;
         }
 input#searchInput {
-text-align: justify;
-    padding: 5px 10px;
+padding: 10px;
     min-width: 100px;
     border-radius: 999px;
-    background: #1f1f1f;
+    background: #000000;
     color: #ffffffcf;
+    text-align: center;
 }
         button {
             padding: 12px 24px;
@@ -181,7 +181,7 @@ flex-shrink: 0;
         /* Link List */
         .link-list {
 background-color: #191919;
-    border-radius: 20px;
+    border-radius: 30px;
     overflow-y: auto;
     scrollbar-width: none;
     scrollbar-color: gray transparent;
@@ -207,27 +207,26 @@ padding: 10px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     position: sticky;
-    top: 3px;
-    background-color: #000000;
-    border-radius: 17px;
+    top: 0px;
+    background-color: #191919;
+    border-radius: 0;
     display: flex;
     gap: 20px;
     justify-content: center;
     align-items: center;
     z-index: 100000000;
-    margin: 3px;
+    border-bottom: solid 1px #333333;
         }
 
         .link-item {
-padding: 0 5px 0 0;
+padding: 2px;
     border-radius: 999px;
     transition: all 0.3s ease;
     justify-content: space-between;
     display: flex;
     align-items: center;
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
     opacity: 60%;
-    margin: 5px;
+    margin: 10px;
         }
 .title-container a {
 color: rgb(255, 255, 255);
@@ -242,7 +241,7 @@ color: rgb(255, 255, 255);
         .title-container {
     display: flex;
     align-items: center;
-    gap: 0px;
+    gap: 5px;
         }
         .view-title-btn {
 background: none;
@@ -411,7 +410,7 @@ display: none;
         <div class="link-list" id="linkList">
             <div class="table-header">
                 <input type="search" id="searchInput" placeholder="Search" oninput="searchLinks()">
-                <div>Date Added</div>
+                <!-- <div>Date Added</div> -->
             </div>
             <div id="allLinks"></div>
         </div>
