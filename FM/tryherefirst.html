@@ -187,7 +187,7 @@ background-color: #191919;
     scrollbar-color: gray transparent;
     height: fit-content;
     width: 100%;
-    max-height: 100vh;
+    max-height: 75vh;
         }
 
         .link-list::-webkit-scrollbar {
@@ -402,18 +402,18 @@ display: none;
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M663.08-289.92h-86.93q-12.77 0-22.38-9.75-9.62-9.75-9.62-23.25 0-13.77 9.25-23.39 9.25-9.61 23.75-9.61h85.93v-85.93q0-13.5 9.75-23.25 9.76-9.75 23.27-9.75 13.52 0 23.25 9.75t9.73 23.25v85.93H815q13.5 0 23.25 9.75 9.75 9.76 9.75 23.27 0 13.52-9.75 23.25T815-289.92h-85.92V-204q0 13.5-9.76 23.25T696.05-171q-13.51 0-23.24-9.75-9.73-9.75-9.73-23.25v-85.92Zm-263.46-1H277.08q-78.68 0-133.88-55.19Q88-401.3 88-479.96t55.2-133.89q55.2-55.23 133.88-55.23h122.54q12.76 0 22.88 10.12 10.12 10.11 10.12 23.27 0 14.15-10.12 23.38-10.12 9.23-22.88 9.23H276.99q-50.68 0-86.84 36.16Q154-530.77 154-480t36.15 86.92q36.16 36.16 86.84 36.16h122.63q12.76 0 22.88 10.11 10.12 10.12 10.12 23.27 0 14.16-10.12 23.39t-22.88 9.23ZM355-448q-13.5 0-23.25-9.76T322-481.03q0-13.51 9.75-23.24Q341.5-514 355-514h212q13.5 0 23.25 9.76t9.75 23.27q0 13.51-9.75 23.24Q580.5-448 567-448H355Zm517-32h-66q0-50.77-36.15-86.92-36.16-36.16-86.83-36.16h-97.64q-12.76 0-22.38-9.25t-9.62-23.75q0-12.77 9.25-22.88 9.25-10.12 23.75-10.12h96.54q78.68 0 133.88 55.2Q872-558.68 872-480Z"/></svg>
             </button>
         </div>
+         <div class="filter-section" id="filterSection">
+            <button class="filter-btn add-category-btn" onclick="openCategoryModal()">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M458.62-148.63Q450-157.25 450-170v-280H170q-12.75 0-21.37-8.63-8.63-8.63-8.63-21.38 0-12.76 8.63-21.37Q157.25-510 170-510h280v-280q0-12.75 8.63-21.37 8.63-8.63 21.38-8.63 12.76 0 21.37 8.63Q510-802.75 510-790v280h280q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.37Q802.75-450 790-450H510v280q0 12.75-8.63 21.37-8.63 8.63-21.38 8.63-12.76 0-21.37-8.63Z"/></svg>
+            </button>
+            <button type="button" class="filter-btn active" data-filter="all">All</button>
+        </div>
         <div class="link-list" id="linkList">
             <div class="table-header">
                 <input type="search" id="searchInput" placeholder="Search" oninput="searchLinks()">
                 <div>Date Added</div>
             </div>
             <div id="allLinks"></div>
-        </div>
-         <div class="filter-section" id="filterSection">
-            <button class="filter-btn add-category-btn" onclick="openCategoryModal()">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M458.62-148.63Q450-157.25 450-170v-280H170q-12.75 0-21.37-8.63-8.63-8.63-8.63-21.38 0-12.76 8.63-21.37Q157.25-510 170-510h280v-280q0-12.75 8.63-21.37 8.63-8.63 21.38-8.63 12.76 0 21.37 8.63Q510-802.75 510-790v280h280q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.37Q802.75-450 790-450H510v280q0 12.75-8.63 21.37-8.63 8.63-21.38 8.63-12.76 0-21.37-8.63Z"/></svg>
-            </button>
-            <button type="button" class="filter-btn active" data-filter="all">All</button>
         </div>
     </div>
 
