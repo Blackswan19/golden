@@ -5,6 +5,7 @@ const passwords = {
         name: "Srikanth Jampana",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "rgb(197 74 0)",
+        profileSecBackground:"rgb(197 74 0)",
         stars: 0,
         coins: 1,
         verified: true,
@@ -29,6 +30,7 @@ const passwords = {
         name: "Mahesh Muthinti",
         membershipIcon: "https://files.donationalerts.com/uploads/images/2/tb_5000.gif",
         profileBackground: "#005f56",
+        profileSecBackground:"#005f56",
         stars: 0,
         coins: 0,
         verified: true,
@@ -43,9 +45,10 @@ const passwords = {
         ]
     },
     "0212": {
-        name: "Tony Montana",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "#0000ff",
+        name: "Bhargav Naidu",
+        membershipIcon: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/refs/heads/main/Animals%20and%20Nature/Fire.webp",
+        profileBackground: "black",
+        profileSecBackground:"#ffffff26",
         stars: 10000,
         coins: 0,
         verified: true,
@@ -56,7 +59,9 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 17000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 1000, takenFrom: "P2P lend", fineRate: 150 },
             { planDate: "09-11-2025", endDate: "09-12-2025", interest: 3000, takenAmount: 8000, takenFrom: "MLLD", fineRate: 80 },
         ]
     },
@@ -110,7 +115,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
 
         const profilePicture = document.getElementById("profilePicture");
         profilePicture.style.backgroundColor = user.profileBackground;
-        profilePicturess.style.backgroundColor = user.profileBackground;
+        profilePicturess.style.backgroundColor = user.profileSecBackground;
         const nameParts = user.name.trim().split(/\s+/).slice(0, 2);
         const iconText = nameParts.map(part => part.charAt(0)).join("").toUpperCase();
         profilePicture.style.backgroundImage = "none";
