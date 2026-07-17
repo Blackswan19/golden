@@ -517,15 +517,14 @@ select#fontWeightSelect {
             <button class="format-btn" onclick="formatText('italic')" title="Italic"><em>I</em></button>
             <button class="format-btn" onclick="formatText('underline')" title="Underline"><u>U</u></button>
             <button class="format-btn" onclick="formatHeading()" title="Heading">H</button>
-            <select onchange="changeFontFamily(this.value)" style="background: rgba(255, 255, 255, 0.1); color: white; border: none; border-radius: 9999px; padding: 8px; font-size: 14px; cursor: pointer;">
-               <option value="">Font</option>
-               <option value="Times New Roman, serif">Times New Roman</option>
-               <option value="Arial, sans-serif">Arial</option>
-               <option value="Georgia, serif">Georgia</option>
-               <option value="Courier New, monospace">Courier New</option>
-               <option value="Verdana, sans-serif">Verdana</option>
-               <option value="'Red Hat Display', sans-serif" selected>Default</option>
-            </select>
+          <select id="fontFamilySelect" style="background:#2b2b2b; color:white; border:none; padding:8px 12px; border-radius:8px; font-size:15px;">
+    <option value='"Red Hat Display", sans-serif' selected>Default</option>
+    <option value='"Times New Roman", Times, serif'>Times New Roman</option>
+    <option value='Georgia, serif'>Georgia</option>
+    <option value='Arial, sans-serif'>Arial</option>
+    <option value='"Courier New", monospace'>Courier New</option>
+    <option value='Verdana, sans-serif'>Verdana</option>
+</select>
             
             <button style="padding: 0 10px;" class="format-btn" onclick="resetFormatting()" title="Reset Formatting">
                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M550-390h100q13 0 21.5 8.5T680-360q0 13-8.5 21.5T650-330H550q-13 0-21.5-8.5T520-360q0-13 8.5-21.5T550-390Zm30 240v-20h-30q-13 0-21.5-8.5T520-200q0-13 8.5-21.5T550-230h30v-20q0-13 8.5-21.5T610-280q13 0 21.5 8.5T640-250v100q0 13-8.5 21.5T610-120q-13 0-21.5-8.5T580-150Zm130-80h100q13 0 21.5 8.5T840-200q0 13-8.5 21.5T810-170H710q-13 0-21.5-8.5T680-200q0-13 8.5-21.5T710-230Zm10-80v-100q0-13 8.5-21.5T750-440q13 0 21.5 8.5T780-410v20h30q13 0 21.5 8.5T840-360q0 13-8.5 21.5T810-330h-30v20q0 13-8.5 21.5T750-280q-13 0-21.5-8.5T720-310ZM480-760q-117 0-198.5 81.5T200-480q0 72 32.5 132t87.5 98v-70q0-17 11.5-28.5T360-360q17 0 28.5 11.5T400-320v160q0 17-11.5 28.5T360-120H200q-17 0-28.5-11.5T160-160q0-17 11.5-28.5T200-200h54q-62-50-98-122.5T120-480q0-75 28.5-140.5t77-114q48.5-48.5 114-77T480-840q114 0 204 62.5T814-615q6 16 0 31t-22 21q-16 6-31.5 0T739-585q-31-78-100.5-126.5T480-760Z"/></svg>
@@ -582,7 +581,33 @@ select#fontWeightSelect {
             
       <script>
                   const editableDiv = document.getElementById('paragraphInput');
+// Font Family - Apply to SELECTED TEXT only
+document.getElementById('fontFamilySelect').addEventListener('change', function() {
+    const newFont = this.value;
+    const selection = window.getSelection();
 
+    if (selection.rangeCount > 0 && selection.toString().trim() !== '') {
+        // Apply to selected text only
+        const range = selection.getRangeAt(0);
+        const selectedText = range.toString();
+
+        if (selectedText) {
+            const span = document.createElement('span');
+            span.style.fontFamily = newFont;
+            span.style.color = document.getElementById('imageTextColor').value;
+            span.textContent = selectedText;
+            
+            range.deleteContents();
+            range.insertNode(span);
+            
+            displayMessage(`Font changed to ${this.options[this.selectedIndex].text}`);
+        }
+    } else {
+        // No selection → show message
+        displayMessage("Select text first to change font!");
+    }
+    saveInput(false);
+});
 document.addEventListener('contextmenu', e => e.preventDefault());
          document.addEventListener('DOMContentLoaded', () => {
             const savedData = JSON.parse(localStorage.getItem('bsBookpadData') || '{}');
@@ -816,97 +841,77 @@ document.addEventListener('contextmenu', e => e.preventDefault());
             saveInput(false);
          }
 
-         function downloadAsImage() {
+        function downloadAsImage() {
     if (!editableDiv.innerText.trim()) {
         displayMessage("Nothing to download..!");
         return;
     }
 
-    const backgroundColor = document.getElementById('imageBackgroundColor').value;
-    const textColor = document.getElementById('imageTextColor').value;
-    const selectedFont = editableDiv.style.fontFamily || '"Red Hat Display", sans-serif';
-    
+    const bg = document.getElementById('imageBackgroundColor').value;
+    const color = document.getElementById('imageTextColor').value;
+    const fontFamily = editableDiv.style.fontFamily || '"Red Hat Display", sans-serif';
+    const fontSize = editableDiv.style.fontSize || '20px';
+
+    console.log("Using font:", fontFamily); // for debugging
+
     const wrapper = document.createElement('div');
-    wrapper.style.position = 'absolute';
-    wrapper.style.left = '-9999px';
-    wrapper.style.backgroundColor = backgroundColor;
-    wrapper.style.padding = '60px 80px';
-    wrapper.style.boxSizing = 'border-box';
-    wrapper.style.width = '1100px';           // Wide landscape ratio
-    wrapper.style.height = '620px';
-    wrapper.style.display = 'flex';
-    wrapper.style.alignItems = 'center';
-    wrapper.style.justifyContent = 'center';
-    wrapper.style.fontFamily = selectedFont;
-    wrapper.style.fontSize = editableDiv.style.fontSize || '24px';
-    wrapper.style.lineHeight = '1.6';
-    wrapper.style.letterSpacing = '0.5px';
+    wrapper.style.position = "absolute";
+    wrapper.style.left = "-99999px";
+    wrapper.style.top = "-99999px";
+    wrapper.style.background = bg;
+    wrapper.style.padding = "40px 50px 35px 50px";
+    wrapper.style.boxSizing = "border-box";
+    wrapper.style.fontFamily = fontFamily;
+    wrapper.style.fontSize = fontSize;
+    wrapper.style.lineHeight = "1.7";
+    wrapper.style.color = color;
+    wrapper.style.width = "fit-content";
+    wrapper.style.maxWidth = "850px";
+    wrapper.style.whiteSpace = "pre-wrap";
 
-    const clonedDiv = editableDiv.cloneNode(true);
-    clonedDiv.style.backgroundColor = 'transparent';
-    clonedDiv.style.border = 'none';
-    clonedDiv.style.margin = '0';
-    clonedDiv.style.padding = '0';
-    clonedDiv.style.width = '100%';
-    clonedDiv.style.height = 'auto';
-    clonedDiv.style.fontFamily = selectedFont;
-    clonedDiv.style.fontSize = editableDiv.style.fontSize || '24px';
-    clonedDiv.style.color = textColor;
-    clonedDiv.style.textAlign = 'center';
-    clonedDiv.removeAttribute('contenteditable');
+    const clone = document.createElement('div');
+    clone.innerHTML = editableDiv.innerHTML;
 
-    // Force font on ALL child elements
-    function applyFontToAll(element) {
-        element.style.fontFamily = selectedFont;
-        element.style.color = textColor;
-        const children = element.children;
-        for (let i = 0; i < children.length; i++) {
-            applyFontToAll(children[i]);
-        }
-    }
-    applyFontToAll(clonedDiv);
+    // Force font family aggressively
+    const elements = clone.querySelectorAll('*');
+    elements.forEach(el => {
+        el.style.setProperty('font-family', fontFamily, 'important');
+        el.style.setProperty('color', color, 'important');
+        el.style.setProperty('line-height', '1.7', 'important');
+    });
 
-    wrapper.appendChild(clonedDiv);
+    wrapper.appendChild(clone);
 
     // Watermark
-    const watermark = document.createElement('div');
-    watermark.style.position = 'absolute';
-    watermark.style.top = '20px';
-    watermark.style.left = '20px';
-    watermark.style.fontSize = '11px';
-    watermark.style.opacity = '0.75';
-    watermark.style.fontFamily = selectedFont;
-    const link = document.createElement('a');
-    link.href = 'https://blackswan19.github.io/bscrop/formbs';
-    link.textContent = 'Made in BsBookpad';
-    link.style.color = getContrastColor(backgroundColor);
-    watermark.appendChild(link);
-    wrapper.appendChild(watermark);
+    const wm = document.createElement('div');
+    wm.style.position = "absolute";
+    wm.style.top = "18px";
+    wm.style.left = "22px";
+    wm.style.fontSize = "12px";
+    wm.style.opacity = "0.75";
+    wm.style.pointerEvents = "none";
+    wm.textContent = "Made in BsBookpad";
+    wrapper.appendChild(wm);
 
     document.body.appendChild(wrapper);
 
-    html2canvas(wrapper, {
-        width: 1100,
-        height: 620,
-        scale: 2,
-        backgroundColor: backgroundColor,
-        scrollX: 0,
-        scrollY: 0,
-        logging: false
-    }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'bs_bookpad.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-        document.body.removeChild(wrapper);
-        displayMessage("Downloaded as Image!");
-    }).catch(err => {
-        console.error('Error generating image:', err);
-        document.body.removeChild(wrapper);
-        displayMessage("Error downloading image!");
-    });
-}
+    setTimeout(() => {
+        html2canvas(wrapper, {
+            scale: 2,
+            backgroundColor: bg,
+            width: wrapper.offsetWidth,
+            height: wrapper.offsetHeight,
+        }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'bs_bookpad.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
 
+            document.body.removeChild(wrapper);
+            displayMessage("Downloaded!");
+        });
+    }, 150);
+}
          function downloadAsPDF() {
             if (!editableDiv.innerText.trim()) {
                displayMessage("Nothing to download..!");
