@@ -894,46 +894,52 @@ document.addEventListener('contextmenu', e => e.preventDefault());
             saveInput(false);
          }
 
+         // ==================== FIXED downloadAsImage ====================
          function downloadAsImage() {
             if (!editableDiv.innerText.trim()) {
                displayMessage("Nothing to download..!");
                return;
             }
+
+            const isMobile = window.innerWidth < 768;
             const backgroundColor = document.getElementById('imageBackgroundColor').value;
             const textColor = document.getElementById('imageTextColor').value;
             const fontSize = editableDiv.style.fontSize || '20px';
             const fontWeight = editableDiv.style.fontWeight || '400';
+
             const wrapper = document.createElement('div');
             wrapper.style.position = 'absolute';
             wrapper.style.left = '-9999px';
             wrapper.style.backgroundColor = backgroundColor;
-            wrapper.style.padding = '40px';
+            wrapper.style.padding = isMobile ? '50px 40px' : '60px 80px';
             wrapper.style.boxSizing = 'border-box';
             wrapper.style.fontFamily = '"Red Hat Display", sans-serif';
             wrapper.style.letterSpacing = '0.5px';
             wrapper.style.lineHeight = '1.6';
             wrapper.style.whiteSpace = 'pre-wrap';
-            
+            wrapper.style.width = isMobile ? '1080px' : '1920px';
+
             const clonedDiv = editableDiv.cloneNode(true);
-            clonedDiv.style.width = 'auto';
+            clonedDiv.style.width = '100%';
             clonedDiv.style.height = 'auto';
-            clonedDiv.style.maxWidth = '800px';
+            clonedDiv.style.maxWidth = '100%';
             clonedDiv.style.overflow = 'visible';
             clonedDiv.style.border = 'none';
-            clonedDiv.style.margin = '0';
-            clonedDiv.style.padding = '30px';
+            clonedDiv.style.margin = '0 auto';
+            clonedDiv.style.padding = '40px';
             clonedDiv.style.backgroundColor = backgroundColor;
             clonedDiv.style.fontSize = fontSize;
             clonedDiv.style.fontWeight = fontWeight;
             clonedDiv.style.color = textColor;
             clonedDiv.removeAttribute('contenteditable');
             
-            const allElements = clonedDiv.querySelectorAll('*');
-            allElements.forEach(element => {
-               element.style.color = element.style.color || textColor;
-               element.style.fontSize = element.style.fontSize || fontSize;
+            // Make Bold Bolder + Fix Underline
+            clonedDiv.querySelectorAll('b, strong').forEach(el => el.style.fontWeight = '900');
+            clonedDiv.querySelectorAll('u').forEach(el => {
+                el.style.textDecoration = 'underline';
+                el.style.textDecorationThickness = '3px';
             });
-            
+
             wrapper.appendChild(clonedDiv);
             
             // Watermark
@@ -950,16 +956,11 @@ document.addEventListener('contextmenu', e => e.preventDefault());
             
             document.body.appendChild(wrapper);
             
-            const extraPadding = 60;
-            const textWidth = Math.max(clonedDiv.scrollWidth + extraPadding, 500);
-            const textHeight = clonedDiv.scrollHeight + extraPadding * 1.5;
-            
-            wrapper.style.width = `${textWidth}px`;
-            wrapper.style.height = `${textHeight}px`;
+            const contentHeight = clonedDiv.scrollHeight + 200;
             
             html2canvas(wrapper, {
-               width: textWidth,
-               height: textHeight,
+               width: wrapper.offsetWidth,
+               height: contentHeight,
                scale: 2,
                backgroundColor: backgroundColor,
                scrollX: 0,
