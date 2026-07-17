@@ -73,6 +73,12 @@ width: 100%;
     padding: 10px;
     gap: 20px;
 }
+.topheaders {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
          .editable-div { 
 width: 95%;
     padding: 20px;
@@ -509,9 +515,15 @@ select#fontWeightSelect {
    </head>
    <body>
       <div class="allcontainer">
-         <!-- Removed top header as requested -->
-
-         <!-- New Formatting Toolbar -->
+        <div class="topheaders">
+            <div class="logo"><a style="text-decoration: none;color: #002cff;" href="https://blackswan19.github.io/Educate/bookpad">BsBookpad</a> <i style="background: #ffffff3d;
+               padding: 9px;
+               margin-left: 0px;
+               border-radius: 13px;
+               font-size: 20px;" class="fa-solid fa-cloud-arrow-down"></i>
+            </div>
+            <div class="message" id="message"><a href="https://blackswan19.github.io/bscrop/formbs" style="text-decoration: none;">#BsWorld</a></div>
+         </div>
          <div class="format-toolbar" id="formatToolbar">
             <button class="format-btn" onclick="formatText('bold')" title="Bold"><strong>B</strong></button>
             <button class="format-btn" onclick="formatText('italic')" title="Italic"><em>I</em></button>
