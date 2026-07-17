@@ -824,68 +824,63 @@ document.addEventListener('contextmenu', e => e.preventDefault());
 
     const backgroundColor = document.getElementById('imageBackgroundColor').value;
     const textColor = document.getElementById('imageTextColor').value;
-    const fontSize = editableDiv.style.fontSize || '20px';
-    const fontWeight = editableDiv.style.fontWeight || '400';
-
+    const selectedFont = editableDiv.style.fontFamily || '"Red Hat Display", sans-serif';
+    
     const wrapper = document.createElement('div');
     wrapper.style.position = 'absolute';
     wrapper.style.left = '-9999px';
     wrapper.style.backgroundColor = backgroundColor;
-    wrapper.style.padding = '50px 80px';
+    wrapper.style.padding = '60px 80px';
     wrapper.style.boxSizing = 'border-box';
-    wrapper.style.fontFamily = '"Red Hat Display", sans-serif';
-    wrapper.style.letterSpacing = '0.5px';
-    wrapper.style.lineHeight = '1.6';
-    wrapper.style.whiteSpace = 'pre-wrap';
-    wrapper.style.width = '1100px';      // Fixed wide width
-    wrapper.style.height = '620px';      // Landscape ratio (≈16:9)
+    wrapper.style.width = '1100px';           // Wide landscape ratio
+    wrapper.style.height = '620px';
     wrapper.style.display = 'flex';
     wrapper.style.alignItems = 'center';
     wrapper.style.justifyContent = 'center';
+    wrapper.style.fontFamily = selectedFont;
+    wrapper.style.fontSize = editableDiv.style.fontSize || '24px';
+    wrapper.style.lineHeight = '1.6';
+    wrapper.style.letterSpacing = '0.5px';
 
     const clonedDiv = editableDiv.cloneNode(true);
-    clonedDiv.style.width = '100%';
-    clonedDiv.style.height = 'auto';
-    clonedDiv.style.maxWidth = '100%';
-    clonedDiv.style.overflow = 'visible';
+    clonedDiv.style.backgroundColor = 'transparent';
     clonedDiv.style.border = 'none';
     clonedDiv.style.margin = '0';
     clonedDiv.style.padding = '0';
-    clonedDiv.style.backgroundColor = 'transparent';
-    clonedDiv.style.fontSize = fontSize;
-    clonedDiv.style.fontWeight = fontWeight;
+    clonedDiv.style.width = '100%';
+    clonedDiv.style.height = 'auto';
+    clonedDiv.style.fontFamily = selectedFont;
+    clonedDiv.style.fontSize = editableDiv.style.fontSize || '24px';
     clonedDiv.style.color = textColor;
-    clonedDiv.style.position = 'static';
+    clonedDiv.style.textAlign = 'center';
     clonedDiv.removeAttribute('contenteditable');
-    clonedDiv.style.overflowY = 'visible';
 
-    // Better style preservation
-    const allElements = clonedDiv.querySelectorAll('*');
-    allElements.forEach(element => {
+    // Force font on ALL child elements
+    function applyFontToAll(element) {
+        element.style.fontFamily = selectedFont;
         element.style.color = textColor;
-        element.style.fontSize = fontSize;
-        element.style.fontWeight = element.style.fontWeight || fontWeight;
-        element.style.fontFamily = '"Red Hat Display", sans-serif';
-        element.style.letterSpacing = '0.5px';
-        element.style.lineHeight = '1.6';
-        if (element.style.textDecoration === 'underline' || element.tagName === 'U') {
-            element.style.textDecoration = 'underline';
+        const children = element.children;
+        for (let i = 0; i < children.length; i++) {
+            applyFontToAll(children[i]);
         }
-    });
+    }
+    applyFontToAll(clonedDiv);
 
     wrapper.appendChild(clonedDiv);
 
     // Watermark
     const watermark = document.createElement('div');
-    watermark.className = 'watermark';
+    watermark.style.position = 'absolute';
+    watermark.style.top = '20px';
+    watermark.style.left = '20px';
+    watermark.style.fontSize = '11px';
+    watermark.style.opacity = '0.75';
+    watermark.style.fontFamily = selectedFont;
     const link = document.createElement('a');
     link.href = 'https://blackswan19.github.io/bscrop/formbs';
     link.textContent = 'Made in BsBookpad';
+    link.style.color = getContrastColor(backgroundColor);
     watermark.appendChild(link);
-
-    const watermarkColor = getContrastColor(backgroundColor);
-    watermark.style.color = watermarkColor;
-    link.style.color = watermarkColor;
     wrapper.appendChild(watermark);
 
     document.body.appendChild(wrapper);
@@ -900,7 +895,7 @@ document.addEventListener('contextmenu', e => e.preventDefault());
         logging: false
     }).then(canvas => {
         const link = document.createElement('a');
-        link.download = 'bs_bookpad_notice.png';
+        link.download = 'bs_bookpad.png';
         link.href = canvas.toDataURL('image/png');
         link.click();
         document.body.removeChild(wrapper);
