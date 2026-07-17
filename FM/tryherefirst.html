@@ -760,81 +760,81 @@ select#fontWeightSelect {
             saveInput(false);
          }
 
-         // ==================== FIXED IMAGE DOWNLOAD ====================
          function downloadAsImage() {
             if (!editableDiv.innerText.trim()) {
                displayMessage("Nothing to download..!");
                return;
             }
-
-            const isMobile = window.innerWidth < 768;
-            const bgColor = document.getElementById('imageBackgroundColor').value;
+            const backgroundColor = document.getElementById('imageBackgroundColor').value;
             const textColor = document.getElementById('imageTextColor').value;
-            const fontSize = editableDiv.style.fontSize || '20px';
-
+            const fontSize = editableDiv.style.fontSize || '16px';
+            const fontWeight = editableDiv.style.fontWeight || '400';
             const wrapper = document.createElement('div');
             wrapper.style.position = 'absolute';
             wrapper.style.left = '-9999px';
-            wrapper.style.backgroundColor = bgColor;
-            wrapper.style.padding = isMobile ? '60px 50px' : '80px 100px';
+            wrapper.style.backgroundColor = backgroundColor;
+            wrapper.style.padding = '20px';
             wrapper.style.boxSizing = 'border-box';
             wrapper.style.fontFamily = '"Red Hat Display", sans-serif';
-            wrapper.style.lineHeight = '1.65';
+            wrapper.style.letterSpacing = '0.5px';
+            wrapper.style.lineHeight = '1.5';
             wrapper.style.whiteSpace = 'pre-wrap';
-
-            // Device specific dimensions
-            const baseWidth = isMobile ? 1080 : 1920;           // Mobile 1:1 base | Desktop 16:9 base
-            wrapper.style.width = baseWidth + 'px';
-
             const clonedDiv = editableDiv.cloneNode(true);
-            clonedDiv.style.width = '100%';
-            clonedDiv.style.backgroundColor = bgColor;
-            clonedDiv.style.color = textColor;
+            clonedDiv.style.width = editableDiv.offsetWidth + 'px';
+            clonedDiv.style.height = 'auto';
+            clonedDiv.style.maxWidth = '800px';
+            clonedDiv.style.overflow = 'visible';
+            clonedDiv.style.border = 'none';
+            clonedDiv.style.margin = '0';
+            clonedDiv.style.padding = '20px';
+            clonedDiv.style.backgroundColor = backgroundColor;
             clonedDiv.style.fontSize = fontSize;
-            clonedDiv.style.padding = '40px';
-            clonedDiv.style.margin = '0 auto';
+            clonedDiv.style.fontWeight = fontWeight;
+            clonedDiv.style.color = textColor;
+            clonedDiv.style.position = 'static';
             clonedDiv.removeAttribute('contenteditable');
-
-            // Stronger Bold + Underline Fix
-            clonedDiv.querySelectorAll('b, strong').forEach(el => el.style.fontWeight = '900');
-            clonedDiv.querySelectorAll('u').forEach(el => {
-               el.style.textDecoration = 'underline';
-               el.style.textDecorationThickness = '3px';
+            clonedDiv.style.overflowY = 'visible';
+            clonedDiv.style.setProperty('::before', 'none');
+            const allElements = clonedDiv.querySelectorAll('*');
+            allElements.forEach(element => {
+               element.style.color = textColor;
+               element.style.fontSize = fontSize;
+               element.style.fontWeight = element.style.fontWeight || fontWeight;
+               element.style.fontFamily = '"Red Hat Display", sans-serif';
+               element.style.letterSpacing = '0.5px';
+               element.style.lineHeight = '1.5';
             });
-
             wrapper.appendChild(clonedDiv);
-
-            // Watermark
             const watermark = document.createElement('div');
-            watermark.style.position = 'absolute';
-            watermark.style.bottom = '30px';
-            watermark.style.left = '50%';
-            watermark.style.transform = 'translateX(-50%)';
-            watermark.style.fontSize = '14px';
-            watermark.style.opacity = '0.65';
-            watermark.style.color = getContrastColor(bgColor);
-            watermark.innerHTML = `Made in BsBookpad`;
+            watermark.className = 'watermark';
+            const link = document.createElement('a');
+            link.href = 'https://blackswan19.github.io/bscrop/formbs';
+            link.textContent = 'Made in BsBookpad';
+            watermark.appendChild(link);
+
+            const watermarkColor = getContrastColor(backgroundColor);
+            watermark.style.color = watermarkColor;
+            link.style.color = watermarkColor;
             wrapper.appendChild(watermark);
-
             document.body.appendChild(wrapper);
+            const extraPadding = 40;
+            const scrollHeight = clonedDiv.scrollHeight;
+            const scrollWidth = Math.max(clonedDiv.scrollWidth, 300);
+            const textWidth = scrollWidth + extraPadding;
+            const textHeight = scrollHeight + extraPadding;
 
-            // Calculate final height (content-based)
-            let finalHeight = clonedDiv.scrollHeight + 220;
-
-            if (isMobile) {
-               // 1:1 for mobile → make square if content is shorter
-               finalHeight = Math.max(finalHeight, baseWidth);
-            } else {
-               // 16:9 for desktop
-               const minHeight = Math.round(baseWidth * 9 / 16);
-               finalHeight = Math.max(finalHeight, minHeight);
-            }
-
+            wrapper.style.width = `${textWidth}px`;
+            wrapper.style.height = `${textHeight}px`;
             html2canvas(wrapper, {
-               width: baseWidth,
-               height: finalHeight,
+               width: textWidth,
+               height: textHeight,
                scale: 2,
-               backgroundColor: bgColor
+               backgroundColor: backgroundColor,
+               scrollX: 0,
+               scrollY: 0,
+               windowWidth: textWidth,
+               windowHeight: textHeight,
+               logging: true
             }).then(canvas => {
                const link = document.createElement('a');
                link.download = 'bs_bookpad.png';
@@ -842,13 +842,13 @@ select#fontWeightSelect {
                link.click();
                document.body.removeChild(wrapper);
                displayMessage("Downloaded as Image!");
-            }).catch(() => {
+            }).catch(err => {
+               console.error('Error generating image:', err);
                document.body.removeChild(wrapper);
                displayMessage("Error downloading image!");
             });
          }
 
-         
          function downloadAsPDF() {
             if (!editableDiv.innerText.trim()) {
                displayMessage("Nothing to download..!");
@@ -956,7 +956,6 @@ select#fontWeightSelect {
             doc.save('bs_bookpad.pdf');
             displayMessage("Downloaded as PDF!");
          }
-
 
          function displayMessage(message) {
             const msg = document.getElementById('message');
