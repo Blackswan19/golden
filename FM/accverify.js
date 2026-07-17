@@ -1,4 +1,5 @@
 document.addEventListener('contextmenu', e => e.preventDefault());   
+
 const passwords = {
     "6275": {
         name: "Srikanth Jampana",
@@ -46,8 +47,8 @@ const passwords = {
     "0212": {
         name: "The Godfather",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "black",
-        profileSecBackground:"rgb(112 160 197)",
+        profileBackground: "#b60000",
+        profileSecBackground:"rgb(124 113 103)",
         stars: 10000,
         coins: 0,
         verified: true,
