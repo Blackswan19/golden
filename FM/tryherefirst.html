@@ -817,93 +817,100 @@ document.addEventListener('contextmenu', e => e.preventDefault());
          }
 
          function downloadAsImage() {
-            if (!editableDiv.innerText.trim()) {
-               displayMessage("Nothing to download..!");
-               return;
-            }
-            const backgroundColor = document.getElementById('imageBackgroundColor').value;
-            const textColor = document.getElementById('imageTextColor').value;
-            const fontSize = editableDiv.style.fontSize || '16px';
-            const fontWeight = editableDiv.style.fontWeight || '400';
-            const wrapper = document.createElement('div');
-            wrapper.style.position = 'absolute';
-            wrapper.style.left = '-9999px';
-            wrapper.style.backgroundColor = backgroundColor;
-            wrapper.style.padding = '20px';
-            wrapper.style.boxSizing = 'border-box';
-            wrapper.style.fontFamily = editableDiv.style.fontFamily || '"Red Hat Display", sans-serif';
-            wrapper.style.letterSpacing = '0.5px';
-            wrapper.style.lineHeight = '1.5';
-            wrapper.style.whiteSpace = 'pre-wrap';
-            const clonedDiv = editableDiv.cloneNode(true);
-            clonedDiv.style.width = editableDiv.offsetWidth + 'px';
-            clonedDiv.style.height = 'auto';
-            clonedDiv.style.maxWidth = '800px';
-            clonedDiv.style.overflow = 'visible';
-            clonedDiv.style.border = 'none';
-            clonedDiv.style.margin = '0';
-            clonedDiv.style.padding = '20px';
-            clonedDiv.style.backgroundColor = backgroundColor;
-            clonedDiv.style.fontSize = fontSize;
-            clonedDiv.style.fontWeight = fontWeight;
-            clonedDiv.style.color = textColor;
-            clonedDiv.style.position = 'static';
-            clonedDiv.removeAttribute('contenteditable');
-            clonedDiv.style.overflowY = 'visible';
-            clonedDiv.style.setProperty('::before', 'none');
-            const allElements = clonedDiv.querySelectorAll('*');
-            allElements.forEach(element => {
-               element.style.color = textColor;
-               element.style.fontSize = fontSize;
-               element.style.fontWeight = element.style.fontWeight || fontWeight;
-               element.style.fontFamily = '"Red Hat Display", sans-serif';
-               element.style.letterSpacing = '0.5px';
-               element.style.lineHeight = '1.5';
-            });
-            wrapper.appendChild(clonedDiv);
-            const watermark = document.createElement('div');
-            watermark.className = 'watermark';
-            const link = document.createElement('a');
-            link.href = 'https://blackswan19.github.io/bscrop/formbs';
-            link.textContent = 'Made in BsBookpad';
-            watermark.appendChild(link);
+    if (!editableDiv.innerText.trim()) {
+        displayMessage("Nothing to download..!");
+        return;
+    }
 
-            const watermarkColor = getContrastColor(backgroundColor);
-            watermark.style.color = watermarkColor;
-            link.style.color = watermarkColor;
-            wrapper.appendChild(watermark);
-            document.body.appendChild(wrapper);
-            const extraPadding = 40;
-            const scrollHeight = clonedDiv.scrollHeight;
-            const scrollWidth = Math.max(clonedDiv.scrollWidth, 300);
-            const textWidth = scrollWidth + extraPadding;
-            const textHeight = scrollHeight + extraPadding;
+    const backgroundColor = document.getElementById('imageBackgroundColor').value;
+    const textColor = document.getElementById('imageTextColor').value;
+    const fontSize = editableDiv.style.fontSize || '20px';
+    const fontWeight = editableDiv.style.fontWeight || '400';
 
-            wrapper.style.width = `${textWidth}px`;
-            wrapper.style.height = `${textHeight}px`;
-            html2canvas(wrapper, {
-               width: textWidth,
-               height: textHeight,
-               scale: 2,
-               backgroundColor: backgroundColor,
-               scrollX: 0,
-               scrollY: 0,
-               windowWidth: textWidth,
-               windowHeight: textHeight,
-               logging: true
-            }).then(canvas => {
-               const link = document.createElement('a');
-               link.download = 'bs_bookpad.png';
-               link.href = canvas.toDataURL('image/png');
-               link.click();
-               document.body.removeChild(wrapper);
-               displayMessage("Downloaded as Image!");
-            }).catch(err => {
-               console.error('Error generating image:', err);
-               document.body.removeChild(wrapper);
-               displayMessage("Error downloading image!");
-            });
-         }
+    const wrapper = document.createElement('div');
+    wrapper.style.position = 'absolute';
+    wrapper.style.left = '-9999px';
+    wrapper.style.backgroundColor = backgroundColor;
+    wrapper.style.padding = '50px 80px';
+    wrapper.style.boxSizing = 'border-box';
+    wrapper.style.fontFamily = '"Red Hat Display", sans-serif';
+    wrapper.style.letterSpacing = '0.5px';
+    wrapper.style.lineHeight = '1.6';
+    wrapper.style.whiteSpace = 'pre-wrap';
+    wrapper.style.width = '1100px';      // Fixed wide width
+    wrapper.style.height = '620px';      // Landscape ratio (≈16:9)
+    wrapper.style.display = 'flex';
+    wrapper.style.alignItems = 'center';
+    wrapper.style.justifyContent = 'center';
+
+    const clonedDiv = editableDiv.cloneNode(true);
+    clonedDiv.style.width = '100%';
+    clonedDiv.style.height = 'auto';
+    clonedDiv.style.maxWidth = '100%';
+    clonedDiv.style.overflow = 'visible';
+    clonedDiv.style.border = 'none';
+    clonedDiv.style.margin = '0';
+    clonedDiv.style.padding = '0';
+    clonedDiv.style.backgroundColor = 'transparent';
+    clonedDiv.style.fontSize = fontSize;
+    clonedDiv.style.fontWeight = fontWeight;
+    clonedDiv.style.color = textColor;
+    clonedDiv.style.position = 'static';
+    clonedDiv.removeAttribute('contenteditable');
+    clonedDiv.style.overflowY = 'visible';
+
+    // Better style preservation
+    const allElements = clonedDiv.querySelectorAll('*');
+    allElements.forEach(element => {
+        element.style.color = textColor;
+        element.style.fontSize = fontSize;
+        element.style.fontWeight = element.style.fontWeight || fontWeight;
+        element.style.fontFamily = '"Red Hat Display", sans-serif';
+        element.style.letterSpacing = '0.5px';
+        element.style.lineHeight = '1.6';
+        if (element.style.textDecoration === 'underline' || element.tagName === 'U') {
+            element.style.textDecoration = 'underline';
+        }
+    });
+
+    wrapper.appendChild(clonedDiv);
+
+    // Watermark
+    const watermark = document.createElement('div');
+    watermark.className = 'watermark';
+    const link = document.createElement('a');
+    link.href = 'https://blackswan19.github.io/bscrop/formbs';
+    link.textContent = 'Made in BsBookpad';
+    watermark.appendChild(link);
+
+    const watermarkColor = getContrastColor(backgroundColor);
+    watermark.style.color = watermarkColor;
+    link.style.color = watermarkColor;
+    wrapper.appendChild(watermark);
+
+    document.body.appendChild(wrapper);
+
+    html2canvas(wrapper, {
+        width: 1100,
+        height: 620,
+        scale: 2,
+        backgroundColor: backgroundColor,
+        scrollX: 0,
+        scrollY: 0,
+        logging: false
+    }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'bs_bookpad_notice.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        document.body.removeChild(wrapper);
+        displayMessage("Downloaded as Image!");
+    }).catch(err => {
+        console.error('Error generating image:', err);
+        document.body.removeChild(wrapper);
+        displayMessage("Error downloading image!");
+    });
+}
 
          function downloadAsPDF() {
             if (!editableDiv.innerText.trim()) {
