@@ -579,8 +579,10 @@ select#fontWeightSelect {
                </div>
                <div id="savedItems"></div>
             </div>
+            
       <script>
-         const editableDiv = document.getElementById('paragraphInput');
+                  const editableDiv = document.getElementById('paragraphInput');
+
 document.addEventListener('contextmenu', e => e.preventDefault());
          document.addEventListener('DOMContentLoaded', () => {
             const savedData = JSON.parse(localStorage.getItem('bsBookpadData') || '{}');
@@ -814,7 +816,6 @@ document.addEventListener('contextmenu', e => e.preventDefault());
             saveInput(false);
          }
 
-         // Improved downloadAsImage with better style preservation (underline, fonts, etc.)
          function downloadAsImage() {
             if (!editableDiv.innerText.trim()) {
                displayMessage("Nothing to download..!");
@@ -822,73 +823,64 @@ document.addEventListener('contextmenu', e => e.preventDefault());
             }
             const backgroundColor = document.getElementById('imageBackgroundColor').value;
             const textColor = document.getElementById('imageTextColor').value;
+            const fontSize = editableDiv.style.fontSize || '16px';
+            const fontWeight = editableDiv.style.fontWeight || '400';
             const wrapper = document.createElement('div');
             wrapper.style.position = 'absolute';
             wrapper.style.left = '-9999px';
             wrapper.style.backgroundColor = backgroundColor;
-            wrapper.style.padding = '40px';
+            wrapper.style.padding = '20px';
             wrapper.style.boxSizing = 'border-box';
             wrapper.style.fontFamily = editableDiv.style.fontFamily || '"Red Hat Display", sans-serif';
             wrapper.style.letterSpacing = '0.5px';
-            wrapper.style.lineHeight = '1.6';
+            wrapper.style.lineHeight = '1.5';
             wrapper.style.whiteSpace = 'pre-wrap';
-
             const clonedDiv = editableDiv.cloneNode(true);
-            clonedDiv.style.width = '300px';
+            clonedDiv.style.width = editableDiv.offsetWidth + 'px';
             clonedDiv.style.height = 'auto';
             clonedDiv.style.maxWidth = '800px';
             clonedDiv.style.overflow = 'visible';
             clonedDiv.style.border = 'none';
             clonedDiv.style.margin = '0';
-            clonedDiv.style.padding = '30px';
+            clonedDiv.style.padding = '20px';
             clonedDiv.style.backgroundColor = backgroundColor;
+            clonedDiv.style.fontSize = fontSize;
+            clonedDiv.style.fontWeight = fontWeight;
             clonedDiv.style.color = textColor;
             clonedDiv.style.position = 'static';
             clonedDiv.removeAttribute('contenteditable');
             clonedDiv.style.overflowY = 'visible';
-
-            // Deep style copy for all elements
-            function copyStyles(element, clone) {
-               clone.style.fontSize = element.style.fontSize || editableDiv.style.fontSize || '20px';
-               clone.style.fontWeight = element.style.fontWeight || editableDiv.style.fontWeight || '400';
-               clone.style.fontFamily = element.style.fontFamily || editableDiv.style.fontFamily || '"Red Hat Display", sans-serif';
-               clone.style.textDecoration = element.style.textDecoration || '';
-               clone.style.fontStyle = element.style.fontStyle || '';
-               if (clone.tagName === 'U' || element.style.textDecoration === 'underline') {
-                  clone.style.textDecoration = 'underline';
-               }
-               const children = element.children;
-               const cloneChildren = clone.children;
-               for (let i = 0; i < children.length; i++) {
-                  copyStyles(children[i], cloneChildren[i]);
-               }
-            }
-            copyStyles(editableDiv, clonedDiv);
-
+            clonedDiv.style.setProperty('::before', 'none');
+            const allElements = clonedDiv.querySelectorAll('*');
+            allElements.forEach(element => {
+               element.style.color = textColor;
+               element.style.fontSize = fontSize;
+               element.style.fontWeight = element.style.fontWeight || fontWeight;
+               element.style.fontFamily = '"Red Hat Display", sans-serif';
+               element.style.letterSpacing = '0.5px';
+               element.style.lineHeight = '1.5';
+            });
             wrapper.appendChild(clonedDiv);
-
             const watermark = document.createElement('div');
             watermark.className = 'watermark';
             const link = document.createElement('a');
             link.href = 'https://blackswan19.github.io/bscrop/formbs';
             link.textContent = 'Made in BsBookpad';
             watermark.appendChild(link);
+
             const watermarkColor = getContrastColor(backgroundColor);
             watermark.style.color = watermarkColor;
             link.style.color = watermarkColor;
             wrapper.appendChild(watermark);
-
             document.body.appendChild(wrapper);
-
-            const extraPadding = 60;
-            const scrollHeight = clonedDiv.scrollHeight || 400;
-            const scrollWidth = Math.max(clonedDiv.scrollWidth || 600, 600);
+            const extraPadding = 40;
+            const scrollHeight = clonedDiv.scrollHeight;
+            const scrollWidth = Math.max(clonedDiv.scrollWidth, 300);
             const textWidth = scrollWidth + extraPadding;
             const textHeight = scrollHeight + extraPadding;
 
             wrapper.style.width = `${textWidth}px`;
             wrapper.style.height = `${textHeight}px`;
-
             html2canvas(wrapper, {
                width: textWidth,
                height: textHeight,
@@ -896,8 +888,9 @@ document.addEventListener('contextmenu', e => e.preventDefault());
                backgroundColor: backgroundColor,
                scrollX: 0,
                scrollY: 0,
-               useCORS: true,
-               logging: false
+               windowWidth: textWidth,
+               windowHeight: textHeight,
+               logging: true
             }).then(canvas => {
                const link = document.createElement('a');
                link.download = 'bs_bookpad.png';
