@@ -900,69 +900,74 @@ select#fontWeightSelect {
             }
             const backgroundColor = document.getElementById('imageBackgroundColor').value;
             const textColor = document.getElementById('imageTextColor').value;
-            const fontSize = editableDiv.style.fontSize || '20px';
+            const fontSize = editableDiv.style.fontSize || '16px';
             const fontWeight = editableDiv.style.fontWeight || '400';
             const wrapper = document.createElement('div');
             wrapper.style.position = 'absolute';
             wrapper.style.left = '-9999px';
             wrapper.style.backgroundColor = backgroundColor;
-            wrapper.style.padding = '40px';
+            wrapper.style.padding = '20px';
             wrapper.style.boxSizing = 'border-box';
             wrapper.style.fontFamily = '"Red Hat Display", sans-serif';
             wrapper.style.letterSpacing = '0.5px';
-            wrapper.style.lineHeight = '1.6';
+            wrapper.style.lineHeight = '1.5';
             wrapper.style.whiteSpace = 'pre-wrap';
-            
             const clonedDiv = editableDiv.cloneNode(true);
-            clonedDiv.style.width = 'auto';
+            clonedDiv.style.width = editableDiv.offsetWidth + 'px';
             clonedDiv.style.height = 'auto';
             clonedDiv.style.maxWidth = '800px';
             clonedDiv.style.overflow = 'visible';
             clonedDiv.style.border = 'none';
             clonedDiv.style.margin = '0';
-            clonedDiv.style.padding = '30px';
+            clonedDiv.style.padding = '20px';
             clonedDiv.style.backgroundColor = backgroundColor;
             clonedDiv.style.fontSize = fontSize;
             clonedDiv.style.fontWeight = fontWeight;
             clonedDiv.style.color = textColor;
+            clonedDiv.style.position = 'static';
             clonedDiv.removeAttribute('contenteditable');
-            
+            clonedDiv.style.overflowY = 'visible';
+            clonedDiv.style.setProperty('::before', 'none');
             const allElements = clonedDiv.querySelectorAll('*');
             allElements.forEach(element => {
-               element.style.color = element.style.color || textColor;
-               element.style.fontSize = element.style.fontSize || fontSize;
+               element.style.color = textColor;
+               element.style.fontSize = fontSize;
+               element.style.fontWeight = element.style.fontWeight || fontWeight;
+               element.style.fontFamily = '"Red Hat Display", sans-serif';
+               element.style.letterSpacing = '0.5px';
+               element.style.lineHeight = '1.5';
             });
-            
             wrapper.appendChild(clonedDiv);
-            
-            // Watermark
             const watermark = document.createElement('div');
             watermark.className = 'watermark';
             const link = document.createElement('a');
             link.href = 'https://blackswan19.github.io/bscrop/formbs';
             link.textContent = 'Made in BsBookpad';
             watermark.appendChild(link);
+
             const watermarkColor = getContrastColor(backgroundColor);
             watermark.style.color = watermarkColor;
             link.style.color = watermarkColor;
             wrapper.appendChild(watermark);
-            
             document.body.appendChild(wrapper);
-            
-            const extraPadding = 60;
-            const textWidth = Math.max(clonedDiv.scrollWidth + extraPadding, 500);
-            const textHeight = clonedDiv.scrollHeight + extraPadding * 1.5;
-            
+            const extraPadding = 40;
+            const scrollHeight = clonedDiv.scrollHeight;
+            const scrollWidth = Math.max(clonedDiv.scrollWidth, 300);
+            const textWidth = scrollWidth + extraPadding;
+            const textHeight = scrollHeight + extraPadding;
+
             wrapper.style.width = `${textWidth}px`;
             wrapper.style.height = `${textHeight}px`;
-            
             html2canvas(wrapper, {
                width: textWidth,
                height: textHeight,
                scale: 2,
                backgroundColor: backgroundColor,
                scrollX: 0,
-               scrollY: 0
+               scrollY: 0,
+               windowWidth: textWidth,
+               windowHeight: textHeight,
+               logging: true
             }).then(canvas => {
                const link = document.createElement('a');
                link.download = 'bs_bookpad.png';
@@ -985,7 +990,7 @@ select#fontWeightSelect {
 
             const backgroundColor = document.getElementById('imageBackgroundColor').value;
             const textColor = document.getElementById('imageTextColor').value;
-            const fontSize = parseInt(editableDiv.style.fontSize.replace('px', '')) || 20;
+            const fontSize = parseInt(editableDiv.style.fontSize.replace('px', '')) || 16;
 
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
@@ -1008,38 +1013,75 @@ select#fontWeightSelect {
             function addWatermark() {
                doc.setFontSize(8);
                doc.setTextColor(watermarkR, watermarkG, watermarkB);
-               doc.text('Made in BsBookpad', 10, 10);
-               doc.link(10, 7, 60, 5, { url: 'https://blackswan19.github.io/bscrop/formbs' });
+               const watermarkText = 'Made in BsBookpad';
+               const watermarkX = 10;
+               const watermarkY = 10;
+               doc.text(watermarkText, watermarkX, watermarkY);
+               const textWidth = doc.getTextWidth(watermarkText);
+               doc.link(watermarkX, watermarkY - 3, textWidth, 4, {
+                  url: 'https://blackswan19.github.io/bscrop/formbs'
+               });
                doc.setFontSize(fontSize);
             }
 
-            let cursorY = 25;
+            let cursorY = 20;
+            let pageCount = 1;
             doc.setFillColor(bgR, bgG, bgB);
             doc.rect(0, 0, 210, 297, 'F');
             doc.setTextColor(textR, textG, textB);
             addWatermark();
 
             const maxWidth = 190;
-            const lineHeight = fontSize * 0.6;
+            const lineHeight = fontSize * 0.5;
 
-            const lines = editableDiv.innerText.split('\n');
-            
-            lines.forEach(line => {
-               if (line.trim() === '') {
+            function processNodes(nodes) {
+               const textLines = [];
+               nodes.forEach(node => {
+                  if (node.nodeType === Node.TEXT_NODE) {
+                     const text = node.textContent;
+                     if (text.trim()) {
+                        textLines.push({ text: text, bold: false });
+                     }
+                  } else if (node.nodeName === 'SPAN') {
+                     const fontWeight = parseInt(node.style.fontWeight) || 400;
+                     const lines = node.textContent.split('\n');
+                     lines.forEach(line => {
+                        if (line.trim()) {
+                           textLines.push({ text: line, bold: fontWeight >= 700 });
+                        }
+                     });
+                  } else if (node.nodeName === 'BR') {
+                     textLines.push({ text: '', bold: false });
+                  } else if (node.childNodes.length > 0) {
+                     const childLines = processNodes(node.childNodes);
+                     textLines.push(...childLines);
+                  }
+               });
+               return textLines.filter((line, index, arr) => {
+                  return line.text !== '' || (index > 0 && arr[index - 1].text !== '');
+               });
+            }
+
+            const textLines = processNodes(editableDiv.childNodes);
+
+            textLines.forEach(lineObj => {
+               if (lineObj.text === '') {
                   cursorY += lineHeight;
                   return;
                }
-               const splitLines = doc.splitTextToSize(line, maxWidth);
-               splitLines.forEach((splitLine) => {
-                  if (cursorY > 270) {
+               const lines = doc.splitTextToSize(lineObj.text, maxWidth);
+               lines.forEach(line => {
+                  if (cursorY > 280) {
                      doc.addPage();
+                     pageCount++;
                      doc.setFillColor(bgR, bgG, bgB);
                      doc.rect(0, 0, 210, 297, 'F');
                      doc.setTextColor(textR, textG, textB);
                      addWatermark();
-                     cursorY = 25;
                   }
-                  doc.text(splitLine, 10, cursorY);
+                  doc.setFont("helvetica", lineObj.bold ? "bold" : "normal");
+                  doc.setFontSize(fontSize);
+                  doc.text(line, 10, cursorY);
                   cursorY += lineHeight;
                });
             });
@@ -1047,7 +1089,6 @@ select#fontWeightSelect {
             doc.save('bs_bookpad.pdf');
             displayMessage("Downloaded as PDF!");
          }
-
          function displayMessage(message) {
             const messageDiv = document.getElementById('message');
             messageDiv.textContent = message;
