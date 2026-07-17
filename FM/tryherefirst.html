@@ -115,7 +115,7 @@ width: 100%;
 
          /* Icon Buttons Styles */
          .icon-buttons { 
-             display: flex;
+            display: flex;
     gap: 0px;
     justify-content: space-between;
     align-items: center;
@@ -128,6 +128,7 @@ width: 100%;
     width: 95%;
     position: fixed;
     bottom: 20px;
+    z-index: 100000;
 
          } 
          .delete-icon { background-color: #ff0d00; color: white; } 
@@ -250,10 +251,6 @@ width: 100%;
 
          /* New formatting toolbar */
          .format-toolbar {
-           position: fixed;
-    bottom: 85px;
-    left: 50%;
-    transform: translateX(-50%);
     border-radius: 9999px;
     padding: 3px;
     display: flex;
@@ -527,10 +524,6 @@ select#fontWeightSelect {
             </div>
             <div class="message" id="message"><a href="https://blackswan19.github.io/bscrop/formbs" style="text-decoration: none;">#BsWorld</a></div>
          </div>
-         <div class="fullscreen-container">
-            <div id="paragraphInput" class="editable-div" contenteditable="true" data-placeholder="Type here..."></div>
-         </div>
-
          <!-- New Formatting Toolbar -->
          <div class="format-toolbar" id="formatToolbar">
             <button class="format-btn" onclick="formatText('bold')" title="Bold"><strong>B</strong></button>
@@ -588,6 +581,9 @@ select#fontWeightSelect {
                     </div>
                 </div>
             </div>
+         </div>
+         <div class="fullscreen-container">
+            <div id="paragraphInput" class="editable-div" contenteditable="true" data-placeholder="Type here..."></div>
          </div>
           <div class="sidebar" id="sidebar">
                <div class="sidebar-header">
