@@ -346,14 +346,26 @@ function displayLoanDetails(loan, index) {
     loanDetails.innerHTML = `
         <p id="scrotamts"></p>
         <div class="loan-entry">
-            <p style="text-align: center;
+            <p style="    text-align: center;
     position: sticky;
     top: 140px;
-    float: right;
     z-index: 1000000;">
-                <button class="amounts-btn downsingle" style="width: 100%; font-size: 9px; padding: 2px 9px; display: flex; flex-direction: row; justify-content: center; align-items: center; margin-top: 0px; font-weight: 300; backdrop-filter: blur(3px); gap: 5px; background: #2535488f; border-radius: 9999px; border-top: solid 1px #ffffff30; border-bottom: solid 0.1px #ffffff24;" onclick="downloadSingleLoan(${index})">
-                    <svg style="width: 14px; height: 20px;" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512"><path d="M19,6V4a4,4,0,0,0-4-4H9A4,4,0,0,0,5,4V6a5.006,5.006,0,0,0-5,5v5a5.006,5.006,0,0,0,5,5,3,3,0,0,0,3,3h8a3,3,0,0,0,3-3,5.006,5.006,0,0,0,5-5V11A5.006,5.006,0,0,0,19,6ZM7,4A2,2,0,0,1,9,2h6a2,2,0,0,1,2,2V6H7ZM17,21a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V17a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1Zm5-5a3,3,0,0,1-3,3V17a3,3,0,0,0-3-3H8a3,3,0,0,0-3,3v2a3,3,0,0,1-3-3V11A3,3,0,0,1,5,8H19a3,3,0,0,1,3,3Z"/><path d="M18,10H16a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z"/></svg>
-                    Download This Receipt
+                <button class="amounts-btn downsingle" style="width:100%;font-size: 10px;
+    padding: 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    font-weight: 300;
+    backdrop-filter: blur(3px);
+    gap: 5px;
+    background: #2535488f;
+    border-radius: 9999px;
+    border-top: solid 1px #ffffff30;
+    border-bottom: solid 0.1px #ffffff24;" onclick="downloadSingleLoan(${index})">
+                    <svg style="width: 14px; height: 20px;" xmlns="http://www.w3.org/2000/svg" id="Outline" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M120-80v-800l60 60 60-60 60 60 60-60 60 60 60-60 60 60 60-60 60 60 60-60 60 60 60-60v800l-60-60-60 60-60-60-60 60-60-60-60 60-60-60-60 60-60-60-60 60-60-60-60 60Zm120-200h480v-80H240v80Zm0-160h480v-80H240v80Zm0-160h480v-80H240v80Z"/></svg>
+                    Download this particular amount Receipt
                 </button>
             </p>
             <h3>Service</h3>
