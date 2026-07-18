@@ -59,9 +59,9 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 150 },
-            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
-            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-08-2026", interest: 3900, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-09-2026", interest: 3900, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "17-08-2026", interest: 3900, takenAmount: 3500, takenFrom: "P2P lend", fineRate: 150 },
         ]
     },
 };
@@ -351,8 +351,9 @@ function displayLoanDetails(loan, index) {
     position: sticky;
     top: 140px;
     z-index: 1000000;">
-                <button class="amounts-btn downsingle" style="width:100%;font-size: 10px;
-    padding: 2px;
+                <button class="amounts-btn downsingle" style="    width: 100%;
+    font-size: 12px;
+    padding: 2px
     display: flex;
     flex-direction: row;
     justify-content: center;
