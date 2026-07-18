@@ -550,5 +550,5 @@ function showStarCount() {
 
 function showCoinsCount() {
     const coins = document.getElementById('coinsCount').textContent.trim();
-    alert(`BsRora(Bot) : \n\nYou have using ${coins} Duplicate Clone account.`);
+    alert(`BsRora(Bot) : \n\nYou have ${coins} Tomar Juntos active amount`);
 }
