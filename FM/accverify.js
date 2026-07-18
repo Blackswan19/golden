@@ -31,8 +31,8 @@ const passwords = {
         membershipIcon: "https://files.donationalerts.com/uploads/images/2/tb_5000.gif",
         profileBackground: "#005f56",
         profileSecBackground:"#005f56",
-        stars: 0,
-        coins: 0,
+        stars: 125,
+        coins: 1,
         verified: true,
         showCustomContent: "no",
         customContent: {
@@ -49,7 +49,7 @@ const passwords = {
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#b60000",
         profileSecBackground:"rgb(124 113 103)",
-        stars: 10000,
+        stars: 100000,
         coins: 0,
         verified: true,
         showCustomContent: "yes",
@@ -141,8 +141,8 @@ document.getElementById("submitBtn").addEventListener("click", () => {
             if (user.showCustomContent === "yes" && user.customContent && user.customContent.value) {
                 const contentUrl = user.customContent.url && /^https?:\/\//.test(user.customContent.url) ? user.customContent.url : null;
                 const contentHtml = user.customContent.type === "text"
-                    ? `<h3 style="font-size:16px;">Special Offer</h3><p style="color:#00aeff;font-size:14px;">${user.customContent.value}</p>`
-                    : `<h3 style="color:white;font-size:16px;">Special Offer</h3><img class="applybtn" src="${user.customContent.value}" alt="Special Offer" style="cursor:pointer;" onerror="this.src='';">`;
+                    ? `<h3 style="font-size:16px;">Special Note</h3><p style="color:#00aeff;font-size:14px;">${user.customContent.value}</p>`
+                    : `<h3 style="color:white;font-size:16px;">Special Note</h3><img class="applybtn" src="${user.customContent.value}" style="cursor:pointer;" onerror="this.src='';">`;
                 if (contentUrl) {
                     specialContentDiv.innerHTML = `<a href="${contentUrl}" style="text-decoration:none;display:block;" aria-label="Special offer">${contentHtml}</a>`;
                     specialContentDiv.onclick = (e) => { window.open(contentUrl, '_blank'); e.preventDefault(); };
@@ -541,10 +541,10 @@ function downloadAllLoans() {
 function showStarCount() {
     const stars = document.getElementById('starCount').textContent.trim();
     if(stars == 0){
-        alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can buy the stars to reduce the interest when you think the interest to high.`);
+        alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can earn stars by renting an mansion and earn swans then cunvert iinto stars.`);
     }
     else{
-        alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can use these stars when you think interest is high to reduce the interest.`);
+        alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can use these stars to reduce the interest.`);
     }
 }
 
