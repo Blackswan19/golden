@@ -45,10 +45,10 @@ const passwords = {
         ]
     },
     "0212": {
-        name: "The Godfather",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "#b60000",
-        profileSecBackground:"rgb(124 113 103)",
+        name: "Bhargav Naidu",
+        membershipIcon: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/refs/heads/main/Animals%20and%20Nature/Fire.webp",
+        profileBackground: "black",
+        profileSecBackground:"rgb(255 255 255 / 18%)",
         stars: 100000,
         coins: 0,
         verified: true,
@@ -60,6 +60,7 @@ const passwords = {
         },
         loans: [
             { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
             { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
         ]
     },
