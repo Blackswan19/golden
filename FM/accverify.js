@@ -1,4 +1,5 @@
 document.addEventListener('contextmenu', e => e.preventDefault());   
+
 const passwords = {
     "6275": {
         name: "Srikanth Jampana",
@@ -30,7 +31,7 @@ const passwords = {
         membershipIcon: "https://files.donationalerts.com/uploads/images/2/tb_5000.gif",
         profileBackground: "#005f56",
         profileSecBackground:"#005f56",
-        stars: 125,
+        stars: 0,
         coins: 1,
         verified: true,
         showCustomContent: "no",
