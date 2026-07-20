@@ -28,7 +28,7 @@ const passwords = {
     },
     "Mahesh888*": {
         name: "Mahesh Muthinti",
-        membershipIcon: "https://files.donationalerts.com/uploads/images/2/tb_5000.gif",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "#005f56",
         profileSecBackground:"#005f56",
         stars: 0,
