@@ -47,12 +47,12 @@ const passwords = {
     "0212": {
         name: "The Godfather",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "#b60000",
-        profileSecBackground:"rgb(124 113 103)",
+         profileBackground: "#c33949",
+        profileSecBackground:"#c33949",
         stars: 10000,
         coins: 0,
         verified: true,
-        showCustomContent: "yes",
+        showCustomContent: "no",
         customContent: {
             type: "image",
             value: "programXoffer.png",
