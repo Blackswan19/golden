@@ -29,8 +29,8 @@ const passwords = {
     "Mahesh888*": {
         name: "Mahesh Muthinti",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "#005f56",
-        profileSecBackground:"#005f56",
+        profileBackground: "transparent",
+        profileSecBackground:"transparent",
         stars: 0,
         coins: 1,
         verified: true,
