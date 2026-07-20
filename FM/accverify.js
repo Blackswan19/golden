@@ -1,4 +1,4 @@
-document.addEventListener('contextmenu', e => e.preventDefault());   
+// document.addEventListener('contextmenu', e => e.preventDefault());   
 
 const passwords = {
     "6275": {
@@ -45,14 +45,14 @@ const passwords = {
         ]
     },
     "0212": {
-        name: "The Godfather",
+        name: "Lana Del",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-         profileBackground: "#c33949",
-        profileSecBackground:"#c33949",
+         profileBackground: "rgb(255 211 182)",
+        profileSecBackground:"rgb(255 170 165)",
         stars: 10000,
         coins: 0,
         verified: true,
-        showCustomContent: "no",
+        showCustomContent: "yes",
         customContent: {
             type: "image",
             value: "programXoffer.png",
