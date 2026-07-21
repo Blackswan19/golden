@@ -32,7 +32,7 @@ const passwords = {
         profileBackground: "#c33949",
         profileSecBackground:"#c33949",
         stars: 0,
-        coins: 1,
+        coins: 2,
         verified: true,
         showCustomContent: "yes",
         customContent: {
@@ -41,7 +41,8 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "11-05-2026", endDate: "10-09-2026", interest: 5938, takenAmount: 23480, takenFrom: "Golden", fineRate: 130 },
+            { planDate: "11-05-2026", endDate: "10-09-2026", interest: 7355, takenAmount: 29418, takenFrom: "Tomar Juntos", fineRate: 130 },
+            { planDate: "21-07-2026", endDate: "21-08-2026", interest: 607, takenAmount: 2425, takenFrom: "Tomar Juntos", fineRate: 130 },
         ]
     },
     "0212": {
