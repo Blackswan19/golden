@@ -350,19 +350,20 @@ function displayLoanDetails(loan, index) {
     position: sticky;
     top: 140px;
     z-index: 1000000;">
-                <button class="amounts-btn downsingle" style=" width: 100%;
+                <button class="amounts-btn downsingle" style="    width: 100%;
     font-size: 12px;
+    display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     margin-top: 0px;
     font-weight: 300;
+    backdrop-filter: blur(3px);
     gap: 5px;
+    background: #2535488f;
     border-radius: 9999px;
     border-top: solid 1px #ffffff30;
-    border-bottom: solid 0.1px #ffffff24;
-    backdrop-filter: blur(10px);
-    background: #1d1f2bc9;" onclick="downloadSingleLoan(${index})">
+    border-bottom: solid 0.1px #ffffff24;" onclick="downloadSingleLoan(${index})">
                     <svg style="width: 14px; height: 20px;" xmlns="http://www.w3.org/2000/svg" id="Outline" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M120-80v-800l60 60 60-60 60 60 60-60 60 60 60-60 60 60 60-60 60 60 60-60 60 60 60-60v800l-60-60-60 60-60-60-60 60-60-60-60 60-60-60-60 60-60-60-60 60-60-60-60 60Zm120-200h480v-80H240v80Zm0-160h480v-80H240v80Zm0-160h480v-80H240v80Z"/></svg>
                     Download this particular amount Receipt
                 </button>
