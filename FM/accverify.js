@@ -29,8 +29,8 @@ const passwords = {
     "Mahesh888*": {
         name: "Mahesh Muthinti",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "transparent",
-        profileSecBackground:"transparent",
+        profileBackground: "#c33949",
+        profileSecBackground:"#c33949",
         stars: 0,
         coins: 1,
         verified: true,
@@ -45,10 +45,10 @@ const passwords = {
         ]
     },
     "0212": {
-        name: "The Godfather",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-         profileBackground: "#c33949",
-        profileSecBackground:"#c33949",
+        name: "Bhargav Naidu",
+        membershipIcon: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/refs/heads/main/Animals%20and%20Nature/Fire.webp",
+         profileBackground: "black",
+        profileSecBackground:"#820000",
         stars: 10000,
         coins: 0,
         verified: true,
@@ -59,8 +59,10 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 150 },
-            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-12-2026", interest: 3900, takenAmount: 25000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-12-2026", interest: 3900, takenAmount: 15000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-12-2026", interest: 3900, takenAmount: 22000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-12-2026", interest: 3900, takenAmount: 6500, takenFrom: "P2P lend", fineRate: 150 },
         ]
     },
 };
