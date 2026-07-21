@@ -34,14 +34,14 @@ const passwords = {
         stars: 0,
         coins: 1,
         verified: true,
-        showCustomContent: "no",
+        showCustomContent: "yes",
         customContent: {
             type: "image",
             value: "programXoffer.png",
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "11-05-2026", endDate: "10-08-2026", interest: 5938, takenAmount: 23480, takenFrom: "Golden", fineRate: 130 },
+            { planDate: "11-05-2026", endDate: "10-09-2026", interest: 5938, takenAmount: 23480, takenFrom: "Golden", fineRate: 130 },
         ]
     },
     "0212": {
@@ -59,10 +59,10 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "06-11-2025", endDate: "07-12-2026", interest: 3900, takenAmount: 25000, takenFrom: "P2P lend", fineRate: 150 },
-            { planDate: "06-11-2025", endDate: "07-12-2026", interest: 3900, takenAmount: 15000, takenFrom: "P2P lend", fineRate: 150 },
             { planDate: "06-11-2025", endDate: "07-12-2026", interest: 3900, takenAmount: 22000, takenFrom: "P2P lend", fineRate: 150 },
             { planDate: "06-11-2025", endDate: "07-12-2026", interest: 3900, takenAmount: 6500, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-12-2026", interest: 3900, takenAmount: 15000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-12-2026", interest: 3900, takenAmount: 12000, takenFrom: "P2P lend", fineRate: 150 },
         ]
     },
 };
