@@ -38,7 +38,7 @@ const passwords = {
         customContent: {
             type: "image",
             value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
+            url: "https://mfi0212.github.io/MFI/multi.mem.acc"
         },
         loans: [
             { planDate: "11-05-2026", endDate: "10-09-2026", interest: 7355, takenAmount: 29418, takenFrom: "Tomar Juntos", fineRate: 130 },
