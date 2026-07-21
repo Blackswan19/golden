@@ -146,7 +146,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
                     : `<h3 style="color:white;font-size:16px;">Special Note</h3><img class="applybtn" src="${user.customContent.value}" style="cursor:pointer;" onerror="this.src='';">`;
                 if (contentUrl) {
                     specialContentDiv.innerHTML = `<a href="${contentUrl}" style="text-decoration:none;display:block;" aria-label="Special offer">${contentHtml}</a>`;
-                    specialContentDiv.onclick = (e) => { window.open(contentUrl, '_blank'); e.preventDefault(); };
+                    specialContentDiv.onclick = (e) => { window.open(contentUrl, '_self'); e.preventDefault(); };
                 } else {
                     specialContentDiv.innerHTML = contentHtml;
                 }
