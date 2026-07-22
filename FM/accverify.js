@@ -53,7 +53,7 @@ const passwords = {
         stars: 10000,
         coins: 0,
         verified: true,
-        showCustomContent: "yes",
+        showCustomContent: "no",
         customContent: {
             type: "image",
             value: "programXoffer.png",
@@ -565,3 +565,32 @@ function showCoinsCount() {
     const coins = document.getElementById('coinsCount').textContent.trim();
     alert(`BsRora(Bot) : \n\nYou have ${coins} Tomar Juntos active amount`);
 }
+
+
+
+
+  function openDuplicateForm() {
+            window.open("https://forms.gle/yT6xhHtrxHELfS447", "_blank");
+            closeDuplicateModal();
+        }
+
+        function closeDuplicateModal() {
+            document.getElementById("duplicateAccountModal").style.display = "none";
+        }
+
+        document.getElementById("userNameContainer").addEventListener("click", () => {
+            document.getElementById("duplicateAccountModal").style.display = "flex";
+        });
+
+
+        const startDate = new Date('2026-07-21T20:00:00');
+        const endDate = new Date('2026-07-22T05:00:00');
+
+
+        function goBack() {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        alert("✅ Back button clicked!\n\n(In a real app this would take you to previous screen or home.)");
+      }
+    }
