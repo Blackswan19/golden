@@ -359,9 +359,9 @@ function displayLoanDetails(loan, index) {
     align-items: center;
     margin-top: 0px;
     font-weight: 300;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(5px);
     gap: 5px;
-    background: #2535488f;
+    background: #223140a1;
     border-radius: 9999px;
     border-top: solid 1px #ffffff30;
     border-bottom: solid 0.1px #ffffff24;" onclick="downloadSingleLoan(${index})">
