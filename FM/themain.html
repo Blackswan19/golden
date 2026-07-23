@@ -1,1 +1,222 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <title>BS&MFI | MLendings</title> <link rel="icon" href="mfi.logo.png" /> <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Noto+Sans"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Roboto:ital,wght@0,100..900;1,100..900&family=Six+Caps&family=Stalemate&display=swap" rel="stylesheet"> <style> * { font-family: "Roboto", sans-serif;margin:0; padding:0; box-sizing:border-box;scrollbar-width: none;letter-spacing: 0.5px;} body { background-color: #151e27; color: #ffffff; min-height: 100vh; } button{ cursor: pointer; } .header { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 100%; padding: 10px 5px 0px 5px; max-width: 600px; z-index: 100; background: linear-gradient(180deg, #151e27 20%, transparent); border-radius: 0; display: flex; flex-direction: column; gap: 5px; } h3 { font-weight: 500; font-size: 18px; } .logo { z-index: 100; display: flex; max-width: 650px; position: sticky; top: 0px; justify-content: space-between; align-items: center; } * { -webkit-tap-highlight-color: transparent; } body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; } .logo h1 { position: relative; left: 0px; font-weight: 600; font-size: 23px; display: flex; justify-content: center; align-items: center; color: white; font-family: "Roboto", sans-serif; } .logo h1 p { position: fixed; left: 1px; bottom: -6px; font-size: 10px; font-weight: 300; } .mficolblogo { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(45deg, #0021ff, #00d0ff); padding: 4px; } .search-container { width: 100%; max-width: 600px; display: flex; justify-content: center; align-items: center; border-radius: 999px; color: white; gap: 10px; margin-top: 0; height: 45px; padding: 10px 15px; background: #223140a1; border: none; outline: none; transition: all 0.2s; border-top: solid 1px #ffffff30; backdrop-filter: blur(5px); border-bottom: solid 0.1px #ffffff24; } #searchInput { width: 100%; outline: none; text-align: start; border: none; color: white; background: transparent; font-size: 20px; letter-spacing: 0.3px; } .search-container svg { fill: white; } #sectionsContainer { padding-top: 120px; max-width: 600px; margin: 0 auto; padding-bottom: 75px; width: 100%; } .section h2 { font-size: 15px; font-weight: 600; color: #aaaaaa; display: none; } .site-list { overflow: hidden; } .site-item { display: flex; align-items: center; color: white; text-decoration: none; opacity: 70%; padding: 5px 10px; } .site-item:hover{ background-color: #283543; } .letter-icon { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; margin-right: 10px; flex-shrink: 0; font-size: 26px; background: #8774e1; color: #ffffff; } .rghtsdopt { display: flex; justify-content: space-between; align-items: center; width: 100%; } .rghtsdopt a{ display: contents; } .bottomoptions { background: linear-gradient(0deg, #151e27 30%, transparent); position: fixed; bottom: 0px; left: 50%; transform: translateX(-50%); width: 100%; display: flex; justify-content: center; align-items: center; } .bottom-nav { width: 75%; max-width: 600px; padding: 10px 0; display: flex; justify-content: center; align-items: center; } .bottomtakeoptions { text-align: center; width: 100%; display: flex; justify-content: space-between; align-items: center; font-size: 12px; backdrop-filter: blur(5px); border-radius: 9999px; gap: 0; background: #223140a1; border-top: solid 1px #ffffff30; border-bottom: solid 0.1px #ffffff24; max-width: 350px; height: 55px; padding: 3px; } .bottomtakeoptions a { display: flex; justify-content: center; align-items: center; flex-direction: column; text-decoration: none; color: #0a95ff; width: 100%; gap: 1px; padding: 3px 15px; border-radius: 999px; } .bottomtakeoptions a:hover{ background: #00598561; } svg { width: 27px; height: 27px; fill: #0a95ff; } .site-info { border-bottom: solid 1.5px #ffffff1f; width: 100%; padding: 10px 0; } .nav-item { display: flex; flex-direction: column; align-items: center; color: #aaa; font-size: 11px; cursor: pointer; } .nav-item:hover, .nav-item.active { color: #00d0ff; } .loading-overlay { position: fixed; inset: 0; background-color: #00003b; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 10000; opacity: 1; transition: opacity 0.6s ease; } .loading-overlay.hidden { opacity: 0; pointer-events: none; } @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } } button#startAudioBtn { background: white; border: none; padding: 0 20px; border-radius: 9999px; font-size: 16px; font-weight: 500; height: 45px; } .loading-overlay { position: fixed; inset: 0; background-color: #00003b; display: flex; flex-direction: column; justify-content: space-between; align-items: center; opacity: 1; transition: opacity 0.6s ease; padding: 20px 0; } .loading-logo { width: 650px; object-fit: cover; height: 150px; margin-top: -150px; } a { text-decoration: none; color: white; } .servicenmae{ font-size: 18px; color: #ffffff8f; text-align: center; font-weight: 500; } .audio-controls { margin: 0; display: none; flex-direction: column; align-items: center; gap: 12px; }.audio-progress-bar { height: 2px; background: rgba(255, 255, 255, 0); border-radius: 0px; overflow: hidden; }.audio-progress-fill { height: 100%; width: 0%; background: rgba(255, 255, 255, 0); border-radius: 6px; transition: width 0.45s ease-out; box-shadow: 0 0 16px #00aaff99; } .audio-progress-container { line-height: 0; text-align: center; width: 100%; }.bottomloadingopt { display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 20px; width: 100%; margin-top: 200px; }img.audioloadgif { width: 30px; margin-bottom: 20px; } div#audioStatus { font-size: 10px; color: #ffffff87; } .loadintroopt { display: flex; justify-content: space-between; width: 100%; max-width: 500px; align-items: center; padding: 0 25px; } button#muteToggle { border-radius: 50%; border: none; width: 50px; height: 50px; padding: 0; font-size: 20px; display: flex; align-items: center; justify-content: center; color: white; background: rgba(255 255 255 / 9%); border-top: solid 1px #ffffff30; border-bottom: solid 0.1px #ffffff24; } .nav-item i { font-size: 22px; margin-bottom: 3px; } .rightsideopt { display: flex; justify-content: center; align-items: center; gap: 10px; background: #223140a1; height: 45px; border-radius: 999px; border-top: solid 1px #ffffff30; border-bottom: solid 0.1px #ffffff24; backdrop-filter: blur(5px); width: 45px; } .leftsideopt { background: #2f42579c; padding: 8px; border-radius: 999px; border-top: solid 1px #ffffff30; border-bottom: solid 0.1px #ffffff24; width: 45px; height: 45px; display: flex; justify-content: center; align-items: center; } .servicedivrtpopup { width: 100%; background: white; border-radius: 20px; box-shadow: 0 10px 40px 1000px white; font-family: "Noto Sans", sans-serif; text-align: center; position: fixed; z-index: 1000000000000; display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 30px; max-width: 500px; left: 50%; letter-spacing: 0; transform: translate(-50%, 50%); overflow: hidden; } .servicedivrtlogo{ width: 70px; height: 70px; object-fit: contain; margin: 0 auto 20px; font-family: "Noto Sans", sans-serif; border-radius: 25px; background: rgb(0 48 255 / 46%); padding: 8px; } h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; color: #000; font-family: "Noto Sans", sans-serif; } .subtitle { font-size: 13px; color: #666; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 32px; font-family: "Noto Sans", sans-serif; } .servicedivrtpopup input{ width: 100%; padding: 10px; font-size: 18px; font-weight: 100; background: #80808047; border: none; border-radius: 40px; color: rgb(0, 0, 0); text-align: center; outline: none; font-family: "Noto Sans", sans-serif; transition: border-color 0.2s; } .servicedivrtpopup button { width: 100%; margin-top: 20px; padding: 10px; font-size: 18px; font-weight: 100; background: #0000ff; color: white; font-family: "Noto Sans", sans-serif; border: none; border-radius: 33px; cursor: pointer; } .servicedivrtpopup button:hover { background: #0000b5; } .error { margin-top: 15px; color: #ff4d4d; font-size: 14px; font-family: "Noto Sans", sans-serif; min-height: 20px; } .footer-note { margin-top: 25px; font-size: 12px; font-family: "Noto Sans", sans-serif; color: #888; position: fixed; bottom: 10px; } </style> </head> <body> <div class="servicedivrtpopup" id="popup"> <img class="servicedivrtlogo" src="mfi.gif" alt="BSMFI Logo"> <h1>BS&MFI</h1> <div class="subtitle">services</div> <input type="text" id="codeInput" placeholder="Enter password" autocomplete="off"/> <button onclick="openPlan()">Continue</button> <div class="error" id="error"></div> <div class="footer-note">Powered by MLendings</div> </div> <div class="loading-overlay" id="loadingOverlay"> <div class="servicename" style=" font-size: 14px; letter-spacing: 0.5px; padding: 10px; border-radius: 100px; color: #ffffff; font-weight: 500; background: rgba(255 255 255 / 9%); border-top: solid 1px #ffffff30; border-bottom: solid 0.1px #ffffff24;"> BS&MFI Service </div> <img src="loadinglogo.png" alt="Loading Doughnut" class="loading-logo"> <div class="bottomloadingopt"> <div class="servicenmae"> Welcome to MLendings </div> <button class="start-btn" id="startAudioBtn">Connect Now</button> <div class="audio-controls" id="audioControls"> <div class="audio-progress-container"> <div class="audio-progress-bar"> <div id="audioProgressFill" class="audio-progress-fill"></div> </div> <img class="audioloadgif" src="https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_564995111e604ee1b65d3cfdd94d914f/default/dark/2.0" alt=""> <div class="audio-status" id="audioStatus">Waiting for you to start...</div> </div> </div> <div class="loadintroopt"> <button class="mute-btn" id="muteToggle" title="Mute / Unmute"> <i class="fa-solid fa-bell"></i> </button> <a style="display: flex;" onclick="alert('Welcome to MLendings Service from BS&MFI Services')"><img style="width: 50px; height: 50px; border-radius: 62px; padding: 2px; background: rgba(255 255 255 / 9%); border-top: solid 1px #ffffff30; border-bottom: solid 0.1px #ffffff24;" src="mfi.gif" alt=""></a> </div> <audio id="introAudio" preload="auto"> <source src="mfi_intro.mp3" type="audio/mpeg"> Your browser does not support the audio element. </audio> </div> </div><script src="changable.js"></script> <div class="header"> <div class="logo"> <div class="rghtsdopt"> <h1><img style="width: 45px;" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/refs/heads/main/Animals%20and%20Nature/Lobster.webp" alt=""> MLendings </h1> <div class="rightsideopt"> <a onclick="alert('Follow these steps..!\n\n1. Click on the icon on bottom left.\n2. Fill out the form.\n3. Wait a few hours.\n4. Check details like interest and etc... in bottom right icon.\n5. Get funds from your coordinator.\n6. Repay on time for future loans.\n\nNOTE : Are you late to return? Say 2 days before we will extend the date (or) Extra fees apply.\n')"> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M432.15-380.92 361-73.54Q358.77-63 350.15-56.5q-8.61 6.5-19.77 6.5-14.99 0-24.11-10.96t-5.88-25.35l107.38-534.61-95.08 38v102.54q0 12.76-8.61 21.38-8.62 8.61-21.39 8.61-12.77 0-21.38-8.61-8.62-8.62-8.62-21.38v-118.16q0-10.84 5.93-19.57 5.92-8.74 15.77-13.35l167.99-71.39q14-6 27.97-7.19 13.96-1.19 26.8 2.66 12.85 3.84 23.81 11.88 10.96 8.04 18.58 20.89l33.84 53.99q14.93 23.47 33.77 43.39 18.85 19.92 41.23 34.46 16.31 10.69 35.23 18.16 18.93 7.46 38.62 11.23 12.15 2.23 19.96 11.03 7.81 8.81 7.81 21.58 0 12.77-9.12 20.88-9.11 8.12-21.88 6.5-57.54-9.15-103.58-39.42-46.04-30.27-79.81-76.35l-30.76 153.01 74.69 74.54q5.23 5.61 7.84 12.15 2.62 6.54 2.62 13.77V-80q0 12.77-8.62 21.38Q572.77-50 560-50t-21.38-8.62Q530-67.23 530-80v-217.31l-97.85-83.61Zm55.58-386.81q-21.58-21.58-21.58-52.27 0-30.69 21.58-52.27 21.58-21.58 52.27-21.58 30.69 0 52.27 21.58 21.58 21.58 21.58 52.27 0 30.69-21.58 52.27-21.58 21.58-52.27 21.58-30.69 0-52.27-21.58Z"/></svg> </a> </div> </div> </div> <div class="search-container"> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M380-320q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l224 224q11 11 11 28t-11 28q-11 11-28 11t-28-11L532-372q-30 24-69 38t-83 14Zm0-80q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg> <input type="text" id="searchInput" placeholder="Search here" autocomplete="off"/> </div> </div> <div id="sectionsContainer"></div> <div class="imlateoptions" style=" position: fixed; bottom: 75px; right: 15px; background: #0a95ff; height: 48px; border-radius: 999px; border-top: solid 1px #ffffff30; border-bottom: solid 0.1px #ffffff24; backdrop-filter: blur(5px); width: 48px; display: flex; justify-content: center; align-items: center;"> <a style=" display: contents;" href="https://mfi0212.github.io/MFI/imlate"> <svg style="fill: white;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m336.39-112.69-55.31-93-104.62-22.47q-13.46-2.61-21.5-14.15-8.04-11.54-6.42-25l10.23-107.61-71.15-81.39q-9.23-9.84-9.23-23.69 0-13.85 9.23-23.69l71.15-81.39-10.23-107.61q-1.62-13.46 6.42-25t21.5-14.15l104.62-22.47 55.31-93q7.23-11.84 19.69-16.15 12.46-4.31 25.31 1.31L480-820.46l98.61-41.69q12.85-5.62 25.31-1.31 12.46 4.31 19.69 16.15l55.31 93 104.62 22.47q13.46 2.61 21.5 14.15 8.04 11.54 6.42 25l-10.23 107.61 71.15 81.39q9.23 9.84 9.23 23.69 0 13.85-9.23 23.69l-71.15 81.39 10.23 107.61q1.62 13.46-6.42 25t-21.5 14.15l-104.62 22.47-55.31 93q-7.23 11.84-19.69 16.15-12.46 4.31-25.31-1.31L480-139.54l-98.61 41.69q-12.85 5.62-25.31 1.31-12.46-4.31-19.69-16.15ZM378-162l102-43.23L583.23-162 640-258l110-25.23L740-396l74-84-74-85.23L750-678l-110-24-58-96-102 43.23L376.77-798 320-702l-110 24 10 112.77L146-480l74 84-10 114 110 24 58 96Zm102-318Zm22.92 179.85q9.39-9.39 9.39-22.93T502.92-346q-9.38-9.38-22.92-9.38-13.54 0-22.92 9.38-9.39 9.38-9.39 22.92 0 13.54 9.39 22.93 9.38 9.38 22.92 9.38 13.54 0 22.92-9.38Zm-1.54-145.39q8.62-8.61 8.62-21.38v-180q0-12.77-8.62-21.39-8.61-8.61-21.38-8.61t-21.38 8.61q-8.62 8.62-8.62 21.39v180q0 12.77 8.62 21.38 8.61 8.62 21.38 8.62t21.38-8.62Z"/></svg> </a> </div> <div class="bottomoptions"> <div class="bottom-nav"> <div class="bottomtakeoptions"> <a onclick="alert('We are redirecting you to taking form.')" href="https://mfi0212.github.io/MFI/applydivert"> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m548.92-602.54 206.31-205.3q8.31-8.31 20.38-8.43 12.08-.11 21 8.81 8.31 8.31 8.31 20.88 0 12.58-8.31 20.89L574.23-543.31q-10.85 10.85-25.31 10.85-14.46 0-25.31-10.85L414.23-652.69q-8.92-8.92-8.81-21.08.12-12.15 9.43-21.07 8.92-8.31 21.07-8.43 12.16-.11 21.08 8.81l91.92 91.92Zm37.93 466.62q1.92.77 3.46.77t3.46-.77l235.31-72.85q-3.08-13.61-12.77-20.88-9.7-7.27-21.7-7.27H598.77q-26.23 0-44.54-2t-37.62-8.77l-62.76-20.54q-12.16-3.85-17.43-15.38-5.27-11.54-1.42-23.7 3.85-11.77 14.88-17.34 11.04-5.58 23.2-1.73l52 18.23q18.15 5.77 40.61 8.19t58.31 3.04h10.61q0-14.85-6.69-25.62-6.69-10.77-17.61-14.54l-232.08-85.23q-1.15-.38-2.12-.57-.96-.2-2.11-.2h-74v206.16l286.85 81Zm-15.62 58.77L300-154.92q-6.85 24.84-27.85 39.88-21 15.04-44.46 15.04h-55.38q-29.92 0-51.12-21.19Q100-142.39 100-172.31v-238.46q0-29.92 21.19-51.11 21.2-21.19 51.12-21.19h201.3q6.24 0 12.66 1.3 6.42 1.31 12.04 3.31l233.07 85.85q27.23 10.07 45.23 35.65 18 25.58 18 60.04h100q43.08 0 70.2 27.81 27.11 27.8 27.11 72.19 0 17-9 27.38-9 10.39-27.23 16.46L613-77.77q-9.85 3.23-20.69 3.42-10.85.2-21.08-2.8ZM160-172.31q0 5.39 3.46 8.85t8.85 3.46h55.38q5.39 0 8.85-2.88 3.46-2.89 3.46-9.43v-250.77h-67.69q-5.39 0-8.85 3.47-3.46 3.46-3.46 8.84v238.46Z"/></svg> Apply </a> <a href="https://blackswan19.github.io/golden/FM/starpre"> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m422-232 207-248H469l29-227-185 267h139l-30 208Zm-38.92-148H261.39q-20.16 0-29.54-17.85-9.39-17.84 2.31-34.38L496.23-810.3q8.08-11.31 20.62-15.47 12.53-4.15 26.07.7 13.54 4.84 19.81 16.57t4.65 25.27L537.31-540h149.23q21.38 0 30.15 19.16 8.77 19.15-5.15 35.69L421.77-138.08q-8.69 10.31-21.23 13.35-12.54 3.03-24.46-2.43-11.92-5.46-18.5-16.69t-4.96-24.77L383.08-380ZM471-470Z"/></svg> Turbo </a> <a href="https://blackswan19.github.io/golden/FM/service_search.html"> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M380.77-335.39q-102.46 0-173.54-71.07-71.07-71.08-71.07-173.54t71.07-173.54q71.08-71.07 173.54-71.07t173.54 71.07q71.07 71.08 71.07 173.54 0 42.85-14.38 81.85-14.39 39-38.39 67.84l230.16 230.16q8.31 8.3 8.5 20.88.19 12.58-8.5 21.27t-21.08 8.69q-12.38 0-21.07-8.69L530.46-388.16q-30 24.77-69 38.77-39 14-80.69 14Zm0-59.99q77.31 0 130.96-53.66 53.66-53.65 53.66-130.96t-53.66-130.96q-53.65-53.66-130.96-53.66t-130.96 53.66Q196.15-657.31 196.15-580t53.66 130.96q53.65 53.66 130.96 53.66Z"/></svg> Search </a> <a href="https://blackswan19.github.io/golden/FM/accverify"> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240.92-268.31q51-37.84 111.12-59.77Q412.15-350 480-350t127.96 21.92q60.12 21.93 111.12 59.77 37.3-41 59.11-94.92Q800-417.15 800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 62.85 21.81 116.77 21.81 53.92 59.11 94.92Zm146.7-219.31Q350-525.23 350-580q0-54.77 37.62-92.38Q425.23-710 480-710q54.77 0 92.38 37.62Q610-634.77 610-580q0 54.77-37.62 92.38Q534.77-450 480-450q-54.77 0-92.38-37.62ZM480-100q-79.15 0-148.5-29.77t-120.65-81.08q-51.31-51.3-81.08-120.65Q100-400.85 100-480t29.77-148.5q29.77-69.35 81.08-120.65 51.3-51.31 120.65-81.08Q400.85-860 480-860t148.5 29.77q69.35 29.77 120.65 81.08 51.31 51.3 81.08 120.65Q860-559.15 860-480t-29.77 148.5q-29.77 69.35-81.08 120.65-51.3 51.31-120.65 81.08Q559.15-100 480-100Zm104.42-77.42q50.27-17.43 89.27-48.73-39-30.16-88.11-47Q536.46-290 480-290t-105.77 16.65q-49.31 16.66-87.92 47.2 39 31.3 89.27 48.73Q425.85-160 480-160t104.42-17.42Zm-54.5-352.66Q550-550.15 550-580t-20.08-49.92Q509.85-650 480-650t-49.92 20.08Q410-609.85 410-580t20.08 49.92Q450.15-510 480-510t49.92-20.08ZM480-580Zm0 355Z"/></svg> Account </a> </div> </div> </div>
+<script>
+ const siteGroups = [
+    {
+    heading: "Return Management",
+    sites: [
+      { name: "BS&MFI Solutions",      desc: "Return date extender",       url: "https://blackswan19.github.io/golden/FM/solution",      icon: "fab fa-youtube"       },
+]
+},
+{
+  heading: "New in & issue",
+  sites: [
+    { name: "Enterance Form", desc: "New members form",       url: "https://mfi0212.github.io/MFI/entrysheet", icon: "fas fa-code"         },
+    { name: "Helper",      desc: "I have issue form",           url: "https://mfi0212.github.io/MFI/abt.hlp",      icon: "fas fa-film"          },
+  ]
+},
+{
+  heading: "Offer & Earns",
+  sites: [
+    // { name: "BYSWN", desc: "Interest reducer.", url: "https://mfi0212.github.io/MFI/BYSWN" },
+    // { name: "BsGames",       desc: "Exclusive rewards and benefits for BS&MFI members.",          url: "https://blackswan19.github.io/golden/Bs%20Games/bsgames",       icon: "fab fa-reddit"        },
+    { name: "Stars",       desc: "Interest reducer.",          url: "https://blackswan19.github.io/golden/FM/starspage",       icon: "fab fa-reddit"        },
+  ]
+},
+  
+  {
+    heading: "Services",
+    sites: [
+      { name: "All Services", desc: "All service from BS&MFI",       url: "https://blackswan19.github.io/BS/bslends", icon: "fas fa-code"         },
+      { name: "BsLends", desc: "A service from BS&MFI",       url: "https://mfi0212.github.io/MFI/rate", icon: "fas fa-code"         },
+      { name: "MLendings", desc: "A service from BS&MFI",       url: "https://blackswan19.github.io/golden/FM/themain", icon: "fas fa-code"         },
+    ]
+  },
+   {
+    heading: "Collaboration",
+    sites: [
+      { name: "BsNews", desc: "BS&MFI Service news", url: "https://blackswan19.github.io/golden/FM/bsnews" },
+      { name: "BsPsgenerater", desc: "Password generator",       url: "https://blackswan19.github.io/Educate/password", icon: "fas fa-code"         },
+      { name: "BsReminder", desc: "Date wise notes",       url: "https://blackswan19.github.io/bscrop/reminder", icon: "fas fa-code"         },
+      { name: "BsBookpad", desc: "Download the notes",       url: "https://blackswan19.github.io/Educate/bookpad", icon: "fas fa-code"         },
+      { name: "BsAdstoper", desc: "Ad blocker",       url: "https://blackswan19.github.io/Educate/stoper", icon: "fas fa-code"         },
+     { name: "BsFilestore", desc: "Store privacy files in folders",       url: "https://blackswan19.github.io/Educate/hider", icon: "fas fa-code"         },
+       { name: "BsMediastorage", desc: "Store files with privacy",       url: "https://blackswan19.github.io/Educate/hider", icon: "fas fa-code"         },
+    
+    ]
+  }
+];
 
+document.addEventListener('contextmenu', e => e.preventDefault());
+function getColor(name) {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const hue = Math.abs(hash) % 360;
+  // return `hsl(${hue}, 75%, 58%)`;
+}
+
+function getInitial(name) {
+  return name.trim()[0]?.toUpperCase() || "?";
+}
+
+// Create Site Item (without pin button)
+function createSiteItem(site) {
+  const a = document.createElement("a");
+  a.href = site.url || "#";
+  a.target = "_parent";
+  a.className = "site-item";
+
+  const bg = getColor(site.name);
+  const initial = getInitial(site.name);
+
+  a.innerHTML = `
+    <div class="letter-icon" style="background: ${bg};">${initial}</div>
+    <div class="site-info">
+      <h3>${site.name}</h3>
+      <p style="    font-size: 12px;
+    color: #ffffff4f;">${site.desc}</p>
+    </div>
+  `;
+
+  return a;
+}
+
+// Render All Sections
+function renderAll() {
+  const container = document.getElementById("sectionsContainer");
+  container.innerHTML = "";
+
+  siteGroups.forEach(group => {
+    const section = document.createElement("div");
+    section.className = "section";
+
+    const h2 = document.createElement("h2");
+    h2.textContent = group.heading;
+    section.appendChild(h2);
+
+    const list = document.createElement("div");
+    list.className = "site-list";
+
+    group.sites.forEach(site => {
+      list.appendChild(createSiteItem(site));
+    });
+
+    section.appendChild(list);
+    container.appendChild(section);
+  });
+}
+
+// Search Function
+function renderFiltered(query = "") {
+  const q = query.toLowerCase().trim();
+  if (!q) {
+    renderAll();
+    return;
+  }
+
+  const container = document.getElementById("sectionsContainer");
+  container.innerHTML = "";
+
+  siteGroups.forEach(group => {
+    const matches = group.sites.filter(s =>
+      s.name.toLowerCase().includes(q) || 
+      (s.desc && s.desc.toLowerCase().includes(q))
+    );
+
+    if (!matches.length) return;
+
+    const section = document.createElement("div");
+    section.className = "section";
+    section.innerHTML = `<h2>${group.heading}</h2>`;
+
+    const list = document.createElement("div");
+    list.className = "site-list";
+    matches.forEach(site => list.appendChild(createSiteItem(site)));
+    section.appendChild(list);
+    container.appendChild(section);
+  });
+}
+
+// Initialize
+renderAll();
+
+document.getElementById("searchInput").addEventListener("input", e => {
+  renderFiltered(e.target.value);
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const loadingOverlay = document.getElementById("loadingOverlay");
+    const startBtn = document.getElementById("startAudioBtn");
+    const audioControls = document.getElementById("audioControls");
+    const progressFill = document.getElementById("audioProgressFill");
+    const audioStatus = document.getElementById("audioStatus");
+    const audio = document.getElementById("introAudio");
+    const muteToggle = document.getElementById("muteToggle");
+
+    let progressInterval = null;
+
+    // Mute Toggle
+    muteToggle?.addEventListener("click", () => {
+        audio.muted = !audio.muted;
+        muteToggle.innerHTML = audio.muted 
+            ? '<i class="fa-solid fa-bell-slash"></i>' 
+            : '<i class="fa-solid fa-bell"></i>';
+    });
+
+    // Start Button
+    startBtn?.addEventListener("click", async () => {
+        startBtn.style.display = "none";
+        audioControls.style.display = "flex";
+
+        try {
+            if (audio.readyState < 1) {
+                await new Promise(resolve => audio.addEventListener("loadedmetadata", resolve, { once: true }));
+            }
+
+             const duration = audio.duration || 4;
+            const stopTime = Math.min(Math.random() * 1 + 3, duration);
+
+            //  const duration = audio.duration || 0;
+            // const stopTime = Math.min(Math.random() * 0 + 0, duration);
+
+            progressFill.style.width = "0%";
+            audioStatus.textContent = "0% • Connecting...";
+
+            await audio.play();
+
+            let currentPercent = 0;
+
+            progressInterval = setInterval(() => {
+                currentPercent = Math.min((audio.currentTime / stopTime) * 100, 100);
+
+                progressFill.style.width = currentPercent + "%";
+                audioStatus.textContent = Math.round(currentPercent) + "% • Connecting...";
+
+                if (audio.currentTime >= stopTime || currentPercent >= 100) {
+                    clearInterval(progressInterval);
+                    progressFill.style.width = "100%";
+                    audioStatus.textContent = "100% • Connected!";
+                    audio.pause();
+                    loadingOverlay.style.opacity = "0";
+                    setTimeout(() => {
+                        loadingOverlay.style.display = "none";
+                    }, 600);
+                }
+            }, 40);
+
+        } catch (e) {
+            console.error(e);
+            audioStatus.textContent = "❌ Audio playback blocked";
+            // Still hide after few seconds if audio fails
+            setTimeout(() => {
+                loadingOverlay.style.opacity = "0";
+                setTimeout(() => loadingOverlay.style.display = "none", 600);
+            }, 2000);
+        }
+    });
+});
+</script>
+</body>
+</html>
