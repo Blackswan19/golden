@@ -46,22 +46,22 @@ const passwords = {
         ]
     },
     "0212": {
-        name: "The Godfather",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-         profileBackground: "#c33949",
-        profileSecBackground:"#c33949",
+        name: "Al Pacino",
+        membershipIcon: "https://www.crossed-flag-pins.com/animated-flag-gif/gifs/Dominican-Republic_240-animated-flag-gifs.gif",
+         profileBackground: "rgb(206 17 39)",
+        profileSecBackground:"#002e62",
         stars: 10000,
         coins: 0,
         verified: true,
-        showCustomContent: "no",
+        showCustomContent: "yes",
         customContent: {
             type: "image",
-            value: "programXoffer.png",
+            value: "https://i.ibb.co/S4jrSqRs/program-X-offer.png",
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 150 },
-            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-8-2025", interest: 1200, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-8-2025", interest: 2500, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
         ]
     },
 };
