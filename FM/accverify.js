@@ -50,7 +50,7 @@ const passwords = {
         name: "The Godfather",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
          profileBackground: "#c33949",
-        profileSecBackground:"#c33949",
+        profileSecBackground:"transparent",
         stars: 10000,
         coins: 0,
         verified: true,
