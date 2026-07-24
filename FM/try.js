@@ -51,8 +51,8 @@ const passwords = {
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
          profileBackground: "transparent",
         profileSecBackground:"transparent",
-        stars: 10000,
-        coins: '03',
+        stars: 20000,
+        coins: '05',
         verified: true,
         showCustomContent: "yes",
         customContent: {
@@ -360,12 +360,12 @@ function displayLoanDetails(loan, index) {
     margin-top: 20px;
     font-weight: 300;
     backdrop-filter: blur(5px);
-    gap: 5px;
+    gap: 3px;
     background: #223140a1;
     border-radius: 9999px;
-    border-top: solid 1px #ffffff30;
+    border-top: solid 1px #ffffff1f;
     border-bottom: solid 0.1px #ffffff24;
-    padding: 0px 5px;
+    padding: 1px 8px;
     position: absolute;
     right: 0px;" onclick="downloadSingleLoan(${index})">
                     Download this
