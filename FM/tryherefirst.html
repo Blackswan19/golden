@@ -466,11 +466,12 @@ position: fixed;
     align-items: center;
     left: 50%;
     font-weight: 600;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 0px);
     text-align: center;
     justify-content: space-between;
     gap: 5px;
-    background: #151e27;
+    background: #151e27e3;
+    backdrop-filter: blur(5px);
 }
 .close span {
     background: #223140a1;
@@ -755,12 +756,13 @@ body.curvy p#membershipType {
 	border-radius: 100px;
 }
 .secondmaincntent {
-    padding: 0 5px;
+    padding: 10px 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 10px;    width: 100%;
+    gap: 10px;
+    width: 100%;
 }
 
 .rightsideoption {
@@ -1611,7 +1613,7 @@ display: flex;
 
         <div class="profile-container">
             <div class="maincontentsection" id="profilePicturess">
-                <div class="profile-picture" id="profilePicture"></div>
+                <div class="profile-picture" onclick="showAmountsModal()" id="profilePicture"></div>
 			<div class="maincontent">
             	<p id="userNameContainer" onclick="showAmountsModal()"><span style="color: white;" id="userName"></span></p>
 			</div>
