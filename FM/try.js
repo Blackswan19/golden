@@ -1,4 +1,4 @@
-// document.addEventListener('contextmenu', e => e.preventDefault());   
+document.addEventListener('contextmenu', e => e.preventDefault());   
 
 const passwords = {
     "6275": {
@@ -63,6 +63,10 @@ const passwords = {
         loans: [
             { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 150 },
             { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
+         { planDate: "01-11-2025", endDate: "01-12-2025", interest: 1500, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 60 },
+            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3500, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "09-11-2025", endDate: "09-12-2025", interest: 2800, takenAmount: 8000, takenFrom: "MLLD", fineRate: 80 },
+            { planDate: "25-11-2025", endDate: "25-12-2025", interest: 3050, takenAmount: 9500, takenFrom: "MLending Duplicate ", fineRate: 95 }
         ]
     },
 };
