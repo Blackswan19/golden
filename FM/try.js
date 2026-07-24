@@ -49,7 +49,7 @@ const passwords = {
     "0212": {
         name: "The Godfather",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-         profileBackground: "#c33949",
+         profileBackground: "transparent",
         profileSecBackground:"transparent",
         stars: 10000,
         coins: '03',
