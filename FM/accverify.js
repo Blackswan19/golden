@@ -7,7 +7,7 @@ const passwords = {
         profileBackground: "transparent",
         profileSecBackground:"transparent",
         stars: 0,
-        coins: 1,
+        coins: 0,
         verified: true,
         showCustomContent: "no",
         customContent: {
