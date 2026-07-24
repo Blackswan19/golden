@@ -52,7 +52,7 @@ const passwords = {
          profileBackground: "#c33949",
         profileSecBackground:"transparent",
         stars: 10000,
-        coins: 0,
+        coins: '03',
         verified: true,
         showCustomContent: "yes",
         customContent: {
