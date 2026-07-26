@@ -1,1 +1,385 @@
-no test...
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BS&MFI | Short Term Loan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      margin: 20px;
+      line-height: 1.5;
+    }
+    h2, h3 {
+      margin: 10px 0;
+      color: #002aff;
+    }
+    input, button {
+      padding: 8px 12px;
+      font-size: 16px;
+      margin: 5px 0;
+    }
+    button {
+      cursor: pointer;
+      background: #002aff;
+      color: #fff;
+      border: none;
+      border-radius: 0px;
+    }
+    button:hover {
+      background: #001fbb;
+    }
+    .lang-btn {
+      background: #fff;
+      color: #002aff;
+      border: 1px solid #002aff;
+      margin-left: 8px;
+    }
+    .lang-btn.active {
+      background: #002aff;
+      color: #fff;
+    }
+    .hidden {
+      display: none;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 15px 0;
+    }
+    .loan-item {
+      padding: 10px 0;    line-height: 35px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4);
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+    .modal.show {
+      display: flex;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      width: 90%;
+      max-width: 320px;
+      border-radius: 0px;
+    }
+    .modal-content input {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .modal-content h3 {
+      color: #002aff;
+    }
+    #calcResult {
+      margin-top: 12px;
+      padding: 10px;
+      background: #f0f4ff;
+      border: 1px solid #cce0ff;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <h2 id="pageTitle" style="display: none;">స్వల్పకాలిక రుణాలు</h2>
+    <div>
+      <button class="lang-btn" id="btnTe" onclick="setLang('te')">తెలుగు</button>
+      <button class="lang-btn" id="btnEn" onclick="setLang('en')">English</button>
+    </div>
+  </div>
+
+  <div>
+    <label id="lblPassword">పాస్‌వర్డ్ నమోదు చేయండి:</label><br>
+    <input type="text" id="password" maxlength="4" placeholder="4 అంకెల పాస్‌వర్డ్">
+  </div>
+
+  <div id="mainSection" class="hidden">
+    <hr>
+    <p><span id="lblRate" >నెలవారీ వడ్డీ రేటు</span>: <span id="rateDisplay"></span>%</p>
+
+    <button id="openCalcBtn">వడ్డీ లెక్కించండి</button>
+
+    <div class="card">
+      <h3 id="lblYourLoans">రుణాలు</h3>
+      <div id="loanList"></div>
+    </div>
+  </div>
+
+  <!-- Calculator Popup -->
+  <div id="calcModal" class="modal">
+    <div class="modal-content">
+      <h3 id="lblCalcTitle">వడ్డీ కాలిక్యులేటర్</h3>
+      <label id="lblAmount">మొత్తం (₹)</label>
+      <input type="number" id="calcAmount" placeholder="10₹">
+      <label id="lblMonths">నెలల సంఖ్య</label>
+      <input type="number" id="calcMonths" min="1" max="12" placeholder="1 - 12">
+      <br>
+      <button id="doCalcBtn">లెక్కించు</button>
+      <button id="closeCalcBtn" style="background:#666;">మూసివేయి</button>
+      <div id="calcResult">విలువలు నమోదు చేసి లెక్కించు నొక్కండి</div>
+    </div>
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  const t = {
+    te: {
+      pageTitle: "స్వల్పకాలిక రుణాలు",
+      lblPassword: "పాస్‌వర్డ్ నమోదు చేయండి:",
+      placeholderPass: "4 అంకెల పాస్‌వర్డ్",
+      lblRate: "వడ్డీ రేటు",
+      openCalc: "వడ్డీ లెక్కించండి",
+      lblYourLoans: "రుణాలు",
+      noLoans: "రుణాలు లేవు",
+      loan: "రుణం",
+      amountTaken: "తీసుకున్న మొత్తం",
+      takenDate: "తీసుకున్న తేదీ",
+      interestPerMonth: "నెలకు వడ్డీ",
+      monthsPassed: "గడిచిన నెలలు",
+      accruedInterest: "ఈ రోజు వరకు వడ్డీ",
+      totalDue: "మొత్తం",
+      lblCalcTitle: "వడ్డీ కాలిక్యులేటర్",
+      lblAmount: "మొత్తం (₹)",
+      lblMonths: "నెలల సంఖ్య",
+      doCalc: "లెక్కించు",
+      close: "మూసివేయి",
+      interest: "వడ్డీ",
+      totalRepay: "మొత్తం"
+    },
+    en: {
+      pageTitle: "Short Term Amount",
+      lblPassword: "Enter password:",
+      placeholderPass: "4-digit password",
+      lblRate: "Interest rate",
+      openCalc: "Calculate Interest",
+      lblYourLoans: "Amount",
+      noLoans: "No Amount",
+      loan: "Amount",
+      amountTaken: "Amount taken",
+      takenDate: "Taken date",
+      interestPerMonth: "Interest per month",
+      monthsPassed: "Months passed",
+      accruedInterest: "Interest till date",
+      totalDue: "Total",
+      lblCalcTitle: "Interest Calculator",
+      lblAmount: "Amount (₹)",
+      lblMonths: "Number of Months",
+      doCalc: "Calculate",
+      close: "Close",
+      interest: "Interest",
+      totalRepay: "Total"
+    }
+  };
+
+  let currentLang = "te";
+
+  const users = {
+    "0212": {
+      name: "Phani",
+      monthlyRatePercent: 2,
+      loans: [
+        {
+          takenAmount: 10000,
+          takenDate: "24-06-2026"
+        },
+        {
+          takenAmount: 1000,
+          takenDate: "24-05-2026"
+        }
+      ]
+    },
+    "9919": {
+      name: "User 9919",
+      monthlyRatePercent: 2.2,
+      loans: []
+    }
+  };
+
+  const passwordInput = document.getElementById("password");
+  const mainSection   = document.getElementById("mainSection");
+  const rateDisplay   = document.getElementById("rateDisplay");
+  const loanList      = document.getElementById("loanList");
+  const openCalcBtn   = document.getElementById("openCalcBtn");
+  const calcModal     = document.getElementById("calcModal");
+  const calcAmount    = document.getElementById("calcAmount");
+  const calcMonths    = document.getElementById("calcMonths");
+  const doCalcBtn     = document.getElementById("doCalcBtn");
+  const closeCalcBtn  = document.getElementById("closeCalcBtn");
+  const calcResult    = document.getElementById("calcResult");
+
+  let currentUser = null;
+
+  window.setLang = function(lang) {
+    currentLang = lang;
+    const tr = t[lang];
+
+    document.getElementById("pageTitle").textContent = tr.pageTitle;
+    document.getElementById("lblPassword").textContent = tr.lblPassword;
+    passwordInput.placeholder = tr.placeholderPass;
+    document.getElementById("lblRate").textContent = tr.lblRate;
+    openCalcBtn.textContent = tr.openCalc;
+    document.getElementById("lblYourLoans").textContent = tr.lblYourLoans;
+    document.getElementById("lblCalcTitle").textContent = tr.lblCalcTitle;
+    document.getElementById("lblAmount").textContent = tr.lblAmount;
+    document.getElementById("lblMonths").textContent = tr.lblMonths;
+    doCalcBtn.textContent = tr.doCalc;
+    closeCalcBtn.textContent = tr.close;
+
+    document.getElementById("btnTe").classList.toggle("active", lang === "te");
+    document.getElementById("btnEn").classList.toggle("active", lang === "en");
+
+    if (currentUser) {
+      renderLoans(currentUser);
+      calcResult.textContent = tr.calcPlaceholder;
+    }
+  };
+
+  setLang("te");
+
+  function parseDate(str) {
+    const [d, m, y] = str.split("-").map(Number);
+    return new Date(y, m - 1, d);
+  }
+
+  function monthsBetween(start, end) {
+    let months = (end.getFullYear() - start.getFullYear()) * 12;
+    months += end.getMonth() - start.getMonth();
+    const dayDiff = end.getDate() - start.getDate();
+    if (dayDiff < 0) {
+      months -= 1;
+      const prevMonthDays = new Date(end.getFullYear(), end.getMonth(), 0).getDate();
+      months += (prevMonthDays + dayDiff) / prevMonthDays;
+    } else {
+      months += dayDiff / 30;
+    }
+    return Math.max(0, months);
+  }
+
+  function renderLoans(user) {
+    const tr = t[currentLang];
+    if (!user.loans || user.loans.length === 0) {
+      loanList.innerHTML = "<p>" + tr.noLoans + "</p>";
+      return;
+    }
+
+    const today = new Date();
+    let html = "";
+
+    user.loans.forEach((loan, i) => {
+      const start = parseDate(loan.takenDate);
+      const monthsPassed = monthsBetween(start, today);
+      const interestPerMonth = Math.round(loan.takenAmount * (user.monthlyRatePercent / 100));
+      const accruedInterest = Math.round(interestPerMonth * monthsPassed);
+      const totalDue = loan.takenAmount + accruedInterest;
+
+      html += `<hr>
+        <div class="loan-item">
+          <strong>${tr.loan} ${i + 1}</strong><br>
+          ${tr.amountTaken}: ₹${loan.takenAmount}<br>
+          ${tr.takenDate}: ${loan.takenDate}<br>
+          ${tr.interestPerMonth}: ₹${interestPerMonth}<br>
+          ${tr.monthsPassed}: ${monthsPassed.toFixed(0)}<br>
+          ${tr.accruedInterest}: ₹${accruedInterest}<br>
+          <strong>${tr.totalDue}: ₹${totalDue}</strong>
+        </div>
+        
+      `;
+    });
+
+    loanList.innerHTML = html;
+  }
+
+  function unlock(pass) {
+    const user = users[pass];
+    if (!user) {
+      mainSection.classList.add("hidden");
+      currentUser = null;
+      return;
+    }
+    currentUser = user;
+    rateDisplay.textContent = user.monthlyRatePercent;
+    mainSection.classList.remove("hidden");
+    renderLoans(user);
+  }
+
+  passwordInput.addEventListener("input", function () {
+    const val = this.value.trim();
+    if (val.length === 4) {
+      unlock(val);
+    } else {
+      mainSection.classList.add("hidden");
+      currentUser = null;
+    }
+  });
+
+  openCalcBtn.addEventListener("click", function () {
+    if (!currentUser) return;
+    calcAmount.value = "";
+    calcMonths.value = "";
+    calcResult.textContent = t[currentLang].calcPlaceholder;
+    calcModal.classList.add("show");
+  });
+
+  closeCalcBtn.addEventListener("click", function () {
+    calcModal.classList.remove("show");
+  });
+
+  doCalcBtn.addEventListener("click", function () {
+    if (!currentUser) return;
+    const tr = t[currentLang];
+
+    let amt = parseFloat(calcAmount.value);
+    let months = parseInt(calcMonths.value) || 1;
+
+    if (!amt || amt < 100) {
+      calcResult.textContent = tr.minAmount;
+      return;
+    }
+    if (amt > 1000000) {
+      calcResult.textContent = tr.maxAmount;
+      calcAmount.value = 1000000;
+      amt = 1000000;
+    }
+    if (months < 1) months = 1;
+    if (months > 12) {
+      months = 12;
+      calcMonths.value = 12;
+    }
+
+    const rate = currentUser.monthlyRatePercent / 100;
+    const interest = Math.round(amt * rate * months);
+    const total = amt + interest;
+
+    calcResult.innerHTML = `
+      ${tr.interest}: ₹${interest}<br>
+      ${tr.totalRepay}: ₹${total}
+    `;
+  });
+
+  calcModal.addEventListener("click", function (e) {
+    if (e.target === calcModal) {
+      calcModal.classList.remove("show");
+    }
+  });
+});
+</script>
+</body>
+</html>
