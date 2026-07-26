@@ -16,14 +16,15 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "10-08-2025", endDate: "10-09-2025", interest: 1800, takenAmount: 5000, takenFrom: "MLLD", fineRate: 60 },
-            { planDate: "15-08-2025", endDate: "15-09-2025", interest: 1950, takenAmount: 6500, takenFrom: "MLLD", fineRate: 70 },
-            { planDate: "18-08-2025", endDate: "18-09-2025", interest: 1800, takenAmount: 5000, takenFrom: "MLLD", fineRate: 60 },
-            { planDate: "18-08-2025", endDate: "18-09-2025", interest: 1350, takenAmount: 3500, takenFrom: "MLLD", fineRate: 45 },
-            { planDate: "01-11-2025", endDate: "01-12-2025", interest: 1500, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 60 },
-            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3500, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
-            { planDate: "09-11-2025", endDate: "09-12-2025", interest: 2800, takenAmount: 8000, takenFrom: "MLLD", fineRate: 80 },
-            { planDate: "25-11-2025", endDate: "25-12-2025", interest: 3050, takenAmount: 9500, takenFrom: "MLending Duplicate ", fineRate: 95 }
+            { planDate: "01-08-2025", endDate: "15-08-2025", interest: 5200, takenAmount: 20000, takenFrom: "MLending", fineRate: 180 },
+            { planDate: "06-08-2025", endDate: "21-08-2025", interest: 2700, takenAmount: 10000, takenFrom: "MLending", fineRate: 90 },
+            { planDate: "10-08-2025", endDate: "25-08-2025", interest: 1500, takenAmount: 5000, takenFrom: "MLLD", fineRate: 56 },
+            { planDate: "18-08-2025", endDate: "02-09-2025", interest: 1800, takenAmount: 5000, takenFrom: "MLLD", fineRate: 60 },
+            { planDate: "01-11-2025", endDate: "16-11-2025", interest: 1700, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 65 },
+            { planDate: "06-11-2025", endDate: "21-12-2025", interest: 2400, takenAmount: 8000, takenFrom: "MLLD", fineRate: 80 },
+            { planDate: "07-11-2025", endDate: "22-12-2025", interest: 800, takenAmount: 2000, takenFrom: "P2P lend", fineRate: 27 },
+            { planDate: "15-11-2025", endDate: "30-12-2025", interest: 1300, takenAmount: 4000, takenFrom: "P2P lend", fineRate: 44 },
+            { planDate: "25-11-2025", endDate: "10-12-2025", interest: 780, takenAmount: 2200, takenFrom: "P2P lend", fineRate: 27 }
         ]
     },
     "Mahesh888*": {
