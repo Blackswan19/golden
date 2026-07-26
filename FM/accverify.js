@@ -21,10 +21,10 @@ const passwords = {
             { planDate: "10-08-2025", endDate: "25-08-2025", interest: 1500, takenAmount: 5000, takenFrom: "MLLD", fineRate: 56 },
             { planDate: "18-08-2025", endDate: "02-09-2025", interest: 1800, takenAmount: 5000, takenFrom: "MLLD", fineRate: 60 },
             { planDate: "01-11-2025", endDate: "16-11-2025", interest: 1700, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 65 },
-            { planDate: "06-11-2025", endDate: "21-12-2025", interest: 2400, takenAmount: 8000, takenFrom: "MLLD", fineRate: 80 },
-            { planDate: "07-11-2025", endDate: "22-12-2025", interest: 800, takenAmount: 2000, takenFrom: "P2P lend", fineRate: 27 },
-            { planDate: "15-11-2025", endDate: "30-12-2025", interest: 1300, takenAmount: 4000, takenFrom: "P2P lend", fineRate: 44 },
-            { planDate: "25-11-2025", endDate: "10-12-2025", interest: 780, takenAmount: 2200, takenFrom: "P2P lend", fineRate: 27 }
+            { planDate: "06-11-2025", endDate: "21-11-2025", interest: 2400, takenAmount: 8000, takenFrom: "MLLD", fineRate: 80 },
+            { planDate: "07-11-2025", endDate: "22-11-2025", interest: 800, takenAmount: 2000, takenFrom: "P2P lend", fineRate: 27 },
+            { planDate: "15-11-2025", endDate: "30-11-2025", interest: 1300, takenAmount: 4000, takenFrom: "P2P lend", fineRate: 44 },
+            { planDate: "25-11-2025", endDate: "10-11-2025", interest: 780, takenAmount: 2200, takenFrom: "P2P lend", fineRate: 27 }
         ]
     },
     "Mahesh888*": {
