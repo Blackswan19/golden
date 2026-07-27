@@ -102,7 +102,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         if (user.verified === true) {
             verifiedHTML = `
                 <img 
-                    style="width: 25px;" 
+                    style="width: 15px;" 
                     src="verified_icon.png" 
                     alt="Verified"
                     onerror="this.style.display='none'" 
