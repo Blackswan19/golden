@@ -353,7 +353,7 @@ function displayLoanDetails(loan, index) {
         <div class="loan-entry">
             <p style="    text-align: center;
     position: sticky;
-    top: 135px;
+    top: 140px;
     z-index: 1000000;">
                 <button class="amounts-btn downsingle" style="    width: 100%;
     font-size: 12px;
