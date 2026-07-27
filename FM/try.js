@@ -360,7 +360,6 @@ function displayLoanDetails(loan, index) {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 0px;
     font-weight: 300;
     backdrop-filter: blur(5px);
     gap: 5px;
