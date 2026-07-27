@@ -48,10 +48,10 @@ const passwords = {
         ]
     },
     "0212": {
-        name: "The Godfather",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-         profileBackground: "#c33949",
-        profileSecBackground:"#c33949",
+        name: "Vito Corleone",
+        membershipIcon: "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_53f6a6af8b0e453d874bbefee49b3e73/default/dark/2.0#e=0",
+         profileBackground: "rgb(200 183 165)",
+        profileSecBackground:"rgb(89 40 33)",
         stars: 10000,
         coins: 0,
         verified: true,
@@ -62,8 +62,10 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 150 },
-            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-8-2025", interest: 3900, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-8-2025", interest: 3900, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-8-2025", interest: 3900, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-8-2025", interest: 1900, takenAmount: 8000, takenFrom: "P2P lend", fineRate: 150 },
         ]
     },
 };
