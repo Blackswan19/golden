@@ -354,7 +354,7 @@ function displayLoanDetails(loan, index) {
         <p id="scrotamts"></p>
         <div class="loan-entry">
         <div class="downloadsingamntrecpt">
-        <p>Amounts</p>
+        <p>Borrowed Amounts</p>
     <button class="amounts-btn downsingle" style="font-size: 12px;
     display: flex;
     flex-direction: row;
