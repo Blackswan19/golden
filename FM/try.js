@@ -1,11 +1,11 @@
-document.addEventListener('contextmenu', e => e.preventDefault());   
+// document.addEventListener('contextmenu', e => e.preventDefault());   
 
 const passwords = {
     "6275": {
         name: "Srikanth Jampana",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "transparent",
-        profileSecBackground:"transparent",
+        profileBackground: "#223140a1",
+        profileSecBackground:"#223140a1",
         stars: 0,
         coins: 0,
         verified: true,
