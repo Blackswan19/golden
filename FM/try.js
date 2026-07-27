@@ -1,4 +1,4 @@
-// document.addEventListener('contextmenu', e => e.preventDefault());   
+document.addEventListener('contextmenu', e => e.preventDefault());   
 
 const passwords = {
     "6275": {
@@ -353,14 +353,9 @@ function displayLoanDetails(loan, index) {
     loanDetails.innerHTML = `
         <p id="scrotamts"></p>
         <div class="loan-entry">
-            <p style=" position: sticky;
-    top: 130px;
-    z-index: 1000000;
-    width: 100%;
-    display: flex;
-    justify-content: end;
-">
-                <button class="amounts-btn downsingle" style="font-size: 12px;
+        <div class="downloadsingamntrecpt">
+        <p>Amounts</p>
+    <button class="amounts-btn downsingle" style="font-size: 12px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -378,8 +373,7 @@ function displayLoanDetails(loan, index) {
                     <svg style="width: 14px; height: 20px;" xmlns="http://www.w3.org/2000/svg" id="Outline" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M120-80v-800l60 60 60-60 60 60 60-60 60 60 60-60 60 60 60-60 60 60 60-60 60 60 60-60v800l-60-60-60 60-60-60-60 60-60-60-60 60-60-60-60 60-60-60-60 60-60-60-60 60Zm120-200h480v-80H240v80Zm0-160h480v-80H240v80Zm0-160h480v-80H240v80Z"/></svg>
                     This amount Receipt
                 </button>
-                
-            </p>
+</div>
             <h3>Service</h3>
             <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M200-280v-280h80v280h-80Zm240 0v-280h80v280h-80ZM80-120v-80h800v80H80Zm600-160v-280h80v280h-80ZM80-640v-80l400-200 400 200v80H80Zm178-80h444-444Zm0 0h444L480-830 258-720Z"/></svg> Taken in : ${loan.takenFrom} </p>
             <h3>Amount</h3>
