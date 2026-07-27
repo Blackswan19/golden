@@ -1,13 +1,13 @@
-document.addEventListener('contextmenu', e => e.preventDefault());   
+// document.addEventListener('contextmenu', e => e.preventDefault());   
 
 const passwords = {
     "6275": {
         name: "Srikanth Jampana",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-        profileBackground: "rgb(197 74 0)",
-        profileSecBackground:"rgb(197 74 0)",
+        profileBackground: "transparent",
+        profileSecBackground:"transparent",
         stars: 0,
-        coins: 1,
+        coins: 0,
         verified: true,
         showCustomContent: "no",
         customContent: {
@@ -16,14 +16,15 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "10-08-2025", endDate: "10-09-2025", interest: 1800, takenAmount: 5000, takenFrom: "MLLD", fineRate: 60 },
-            { planDate: "15-08-2025", endDate: "15-09-2025", interest: 1950, takenAmount: 6500, takenFrom: "MLLD", fineRate: 70 },
-            { planDate: "18-08-2025", endDate: "18-09-2025", interest: 1800, takenAmount: 5000, takenFrom: "MLLD", fineRate: 60 },
-            { planDate: "18-08-2025", endDate: "18-09-2025", interest: 1350, takenAmount: 3500, takenFrom: "MLLD", fineRate: 45 },
-            { planDate: "01-11-2025", endDate: "01-12-2025", interest: 1500, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 60 },
-            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3500, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
-            { planDate: "09-11-2025", endDate: "09-12-2025", interest: 2800, takenAmount: 8000, takenFrom: "MLLD", fineRate: 80 },
-            { planDate: "25-11-2025", endDate: "25-12-2025", interest: 3050, takenAmount: 9500, takenFrom: "MLending Duplicate ", fineRate: 95 }
+            { planDate: "01-08-2025", endDate: "15-08-2025", interest: 5200, takenAmount: 20000, takenFrom: "MLending", fineRate: 180 },
+            { planDate: "06-08-2025", endDate: "21-08-2025", interest: 2700, takenAmount: 10000, takenFrom: "MLending", fineRate: 90 },
+            { planDate: "10-08-2025", endDate: "25-08-2025", interest: 1500, takenAmount: 5000, takenFrom: "MLLD", fineRate: 56 },
+            { planDate: "18-08-2025", endDate: "02-09-2025", interest: 1800, takenAmount: 5000, takenFrom: "MLLD", fineRate: 60 },
+            { planDate: "01-11-2025", endDate: "16-11-2025", interest: 1700, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 65 },
+            { planDate: "06-11-2025", endDate: "21-11-2025", interest: 2400, takenAmount: 8000, takenFrom: "MLLD", fineRate: 80 },
+            { planDate: "07-11-2025", endDate: "22-11-2025", interest: 800, takenAmount: 2000, takenFrom: "P2P lend", fineRate: 27 },
+            { planDate: "15-11-2025", endDate: "30-11-2025", interest: 1300, takenAmount: 4000, takenFrom: "P2P lend", fineRate: 44 },
+            { planDate: "25-11-2025", endDate: "10-11-2025", interest: 780, takenAmount: 2200, takenFrom: "P2P lend", fineRate: 27 }
         ]
     },
     "Mahesh888*": {
@@ -42,17 +43,17 @@ const passwords = {
         },
         loans: [
             { planDate: "11-05-2026", endDate: "10-09-2026", interest: 7355, takenAmount: 29418, takenFrom: "Tomar Juntos", fineRate: 130 },
-            { planDate: "21-07-2026", endDate: "21-08-2026", interest: 727, takenAmount: 2425, takenFrom: "Tomar Juntos", fineRate: 130 },
-{ planDate: "24-07-2026", endDate: "24-08-2026", interest: 600, takenAmount: 2000, takenFrom: "MLendings", fineRate: 130 },
+            { planDate: "21-07-2026", endDate: "21-08-2026", interest: 850, takenAmount: 2425, takenFrom: "Tomar Juntos", fineRate: 130 },
+            { planDate: "24-07-2026", endDate: "24-08-2026", interest: 600, takenAmount: 2000, takenFrom: "MLendings", fineRate: 130 },
         ]
     },
     "0212": {
-        name: "The Godfather",
-        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
-         profileBackground: "transparent",
-        profileSecBackground:"transparent",
-        stars: 20000,
-        coins: '05',
+        name: "Vito Corleone",
+        membershipIcon: "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_53f6a6af8b0e453d874bbefee49b3e73/default/dark/2.0#e=0",
+         profileBackground: "rgb(200 183 165)",
+        profileSecBackground:"rgb(89 40 33)",
+        stars: 10000,
+        coins: 0,
         verified: true,
         showCustomContent: "yes",
         customContent: {
@@ -61,12 +62,10 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 150 },
-            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3900, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
-         { planDate: "01-11-2025", endDate: "01-12-2025", interest: 1500, takenAmount: 5000, takenFrom: "Lendlink - LID", fineRate: 60 },
-            { planDate: "06-11-2025", endDate: "07-12-2025", interest: 3500, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
-            { planDate: "09-11-2025", endDate: "09-12-2025", interest: 2800, takenAmount: 8000, takenFrom: "MLLD", fineRate: 80 },
-            { planDate: "25-11-2025", endDate: "25-12-2025", interest: 3050, takenAmount: 9500, takenFrom: "MLending Duplicate ", fineRate: 95 }
+            { planDate: "06-11-2025", endDate: "07-8-2025", interest: 3900, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-8-2025", interest: 3900, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-8-2025", interest: 3900, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 150 },
+            { planDate: "06-11-2025", endDate: "07-8-2025", interest: 1900, takenAmount: 8000, takenFrom: "P2P lend", fineRate: 150 },
         ]
     },
 };
@@ -136,7 +135,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         user.loans.forEach((loan, index) => {
                     const btn = document.createElement("button");
                     btn.className = "amount-btn";
-                    btn.innerHTML = `<a style="display: flex; justify-content: center; align-items: center;color: white;" href="#scrotamts"> ₹${loan.takenAmount}<span class="amount-id" > ${index + 1}</span></a>`;
+                    btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m440-472-36-36q-11-11-28-11t-28 11q-11 11-11 28t11 28l104 104q12 12 28 12t28-12l104-104q11-11 11-28t-11-28q-11-11-28-11t-28 11l-36 36v-128q0-17-11.5-28.5T480-640q-17 0-28.5 11.5T440-600v128Zm40 392q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg><a href="#scrotamts"> ₹${loan.takenAmount}<span class="amount-id" > ${index + 1}</span></a> `;
                     btn.onclick = () => displayLoanDetails(loan, index);
                     amountButtons.appendChild(btn);
                 });
@@ -147,8 +146,10 @@ document.getElementById("submitBtn").addEventListener("click", () => {
             if (user.showCustomContent === "yes" && user.customContent && user.customContent.value) {
                 const contentUrl = user.customContent.url && /^https?:\/\//.test(user.customContent.url) ? user.customContent.url : null;
                 const contentHtml = user.customContent.type === "text"
-                    ? `<h3 style="font-size:16px;">Special Note</h3><p style="color:#00aeff;font-size:14px;">${user.customContent.value}</p>`
-                    : `<h3 style="color:white;font-size:16px;">Special Note</h3><img class="applybtn" src="${user.customContent.value}" style="cursor:pointer;" onerror="this.src='';">`;
+                    // ? `<h3 style="font-size:16px;">Special Note</h3><p style="color:#00aeff;font-size:14px;">${user.customContent.value}</p>`
+                    ? ``
+                    // : `<h3 style="color:white;font-size:16px;">Special Note</h3><img class="applybtn" src="${user.customContent.value}" style="cursor:pointer;" onerror="this.src='';">`;
+                    : `<img class="applybtn" src="${user.customContent.value}" style="cursor:pointer;" onerror="this.src='';">`;
                 if (contentUrl) {
                     specialContentDiv.innerHTML = `<a href="${contentUrl}" style="text-decoration:none;display:block;" aria-label="Special offer">${contentHtml}</a>`;
                     specialContentDiv.onclick = (e) => { window.open(contentUrl, '_self'); e.preventDefault(); };
@@ -343,7 +344,8 @@ function displayLoanDetails(loan, index) {
     let overdueSection = "";
     if (overdueInfo.overdue) {
         overdueSection = `
-            <p style="color: #ff9300;"><svg style="fill: #ff9300;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M440-120q-75 0-140.5-28T185-225q-49-49-77-114.5T80-480q0-75 28-140.5T185-735q49-49 114.5-77T440-840q21 0 40.5 2.5T520-830v82q-20-6-39.5-9t-40.5-3q-118 0-199 81t-81 199q0 118 81 199t199 81q118 0 199-81t81-199q0-11-1-20t-3-20h82q2 11 2 20v20q0 75-28 140.5T695-225q-49 49-114.5 77T440-120Zm112-192L400-464v-216h80v184l128 128-56 56Zm168-288v-120H600v-80h120v-120h80v120h120v80H800v120h-80Z"/></svg> Overdued: ${overdueInfo.daysOverdue} days (${overdueInfo.hoursOverdue} hours)</p>
+             <h3>Overdue Details</h3>
+            <p style="color: #ff9300;"><svg style="fill: #ff9300;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M440-120q-75 0-140.5-28T185-225q-49-49-77-114.5T80-480q0-75 28-140.5T185-735q49-49 114.5-77T440-840q21 0 40.5 2.5T520-830v82q-20-6-39.5-9t-40.5-3q-118 0-199 81t-81 199q0 118 81 199t199 81q118 0 199-81t81-199q0-11-1-20t-3-20h82q2 11 2 20v20q0 75-28 140.5T695-225q-49 49-114.5 77T440-120Zm112-192L400-464v-216h80v184l128 128-56 56Zm168-288v-120H600v-80h120v-120h80v120h120v80H800v120h-80Z"/></svg> Overdued by: ${overdueInfo.daysOverdue} days (${overdueInfo.hoursOverdue} hours)</p>
             <p style="color: #ff9300;"><svg style="fill: #ff9300;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-80q-66 0-127.5-20.5T240-160l58-58q42 29 88 43.5t94 14.5q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480H80q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 155.5 31.5t127 86q54.5 54.5 86 127T880-480q0 82-31.5 155t-86 127.5q-54.5 54.5-127 86T480-80ZM159-243l163-163 120 100 198-198v104h80v-240H480v80h104L438-414 318-514 117-313q11 23 19.5 37.5T159-243Zm321-237Z"/></svg> Overdued interest: ${fine} Rupees</p>
         `;
     }
@@ -351,41 +353,48 @@ function displayLoanDetails(loan, index) {
     loanDetails.innerHTML = `
         <p id="scrotamts"></p>
         <div class="loan-entry">
-            <p style="    text-align: center;
-    position: sticky;
-    top: 120px;
-    z-index: 1000000;">
-                <button class="amounts-btn downsingle" style="width: fit-content;
-    font-size: 12px;
+            <p style=" position: sticky;
+    top: 130px;
+    z-index: 1000000;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+">
+                <button class="amounts-btn downsingle" style="font-size: 12px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 0px;
     font-weight: 300;
     backdrop-filter: blur(5px);
-    gap: 3px;
+    gap: 5px;
     background: #223140a1;
     border-radius: 9999px;
-    border-top: solid 1px #ffffff1f;
+    border-top: solid 1px #ffffff30;
     border-bottom: solid 0.1px #ffffff24;
-    padding: 1px 8px;
-    position: absolute;
-    right: 0px;" onclick="downloadSingleLoan(${index})">
-                    Download this
+    padding: 1px 10px;
+    margin-right: -7px;" onclick="downloadSingleLoan(${index})">
                     <svg style="width: 14px; height: 20px;" xmlns="http://www.w3.org/2000/svg" id="Outline" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M120-80v-800l60 60 60-60 60 60 60-60 60 60 60-60 60 60 60-60 60 60 60-60 60 60 60-60v800l-60-60-60 60-60-60-60 60-60-60-60 60-60-60-60 60-60-60-60 60-60-60-60 60Zm120-200h480v-80H240v80Zm0-160h480v-80H240v80Zm0-160h480v-80H240v80Z"/></svg>
+                    This amount Receipt
                 </button>
+                
             </p>
-
+            <h3>Service</h3>
             <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M200-280v-280h80v280h-80Zm240 0v-280h80v280h-80ZM80-120v-80h800v80H80Zm600-160v-280h80v280h-80ZM80-640v-80l400-200 400 200v80H80Zm178-80h444-444Zm0 0h444L480-830 258-720Z"/></svg> Taken in : ${loan.takenFrom} </p>
+            <h3>Amount</h3>
             <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M557-518 387-688l57-56 113 113 227-226 56 56-283 283ZM320-220l278 76 238-74q-5-9-14.5-15.5T800-240H598q-27 0-43-2t-33-8l-93-31 22-78 81 27q17 5 40 8t68 4q0-11-6.5-21T618-354l-234-86h-64v220ZM80-80v-440h304q7 0 14 1.5t13 3.5l235 87q33 12 53.5 42t20.5 66h80q50 0 85 33t35 87v40L600-60l-280-78v58H80Zm80-80h80v-280h-80v280Z"/></svg> Taken Amount : ${loan.takenAmount} Rupees</p>
+            <h3>Taken & Return</h3>
             <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M580-240q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z"/></svg> Taken date : ${loan.planDate}</p>
             <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v255l-80 80v-175H200v400h248l80 80H200Zm0-560h560v-80H200v80Zm0 0v-80 80ZM662-60 520-202l56-56 85 85 170-170 56 57L662-60Z"/></svg> Return date : ${loan.endDate}</p>
+            <h3>Duration</h3>
             <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-520q66 0 113-47t47-113v-120H320v120q0 66 47 113t113 47ZM160-80v-80h80v-120q0-61 28.5-114.5T348-480q-51-32-79.5-85.5T240-680v-120h-80v-80h640v80h-80v120q0 61-28.5 114.5T612-480q51 32 79.5 85.5T720-280v120h80v80H160Z"/></svg> Taken for : ${daysBetween} days</p>
+            <h3>Interest</h3>
             <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M220-60 80-200l140-140 57 56-44 44h494l-43-44 56-56 140 140L740-60l-57-56 44-44H233l43 44-56 56Zm260-460q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35ZM200-400q-33 0-56.5-23.5T120-480v-320q0-33 23.5-56.5T200-880h560q33 0 56.5 23.5T840-800v320q0 33-23.5 56.5T760-400H200Zm80-80h400q0-33 23.5-56.5T760-560v-160q-33 0-56.5-23.5T680-800H280q0 33-23.5 56.5T200-720v160q33 0 56.5 23.5T280-480Zm-80 0v-320 320Z"/></svg> Normal Interest : ${loan.interest} Rupees</p>
             <hr>
             ${overdueSection}
             <hr>
+            <h3>Total to Return</h3>
             <p><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-400 40-640l440-240 440 240-440 240Zm0 160L63-467l84-46 333 182 333-182 84 46-417 227Zm0 160L63-307l84-46 333 182 333-182 84 46L480-80Zm0-411 273-149-273-149-273 149 273 149Zm0-149Z"/></svg>Full Amount : ${totalReturnAmount} Rupees</p>
             <hr>
         </div>
