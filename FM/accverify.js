@@ -43,16 +43,16 @@ const passwords = {
         },
         loans: [
             { planDate: "11-05-2026", endDate: "10-09-2026", interest: 7355, takenAmount: 29418, takenFrom: "Tomar Juntos", fineRate: 130 },
-            { planDate: "21-07-2026", endDate: "21-08-2026", interest: 860, takenAmount: 2425, takenFrom: "Tomar Juntos", fineRate: 130 },
-            { planDate: "24-07-2026", endDate: "24-08-2026", interest: 810, takenAmount: 2000, takenFrom: "MLendings", fineRate: 130 },
+            { planDate: "21-07-2026", endDate: "21-08-2026", interest: 850, takenAmount: 2425, takenFrom: "Tomar Juntos", fineRate: 130 },
+            { planDate: "24-07-2026", endDate: "24-08-2026", interest: 800, takenAmount: 2000, takenFrom: "MLendings", fineRate: 130 },
             { planDate: "28-07-2026", endDate: "28-08-2026", interest: 900, takenAmount: 2000, takenFrom: "MLendings", fineRate: 130 },
         ]
     },
-    "0212": {
-        name: "Vito Corleone",
-        membershipIcon: "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_53f6a6af8b0e453d874bbefee49b3e73/default/dark/2.0#e=0",
-         profileBackground: "rgb(200 183 165)",
-        profileSecBackground:"rgb(89 40 33)",
+    "9919": {
+        name: "Charlie",
+        membershipIcon: "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_b431fc1e14d642a781c8116343c15967/default/dark/3.0#e=0",
+         profileBackground: "rgb(242 174 10)",
+        profileSecBackground:"rgb(208 75 16)",
         stars: 10000,
         coins: 0,
         verified: true,
@@ -63,10 +63,9 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-            { planDate: "06-11-2025", endDate: "07-8-2025", interest: 3900, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
-            { planDate: "06-11-2025", endDate: "07-8-2025", interest: 3900, takenAmount: 10000, takenFrom: "P2P lend", fineRate: 150 },
-            { planDate: "06-11-2025", endDate: "07-8-2025", interest: 3900, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 150 },
-            { planDate: "06-11-2025", endDate: "07-8-2025", interest: 1900, takenAmount: 8000, takenFrom: "P2P lend", fineRate: 150 },
+           { planDate: "02-05-2026", endDate: "26-09-2026", interest: 2300, takenAmount: 2900, takenFrom: "Lendlink", fineRate: 0 },
+            { planDate: "02-05-2026", endDate: "26-09-2026", interest: 1250, takenAmount: 7000, takenFrom: "Lendlink", fineRate: 0 },
+            { planDate: "02-05-2026", endDate: "26-09-2026", interest: 1250, takenAmount: 2026, takenFrom: "Lendlink", fineRate: 0 },
         ]
     },
 };
