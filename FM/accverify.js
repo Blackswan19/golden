@@ -20,11 +20,11 @@ const passwords = {
             { planDate: "06-08-2025", endDate: "21-08-2025", interest: 2700, takenAmount: 10000, takenFrom: "MLending", fineRate: 90 },
             { planDate: "10-08-2025", endDate: "25-08-2025", interest: 1500, takenAmount: 5000, takenFrom: "MLLD", fineRate: 56 },
             { planDate: "18-08-2025", endDate: "02-09-2025", interest: 1800, takenAmount: 5000, takenFrom: "MLLD", fineRate: 60 },
-            { planDate: "01-11-2025", endDate: "16-11-2025", interest: 1700, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 65 },
+            { planDate: "01-11-2025", endDate: "16-11-2025", interest: 1800, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 65 },
             { planDate: "06-11-2025", endDate: "21-11-2025", interest: 2400, takenAmount: 8000, takenFrom: "MLLD", fineRate: 80 },
-            { planDate: "07-11-2025", endDate: "22-11-2025", interest: 800, takenAmount: 2000, takenFrom: "P2P lend", fineRate: 27 },
-            { planDate: "15-11-2025", endDate: "30-11-2025", interest: 1300, takenAmount: 4000, takenFrom: "P2P lend", fineRate: 44 },
-            { planDate: "25-11-2025", endDate: "10-11-2025", interest: 780, takenAmount: 2200, takenFrom: "P2P lend", fineRate: 27 }
+            { planDate: "07-11-2025", endDate: "22-11-2025", interest: 920, takenAmount: 2000, takenFrom: "P2P lend", fineRate: 27 },
+            { planDate: "15-11-2025", endDate: "30-11-2025", interest: 1600, takenAmount: 4000, takenFrom: "P2P lend", fineRate: 44 },
+            { planDate: "25-11-2025", endDate: "10-11-2025", interest: 980, takenAmount: 2200, takenFrom: "P2P lend", fineRate: 27 }
         ]
     },
     "Mahesh888*": {
@@ -53,7 +53,7 @@ const passwords = {
         membershipIcon: "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_b431fc1e14d642a781c8116343c15967/default/dark/3.0#e=0",
          profileBackground: "rgb(242 174 10)",
         profileSecBackground:"rgb(208 75 16)",
-        stars: 10000,
+        stars: 205,
         coins: 0,
         verified: true,
         showCustomContent: "no",
@@ -63,8 +63,7 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         loans: [
-           { planDate: "02-05-2026", endDate: "26-09-2026", interest: 2300, takenAmount: 2900, takenFrom: "Lendlink", fineRate: 0 },
-            { planDate: "02-05-2026", endDate: "26-09-2026", interest: 1250, takenAmount: 7000, takenFrom: "Lendlink", fineRate: 0 },
+           { planDate: "02-05-2026", endDate: "26-09-2026", interest: 2300, takenAmount: 2907, takenFrom: "Lendlink", fineRate: 0 },
             { planDate: "02-05-2026", endDate: "26-09-2026", interest: 1250, takenAmount: 2026, takenFrom: "Lendlink", fineRate: 0 },
         ]
     },
