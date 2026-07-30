@@ -1,11 +1,11 @@
-document.addEventListener('contextmenu', e => e.preventDefault());   
+document.addEventListener('contextmenu', e => e.preventDefault());
 
 const passwords = {
     "6275": {
         name: "Srikanth Jampana",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
         profileBackground: "transparent",
-        profileSecBackground:"transparent",
+        profileSecBackground: "transparent",
         stars: 0,
         coins: 0,
         verified: true,
@@ -15,6 +15,8 @@ const passwords = {
             value: "programXoffer.png",
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
+        showSpecialNotice: "yes",
+        specialNoticeText: "Dear member, Clear your overdue amounts to avoid extra interest. Thank you!",
         loans: [
             { planDate: "01-08-2025", endDate: "15-08-2025", interest: 5200, takenAmount: 20000, takenFrom: "MLending", fineRate: 180 },
             { planDate: "06-08-2025", endDate: "21-08-2025", interest: 2700, takenAmount: 10000, takenFrom: "MLending", fineRate: 90 },
@@ -31,7 +33,7 @@ const passwords = {
         name: "Mahesh Muthinti",
         membershipIcon: "https://files.donationalerts.com/uploads/images/2/tb_5000.gif",
         profileBackground: "#c33949",
-        profileSecBackground:"#c33949",
+        profileSecBackground: "#c33949",
         stars: 0,
         coins: 3,
         verified: true,
@@ -41,8 +43,10 @@ const passwords = {
             value: "programXoffer.png",
             url: "https://mfi0212.github.io/MFI/multi.mem.acc"
         },
+        showSpecialNotice: "yes",
+        specialNoticeText: "Mr. Mahesh Muthinti, Your account points are very low. Use your points earner to earn points, or subscribe to the mining bot for earn points 10X faster for you.",
         loans: [
-            { planDate: "11-05-2026", endDate: "10-09-2026", interest: 7355, takenAmount: 29418, takenFrom: "Tomar Juntos", fineRate: 130 },
+            { planDate: "11-05-2026", endDate: "31-07-2026", interest: 7355, takenAmount: 29418, takenFrom: "Tomar Juntos", fineRate: 130 },
             { planDate: "21-07-2026", endDate: "21-08-2026", interest: 850, takenAmount: 2425, takenFrom: "Tomar Juntos", fineRate: 130 },
             { planDate: "24-07-2026", endDate: "24-08-2026", interest: 800, takenAmount: 2000, takenFrom: "MLendings", fineRate: 130 },
             { planDate: "28-07-2026", endDate: "28-08-2026", interest: 900, takenAmount: 2000, takenFrom: "MLendings", fineRate: 130 },
@@ -51,19 +55,21 @@ const passwords = {
     "9919": {
         name: "Charlie",
         membershipIcon: "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_b431fc1e14d642a781c8116343c15967/default/dark/3.0#e=0",
-         profileBackground: "rgb(242 174 10)",
-        profileSecBackground:"rgb(208 75 16)",
+        profileBackground: "rgb(242 174 10)",
+        profileSecBackground: "rgb(208 75 16)",
         stars: 205,
         coins: 0,
         verified: true,
-        showCustomContent: "no",
+        showCustomContent: "yes",
         customContent: {
             type: "image",
             value: "programXoffer.png",
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
+        showSpecialNotice: "yes",
+        specialNoticeText: "Dear Charlie, Lendlink amounts are running. Kindly return on or before the due date.",
         loans: [
-           { planDate: "02-05-2026", endDate: "26-09-2026", interest: 2300, takenAmount: 2907, takenFrom: "Lendlink", fineRate: 0 },
+            { planDate: "02-05-2026", endDate: "26-09-2026", interest: 2300, takenAmount: 2907, takenFrom: "Lendlink", fineRate: 0 },
             { planDate: "02-05-2026", endDate: "26-09-2026", interest: 1250, takenAmount: 2026, takenFrom: "Lendlink", fineRate: 0 },
         ]
     },
@@ -73,8 +79,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const savedPassword = localStorage.getItem("userPassword");
     if (savedPassword) {
         const passwordInput = document.getElementById("userPassword");
-        passwordInput.value = savedPassword;
-        document.getElementById("poweredBy").style.display = "block";
+        if (passwordInput) {
+            passwordInput.value = savedPassword;
+            document.getElementById("poweredBy").style.display = "block";
+        }
     }
 });
 
@@ -96,7 +104,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
 
         const userNameContainer = document.getElementById("userNameContainer");
 
-        // Verified Icon - Only show if verified: true
+        // Verified Icon
         let verifiedHTML = '';
         if (user.verified === true) {
             verifiedHTML = `
@@ -116,37 +124,43 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         `;
 
         const profilePicture = document.getElementById("profilePicture");
-        profilePicture.style.backgroundColor = user.profileBackground;
-        profilePicturess.style.backgroundColor = user.profileSecBackground;
-        const nameParts = user.name.trim().split(/\s+/).slice(0, 2);
-        const iconText = nameParts.map(part => part.charAt(0)).join("").toUpperCase();
-        profilePicture.style.backgroundImage = "none";
-        profilePicturess.style.backgroundImage = "none";
-        profilePicture.textContent = iconText;
+        const profilePicturess = document.getElementById("profilePicturess"); // keep original variable name
+
+        if (profilePicture) {
+            profilePicture.style.backgroundColor = user.profileBackground;
+            profilePicture.style.backgroundImage = "none";
+            const nameParts = user.name.trim().split(/\s+/).slice(0, 2);
+            const iconText = nameParts.map(part => part.charAt(0)).join("").toUpperCase();
+            profilePicture.textContent = iconText;
+        }
+        if (profilePicturess) {
+            profilePicturess.style.backgroundColor = user.profileSecBackground;
+            profilePicturess.style.backgroundImage = "none";
+        }
 
         // Remove Tier Progress
         document.getElementById("tierProgress")?.remove();
 
-        // === ADS SECTION COMPLETELY REMOVED ===
-
+        // Amount buttons
         const amountButtons = document.getElementById("amountButtons");
         amountButtons.innerHTML = "";
         user.loans.forEach((loan, index) => {
-                    const btn = document.createElement("button");
-                    btn.className = "amount-btn";
-                    btn.innerHTML = `<a style="display: flex; justify-content: center; align-items: center;color: white;" href="#scrotamts"> ₹${loan.takenAmount}<span class="amount-id" > ${index + 1}</span></a>`;
-                    btn.onclick = () => displayLoanDetails(loan, index);
-                    amountButtons.appendChild(btn);
-                });
+            const btn = document.createElement("button");
+            btn.className = "amount-btn";
+            btn.innerHTML = `<a style="display: flex; justify-content: center; align-items: center;color: white;" href="#scrotamts"> ₹${loan.takenAmount}<span class="amount-id"> ${index + 1}</span></a>`;
+            btn.onclick = () => displayLoanDetails(loan, index);
+            amountButtons.appendChild(btn);
+        });
         updateAllButtonColors(user);
 
+        // Special Content (image / note)
         const specialContentDiv = document.getElementById("specialContent");
         try {
             if (user.showCustomContent === "yes" && user.customContent && user.customContent.value) {
                 const contentUrl = user.customContent.url && /^https?:\/\//.test(user.customContent.url) ? user.customContent.url : null;
                 const contentHtml = user.customContent.type === "text"
                     ? `<h3 style="font-size:16px;">Special Note</h3><p style="color:#00aeff;font-size:14px;">${user.customContent.value}</p>`
-                    : `<h3 style="color:white;font-size:16px;">Special Note</h3><img class="applybtn" src="${user.customContent.value}" style="cursor:pointer;" onerror="this.src='';">`;
+                    : `<h3 style="color:white;font-size:16px;">Special Note</h3><img class="applybtn" src="${user.customContent.value}" style="cursor:pointer;" onerror="this.src=''">`;
                 if (contentUrl) {
                     specialContentDiv.innerHTML = `<a href="${contentUrl}" style="text-decoration:none;display:block;" aria-label="Special offer">${contentHtml}</a>`;
                     specialContentDiv.onclick = (e) => { window.open(contentUrl, '_self'); e.preventDefault(); };
@@ -172,10 +186,49 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         document.getElementById("userInfoModal").style.display = "block";
         document.getElementById("passwordContainer").style.display = "none";
         errorMessage.textContent = "";
+
+        // ===== SHOW SPECIAL NOTICE =====
+        showSpecialNotice(user);
+        // ===============================
+
     } else {
         errorMessage.textContent = "Invalid password.";
     }
 });
+
+// ===================== SPECIAL NOTICE FUNCTION =====================
+function showSpecialNotice(user) {
+    // Clear previous notice
+    const container = document.getElementById("specialNoticeContainer");
+    if (container) container.innerHTML = "";
+
+    // Also remove any leftover floating notices
+    document.querySelectorAll(".noticepopup").forEach(el => el.remove());
+
+    if (user.showSpecialNotice !== "yes" || !user.specialNoticeText) return;
+
+    const noticeDiv = document.createElement("div");
+    noticeDiv.className = "noticepopup";
+    noticeDiv.innerHTML = `
+        <marquee behavior="scroll" direction="left" scrollamount="5">
+            ${user.specialNoticeText}
+        </marquee>
+        <button class="notice-close" onclick="this.parentElement.remove()">✕</button>
+    `;
+
+    // Prefer the dedicated container, otherwise put inside modal
+    if (container) {
+        container.appendChild(noticeDiv);
+    } else {
+        const modal = document.getElementById("userInfoModal");
+        if (modal) {
+            modal.prepend(noticeDiv);
+        } else {
+            document.body.prepend(noticeDiv);
+        }
+    }
+}
+// ===================================================================
 
 function checkDueReminders(user) {
     const today = new Date();
@@ -183,7 +236,7 @@ function checkDueReminders(user) {
     tomorrow.setDate(tomorrow.getDate() + 1);
 
     const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
-    const formatDate = (d) => `${String(d.getDate()).padStart(2,'0')}-${String(d.getMonth()+1).padStart(2,'0')}-${d.getFullYear()}`;
+    const formatDate = (d) => `${String(d.getDate()).padStart(2, '0')}-${String(d.getMonth() + 1).padStart(2, '0')}-${d.getFullYear()}`;
 
     const todayStr = formatDate(today);
     const tomorrowStr = formatDate(tomorrow);
@@ -206,12 +259,12 @@ function checkDueReminders(user) {
     const reminderMessage = document.getElementById("reminderMessage");
 
     if (dueToday) {
-        reminderMessage.innerHTML = 
+        reminderMessage.innerHTML =
             `Mr. ${user.name}, <b>Today (${dueToday.date})</b> you have an amount to return from <b>${dueToday.loan.takenFrom}</b>.<br><br>Clear on time to avoid overdue interest. Thank you!`;
         reminderModal.style.display = "flex";
-    } 
+    }
     else if (dueTomorrow) {
-        reminderMessage.innerHTML = 
+        reminderMessage.innerHTML =
             `Mr. ${user.name}, <b>Tomorrow (${dueTomorrow.date})</b> your Amount <b>${dueTomorrow.loan.takenAmount}</b> from <b>${dueTomorrow.loan.takenFrom}</b> has to be returned.<br><br>` +
             `<b style="color: #ff8c00;font-weight: 300;">Return the amount before 6 PM today.</b><br><br>` +
             `Note: Do you like to extend? Do so today only. Tomorrow extension will not be provided and additional interest will be added.`;
@@ -283,12 +336,12 @@ function calculateOverdueFine(endDateString, loan, user = {}) {
 function isDueToday(endDate) {
     const today = new Date();
     const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
-    const todayStr = `${String(today.getDate()).padStart(2,'0')}-${String(today.getMonth()+1).padStart(2,'0')}-${today.getFullYear()}`;
-    
+    const todayStr = `${String(today.getDate()).padStart(2, '0')}-${String(today.getMonth() + 1).padStart(2, '0')}-${today.getFullYear()}`;
+
     const cleanEndDate = endDate.split('(')[0].split('<')[0].trim();
     const match = cleanEndDate.match(dateFormat);
     if (!match) return false;
-    
+
     const endDateStr = `${match[1]}-${match[2]}-${match[3]}`;
     return endDateStr === todayStr;
 }
@@ -350,24 +403,8 @@ function displayLoanDetails(loan, index) {
     loanDetails.innerHTML = `
         <p id="scrotamts"></p>
         <div class="loan-entry">
-            <p style="    text-align: center;
-    position: sticky;
-    top: 140px;
-    z-index: 1000000;">
-                <button class="amounts-btn downsingle" style="    width: 100%;
-    font-size: 12px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0px;
-    font-weight: 300;
-    backdrop-filter: blur(5px);
-    gap: 5px;
-    background: #223140a1;
-    border-radius: 9999px;
-    border-top: solid 1px #ffffff30;
-    border-bottom: solid 0.1px #ffffff24;" onclick="downloadSingleLoan(${index})">
+            <p style="text-align: center; position: sticky; top: 140px; z-index: 1000000;">
+                <button class="amounts-btn downsingle" style="width: 100%; font-size: 12px; display: flex; flex-direction: row; justify-content: center; align-items: center; margin-top: 0px; font-weight: 300; backdrop-filter: blur(5px); gap: 5px; background: #223140a1; border-radius: 9999px; border-top: solid 1px #ffffff30; border-bottom: solid 0.1px #ffffff24;" onclick="downloadSingleLoan(${index})">
                     <svg style="width: 14px; height: 20px;" xmlns="http://www.w3.org/2000/svg" id="Outline" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M120-80v-800l60 60 60-60 60 60 60-60 60 60 60-60 60 60 60-60 60 60 60-60 60 60 60-60v800l-60-60-60 60-60-60-60 60-60-60-60 60-60-60-60 60-60-60-60 60-60-60-60 60Zm120-200h480v-80H240v80Zm0-160h480v-80H240v80Zm0-160h480v-80H240v80Z"/></svg>
                     Download this particular amount Receipt
                 </button>
@@ -426,6 +463,12 @@ function closeModal() {
     document.getElementById("specialContent").innerHTML = "";
     document.getElementById("borrowLimitMessage")?.remove();
     document.getElementById("tierProgress")?.remove();
+
+    // Clear special notice when closing
+    const container = document.getElementById("specialNoticeContainer");
+    if (container) container.innerHTML = "";
+    document.querySelectorAll(".noticepopup").forEach(el => el.remove());
+
     sessionReferenceTime = null;
 }
 
@@ -440,7 +483,7 @@ function generateStyledReceipt(textLines, filename) {
     canvas.height = topStart + textLines.length * lineHeight + 60;
 
     const ctx = canvas.getContext('2d');
-    
+
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -474,7 +517,7 @@ function generateStyledReceipt(textLines, filename) {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    
+
     alert("Receipt has Downloaded..! Verify once...!");
 }
 
@@ -482,10 +525,10 @@ function formatReturnDateForReceipt(loan) {
     const userInput = document.getElementById("userPassword").value.trim();
     const user = passwords[userInput];
     if (!user) return "Error";
-    
+
     const overdueInfo = calculateOverdueFine(loan.endDate, loan, user);
     if (overdueInfo.overdue) return "till today";
-    
+
     const cleanEndDate = loan.endDate.split('(')[0].split('<')[0];
     const [d, m, y] = cleanEndDate.split('-');
     return `${d}/${m}/${y.slice(-2)}`;
@@ -556,10 +599,9 @@ function downloadAllLoans() {
 
 function showStarCount() {
     const stars = document.getElementById('starCount').textContent.trim();
-    if(stars == 0){
+    if (stars == 0) {
         alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can earn stars by renting an mansion and earn swans then cunvert iinto stars.`);
-    }
-    else{
+    } else {
         alert(`BsRora(Bot) : \n\nYou have ${stars} stars.\n\nYou can use these stars to reduce the interest.`);
     }
 }
@@ -569,31 +611,26 @@ function showCoinsCount() {
     alert(`BsRora(Bot) : \n\nYou have ${coins} Tomar Juntos active amount`);
 }
 
+function openDuplicateForm() {
+    window.open("https://forms.gle/yT6xhHtrxHELfS447", "_blank");
+    closeDuplicateModal();
+}
 
+function closeDuplicateModal() {
+    document.getElementById("duplicateAccountModal").style.display = "none";
+}
 
+document.getElementById("userNameContainer").addEventListener("click", () => {
+    document.getElementById("duplicateAccountModal").style.display = "flex";
+});
 
-  function openDuplicateForm() {
-            window.open("https://forms.gle/yT6xhHtrxHELfS447", "_blank");
-            closeDuplicateModal();
-        }
+const startDate = new Date('2026-07-21T20:00:00');
+const endDate = new Date('2026-07-22T05:00:00');
 
-        function closeDuplicateModal() {
-            document.getElementById("duplicateAccountModal").style.display = "none";
-        }
-
-        document.getElementById("userNameContainer").addEventListener("click", () => {
-            document.getElementById("duplicateAccountModal").style.display = "flex";
-        });
-
-
-        const startDate = new Date('2026-07-21T20:00:00');
-        const endDate = new Date('2026-07-22T05:00:00');
-
-
-        function goBack() {
-      if (window.history.length > 1) {
+function goBack() {
+    if (window.history.length > 1) {
         window.history.back();
-      } else {
+    } else {
         alert("✅ Back button clicked!\n\n(In a real app this would take you to previous screen or home.)");
-      }
     }
+}
