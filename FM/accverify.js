@@ -16,7 +16,7 @@ const passwords = {
             url: "https://mfi0212.github.io/swan/offer/programx"
         },
         showSpecialNotice: "yes",
-        specialNoticeText: "Dear member, Clear your overdue amounts to avoid extra interest. Thank you!",
+        specialNoticeText: "Mr.Srikanth Jampana , Clear your overdue amounts to avoid extra interest. Thank you!",
         loans: [
             { planDate: "01-08-2025", endDate: "15-08-2025", interest: 5200, takenAmount: 20000, takenFrom: "MLending", fineRate: 180 },
             { planDate: "06-08-2025", endDate: "21-08-2025", interest: 2700, takenAmount: 10000, takenFrom: "MLending", fineRate: 90 },
@@ -54,23 +54,23 @@ const passwords = {
     },
     "9919": {
         name: "Charlie",
-        membershipIcon: "https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_b431fc1e14d642a781c8116343c15967/default/dark/3.0#e=0",
-        profileBackground: "rgb(242 174 10)",
-        profileSecBackground: "rgb(208 75 16)",
+        membershipIcon: "https://mfi0212.github.io/MFI/quantam/user_owned_gifts/1stgif.jpeg",
+        profileBackground: "black",
+        profileSecBackground: "#01092d",
         stars: 205,
         coins: 0,
         verified: true,
         showCustomContent: "yes",
         customContent: {
             type: "image",
-            value: "programXoffer.png",
-            url: "https://mfi0212.github.io/swan/offer/programx"
+            value: "https://i.ibb.co/3mYWnKXY/program-Xoffer.png",
+            url: "https://mfi0212.github.io/MFI/alloffersaver"
         },
         showSpecialNotice: "yes",
         specialNoticeText: "Dear Charlie, Lendlink amounts are running. Kindly return on or before the due date.",
         loans: [
             { planDate: "02-05-2026", endDate: "26-09-2026", interest: 2300, takenAmount: 2907, takenFrom: "Lendlink", fineRate: 0 },
-            { planDate: "02-05-2026", endDate: "26-09-2026", interest: 1250, takenAmount: 2026, takenFrom: "Lendlink", fineRate: 0 },
+            { planDate: "02-05-2026", endDate: "31-09-2026", interest: 1250, takenAmount: 2026, takenFrom: "Lendlink", fineRate: 0 },
         ]
     },
 };
