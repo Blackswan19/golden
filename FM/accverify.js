@@ -31,9 +31,9 @@ const passwords = {
     },
     "Mahesh888*": {
         name: "Mahesh Muthinti",
-        membershipIcon: "https://files.donationalerts.com/uploads/images/2/tb_5000.gif",
-        profileBackground: "#c33949",
-        profileSecBackground: "#c33949",
+        membershipIcon: "https://mfi0212.github.io/MFI/quantam/user_owned_gifts/2ndgif.jpeg",
+        profileBackground: "#0000af",
+        profileSecBackground: "#780000",
         stars: 0,
         coins: 3,
         verified: true,
@@ -54,7 +54,7 @@ const passwords = {
     },
     "9919": {
         name: "Charlie",
-        membershipIcon: "https://mfi0212.github.io/MFI/quantam/user_owned_gifts/1stgif.jpeg",
+        membershipIcon: "https://mfi0212.github.io/MFI/quantam/user_owned_gifts/4thgif.jpeg",
         profileBackground: "black",
         profileSecBackground: "#01092d",
         stars: 205,
@@ -120,9 +120,50 @@ document.getElementById("submitBtn").addEventListener("click", () => {
         userNameContainer.innerHTML = `
             <span id="userName">${user.name}</span>
             ${verifiedHTML}
-            <img src="${user.membershipIcon}" alt="Membership Icon" class="user-icon">
+            <img src="${user.membershipIcon}" 
+     alt="Membership Icon" 
+     class="user-icon" 
+     id="membershipIcon">
         `;
+const membershipIcon = document.getElementById('membershipIcon');
 
+// Create popup
+const popup = document.createElement('div');
+popup.className = 'membership-popup';
+popup.innerHTML = `
+  <div class="popup-content">
+    <span class="close-btn">✕</span>
+    
+    <!-- Icon displayed inside the popup -->
+    <img style='width: 100%;
+    border-radius: 15px;
+    max-width: 350px;
+    text-align: center;' src="${user.membershipIcon}" 
+         alt="Membership Icon" 
+         class="popup-icon">
+  </div>
+`;
+document.body.appendChild(popup);
+
+// Hide by default
+popup.style.display = 'none';
+
+// Show popup when icon is clicked
+membershipIcon.addEventListener('click', () => {
+  popup.style.display = 'flex';
+});
+
+// Close button
+popup.querySelector('.close-btn').addEventListener('click', () => {
+  popup.style.display = 'none';
+});
+
+// Close when clicking outside
+popup.addEventListener('click', (e) => {
+  if (e.target === popup) {
+    popup.style.display = 'none';
+  }
+});
         const profilePicture = document.getElementById("profilePicture");
         const profilePicturess = document.getElementById("profilePicturess"); // keep original variable name
 
