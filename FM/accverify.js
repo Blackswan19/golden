@@ -135,9 +135,9 @@ popup.innerHTML = `
     <span class="close-btn">✕</span>
     
     <!-- Icon displayed inside the popup -->
-    <img style='width: 100%;
+    <img style='width: 60%;
     border-radius: 15px;
-    max-width: 350px;
+    max-width: 250px;
     text-align: center;' src="${user.membershipIcon}" 
          alt="Membership Icon" 
          class="popup-icon">
