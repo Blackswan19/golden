@@ -31,9 +31,9 @@ const passwords = {
     },
     "Mahesh888*": {
         name: "Mahesh Muthinti",
-        membershipIcon: "https://files.donationalerts.com/uploads/images/2/tb_5000.gif",
-        profileBackground: "#c33949",
-        profileSecBackground: "#c33949",
+        membershipIcon: "https://mfi0212.github.io/MFI/quantam/user_owned_gifts/2ndgif.jpeg",
+        profileBackground: "#780000",
+        profileSecBackground: "#0000af",
         stars: 0,
         coins: 3,
         verified: true,
@@ -54,7 +54,7 @@ const passwords = {
     },
     "9919": {
         name: "Charlie",
-        membershipIcon: "https://mfi0212.github.io/MFI/quantam/user_owned_gifts/1stgif.jpeg",
+        membershipIcon: "https://mfi0212.github.io/MFI/quantam/user_owned_gifts/4thgif.jpeg",
         profileBackground: "black",
         profileSecBackground: "#01092d",
         stars: 205,
