@@ -32,8 +32,8 @@ const passwords = {
     "Mahesh888*": {
         name: "Mahesh Muthinti",
         membershipIcon: "https://mfi0212.github.io/MFI/quantam/user_owned_gifts/2ndgif.jpeg",
-        profileBackground: "#780000",
-        profileSecBackground: "#0000af",
+        profileBackground: "#0000af",
+        profileSecBackground: "#780000",
         stars: 0,
         coins: 3,
         verified: true,
