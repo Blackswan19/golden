@@ -1,5 +1,4 @@
 document.addEventListener('contextmenu', e => e.preventDefault());
-
 const passwords = {
     "6275": {
         name: "Srikanth Jampana",
@@ -53,18 +52,18 @@ const passwords = {
         ]
     },
     "9919": {
-        name: "Pavel Durov",
-        membershipIcon: "https://pbs.twimg.com/media/GV16TLTWAAAjU7U?format=webp&name=medium",
-        profileBackground: "#1f1f1f",
-        profileSecBackground: "rgb(0 0 0)",
-        stars: 15826,
-        coins: 8,
+        name: "Charlie",
+        membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
+        profileBackground: "transparent",
+        profileSecBackground: "transparent",
+        stars: 0,
+        coins: 0,
         verified: true,
-        showCustomContent: "yes",
+        showCustomContent: "no",
         customContent: {
             type: "image",
-            value: "https://i.ibb.co/3mYWnKXY/program-Xoffer.png",
-            url: "https://mfi0212.github.io/MFI/alloffersaver"
+            value: "programXoffer.png",
+            url: "https://mfi0212.github.io/swan/offer/programx"
         },
         showSpecialNotice: "yes",
         specialNoticeText: "Dear Charlie, Lendlink amounts are running. Kindly return on or before the due date.",
