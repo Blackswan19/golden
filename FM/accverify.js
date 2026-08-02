@@ -1,4 +1,5 @@
 document.addEventListener('contextmenu', e => e.preventDefault());
+
 const passwords = {
     "6275": {
         name: "Srikanth Jampana",
@@ -56,8 +57,8 @@ const passwords = {
         membershipIcon: "https://pbs.twimg.com/media/GV16TLTWAAAjU7U?format=webp&name=medium",
         profileBackground: "#1f1f1f",
         profileSecBackground: "rgb(0 0 0)",
-        stars: 205,
-        coins: 0,
+        stars: 15826,
+        coins: 8,
         verified: true,
         showCustomContent: "yes",
         customContent: {
