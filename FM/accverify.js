@@ -1,5 +1,4 @@
 document.addEventListener('contextmenu', e => e.preventDefault());
-
 const passwords = {
     "6275": {
         name: "Srikanth Jampana",
@@ -53,10 +52,10 @@ const passwords = {
         ]
     },
     "9919": {
-        name: "Charlie",
-        membershipIcon: "https://mfi0212.github.io/MFI/quantam/user_owned_gifts/4thgif.jpeg",
-        profileBackground: "black",
-        profileSecBackground: "#01092d",
+        name: "Pavel Durov",
+        membershipIcon: "https://pbs.twimg.com/media/GV16TLTWAAAjU7U?format=webp&name=medium",
+        profileBackground: "#1f1f1f",
+        profileSecBackground: "rgb(0 0 0)",
         stars: 205,
         coins: 0,
         verified: true,
