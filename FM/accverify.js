@@ -1,4 +1,5 @@
 document.addEventListener('contextmenu', e => e.preventDefault());
+
 const passwords = {
     "6275": {
         name: "Srikanth Jampana",
@@ -40,7 +41,7 @@ const passwords = {
         customContent: {
             type: "image",
             value: "programXoffer.png",
-            url: "https://mfi0212.github.io/MFI/multi.mem.acc"
+            url: ""
         },
         showSpecialNotice: "yes",
         specialNoticeText: "Mr. Mahesh Muthinti, Your account points are very low. Use your points earner to earn points, or subscribe to the mining bot for earn points 10X faster for you.",
