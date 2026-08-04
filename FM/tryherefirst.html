@@ -62,7 +62,7 @@
         }
         .maincontentsection {
             border: 0.5px solid rgba(255, 255, 255, 0.1);
-            width: 70%;
+            width: 80%;
             padding: 3px;
             border-radius: 99999px;
             backdrop-filter: blur(30px);
@@ -71,7 +71,7 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            max-width: 250px;
+            max-width: 320px;
         }
         div#bottomLinksss {
             display: flex;
@@ -84,7 +84,7 @@
         }
         .bottom-link {
             color: #ccc;
-            padding: 4px 10px;
+            padding: 5px 15px;
             border-radius: 9999px;
             transition: 0.2s;
             text-decoration: none;
@@ -105,27 +105,26 @@
         /* Search bar – always at top */
         .bottom-links {
             position: fixed;
-            top: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            backdrop-filter: blur(30px);
-            border-radius: 99999px;
-            display: flex;
-            width: 95%;
-            justify-content: center;
-            align-items: center;
-            border: 0.5px solid rgba(255, 255, 255, 0.1);
-            background: rgb(0 0 0 / 14%);
-            max-width: 700px;
-            z-index: 1000;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 99999px;
+    display: flex;
+    width: 95%;
+    justify-content: center;
+    align-items: center;
+    max-width: 700px;
+    z-index: 1000;
         }
         .address-bar-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            position: relative;
+          flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(30px);
+    border-radius: 999px;
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    background: rgb(0 0 0 / 14%);
         }
         #url-bar {
             width: 100%;
@@ -184,23 +183,23 @@
             background: rgba(255,255,255,0.15);
         }
 
-        /* Suggestions – now under the top search bar */
+        /* Suggestions – under the top search bar */
         .suggestions {
-            position: absolute;
-            top: calc(100% + 8px);
-            left: 50%;
-            transform: translateX(-50%);
-            width: 95%;
-            max-width: 680px;
-            backdrop-filter: blur(30px);
-            border-radius: 25px;
-            max-height: 60vh;
-            overflow-y: auto;
-            z-index: 1100;
-            display: none;
-            scrollbar-width: none;
-            border: 0.5px solid rgba(255, 255, 255, 0.1);
-            background: rgb(0 0 0 / 55%);
+           position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 680px;
+    backdrop-filter: blur(30px);
+    border-radius: 25px;
+    max-height: 60vh;
+    overflow-y: auto;
+    z-index: 1100;
+    display: none;
+    scrollbar-width: none;
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    background: rgb(0 0 0 / 14%);
         }
         .suggestion-item {
             padding: 10px 14px;
@@ -238,6 +237,25 @@
             border-radius: 50%;
             flex-shrink: 0;
             margin-left: 8px;
+        }
+
+        /* Clear-all history button inside suggestions */
+        .clear-all-history {
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: #ff6b6b;
+            border-bottom: 0.5px solid rgba(255, 255, 255, 0.12);
+            transition: background 0.15s ease;
+            background: rgba(255, 59, 48, 0.08);
+        }
+        .clear-all-history:hover {
+            background: rgba(255, 59, 48, 0.22);
         }
 
         /* Settings menu */
@@ -312,15 +330,27 @@
     <div class="toolbar" id="toolbar">
         <div class="maincontentsection">
             <div class="bottomss-links" id="bottomLinksss">
+                <!-- Copy -->
                 <div class="bottom-link" onclick="copyUrlBar()" title="Copy text from search bar">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M362.31-260Q332-260 311-281q-21-21-21-51.31v-455.38Q290-818 311-839q21-21 51.31-21h335.38Q728-860 749-839q21 21 21 51.31v455.38Q770-302 749-281q-21 21-51.31 21H362.31Zm0-60h335.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46v-455.38q0-4.62-3.85-8.46-3.84-3.85-8.46-3.85H362.31q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v455.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85Zm-140 200Q192-120 171-141q-21-21-21-51.31v-485.38q0-12.77 8.62-21.39 8.61-8.61 21.38-8.61t21.39 8.61q8.61 8.62 8.61 21.39v485.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85h365.38q12.77 0 21.39 8.61 8.61 8.62 8.61 21.39 0 12.77-8.61 21.38-8.62 8.62-21.39 8.62H222.31ZM350-320v-480 480Z"/></svg>
                 </div>
+
+                <!-- Paste -->
                 <div class="bottom-link" onclick="pasteToUrlBar()" title="Paste into search bar">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M212.31-140q-29.92 0-51.12-21.19Q140-182.39 140-212.31v-535.38q0-29.92 21.19-51.12Q182.39-820 212.31-820h176.23q8.31-29.23 33.96-48.46t57.5-19.23q33.08 0 58.42 19.23 25.35 19.23 33.66 48.46h175.61q29.92 0 51.12 21.19Q820-777.61 820-747.69v535.38q0 29.92-21.19 51.12Q777.61-140 747.69-140H212.31Zm0-60h535.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46v-535.38q0-4.62-3.85-8.46-3.84-3.85-8.46-3.85H660v68.46q0 15.46-10.35 25.81-10.34 10.34-25.81 10.34H336.16q-15.47 0-25.81-10.34Q300-676.08 300-691.54V-760h-87.69q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v535.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85Zm293.5-565.73q10.34-10.35 10.34-25.81 0-15.46-10.34-25.81-10.35-10.34-25.81-10.34-15.46 0-25.81 10.34-10.34 10.35-10.34 25.81 0 15.46 10.34 25.81 10.35 10.35 25.81 10.35 15.46 0 25.81-10.35Z"/></svg>
                 </div>
+
+                <!-- DELETE ALL HISTORY (new button) -->
+                <div class="bottom-link" onclick="clearAllHistory()" title="Delete all search history">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M292.31-140q-29.92 0-51.12-21.19Q220-182.39 220-212.31V-720h-10q-12.77 0-21.38-8.62Q180-737.23 180-750t8.62-21.38Q197.23-780 210-780h150q0-14.69 10.35-25.04 10.34-10.34 25.03-10.34h169.24q14.69 0 25.03 10.34Q600-794.69 600-780h150q12.77 0 21.38 8.62Q780-762.77 780-750t-8.62 21.38Q762.77-720 750-720h-10v507.69q0 29.92-21.19 51.12Q697.61-140 667.69-140H292.31ZM680-720H280v507.69q0 5.39 3.46 8.85t8.85 3.46h375.38q5.39 0 8.85-3.46t3.46-8.85V-720Zm-400 0v520-520Zm200 302.15 82.92 82.93q8.31 8.3 20.89 8.5 12.57.19 21.27-8.5 8.69-8.7 8.69-21.08 0-12.38-8.69-21.08L522.15-460l82.93-82.92q8.3-8.31 8.5-20.89.19-12.57-8.5-21.27-8.7-8.69-21.08-8.69-12.38 0-21.08 8.69L480-502.15l-82.92-82.93q-8.31-8.3-20.89-8.5-12.57-.19-21.27 8.5-8.69 8.7-8.69 21.08 0 12.38 8.69 21.08L437.85-460l-82.93 82.92q-8.3 8.31-8.5 20.89-.19 12.57 8.5 21.27 8.7 8.69 21.08 8.69 12.38 0 21.08-8.69L480-417.85Z"/></svg>
+                </div>
+
+                <!-- Settings -->
                 <div class="bottom-link" id="settingsBtn" onclick="toggleSettings(event)" title="Settings">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M435.69-100q-20.46 0-35.34-13.58-14.89-13.57-18.12-33.42l-9.77-74.85q-16.07-5.38-32.96-15.07-16.88-9.7-30.19-20.77L240-228.23q-18.85 8.31-37.88 1.61-19.04-6.69-29.58-24.3l-45.08-78.16q-10.54-17.61-6.07-37.27 4.46-19.65 20.46-32.42l59.92-45q-1.38-8.92-1.96-17.92-.58-9-.58-17.93 0-8.53.58-17.34t1.96-19.27l-59.92-45q-16-12.77-20.27-32.62-4.27-19.84 6.27-37.46l44.69-77q10.54-17.23 29.58-24.11 19.03-6.89 37.88 1.42l68.92 29.08q14.47-11.46 30.89-20.96t32.27-15.27L382.23-813q3.23-19.85 18.12-33.42Q415.23-860 435.69-860h88.62q20.46 0 35.34 13.58 14.89 13.57 18.12 33.42l9.77 75.23q18 6.54 32.57 15.27 14.58 8.73 29.43 20.58L720.39-731q18.84-8.31 37.88-1.42 19.04 6.88 29.57 24.11l44.7 77.39q10.54 17.61 6.07 37.27-4.46 19.65-20.46 32.42l-61.46 46.15q2.15 9.69 2.35 18.12.19 8.42.19 16.96 0 8.15-.39 16.58-.38 8.42-2.76 19.27l60.3 45.38q16 12.77 20.66 32.42 4.65 19.66-5.89 37.27l-45.31 77.77q-10.53 17.62-29.76 24.31-19.23 6.69-38.08-1.62l-68.46-29.46q-14.85 11.85-30.31 20.96-15.46 9.12-31.69 14.89L577.77-147q-3.23 19.85-18.12 33.42Q544.77-100 524.31-100h-88.62Zm4.31-60h78.62L533-267.15q30.62-8 55.96-22.73 25.35-14.74 48.89-37.89L737.23-286l39.39-68-86.77-65.38q5-15.54 6.8-30.47 1.81-14.92 1.81-30.15 0-15.62-1.81-30.15-1.8-14.54-6.8-29.7L777.38-606 738-674l-100.54 42.38q-20.08-21.46-48.11-37.92-28.04-16.46-56.73-23.31L520-800h-79.38l-13.24 106.77q-30.61 7.23-56.53 22.15-25.93 14.93-49.47 38.46L222-674l-39.38 68L269-541.62q-5 14.24-7 29.62t-2 32.38q0 15.62 2 30.62 2 15 6.62 29.62l-86 65.38L222-286l99-42q22.77 23.38 48.69 38.31 25.93 14.92 57.31 22.92L440-160Zm40.46-200q49.92 0 84.96-35.04 35.04-35.04 35.04-84.96 0-49.92-35.04-84.96Q530.38-600 480.46-600q-50.54 0-85.27 35.04T360.46-480q0 49.92 34.73 84.96Q429.92-360 480.46-360ZM480-480Z"/></svg>
                 </div>
+
+                <!-- Saved sites -->
                 <div class="bottom-link">
                     <a href="https://blackswan19.github.io/bscrop/savedsite.html">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M170-140q-12.77 0-21.38-8.62Q140-157.23 140-170t8.62-21.38Q157.23-200 170-200h387.31q12.77 0 21.38 8.62 8.62 8.61 8.62 21.38t-8.62 21.38q-8.61 8.62-21.38 8.62H170Zm0-147.69q-12.77 0-21.38-8.62-8.62-8.61-8.62-21.38t8.62-21.39q8.61-8.61 21.38-8.61h620q12.77 0 21.38 8.61 8.62 8.62 8.62 21.39 0 12.77-8.62 21.38-8.61 8.62-21.38 8.62H170Zm42.31-147.69q-30.31 0-51.31-21-21-21-21-51.31v-240Q140-778 161-799q21-21 51.31-21h535.38Q778-820 799-799q21 21 21 51.31v240q0 30.31-21 51.31-21 21-51.31 21H212.31Zm0-60h535.38q5.39 0 8.85-3.46 3.46-3.47 3.46-8.85v-240q0-5.39-3.46-8.85t-8.85-3.46H212.31q-5.39 0-8.85 3.46t-3.46 8.85v240q0 5.38 3.46 8.85 3.46 3.46 8.85 3.46Zm-12.31 0V-760v264.62Z"/></svg>
@@ -346,7 +376,6 @@
             <input type="text" id="url-bar" placeholder="Enter your query here..." autocomplete="off">
             <span id="clearBtn">✕</span>
         </div>
-        <!-- Suggestions now live here, under the input -->
         <div class="suggestions" id="suggestions"></div>
     </div>
 
@@ -428,7 +457,7 @@
             document.getElementById('settingsMenu').style.display = 'none';
         }
 
-        // Search history
+        // ========== SEARCH HISTORY ==========
         let storedInputs = JSON.parse(localStorage.getItem('storedInputs') || '[]');
         let selectedSuggestionIndex = -1;
 
@@ -440,6 +469,16 @@
             const clearBtn = document.getElementById('clearBtn');
             const urlBar = document.getElementById('url-bar');
             clearBtn.style.display = urlBar.value.trim() ? 'block' : 'none';
+        }
+
+        // Delete ALL history (used by the trash button + the button inside suggestions)
+        function clearAllHistory() {
+            if (confirm("By confirming, all the search history will be deleted.")) {
+                storedInputs = [];
+                saveSearchHistory();
+                document.getElementById('suggestions').style.display = 'none';
+                selectedSuggestionIndex = -1;
+            }
         }
 
         function showSuggestions(value) {
@@ -455,6 +494,18 @@
                 suggestionsEl.style.display = 'none';
                 return;
             }
+
+            // Clear-all button at the top of the list
+            const clearAllDiv = document.createElement('div');
+            // clearAllDiv.className = 'clear-all-history';
+            clearAllDiv.innerHTML = `
+                
+            `;
+            clearAllDiv.addEventListener('click', (e) => {
+                e.stopPropagation();
+                clearAllHistory();
+            });
+            suggestionsEl.appendChild(clearAllDiv);
 
             filtered.forEach((suggestion) => {
                 const div = document.createElement('div');
