@@ -1,5 +1,4 @@
 document.addEventListener('contextmenu', e => e.preventDefault());
-
 const passwords = {
     "6275": {
         name: "Srikanth Jampana",
@@ -43,7 +42,7 @@ const passwords = {
             value: "programXoffer.png",
             url: ""
         },
-        showSpecialNotice: "yes",
+        showSpecialNotice: "no",
         specialNoticeText: "Mr. Mahesh Muthinti, Your account points are very low. Use your points earner to earn points, or subscribe to the mining bot for earn points 10X faster for you.",
         loans: [
             { planDate: "11-05-2026", endDate: "10-09-2026", interest: 7355, takenAmount: 29418, takenFrom: "Tomar Juntos", fineRate: 130 },
