@@ -445,21 +445,21 @@ function displayLoanDetails(loan, index) {
         <div class="loan-entry">
             <p style="text-align: center; position: sticky; top: 140px; z-index: 1000000;">
                 <button class="amounts-btn downsingle" style="width: 100%;
-    font-size: 12px;
+    font-size: 14px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-top: 0px;
-    font-weight: 500;
+    font-weight: 400;
     backdrop-filter: blur(5px);
     gap: 5px;
     background: #223140a1;
     border-radius: 9999px;
-    border-top: solid 1px #ffffff30;
-    border-bottom: solid 0.1px #ffffff24;
+    border-top: solid 1px #ffffff26;
+    border-bottom: solid 0.1px #ffffff12;
     color: rgb(0 157 230);
-    padding: 4px 10px;" onclick="downloadSingleLoan(${index})">
+    padding: 5px 10px;" onclick="downloadSingleLoan(${index})">
     <p></p>
     Download this amount Receipt
                     <svg style="width: 18px;
