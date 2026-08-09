@@ -17,6 +17,7 @@ const passwords = {
         showSpecialNotice: "yes",
         specialNoticeText: "Mr.Srikanth Jampana , Clear your overdue amounts to avoid extra interest. Thank you!",
         loans: [
+{ planDate: "10-07-2025", endDate: "15-08-2025", interest: 2500, takenAmount: 5000, takenFrom: "MLending", fineRate: 180 },
             { planDate: "01-08-2025", endDate: "15-08-2025", interest: 5200, takenAmount: 20000, takenFrom: "MLending", fineRate: 180 },
             { planDate: "06-08-2025", endDate: "21-08-2025", interest: 2700, takenAmount: 10000, takenFrom: "MLending", fineRate: 90 },
             { planDate: "10-08-2025", endDate: "25-08-2025", interest: 1500, takenAmount: 5000, takenFrom: "MLLD", fineRate: 56 },
