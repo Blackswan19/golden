@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BS&MFI Solution</title>
+  <link rel="icon" href="mfi.logo.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      scrollbar-width: thin;
+      scrollbar-color: #3a4a5c transparent;
+    }
+
+    body {
+      background: #0e1621;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+    }
+
+    /* ===== FULL-WIDTH HEADER ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 56px;
+      z-index: 100;
+      background: #17212b;
+      border-bottom: 1px solid #0e1621;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .maintpopt {
+          display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    gap: 16px;
+    justify-content: space-between;
+    }
+
+    header button {
+      background: transparent;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #7d8b99;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+
+    header button:hover {
+      background: #242f3d;
+    }
+
+    header button svg {
+      width: 22px;
+      height: 22px;
+      fill: #7d8b99;
+    }
+
+    .middlelogo {
+          flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 11px;
+    max-width: 420px;
+    margin: 10px;
+    }
+
+    .middlelogo img {
+      width: 22px;
+      height: 22px;
+    }
+
+    .middlelogo span {
+          font-size: 20px;
+    font-weight: 600;
+    color: #ffffff;
+    }
+
+    /* ===== FULL-WIDTH MAIN ===== */
+    main {
+      flex: 1;
+      width: 100%;
+      padding: 76px 24px 100px;
+      overflow-y: auto;
+    }
+
+    .content-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .toplogos {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .toplogos div {
+      font-size: 14px;
+      color: #7d8b99;
+    }
+
+    /* Cards */
+    .how-it-works,
+    .faq-container {
+      background: #17212b;
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+
+    .how-it-works p,
+    .faq-container h2 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #2AABEE;
+      margin-bottom: 14px;
+    }
+
+    .how-it-works ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .how-it-works li {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #c4c9ce;
+      display: flex;
+      gap: 10px;
+    }
+
+    .how-it-works li span {
+      color: #2AABEE;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .note {
+      font-size: 13.5px;
+      color: #7d8b99;
+      text-align: center;
+      font-style: italic;
+      margin: 20px 0;
+      padding: 0 12px;
+    }
+
+    /* FAQ */
+    .faq-item {
+      padding: 12px 0;
+      border-bottom: 1px solid #242f3d;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item h3 {
+      font-size: 15px;
+      font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 5px;
+    }
+
+    .faq-item p {
+      font-size: 14px;
+      color: #7d8b99;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    /* ===== FULL-WIDTH BOTTOM NAV ===== */
+    .nav {
+          position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #17212b;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    }
+
+    .nav-container {
+         display: flex;
+    background: transparent;
+    border-radius: 16px;
+    width: 100%;
+    gap: 4px;
+    padding: 5px 0 10px 0;
+    }
+
+    .tab {
+          flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #7d8b99;
+    cursor: pointer;
+    transition: all 0.15s;
+    }
+
+    .tab svg {
+      width: 24px;
+      height: 24px;
+      fill: #7d8b99;
+    }
+
+    .tab.tab-active {
+      color: #2AABEE;
+    }
+
+    .tab.tab-active svg {
+      fill: #2AABEE;
+    }
+
+    /* ===== MODAL (full-width friendly) ===== */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      width: 100%;
+      max-width: 480px;
+      background: #17212b;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      animation: scaleIn 0.2s ease;
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-header {
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #242f3d;
+    }
+
+    .modal-header h2 {
+      font-size: 17px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .modal-header svg {
+      width: 26px;
+      height: 26px;
+      fill: #7d8b99;
+      cursor: pointer;
+      padding: 3px;
+      border-radius: 50%;
+    }
+
+    .modal-header svg:hover {
+      background: #242f3d;
+    }
+
+    .modal-body {
+      padding: 24px 22px 28px;
+    }
+
+    .amount-box {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+
+    #amount-input {
+      width: 100%;
+      max-width: 260px;
+      background: #0e1621;
+      border: 1px solid #242f3d;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 22px;
+      font-weight: 500;
+      color: #ffffff;
+      text-align: center;
+      outline: none;
+    }
+
+    #amount-input:focus {
+      border-color: #2AABEE;
+    }
+
+    .calc-result {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .calc-result > div {
+      display: flex;
+      justify-content: space-between;
+      font-size: 15px;
+    }
+
+    .text-secondary {
+      color: #7d8b99;
+    }
+
+    #fee-amount {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .btn-primary {
+      width: 100%;
+      background: #2AABEE;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: background 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: #229ed9;
+    }
+
+    .btn-secondary {
+      width: 100%;
+      background: #242f3d;
+      color: #2AABEE;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .btn-secondary a {
+      color: #2AABEE;
+      text-decoration: none;
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #5a6774;
+      margin-top: 14px;
+    }
+
+    /* Responsive adjustments for very wide screens */
+    @media (min-width: 1200px) {
+      main {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="maintpopt">
+      <button onclick="goBack()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+      </button>
+
+      <div class="middlelogo">
+        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/refs/heads/main/Objects/Light%20Bulb.webp" alt="">
+        <span>BS&MFI Solutions</span>
+      </div>
+
+      <button onclick="showPopup()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="content-wrapper" id="main-content"></div>
+  </main>
+
+  <nav class="nav">
+    <div class="nav-container">
+      <div onclick="switchTab(0)" id="tab-0" class="tab tab-active">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        Delay
+      </div>
+      <div onclick="switchTab(1)" id="tab-1" class="tab">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+        Split
+      </div>
+      <div onclick="switchTab(3)" id="tab-3" class="tab">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+        Pre-Saver
+      </div>
+    </div>
+  </nav>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal" onclick="if(event.target.id==='modal') hideModal()">
+    <div onclick="event.stopImmediatePropagation()" class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title">Calculator</h2>
+        <svg onclick="hideModal()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </div>
+      <div id="modal-content" class="modal-body"></div>
+    </div>
+  </div>
+
+  <script>
+    let currentTab = 0;
+    const tabNames = ["Delay It Calculator", "Split Pay Calculator", "Buy Limit Calculator", "Pre-Saver", "Lendlink - Mid"];
+    const fees = [6.5, 7.2, 8.2, null, null];
+
+    const tabContents = {
+      0: `
+        <div class="toplogos">
+          <h2 class="section-title">Delay It</h2>
+          <div>Return date extender</div>
+        </div>
+        <div class="how-it-works">
+          <p>About Us</p>
+          <ul>
+            <li><span>•</span> Delay It by BS&MFI Solutions helps to extend your payment deadlines with transparent fees. Our service provides the flexibility you need to manage your returns.</li>
+          </ul>
+        </div>
+        <div class="how-it-works">
+          <p>How Delay It works?</p>
+          <ul>
+            <li><span>•</span> You can extend the return date of the amount.</li>
+            <li><span>•</span> Transparent fees with no hidden costs.</li>
+            <li><span>•</span> Fast extend process.</li>
+          </ul>
+        </div>
+        <div class="note">Note : The Process Fee must be paid before applying for Delay It. If not, we can't provide the extension.</div>
+        <div class="faq-container">
+          <h2>FAQ's</h2>
+          <div class="faq-item"><h3>What is the minimum amount I can extend?</h3><p>The minimum amount is ₹500.</p></div>
+          <div class="faq-item"><h3>How is the fee calculated?</h3><p>The fee is 4.5% of the amount multiplied by the number of days you choose.</p></div>
+          <div class="faq-item"><h3>Can I apply for multiple extensions?</h3><p>Yes, you can apply multiple times. Each extension is treated separately with its own fee.</p></div>
+          <div class="faq-item"><h3>If today is my return date, can I still extend?</h3><p>No, you must apply at least 24 hours before the original return date.</p></div>
+          <div class="faq-item"><h3>How many days can I extend?</h3><p>Standard range is 15–30 days. Premium members can go up to 60 days.</p></div>
+          <div class="faq-item"><h3>Will my credit score be affected?</h3><p>No. Delay It is a paid service and does not impact your credit report.</p></div>
+        </div>
+      `,
+      1: `
+        <div class="toplogos">
+          <h2 class="section-title">Split Half Pay</h2>
+          <div>Flexible Repayment</div>
+        </div>
+        <div class="how-it-works">
+          <p>About Us</p>
+          <ul>
+            <li><span>•</span> With Split half pay, you can pay half of the total amount and extend the remaining half with flexibility while ensuring smooth repayment.</li>
+          </ul>
+        </div>
+        <div class="how-it-works">
+          <p>How Half Split Pay works?</p>
+          <ul>
+            <li><span>•</span> Paying 50% of the amount now and split the remaining 50% in instalments.</li>
+            <li><span>•</span> Fast approval and simple process.</li>
+          </ul>
+        </div>
+        <div class="note">Note: The split fee must be paid upfront along with the first 50%. This allows you to split the remaining amount.</div>
+        <div class="faq-container">
+          <h2>FAQ's</h2>
+          <div class="faq-item"><h3>What is the minimum amount I can split?</h3><p>The minimum amount is ₹2000.</p></div>
+          <div class="faq-item"><h3>How is the 5.2% fee divided?</h3><p>The fee is shared equally among all participants.</p></div>
+          <div class="faq-item"><h3>Can I choose different number of splits?</h3><p>Yes — you can select between 2 to 8 splits.</p></div>
+        </div>
+      `,
+      3: `
+        <div class="toplogos">
+          <h2 class="section-title">Pre-Saver</h2>
+          <div>Save on time</div>
+        </div>
+        <div class="how-it-works">
+          <p>About Us</p>
+          <ul>
+            <li><span>•</span> By using Pre-saver you can save the particular upcoming offer (or) amounts on a particular date.</li>
+          </ul>
+        </div>
+        <div class="how-it-works">
+          <p>How Pre-Saver works?</p>
+          <ul>
+            <li><span>•</span> Pre saves the offers and amounts on the date you want.</li>
+            <li><span>•</span> Fast approval process</li>
+          </ul>
+        </div>
+        <div class="note">Note: The fee will be based on number of slots available.</div>
+        <div class="faq-container">
+          <h2>For VIP members</h2>
+          <div class="faq-item"><h3>1. Private Offer</h3><p>VIPs get private offer.</p></div>
+          <div class="faq-item"><h3>2. Customize Offer</h3><p>VIPs can custom their offer based on their needs.</p></div>
+          <div class="faq-item"><h3>3. RLO (Rare Limited Offer)</h3><p>VIPs can get very rare limited offers for every 2-3 months.</p></div>
+        </div>
+        <div class="faq-container">
+          <h2>FAQ's</h2>
+          <div class="faq-item"><h3>Can I pre-save whenever I want?</h3><p>Yes, if you are VIP then you can use whenever you want.</p></div>
+          <div class="faq-item"><h3>Where can I find the fee for pre-saver?</h3><p>The fee for pre-saver is based on the offer or amount you applying (Ask coordinator).</p></div>
+          <div class="faq-item"><h3>Can I pre-save whenever I want? But I'm not VIP..!</h3><p>No, but you can apply whenever there will be offer available soon.</p></div>
+          <div class="faq-item"><h3>Is there any withdrawal fee?</h3><p>No fee if you withdraw after 30 days. Early withdrawal has 1% fee.</p></div>
+          <div class="faq-item"><h3>How secure is my saved money?</h3><p>100% secure with bank-level encryption and insurance up to ₹5 lakh.</p></div>
+        </div>
+      `
+    };
+
+    function switchTab(tabIndex) {
+      currentTab = tabIndex;
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('tab-active'));
+      const active = document.getElementById(`tab-${tabIndex}`);
+      if (active) active.classList.add('tab-active');
+      document.getElementById('main-content').innerHTML = tabContents[tabIndex] || '';
+    }
+
+    function showPopup() {
+      const modal = document.getElementById('modal');
+      const titleEl = document.getElementById('modal-title');
+      const contentEl = document.getElementById('modal-content');
+      modal.classList.add('show');
+      const rate = fees[currentTab];
+
+      const formLinks = {
+        0: "https://forms.gle/9URS1LAqd3iB8qDUA",
+        1: "https://forms.gle/ujs36QQpBpMPBRPu6",
+        2: "https://forms.gle/VqJ1Wqtj8HxXa84e9",
+      };
+
+      if (rate !== null) {
+        titleEl.textContent = tabNames[currentTab];
+        const applyFormUrl = formLinks[currentTab] || formLinks[0];
+        contentEl.innerHTML = `
+          <div class="amount-box">
+            <input id="amount-input" type="number" value="1000" oninput="calculateFee()">
+          </div>
+          <div class="calc-result">
+            <div>
+              <span class="text-secondary">${tabNames[currentTab]} fee (${rate}%)</span>
+              <span id="fee-amount">₹65.00</span>
+            </div>
+          </div>
+          <button onclick="calculateFee()" class="btn-primary">Calculate fee now</button>
+          <button class="btn-secondary"><a href="${applyFormUrl}" target="_blank">Apply Now</a></button>
+          <footer>© BS&MFI Solutions. All Rights Reserved.</footer>
+        `;
+        calculateFee();
+      } else if (currentTab === 3) {
+        titleEl.textContent = "Pre-Saver";
+        contentEl.innerHTML = `
+          <div style="text-align:center; padding: 10px 0 20px;">
+            <div style="font-size:48px; margin-bottom:12px;">📦</div>
+            <h3 style="font-size:18px; font-weight:600; margin-bottom:8px;">Welcome to Pre-Saver</h3>
+            <p style="color:#7d8b99; font-size:14px; line-height:1.5; margin-bottom:24px;">
+              By using Pre-saver you can save the particular upcoming offer (or) amounts on a particular date.
+            </p>
+            <a href="https://forms.gle/rtcayowFYw48u94PA" target="_blank">
+              <button class="btn-primary">Pre-Save Now</button>
+            </a>
+          </div>
+        `;
+      }
+    }
+
+    function calculateFee() {
+      const input = document.getElementById('amount-input');
+      if (!input) return;
+      let amount = parseFloat(input.value) || 1000;
+      const rate = fees[currentTab];
+      const fee = (amount * rate / 100);
+      document.getElementById('fee-amount').textContent = '₹' + fee.toFixed(2);
+    }
+
+    function hideModal() {
+      document.getElementById('modal').classList.remove('show');
+    }
+
+    function goBack() {
+      if (window.history.length > 1) window.history.back();
+      else alert("Back");
+    }
+
+    window.onload = () => switchTab(0);
+  </script>
+</body>
+</html>
