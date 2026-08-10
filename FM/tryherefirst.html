@@ -1,834 +1,664 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Black Swan | Posts</title>
-<link rel="icon" type="image/x-icon" href="https://i.ibb.co/27GXWVgg/BS.png">
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; 
-    scrollbar-width: thin;letter-spacing: 0.3px;
-    scrollbar-color: rgba(255, 255, 255, 0.648), transparent;
-  }
-  
-  body {
-    background: black;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        padding: 10px;
-  }
-* {
-            -webkit-tap-highlight-color: transparent;
-        }
-        body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-  .post {
-    width: 100%;
-    max-width: 700px;
-    background: #1a1a1a;
-    border-radius: 16px;
-    overflow: hidden;
-    color: #e7e9ea;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BS&MFI | MLendings</title>
+  <link rel="icon" href="mfi.logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --tg-bg: #0e1621;
+      --tg-sidebar: #17212b;
+      --tg-hover: #202b36;
+      --tg-active: #2b5278;
+      --tg-accent: #2AABEE;
+      --tg-accent-hover: #1e96d1;
+      --tg-text: #ffffff;
+      --tg-text-secondary: #708499;
+      --tg-text-muted: #6ab3f3;
+      --tg-border: #0e1621;
+      --tg-input-bg: #242f3d;
+      --tg-search-bg: #242f3d;
+      --tg-dialog-bg: #17212b;
+      --tg-shadow: rgba(0, 0, 0, 0.4);
+    }
 
-  /* Header */
-  .header {
-    display: flex;
-    align-items: center;
-    padding: 14px 16px 10px;
-    gap: 12px;
-  }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      scrollbar-width: thin;
+      scrollbar-color: #3a4a5c transparent;
+    }
 
-  .logo {
-    width: 42px;
-    height: 42px;
+    body {
+      font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background-color: var(--tg-bg);
+      color: var(--tg-text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      user-select: none;
+    }
+
+    button {
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ===== HEADER (Telegram style) ===== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--tg-sidebar);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      max-width: 100%;
+    }
+
+    .header-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 8px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .logo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 48px;
+    }
+
+    .logo h1 {
+      font-weight: 500;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--tg-text);
+      letter-spacing: 0.2px;
+    }
+
+    .logo h1 img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+    }
+
+    .rightsideopt {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .rightsideopt a,
+    .rightsideopt button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      color: var(--tg-text-secondary);
+      transition: background 0.15s;
+    }
+
+    .rightsideopt a:hover,
+    .rightsideopt button:hover {
+      background: var(--tg-hover);
+      color: var(--tg-text);
+    }
+
+    .rightsideopt svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    /* Search */
+    .search-container {
+      display: flex;
+      align-items: center;
+      background: var(--tg-search-bg);
+      border-radius: 22px;
+      height: 42px;
+      padding: 0 14px;
+      gap: 10px;
+      transition: background 0.2s;
+    }
+
+    .search-container:focus-within {
+      background: #2b3a4a;
+    }
+
+    .search-container svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--tg-text-secondary);
+      flex-shrink: 0;
+    }
+
+    #searchInput {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--tg-text);
+      font-size: 15px;
+      font-weight: 400;
+    }
+
+    #searchInput::placeholder {
+      color: var(--tg-text-secondary);
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    #sectionsContainer {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 120px 0 90px;
+      min-height: 100vh;
+    }
+
+    .section {
+      margin-bottom: 8px;
+    }
+
+    .section h2 {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--tg-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 16px 16px 8px;
+      background: var(--tg-bg);
+      position: sticky;
+      top: 110px;
+      z-index: 10;
+    }
+
+    .site-list {
+      background: var(--tg-sidebar);
+    }
+
+    .site-item {
+      display: flex;
+      align-items: center;
+      padding: 10px 16px;
+      gap: 14px;
+      transition: background 0.12s;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      cursor: pointer;
+    }
+
+    .site-item:hover {
+      background: var(--tg-hover);
+    }
+
+    .site-item:active {
+      background: var(--tg-active);
+    }
+
+    .letter-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      font-size: 22px;
+      color: #fff;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #2AABEE, #1e88e5);
+    }
+
+    .site-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .site-info h3 {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--tg-text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .site-info p {
+      font-size: 14px;
+      color: var(--tg-text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.3;
+    }
+
+    /* ===== FLOATING BUTTON ===== */
+    .imlateoptions {
+      position: fixed;
+    bottom: 90px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
-    background: #111;
+    background: var(--tg-accent);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
-    font-size: 18px;
-    color: #fff;
-    border: 2px solid #333;
-    flex-shrink: 0;
-  }
+    transition: transform 0.2s, background 0.2s;
+    z-index: 1000;
+    }
 
-  .logo span {
-    background: linear-gradient(135deg, #fff 30%, #aaa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-hr {
-    background: #80808036;
-    border: none;
-    outline: none;
-    height: 3px;
-    margin: 20px 0;
-}
-  .user-info {
-    flex: 1;
-  }
+    .imlateoptions:hover {
+      background: var(--tg-accent-hover);
+      transform: scale(1.05);
+    }
 
-  .name {
-    font-weight: 700;
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
+    .imlateoptions svg {
+      width: 26px;
+      height: 26px;
+      fill: #fff;
+    }
 
-  .verified {
-    color: #1d9bf0;
-    font-size: 15px;
-  }
+    /* ===== BOTTOM NAV (Telegram style) ===== */
+    .bottomoptions {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--tg-sidebar);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      z-index: 100;
+      padding: 6px 0 env(safe-area-inset-bottom, 6px);
+    }
 
-  .handle {
-    font-size: 13px;
-    color: #71767b;
-    margin-top: 1px;
-  }
+    .bottom-nav {
+      max-width: 920px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+    }
 
-  .date {
-    font-size: 13px;
-    color: #71767b;
-  }
+    .bottomtakeoptions {
+      display: flex;
+      width: 100%;
+      max-width: 480px;
+      justify-content: space-around;
+    }
 
-  /* Post text */
-  .content {
-    padding: 4px 16px 14px;
-    font-size: 16px;
-    line-height: 1.45;
-  }
-.highlighter{
-      color: #0082ff;}
-  .media {
-    margin: 0 12px 14px;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid #2f3336;
-    position: relative;
-  }
+    .bottomtakeoptions a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      color: var(--tg-text-secondary);
+      font-size: 11px;
+      font-weight: 500;
+      transition: color 0.15s, background 0.15s;
+      min-width: 64px;
+    }
 
-  .media img {
-    width: 100%;
-    display: block;
-  }
+    .bottomtakeoptions a:hover {
+      color: var(--tg-accent);
+      background: rgba(42, 171, 238, 0.1);
+    }
 
-  .caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.85));
-    padding: 40px 0px 14px;
-    text-align: center;
-    font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
-    font-size: 28px;
-    text-transform: uppercase;
-    color: white;
-    text-shadow: 2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000;
-    letter-spacing: 0.5px;
-  }
+    .bottomtakeoptions a svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
 
-  /* Footer */
-  .footer {
-    padding: 10px 16px 14px;
-    font-size: 13px;
-    color: #71767b;
-    border-top: 1px solid #2f3336;
-    display: flex;
-    justify-content: space-between;
-  }
-</style>
+    /* ===== PASSWORD POPUP (Telegram dialog style) ===== */
+    .servicedivrtpopup {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.65);
+      padding: 20px;
+    }
+
+    .servicedivrtpopup-inner {
+      background: var(--tg-dialog-bg);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 360px;
+      padding: 28px 24px 20px;
+      text-align: center;
+      box-shadow: 0 12px 40px var(--tg-shadow);
+      animation: tg-pop 0.22s ease-out;
+    }
+
+    @keyframes tg-pop {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .servicedivrtlogo {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      border-radius: 18px;
+      margin-bottom: 16px;
+      background: rgba(42, 171, 238, 0.15);
+      padding: 8px;
+    }
+
+    .servicedivrtpopup h1 {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--tg-text);
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--tg-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .servicedivrtpopup input {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 16px;
+      background: var(--tg-input-bg);
+      border: none;
+      border-radius: 10px;
+      color: var(--tg-text);
+      text-align: center;
+      outline: none;
+      transition: box-shadow 0.2s;
+    }
+
+    .servicedivrtpopup input:focus {
+      box-shadow: 0 0 0 2px var(--tg-accent);
+    }
+
+    .servicedivrtpopup input::placeholder {
+      color: var(--tg-text-secondary);
+    }
+
+    .servicedivrtpopup button {
+      width: 100%;
+      margin-top: 16px;
+      padding: 12px;
+      font-size: 15px;
+      font-weight: 500;
+      background: var(--tg-accent);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      transition: background 0.15s;
+    }
+
+    .servicedivrtpopup button:hover {
+      background: var(--tg-accent-hover);
+    }
+
+    .error {
+      margin-top: 12px;
+      color: #e53935;
+      font-size: 13px;
+      min-height: 18px;
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--tg-text-secondary);
+    }
+
+    /* Hide original popup structure extras */
+    .servicedivrtpopup > *:not(.servicedivrtpopup-inner) {
+      /* will be moved inside via JS if needed */
+    }
+  </style>
 </head>
 <body>
 
-<div class="post">
+<!-- Password Popup - Telegram Dialog Style -->
+<div class="servicedivrtpopup" id="popup">
+  <div class="servicedivrtpopup-inner">
+    <img class="servicedivrtlogo" src="mfi.gif" alt="BSMFI Logo" onerror="this.style.display='none'">
+    <h1>BS&MFI</h1>
+    <div class="subtitle">services</div>
 
+    <input type="text" id="codeInput" placeholder="Enter password" autocomplete="off"/>
 
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">July 15th, 2026</div>
-  </div>
-  <div class="media">
-        <img src="image/letbfrnds.jpeg" alt="Black Swan servers">
-    <div class="caption">Mclck & BS are friends as before.</div>
-  </div>
-  <hr>
-
-
-
-  <div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">July 12th, 2026</div>
-  </div>
-  <div class="media">
-        <img src="image/kissme.jpeg" alt="Black Swan servers">
-    <div class="caption">com on my heart, kiss me.</div>
-  </div>
-  <hr>
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">July 8th, 2026</div>
-  </div>
-  <div class="content">
-    From today Myootive Services are managed by Black swan.
-    </div>
-  <hr>
-
-
-
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">July 1st, 2026</div>
-  </div>
-  <div class="media">
-        <img src="image/chilling.jpeg" alt="Black Swan servers">
-    <div class="caption">life is easy, when you think its easy.</div>
-  </div>
-  <hr>
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">July 1st, 2026</div>
-  </div>
-  <div class="content">
-    Migret Services has been totally bought by Black Swan.
-  </div>
-  <hr>
-
-
-
-
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">June 22th, 2026</div>
-  </div>
-  <div class="media">
-        <img src="image/facehide.jpeg" alt="Black Swan servers">
-    <div class="caption">Mdick, see i trying my best to close this between us but i think you like my * taste, my heart.</div>
-  </div>
-  <hr>
-
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">June 13th, 2026</div>
-  </div>
-  <div class="media">
-        <img src="image/cry.jpeg" alt="Black Swan servers">
-    <div class="caption">Mdick, why you reject my offer my heart.</div>
-  </div>
-  <hr>
-
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">June 10th, 2026</div>
-  </div>
-  <div class="media">
-        <img src="image/ltsmakdel.jpeg" alt="Black Swan servers">
-    <div class="caption">Mdick, i like to buy your Migret services bro.</div>
-  </div>
-  <hr>
-
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">May 15th, 2026</div>
-  </div>
-  <div class="media">
-        <img src="image/watchphone.jpeg" alt="Black Swan servers">
-    <div class="caption">Mdick, i still thinking very much to fix our relation my heart.</div>
-  </div>
-  <hr>
-
-
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Apr 12th, 2026</div>
-  </div>
-  <div class="media">
-        <img src="image/okok.jpeg" alt="Black Swan servers">
-    <div class="caption">SMD, my heart</div>
-  </div>
-  <hr>
-
-
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Feb 2nd, 2026</div>
-  </div>
-  <div class="media">
-        <img src="image/thanks.jpeg" alt="Black Swan servers">
-    <div class="caption">Mdick...! Thanks for your raid my heart, love you.</div>
-  </div>
-  <hr>
-
-
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Feb 2nd, 2026</div>
-  </div>
-  <div class="content">
-    June 16th, 2 <br>
-    June 29th - 1 
-    <br><br>
-    After the data delete issues 3 more companies came from Mclck Services!<br><br>Totally 6 new companies have came to Black swan from Mclck.  
-  </div>
-  <hr>
-
-
-
-
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Jan 2nd, 2026</div>
-  </div>
-  <div class="content">
-  </div>
-  <div class="media">
-        <img src="image/figeragebet.jpeg" alt="Black Swan servers">
-    <div class="caption">Mclck ❌ Mdick ☑️</div>
-  </div>
-  <hr>
-
-
-
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Dec 30th, 2025</div>
-  </div>
-  <div class="content">
-  </div>
-  <div class="media">
-        <img src="image/figer.jpeg" alt="Black Swan servers">
-    <div class="caption">That why your server data deleted, Stupid dum fuck!</div>
-  </div>
-  <hr>
-
-
-
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Dec 8th, 2025</div>
-  </div>
-  <div class="content">
-  </div>
-  <div class="media">
-        <img src="image/coder.jpeg" alt="Black Swan servers">
-    <div class="caption">Mclck..! I think you have to take coding classes my heart.</div>
-  </div>
-  <hr>
-
-
-
-
-
-
-
-
-    <div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Nov 28th, 2025</div>
-  </div>
-  <div class="content">
-  </div>
-  <div class="media">
-        <img src="image/hardsmile.jpeg" alt="Black Swan servers">
-    <div class="caption">Yo Mclck..! I heard your server data has deleted! Is it true.</div>
-  </div>
-  <hr>
-
-
-
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Nov 1st, 2025</div>
-  </div>
-  <div class="content">
-  </div>
-  <div class="media">
-        <img src="image/thinking.jpeg" alt="Black Swan servers">
-    <div class="caption">Mclck..! Still thinking about you, My heart</div>
-  </div>
-  <hr>
-
-
-
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Aug 8th, 2025</div>
-  </div>
-  <div class="content">
-  </div>
-  <div class="media">
-        <img src="image/blanksit.jpeg" alt="Black Swan servers">
-    <div class="caption">💔💔💔💔</div>
-  </div>
-  <hr>
-
-
-
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Aug 8th, 2025</div>
-  </div>
-  <div class="content">
-  </div>
-  <div class="media">
-        <img src="image/sadndcry.jpeg" alt="Black Swan servers">
-    <div class="caption">Mclck..! You broke me, my heart</div>
-  </div>
-  <hr>
-
-
-
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Jun 24th, 2025</div>
-  </div>
-  <div class="content">
-  </div>
-  <div class="media">
-        <img src="image/letbfrnds.jpeg" alt="Black Swan servers">
-    <div class="caption">Bro Mclck..! Nah, Let be friends bro</div>
-  </div>
-  <hr>
-
-
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">May 4th, 2025</div>
-  </div>
-  <div class="content">
-  </div>
-  <div class="media">
-        <img src="image/coder.jpeg" alt="Black Swan servers">
-    <div class="caption">Yo Mclck..! Go code for your services bro, Why TF you in my business</div>
-  </div>
-  <hr>
-
-
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Mar 24th, 2025</div>
-  </div>
-  <div class="content">
-  </div>
-  <div class="media">
-        <img src="image/angrystare.jpeg" alt="Black Swan servers">
-    <div class="caption">Mclck..! WTF you want bro.</div>
-  </div>
-  <hr>
+    <button onclick="openPlan()">Continue</button>
 
+    <div class="error" id="error"></div>
 
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Mar 4th, 2025</div>
-  </div>
-  <div class="content">
-  </div>
-  <div class="media">
-        <img src="image/mindmyownbusinss.jpeg" alt="Black Swan servers">
-    <div class="caption">Mclck..! Do i know you brodie</div>
-  </div>
-  <hr>
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Feb 14th, 2025</div>
-  </div>
-  <div class="content">
-  </div>
-  <div class="media">
-        <img src="image/who.jpeg" alt="Black Swan servers">
-    <div class="caption">Mclck..! Who are you bro</div>
-  </div>
-  <hr>
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Jan 28st, 2025</div>
-  </div>
-  <div class="content">
-    We have fixed all the issues, once re-check the sites.<br><br> If you still facing issue use <a class="highlighter" href="https://blackswan19.github.io/bscrop/helper">BsHelper</a>.
-  </div>
-  <hr>
-
-
-
-
-
-<div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Jan 28st, 2025</div>
-  </div>
-  <div class="content">
-  </div>
-  <div class="media">
-    <img src="image/rumantic.jpeg" alt="Black Swan servers">
-    <div class="caption">Once re-check my heart</div>
-  </div>
-  <hr>
-
-
-
-
-    <div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Jan 27th, 2025</div>
-  </div>
-  <div class="content">
-    
-  </div>
-  <div class="media">
-    <img src="image/angry.jpeg" alt="Black Swan servers">
-    <div class="caption">Are you sure you using my sites only</div>
-  </div>
-  <hr>
-
-
-
-
-    <div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Jan 25th, 2025</div>
-  </div>
-  <div class="content">
-    
-  </div>
-  <div class="media">
-    <img src="image/scared.jpeg" alt="Black Swan servers">
-    <div class="caption">how you still facing issues bro</div>
-  </div>
-  <hr>
-
-
-
-
-    <div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Jan 25th, 2025</div>
-  </div>
-  <div class="content">
-    
+    <div class="footer-note">Powered by MLendings</div>
   </div>
-  <div class="media">
-    <img src="image/ok.jpeg" alt="Black Swan servers">
-    <div class="caption">issues fixed, my heart</div>
-  </div>
-  <hr>
-
-
-  <div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Jan 24th, 2025</div>
-  </div>
-  <div class="media">
-    <img src="image/sleepy.jpeg" alt="Black Swan servers">
-    <div class="caption">Issues Will fix sooooon, My heart</div>
-  </div>
-  <hr>
-
-
-
- <div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Jan 24th, 2025</div>
-  </div>
-  <div class="content">
-    We received your issues reports, All the issues will be fix soon.
-  </div>
-  <hr>
-
-
-  
-  <div class="header">
-    <img class="logo" width="30px" src="https://i.ibb.co/27GXWVgg/BS.png" alt="">
-    <div class="user-info">
-      <div class="name">
-        Black Swan
-      </div>
-    </div>
-    <div class="date">Dec 16th, 2024</div>
-  </div>
-  <div class="content">
-    Welcome..!
-  </div>
-  <div class="media">
-    <img src="image/chickiss.jpeg" alt="Black Swan servers">
-    <div class="caption">Welcome to Black swan</div>
-  </div>
-<div class="footer">
-    <span>Black Swan</span>
-  </div>
-
 </div>
-<script>document.addEventListener('contextmenu', e => e.preventDefault());</script>
+
+<script src="changable.js"></script>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <h1>
+        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/refs/heads/main/Animals%20and%20Nature/Lobster.webp" alt="">
+        MLendings
+      </h1>
+      <div class="rightsideopt">
+        <a onclick="alert('Follow these steps..!\n\n1. Click on the icon on bottom left.\n2. Fill out the form.\n3. Wait a few hours.\n4. Check details like interest and etc... in bottom right icon.\n5. Get funds from your coordinator.\n6. Repay on time for future loans.\n\nNOTE : Are you late to return? Say 2 days before we will extend the date (or) Extra fees apply.\n')" title="Help">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M432.15-380.92 361-73.54Q358.77-63 350.15-56.5q-8.61 6.5-19.77 6.5-14.99 0-24.11-10.96t-5.88-25.35l107.38-534.61-95.08 38v102.54q0 12.76-8.61 21.38-8.62 8.61-21.39 8.61-12.77 0-21.38-8.61-8.62-8.62-8.62-21.38v-118.16q0-10.84 5.93-19.57 5.92-8.74 15.77-13.35l167.99-71.39q14-6 27.97-7.19 13.96-1.19 26.8 2.66 12.85 3.84 23.81 11.88 10.96 8.04 18.58 20.89l33.84 53.99q14.93 23.47 33.77 43.39 18.85 19.92 41.23 34.46 16.31 10.69 35.23 18.16 18.93 7.46 38.62 11.23 12.15 2.23 19.96 11.03 7.81 8.81 7.81 21.58 0 12.77-9.12 20.88-9.11 8.12-21.88 6.5-57.54-9.15-103.58-39.42-46.04-30.27-79.81-76.35l-30.76 153.01 74.69 74.54q5.23 5.61 7.84 12.15 2.62 6.54 2.62 13.77V-80q0 12.77-8.62 21.38Q572.77-50 560-50t-21.38-8.62Q530-67.23 530-80v-217.31l-97.85-83.61Zm55.58-386.81q-21.58-21.58-21.58-52.27 0-30.69 21.58-52.27 21.58-21.58 52.27-21.58 30.69 0 52.27 21.58 21.58 21.58 21.58 52.27 0 30.69-21.58 52.27-21.58 21.58-52.27 21.58-30.69 0-52.27-21.58Z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="search-container">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M380-320q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l224 224q11 11 11 28t-11 28q-11 11-28 11t-28-11L532-372q-30 24-69 38t-83 14Zm0-80q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+      <input type="text" id="searchInput" placeholder="Search" autocomplete="off"/>
+    </div>
+  </div>
+</div>
+
+<div id="sectionsContainer"></div>
+
+<div class="imlateoptions">
+  <a href="https://mfi0212.github.io/MFI/imlate" title="Info">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="m336.39-112.69-55.31-93-104.62-22.47q-13.46-2.61-21.5-14.15-8.04-11.54-6.42-25l10.23-107.61-71.15-81.39q-9.23-9.84-9.23-23.69 0-13.85 9.23-23.69l71.15-81.39-10.23-107.61q-1.62-13.46 6.42-25t21.5-14.15l104.62-22.47 55.31-93q7.23-11.84 19.69-16.15 12.46-4.31 25.31 1.31L480-820.46l98.61-41.69q12.85-5.62 25.31-1.31 12.46 4.31 19.69 16.15l55.31 93 104.62 22.47q13.46 2.61 21.5 14.15 8.04 11.54 6.42 25l-10.23 107.61 71.15 81.39q9.23 9.84 9.23 23.69 0 13.85-9.23 23.69l-71.15 81.39 10.23 107.61q1.62 13.46-6.42 25t-21.5 14.15l-104.62 22.47-55.31 93q-7.23 11.84-19.69 16.15-12.46 4.31-25.31-1.31L480-139.54l-98.61 41.69q-12.85 5.62-25.31 1.31-12.46-4.31-19.69-16.15ZM378-162l102-43.23L583.23-162 640-258l110-25.23L740-396l74-84-74-85.23L750-678l-110-24-58-96-102 43.23L376.77-798 320-702l-110 24 10 112.77L146-480l74 84-10 114 110 24 58 96Zm102-318Zm22.92 179.85q9.39-9.39 9.39-22.93T502.92-346q-9.38-9.38-22.92-9.38-13.54 0-22.92 9.38-9.39 9.38-9.39 22.92 0 13.54 9.39 22.93 9.38 9.38 22.92 9.38 13.54 0 22.92-9.38Zm-1.54-145.39q8.62-8.61 8.62-21.38v-180q0-12.77-8.62-21.39-8.61-8.61-21.38-8.61t-21.38 8.61q-8.62 8.62-8.62 21.39v180q0 12.77 8.62 21.38 8.61 8.62 21.38 8.62t21.38-8.62Z"/></svg>
+  </a>
+</div>
+
+<div class="bottomoptions">
+  <div class="bottom-nav">
+    <div class="bottomtakeoptions">
+      <a onclick="alert('We are redirecting you to taking form.')" href="https://mfi0212.github.io/MFI/applydivert">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="m548.92-602.54 206.31-205.3q8.31-8.31 20.38-8.43 12.08-.11 21 8.81 8.31 8.31 8.31 20.88 0 12.58-8.31 20.89L574.23-543.31q-10.85 10.85-25.31 10.85-14.46 0-25.31-10.85L414.23-652.69q-8.92-8.92-8.81-21.08.12-12.15 9.43-21.07 8.92-8.31 21.07-8.43 12.16-.11 21.08 8.81l91.92 91.92Zm37.93 466.62q1.92.77 3.46.77t3.46-.77l235.31-72.85q-3.08-13.61-12.77-20.88-9.7-7.27-21.7-7.27H598.77q-26.23 0-44.54-2t-37.62-8.77l-62.76-20.54q-12.16-3.85-17.43-15.38-5.27-11.54-1.42-23.7 3.85-11.77 14.88-17.34 11.04-5.58 23.2-1.73l52 18.23q18.15 5.77 40.61 8.19t58.31 3.04h10.61q0-14.85-6.69-25.62-6.69-10.77-17.61-14.54l-232.08-85.23q-1.15-.38-2.12-.57-.96-.2-2.11-.2h-74v206.16l286.85 81Zm-15.62 58.77L300-154.92q-6.85 24.84-27.85 39.88-21 15.04-44.46 15.04h-55.38q-29.92 0-51.12-21.19Q100-142.39 100-172.31v-238.46q0-29.92 21.19-51.11 21.2-21.19 51.12-21.19h201.3q6.24 0 12.66 1.3 6.42 1.31 12.04 3.31l233.07 85.85q27.23 10.07 45.23 35.65 18 25.58 18 60.04h100q43.08 0 70.2 27.81 27.11 27.8 27.11 72.19 0 17-9 27.38-9 10.39-27.23 16.46L613-77.77q-9.85 3.23-20.69 3.42-10.85.2-21.08-2.8ZM160-172.31q0 5.39 3.46 8.85t8.85 3.46h55.38q5.39 0 8.85-2.88 3.46-2.89 3.46-9.43v-250.77h-67.69q-5.39 0-8.85 3.47-3.46 3.46-3.46 8.84v238.46Z"/></svg>
+        Apply
+      </a>
+      <a href="https://blackswan19.github.io/golden/FM/starpre">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="m422-232 207-248H469l29-227-185 267h139l-30 208Zm-38.92-148H261.39q-20.16 0-29.54-17.85-9.39-17.84 2.31-34.38L496.23-810.3q8.08-11.31 20.62-15.47 12.53-4.15 26.07.7 13.54 4.84 19.81 16.57t4.65 25.27L537.31-540h149.23q21.38 0 30.15 19.16 8.77 19.15-5.15 35.69L421.77-138.08q-8.69 10.31-21.23 13.35-12.54 3.03-24.46-2.43-11.92-5.46-18.5-16.69t-4.96-24.77L383.08-380ZM471-470Z"/></svg>
+        Turbo
+      </a>
+      <a href="https://blackswan19.github.io/golden/FM/service_search.html">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M380.77-335.39q-102.46 0-173.54-71.07-71.07-71.08-71.07-173.54t71.07-173.54q71.08-71.07 173.54-71.07t173.54 71.07q71.07 71.08 71.07 173.54 0 42.85-14.38 81.85-14.39 39-38.39 67.84l230.16 230.16q8.31 8.3 8.5 20.88.19 12.58-8.5 21.27t-21.08 8.69q-12.38 0-21.07-8.69L530.46-388.16q-30 24.77-69 38.77-39 14-80.69 14Zm0-59.99q77.31 0 130.96-53.66 53.66-53.65 53.66-130.96t-53.66-130.96q-53.65-53.66-130.96-53.66t-130.96 53.66Q196.15-657.31 196.15-580t53.66 130.96q53.65 53.66 130.96 53.66Z"/></svg>
+        Search
+      </a>
+      <a href="https://blackswan19.github.io/golden/FM/accverify">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M240.92-268.31q51-37.84 111.12-59.77Q412.15-350 480-350t127.96 21.92q60.12 21.93 111.12 59.77 37.3-41 59.11-94.92Q800-417.15 800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 62.85 21.81 116.77 21.81 53.92 59.11 94.92Zm146.7-219.31Q350-525.23 350-580q0-54.77 37.62-92.38Q425.23-710 480-710q54.77 0 92.38 37.62Q610-634.77 610-580q0 54.77-37.62 92.38Q534.77-450 480-450q-54.77 0-92.38-37.62ZM480-100q-79.15 0-148.5-29.77t-120.65-81.08q-51.31-51.3-81.08-120.65Q100-400.85 100-480t29.77-148.5q29.77-69.35 81.08-120.65 51.3-51.31 120.65-81.08Q400.85-860 480-860t148.5 29.77q69.35 29.77 120.65 81.08 51.31 51.3 81.08 120.65Q860-559.15 860-480t-29.77 148.5q-29.77 69.35-81.08 120.65-51.3 51.31-120.65 81.08Q559.15-100 480-100Zm104.42-77.42q50.27-17.43 89.27-48.73-39-30.16-88.11-47Q536.46-290 480-290t-105.77 16.65q-49.31 16.66-87.92 47.2 39 31.3 89.27 48.73Q425.85-160 480-160t104.42-17.42Zm-54.5-352.66Q550-550.15 550-580t-20.08-49.92Q509.85-650 480-650t-49.92 20.08Q410-609.85 410-580t20.08 49.92Q450.15-510 480-510t49.92-20.08ZM480-580Zm0 355Z"/></svg>
+        Account
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+const siteGroups = [
+  {
+    heading: "Return Management",
+    sites: [
+      { name: "BS&MFI Solutions", desc: "Return date extender", url: "https://blackswan19.github.io/golden/FM/solution", icon: "fab fa-youtube" },
+    ]
+  },
+  {
+    heading: "New in & issue",
+    sites: [
+      { name: "Enterance Form", desc: "New members form", url: "https://mfi0212.github.io/MFI/entrysheet", icon: "fas fa-code" },
+      { name: "Helper", desc: "I have issue form", url: "https://mfi0212.github.io/MFI/abt.hlp", icon: "fas fa-film" },
+    ]
+  },
+  {
+    heading: "Offer & Earns",
+    sites: [
+      { name: "Stars", desc: "Interest reducer.", url: "https://blackswan19.github.io/golden/FM/starspage", icon: "fab fa-reddit" },
+    ]
+  },
+  {
+    heading: "Services",
+    sites: [
+      { name: "All Services", desc: "All service from BS&MFI", url: "https://blackswan19.github.io/BS/bslends", icon: "fas fa-code" },
+      { name: "BsLends", desc: "A service from BS&MFI", url: "https://mfi0212.github.io/MFI/rate", icon: "fas fa-code" },
+      { name: "MLendings", desc: "A service from BS&MFI", url: "https://blackswan19.github.io/golden/FM/themain", icon: "fas fa-code" },
+    ]
+  },
+  {
+    heading: "Collaboration",
+    sites: [
+      { name: "BsNews", desc: "BS&MFI Service news", url: "https://blackswan19.github.io/golden/FM/bsnews" },
+      { name: "BsPsgenerater", desc: "Password generator", url: "https://blackswan19.github.io/Educate/password", icon: "fas fa-code" },
+      { name: "BsReminder", desc: "Date wise notes", url: "https://blackswan19.github.io/bscrop/reminder", icon: "fas fa-code" },
+      { name: "BsBookpad", desc: "Download the notes", url: "https://blackswan19.github.io/Educate/bookpad", icon: "fas fa-code" },
+      { name: "BsAdstoper", desc: "Ad blocker", url: "https://blackswan19.github.io/Educate/stoper", icon: "fas fa-code" },
+      { name: "BsFilestore", desc: "Store privacy files in folders", url: "https://blackswan19.github.io/Educate/hider", icon: "fas fa-code" },
+      { name: "BsMediastorage", desc: "Store files with privacy", url: "https://blackswan19.github.io/Educate/hider", icon: "fas fa-code" },
+    ]
+  }
+];
+
+function getColor(name) {
+  // Telegram-style avatar gradients
+  const colors = [
+    "linear-gradient(135deg, #2AABEE, #1e88e5)",
+    "linear-gradient(135deg, #e53935, #c62828)",
+    "linear-gradient(135deg, #43a047, #2e7d32)",
+    "linear-gradient(135deg, #fb8c00, #ef6c00)",
+    "linear-gradient(135deg, #8e24aa, #6a1b9a)",
+    "linear-gradient(135deg, #00acc1, #00838f)",
+    "linear-gradient(135deg, #7cb342, #558b2f)",
+    "linear-gradient(135deg, #f4511e, #d84315)"
+  ];
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return colors[Math.abs(hash) % colors.length];
+}
+
+function getInitial(name) {
+  return name.trim()[0]?.toUpperCase() || "?";
+}
+
+function createSiteItem(site) {
+  const a = document.createElement("a");
+  a.href = site.url || "#";
+  a.target = "_parent";
+  a.className = "site-item";
+
+  const bg = getColor(site.name);
+  const initial = getInitial(site.name);
+
+  a.innerHTML = `
+    <div class="letter-icon" style="background: ${bg};">${initial}</div>
+    <div class="site-info">
+      <h3>${site.name}</h3>
+      <p>${site.desc || ""}</p>
+    </div>
+  `;
+
+  return a;
+}
+
+function renderAll() {
+  const container = document.getElementById("sectionsContainer");
+  container.innerHTML = "";
+
+  siteGroups.forEach(group => {
+    const section = document.createElement("div");
+    section.className = "section";
+
+    const h2 = document.createElement("h2");
+    h2.textContent = group.heading;
+    section.appendChild(h2);
+
+    const list = document.createElement("div");
+    list.className = "site-list";
+
+    group.sites.forEach(site => {
+      list.appendChild(createSiteItem(site));
+    });
+
+    section.appendChild(list);
+    container.appendChild(section);
+  });
+}
+
+function renderFiltered(query = "") {
+  const q = query.toLowerCase().trim();
+  if (!q) {
+    renderAll();
+    return;
+  }
+
+  const container = document.getElementById("sectionsContainer");
+  container.innerHTML = "";
+
+  siteGroups.forEach(group => {
+    const matches = group.sites.filter(s =>
+      s.name.toLowerCase().includes(q) ||
+      (s.desc && s.desc.toLowerCase().includes(q))
+    );
+
+    if (!matches.length) return;
+
+    const section = document.createElement("div");
+    section.className = "section";
+    section.innerHTML = `<h2>${group.heading}</h2>`;
+
+    const list = document.createElement("div");
+    list.className = "site-list";
+    matches.forEach(site => list.appendChild(createSiteItem(site)));
+    section.appendChild(list);
+    container.appendChild(section);
+  });
+}
+
+renderAll();
+
+document.getElementById("searchInput").addEventListener("input", e => {
+  renderFiltered(e.target.value);
+});
+</script>
 </body>
 </html>
