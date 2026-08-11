@@ -166,7 +166,6 @@ display: flex;
     font-size: 26px;
     background: #0a8ef3;
     color: #ffffff;
-        filter: saturate(1.2);
     }
 .rghtsdopt {
 display: flex;
@@ -729,7 +728,7 @@ function getColor(name) {
     hash = name.charCodeAt(i) + ((hash << 5) - hash);
   }
   const hue = Math.abs(hash) % 360;
-  return `hsl(${hue}, 75%, 58%)`;
+  // return `hsl(${hue}, 75%, 58%)`;
 }
 
 function getInitial(name) {
