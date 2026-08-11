@@ -43,14 +43,13 @@ const passwords = {
             value: "programXoffer.png",
             url: ""
         },
-        showSpecialNotice: "yes",
+        showSpecialNotice: "no",
         specialNoticeText: "Mr. Mahesh Muthinti, Your account points are very low. Use your points earner  or the mining bot, to earn points",
         loans: [
             { planDate: "11-05-2026", endDate: "10-09-2026", interest: 7355, takenAmount: 29418, takenFrom: "Tomar Juntos", fineRate: 130 },
             { planDate: "21-07-2026", endDate: "21-08-2026", interest: 870, takenAmount: 2425, takenFrom: "Tomar Juntos", fineRate: 130 },
             { planDate: "24-07-2026", endDate: "24-08-2026", interest: 980, takenAmount: 2000, takenFrom: "MLendings", fineRate: 130 },
             { planDate: "28-07-2026", endDate: "28-08-2026", interest: 970, takenAmount: 2000, takenFrom: "MLendings", fineRate: 130 },
-            { planDate: "11-08-2026", endDate: "11-09-2026", interest: 297, takenAmount: 990, takenFrom: "BotPay Fee", fineRate: 130 },
         ]
     },
     "9919": {
