@@ -723,22 +723,17 @@ border-bottom: solid 0.1px #ffffff24;
 
 // document.addEventListener('contextmenu', e => e.preventDefault());
 function getColor(name) {
-  const telegramColors = [
-    "#E57373", // Red
-    "#F06292", // Pink
-    "#BA68C8", // Purple
-    "#9575CD", // Deep Purple
-    "#7986CB", // Indigo
-    "#64B5F6", // Blue
-    "#4FC3F7", // Light Blue
-    "#4DD0E1", // Cyan
-    "#4DB6AC", // Teal
-    "#81C784", // Green
-    "#AED581", // Light Green
-    "#DCE775", // Lime
-    "#FFD54F", // Yellow
-    "#FFB74D", // Orange
-    "#FF8A65"  // Deep Orange
+  const telegramDesktopColors = [
+    "#FF516A",
+    "#FF8A00",
+    "#00AEEF",
+    "#A695E7",
+    "#FF5E3A",
+    "#54B9E6",
+    "#E85D9E",
+    "#8CC152",
+    "#FFCC00",
+    "#5E81AC"
   ];
 
   let hash = 0;
@@ -747,7 +742,7 @@ function getColor(name) {
     hash = name.charCodeAt(i) + ((hash << 5) - hash);
   }
 
-  return telegramColors[Math.abs(hash) % telegramColors.length];
+  return telegramDesktopColors[Math.abs(hash) % telegramDesktopColors.length];
 }
 function getInitial(name) {
   return name.trim()[0]?.toUpperCase() || "?";
