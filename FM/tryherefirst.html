@@ -199,7 +199,7 @@ scrollbar-width: auto;
         }
 
         .suggestion-item {
-padding: 8px 12px 5px;
+    padding: 8px 10px 8px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -236,10 +236,24 @@ padding: 8px 12px 5px;
             flex-shrink: 0;
         }
 span.delete-suggestion {
+       color: white;
+    opacity: 80%;
+    font-weight: 300;
     background: transparent;
-    color: red;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    transition: 0.2s ease-in-out;
+}
+span.delete-suggestion:hover{
+    color: black;
     opacity: 100%;
-    font-weight: 700;
+    font-weight: 900;
+    background: #ff0000;
+    font-size: 13px;
 }
         i.fa-solid.fa-ellipsis-h {
 width: 45px;
