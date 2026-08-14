@@ -235,7 +235,12 @@ padding: 8px 12px 5px;
             border-radius: 50%;
             flex-shrink: 0;
         }
-
+span.delete-suggestion {
+    background: transparent;
+    color: red;
+    opacity: 100%;
+    font-weight: 700;
+}
         i.fa-solid.fa-ellipsis-h {
 width: 45px;
     height: 45px;
@@ -820,7 +825,7 @@ position: absolute;
 
                 const delSpan = document.createElement('span');
                 delSpan.className = 'delete-suggestion';
-                delSpan.textContent = '×';
+                delSpan.textContent = '✕';
                 delSpan.addEventListener('click', (e) => {
                     e.stopImmediatePropagation();
                     deleteSuggestion(suggestion);
