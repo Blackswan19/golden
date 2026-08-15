@@ -44,7 +44,7 @@ const passwords = {
             url: ""
         },
         showSpecialNotice: "yes",
-        specialNoticeText: "Mr. Mahesh Muthinti, Your premium subcripMr. Mahesh Muthinti, your Premium fee due to date will be deducted, and your Premium+ subscription will be activated today. ~ BotPay.",
+        specialNoticeText: "Mr. Mahesh Muthinti, your Premium fee due to date will be deducted, and your Premium+ subscription will be activated today. ~ BotPay.",
         loans: [
             { planDate: "21-07-2026", endDate: "21-08-2026", interest: 1050, takenAmount: 2425, takenFrom: "Tomar Juntos", fineRate: 130 },
             { planDate: "24-07-2026", endDate: "24-08-2026", interest: 990, takenAmount: 2000, takenFrom: "MLendings", fineRate: 130 },
