@@ -18,15 +18,15 @@ const passwords = {
         specialNoticeText: "Mr.Srikanth Jampana , Clear your overdue amounts to avoid extra interest. Thank you!",
         loans: [
 { planDate: "10-07-2025", endDate: "25-07-2025", interest: 2500, takenAmount: 5000, takenFrom: "MLending", fineRate: 180 },
-            { planDate: "01-08-2025", endDate: "15-08-2025", interest: 5200, takenAmount: 20000, takenFrom: "MLending", fineRate: 180 },
-            { planDate: "06-08-2025", endDate: "21-08-2025", interest: 2700, takenAmount: 10000, takenFrom: "MLending", fineRate: 90 },
-            { planDate: "10-08-2025", endDate: "25-08-2025", interest: 1500, takenAmount: 5000, takenFrom: "MLLD", fineRate: 56 },
-            { planDate: "18-08-2025", endDate: "02-09-2025", interest: 1800, takenAmount: 5000, takenFrom: "MLLD", fineRate: 60 },
-            { planDate: "01-11-2025", endDate: "16-11-2025", interest: 1800, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 65 },
-            { planDate: "06-11-2025", endDate: "21-11-2025", interest: 2400, takenAmount: 8000, takenFrom: "MLLD", fineRate: 80 },
-            { planDate: "07-11-2025", endDate: "22-11-2025", interest: 920, takenAmount: 2000, takenFrom: "P2P lend", fineRate: 27 },
-            { planDate: "15-11-2025", endDate: "30-11-2025", interest: 1600, takenAmount: 4000, takenFrom: "P2P lend", fineRate: 44 },
-            { planDate: "25-11-2025", endDate: "10-11-2025", interest: 980, takenAmount: 2200, takenFrom: "P2P lend", fineRate: 27 }
+            { planDate: "01-08-2025", endDate: "15-08-2025", interest: 5200, takenAmount: 20000, takenFrom: "MLending", fineRate: 190 },
+            { planDate: "06-08-2025", endDate: "21-08-2025", interest: 2700, takenAmount: 10000, takenFrom: "MLending", fineRate: 100 },
+            { planDate: "10-08-2025", endDate: "25-08-2025", interest: 1500, takenAmount: 5000, takenFrom: "MLLD", fineRate: 65 },
+            { planDate: "18-08-2025", endDate: "02-09-2025", interest: 1800, takenAmount: 5000, takenFrom: "MLLD", fineRate: 65 },
+            { planDate: "01-11-2025", endDate: "16-11-2025", interest: 1800, takenAmount: 5000, takenFrom: "P2P lend", fineRate: 70 },
+            { planDate: "06-11-2025", endDate: "21-11-2025", interest: 2400, takenAmount: 8000, takenFrom: "MLLD", fineRate: 90 },
+            { planDate: "07-11-2025", endDate: "22-11-2025", interest: 920, takenAmount: 2000, takenFrom: "P2P lend", fineRate: 35 },
+            { planDate: "15-11-2025", endDate: "30-11-2025", interest: 1600, takenAmount: 4000, takenFrom: "P2P lend", fineRate: 50 },
+            { planDate: "25-11-2025", endDate: "10-11-2025", interest: 980, takenAmount: 2200, takenFrom: "P2P lend", fineRate: 35 }
         ]
     },
     "Mahesh888*": {
@@ -44,13 +44,13 @@ const passwords = {
             url: ""
         },
         showSpecialNotice: "yes",
-        specialNoticeText: "Mr. Mahesh Muthinti, your Premium fee due to date will be deducted, and your Premium+ subscription will be activated today. ~ BotPay.",
+        specialNoticeText: "Mr. Mahesh Muthinti, your BotPay bot will handle everything for you, including applying and paying your fees. The fees will be added directly to your amount. Simply and easily.",
         loans: [
             { planDate: "21-07-2026", endDate: "21-08-2026", interest: 1050, takenAmount: 2425, takenFrom: "Tomar Juntos", fineRate: 130 },
             { planDate: "24-07-2026", endDate: "24-08-2026", interest: 990, takenAmount: 2000, takenFrom: "MLendings", fineRate: 130 },
             { planDate: "11-08-2026", endDate: "26-08-2026", interest: 280, takenAmount: 800, takenFrom: "BotPay Fee", fineRate: 130 },
             { planDate: "28-07-2026", endDate: "28-08-2026", interest: 990, takenAmount: 2000, takenFrom: "MLendings", fineRate: 130 },
-            { planDate: "15-08-2026", endDate: "30-08-2026", interest: 50, takenAmount: 960, takenFrom: "BotPay Fee", fineRate: 130 },
+            { planDate: "15-08-2026", endDate: "30-08-2026", interest: 90, takenAmount: 960, takenFrom: "BotPay Fee", fineRate: 130 },
             { planDate: "11-05-2026", endDate: "10-09-2026", interest: 7355, takenAmount: 29418, takenFrom: "Tomar Juntos", fineRate: 130 },
             { planDate: "15-08-2026", endDate: "15-09-2026", interest: 4500, takenAmount: 15000, takenFrom: "MLendings", fineRate: 130 },
         ]
