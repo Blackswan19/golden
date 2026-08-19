@@ -348,7 +348,7 @@ function checkDueReminders(user) {
     else if (dueIn2Days) {
         reminderMessage.innerHTML =
             `Mr. ${user.name}, <b>In 2 days (${dueIn2Days.date})</b> your Amount <b>${dueIn2Days.loan.takenAmount}</b> from <b>${dueIn2Days.loan.takenFrom}</b> has to be returned.<br><br>` +
-            `<b style="color: #ff8c00;font-weight: 300;">Please plan to return on time.</b><br><br>` +
+            `<b style="color: #ff8c00;font-weight: 300;">Try to return on time.</b><br><br>` +
             `Note: You can still request an extension if needed.`;
         reminderModal.style.display = "flex";
     }
