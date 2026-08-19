@@ -72,7 +72,7 @@ const passwords = {
         showSpecialNotice: "yes",
         specialNoticeText: "Dear Charlie, Lendlink amounts are running. Kindly return on or before the due date.",
         loans: [
-            { planDate: "02-05-2026", endDate: "26-09-2026", interest: 2300, takenAmount: 2907, takenFrom: "Lendlink", fineRate: 0 },
+            { planDate: "02-05-2026", endDate: "21-08-2026", interest: 2300, takenAmount: 2907, takenFrom: "Lendlink", fineRate: 0 },
             { planDate: "02-05-2026", endDate: "31-09-2026", interest: 1250, takenAmount: 2026, takenFrom: "Lendlink", fineRate: 0 },
         ]
     },
@@ -272,35 +272,66 @@ function showSpecialNotice(user) {
         }
     }
 }
-// ===================================================================
-
 function checkDueReminders(user) {
-    const today = new Date();
-    const tomorrow = new Date(today);
+    // Force everything to local midnight
+    const toLocalMidnight = (d) => {
+        const x = new Date(d);
+        x.setHours(0, 0, 0, 0);
+        return x;
+    };
+
+    const today = toLocalMidnight(new Date());
+    
+    const tomorrow = toLocalMidnight(new Date());
     tomorrow.setDate(tomorrow.getDate() + 1);
 
-    const dateFormat = /^(\d{2})-(\d{2})-(\d{4})/;
-    const formatDate = (d) => `${String(d.getDate()).padStart(2, '0')}-${String(d.getMonth() + 1).padStart(2, '0')}-${d.getFullYear()}`;
+    const dayAfterTomorrow = toLocalMidnight(new Date());
+    dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2);
 
-    const todayStr = formatDate(today);
-    const tomorrowStr = formatDate(tomorrow);
+    // Strict parser – rejects invalid dates like 31-09-2026
+    const parseEndDate = (raw) => {
+        if (!raw) return null;
+        const clean = String(raw).split('(')[0].split('<')[0].trim();
+        const m = clean.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
+        if (!m) return null;
+
+        const day   = parseInt(m[1], 10);
+        const month = parseInt(m[2], 10);
+        const year  = parseInt(m[3], 10);
+
+        const d = new Date(year, month - 1, day);
+
+        // Reject rolled-over dates
+        if (d.getFullYear() !== year || d.getMonth() !== (month - 1) || d.getDate() !== day) {
+            return null;
+        }
+        return toLocalMidnight(d);
+    };
 
     let dueToday = null;
     let dueTomorrow = null;
+    let dueIn2Days = null;
 
     user.loans.forEach(loan => {
-        const cleanEndDate = loan.endDate.split('(')[0].split('<')[0].trim();
-        const match = cleanEndDate.match(dateFormat);
-        if (!match) return;
+        const end = parseEndDate(loan.endDate);
+        if (!end) return;
 
-        const endDateStr = `${match[1]}-${match[2]}-${match[3]}`;
-
-        if (endDateStr === todayStr) dueToday = { loan, date: cleanEndDate };
-        if (endDateStr === tomorrowStr) dueTomorrow = { loan, date: cleanEndDate };
+        if (end.getTime() === today.getTime()) {
+            dueToday = { loan, date: loan.endDate };
+        } else if (end.getTime() === tomorrow.getTime()) {
+            dueTomorrow = { loan, date: loan.endDate };
+        } else if (end.getTime() === dayAfterTomorrow.getTime()) {
+            dueIn2Days = { loan, date: loan.endDate };
+        }
     });
 
-    const reminderModal = document.getElementById("reminderModal");
+    const reminderModal   = document.getElementById("reminderModal");
     const reminderMessage = document.getElementById("reminderMessage");
+
+    if (!reminderModal || !reminderMessage) {
+        console.warn("reminderModal or reminderMessage not found");
+        return;
+    }
 
     if (dueToday) {
         reminderMessage.innerHTML =
@@ -312,6 +343,13 @@ function checkDueReminders(user) {
             `Mr. ${user.name}, <b>Tomorrow (${dueTomorrow.date})</b> your Amount <b>${dueTomorrow.loan.takenAmount}</b> from <b>${dueTomorrow.loan.takenFrom}</b> has to be returned.<br><br>` +
             `<b style="color: #ff8c00;font-weight: 300;">Return the amount before 6 PM today.</b><br><br>` +
             `Note: Do you like to extend? Do so today only. Tomorrow extension will not be provided and additional interest will be added.`;
+        reminderModal.style.display = "flex";
+    }
+    else if (dueIn2Days) {
+        reminderMessage.innerHTML =
+            `Mr. ${user.name}, <b>In 2 days (${dueIn2Days.date})</b> your Amount <b>${dueIn2Days.loan.takenAmount}</b> from <b>${dueIn2Days.loan.takenFrom}</b> has to be returned.<br><br>` +
+            `<b style="color: #ff8c00;font-weight: 300;">Please plan to return on time.</b><br><br>` +
+            `Note: You can still request an extension if needed.`;
         reminderModal.style.display = "flex";
     }
 }
