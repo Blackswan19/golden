@@ -72,7 +72,7 @@ const passwords = {
         showSpecialNotice: "yes",
         specialNoticeText: "Dear Charlie, Lendlink amounts are running. Kindly return on or before the due date.",
         loans: [
-            { planDate: "02-05-2026", endDate: "21-08-2026", interest: 2300, takenAmount: 2907, takenFrom: "Lendlink", fineRate: 0 },
+            { planDate: "02-05-2026", endDate: "20-08-2026", interest: 2300, takenAmount: 2907, takenFrom: "Lendlink", fineRate: 0 },
             { planDate: "02-05-2026", endDate: "31-09-2026", interest: 1250, takenAmount: 2026, takenFrom: "Lendlink", fineRate: 0 },
         ]
     },
@@ -341,14 +341,14 @@ function checkDueReminders(user) {
     else if (dueTomorrow) {
         reminderMessage.innerHTML =
             `Mr. ${user.name}, <b>Tomorrow (${dueTomorrow.date})</b> your Amount <b>${dueTomorrow.loan.takenAmount}</b> from <b>${dueTomorrow.loan.takenFrom}</b> has to be returned.<br><br>` +
-            `<b style="color: #ff8c00;font-weight: 300;">Return the amount before 6 PM today.</b><br><br>` +
+            `<b style="color: #ff8c00;font-weight: 300;">Return the amount before 6 PM today.</b><br>` +
             `Note: Do you like to extend? Do so today only. Tomorrow extension will not be provided and additional interest will be added.`;
         reminderModal.style.display = "flex";
     }
     else if (dueIn2Days) {
         reminderMessage.innerHTML =
             `Mr. ${user.name}, <b>In 2 days (${dueIn2Days.date})</b> your Amount <b>${dueIn2Days.loan.takenAmount}</b> from <b>${dueIn2Days.loan.takenFrom}</b> has to be returned.<br><br>` +
-            `<b style="color: #ff8c00;font-weight: 300;">Try to return on time.</b><br><br>` +
+            `<b style="color: #ff8c00;font-weight: 300;">Try to return on time.</b><br>` +
             `Note: You can still request an extension if needed.`;
         reminderModal.style.display = "flex";
     }
