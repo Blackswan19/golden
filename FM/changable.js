@@ -18,7 +18,7 @@ function getDailyInterestRate() {
 }
 
 
-const allowedPasswords = ["6275", "Mahesh888*"];
+const allowedPasswords = ["6275"];
     const redirectUrl = "https://mfi0212.github.io/MFI/rate";
 
     function openPlan() {
