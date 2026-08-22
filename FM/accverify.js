@@ -7,7 +7,7 @@ const passwords = {
         profileSecBackground: "transparent",
         stars: 0,
         coins: 0,
-        verified: true,
+        verified: false,
         showCustomContent: "no",
         customContent: {
             type: "image",
@@ -29,32 +29,7 @@ const passwords = {
             { planDate: "25-11-2025", endDate: "10-11-2025", interest: 980, takenAmount: 2200, takenFrom: "P2P lend", fineRate: 35 }
         ]
     },
-    "Mahesh888*": {
-        name: "Mahesh Muthinti",
-        membershipIcon: "https://media.tenor.com/cxAQToMOeykAAAAj/twitch-rpx-syria.gif",
-        profileBackground: "transparent",
-        profileSecBackground: "rgb(114 132 146)",
-        stars: 0,
-        coins: 3,
-        verified: true,
-        showCustomContent: "no",
-        customContent: {
-            type: "image",
-            value: "programXoffer.png",
-            url: ""
-        },
-        showSpecialNotice: "yes",
-        specialNoticeText: "Mr. Mahesh Muthinti, your BotPay bot will handle everything for you, including applying and paying your fees. The fees will be added directly to your amount. Simply and easily.",
-        loans: [
-            { planDate: "24-07-2026", endDate: "24-08-2026", interest: 990, takenAmount: 2000, takenFrom: "MLendings", fineRate: 130 },
-            { planDate: "11-08-2026", endDate: "26-08-2026", interest: 280, takenAmount: 800, takenFrom: "BotPay Fee", fineRate: 130 },
-            { planDate: "28-07-2026", endDate: "28-08-2026", interest: 990, takenAmount: 2000, takenFrom: "MLendings", fineRate: 130 },
-            { planDate: "15-08-2026", endDate: "30-08-2026", interest: 90, takenAmount: 960, takenFrom: "BotPay Fee", fineRate: 130 },
-            { planDate: "11-05-2026", endDate: "10-09-2026", interest: 7355, takenAmount: 29418, takenFrom: "Tomar Juntos", fineRate: 130 },
-            { planDate: "15-08-2026", endDate: "15-09-2026", interest: 4500, takenAmount: 15000, takenFrom: "MLendings", fineRate: 130 },
-            { planDate: "21-07-2026", endDate: "20-09-2026", interest: 1407, takenAmount: 3475, takenFrom: "MLendings & BotPay Fee", fineRate: 130 },
-        ]
-    },
+    
     "9919": {
         name: "Charlie",
         membershipIcon: "https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/100/2.gif",
@@ -62,7 +37,7 @@ const passwords = {
         profileSecBackground: "transparent",
         stars: 0,
         coins: 0,
-        verified: true,
+        verified: false,
         showCustomContent: "no",
         customContent: {
             type: "image",
