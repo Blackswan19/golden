@@ -32,8 +32,8 @@ const passwords = {
     "Mahesh888*": {
         name: "Mahesh Muthinti",
         membershipIcon: "https://media.tenor.com/cxAQToMOeykAAAAj/twitch-rpx-syria.gif",
-        profileBackground: "#0000af",
-        profileSecBackground: "#780000",
+        profileBackground: "transparent",
+        profileSecBackground: "rgb(114 132 146)",
         stars: 0,
         coins: 3,
         verified: true,
