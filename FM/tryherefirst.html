@@ -75,10 +75,13 @@
 
   /* Topbar */
   .topbar {
-    background: var(--bg-topbar);
+   background: #000000d9;
     color: var(--text-light);
     font-size: 12px;
-    padding: 6px 0;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000000;
   }
   .topbar .inner {
     display: flex;
@@ -245,6 +248,42 @@
     margin-top: 6px;
   }
 
+  /* Reminder Banner */
+  .reminder-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+    margin-bottom: 14px;
+    border-radius: 6px;
+    border: 2px solid #e53e3e;
+    background: #fff5f5;
+  }
+  [data-theme="dark"] .reminder-banner {
+    background: #2d1515;
+    border-color: #fc8181;
+  }
+  .reminder-banner .reminder-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+  .reminder-banner .reminder-content h3 {
+    font-size: 15px;
+    color: #c53030;
+    margin-bottom: 4px;
+  }
+  [data-theme="dark"] .reminder-banner .reminder-content h3 { color: #fc8181; }
+  .reminder-banner .reminder-content p {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .reminder-banner .reminder-actions {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
   /* Graph */
   .graph-container {
     padding: 16px;
@@ -367,11 +406,15 @@
     background: #a0aec0 !important;
     cursor: not-allowed !important;
   }
+  .btn-danger {
+    background: #e53e3e;
+  }
+  .btn-danger:hover { background: #c53030; }
 
   /* User Summary */
   .user-summary {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 12px;
     margin-bottom: 16px;
   }
@@ -629,12 +672,13 @@
         <div class="graph-container">
           <div class="today-rate">
             Today’s Interest: <span id="today-rate-display">--%</span>
+            <span id="fixed-rate-note" style="font-size:13px;display:none;"></span>
           </div>
           <div class="chart-wrapper">
             <canvas id="interestChart" width="750" height="240"></canvas>
           </div>
           <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">
-            Interest rate and all bars are fixed for the whole day.
+            Interest rate and all bars are fixed for the whole day. Logged-in users with a claimed fixed rate will see their personal rate used in calculations.
           </p>
         </div>
       </div>
@@ -676,8 +720,7 @@
           <div class="take-money-box">
             <div id="tm-password-step">
               <p style="margin-bottom:12px;color:var(--text-muted);text-align:center;">
-                Enter your account password to continue<br>
-                <small>Demo password: 123456</small>
+                Enter password to apply for amount<br>
               </p>
               <input type="password" id="tm-password" placeholder="Enter Password">
               <button onclick="verifyTakeMoneyPassword()">Continue</button>
@@ -685,7 +728,7 @@
 
             <div id="tm-amount-step" class="hidden">
               <p style="margin-bottom:10px;text-align:center;color:var(--text-muted);">
-                Today’s Interest Rate: <strong id="tm-today-rate" style="color:var(--text-title);"></strong>
+                Applicable Interest Rate: <strong id="tm-today-rate" style="color:var(--text-title);"></strong>
               </p>
               <input type="number" id="tm-amount" placeholder="Enter amount you want to take" min="100">
               <button onclick="calculateTakeMoneyInterest()">Check Interest</button>
@@ -723,9 +766,8 @@
           <div id="login-section">
             <div style="max-width:360px;margin:0 auto;">
               <p style="margin-bottom:12px;color:var(--text-muted);text-align:center;">
-                Demo: user1 / user2 / user3 &nbsp; Password: 123456
+                Enter password to login
               </p>
-              <input type="text" id="login-user" placeholder="Username" style="width:100%;height:40px;margin-bottom:10px;padding:0 12px;border:1px solid var(--input-border);background:var(--bg-card);color:var(--text-main);border-radius:4px;">
               <input type="password" id="login-pass" placeholder="Password" style="width:100%;height:40px;margin-bottom:10px;padding:0 12px;border:1px solid var(--input-border);background:var(--bg-card);color:var(--text-main);border-radius:4px;">
               <button class="btn" style="width:100%;height:42px;" onclick="doLogin()">Login to Account</button>
             </div>
@@ -736,6 +778,18 @@
               Welcome, <strong id="current-user"></strong>!
               <button class="btn btn-outline" style="padding:4px 12px;font-size:13px;margin-left:10px;" onclick="logout()">Logout</button>
             </p>
+
+            <!-- Reminder Banner (shown when return date is within 2 days) -->
+            <div id="reminder-banner" class="reminder-banner hidden">
+              <div class="reminder-icon">⚠️</div>
+              <div class="reminder-content">
+                <h3>Payment Reminder</h3>
+                <div id="reminder-messages"></div>
+                <div class="reminder-actions">
+                  <button class="btn btn-danger" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Delay It Now</button>
+                </div>
+              </div>
+            </div>
 
             <div id="special-banner" class="special-banner hidden">
               <div class="special-icon" id="special-icon">🎁</div>
@@ -759,6 +813,10 @@
                 <div class="label">Total Amount</div>
                 <div class="value" id="sum-total">—</div>
               </div>
+              <div class="summary-card">
+                <div class="label">Your Interest Rate</div>
+                <div class="value" id="sum-interest">—</div>
+              </div>
             </div>
 
             <div class="table-wrapper">
@@ -770,6 +828,7 @@
                     <th>Overdue Fee</th>
                     <th>Borrowed Date</th>
                     <th>Return Date</th>
+                    <th>Days Left / Overdue</th>
                     <th>Status</th>
                   </tr>
                 </thead>
@@ -912,6 +971,63 @@ function getFixedBars() {
   return bars;
 }
 
+// ========== Get effective interest for current user ==========
+function getEffectiveInterest() {
+  if (currentUser && users[currentUser] && users[currentUser].fixedInterest != null) {
+    return users[currentUser].fixedInterest;
+  }
+  return todayInterest;
+}
+
+// ========== Date helpers ==========
+function parseDate(str) {
+  // expects YYYY-MM-DD
+  const parts = str.split('-');
+  return new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+}
+
+function daysBetween(d1, d2) {
+  const oneDay = 24 * 60 * 60 * 1000;
+  const utc1 = Date.UTC(d1.getFullYear(), d1.getMonth(), d1.getDate());
+  const utc2 = Date.UTC(d2.getFullYear(), d2.getMonth(), d2.getDate());
+  return Math.floor((utc2 - utc1) / oneDay);
+}
+
+function getTodayDate() {
+  const now = new Date();
+  return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+}
+
+// ========== Overdue calculation ==========
+// Overdue fee = 25 per day starting from the day AFTER return date
+// Status becomes Overdue when current date > return date
+function computeLoanStatus(loan) {
+  const today = getTodayDate();
+  const returnDate = parseDate(loan.return);
+  const diff = daysBetween(returnDate, today); // positive = overdue days
+
+  let overdueFee = 0;
+  let status = 'Active';
+  let daysInfo = '';
+
+  if (diff > 0) {
+    // Past return date → overdue
+    overdueFee = diff * 25;
+    status = 'Overdue';
+    daysInfo = diff + ' day(s) overdue';
+  } else if (diff === 0) {
+    // Due today
+    status = 'Due Today';
+    daysInfo = 'Due today';
+  } else {
+    // Still time left
+    status = 'Active';
+    daysInfo = Math.abs(diff) + ' day(s) left';
+  }
+
+  return { overdueFee, status, daysInfo, daysDiff: diff };
+}
+
 // ========== Theme ==========
 function toggleTheme() {
   const html = document.documentElement;
@@ -988,7 +1104,10 @@ function verifyTakeMoneyPassword() {
   }
   document.getElementById('tm-password-step').classList.add('hidden');
   document.getElementById('tm-amount-step').classList.remove('hidden');
-  document.getElementById('tm-today-rate').textContent = todayInterest + '%';
+
+  const rate = getEffectiveInterest();
+  const isFixed = currentUser && users[currentUser] && users[currentUser].fixedInterest != null;
+  document.getElementById('tm-today-rate').textContent = rate + '%' + (isFixed ? ' (Your Fixed Rate)' : ' (Today\'s Rate)');
 }
 
 function calculateTakeMoneyInterest() {
@@ -997,42 +1116,44 @@ function calculateTakeMoneyInterest() {
     alert('Please enter amount (minimum 100)');
     return;
   }
-  const interestAmount = amount * (todayInterest / 100);
+  const rate = getEffectiveInterest();
+  const interestAmount = amount * (rate / 100);
   const total = amount + interestAmount;
 
   document.getElementById('tm-res-amount').textContent = amount.toLocaleString();
-  document.getElementById('tm-res-interest').textContent = todayInterest + '%  →  ' + interestAmount.toFixed(2);
+  document.getElementById('tm-res-interest').textContent = rate + '%  →  ' + interestAmount.toFixed(2);
   document.getElementById('tm-res-total').textContent = total.toFixed(2);
   document.getElementById('tm-result').classList.remove('hidden');
 }
 
 function applyTakeMoney() {
   const amount = document.getElementById('tm-amount').value;
+  const rate = getEffectiveInterest();
   document.getElementById('apply-msg').innerHTML = 
     `You have applied for <strong>Take Money</strong><br>
      Amount: ${Number(amount).toLocaleString()}<br>
-     Interest Rate: ${todayInterest}%<br>
+     Interest Rate: ${rate}%<br>
      Application submitted successfully!`;
   document.getElementById('apply-modal').classList.add('show');
 }
 
 // ========== USERS + ACCESS RIGHTS ==========
 const users = {
-  "user1": {
-    password: "123456",
-    displayName: "Alex Chen",
-    premiumType: "Premium",
+  "phanindra": {
+    password: "9919",
+    displayName: "phanindra",
+    premiumType: "Premium+",
+    fixedInterest: 25,          // claimed fixed rate
     special: {
       icon: "👑",
       title: "Premium Member Reward",
-      message: "Congratulations Alex! You have unlocked a special 5% cashback on your next Take Money.",
+      message: "Congratulations Alex! You have unlocked a special 5% cashback on your next Take Money. Your fixed interest rate of 28.5% is active.",
       tag: "PREMIUM REWARD"
     },
     loans: [
-      { amount: 5000, interest: 365, overdue: 0, borrowed: "2025-06-12", return: "2025-09-12", status: "Active" },
-      { amount: 2000, interest: 146, overdue: 50, borrowed: "2025-03-01", return: "2025-06-01", status: "Overdue" }
+      { amount: 5000, interest: 365, borrowed: "2026-06-12", return: "2026-09-12" },
+      { amount: 10000, interest: 2500, borrowed: "2026-08-01", return: "2026-08-20" }  // will be overdue
     ],
-    // Access rights
     access: {
       "Delay It": true,
       "Split Pay": true,
@@ -1045,57 +1166,6 @@ const users = {
       "BsRora-Atdo": true
     }
   },
-  "user2": {
-    password: "123456",
-    displayName: "Sarah Wong",
-    premiumType: "Premium+",
-    special: {
-      icon: "💎",
-      title: "Premium+ VIP Gift",
-      message: "Dear Sarah, as a Premium+ member you get priority approval and zero processing fee this month!",
-      tag: "VIP GIFT"
-    },
-    loans: [
-      { amount: 12000, interest: 876, overdue: 0, borrowed: "2025-07-20", return: "2025-10-20", status: "Active" }
-    ],
-    access: {
-      "Delay It": true,
-      "Split Pay": true,
-      "Buy Limit": true,
-      "Pre-Saver": true,
-      "Lendlink-Mid": true,
-      "BsRora Bot": true,
-      "Mining bot": false,
-      "BotPay": true,
-      "BsRora-Atdo": true
-    }
-  },
-  "user3": {
-    password: "123456",
-    displayName: "Michael Li",
-    premiumType: "Normal",
-    special: {
-      icon: "🎁",
-      title: "Welcome Bonus",
-      message: "Hi Michael! Complete one more repayment and upgrade to Premium to unlock higher limits.",
-      tag: "WELCOME BONUS"
-    },
-    loans: [
-      { amount: 8000, interest: 584, overdue: 120, borrowed: "2025-04-15", return: "2025-07-15", status: "Overdue" },
-      { amount: 3000, interest: 219, overdue: 0, borrowed: "2025-08-01", return: "2025-11-01", status: "Active" }
-    ],
-    access: {
-      "Delay It": true,
-      "Split Pay": false,
-      "Buy Limit": false,
-      "Pre-Saver": true,
-      "Lendlink-Mid": false,
-      "BsRora Bot": false,
-      "Mining bot": false,
-      "BotPay": false,
-      "BsRora-Atdo": false
-    }
-  }
 };
 
 let currentUser = null;
@@ -1158,7 +1228,7 @@ function renderProducts() {
 
   html += `</div>`;
 
-  // Also show locked services (optional, for transparency)
+  // Also show locked services
   const locked = allProducts.filter(p => !user.access[p.name]);
   if (locked.length > 0) {
     html += `<p style="margin:20px 0 10px;color:var(--text-muted);font-size:13px;">Services you do not have access to:</p>
@@ -1196,7 +1266,6 @@ function handleProductClick(name) {
 
   const product = allProducts.find(p => p.name === name);
   if (product && product.needsFee) {
-    // Open fee modal
     pendingFeeService = name;
     document.getElementById('fee-modal-title').textContent = 'Apply: ' + name;
     document.getElementById('fee-modal-desc').textContent = product.desc + ' — Enter amount to calculate the service fee.';
@@ -1205,7 +1274,6 @@ function handleProductClick(name) {
     document.getElementById('fee-apply-btn').disabled = true;
     document.getElementById('fee-modal').classList.add('show');
   } else {
-    // Simple apply
     applyProduct(name);
   }
 }
@@ -1234,7 +1302,6 @@ function calculateFee() {
 function confirmFeeApply() {
   if (!pendingFeeService || !pendingFeeAmount) return;
 
-  // Save to localStorage under this user
   const key = 'jh_applied_' + currentUser;
   let list = JSON.parse(localStorage.getItem(key) || '[]');
   list.push({
@@ -1246,7 +1313,6 @@ function confirmFeeApply() {
   });
   localStorage.setItem(key, JSON.stringify(list));
 
-  // Close modal & show success
   closeFeeModal();
   document.getElementById('apply-msg').innerHTML = 
     `You have successfully applied for <strong>${pendingFeeService}</strong>.<br>
@@ -1255,7 +1321,6 @@ function confirmFeeApply() {
      The fee has been recorded in your account.`;
   document.getElementById('apply-modal').classList.add('show');
 
-  // Refresh applied list in account
   renderAppliedServices();
 }
 
@@ -1343,16 +1408,36 @@ function showLogin() {
 }
 
 function doLogin() {
-  const username = document.getElementById('login-user').value.trim().toLowerCase();
   const password = document.getElementById('login-pass').value;
-  if (!users[username] || users[username].password !== password) {
-    alert('Wrong username or password');
+  // Find user by password only
+  let matchedUser = null;
+  for (const key in users) {
+    if (users[key].password === password) {
+      matchedUser = key;
+      break;
+    }
+  }
+  if (!matchedUser) {
+    alert('Wrong password');
     return;
   }
-  currentUser = username;
-  localStorage.setItem('jh_user', username);
+  currentUser = matchedUser;
+  localStorage.setItem('jh_user', matchedUser);
   showLoanDetails();
-  renderProducts();          // refresh products with access
+  renderProducts();
+  updateInterestDisplay();
+}
+
+function updateInterestDisplay() {
+  const rate = getEffectiveInterest();
+  const note = document.getElementById('fixed-rate-note');
+  if (currentUser && users[currentUser] && users[currentUser].fixedInterest != null) {
+    note.style.display = 'inline';
+    note.textContent = `  |  Your Fixed Rate: ${users[currentUser].fixedInterest}%`;
+    note.style.color = '#38a169';
+  } else {
+    note.style.display = 'none';
+  }
 }
 
 function showLoanDetails() {
@@ -1366,6 +1451,7 @@ function showLoanDetails() {
   document.getElementById('current-user').textContent = user.displayName;
   document.getElementById('account-status').textContent = 'Logged in';
 
+  // Special banner
   const specialBox = document.getElementById('special-banner');
   if (user.special) {
     document.getElementById('special-icon').textContent = user.special.icon;
@@ -1377,27 +1463,70 @@ function showLoanDetails() {
     specialBox.classList.add('hidden');
   }
 
+  // Summary
   document.getElementById('sum-username').textContent = user.displayName;
   document.getElementById('sum-premium').textContent = user.premiumType;
   const totalAmount = user.loans.reduce((sum, l) => sum + l.amount, 0);
   document.getElementById('sum-total').textContent = totalAmount.toLocaleString();
 
+  // Interest rate display
+  const rate = getEffectiveInterest();
+  if (user.fixedInterest != null) {
+    document.getElementById('sum-interest').textContent = user.fixedInterest + '% (Fixed)';
+  } else {
+    document.getElementById('sum-interest').textContent = todayInterest + '% (Daily)';
+  }
+
+  // Loan table with dynamic overdue
   const tbody = document.getElementById('loan-body');
   tbody.innerHTML = '';
+
+  // Collect reminders (≤ 2 days left, not yet overdue)
+  const reminders = [];
+
   user.loans.forEach(loan => {
+    const { overdueFee, status, daysInfo, daysDiff } = computeLoanStatus(loan);
+
+    // Reminder: 1 or 2 days left (or due today)
+    if (daysDiff >= -2 && daysDiff <= 0) {
+      const daysLeft = Math.abs(daysDiff);
+      let msg = '';
+      if (daysDiff === 0) {
+        msg = `Loan of ${loan.amount.toLocaleString()} is <strong>due today</strong>. Please clear it or use <strong>Delay It</strong> before the end of the day.`;
+      } else {
+        msg = `Loan of ${loan.amount.toLocaleString()} has to be returned in <strong>${daysLeft} day(s)</strong>. Clear it or use <strong>Delay It</strong> before the return date (${loan.return}).`;
+      }
+      reminders.push(msg);
+    }
+
     const tr = document.createElement('tr');
+    const statusColor = status === 'Overdue' ? '#e53e3e' : (status === 'Due Today' ? '#dd6b20' : '#38a169');
     tr.innerHTML = `
       <td>${loan.amount.toLocaleString()}</td>
       <td>${loan.interest}</td>
-      <td style="color:${loan.overdue > 0 ? '#e53e3e' : 'inherit'}">${loan.overdue}</td>
+      <td style="color:${overdueFee > 0 ? '#e53e3e' : 'inherit'};font-weight:${overdueFee > 0 ? 'bold' : 'normal'};">
+        ${overdueFee > 0 ? overdueFee.toLocaleString() + ' (25×' + (overdueFee/25) + ' days)' : '0'}
+      </td>
       <td>${loan.borrowed}</td>
       <td>${loan.return}</td>
-      <td style="color:${loan.status === 'Overdue' ? '#e53e3e' : '#38a169'};font-weight:bold;">${loan.status}</td>
+      <td>${daysInfo}</td>
+      <td style="color:${statusColor};font-weight:bold;">${status}</td>
     `;
     tbody.appendChild(tr);
   });
 
+  // Show reminder banner if any
+  const reminderBox = document.getElementById('reminder-banner');
+  const reminderMessages = document.getElementById('reminder-messages');
+  if (reminders.length > 0) {
+    reminderMessages.innerHTML = reminders.map(m => `<p style="margin-bottom:6px;">${m}</p>`).join('');
+    reminderBox.classList.remove('hidden');
+  } else {
+    reminderBox.classList.add('hidden');
+  }
+
   renderAppliedServices();
+  updateInterestDisplay();
 }
 
 function logout() {
@@ -1409,7 +1538,9 @@ function logout() {
   document.getElementById('top-user').textContent = '';
   document.getElementById('account-status').textContent = '';
   document.getElementById('special-banner').classList.add('hidden');
-  renderProducts();          // back to login-required view
+  document.getElementById('reminder-banner').classList.add('hidden');
+  renderProducts();
+  updateInterestDisplay();
 }
 
 // ========== Init ==========
@@ -1427,7 +1558,8 @@ window.onload = function() {
     showLoanDetails();
   }
 
-  renderProducts();          // always render products section
+  renderProducts();
+  updateInterestDisplay();
 };
 </script>
 
