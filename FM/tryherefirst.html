@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jade Harmony Finance - Official Site</title>
+<title>BS&MFI Services</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
 
   :root, [data-theme="light"] {
     --black-swan: #0b0f17;
-    --dark-blue: #0a2540;
+    --dark-blue: #002aff;
     --accent: #c9a84c;
     --bg-body: #eef1f6;
     --bg-card: #ffffff;
     --bg-topbar: #0b0f17;
-    --bg-nav: #0a2540;
-    --bg-banner: linear-gradient(120deg, #0b0f17, #0a2540, #0d3a66);
+    --bg-nav: #002aff;
+    --bg-banner: linear-gradient(120deg, #0b0f17, #002aff, #0040ff);
     --bg-footer: #0b0f17;
     --bg-soft: #f0f4f8;
     --bg-calc: #f0f5fa;
@@ -25,21 +25,21 @@
     --text-muted: #555555;
     --text-light: #e0e6ed;
     --text-footer: #a0aec0;
-    --text-title: #0a2540;
+    --text-title: #002aff;
     --border: #d0d8e4;
-    --border-strong: #0a2540;
+    --border-strong: #002aff;
     --input-border: #c5d0de;
   }
 
   [data-theme="dark"] {
     --black-swan: #05080e;
-    --dark-blue: #1a3a5c;
+    --dark-blue: #002aff;
     --accent: #d4b45a;
     --bg-body: #0c121c;
     --bg-card: #141b28;
     --bg-topbar: #05080e;
-    --bg-nav: #0f1c2e;
-    --bg-banner: linear-gradient(120deg, #05080e, #0f1c2e, #1a3a5c);
+    --bg-nav: #001a99;
+    --bg-banner: linear-gradient(120deg, #05080e, #001a99, #002aff);
     --bg-footer: #05080e;
     --bg-soft: #1a2332;
     --bg-calc: #1a2535;
@@ -49,9 +49,9 @@
     --text-muted: #a0aec0;
     --text-light: #e2e8f0;
     --text-footer: #718096;
-    --text-title: #7db0e0;
+    --text-title: #4d7aff;
     --border: #2d3a4d;
-    --border-strong: #3a5a80;
+    --border-strong: #002aff;
     --input-border: #2d3a4d;
   }
 
@@ -66,7 +66,6 @@
   a { text-decoration: none; color: var(--text-main); }
   a:hover { color: var(--dark-blue); }
 
-  /* ========== LAYOUT CONTAINERS ========== */
   .container {
     width: 100%;
     max-width: 1200px;
@@ -158,37 +157,8 @@
   }
   [data-theme="dark"] .hotline strong { color: var(--text-title); }
 
-  /* Navigation */
-  .nav { background: var(--bg-nav); }
-  .nav ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .nav li { flex: 1; text-align: center; min-width: 100px; }
-  .nav a {
-    display: block;
-    color: #fff;
-    padding: 12px 8px;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  .nav a:hover, .nav .active { background: var(--black-swan); }
-
   /* Main */
   .main { padding: 12px 0; }
-
-  /* Banner */
-  .banner {
-    background: var(--bg-banner);
-    color: #fff;
-    padding: 40px 16px;
-    text-align: center;
-    margin-bottom: 12px;
-    border-radius: 6px;
-  }
-  .banner h1 { font-size: 26px; margin-bottom: 8px; }
-  .banner p { font-size: 14px; opacity: 0.95; }
 
   /* Quick links */
   .quick {
@@ -230,7 +200,7 @@
     font-size: 15px;
     font-weight: bold;
   }
-  [data-theme="dark"] .box-title { background: #0f1c2e; }
+  [data-theme="dark"] .box-title { background: #001a99; }
   .box-body { padding: 14px; }
 
   /* Special Banner */
@@ -393,6 +363,10 @@
     color: var(--text-title);
     border-color: var(--text-title);
   }
+  .btn-disabled {
+    background: #a0aec0 !important;
+    cursor: not-allowed !important;
+  }
 
   /* User Summary */
   .user-summary {
@@ -452,6 +426,26 @@
   .product-card .icon { font-size: 28px; margin-bottom: 8px; }
   .product-card h3 { font-size: 15px; color: var(--text-title); margin-bottom: 6px; }
   .product-card p { font-size: 13px; color: var(--text-muted); min-height: 40px; margin-bottom: 10px; }
+  .access-badge {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+  }
+  .access-yes { background: #c6f6d5; color: #276749; }
+  .access-no  { background: #fed7d7; color: #c53030; }
+
+  /* Login required message */
+  .login-required {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+  }
+  .login-required h3 {
+    color: var(--text-title);
+    margin-bottom: 10px;
+  }
 
   /* Search Results */
   .search-results {
@@ -519,43 +513,62 @@
     background: var(--bg-card);
     padding: 24px;
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     border: 3px solid var(--border-strong);
     color: var(--text-main);
     border-radius: 8px;
   }
   .modal-content h3 { color: var(--text-title); margin-bottom: 12px; font-size: 18px; }
+  .modal-content input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid var(--input-border);
+    padding: 0 12px;
+    margin-bottom: 12px;
+    font-size: 15px;
+    background: var(--bg-card);
+    color: var(--text-main);
+    border-radius: 4px;
+  }
+  .fee-preview {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .fee-preview .fee-amount {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--text-title);
+  }
 
-  /* ========== RESPONSIVE ========== */
+  /* Applied services table */
+  .applied-section { margin-top: 20px; }
+  .applied-section h4 {
+    font-size: 15px;
+    color: var(--text-title);
+    margin-bottom: 10px;
+  }
+
+  /* Responsive */
   @media (max-width: 900px) {
     .turbo-grid { grid-template-columns: repeat(2, 1fr); }
     .product-grid { grid-template-columns: repeat(2, 1fr); }
     .user-summary { grid-template-columns: repeat(2, 1fr); }
     .footer .inner { grid-template-columns: repeat(2, 1fr); }
-    .banner h1 { font-size: 22px; }
     .hotline { display: none; }
   }
-
   @media (max-width: 600px) {
     .turbo-grid { grid-template-columns: 1fr; }
     .product-grid { grid-template-columns: 1fr; }
     .user-summary { grid-template-columns: 1fr; }
     .footer .inner { grid-template-columns: 1fr; }
-
     .header .inner { flex-direction: column; align-items: stretch; }
     .search-box { width: 100%; }
     .logo { text-align: center; }
-
-    .nav li { min-width: 33.33%; }
-    .nav a { font-size: 13px; padding: 10px 4px; }
-
     .banner { padding: 28px 12px; }
-    .banner h1 { font-size: 20px; }
-    .banner p { font-size: 13px; }
-
-    .special-banner { flex-direction: column; text-align: center; }
-    .today-rate { font-size: 18px; }
-
     .topbar .inner { justify-content: center; text-align: center; }
   }
 </style>
@@ -565,13 +578,12 @@
 <div class="topbar">
   <div class="container">
     <div class="inner">
-      <div>Welcome to Jade Harmony Finance Official Website</div>
+      <div>Welcome to BS&MFI Services</div>
       <div>
         <span id="top-user" class="user-info"></span>
         <a href="#" onclick="showLogin()">Account Login</a>
         <a href="#" onclick="logout()" id="logout-btn" class="hidden">Logout</a>
         <button class="theme-btn" onclick="toggleTheme()" id="theme-btn">Dark Mode</button>
-        <a href="#">App Download</a>
       </div>
     </div>
   </div>
@@ -580,29 +592,16 @@
 <div class="header">
   <div class="container">
     <div class="inner">
-      <div class="logo">Jade <span>Harmony</span> Finance</div>
+      <div class="logo"><span>BS&MFI </span>Services</div>
       <div class="search-box">
         <input type="text" id="search-input" placeholder="Search products..." onkeypress="if(event.key==='Enter') doSearch()">
         <button onclick="doSearch()">Search</button>
       </div>
       <div class="hotline">
-        24h Service Hotline<br>
-        <strong>400-888-9999</strong>
+        If you facing issue fill<br>
+        <strong>ISSUE FORM NOW</strong>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="nav">
-  <div class="container">
-    <ul>
-      <li><a href="#" class="active">Home</a></li>
-      <li><a href="#takemoney">Take Money</a></li>
-      <li><a href="#graph">Interest Graph</a></li>
-      <li><a href="#turbo">Turbo Plans</a></li>
-      <li><a href="#products">All Products</a></li>
-      <li><a href="#account">My Account</a></li>
-    </ul>
   </div>
 </div>
 
@@ -614,25 +613,19 @@
       <div id="search-list"></div>
     </div>
 
-    <div class="banner">
-      <h1>Flexible Payment · Higher Limits · Take Money</h1>
-      <p>Delay It · Split Pay · Buy Limit · Pre-Saver · Lendlink-Mid · BsRora</p>
-    </div>
-
     <div class="quick">
       <span>Quick:</span>
-      <a href="#takemoney">Take Money</a>
       <a href="#graph">Interest Graph</a>
       <a href="#turbo">Turbo Plans</a>
+      <a href="#takemoney">Take Money</a>
       <a href="#products">All Products</a>
       <a href="#account">My Account</a>
-      <a href="#" onclick="showLogin()">Login</a>
     </div>
 
     <!-- Interest Graph -->
     <div class="row" id="graph">
       <div class="col">
-        <div class="box-title">Today’s Interest Rate Graph (Fixed for the Day)</div>
+        <div class="box-title">Today's Interest Rate</div>
         <div class="graph-container">
           <div class="today-rate">
             Today’s Interest: <span id="today-rate-display">--%</span>
@@ -647,10 +640,38 @@
       </div>
     </div>
 
+    <!-- Turbo Plans -->
+    <div class="row" id="turbo">
+      <div class="col">
+        <div class="box-title">BS&MFI Turbo Plans</div>
+        <div class="turbo-grid">
+          <div class="turbo-card">
+            <h3>Normal</h3>
+            <div class="limit">20,000 <small>Limit</small></div>
+            <p>Basic plan for everyday needs</p>
+            <button class="btn" onclick="applyProduct('Normal Plan (20k)')">Apply Now</button>
+          </div>
+          <div class="turbo-card hot">
+            <div class="badge">Popular</div>
+            <h3>Premium</h3>
+            <div class="limit">40,000 <small>Limit</small></div>
+            <p>Higher limit + better rates</p>
+            <button class="btn" onclick="applyProduct('Premium Plan (40k)')">Apply Now</button>
+          </div>
+          <div class="turbo-card">
+            <h3>Premium+</h3>
+            <div class="limit">80,000 <small>Limit</small></div>
+            <p>Maximum limit & priority support</p>
+            <button class="btn" onclick="applyProduct('Premium+ Plan (80k)')">Apply Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Take Money -->
     <div class="row" id="takemoney">
       <div class="col">
-        <div class="box-title">Take Money - Check Interest & Apply</div>
+        <div class="box-title">Take Money</div>
         <div class="box-body">
           <div class="take-money-box">
             <div id="tm-password-step">
@@ -681,93 +702,12 @@
       </div>
     </div>
 
-    <!-- Turbo Plans -->
-    <div class="row" id="turbo">
-      <div class="col">
-        <div class="box-title">Turbo Plans - Higher Borrowing Limits</div>
-        <div class="turbo-grid">
-          <div class="turbo-card">
-            <h3>Normal</h3>
-            <div class="limit">20,000 <small>Limit</small></div>
-            <p>Basic plan for everyday needs</p>
-            <button class="btn" onclick="applyProduct('Normal Plan (20k)')">Apply Now</button>
-          </div>
-          <div class="turbo-card hot">
-            <div class="badge">Popular</div>
-            <h3>Premium</h3>
-            <div class="limit">40,000 <small>Limit</small></div>
-            <p>Higher limit + better rates</p>
-            <button class="btn" onclick="applyProduct('Premium Plan (40k)')">Apply Now</button>
-          </div>
-          <div class="turbo-card">
-            <h3>Premium+</h3>
-            <div class="limit">80,000 <small>Limit</small></div>
-            <p>Maximum limit & priority support</p>
-            <button class="btn" onclick="applyProduct('Premium+ Plan (80k)')">Apply Now</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- All Products -->
+    <!-- All Products (Login Required + Access Control) -->
     <div class="row" id="products">
       <div class="col">
-        <div class="box-title">All Products</div>
-        <div class="product-grid">
-          <div class="product-card">
-            <div class="icon">⏳</div>
-            <h3>Delay It</h3>
-            <p>Extend repayment date<br>Fee: 6.3% / 7.3% / 8.3%</p>
-            <button class="btn" onclick="applyProduct('Delay It')">Apply</button>
-          </div>
-          <div class="product-card">
-            <div class="icon">📅</div>
-            <h3>Split Pay</h3>
-            <p>Split payment into smaller amounts</p>
-            <button class="btn" onclick="applyProduct('Split Pay')">Apply</button>
-          </div>
-          <div class="product-card">
-            <div class="icon">📈</div>
-            <h3>Buy Limit</h3>
-            <p>Increase your borrowing limit</p>
-            <button class="btn" onclick="applyProduct('Buy Limit')">Apply</button>
-          </div>
-          <div class="product-card">
-            <div class="icon">💰</div>
-            <h3>Pre-Saver</h3>
-            <p>Save first, enjoy better rates</p>
-            <button class="btn" onclick="applyProduct('Pre-Saver')">Apply</button>
-          </div>
-          <div class="product-card">
-            <div class="icon">🔗</div>
-            <h3>Lendlink-Mid</h3>
-            <p>Mid-term lending options</p>
-            <button class="btn" onclick="applyProduct('Lendlink-Mid')">Apply</button>
-          </div>
-          <div class="product-card">
-            <div class="icon">🤖</div>
-            <h3>BsRora Bot</h3>
-            <p>Smart automation bot</p>
-            <button class="btn" onclick="applyProduct('BsRora Bot')">Apply</button>
-          </div>
-          <div class="product-card">
-            <div class="icon">⛏️</div>
-            <h3>Mining bot</h3>
-            <p>Automated mining bot</p>
-            <button class="btn" onclick="applyProduct('BsRora Mining bot')">Apply</button>
-          </div>
-          <div class="product-card">
-            <div class="icon">💳</div>
-            <h3>BotPay</h3>
-            <p>Fast payment solution</p>
-            <button class="btn" onclick="applyProduct('BsRora BotPay')">Apply</button>
-          </div>
-          <div class="product-card">
-            <div class="icon">⚡</div>
-            <h3>BsRora-Atdo</h3>
-            <p>Advanced automated system</p>
-            <button class="btn" onclick="applyProduct('BsRora-Atdo')">Apply</button>
-          </div>
+        <div class="box-title">All our services</div>
+        <div class="box-body" id="products-container">
+          <!-- Filled by JavaScript -->
         </div>
       </div>
     </div>
@@ -836,6 +776,26 @@
                 <tbody id="loan-body"></tbody>
               </table>
             </div>
+
+            <!-- Applied Services with Fees -->
+            <div class="applied-section" id="applied-section">
+              <h4>Applied Services & Fees</h4>
+              <div class="table-wrapper">
+                <table class="loan-table">
+                  <thead>
+                    <tr>
+                      <th>Service</th>
+                      <th>Amount</th>
+                      <th>Fee</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="applied-body"></tbody>
+                </table>
+              </div>
+              <p id="no-applied" style="text-align:center;color:var(--text-muted);margin-top:10px;" class="hidden">No services applied yet.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -855,8 +815,7 @@
       <div>
         <h4>Products</h4>
         <a href="#takemoney">Take Money</a>
-        <a href="#products">Delay It</a>
-        <a href="#products">Split Pay</a>
+        <a href="#products">All Services</a>
         <a href="#turbo">Turbo Plans</a>
       </div>
       <div>
@@ -871,16 +830,36 @@
       </div>
     </div>
     <div class="footer-bottom">
-      Copyright © 2018-2025 Jade Harmony Finance Co., Ltd. All Rights Reserved.
+     © BS&MFI Services, All Rights Reserved.
     </div>
   </div>
 </div>
 
+<!-- Simple Apply Modal -->
 <div class="modal" id="apply-modal">
   <div class="modal-content">
     <h3>Application Received</h3>
     <p id="apply-msg" style="margin-bottom:16px;"></p>
     <button class="btn" style="width:100%;" onclick="closeModal()">OK</button>
+  </div>
+</div>
+
+<!-- Fee Calculation Modal (Delay It / Split Pay / Buy Limit) -->
+<div class="modal" id="fee-modal">
+  <div class="modal-content">
+    <h3 id="fee-modal-title">Apply Service</h3>
+    <p style="margin-bottom:12px;color:var(--text-muted);font-size:13px;" id="fee-modal-desc"></p>
+    <input type="number" id="fee-amount" placeholder="Enter amount" min="100">
+    <button class="btn" style="width:100%;margin-bottom:12px;" onclick="calculateFee()">Calculate Fee</button>
+
+    <div id="fee-result" class="fee-preview hidden">
+      <div>Service Fee</div>
+      <div class="fee-amount" id="fee-display">—</div>
+      <div style="font-size:13px;color:var(--text-muted);margin-top:4px;" id="fee-formula"></div>
+    </div>
+
+    <button class="btn" style="width:100%;" id="fee-apply-btn" onclick="confirmFeeApply()" disabled>Confirm & Apply</button>
+    <button class="btn btn-outline" style="width:100%;margin-top:8px;" onclick="closeFeeModal()">Cancel</button>
   </div>
 </div>
 
@@ -1037,7 +1016,7 @@ function applyTakeMoney() {
   document.getElementById('apply-modal').classList.add('show');
 }
 
-// ========== Users ==========
+// ========== USERS + ACCESS RIGHTS ==========
 const users = {
   "user1": {
     password: "123456",
@@ -1052,7 +1031,19 @@ const users = {
     loans: [
       { amount: 5000, interest: 365, overdue: 0, borrowed: "2025-06-12", return: "2025-09-12", status: "Active" },
       { amount: 2000, interest: 146, overdue: 50, borrowed: "2025-03-01", return: "2025-06-01", status: "Overdue" }
-    ]
+    ],
+    // Access rights
+    access: {
+      "Delay It": true,
+      "Split Pay": true,
+      "Buy Limit": false,
+      "Pre-Saver": true,
+      "Lendlink-Mid": false,
+      "BsRora Bot": false,
+      "Mining bot": false,
+      "BotPay": false,
+      "BsRora-Atdo": true
+    }
   },
   "user2": {
     password: "123456",
@@ -1066,7 +1057,18 @@ const users = {
     },
     loans: [
       { amount: 12000, interest: 876, overdue: 0, borrowed: "2025-07-20", return: "2025-10-20", status: "Active" }
-    ]
+    ],
+    access: {
+      "Delay It": true,
+      "Split Pay": true,
+      "Buy Limit": true,
+      "Pre-Saver": true,
+      "Lendlink-Mid": true,
+      "BsRora Bot": true,
+      "Mining bot": false,
+      "BotPay": true,
+      "BsRora-Atdo": true
+    }
   },
   "user3": {
     password: "123456",
@@ -1081,29 +1083,219 @@ const users = {
     loans: [
       { amount: 8000, interest: 584, overdue: 120, borrowed: "2025-04-15", return: "2025-07-15", status: "Overdue" },
       { amount: 3000, interest: 219, overdue: 0, borrowed: "2025-08-01", return: "2025-11-01", status: "Active" }
-    ]
+    ],
+    access: {
+      "Delay It": true,
+      "Split Pay": false,
+      "Buy Limit": false,
+      "Pre-Saver": true,
+      "Lendlink-Mid": false,
+      "BsRora Bot": false,
+      "Mining bot": false,
+      "BotPay": false,
+      "BsRora-Atdo": false
+    }
   }
 };
 
 let currentUser = null;
+let pendingFeeService = null;
+let pendingFeeAmount = 0;
+let pendingFeeValue = 0;
 
-// ========== Search ==========
+// ========== ALL PRODUCTS DEFINITION ==========
 const allProducts = [
-  { name: "Take Money", keywords: "take money interest", section: "takemoney" },
-  { name: "Delay It", keywords: "delay it extend", section: "products" },
-  { name: "Split Pay", keywords: "split pay", section: "products" },
-  { name: "Buy Limit", keywords: "buy limit", section: "products" },
-  { name: "Pre-Saver", keywords: "pre-saver pre saver", section: "products" },
-  { name: "Lendlink-Mid", keywords: "lendlink mid", section: "products" },
-  { name: "BsRora Bot", keywords: "bsrora bot", section: "products" },
-  { name: "Mining bot", keywords: "mining bot", section: "products" },
-  { name: "BotPay", keywords: "botpay", section: "products" },
-  { name: "BsRora-Atdo", keywords: "bsrora-atdo atdo", section: "products" },
-  { name: "Normal Plan (20k)", keywords: "turbo normal", section: "turbo" },
-  { name: "Premium Plan (40k)", keywords: "turbo premium", section: "turbo" },
-  { name: "Premium+ Plan (80k)", keywords: "turbo premium+", section: "turbo" }
+  { name: "Delay It",      icon: "⏳", desc: "Extend repayment date", needsFee: true,  feeRate: 0.08, feeLabel: "8% of amount" },
+  { name: "Split Pay",     icon: "📅", desc: "Split payment into smaller amounts", needsFee: true,  feeRate: 0.05, feeLabel: "5% of amount" },
+  { name: "Buy Limit",     icon: "📈", desc: "Increase your borrowing limit", needsFee: true,  feeRate: 0.10, feeLabel: "10% of amount" },
+  { name: "Pre-Saver",     icon: "💰", desc: "Save first, enjoy better rates", needsFee: false },
+  { name: "Lendlink-Mid",  icon: "🔗", desc: "Mid-term lending options", needsFee: false },
+  { name: "BsRora Bot",    icon: "🤖", desc: "Smart automation bot", needsFee: false },
+  { name: "Mining bot",    icon: "⛏️", desc: "Automated mining bot", needsFee: false },
+  { name: "BotPay",        icon: "💳", desc: "Fast payment solution", needsFee: false },
+  { name: "BsRora-Atdo",   icon: "⚡", desc: "Advanced automated system", needsFee: false }
 ];
 
+// ========== RENDER PRODUCTS (Login + Access Control) ==========
+function renderProducts() {
+  const container = document.getElementById('products-container');
+
+  if (!currentUser) {
+    container.innerHTML = `
+      <div class="login-required">
+        <h3>🔒 Login Required</h3>
+        <p>Please login to your account to view the services you have access to.</p>
+        <button class="btn" style="margin-top:16px;" onclick="showLogin()">Go to Login</button>
+      </div>
+    `;
+    return;
+  }
+
+  const user = users[currentUser];
+  const accessible = allProducts.filter(p => user.access[p.name] === true);
+
+  if (accessible.length === 0) {
+    container.innerHTML = `<div class="login-required"><p>You currently have no services available.</p></div>`;
+    return;
+  }
+
+  let html = `<p style="margin-bottom:14px;color:var(--text-muted);">
+    Showing <strong>${accessible.length}</strong> service(s) available for <strong>${user.displayName}</strong>
+  </p>
+  <div class="product-grid">`;
+
+  accessible.forEach(p => {
+    html += `
+      <div class="product-card">
+        <div class="icon">${p.icon}</div>
+        <div class="access-badge access-yes">✓ Access Granted</div>
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+        <button class="btn" onclick="handleProductClick('${p.name}')">Apply</button>
+      </div>
+    `;
+  });
+
+  html += `</div>`;
+
+  // Also show locked services (optional, for transparency)
+  const locked = allProducts.filter(p => !user.access[p.name]);
+  if (locked.length > 0) {
+    html += `<p style="margin:20px 0 10px;color:var(--text-muted);font-size:13px;">Services you do not have access to:</p>
+    <div class="product-grid" style="opacity:0.6;">`;
+    locked.forEach(p => {
+      html += `
+        <div class="product-card">
+          <div class="icon">${p.icon}</div>
+          <div class="access-badge access-no">✗ No Access</div>
+          <h3>${p.name}</h3>
+          <p>${p.desc}</p>
+          <button class="btn btn-disabled" disabled>Locked</button>
+        </div>
+      `;
+    });
+    html += `</div>`;
+  }
+
+  container.innerHTML = html;
+}
+
+// ========== HANDLE PRODUCT CLICK ==========
+function handleProductClick(name) {
+  if (!currentUser) {
+    alert('Please login first');
+    showLogin();
+    return;
+  }
+
+  const user = users[currentUser];
+  if (!user.access[name]) {
+    alert('You do not have access to this service.');
+    return;
+  }
+
+  const product = allProducts.find(p => p.name === name);
+  if (product && product.needsFee) {
+    // Open fee modal
+    pendingFeeService = name;
+    document.getElementById('fee-modal-title').textContent = 'Apply: ' + name;
+    document.getElementById('fee-modal-desc').textContent = product.desc + ' — Enter amount to calculate the service fee.';
+    document.getElementById('fee-amount').value = '';
+    document.getElementById('fee-result').classList.add('hidden');
+    document.getElementById('fee-apply-btn').disabled = true;
+    document.getElementById('fee-modal').classList.add('show');
+  } else {
+    // Simple apply
+    applyProduct(name);
+  }
+}
+
+// ========== FEE CALCULATION ==========
+function calculateFee() {
+  const amount = parseFloat(document.getElementById('fee-amount').value);
+  if (!amount || amount < 100) {
+    alert('Please enter a valid amount (minimum 100)');
+    return;
+  }
+
+  const product = allProducts.find(p => p.name === pendingFeeService);
+  if (!product) return;
+
+  const fee = +(amount * product.feeRate).toFixed(2);
+  pendingFeeAmount = amount;
+  pendingFeeValue = fee;
+
+  document.getElementById('fee-display').textContent = fee.toLocaleString() + ' (currency)';
+  document.getElementById('fee-formula').textContent = product.feeLabel + ' → ' + amount.toLocaleString() + ' × ' + (product.feeRate * 100) + '%';
+  document.getElementById('fee-result').classList.remove('hidden');
+  document.getElementById('fee-apply-btn').disabled = false;
+}
+
+function confirmFeeApply() {
+  if (!pendingFeeService || !pendingFeeAmount) return;
+
+  // Save to localStorage under this user
+  const key = 'jh_applied_' + currentUser;
+  let list = JSON.parse(localStorage.getItem(key) || '[]');
+  list.push({
+    service: pendingFeeService,
+    amount: pendingFeeAmount,
+    fee: pendingFeeValue,
+    date: new Date().toISOString().slice(0, 10),
+    status: 'Pending'
+  });
+  localStorage.setItem(key, JSON.stringify(list));
+
+  // Close modal & show success
+  closeFeeModal();
+  document.getElementById('apply-msg').innerHTML = 
+    `You have successfully applied for <strong>${pendingFeeService}</strong>.<br>
+     Amount: ${pendingFeeAmount.toLocaleString()}<br>
+     Service Fee: <strong>${pendingFeeValue.toLocaleString()}</strong><br>
+     The fee has been recorded in your account.`;
+  document.getElementById('apply-modal').classList.add('show');
+
+  // Refresh applied list in account
+  renderAppliedServices();
+}
+
+function closeFeeModal() {
+  document.getElementById('fee-modal').classList.remove('show');
+  pendingFeeService = null;
+  pendingFeeAmount = 0;
+  pendingFeeValue = 0;
+}
+
+// ========== RENDER APPLIED SERVICES ==========
+function renderAppliedServices() {
+  if (!currentUser) return;
+
+  const key = 'jh_applied_' + currentUser;
+  const list = JSON.parse(localStorage.getItem(key) || '[]');
+  const tbody = document.getElementById('applied-body');
+  const noMsg = document.getElementById('no-applied');
+
+  tbody.innerHTML = '';
+  if (list.length === 0) {
+    noMsg.classList.remove('hidden');
+    return;
+  }
+  noMsg.classList.add('hidden');
+
+  list.forEach(item => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${item.service}</td>
+      <td>${item.amount.toLocaleString()}</td>
+      <td style="font-weight:bold;color:var(--text-title);">${item.fee.toLocaleString()}</td>
+      <td>${item.date}</td>
+      <td>${item.status}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// ========== Search ==========
 function doSearch() {
   const keyword = document.getElementById('search-input').value.trim().toLowerCase();
   const resultsBox = document.getElementById('search-results');
@@ -1111,17 +1303,17 @@ function doSearch() {
   if (!keyword) { alert('Please enter a keyword'); return; }
 
   const matched = allProducts.filter(p => 
-    p.name.toLowerCase().includes(keyword) || p.keywords.toLowerCase().includes(keyword)
+    p.name.toLowerCase().includes(keyword) || p.desc.toLowerCase().includes(keyword)
   );
 
   list.innerHTML = matched.length === 0 
     ? `<div class="search-item">No results for "<strong>${keyword}</strong>"</div>`
     : matched.map(p => `
       <div class="search-item">
-        <div><strong>${p.name}</strong></div>
+        <div><strong>${p.name}</strong> <span style="font-size:12px;color:var(--text-muted);">${p.desc}</span></div>
         <div>
-          <button class="btn" style="padding:5px 12px;font-size:13px;" onclick="applyProduct('${p.name}')">Apply</button>
-          <a href="#${p.section}" style="margin-left:8px;font-size:13px;">View</a>
+          <button class="btn" style="padding:5px 12px;font-size:13px;" onclick="handleProductClick('${p.name}')">Apply</button>
+          <a href="#products" style="margin-left:8px;font-size:13px;">View</a>
         </div>
       </div>
     `).join('');
@@ -1135,7 +1327,7 @@ function clearSearch() {
   document.getElementById('search-input').value = '';
 }
 
-// ========== Apply ==========
+// ========== Simple Apply (non-fee products) ==========
 function applyProduct(name) {
   document.getElementById('apply-msg').innerHTML = 
     `You have successfully applied for <strong>${name}</strong>.<br>Our team will contact you shortly.`;
@@ -1160,6 +1352,7 @@ function doLogin() {
   currentUser = username;
   localStorage.setItem('jh_user', username);
   showLoanDetails();
+  renderProducts();          // refresh products with access
 }
 
 function showLoanDetails() {
@@ -1203,6 +1396,8 @@ function showLoanDetails() {
     `;
     tbody.appendChild(tr);
   });
+
+  renderAppliedServices();
 }
 
 function logout() {
@@ -1214,6 +1409,7 @@ function logout() {
   document.getElementById('top-user').textContent = '';
   document.getElementById('account-status').textContent = '';
   document.getElementById('special-banner').classList.add('hidden');
+  renderProducts();          // back to login-required view
 }
 
 // ========== Init ==========
@@ -1230,6 +1426,8 @@ window.onload = function() {
     currentUser = saved;
     showLoanDetails();
   }
+
+  renderProducts();          // always render products section
 };
 </script>
 
