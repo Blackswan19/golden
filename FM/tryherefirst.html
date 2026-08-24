@@ -1,1 +1,1153 @@
-no test...
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jade Harmony Finance - Official Site</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  :root, [data-theme="light"] {
+    --black-swan: #0b0f17;
+    --dark-blue: #0a2540;
+    --accent: #c9a84c;
+    --bg-body: #eef1f6;
+    --bg-card: #ffffff;
+    --bg-topbar: #0b0f17;
+    --bg-nav: #0a2540;
+    --bg-banner: linear-gradient(120deg, #0b0f17, #0a2540, #0d3a66);
+    --bg-footer: #0b0f17;
+    --bg-soft: #f0f4f8;
+    --bg-calc: #f0f5fa;
+    --bg-table-head: #e8eef5;
+    --bg-table-even: #f7fafc;
+    --text-main: #1a1a1a;
+    --text-muted: #555555;
+    --text-light: #e0e6ed;
+    --text-footer: #a0aec0;
+    --text-title: #0a2540;
+    --border: #d0d8e4;
+    --border-strong: #0a2540;
+    --input-border: #c5d0de;
+  }
+
+  [data-theme="dark"] {
+    --black-swan: #05080e;
+    --dark-blue: #1a3a5c;
+    --accent: #d4b45a;
+    --bg-body: #0c121c;
+    --bg-card: #141b28;
+    --bg-topbar: #05080e;
+    --bg-nav: #0f1c2e;
+    --bg-banner: linear-gradient(120deg, #05080e, #0f1c2e, #1a3a5c);
+    --bg-footer: #05080e;
+    --bg-soft: #1a2332;
+    --bg-calc: #1a2535;
+    --bg-table-head: #1a2535;
+    --bg-table-even: #121925;
+    --text-main: #e2e8f0;
+    --text-muted: #a0aec0;
+    --text-light: #e2e8f0;
+    --text-footer: #718096;
+    --text-title: #7db0e0;
+    --border: #2d3a4d;
+    --border-strong: #3a5a80;
+    --input-border: #2d3a4d;
+  }
+
+  body {
+    font-family: "Microsoft YaHei", "SimHei", Arial, sans-serif;
+    font-size: 13px;
+    background: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.5;
+    transition: background 0.3s, color 0.3s;
+  }
+  a { text-decoration: none; color: var(--text-main); }
+  a:hover { color: var(--dark-blue); }
+
+  .topbar {
+    background: var(--bg-topbar);
+    color: var(--text-light);
+    font-size: 12px;
+    padding: 5px 0;
+  }
+  .topbar .inner {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .topbar a { color: #c5d0de; margin-left: 12px; }
+  .topbar a:hover { color: var(--accent); }
+  .user-info { color: var(--accent); font-weight: bold; }
+  .theme-btn {
+    background: transparent;
+    border: 1px solid #4a5568;
+    color: #e2e8f0;
+    padding: 3px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 12px;
+    border-radius: 3px;
+  }
+  .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .header {
+    background: var(--bg-card);
+    border-bottom: 3px solid var(--border-strong);
+  }
+  .header .inner {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+  }
+  .logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--black-swan);
+    margin-right: 30px;
+  }
+  [data-theme="dark"] .logo { color: var(--text-main); }
+  .logo span { color: var(--dark-blue); }
+  [data-theme="dark"] .logo span { color: var(--text-title); }
+
+  .search-box { flex: 1; display: flex; }
+  .search-box input {
+    width: 280px;
+    height: 34px;
+    border: 2px solid var(--border-strong);
+    padding: 0 10px;
+    font-size: 13px;
+    background: var(--bg-card);
+    color: var(--text-main);
+  }
+  .search-box button {
+    height: 34px;
+    background: var(--dark-blue);
+    color: #fff;
+    border: none;
+    padding: 0 16px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .hotline {
+    margin-left: 20px;
+    text-align: right;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .hotline strong {
+    display: block;
+    font-size: 18px;
+    color: var(--dark-blue);
+  }
+  [data-theme="dark"] .hotline strong { color: var(--text-title); }
+
+  .nav { background: var(--bg-nav); }
+  .nav ul {
+    width: 1200px;
+    margin: 0 auto;
+    list-style: none;
+    display: flex;
+  }
+  .nav li { flex: 1; text-align: center; }
+  .nav a {
+    display: block;
+    color: #fff;
+    padding: 11px 5px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .nav a:hover, .nav .active { background: var(--black-swan); }
+
+  .main { width: 1200px; margin: 10px auto; }
+
+  .banner {
+    height: 220px;
+    background: var(--bg-banner);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .banner h1 { font-size: 28px; margin-bottom: 6px; }
+  .banner p { font-size: 15px; opacity: 0.95; }
+
+  .quick {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .quick span { font-weight: bold; color: var(--dark-blue); }
+  [data-theme="dark"] .quick span { color: var(--text-title); }
+  .quick a {
+    padding: 3px 10px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-main);
+  }
+  .quick a:hover { background: var(--dark-blue); color: #fff; }
+
+  .row { display: flex; gap: 10px; margin-bottom: 10px; }
+  .col {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+  }
+
+  .box-title {
+    background: var(--dark-blue);
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  [data-theme="dark"] .box-title { background: #0f1c2e; }
+  .box-body { padding: 12px; }
+
+  .special-banner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    border: 2px solid var(--border-strong);
+    background: var(--bg-soft);
+  }
+  .special-banner .special-icon {
+    font-size: 42px;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--dark-blue);
+    color: #fff;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .special-banner .special-content h3 {
+    font-size: 16px;
+    color: var(--text-title);
+    margin-bottom: 4px;
+  }
+  .special-banner .special-content p {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .special-banner .special-tag {
+    display: inline-block;
+    background: var(--dark-blue);
+    color: #fff;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-top: 6px;
+  }
+
+  .graph-container {
+    padding: 16px;
+    text-align: center;
+  }
+  .today-rate {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--text-title);
+    margin-bottom: 10px;
+  }
+  .today-rate span { color: #38a169; }
+  #interestChart {
+    width: 100%;
+    max-width: 750px;
+    height: 240px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .take-money-box { max-width: 420px; margin: 0 auto; }
+  .take-money-box input {
+    width: 100%;
+    height: 38px;
+    border: 1px solid var(--input-border);
+    padding: 0 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    background: var(--bg-card);
+    color: var(--text-main);
+  }
+  .take-money-box button {
+    width: 100%;
+    height: 40px;
+    background: var(--dark-blue);
+    color: #fff;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 8px;
+  }
+  .take-money-box button:hover { background: var(--black-swan); }
+  .interest-result {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    padding: 14px;
+    margin-top: 12px;
+    text-align: center;
+  }
+  .interest-result .rate {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text-title);
+    margin: 6px 0;
+  }
+
+  .turbo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 12px;
+  }
+  .turbo-card {
+    border: 2px solid var(--border);
+    text-align: center;
+    padding: 14px 10px;
+    position: relative;
+  }
+  .turbo-card.hot {
+    border-color: var(--border-strong);
+    background: var(--bg-soft);
+  }
+  .turbo-card .badge {
+    position: absolute;
+    top: -1px; right: -1px;
+    background: var(--black-swan);
+    color: #fff;
+    font-size: 11px;
+    padding: 2px 8px;
+  }
+  .turbo-card h3 { font-size: 17px; color: var(--text-title); margin-bottom: 4px; }
+  .turbo-card .limit { font-size: 22px; font-weight: bold; margin: 6px 0; }
+  .turbo-card .limit small { font-size: 12px; font-weight: normal; color: var(--text-muted); }
+  .turbo-card p { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; }
+
+  .btn {
+    display: inline-block;
+    background: var(--dark-blue);
+    color: #fff;
+    padding: 6px 14px;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+  }
+  .btn:hover { background: var(--black-swan); }
+  .btn-outline {
+    background: transparent;
+    color: var(--dark-blue);
+    border: 1px solid var(--dark-blue);
+  }
+  [data-theme="dark"] .btn-outline {
+    color: var(--text-title);
+    border-color: var(--text-title);
+  }
+
+  .user-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .summary-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    padding: 14px;
+    text-align: center;
+  }
+  .summary-card .label { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+  .summary-card .value { font-size: 18px; font-weight: bold; color: var(--text-title); }
+
+  .loan-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .loan-table th {
+    background: var(--bg-table-head);
+    border: 1px solid var(--border);
+    padding: 8px 6px;
+    color: var(--text-title);
+    text-align: center;
+  }
+  .loan-table td {
+    border: 1px solid var(--border);
+    padding: 8px 6px;
+    text-align: center;
+  }
+  .loan-table tr:nth-child(even) { background: var(--bg-table-even); }
+
+  .hidden { display: none !important; }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    padding: 10px;
+  }
+  .product-card {
+    border: 1px solid var(--border);
+    padding: 14px 10px;
+    text-align: center;
+  }
+  .product-card:hover { border-color: var(--border-strong); }
+  .product-card .icon { font-size: 26px; margin-bottom: 6px; }
+  .product-card h3 { font-size: 15px; color: var(--text-title); margin-bottom: 4px; }
+  .product-card p { font-size: 12px; color: var(--text-muted); min-height: 36px; margin-bottom: 8px; }
+
+  .search-results {
+    background: var(--bg-card);
+    border: 1px solid var(--border-strong);
+    margin-bottom: 10px;
+    display: none;
+  }
+  .search-results .box-title { background: var(--black-swan); }
+  .search-item {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .search-item strong { color: var(--text-title); }
+
+  .footer {
+    background: var(--bg-footer);
+    color: var(--text-footer);
+    margin-top: 12px;
+    padding: 18px 0 12px;
+    font-size: 12px;
+  }
+  .footer .inner {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 30px;
+  }
+  .footer h4 {
+    color: #e2e8f0;
+    font-size: 13px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #2d3748;
+    padding-bottom: 5px;
+  }
+  .footer a { display: block; color: var(--text-footer); margin-bottom: 4px; }
+  .footer a:hover { color: var(--accent); }
+  .footer-bottom {
+    width: 1200px;
+    margin: 12px auto 0;
+    padding-top: 10px;
+    border-top: 1px solid #2d3748;
+    text-align: center;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(5, 8, 14, 0.75);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal.show { display: flex; }
+  .modal-content {
+    background: var(--bg-card);
+    padding: 24px;
+    width: 400px;
+    border: 3px solid var(--border-strong);
+    color: var(--text-main);
+  }
+  .modal-content h3 { color: var(--text-title); margin-bottom: 12px; font-size: 18px; }
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="inner">
+    <div>Welcome to Jade Harmony Finance Official Website</div>
+    <div>
+      <span id="top-user" class="user-info"></span>
+      <a href="#" onclick="showLogin()">Account Login</a>
+      <a href="#" onclick="logout()" id="logout-btn" class="hidden">Logout</a>
+      <button class="theme-btn" onclick="toggleTheme()" id="theme-btn">Dark Mode</button>
+      <a href="#">App Download</a>
+      <a href="#">中文</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<div class="header">
+  <div class="inner">
+    <div class="logo">Jade <span>Harmony</span> Finance</div>
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Search products..." onkeypress="if(event.key==='Enter') doSearch()">
+      <button onclick="doSearch()">Search</button>
+    </div>
+    <div class="hotline">
+      24h Service Hotline<br>
+      <strong>400-888-9999</strong>
+    </div>
+  </div>
+</div>
+
+<!-- Nav -->
+<div class="nav">
+  <ul>
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#takemoney">Take Money</a></li>
+    <li><a href="#graph">Interest Graph</a></li>
+    <li><a href="#turbo">Turbo Plans</a></li>
+    <li><a href="#products">All Products</a></li>
+    <li><a href="#account">My Account</a></li>
+  </ul>
+</div>
+
+<div class="main">
+
+  <!-- Search Results -->
+  <div class="search-results" id="search-results">
+    <div class="box-title">Search Results <a href="#" onclick="clearSearch()" style="color:#fff;">Clear ✕</a></div>
+    <div id="search-list"></div>
+  </div>
+
+  <!-- Banner -->
+  <div class="banner">
+    <h1>Flexible Payment · Higher Limits · Take Money</h1>
+    <p>Delay It · Split Pay · Buy Limit · Pre-Saver · Lendlink-Mid · BsRora</p>
+  </div>
+
+  <div class="quick">
+    <span>Quick:</span>
+    <a href="#takemoney">Take Money</a>
+    <a href="#graph">Interest Graph</a>
+    <a href="#turbo">Turbo Plans</a>
+    <a href="#products">All Products</a>
+    <a href="#account">My Account</a>
+    <a href="#" onclick="showLogin()">Login</a>
+  </div>
+
+  <!-- Interest Graph -->
+  <div class="row" id="graph">
+    <div class="col" style="flex:1;">
+      <div class="box-title">Today’s Interest Rate Graph (Fixed for the Day)</div>
+      <div class="graph-container">
+        <div class="today-rate">
+          Today’s Interest: <span id="today-rate-display">--%</span>
+        </div>
+        <canvas id="interestChart" width="750" height="240"></canvas>
+        <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">
+          Interest is fixed for the whole day. Same rate used in Take Money.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Take Money -->
+  <div class="row" id="takemoney">
+    <div class="col" style="flex:1;">
+      <div class="box-title">Take Money - Check Interest & Apply</div>
+      <div class="box-body">
+        <div class="take-money-box">
+          <div id="tm-password-step">
+            <p style="margin-bottom:12px;color:var(--text-muted);text-align:center;">
+              Enter your account password to continue<br>
+              <small>Demo password: 123456</small>
+            </p>
+            <input type="password" id="tm-password" placeholder="Enter Password">
+            <button onclick="verifyTakeMoneyPassword()">Continue</button>
+          </div>
+
+          <div id="tm-amount-step" class="hidden">
+            <p style="margin-bottom:10px;text-align:center;color:var(--text-muted);">
+              Today’s Interest Rate: <strong id="tm-today-rate" style="color:var(--text-title);"></strong>
+            </p>
+            <input type="number" id="tm-amount" placeholder="Enter amount you want to take" min="100">
+            <button onclick="calculateTakeMoneyInterest()">Check Interest</button>
+
+            <div id="tm-result" class="interest-result hidden">
+              <div>Amount: <strong id="tm-res-amount">—</strong></div>
+              <div class="rate">Interest: <span id="tm-res-interest">—</span></div>
+              <div>Total to Return: <strong id="tm-res-total">—</strong></div>
+              <button class="btn" style="margin-top:12px;width:100%;" onclick="applyTakeMoney()">Apply Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Turbo Plans -->
+  <div class="row" id="turbo">
+    <div class="col" style="flex:1;">
+      <div class="box-title">Turbo Plans - Higher Borrowing Limits</div>
+      <div class="turbo-grid">
+        <div class="turbo-card">
+          <h3>Normal</h3>
+          <div class="limit">20,000 <small>Limit</small></div>
+          <p>Basic plan for everyday needs</p>
+          <button class="btn" onclick="applyProduct('Normal Plan (20k)')">Apply Now</button>
+        </div>
+        <div class="turbo-card hot">
+          <div class="badge">Popular</div>
+          <h3>Premium</h3>
+          <div class="limit">40,000 <small>Limit</small></div>
+          <p>Higher limit + better rates</p>
+          <button class="btn" onclick="applyProduct('Premium Plan (40k)')">Apply Now</button>
+        </div>
+        <div class="turbo-card">
+          <h3>Premium+</h3>
+          <div class="limit">80,000 <small>Limit</small></div>
+          <p>Maximum limit & priority support</p>
+          <button class="btn" onclick="applyProduct('Premium+ Plan (80k)')">Apply Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALL PRODUCTS (Restored) -->
+  <div class="row" id="products">
+    <div class="col" style="flex:1;">
+      <div class="box-title">All Products</div>
+      <div class="product-grid">
+
+        <!-- Delay It -->
+        <div class="product-card">
+          <div class="icon">⏳</div>
+          <h3>Delay It</h3>
+          <p>Extend repayment date<br>Fee: 6.3% / 7.3% / 8.3%</p>
+          <button class="btn" onclick="applyProduct('Delay It')">Apply</button>
+        </div>
+
+        <!-- Split Pay -->
+        <div class="product-card">
+          <div class="icon">📅</div>
+          <h3>Split Pay</h3>
+          <p>Split payment into smaller amounts</p>
+          <button class="btn" onclick="applyProduct('Split Pay')">Apply</button>
+        </div>
+
+        <!-- Buy Limit -->
+        <div class="product-card">
+          <div class="icon">📈</div>
+          <h3>Buy Limit</h3>
+          <p>Increase your borrowing limit</p>
+          <button class="btn" onclick="applyProduct('Buy Limit')">Apply</button>
+        </div>
+
+        <!-- Pre-Saver -->
+        <div class="product-card">
+          <div class="icon">💰</div>
+          <h3>Pre-Saver</h3>
+          <p>Save first, enjoy better rates</p>
+          <button class="btn" onclick="applyProduct('Pre-Saver')">Apply</button>
+        </div>
+
+        <!-- Lendlink-Mid -->
+        <div class="product-card">
+          <div class="icon">🔗</div>
+          <h3>Lendlink-Mid</h3>
+          <p>Mid-term lending options</p>
+          <button class="btn" onclick="applyProduct('Lendlink-Mid')">Apply</button>
+        </div>
+
+        <!-- BsRora Bot -->
+        <div class="product-card">
+          <div class="icon">🤖</div>
+          <h3>BsRora Bot</h3>
+          <p>Smart automation bot</p>
+          <button class="btn" onclick="applyProduct('BsRora Bot')">Apply</button>
+        </div>
+
+        <!-- Mining bot -->
+        <div class="product-card">
+          <div class="icon">⛏️</div>
+          <h3>Mining bot</h3>
+          <p>Automated mining bot</p>
+          <button class="btn" onclick="applyProduct('BsRora Mining bot')">Apply</button>
+        </div>
+
+        <!-- BotPay -->
+        <div class="product-card">
+          <div class="icon">💳</div>
+          <h3>BotPay</h3>
+          <p>Fast payment solution</p>
+          <button class="btn" onclick="applyProduct('BsRora BotPay')">Apply</button>
+        </div>
+
+        <!-- BsRora-Atdo -->
+        <div class="product-card">
+          <div class="icon">⚡</div>
+          <h3>BsRora-Atdo</h3>
+          <p>Advanced automated system</p>
+          <button class="btn" onclick="applyProduct('BsRora-Atdo')">Apply</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- My Account -->
+  <div class="row" id="account">
+    <div class="col" style="flex:1;">
+      <div class="box-title">
+        My Account - Loan Details
+        <span id="account-status" style="font-size:12px;font-weight:normal;"></span>
+      </div>
+      <div class="box-body">
+        <div id="login-section">
+          <div style="max-width:360px;margin:0 auto;">
+            <p style="margin-bottom:12px;color:var(--text-muted);text-align:center;">
+              Demo: user1 / user2 / user3 &nbsp; Password: 123456
+            </p>
+            <input type="text" id="login-user" placeholder="Username" style="width:100%;height:36px;margin-bottom:10px;padding:0 10px;border:1px solid var(--input-border);background:var(--bg-card);color:var(--text-main);">
+            <input type="password" id="login-pass" placeholder="Password" style="width:100%;height:36px;margin-bottom:10px;padding:0 10px;border:1px solid var(--input-border);background:var(--bg-card);color:var(--text-main);">
+            <button class="btn" style="width:100%;height:38px;" onclick="doLogin()">Login to Account</button>
+          </div>
+        </div>
+
+        <div id="loan-section" class="hidden">
+          <p style="margin-bottom:12px;">
+            Welcome, <strong id="current-user"></strong>!
+            <button class="btn btn-outline" style="padding:3px 10px;font-size:12px;margin-left:10px;" onclick="logout()">Logout</button>
+          </p>
+
+          <!-- Special Banner -->
+          <div id="special-banner" class="special-banner hidden">
+            <div class="special-icon" id="special-icon">🎁</div>
+            <div class="special-content">
+              <h3 id="special-title">Special Offer</h3>
+              <p id="special-message">You have a special gift!</p>
+              <div class="special-tag" id="special-tag">VIP</div>
+            </div>
+          </div>
+
+          <div class="user-summary">
+            <div class="summary-card">
+              <div class="label">User Name</div>
+              <div class="value" id="sum-username">—</div>
+            </div>
+            <div class="summary-card">
+              <div class="label">Premium Type</div>
+              <div class="value" id="sum-premium">—</div>
+            </div>
+            <div class="summary-card">
+              <div class="label">Total Amount</div>
+              <div class="value" id="sum-total">—</div>
+            </div>
+          </div>
+
+          <table class="loan-table">
+            <thead>
+              <tr>
+                <th>Amount</th>
+                <th>Interest</th>
+                <th>Overdue Fee</th>
+                <th>Borrowed Date</th>
+                <th>Return Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="loan-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="inner">
+    <div style="flex:1.3;">
+      <h4>About Us</h4>
+      <a href="#">Company Profile</a>
+      <a href="#">Safety & Compliance</a>
+    </div>
+    <div style="flex:1;">
+      <h4>Products</h4>
+      <a href="#takemoney">Take Money</a>
+      <a href="#products">Delay It</a>
+      <a href="#products">Split Pay</a>
+      <a href="#turbo">Turbo Plans</a>
+    </div>
+    <div style="flex:1;">
+      <h4>Tools</h4>
+      <a href="#graph">Interest Graph</a>
+      <a href="#account">My Account</a>
+    </div>
+    <div style="flex:1;">
+      <h4>Support</h4>
+      <a href="#">Online Service</a>
+      <a href="#">Download App</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    Copyright © 2018-2025 Jade Harmony Finance Co., Ltd. All Rights Reserved.
+  </div>
+</div>
+
+<!-- Apply Modal -->
+<div class="modal" id="apply-modal">
+  <div class="modal-content">
+    <h3>Application Received</h3>
+    <p id="apply-msg" style="margin-bottom:16px;"></p>
+    <button class="btn" style="width:100%;" onclick="closeModal()">OK</button>
+  </div>
+</div>
+
+<script>
+// ========== FIXED Interest for the Day ==========
+function getTodayInterest() {
+  const today = new Date().toDateString(); // e.g. "Mon Aug 24 2026"
+  const stored = localStorage.getItem('jh_today_interest');
+  const storedDate = localStorage.getItem('jh_today_date');
+
+  if (stored && storedDate === today) {
+    return parseFloat(stored);
+  }
+
+  // Generate new rate for today (30% - 35%)
+  const rate = +(30 + Math.random() * 5).toFixed(2);
+  localStorage.setItem('jh_today_interest', rate);
+  localStorage.setItem('jh_today_date', today);
+  return rate;
+}
+
+const todayInterest = getTodayInterest();
+
+// ========== Theme ==========
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme') || 'light';
+  const next = current === 'light' ? 'dark' : 'light';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('jh_theme', next);
+  document.getElementById('theme-btn').textContent = next === 'light' ? 'Dark Mode' : 'Light Mode';
+  drawBarGraph();
+}
+
+// ========== BAR GRAPH ==========
+function drawBarGraph() {
+  const canvas = document.getElementById('interestChart');
+  const ctx = canvas.getContext('2d');
+  const width = canvas.width;
+  const height = canvas.height;
+  ctx.clearRect(0, 0, width, height);
+
+  const bars = [];
+  for (let i = 0; i < 10; i++) {
+    const variation = (Math.sin(i * 1.1) * 2.2) + (Math.random() * 1.5 - 0.75);
+    bars.push(Math.max(30, Math.min(35, todayInterest + variation)));
+  }
+  bars[bars.length - 1] = todayInterest;
+
+  const minR = 29, maxR = 36;
+  const barCount = bars.length;
+  const gap = 12;
+  const barWidth = (width - (barCount + 1) * gap) / barCount;
+  const chartBottom = height - 30;
+  const chartHeight = chartBottom - 25;
+
+  ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--border').trim() || '#d0d8e4';
+  ctx.lineWidth = 1;
+  ctx.font = '11px sans-serif';
+  ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--text-muted').trim() || '#666';
+
+  for (let i = 0; i <= 4; i++) {
+    const val = minR + (maxR - minR) * (i / 4);
+    const y = chartBottom - (chartHeight * (i / 4));
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(width, y);
+    ctx.stroke();
+    ctx.fillText(val.toFixed(0) + '%', 4, y - 3);
+  }
+
+  bars.forEach((val, i) => {
+    const x = gap + i * (barWidth + gap);
+    const barH = ((val - minR) / (maxR - minR)) * chartHeight;
+    const y = chartBottom - barH;
+
+    ctx.fillStyle = (i === bars.length - 1) ? '#38a169' : '#3182ce';
+    ctx.fillRect(x, y, barWidth, barH);
+
+    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--text-main').trim() || '#333';
+    ctx.font = '11px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(val.toFixed(1) + '%', x + barWidth / 2, y - 5);
+  });
+
+  ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--text-muted').trim() || '#666';
+  ctx.font = '11px sans-serif';
+  ctx.textAlign = 'center';
+  const labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Today'];
+  bars.forEach((_, i) => {
+    const x = gap + i * (barWidth + gap) + barWidth / 2;
+    ctx.fillText(labels[i], x, height - 8);
+  });
+}
+
+// ========== Take Money ==========
+function verifyTakeMoneyPassword() {
+  const pass = document.getElementById('tm-password').value;
+  if (pass !== '123456') {
+    alert('Wrong password. Use 123456 for demo.');
+    return;
+  }
+  document.getElementById('tm-password-step').classList.add('hidden');
+  document.getElementById('tm-amount-step').classList.remove('hidden');
+  document.getElementById('tm-today-rate').textContent = todayInterest + '%';
+}
+
+function calculateTakeMoneyInterest() {
+  const amount = parseFloat(document.getElementById('tm-amount').value);
+  if (!amount || amount < 100) {
+    alert('Please enter amount (minimum 100)');
+    return;
+  }
+  const interestAmount = amount * (todayInterest / 100);
+  const total = amount + interestAmount;
+
+  document.getElementById('tm-res-amount').textContent = amount.toLocaleString();
+  document.getElementById('tm-res-interest').textContent = todayInterest + '%  →  ' + interestAmount.toFixed(2);
+  document.getElementById('tm-res-total').textContent = total.toFixed(2);
+  document.getElementById('tm-result').classList.remove('hidden');
+}
+
+function applyTakeMoney() {
+  const amount = document.getElementById('tm-amount').value;
+  document.getElementById('apply-msg').innerHTML = 
+    `You have applied for <strong>Take Money</strong><br>
+     Amount: ${Number(amount).toLocaleString()}<br>
+     Interest Rate: ${todayInterest}%<br>
+     Application submitted successfully!`;
+  document.getElementById('apply-modal').classList.add('show');
+}
+
+// ========== Users ==========
+const users = {
+  "user1": {
+    password: "123456",
+    displayName: "Alex Chen",
+    premiumType: "Premium",
+    special: {
+      icon: "👑",
+      title: "Premium Member Reward",
+      message: "Congratulations Alex! You have unlocked a special 5% cashback on your next Take Money.",
+      tag: "PREMIUM REWARD"
+    },
+    loans: [
+      { amount: 5000, interest: 365, overdue: 0, borrowed: "2025-06-12", return: "2025-09-12", status: "Active" },
+      { amount: 2000, interest: 146, overdue: 50, borrowed: "2025-03-01", return: "2025-06-01", status: "Overdue" }
+    ]
+  },
+  "user2": {
+    password: "123456",
+    displayName: "Sarah Wong",
+    premiumType: "Premium+",
+    special: {
+      icon: "💎",
+      title: "Premium+ VIP Gift",
+      message: "Dear Sarah, as a Premium+ member you get priority approval and zero processing fee this month!",
+      tag: "VIP GIFT"
+    },
+    loans: [
+      { amount: 12000, interest: 876, overdue: 0, borrowed: "2025-07-20", return: "2025-10-20", status: "Active" }
+    ]
+  },
+  "user3": {
+    password: "123456",
+    displayName: "Michael Li",
+    premiumType: "Normal",
+    special: {
+      icon: "🎁",
+      title: "Welcome Bonus",
+      message: "Hi Michael! Complete one more repayment and upgrade to Premium to unlock higher limits.",
+      tag: "WELCOME BONUS"
+    },
+    loans: [
+      { amount: 8000, interest: 584, overdue: 120, borrowed: "2025-04-15", return: "2025-07-15", status: "Overdue" },
+      { amount: 3000, interest: 219, overdue: 0, borrowed: "2025-08-01", return: "2025-11-01", status: "Active" }
+    ]
+  }
+};
+
+let currentUser = null;
+
+// ========== Search ==========
+const allProducts = [
+  { name: "Take Money", keywords: "take money interest", section: "takemoney" },
+  { name: "Delay It", keywords: "delay it extend", section: "products" },
+  { name: "Split Pay", keywords: "split pay", section: "products" },
+  { name: "Buy Limit", keywords: "buy limit", section: "products" },
+  { name: "Pre-Saver", keywords: "pre-saver pre saver", section: "products" },
+  { name: "Lendlink-Mid", keywords: "lendlink mid", section: "products" },
+  { name: "BsRora Bot", keywords: "bsrora bot", section: "products" },
+  { name: "Mining bot", keywords: "mining bot", section: "products" },
+  { name: "BotPay", keywords: "botpay", section: "products" },
+  { name: "BsRora-Atdo", keywords: "bsrora-atdo atdo", section: "products" },
+  { name: "Normal Plan (20k)", keywords: "turbo normal", section: "turbo" },
+  { name: "Premium Plan (40k)", keywords: "turbo premium", section: "turbo" },
+  { name: "Premium+ Plan (80k)", keywords: "turbo premium+", section: "turbo" }
+];
+
+function doSearch() {
+  const keyword = document.getElementById('search-input').value.trim().toLowerCase();
+  const resultsBox = document.getElementById('search-results');
+  const list = document.getElementById('search-list');
+  if (!keyword) { alert('Please enter a keyword'); return; }
+
+  const matched = allProducts.filter(p => 
+    p.name.toLowerCase().includes(keyword) || p.keywords.toLowerCase().includes(keyword)
+  );
+
+  list.innerHTML = matched.length === 0 
+    ? `<div class="search-item">No results for "<strong>${keyword}</strong>"</div>`
+    : matched.map(p => `
+      <div class="search-item">
+        <div><strong>${p.name}</strong></div>
+        <div>
+          <button class="btn" style="padding:4px 12px;font-size:12px;" onclick="applyProduct('${p.name}')">Apply</button>
+          <a href="#${p.section}" style="margin-left:8px;font-size:12px;">View</a>
+        </div>
+      </div>
+    `).join('');
+
+  resultsBox.style.display = 'block';
+  resultsBox.scrollIntoView({ behavior: 'smooth' });
+}
+
+function clearSearch() {
+  document.getElementById('search-results').style.display = 'none';
+  document.getElementById('search-input').value = '';
+}
+
+// ========== Apply ==========
+function applyProduct(name) {
+  document.getElementById('apply-msg').innerHTML = 
+    `You have successfully applied for <strong>${name}</strong>.<br>Our team will contact you shortly.`;
+  document.getElementById('apply-modal').classList.add('show');
+}
+function closeModal() {
+  document.getElementById('apply-modal').classList.remove('show');
+}
+
+// ========== Account ==========
+function showLogin() {
+  document.getElementById('account').scrollIntoView({ behavior: 'smooth' });
+}
+
+function doLogin() {
+  const username = document.getElementById('login-user').value.trim().toLowerCase();
+  const password = document.getElementById('login-pass').value;
+  if (!users[username] || users[username].password !== password) {
+    alert('Wrong username or password');
+    return;
+  }
+  currentUser = username;
+  localStorage.setItem('jh_user', username);
+  showLoanDetails();
+}
+
+function showLoanDetails() {
+  if (!currentUser || !users[currentUser]) return;
+  const user = users[currentUser];
+
+  document.getElementById('login-section').classList.add('hidden');
+  document.getElementById('loan-section').classList.remove('hidden');
+  document.getElementById('logout-btn').classList.remove('hidden');
+  document.getElementById('top-user').textContent = 'Hi, ' + user.displayName;
+  document.getElementById('current-user').textContent = user.displayName;
+  document.getElementById('account-status').textContent = 'Logged in';
+
+  // Special message
+  const specialBox = document.getElementById('special-banner');
+  if (user.special) {
+    document.getElementById('special-icon').textContent = user.special.icon;
+    document.getElementById('special-title').textContent = user.special.title;
+    document.getElementById('special-message').textContent = user.special.message;
+    document.getElementById('special-tag').textContent = user.special.tag;
+    specialBox.classList.remove('hidden');
+  } else {
+    specialBox.classList.add('hidden');
+  }
+
+  document.getElementById('sum-username').textContent = user.displayName;
+  document.getElementById('sum-premium').textContent = user.premiumType;
+  const totalAmount = user.loans.reduce((sum, l) => sum + l.amount, 0);
+  document.getElementById('sum-total').textContent = totalAmount.toLocaleString();
+
+  const tbody = document.getElementById('loan-body');
+  tbody.innerHTML = '';
+  user.loans.forEach(loan => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${loan.amount.toLocaleString()}</td>
+      <td>${loan.interest}</td>
+      <td style="color:${loan.overdue > 0 ? '#e53e3e' : 'inherit'}">${loan.overdue}</td>
+      <td>${loan.borrowed}</td>
+      <td>${loan.return}</td>
+      <td style="color:${loan.status === 'Overdue' ? '#e53e3e' : '#38a169'};font-weight:bold;">${loan.status}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function logout() {
+  currentUser = null;
+  localStorage.removeItem('jh_user');
+  document.getElementById('login-section').classList.remove('hidden');
+  document.getElementById('loan-section').classList.add('hidden');
+  document.getElementById('logout-btn').classList.add('hidden');
+  document.getElementById('top-user').textContent = '';
+  document.getElementById('account-status').textContent = '';
+  document.getElementById('special-banner').classList.add('hidden');
+}
+
+// ========== Init ==========
+window.onload = function() {
+  const savedTheme = localStorage.getItem('jh_theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  document.getElementById('theme-btn').textContent = savedTheme === 'light' ? 'Dark Mode' : 'Light Mode';
+
+  document.getElementById('today-rate-display').textContent = todayInterest + '%';
+  drawBarGraph();
+
+  const saved = localStorage.getItem('jh_user');
+  if (saved && users[saved]) {
+    currentUser = saved;
+    showLoanDetails();
+  }
+};
+</script>
+
+</body>
+</html>
