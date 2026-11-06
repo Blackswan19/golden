@@ -284,7 +284,7 @@ position: fixed;
     list-style: none;
     text-align: center;
     position: absolute;
-    background-color: #ffffff17;
+    background-color: #46464696;
     border-radius: 20px;
     z-index: 100000001;
     min-width: fit-content;
@@ -406,7 +406,7 @@ display: flex;
         <label class="btn" for="imageInput">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px" width="24px" fill="#e3e3e3"><path d="M12,12ZM5.31,20.5q-0.76,0-1.28-0.52T3.5,18.69V5.31q0-0.76 0.52-1.28T5.31,3.5h6.75q0.32,0 0.53,0.22t0.22,0.53T12.59,4.78T12.06,5H5.31Q5.17,5 5.09,5.09T5,5.31V18.69q0,0.13 0.09,0.22T5.31,19H18.69q0.13,0 0.22-0.09T19,18.69V11.94q0-0.32 0.22-0.53t0.53-0.22t0.53,0.22t0.22,0.53v6.75q0,0.76-0.52,1.28T18.69,20.5H5.31Zm1.08-3.81H17.62l-3.49-4.65l-3,3.89L9,13.23L6.38,16.69ZM17,7H15.75q-0.32,0-0.53-0.22T15,6.25t0.22-0.53T15.75,5.5H17V4.25q0-0.32 0.22-0.53T17.75,3.5t0.53,0.22T18.5,4.25V5.5h1.25q0.32,0 0.53,0.22T20.5,6.25T20.28,6.78T19.75,7H18.5V8.25q0,0.32-0.22,0.53T17.75,9T17.22,8.78T17,8.25V7Z"/></svg>
         </label>
-        <input type="file" id="imageInput" accept="image/*" style="display:none" />
+        <input type="file" id="imageInput" accept="image/*" multiple style="display:none" />
         <textarea id="noteInput" placeholder="Write note..." rows="1"></textarea>
         <button class="btn" id="sendBtn">
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M450-665.08 243.23-458.31q-8.92 8.92-20.88 8.81-11.96-.12-21.27-9.42-8.69-9.31-9-21.08-.31-11.77 9-21.08l253.61-253.61q5.62-5.62 11.85-7.92 6.23-2.31 13.46-2.31t13.46 2.31q6.23 2.3 11.85 7.92l253.61 253.61q8.31 8.31 8.5 20.58.19 12.27-8.5 21.58-9.31 9.3-21.38 9.3-12.08 0-21.39-9.3L510-665.08V-210q0 12.77-8.62 21.38Q492.77-180 480-180t-21.38-8.62Q450-197.23 450-210v-455.08Z"/></svg>
@@ -749,16 +749,43 @@ function addNote() {
   renderNotes(current);
 }
 
-function attach(e) {
-  const file = e.target.files[0];
-  if (!file || !current || current === 'important') return;
-  const r = new FileReader();
-  r.onload = ev => {
-    folders[current].push({ type: 'image', content: ev.target.result, important: false });
-    save();
-    renderNotes(current);
-  };
-  r.readAsDataURL(file);
+async function attach(e) {
+  const files = Array.from(e.target.files);
+
+  if (!files.length || !current || current === 'important') {
+    e.target.value = '';
+    return;
+  }
+
+  const imageFiles = files.filter(file => file.type.startsWith('image/'));
+
+  if (!imageFiles.length) {
+    alert('Please select valid images.');
+    e.target.value = '';
+    return;
+  }
+
+  for (const file of imageFiles) {
+    const imageData = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+
+      reader.readAsDataURL(file);
+    });
+
+    folders[current].push({
+      type: 'image',
+      content: imageData,
+      important: false
+    });
+  }
+
+  save();
+  renderNotes(current);
+
+  e.target.value = '';
 }
 
 function showNoteContext(e) {
