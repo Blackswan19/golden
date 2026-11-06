@@ -156,7 +156,9 @@ overflow-y: auto;
     scrollbar-color: #2e2e2e transparent;
     width: 100%;
     max-width: 650px;
-    }
+    }p#popupMsg {
+    padding-bottom: 10px;
+}
 
     .note {
      font-size: 16px;
@@ -203,12 +205,11 @@ overflow-y: auto;
     font-weight: 300;
 }
     .note img {
-      max-width: 100%;
-      border-radius: 15px;
-      margin: 8px 0;
-      display: block;
-      cursor: pointer;
-      opacity: 0.9;
+         width: 80%;
+    border-radius: 15px;
+    display: block;
+    cursor: pointer;
+    margin-left: -10px;
     }
 
     .empty-state {
@@ -322,11 +323,11 @@ li#deleteNote:hover{
     }
 
     .popup-box {
-        background: #1c1c1e;
+       background: #1c1c1e;
     border-radius: 35px;
     padding: 13px;
     width: 85%;
-    max-width: 420px;
+    max-width: 250px;
     text-align: center;
     border: 0.5px solid rgba(255, 255, 255, 0.1);
     }
@@ -342,7 +343,6 @@ li#deleteNote:hover{
     .popup-buttons {
       display: flex;
       gap: 12px;
-      margin-top: 15px;
     }
 
     .popup-btn {
@@ -471,22 +471,85 @@ function showPopup(message = '', extraHTML = '', buttons = []) {
   });
   popup.style.display = 'flex';
 }
-
 function showImagePopup(src) {
   const filename = 'bsnote-image-' + Date.now() + '.png';
-  const extra = `<img src="${src}" class="popup-image" alt="Note image">`;
-  const buttons = [
-    { text: 'Download', class: 'confirm', action: () => {
-      const link = document.createElement('a');
-      link.href = src;
-      link.download = filename;
-      link.click();
-    }},
-    { text: 'Close', class: 'cancel', action: closePopup }
-  ];
-  showPopup('', extra, buttons);
-}
 
+  const extra = `
+    <img
+      src="${src}"
+      class="popup-image"
+      id="popupImage"
+      alt="Note image"
+      style="cursor: zoom-in;"
+    >
+  `;
+
+  const buttons = [
+    {
+      text: 'Download',
+      class: 'confirm',
+      action: () => {
+        const link = document.createElement('a');
+        link.href = src;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      }
+    },
+    {
+      text: 'Close',
+      class: 'cancel',
+      action: closePopup
+    }
+  ];
+
+  showPopup('', extra, buttons);
+
+  const popupImage = document.getElementById('popupImage');
+
+  popupImage.addEventListener('click', () => {
+    const newTab = window.open('', '_blank');
+
+    if (!newTab) {
+      alert('Please allow popups for this website.');
+      return;
+    }
+
+    newTab.document.open();
+    newTab.document.write(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>BsNote Image</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+          * {
+            box-sizing: border-box;
+          }
+          body {
+            margin: 0;
+            background: #000;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          img {
+            max-width: 100%;
+            max-height: 100vh;
+            object-fit: contain;
+          }
+        </style>
+      </head>
+      <body>
+        <img src="${src}" alt="BsNote Image">
+      </body>
+      </html>
+    `);
+    newTab.document.close();
+  });
+}
 function getImportantNotes() {
   const important = [];
   Object.entries(folders).forEach(([folderName, notes]) => {
