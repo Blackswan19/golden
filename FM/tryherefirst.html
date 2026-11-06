@@ -59,18 +59,16 @@
         }
 
         .titlogo {
-                display: flex;
-    justify-content: center;
+            display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 10px;
-    
     position: sticky;
     top: 0;
     z-index: 100000;
     width: 100%;
     padding: 10px;
-    
-  background:linear-gradient(180deg, #000000 70%, transparent);
+    background: linear-gradient(180deg, #000000 70%, transparent);
         }
         .titlogo img {
             width: 50px;
@@ -81,9 +79,9 @@
     background: rgb(255 255 255 / 8%);
     backdrop-filter: blur(30px);
     border: 0.5px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    padding: 12px;
-    margin-bottom: 8px;
+    border-radius: 30px;
+    padding: 10px;
+    margin-bottom: 10px;
         }
 
         .category-header {
@@ -426,9 +424,14 @@ div#categories-container {
 <body>
     <div class="container">
         <div class="titlogo">
-            <img src="tasksave_logo.png" alt="BsTasks">
+            <img src="https://blackswan19.github.io/Educate/tasksave_logo.png" alt="BsTasks"> BsTasks
+            <div class="nav-right">
+      <a href="https://blackswan19.github.io/bscrop/termsofuse" style="background: blue;
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 15px;">PP&TOU</a>
+    </div>
         </div>
-
         <div id="categories-container"></div>
     </div>
 
