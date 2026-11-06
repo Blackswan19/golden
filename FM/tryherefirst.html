@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BsNote</title>
-  <link rel="icon" type="image/x-icon" href="notesave_logo.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
-    * {
-      -webkit-tap-highlight-color: transparent;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-      color: var(--text);
-    }* {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BsReminder</title>
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/WBcSJPd/New-Project-A1-A7313.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+        
+        * { color: #fff; font-family: "Red Hat Display", sans-serif; margin: 0; padding: 0; scrollbar-width:thin;letter-spacing:0.3px;}
+        body { 
+            background: #000; 
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;overflow: hidden;
+            scrollbar-color: gray transparent;
+        }
+* {
             -webkit-tap-highlight-color: transparent;
         }
         body {
@@ -26,1000 +25,577 @@
             -ms-user-select: none;
             user-select: none;
         }
-
-    :root {
-      --bg: #000000;
-      --text: #e8e8e8;
-      --text-dim: #777777;
-      --accent: #002aff;
-    }
-
-    html, body { 
-      height: 100%; 
-      background: var(--bg); 
-    }
-
-    body { 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .BsTasks {
-          position: absolute;
-    right: 0;
+        .header {
+            position: fixed;
     top: 0;
-    background: #ffffff1a;
-    padding: 5px 10px;
-    z-index: 10000000;
-    border-radius: 0 0 0 15px;
-    backdrop-filter: blur(10px);
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
-    }
-.logo-header {
+    left: 0;
+    right: 0;
+    background: #000;
+    z-index: 100;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    left: 0;
-    width: 100%;
-    z-index: 100000;
-    background: linear-gradient(180deg, black 50%, transparent);
-    padding: 20px 5px;
-}
-    header {
-font-size: 18px;
-    color: #ffffff;
+        }
+
+        .app-title {
+            color: #0049ff;
+    font-weight: 700;
+    font-size: 25px;
+        }
+
+        .header-buttons button {
+           background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+        }
+
+        .weekdays {
+           display: grid;
+    grid-template-columns: repeat(7, 1fr);
     text-align: center;
-    white-space: nowrap;
-    overflow: scroll;
-    width: fit-content;
-    border-radius: 5px;
-    scrollbar-width: none;
-    max-width: 1000px;
-    z-index: 1000;
-    font-weight: 400;
-    width: 65%;
-    }
+    font-size: 13px;
+    color: #aaa;
+    padding: 13px 0 6px 0;
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;display: none;
+    background: #000;
+    z-index: 99;
+        }
 
-    .folders-container {
-      background: var(--bg);
-      flex-shrink: 0;
-      max-width: 650px;
-      width: 100%;
-    }
+        .calendar-container {
+            padding-top: 50px;
+            overflow-y: auto;
+            height: 100vh;
+        }
 
-.folders {
-display: flex;
+        .month-section {
+            padding: 10px;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
-    overflow-x: auto;
+    flex-direction: column;
+}
+        .month-header {
+       font-size: 17px;
+    font-weight: 700;
+    padding: 10px;
+    position: sticky;
+    top: 0px;
+    z-index: 999999;
+    width: 94%;
+    color: #b1b1b1;
+    box-shadow: 0px 0px 8px rgb(0 0 0 / 21%);
+    background: rgb(255 255 255 / 10%);
+    backdrop-filter: blur(30px);
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    text-align: center;
+    margin: 10px;
+        }
+
+        .calendar-grid {
+        display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    background: #0a0a0a;
+    border-radius: 15px;
+    overflow: scroll;
     scrollbar-width: none;
-    justify-content: flex-start;
     width: 100%;
-    padding: 0 8px 0 0;
-    }
+    max-width: 550px;
+        }
 
-    .folders::-webkit-scrollbar { display: none; }
+        .day-header {
+            background: #3e3e3e;
+    padding: 10px 4px;
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    position: sticky;
+    top: 0;
+    left: 0;
+        }
 
-    .add-folder-fixed {
-   flex-shrink: 0;
-    padding: 10px 10px 10px 30px;
-    background: linear-gradient(269deg, #4f4f4f, #000000);
-    color: #ffffff;
-    border-radius: 0 100px 100px 0;
+        .day {
+            aspect-ratio: 1;
+       display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 15px;
     cursor: pointer;
-    white-space: nowrap;
-    border: none;
-    backdrop-filter: blur(11px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: sticky;
-    left: -25px;
-    z-index: 10;
-    }
+    transition: all 0.2s;
+    background: #111111;
+        }
+        .day:hover { background: #3e3e3e; }
 
-li#deleteFolder:hover {
-    background: red;
-}
-.folder-btn {
-flex-shrink: 0;
-    padding: 6px 10px;
-    border-radius: 999px;
-    background: #ffffff33;
-    border: none;
-    color: white;
-    font-size: 17px;
-    cursor: pointer;
-    transition: all 0.18s;
-    text-overflow: ellipsis;
+        .day.today .day-number {
+            background: #3e3e3e;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        }
+
+        .note-preview {
+            font-size: 10px;
+    line-height: 1.2;
+    text-align: center;
+    margin-top: 4px;
+    width: 100%;display: none;
     overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-weight: 500;
-    backdrop-filter: blur(20px);
-    }
+    max-width: 10px;    
+        }
 
-    .folder-btn.active{
-      background: blue;
-    }
-    .folder-btn:hover {
-      background: #ffffff54;
-    }
-    .notes-container {
-overflow-y: auto;
-    padding: 70px 8px 110px 8px;
-    scrollbar-width: thin;
-    scrollbar-color: #2e2e2e transparent;
-    width: 100%;
-    max-width: 650px;
-    }p#popupMsg {
-    padding-bottom: 10px;
-}
+        .pinned { background: #ff8c0088 !important; }
+        .goal { background: #1800ff88 !important; }
 
-    .note {
-     font-size: 16px;
-    line-height: 1.4;
-    margin-bottom: 15px;
-    padding: 10px 40px 10px 20px;
-    border-radius: 25px;
-    background: rgb(255 255 255 / 8%);
-    position: relative;
-    transition: background 0.2s;
-    word-break: break-word;
-    font-weight: 300;
-    }
-
-    .note:hover { background: rgba(255, 255, 255, 0.12); }
-
-    .note .star {
-      position: absolute;
-      right: 5px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 25px;
-      cursor: pointer;
-      color: #ffffff91;
-      background: #ffffff26;
-      width: 35px;
-      height: 35px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-      backdrop-filter: blur(5px);
-    }
-
-    .note.important .star {
-      color: white;
-      background: #002aff;
-    }
-
-    .note-text {
-    white-space: pre-wrap;
-    word-break: break-word;
-    color: #ffffffb5;
-    font-weight: 300;
-}
-    .note img {
-         width: 80%;
-    border-radius: 15px;
-    display: block;
-    cursor: pointer;
-    margin-left: -10px;
-    }
-
-    .empty-state {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-dim);
-      font-size:15px;
-      text-align: center;
-      padding: 0 40px;
-    }
-
-    .input-area {
-display: flex;
-    align-items: center;
-    gap: 5px;
-    width: 100%;
-    max-width: 650px;
-    z-index: 20000000;
-    flex-direction: column;
-    padding: 0px;
-    justify-content: center;
+        /* Modals */
+        .modal, #notesListModal {
+           display: none;
     position: fixed;
-    bottom: 0px;
-    background: linear-gradient(0deg, black 50%, transparent);
-    }
-
-    #noteInput {
-    flex: 1;
-    background: rgba(0, 0, 0, 0);
-    font-size: 18px;
-    outline: none;
-    padding: 10px 0;
-    color: #ffffffc9;
-    resize: none;
-    min-height: 45px;
-    max-height: 180px;
-    overflow-y: auto;
-    border: none;
-    line-height: 1.5;
-    scrollbar-width: none;
-    }
-
-    #noteInput::placeholder { color: #555; }
-
-    .btn {
-width: 45px;
-    height: 28px;
-    border-radius: 40px;
-    background: #002aff;
-    border: none;
-    color: white;
-    cursor: pointer;
-    display: flex;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(0 0 0 / 85%);
+    z-index: 1000;
     justify-content: center;
     align-items: center;
-    position: relative;
-    margin: 10px;
-    }
-
-    .attach-label {
-      font-size: 24px;
-      color: var(--text-dim);
-      cursor: pointer;
-      padding: 10px;
-    }
-
-    /* Context Menus */
-    #noteContextMenu, #folderContextMenu {
-position: fixed;
-    list-style: none;
-    text-align: center;
-    position: absolute;
-    background-color: #ffffff17;
-    border-radius: 20px;
-    z-index: 100000001;
-    min-width: fit-content;
-    padding: 5px;
-    backdrop-filter: blur(30px);
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
-    }
-
-    #noteContextMenu li, #folderContextMenu li {
-padding: 5px 10px;
-    color: #ffffffd4;
-    cursor: pointer;
-    border-radius: 33px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 500;
-    font-size: 16px;
-    justify-content: flex-start;
-    }
-
-    #noteContextMenu li:hover{
-      background-color: rgb(0 0 0 / 69%);
-    }
-li#deleteNote:hover{
-  background: red;
+    width: 100%;
 }
-    #popup {
-      position: fixed;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 20000000;
-      background: #000000ad;
-    }
 
-    .popup-box {
-      background: #1c1c1e;
-    border-radius: 30px;
-    padding: 13px;
-    width: 85%;
-    max-width: 350px;
+        .modal-content, .notes-list-content {
+           max-width: 340px;
+    width: 100%;
     text-align: center;
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
-    }
-
-
-    .popup-image {
-      max-width: 100%;
-      max-height: 65vh;
-      border-radius: 16px;
-      margin: 10px 0;
-    }
-
-    /* Full-screen image viewer */
-    #imageViewer {
-      position: fixed;
-      inset: 0;
-      z-index: 300000000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      background: rgb(0 0 0 / 88%);
-      padding: 76px 14px 90px;
-    }
-
-    #imageViewer.active { display: flex; }
-
-    #viewerImage {
-      display: block;
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      border-radius: 8px;
-      user-select: none;
-      -webkit-user-drag: none;
-    }
-
-    .image-viewer-top {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding: 14px;
-    }
-
-    .image-viewer-actions {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      padding: 18px 14px calc(18px + env(safe-area-inset-bottom));
-      background: linear-gradient(transparent, #000 35%);
-    }
-
-    .viewer-btn {
-display: inline-flex;
-    align-items: center;
+        }
+.modal-content h3 {
+    text-align: justify;
+}
+        .notes-list-content { 
+         max-width: 600px;
+    width: 100%;
+    padding: 60px 0;
+    display: flex;
     justify-content: center;
-    gap: 8px;
-    min-width: 52px;
-    min-height: 44px;
-    padding: 10px 17px;
-    border: 1px solid rgba(255, 255, 255, .14);
+    align-items: center;
+    flex-direction: column;
+        }div#notesList {
+    width: 95%;
+}
+
+        input, button {
+                padding: 12px 15px;
+    margin: 10px 0;
     border-radius: 999px;
-    background: rgba(255, 255, 255, .12);
-    color: #fff;
+    border: none;
+    width: stretch;
+    font-size: 17px;
+    size: 18px;
+    font-weight: 400;
+    text-align: center;
+    outline: none;
+    color: #ffffffdb;
+
+        }
+        input { background: #272727; }
+        button { background: #0006b6;}
+
+        .close { font-size: 35px;
     cursor: pointer;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    font-size: 16px;
-    }
-.close{
-  position: absolute;
-    top: 20px;
-    right: 20px;
-    color: white;
-    font-size: 35px;
-    background: #ffffff33;
-    cursor: pointer;
-    font-weight: 200;
-    transition: color 0.2s ease-in-out;
-    backdrop-filter: blur(30px);
+    float: right;
+    position: absolute;
+    top: 10px;
+    right: 10px;
     width: 40px;
     height: 40px;
-    display: flex;    border: none;
+    border-radius: 50%;
+    background: #1c1c1e;
+    color: white;
+    display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
-}
-    .viewer-btn.primary { background: #002aff; border-color: #002aff; }
-    .viewer-btn.close { width: 44px; height: 44px; padding: 0; font-size: 22px; }
-
-    @media (max-width: 480px) {
-      #imageViewer { padding: 68px 8px 86px; }
-      .image-viewer-actions { gap: 8px; }
-    }
-
-    .popup-buttons {
-      display: flex;
-      gap: 12px;
-    }
-
-    .popup-btn {
-      flex: 1;
-    padding: 10px;
-    border-radius: 999px;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    }
-.inputsection {
-display: flex;
-    justify-content: center;
-    align-items: end;
-    width: 95%;
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
-    background: #1a1a1a;
-    border-radius: 25px;
+    font-weight: 100; }
+        .note-item {
+            background: #1a1a1a;
+    padding: 10px 0;
+    border-radius: 20px;
     margin-bottom: 10px;
-}
-    .cancel { background: #323232; color: #ffffffb5; }
-    .danger  { background: #ff0d00; color: white; }
-    .confirm { background: var(--accent); color: white; }
-  </style>
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+        }
+        .empty-state { text-align: center; color: #666; padding: 60px 20px; }
+    </style>
 </head>
 <body>
-  <div class="logo-header">
-    <p style="background: transparent;
-    color: white;
-    border-radius: 999px;
-    text-decoration: none;
-    font-size: 15px;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;"></p>
-    <header id="header">BsNote</header>
-      <a href="https://blackswan19.github.io/bscrop/termsofuse" style="background: blue;
-    color: white;
-    border-radius: 999px;
-    text-decoration: none;
-    font-size: 15px;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px" width="24px" fill="#e3e3e3"><path d="M10.95,13.07L9.36,11.47q-0.22-0.22-0.52-0.23T8.3,11.47T8.07,12.01T8.3,12.54l2.01,2.03q0.27,0.27 0.63,0.27t0.63-0.27l4.14-4.14q0.22-0.22 0.23-0.53T15.73,9.36T15.19,9.13T14.66,9.36l-3.71,3.71Zm0.74,8.28q-0.15-0.02-0.29-0.07q-3.16-1.13-5.03-3.99T4.5,11.1V6.6q0-0.57 0.33-1.02T5.68,4.91l5.69-2.12Q11.69,2.67 12,2.67t0.63,0.12l5.69,2.12q0.52,0.21 0.85,0.66T19.5,6.6v4.5q0,3.32-1.87,6.18T12.6,21.27q-0.14,0.05-0.29,0.07T12,21.37t-0.31-0.02Z"/></svg></a>
+    <div class="header">
+        <div class="app-title">BsReminder</div>
+        <div class="header-buttons">
+            <button onclick="toggleNotesList()">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M290-410v-60h380v60H290Zm0 160v-60h260v60H290Zm-77.69 150Q182-100 161-121q-21-21-21-51.31v-535.38Q140-738 161-759q21-21 51.31-21h55.38v-84.61h61.54V-780h303.08v-84.61h60V-780h55.38Q778-780 799-759q21 21 21 51.31v535.38Q820-142 799-121q-21 21-51.31 21H212.31Zm0-60h535.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46v-375.38H200v375.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85Z"/></svg>
+            </button>
+        </div>
+    </div>
 
-  </div>
+    <div class="weekdays">
+        <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div>
+        <div>Thu</div><div>Fri</div><div>Sat</div>
+    </div>
+
+    <div class="calendar-container" id="calendarContainer"></div>
+
+    <!-- All Notes -->
+    <div id="notesListModal">
+        <div class="notes-list-content">
+            <div style="margin-bottom:20px;">
+                <h2>All Notes <span class="close" onclick="closeNotesList()">×</span></h2>
+            </div>
+            <div id="notesList"></div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Note -->
+    <div id="noteModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">×</span>
+            <h3 id="modalDate"></h3>
+            
+            <div id="titleField" style="display:none;">
+                <input type="text" id="noteTitle" placeholder="Title for pinned note" />
+            </div>
+            
+            <input type="text" id="noteText" placeholder="Write your note here..." />
+            
+            <div style="display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    justify-content: flex-start;
+">
+                <input type="checkbox" id="pinForever" style="    outline: none;
+    border: none;
+    width: 14px;
+    height: 15px;
+">
+                <label for="pinForever">Pin to every month on this date</label>
+            </div>
+            
+            <button onclick="saveNote()">Save Note</button>
+        </div>
+    </div>
+
+    <!-- View Note -->
+    <div id="viewModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">×</span>
+            <h3 id="viewTitle" style="color:#0040ff;"></h3>
+            <p id="viewText" style="font-size: 20px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    margin-top: 10px;"></p>
+            <button onclick="editNote()" style="margin-top:20px;">Edit Note</button>
+        </div>
+    </div>
+
+    <script>
+    const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
     
-  <div class="notes-container" id="notes">
-    <div class="empty-state">Select a folder to view or add notes</div>
-  </div>
+    let today = new Date();
+    let currentYear = today.getFullYear();
 
-  <div class="input-area" id="inputArea">
-    <div class="folders" id="folders"></div>
-  <div class="folders-container">
-  </div>
-    <div class="inputsection">
-        <label class="btn" for="imageInput">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px" width="24px" fill="#e3e3e3"><path d="M12,12ZM5.31,20.5q-0.76,0-1.28-0.52T3.5,18.69V5.31q0-0.76 0.52-1.28T5.31,3.5h6.75q0.32,0 0.53,0.22t0.22,0.53T12.59,4.78T12.06,5H5.31Q5.17,5 5.09,5.09T5,5.31V18.69q0,0.13 0.09,0.22T5.31,19H18.69q0.13,0 0.22-0.09T19,18.69V11.94q0-0.32 0.22-0.53t0.53-0.22t0.53,0.22t0.22,0.53v6.75q0,0.76-0.52,1.28T18.69,20.5H5.31Zm1.08-3.81H17.62l-3.49-4.65l-3,3.89L9,13.23L6.38,16.69ZM17,7H15.75q-0.32,0-0.53-0.22T15,6.25t0.22-0.53T15.75,5.5H17V4.25q0-0.32 0.22-0.53T17.75,3.5t0.53,0.22T18.5,4.25V5.5h1.25q0.32,0 0.53,0.22T20.5,6.25T20.28,6.78T19.75,7H18.5V8.25q0,0.32-0.22,0.53T17.75,9T17.22,8.78T17,8.25V7Z"/></svg>
-        </label>
-        <input type="file" id="imageInput" accept="image/*" multiple style="display:none" />
-        <textarea id="noteInput" placeholder="Write note..." rows="1"></textarea>
-        <button class="btn" id="sendBtn">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M450-665.08 243.23-458.31q-8.92 8.92-20.88 8.81-11.96-.12-21.27-9.42-8.69-9.31-9-21.08-.31-11.77 9-21.08l253.61-253.61q5.62-5.62 11.85-7.92 6.23-2.31 13.46-2.31t13.46 2.31q6.23 2.3 11.85 7.92l253.61 253.61q8.31 8.31 8.5 20.58.19 12.27-8.5 21.58-9.31 9.3-21.38 9.3-12.08 0-21.39-9.3L510-665.08V-210q0 12.77-8.62 21.38Q492.77-180 480-180t-21.38-8.62Q450-197.23 450-210v-455.08Z"/></svg>
-        </button>
-    </div>
-  </div>
+    let oneTimeNotes = JSON.parse(localStorage.getItem('oneTimeNotes') || '{}');
+    let pinnedNotes  = JSON.parse(localStorage.getItem('pinnedNotes') || '{}');
+    //document.addEventListener('contextmenu', e => e.preventDefault());
+    let selectedDate = "";
+    let selectedDay = 0;
 
-  <ul id="noteContextMenu" style="display:none">
-    <li id="editNote"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px" width="24px" fill="#e3e3e3"><path d="M4.4,20.5q-0.38,0-0.64-0.26T3.5,19.6V17.86q0-0.37 0.14-0.7t0.39-0.58L16.69,3.93q0.23-0.21 0.5-0.32T17.77,3.5t0.58,0.11t0.5,0.34l1.22,1.24Q20.3,5.4 20.4,5.68t0.1,0.57q0,0.3-0.1,0.58t-0.33,0.5L7.41,19.97q-0.25,0.25-0.58,0.39T6.14,20.5H4.4ZM17.55,7.69L19,6.26L17.74,5L16.31,6.45l1.25,1.25Z"/></svg> Edit Now</li>
-    <li id="copyNote"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px" width="24px" fill="#e3e3e3"><path d="M9.06,17.5q-0.76,0-1.28-0.52T7.25,15.69V4.31q0-0.76 0.52-1.28T9.06,2.5h8.38q0.76,0 1.28,0.52t0.52,1.28V15.69q0,0.76-0.52,1.28T17.44,17.5H9.06ZM5.56,21Q4.8,21 4.28,20.47T3.75,19.19V7.06q0-0.32 0.22-0.53T4.5,6.31T5.03,6.52T5.25,7.06V19.19q0,0.12 0.1,0.21t0.21,0.1h9.13q0.32,0 0.53,0.22t0.22,0.53t-0.22,0.53T14.69,21H5.56Z"/></svg> Copy Now</li>
-    <li id="deleteNote"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px" width="24px" fill="#e3e3e3"><path d="M13.83,13.05l2.07,2.07q0.21,0.21 0.52,0.21t0.53-0.21t0.22-0.53t-0.22-0.53L14.88,12l2.07-2.07q0.21-0.21 0.21-0.52T16.95,8.87T16.43,8.66T15.9,8.87l-2.07,2.07L11.75,8.87q-0.21-0.21-0.52-0.21T10.7,8.87T10.48,9.4T10.7,9.93L12.77,12L10.7,14.07q-0.21,0.21-0.21,0.52t0.21,0.53t0.53,0.22t0.53-0.22l2.07-2.07ZM9.09,19.5q-0.43,0-0.81-0.19T7.64,18.79L3.32,13.09Q2.95,12.61 2.95,12t0.37-1.09L7.64,5.21Q7.89,4.88 8.27,4.69T9.09,4.5H19.69q0.75,0 1.28,0.53T21.5,6.31V17.69q0,0.75-0.53,1.28T19.69,19.5H9.09Z"/></svg>  Delete Now</li>
-  </ul>
-
-  <ul id="folderContextMenu" style="display:none">
-    <li id="deleteFolder"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px" width="24px" fill="#e3e3e3"><path d="M13.83,13.05l2.07,2.07q0.21,0.21 0.52,0.21t0.53-0.21t0.22-0.53t-0.22-0.53L14.88,12l2.07-2.07q0.21-0.21 0.21-0.52T16.95,8.87T16.43,8.66T15.9,8.87l-2.07,2.07L11.75,8.87q-0.21-0.21-0.52-0.21T10.7,8.87T10.48,9.4T10.7,9.93L12.77,12L10.7,14.07q-0.21,0.21-0.21,0.52t0.21,0.53t0.53,0.22t0.53-0.22l2.07-2.07ZM9.09,19.5q-0.43,0-0.81-0.19T7.64,18.79L3.32,13.09Q2.95,12.61 2.95,12t0.37-1.09L7.64,5.21Q7.89,4.88 8.27,4.69T9.09,4.5H19.69q0.75,0 1.28,0.53T21.5,6.31V17.69q0,0.75-0.53,1.28T19.69,19.5H9.09Z"/></svg> Delete section</li>
-  </ul>
-
-  <div id="popup">
-    <div class="popup-box">
-      <p class="popup-msg" id="popupMsg"></p>
-      <div id="popupExtra"></div>
-      <div class="popup-buttons" id="popupButtons"></div>
-    </div>
-  </div>
-
-  <div id="imageViewer" aria-hidden="true">
-    <div class="image-viewer-top">
-      <button type="button" class="close" id="closeImageViewer" aria-label="Close image viewer">×</button>
-    </div>
-    <img id="viewerImage" alt="Full-size note image">
-    <div class="image-viewer-actions">
-      <button type="button" class="viewer-btn primary" id="downloadViewerImage"><i class="fa-solid fa-download"></i> Download</button>
-      <button type="button" class="viewer-btn" id="openViewerImage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px" width="24px" fill="#e3e3e3"><path d="M8.21,17.65q-0.77,0-1.31-0.54T6.36,15.81V4.35q0-0.77 0.55-1.31T8.21,2.5H19.65q0.76,0 1.3,0.54t0.54,1.3V15.81q0,0.76-0.54,1.3t-1.3,0.54H8.21ZM3.32,6.12q-0.34,0-0.58-0.23T2.51,5.31T2.74,4.73T3.32,4.5T3.89,4.73T4.13,5.31T3.89,5.88T3.32,6.12ZM6.59,21.27q-0.23-0.23-0.23-0.58t0.23-0.58t0.57-0.23t0.57,0.23t0.23,0.58T7.74,21.27T7.16,21.5T6.59,21.27Zm3.85,0q-0.23-0.23-0.23-0.58t0.23-0.58t0.57-0.23t0.57,0.23t0.23,0.58t-0.23,0.58T11.01,21.5t-0.57-0.23Zm3.85,0q-0.23-0.23-0.23-0.58t0.23-0.58t0.57-0.23t0.57,0.23t0.23,0.58t-0.23,0.58T14.86,21.5t-0.57-0.23ZM3.32,9.96q-0.34,0-0.58-0.23T2.51,9.15T2.74,8.58T3.32,8.35T3.89,8.58T4.13,9.15T3.89,9.73T3.32,9.96Zm0,3.85q-0.34,0-0.58-0.23T2.51,13t0.23-0.57t0.58-0.23t0.58,0.23T4.13,13T3.89,13.57T3.32,13.81Zm0,3.85q-0.34,0-0.58-0.23T2.51,16.85t0.23-0.57t0.58-0.23t0.58,0.23t0.23,0.57T3.89,17.42T3.32,17.65Zm0,3.85q-0.34,0-0.58-0.23T2.51,20.69t0.23-0.58t0.58-0.23t0.58,0.23t0.23,0.58T3.89,21.27T3.32,21.5Zm14.81-0.23q-0.23-0.23-0.23-0.58t0.23-0.58t0.57-0.23t0.57,0.23t0.23,0.58t-0.23,0.58T18.7,21.5t-0.57-0.23ZM20,7.6V4.35Q20,4.2 19.9,4.1T19.65,4H13.19V6.7q0,0.38 0.26,0.64T14.1,7.6H20Z"/></svg></button>
-      <button type="button" class="viewer-btn" id="closeViewerBottom" style="display: none;"><i class="fa-solid fa-xmark"></i> Close</button>
-    </div>
-  </div>
-
-<script>
-const folders = JSON.parse(localStorage.getItem('bsnote_minimal_v2')) || {};
-let current = null;
-let ctxNote = null;
-let ctxFolder = null;
-// document.addEventListener('contextmenu', e => e.preventDefault());
-const foldersEl = document.getElementById('folders');
-const notesEl = document.getElementById('notes');
-const headerEl = document.getElementById('header');
-const input = document.getElementById('noteInput');
-const sendBtn = document.getElementById('sendBtn');
-const popup = document.getElementById('popup');
-const popupMsg = document.getElementById('popupMsg');
-const popupExtra = document.getElementById('popupExtra');
-const popupButtons = document.getElementById('popupButtons');
-
-function save() {
-  localStorage.setItem('bsnote_minimal_v2', JSON.stringify(folders));
-}
-
-function closePopup() {
-  popup.style.display = 'none';
-  popupExtra.innerHTML = '';
-  popupButtons.innerHTML = '';
-}
-
-function showPopup(message = '', extraHTML = '', buttons = []) {
-  popupMsg.textContent = message;
-  popupExtra.innerHTML = extraHTML;
-  popupButtons.innerHTML = '';
-  buttons.forEach(b => {
-    const btn = document.createElement('button');
-    btn.className = `popup-btn ${b.class || 'confirm'}`;
-    btn.textContent = b.text;
-    btn.onclick = () => { b.action(); closePopup(); };
-    popupButtons.appendChild(btn);
-  });
-  popup.style.display = 'flex';
-}
-
-let activeImageSrc = '';
-let activeImageFilename = 'bsnote-image.png';
-
-function showImagePopup(src) {
-  activeImageSrc = src;
-  activeImageFilename = 'bsnote-image-' + Date.now() + '.png';
-
-  const viewer = document.getElementById('imageViewer');
-  const viewerImage = document.getElementById('viewerImage');
-
-  viewerImage.src = src;
-  viewer.classList.add('active');
-  viewer.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeImageViewer() {
-  const viewer = document.getElementById('imageViewer');
-  const viewerImage = document.getElementById('viewerImage');
-
-  viewer.classList.remove('active');
-  viewer.setAttribute('aria-hidden', 'true');
-  viewerImage.src = '';
-  activeImageSrc = '';
-  document.body.style.overflow = '';
-}
-
-function downloadActiveImage() {
-  if (!activeImageSrc) return;
-
-  const link = document.createElement('a');
-  link.href = activeImageSrc;
-  link.download = activeImageFilename;
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-}
-
-function openActiveImageInNewTab() {
-  if (!activeImageSrc) return;
-
-  // Convert the stored data URL to a Blob URL for reliable browser navigation.
-  try {
-    const parts = activeImageSrc.split(',');
-    const mimeMatch = parts[0].match(/data:([^;]+)/);
-    const mime = mimeMatch ? mimeMatch[1] : 'image/png';
-    const binary = atob(parts[1]);
-    const bytes = new Uint8Array(binary.length);
-
-    for (let i = 0; i < binary.length; i++) {
-      bytes[i] = binary.charCodeAt(i);
+    function saveToStorage() {
+        localStorage.setItem('oneTimeNotes', JSON.stringify(oneTimeNotes));
+        localStorage.setItem('pinnedNotes', JSON.stringify(pinnedNotes));
     }
 
-    const blobUrl = URL.createObjectURL(new Blob([bytes], { type: mime }));
-    const newTab = window.open(blobUrl, '_blank');
-
-    if (!newTab) {
-      URL.revokeObjectURL(blobUrl);
-      alert('Please allow pop-ups for this website, then try again.');
-      return;
+    function migratePinnedNotes() {
+        Object.keys(pinnedNotes).forEach(key => {
+            if (key.includes('-')) {
+                const day = parseInt(key.split('-')[2]);
+                pinnedNotes[day] = pinnedNotes[key];
+                delete pinnedNotes[key];
+            }
+        });
+        saveToStorage();
     }
 
-    // Keep the Blob URL alive while the new tab loads the image.
-    setTimeout(() => URL.revokeObjectURL(blobUrl), 60000);
-  } catch (error) {
-    // Fallback for browsers that cannot decode the stored image data URL.
-    const link = document.createElement('a');
-    link.href = activeImageSrc;
-    link.target = '_blank';
-    link.rel = 'noopener';
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-  }
-}
+    function createMonthElement(year, month) {
+        const section = document.createElement('div');
+        section.className = 'month-section';
 
-function getImportantNotes() {
-  const important = [];
-  Object.entries(folders).forEach(([folderName, notes]) => {
-    notes.forEach((note, idx) => {
-      if (note.important) important.push({ folder: folderName, index: idx, note });
+        const header = document.createElement('div');
+        header.className = 'month-header';
+        header.textContent = `${months[month]} ${year}`;
+        section.appendChild(header);
+
+        const grid = document.createElement('div');
+        grid.className = 'calendar-grid';
+
+        // Week headers
+        ['S','M','T','W','T','F','S'].forEach(d => {
+            const el = document.createElement('div');
+            el.className = 'day-header';
+            el.textContent = d;
+            grid.appendChild(el);
+        });
+
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        // Empty cells before first day (to keep alignment)
+        for (let i = 0; i < firstDay; i++) {
+            const empty = document.createElement('div');
+            empty.className = 'day';
+            empty.style.visibility = 'hidden';
+            grid.appendChild(empty);
+        }
+
+        // Only current month days
+        for (let day = 1; day <= daysInMonth; day++) {
+            const fullDate = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+            
+            const cell = document.createElement('div');
+            cell.className = 'day';
+            cell.dataset.date = fullDate;
+            cell.dataset.day = day;
+
+            if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                cell.classList.add('today');
+            }
+
+            const num = document.createElement('div');
+            num.className = 'day-number';
+            num.textContent = day;
+            cell.appendChild(num);
+
+            // Pinned recurring
+            const pinned = pinnedNotes[day];
+            if (pinned && pinned.note && pinned.note.trim() !== "") {
+                cell.classList.add('pinned');
+                const p = document.createElement('div');
+                p.className = 'note-preview';
+                p.textContent = pinned.title ? pinned.title : pinned.note.substring(0, 18) + "…";
+                cell.appendChild(p);
+            }
+
+            // One-time
+            if (oneTimeNotes[fullDate] && oneTimeNotes[fullDate].trim() !== "") {
+                cell.classList.add('goal');
+                const p = document.createElement('div');
+                p.className = 'note-preview';
+                p.textContent = oneTimeNotes[fullDate].substring(0, 15) + "…";
+                cell.appendChild(p);
+            }
+
+            cell.addEventListener('click', () => handleDayClick(fullDate, day));
+            grid.appendChild(cell);
+        }
+
+        section.appendChild(grid);
+        return section;
+    }
+
+    function handleDayClick(fullDate, day) {
+        selectedDate = fullDate;
+        selectedDay = day;
+
+        const pinned = pinnedNotes[day];
+        const oneTime = oneTimeNotes[fullDate];
+
+        const hasPinned = pinned && pinned.note && pinned.note.trim() !== "";
+        const hasOneTime = oneTime && oneTime.trim() !== "";
+
+        if (hasPinned || hasOneTime) {
+            document.getElementById("viewTitle").textContent = hasPinned ? (pinned.title || "Pinned Note") : "New Note";
+            document.getElementById("viewText").textContent = hasPinned ? pinned.note : oneTime;
+            document.getElementById("viewModal").style.display = "flex";
+        } else {
+            openNoteModal(fullDate, day);
+        }
+    }
+
+    function openNoteModal(fullDate, day) {
+        selectedDate = fullDate;
+        selectedDay = day;
+
+        document.getElementById("modalDate").textContent = fullDate;
+        const isPinned = !!(pinnedNotes[day] && pinnedNotes[day].note && pinnedNotes[day].note.trim() !== "");
+
+        document.getElementById("pinForever").checked = isPinned;
+        document.getElementById("titleField").style.display = isPinned ? "block" : "none";
+
+        document.getElementById("noteTitle").value = isPinned ? (pinnedNotes[day].title || "") : "";
+        document.getElementById("noteText").value = isPinned ? pinnedNotes[day].note : (oneTimeNotes[fullDate] || "");
+
+        document.getElementById("noteModal").style.display = "flex";
+    }
+
+    function saveNote() {
+        let text = document.getElementById("noteText").value.trim();
+        const title = document.getElementById("noteTitle").value.trim();
+        const forever = document.getElementById("pinForever").checked;
+
+        if (!text) {
+            if (forever) delete pinnedNotes[selectedDay];
+            else delete oneTimeNotes[selectedDate];
+            saveToStorage();
+            closeModal();
+            refreshCalendar();
+            refreshNotesList();
+            return;
+        }
+
+        if (forever) {
+            pinnedNotes[selectedDay] = { title: title || "", note: text };
+            delete oneTimeNotes[selectedDate];
+        } else {
+            oneTimeNotes[selectedDate] = text;
+            delete pinnedNotes[selectedDay];
+        }
+
+        saveToStorage();
+        closeModal();
+        refreshCalendar();
+        refreshNotesList();
+    }
+
+    function editNote() {
+        closeModal();
+        openNoteModal(selectedDate, selectedDay);
+    }
+
+    function closeModal() {
+        document.querySelectorAll('.modal').forEach(m => m.style.display = "none");
+    }
+
+    function refreshCalendar() {
+        const container = document.getElementById("calendarContainer");
+        container.innerHTML = "";
+        
+        const startYear = currentYear - 2;
+        for (let y = startYear; y <= currentYear + 1; y++) {
+            for (let m = 0; m < 12; m++) {
+                container.appendChild(createMonthElement(y, m));
+            }
+        }
+    }
+
+    function toggleNotesList() {
+        document.getElementById("notesListModal").style.display = "block";
+        refreshNotesList();
+    }
+
+    function closeNotesList() {
+        document.getElementById("notesListModal").style.display = "none";
+    }
+
+    function refreshNotesList() {
+        const container = document.getElementById("notesList");
+        container.innerHTML = "";
+
+        let notesArray = [];
+
+        Object.keys(pinnedNotes).forEach(day => {
+            const pinned = pinnedNotes[day];
+            if (pinned && pinned.note && pinned.note.trim() !== "") {
+                notesArray.push({
+                    type: "pinned",
+                    dateStr: `Every ${day}${getOrdinal(day)}`,
+                    title: pinned.title || "",
+                    text: pinned.note,
+                    day: parseInt(day)
+                });
+            }
+        });
+
+        Object.keys(oneTimeNotes).sort().forEach(date => {
+            const text = oneTimeNotes[date];
+            if (text && text.trim() !== "") {
+                notesArray.push({
+                    type: "onetime",
+                    dateStr: date,
+                    title: "",
+                    text: text
+                });
+            }
+        });
+
+        if (notesArray.length === 0) {
+            container.innerHTML = `<div class="empty-state">No notes yet.<br>Tap any date on the calendar.</div>`;
+            return;
+        }
+
+        notesArray.forEach(note => {
+            const div = document.createElement('div');
+            div.className = 'note-item';
+            div.innerHTML = `
+                <div style="    color: #00eaff;font-size: 15px;">${note.dateStr}</div>
+                ${note.type === "pinned" ? `<div style="font-weight:600; margin:6px 0;">⭐ ${note.title || "Pinned Note"}</div>` : ''}
+                <div style="    font-size: 17px;
+    line-height: 1.4;
+    width: 95%;
+    text-align: center;">${note.text}</div>
+            `;
+            div.onclick = () => {
+                closeNotesList();
+                if (note.type === "pinned") {
+                    selectedDay = note.day;
+                    selectedDate = `${currentYear}-01-${String(note.day).padStart(2,'0')}`;
+                    document.getElementById("viewTitle").textContent = note.title || "Pinned Note";
+                    document.getElementById("viewText").textContent = note.text;
+                    document.getElementById("viewModal").style.display = "flex";
+                } else {
+                    selectedDate = note.dateStr;
+                    selectedDay = parseInt(note.dateStr.split('-')[2]);
+                    openNoteModal(selectedDate, selectedDay);
+                }
+            };
+            container.appendChild(div);
+        });
+    }
+
+    function getOrdinal(n) {
+        const s = ["th","st","nd","rd"];
+        const v = n % 100;
+        return s[(v-20)%10] || s[v] || s[0];
+    }
+
+    window.onclick = e => {
+        if (e.target.id === "notesListModal") closeNotesList();
+        if (e.target.classList.contains('modal')) closeModal();
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+        migratePinnedNotes();
+        refreshCalendar();
+        
+        setTimeout(() => {
+            const current = Array.from(document.querySelectorAll('.month-header'))
+                .find(h => h.textContent.includes(months[today.getMonth()]) && 
+                           h.textContent.includes(today.getFullYear().toString()));
+            if (current) current.scrollIntoView({ behavior: "smooth" });
+        }, 100);
     });
-  });
-  return important;
-}
-
-function renderFolders() {
-  foldersEl.innerHTML = '';
-
-  const addBtn = document.createElement('button');
-  addBtn.className = 'add-folder-fixed';
-  addBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M458.62-148.63Q450-157.25 450-170v-280H170q-12.75 0-21.37-8.63-8.63-8.63-8.63-21.38 0-12.76 8.63-21.37Q157.25-510 170-510h280v-280q0-12.75 8.63-21.37 8.63-8.63 21.38-8.63 12.76 0 21.37 8.63Q510-802.75 510-790v280h280q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.37Q802.75-450 790-450H510v280q0 12.75-8.63 21.37-8.63 8.63-21.38 8.63-12.76 0-21.37-8.63Z"/></svg>';
-  addBtn.onclick = addFolder;
-  foldersEl.appendChild(addBtn);
-
-  const impBtn = document.createElement('button');
-  impBtn.className = `folder-btn ${current === 'important' ? 'active' : ''}`;
-  impBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M620-760v288.46l62.61 62.62q4.46 4.46 6.7 10.04 2.23 5.57 2.23 11.52v17.1q0 12.64-8.74 21.45-8.73 8.81-21.65 8.81H510v215.54q0 12.75-8.63 21.37-8.63 8.62-21.38 8.62-12.76 0-21.37-8.62-8.62-8.62-8.62-21.37V-340H298.85q-12.92 0-21.65-8.81-8.74-8.81-8.74-21.45v-17.1q0-5.95 2.23-11.52 2.24-5.58 6.7-10.04L340-471.54V-760h-10q-12.75 0-21.37-8.63-8.63-8.63-8.63-21.38 0-12.76 8.63-21.37Q317.25-820 330-820h300q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.37Q642.75-760 630-760h-10Z"/></svg> Pinned';
-  impBtn.onclick = () => select('important');
-  foldersEl.appendChild(impBtn);
-
-  Object.keys(folders).sort().forEach(name => {
-    const b = document.createElement('button');
-    b.className = `folder-btn ${name === current ? 'active' : ''}`;
-    b.textContent = name;
-    b.dataset.folder = name;
-
-    b.onclick = () => select(name);
-
-    let pressTimer;
-    b.onpointerdown = () => {
-      pressTimer = setTimeout(() => {
-        ctxFolder = name;
-        showFolderContext({ pageX: window.innerWidth/2, pageY: window.innerHeight/2 });
-      }, 600);
-    };
-    b.onpointerup = b.onpointercancel = b.onpointerleave = () => clearTimeout(pressTimer);
-
-    b.oncontextmenu = e => {
-      e.preventDefault();
-      ctxFolder = name;
-      showFolderContext(e);
-    };
-
-    foldersEl.appendChild(b);
-  });
-}
-
-function select(name) {
-  current = name;
-  headerEl.textContent = name === 'important' ? 'Important Notes' : (name || 'BsNote');
-
-  const canWrite = name && name !== 'important';
-  input.disabled = sendBtn.disabled = !canWrite;
-
-  renderFolders();
-
-  if (name === 'important') {
-    renderImportantNotes();
-  } else if (name && folders[name]) {
-    renderNotes(name);
-  } else {
-    notesEl.innerHTML = '<div class="empty-state">Welcome to BsNote</div>';
-  }
-}
-
-function renderNotes(folderName) {
-  notesEl.innerHTML = '';
-  const notes = folders[folderName] || [];
-
-  if (notes.length === 0) {
-    notesEl.innerHTML = '<div class="empty-state">This section is empty<br>Start typing to add notes</div>';
-    return;
-  }
-
-  notes.forEach((note, i) => createNoteElement(note, i, folderName));
-}
-
-function renderImportantNotes() {
-  notesEl.innerHTML = '';
-  const important = getImportantNotes();
-
-  if (important.length === 0) {
-    notesEl.innerHTML = '<div class="empty-state">No important notes<br>Click 📌 to pin notes</div>';
-    return;
-  }
-
-  important.forEach(({folder, index, note}) => {
-    const el = createNoteElement(note, index, folder, true);
-    const badge = document.createElement('div');
-    badge.style.cssText = 'font-size:11px; color:#888; margin-top:6px; opacity:0.7;';
-    badge.textContent = `from ${folder}`;
-    el.appendChild(badge);
-  });
-}
-
-function createNoteElement(note, index, folderName) {
-  const div = document.createElement('div');
-  div.className = `note ${note.important ? 'important' : ''}`;
-  div.dataset.folder = folderName;
-  div.dataset.index = index;
-
-  const star = document.createElement('span');
-  star.className = 'star';
-  star.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M620-760v288.46l62.61 62.62q4.46 4.46 6.7 10.04 2.23 5.57 2.23 11.52v17.1q0 12.64-8.74 21.45-8.73 8.81-21.65 8.81H510v215.54q0 12.75-8.63 21.37-8.63 8.62-21.38 8.62-12.76 0-21.37-8.62-8.62-8.62-8.62-21.37V-340H298.85q-12.92 0-21.65-8.81-8.74-8.81-8.74-21.45v-17.1q0-5.95 2.23-11.52 2.24-5.58 6.7-10.04L340-471.54V-760h-10q-12.75 0-21.37-8.63-8.63-8.63-8.63-21.38 0-12.76 8.63-21.37Q317.25-820 330-820h300q12.75 0 21.37 8.63 8.63 8.63 8.63 21.38 0 12.76-8.63 21.37Q642.75-760 630-760h-10Z"/></svg>';
-  star.onclick = e => {
-    e.stopPropagation();
-    toggleImportant(folderName, index);
-  };
-  div.appendChild(star);
-
-  if (note.type === 'image') {
-    const img = document.createElement('img');
-    img.src = note.content;
-    img.onclick = () => showImagePopup(note.content);
-    div.appendChild(img);
-  } else {
-    const textDiv = document.createElement('div');
-    textDiv.className = 'note-text';
-    textDiv.textContent = note.content;
-    div.appendChild(textDiv);
-  }
-
-  let pressTimer;
-  div.onpointerdown = () => {
-    pressTimer = setTimeout(() => {
-      ctxNote = { folder: folderName, index };
-      showNoteContext({ pageX: window.innerWidth/2, pageY: window.innerHeight/2 });
-    }, 500);
-  };
-  div.onpointerup = div.onpointercancel = div.onpointerleave = () => clearTimeout(pressTimer);
-
-  div.oncontextmenu = e => {
-    e.preventDefault();
-    ctxNote = { folder: folderName, index };
-    showNoteContext(e);
-  };
-
-  notesEl.appendChild(div);
-  return div;
-}
-
-function toggleImportant(folderName, index) {
-  if (!folders[folderName]?.[index]) return;
-  folders[folderName][index].important = !folders[folderName][index].important;
-  save();
-  if (current === 'important') renderImportantNotes();
-  else if (current === folderName) renderNotes(folderName);
-}
-
-function addFolder() {
-  showPopup("Create Section", `
-    <input type="text" id="folderNameInput" placeholder="Enter folder name..." style="outline:none;width:100%;padding:12px;background:#fff;border:none;border-radius:10px;color:black;font-size:16px;text-align:center;">
-  `, [
-    { text: 'Cancel', class: 'cancel', action: closePopup },
-    { text: 'Create', class: 'confirm', action: () => {
-      const name = document.getElementById('folderNameInput').value.trim();
-      if (!name) return;
-      if (folders[name] || name.toLowerCase() === 'important') {
-        alert("Folder name already exists or is not allowed.");
-        return;
-      }
-      folders[name] = [];
-      save();
-      renderFolders();
-      select(name);
-    }}
-  ]);
-}
-
-function deleteFolder(folderName) {
-  showPopup(`Delete folder "${folderName}"?`, 
-    folders[folderName]?.length > 0 ? '<p style="color:#ff9800;">This folder contains notes!<br>They will be permanently deleted.</p>' : '',
-    [
-      { text: 'Cancel', class: 'cancel', action: closePopup },
-      { text: 'Delete', class: 'danger', action: () => {
-        delete folders[folderName];
-        save();
-        if (current === folderName) select(null);
-        else renderFolders();
-      }}
-    ]
-  );
-}
-
-function addNote() {
-  const txt = input.value.trim();
-  if (!txt || !current || current === 'important') return;
-  folders[current].push({ type: 'text', content: txt, important: false });
-  input.value = '';
-  input.style.height = 'auto';
-  save();
-  renderNotes(current);
-}
-
-async function attach(e) {
-  const inputEl = e.target;
-  const files = Array.from(inputEl.files || []).filter(file => file.type.startsWith('image/'));
-
-  if (!files.length || !current || current === 'important') {
-    inputEl.value = '';
-    return;
-  }
-
-  try {
-    for (const file of files) {
-      const imageData = await new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = () => reject(new Error('Could not read ' + file.name));
-        reader.readAsDataURL(file);
-      });
-
-      folders[current].push({
-        type: 'image',
-        content: imageData,
-        important: false
-      });
-    }
-
-    save();
-    renderNotes(current);
-  } catch (error) {
-    console.error(error);
-    alert('Some images could not be added. Your browser storage may be full.');
-    try { save(); } catch (storageError) { console.error('Could not save images:', storageError); }
-    renderNotes(current);
-  } finally {
-    inputEl.value = '';
-  }
-}
-
-function showNoteContext(e) {
-  const m = document.getElementById('noteContextMenu');
-  m.style.left = Math.min(e.pageX, window.innerWidth - 160) + 'px';
-  m.style.top  = Math.min(e.pageY, window.innerHeight - 140) + 'px';
-  m.style.display = 'block';
-}
-
-function showFolderContext(e) {
-  const m = document.getElementById('folderContextMenu');
-  m.style.left = Math.min(e.pageX, window.innerWidth - 180) + 'px';
-  m.style.top  = Math.min(e.pageY, window.innerHeight - 100) + 'px';
-  m.style.display = 'block';
-}
-
-function hideAllContext() {
-  document.getElementById('noteContextMenu').style.display = 'none';
-  document.getElementById('folderContextMenu').style.display = 'none';
-}
-
-// Context Menu Actions
-document.getElementById('editNote').onclick = () => {
-  hideAllContext();
-  if (!ctxNote) return;
-  const {folder, index} = ctxNote;
-  const note = folders[folder]?.[index];
-  if (!note || note.type === 'image') return alert("Can't edit images");
-
-  showPopup("Edit note", `
-    <textarea id="editInput" style="width: 100%;
-    min-height: 140px;
-    padding: 14px;
-    background: rgba(255, 255, 255, 0.1);
-    font-size: 17px;
-    color: white;
-    resize: vertical;
-    scrollbar-width: none;
-    overflow-y: scroll;
-    outline: none;
-    border-width: medium;
-    border-style: none;
-    border-color: currentcolor;
-    border-image: none;
-    height: 242px;
-    border-radius: 14px;">${note.content}</textarea>
-  `, [
-    { text: 'Cancel', class: 'cancel', action: closePopup },
-    { text: 'Save', class: 'confirm', action: () => {
-      const newText = document.getElementById('editInput').value.trim();
-      if (newText) {
-        note.content = newText;
-        save();
-        if (current === 'important') renderImportantNotes();
-        else if (current === folder) renderNotes(folder);
-      }
-    }}
-  ]);
-};
-
-document.getElementById('deleteNote').onclick = () => {
-  hideAllContext();
-  if (!ctxNote) return;
-  showPopup("Delete this note permanently?", '', [
-    { text: 'Cancel', class: 'cancel', action: closePopup },
-    { text: 'Delete', class: 'danger', action: () => {
-      const {folder, index} = ctxNote;
-      if (folders[folder]) {
-        folders[folder].splice(index, 1);
-        save();
-        if (current === 'important') renderImportantNotes();
-        else if (current === folder) renderNotes(folder);
-      }
-    }}
-  ]);
-};
-
-document.getElementById('copyNote').onclick = () => {
-  hideAllContext();
-  if (!ctxNote) return;
-  const note = folders[ctxNote.folder]?.[ctxNote.index];
-  if (!note || note.type === 'image') return alert("Can't copy image");
-  navigator.clipboard.writeText(note.content).then(() => alert("Copied!")).catch(() => alert("Copy failed"));
-};
-
-document.getElementById('deleteFolder').onclick = () => {
-  hideAllContext();
-  if (ctxFolder) deleteFolder(ctxFolder);
-};
-
-// Event Listeners
-sendBtn.onclick = addNote;
-input.addEventListener('keydown', e => {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault();
-    addNote();
-  }
-});
-
-document.getElementById('imageInput').onchange = attach;
-
-document.body.onclick = e => {
-  if (!e.target.closest('#noteContextMenu') && 
-      !e.target.closest('#folderContextMenu') && 
-      !e.target.closest('.popup-box')) {
-    hideAllContext();
-  }
-};
-
-popup.onclick = e => { if (e.target === popup) closePopup(); };
-
-// Full-screen image viewer controls
- document.getElementById('closeImageViewer').onclick = closeImageViewer;
- document.getElementById('closeViewerBottom').onclick = closeImageViewer;
- document.getElementById('downloadViewerImage').onclick = downloadActiveImage;
- document.getElementById('openViewerImage').onclick = openActiveImageInNewTab;
-
- document.getElementById('imageViewer').addEventListener('click', e => {
-   if (e.target.id === 'imageViewer') closeImageViewer();
- });
-
- document.addEventListener('keydown', e => {
-   if (e.key === 'Escape') closeImageViewer();
- });
-
-// Auto-resize textarea
-input.addEventListener('input', () => {
-  input.style.height = 'auto';
-  input.style.height = Math.min(input.scrollHeight, 180) + 'px';
-});
-
-renderFolders();
-select(null);
 </script>
 </body>
 </html>
