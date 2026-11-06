@@ -425,12 +425,12 @@ div#categories-container {
 <body>
     <div class="container">
         <div class="titlogo">
-           <div style="    display: flex;
+           <div style="display: flex;
     justify-content: center;
     align-items: center;
     gap: 5px;
-    font-weight: 500;
-    font-size: 18px;">
+    font-weight: 600;
+    font-size: 20px;">
              <img src="https://blackswan19.github.io/Educate/tasksave_logo.png" alt="BsTasks"> BsTasks
            </div>
             <div class="nav-right">
@@ -458,7 +458,7 @@ div#categories-container {
             <div class="btn-row">
                 <button class="secondary" id="toggle-link-btn">+ Link</button>
                 <button class="secondary" id="add-category-btn">+ Category</button>
-                <button id="add-task-btn">+ Task</button>
+                <button id="add-task-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px" width="24px" fill="#e3e3e3"><path d="M9.58,15.18L17.95,6.8q0.29-0.29 0.66-0.29T19.28,6.8t0.29,0.67T19.28,8.14l-9.04,9.05q-0.29,0.29-0.66,0.29T8.91,17.19l-4.2-4.2Q4.43,12.7 4.43,12.32t0.29-0.67t0.67-0.29t0.67,0.29l3.51,3.53Z"/></svg></button>
             </div>
         </div>
     </div>
@@ -472,9 +472,8 @@ div#categories-container {
     </div>
 
     <script>
-        // ========== DATA ==========
         let data = {
-            categories: [] // { id, name, tasks: [{ id, text, link, checked }] }
+            categories: []
         };
 
         const categoriesContainer = document.getElementById("categories-container");
@@ -490,8 +489,6 @@ div#categories-container {
         // document.addEventListener('contextmenu', e => e.preventDefault());
         let linkMode = false;
         let uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
-
-        // ========== LOAD / SAVE ==========
         function loadData() {
             const saved = localStorage.getItem("bstasks_data");
             if (saved) {
@@ -508,7 +505,6 @@ div#categories-container {
             localStorage.setItem("bstasks_data", JSON.stringify(data));
         }
 
-        // ========== RENDER ==========
         function render() {
             categoriesContainer.innerHTML = "";
 
@@ -600,7 +596,6 @@ div#categories-container {
             return div.innerHTML;
         }
 
-        // ========== EVENTS ==========
         function attachEvents() {
             // Delete category
             document.querySelectorAll(".cat-delete-btn").forEach(btn => {
@@ -762,8 +757,6 @@ div#categories-container {
             saveData();
             render();
         }
-
-        // Init
         loadData();
     </script>
 </body>
