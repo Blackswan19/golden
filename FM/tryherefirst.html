@@ -407,7 +407,24 @@ display: inline-flex;
     -webkit-backdrop-filter: blur(14px);
     font-size: 16px;
     }
-
+.close{
+  position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 35px;
+    background: #ffffff33;
+    cursor: pointer;
+    font-weight: 200;
+    transition: color 0.2s ease-in-out;
+    backdrop-filter: blur(30px);
+    width: 40px;
+    height: 40px;
+    display: flex;    border: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
     .viewer-btn.primary { background: #002aff; border-color: #002aff; }
     .viewer-btn.close { width: 44px; height: 44px; padding: 0; font-size: 22px; }
 
@@ -510,7 +527,7 @@ display: flex;
 
   <div id="imageViewer" aria-hidden="true">
     <div class="image-viewer-top">
-      <button type="button" class="viewer-btn close" id="closeImageViewer" aria-label="Close image viewer">&times;</button>
+      <button type="button" class="close" id="closeImageViewer" aria-label="Close image viewer">×</button>
     </div>
     <img id="viewerImage" alt="Full-size note image">
     <div class="image-viewer-actions">
